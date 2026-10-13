@@ -23,7 +23,8 @@ Do not imply that a prototype contains comprehensive or reviewed control coverag
    `git switch -c feature/improve-control-search`.
 3. Run `npm ci`, make your change, and add a meaningful behavioral test when the
    change affects how the application works.
-4. Run `npm run typecheck`, `npm run lint`, `npm run format:check`, `npm test`,
+4. Run `npm run typecheck`, `npm run check:content`, `npm run check:gstack`,
+   `npm run lint`, `npm run format:check`, `npm test`,
    and `npm run build`.
 5. Commit the change and open a pull request against `main` with a clear summary
    and validation results. Maintainers review and merge accepted contributions.

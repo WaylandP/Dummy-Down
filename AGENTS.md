@@ -61,16 +61,25 @@ or claim provider data receipt without evidence and the owner's authorization.
 
 ## gstack for Codex
 
-Read docs/GSTACK.md for the reviewed pin, supported skills, and known limitations.
+At task start, verify the exact pinned installation and evaluate every canonical
+skill's trigger in [docs/GSTACK-SKILLS.md](docs/GSTACK-SKILLS.md). Read
+[docs/GSTACK.md](docs/GSTACK.md) for setup and compatibility. Follow the inventory's
+six default routes and utility gates; a spelling correction does not require a
+product-planning cycle. Account for every skill, including unsupported, inapplicable,
+blocked and approval-gated cases. Installation and reading are not execution.
 Activate the project-local runtime with `source scripts/gstack-env.sh` in each
 shell session. If installation is missing, run `bash scripts/setup-gstack.sh`.
+Run `npm run check:gstack:installed`; use the bootstrap to repair demonstrated gaps.
+Run `npm run check:gstack` before publishing workflow changes. These checks verify
+structure and mappings, not review authenticity, quality or native discovery.
 
-Read the applicable installed SKILL.md under `.agents/skills/gstack-<name>/` before
-using it. Use design-consultation for design direction, design-review for visual
-QA, qa/qa-only for functional checks, review for code review, and plan-eng-review
-for architecture. The user can request these by name even if this chat does not
-advertise them as tools. They are experimental Codex filesystem skills, not a
-promise of complete Claude Code feature parity.
+Automatically run every applicable supported skill within the authorized scope.
+Read its actual installed SKILL.md and required sections before execution; never
+substitute a generic review silently. Record source revision, reviewed inputs,
+commands/artifacts, findings, fixes and exact omissions in one dated coverage record.
+Rerun reviews invalidated by later changes. Retrospective planning is retrospective;
+partial/adapted execution is not a full skill pass. Native discovery and enforced
+hooks must be verified separately. These project rules do not affect other repos.
 
 Start new product and feature planning with office-hours unless the user names the
 next skill to run. The owner has delegated routine planning and implementation
