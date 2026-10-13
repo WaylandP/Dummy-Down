@@ -8,8 +8,11 @@ Compliance & Assessment explanation modes for one draft CMMC example.
 The example is an educational interpretation, not a complete official requirement
 or reviewed assessment guide. The Explorer restores exact lessons and modes from
 shareable addresses; a small searchable glossary supplies draft educational
-definitions. Quizzes, reviewed framework coverage, accounts and a backend remain
-future work.
+definitions. A separate source collection contains all149 CMMC identifiers in the
+September2024v2.13 snapshot. The existing draft lesson has a fictional scenario,
+a four-step visual flow and three learning questions. Reviewed explanations for
+the reference collection, more activities, accounts and a backend remain future
+work.
 
 ## Start locally
 
@@ -61,6 +64,8 @@ distributed with the fonts.
 | `src/data/controls.ts`          | Educational control examples and learning-mode definitions.                            |
 | `src/data/control-search.ts`    | Shared search and filtering behavior.                                                  |
 | `src/data/editions.ts`          | Project editorial editions and the explicit sample identity.                           |
+| `src/data/cmmc-references.ts`   | Attributed CMMC publication quotations with snapshot/page provenance.                  |
+| `src/data/learning.ts`          | Fictional scenarios and questions tied to an exact teaching identity.                  |
 | `src/data/glossary.ts`          | Draft definitions with source and review context.                                      |
 | `src/state/explorer-state.ts`   | Pure address parsing, exact resolution and navigation transitions.                     |
 | `src/state/useExplorerState.ts` | One browser-history controller mounted by App.                                         |
@@ -109,7 +114,9 @@ reads the clipboard. If writing is unavailable, it shows a labeled selectable
 link; outdated asynchronous results do not report success for a different lesson.
 
 Discovery state uses `view=discover` with optional `catalog`, `q`, `family`,
-`level` and `mode`. Search updates the current history entry; deliberate selection,
+`level`, `mode` and `collection=references`. Draft explanations remain the default.
+The source collection is inferred only for an exact known source identity on a
+shared link; explicit `collection=lessons` remains authoritative on a mismatch. Search updates the current history entry; deliberate selection,
 filter and mode changes create entries. Back/Forward restores the entire address.
 Search text appears in URLs and browser history: use generic learning topics and
 keep organizational evidence and secrets out of it. No query content controls a
@@ -127,6 +134,27 @@ Glossary search is independent of control search and is not persisted. Contextua
 term definitions open one at a time inline without changing the lesson, mode,
 filters or history. Close/Escape returns focus to the invoking button. Six terms
 are educational drafts, not reviewed or official definitions.
+
+## Source catalog and learning coverage
+
+[Source provenance and verification](sources/cmmc-2-13-sep-2024.md) records four
+September2024v2.13 public PDFs, pinned mirror URLs, SHA-256 values and extraction
+rules. The catalog has15 Level1,110 Level2and24 Level3identifiers. Older inventories
+and newer NIST editions are not silently substituted. Direct official-host access
+was blocked in the research environment; the app presents a versioned snapshot,
+not independently verified current applicability. Guide quotations match their
+cited pages. Ten genuine model/guide wording differences remain separately visible.
+
+The `CatalogControl` union distinguishes educational examples from source
+references. Reference records have no invented explanation modes or activities;
+the UI displays pending coverage explicitly. Discovery uses eight results per page
+and follows a restored selection. Pagination stays local to the result list;
+collection/query/family/level and selected identity remain in browser history.
+
+`LearningPractice` matches the complete teaching identity. Its fictional scenario
+and questions stay consistent across modes, explain both correct and incorrect
+choices, and preserve reader progress during mode changes. They never write URL,
+clipboard, storage or server state. A completed activity is not a compliance grade.
 
 ## Validate a change
 

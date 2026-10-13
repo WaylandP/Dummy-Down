@@ -1,4 +1,4 @@
-import type { Control } from '../types/content'
+import type { CatalogControl } from '../types/content'
 
 export interface ControlFilters {
   readonly query?: string
@@ -7,7 +7,18 @@ export interface ControlFilters {
   readonly level?: string
 }
 
-function searchableText(control: Control): string {
+function searchableText(control: CatalogControl): string {
+  const contentText =
+    control.contentKind === 'official-reference'
+      ? [control.requirement.text, control.modelRequirement.text]
+      : [
+          control.concept,
+          ...Object.values(control.explanations).flatMap((explanation) => [
+            explanation.heading,
+            explanation.summary,
+            ...explanation.examples,
+          ]),
+        ]
   return [
     control.id,
     control.title,
@@ -15,23 +26,18 @@ function searchableText(control: Control): string {
     control.family,
     control.familyName,
     control.level ?? '',
-    control.concept,
     ...control.tags,
-    ...Object.values(control.explanations).flatMap((explanation) => [
-      explanation.heading,
-      explanation.summary,
-      ...explanation.examples,
-    ]),
+    ...contentText,
   ]
     .join(' ')
     .toLocaleLowerCase('en-US')
 }
 
 /** All entered words must match; empty fields leave that dimension unrestricted. */
-export function filterControls(
-  availableControls: readonly Control[],
+export function filterControls<T extends CatalogControl>(
+  availableControls: readonly T[],
   filters: ControlFilters = {},
-): Control[] {
+): T[] {
   const words = (filters.query ?? '')
     .trim()
     .toLocaleLowerCase('en-US')

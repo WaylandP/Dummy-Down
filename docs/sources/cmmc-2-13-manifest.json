@@ -1,0 +1,83 @@
+{
+  "retrievedDate": "2026-10-13",
+  "sourceMirrorCommit": "0ab5953a68d5bf7383b9b021839274aed42209f3",
+  "sources": [
+    {
+      "id": "cmmc-model-213",
+      "title": "Cybersecurity Maturity Model Certification (CMMC) Model Overview",
+      "version": "2.13",
+      "publicationDate": "2024-09",
+      "documentId": "DoD-CIO-00001",
+      "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/ModelOverviewv2.pdf",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-model-overview/2.13/general/ModelOverviewv2.pdf",
+      "sha256": "3521adb262f431433bc0be3a3f7f717b0b05c61f1e5eb127c38c81d2979f4a00",
+      "downloadedBytes": 977491,
+      "publicationNotice": "DISTRIBUTION STATEMENT A. Approved for public release. Distribution is unlimited.",
+      "retrievedDate": "2026-10-13",
+      "acquisitionNote": "Direct official-host access was blocked by the execution environment. Source bytes acquired from a pinned public PDF mirror; original document cover, publication identity and public-distribution notice inspected. This is a versioned September 2024 snapshot, not independent verification of the latest DoD publication.",
+      "extractionNote": "Model section 2.4.1 table cells extracted with Poppler pdftotext bounding boxes. Physical line wrapping removed and existing trailing line-end hyphens retained. Underlining/italics denoting DoD parameters is not reproduced, but parameter text remains included. Official short names are quick-reference titles, not separate normative requirements.",
+      "file": "cmmc-model-213.pdf"
+    },
+    {
+      "id": "cmmc-assessment-l1-213",
+      "title": "CMMC Assessment Guide – Level 1",
+      "version": "2.13",
+      "publicationDate": "2024-09",
+      "documentId": "DoD-CIO-00002",
+      "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL1v2.pdf",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l1/2.13/cmmc-guide/AssessmentGuideL1v2.pdf",
+      "sha256": "88116fa807b3685703f08c1992580ad0cfbc22ad2bcf76f99378fadf964f7368",
+      "downloadedBytes": 819911,
+      "publicationNotice": "DISTRIBUTION STATEMENT A. Approved for public release. Distribution is unlimited.",
+      "retrievedDate": "2026-10-13",
+      "acquisitionNote": "Direct official-host access was blocked by the execution environment. Source bytes acquired from a pinned public PDF mirror; original document cover, publication identity and public-distribution notice inspected. This is a versioned September 2024 snapshot, not independent verification of the latest DoD publication.",
+      "extractionNote": "Uppercase body requirement heading, followed by the requirement paragraph ending immediately before ASSESSMENT OBJECTIVES. Whitespace normalized and physical hyphenated line wraps joined retaining the hyphen. No discussion/examples or assessment-objective text is included. Level 3 statements retain DoD parameter values; underlining is not reproduced.",
+      "file": "cmmc-assessment-l1-213.pdf"
+    },
+    {
+      "id": "cmmc-assessment-l2-213",
+      "title": "CMMC Assessment Guide – Level 2",
+      "version": "2.13",
+      "publicationDate": "2024-09",
+      "documentId": "DoD-CIO-00003",
+      "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL2v2.pdf",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l2/2.13/cmmc-guide/AssessmentGuideL2v2.pdf",
+      "sha256": "0dcaba1626a0d23893981d74dd3f0f2338fff54cece67d81bc811ce76392d867",
+      "downloadedBytes": 2272014,
+      "publicationNotice": "DISTRIBUTION STATEMENT A. Approved for public release. Distribution is unlimited.",
+      "retrievedDate": "2026-10-13",
+      "acquisitionNote": "Direct official-host access was blocked by the execution environment. Source bytes acquired from a pinned public PDF mirror; original document cover, publication identity and public-distribution notice inspected. This is a versioned September 2024 snapshot, not independent verification of the latest DoD publication.",
+      "extractionNote": "Uppercase body requirement heading, followed by the requirement paragraph ending immediately before ASSESSMENT OBJECTIVES. Whitespace normalized and physical hyphenated line wraps joined retaining the hyphen. No discussion/examples or assessment-objective text is included. Level 3 statements retain DoD parameter values; underlining is not reproduced.",
+      "file": "cmmc-assessment-l2-213.pdf"
+    },
+    {
+      "id": "cmmc-assessment-l3-213",
+      "title": "CMMC Assessment Guide – Level 3",
+      "version": "2.13",
+      "publicationDate": "2024-09",
+      "documentId": "DoD-CIO-00004",
+      "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL3.pdf",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l3/2.13/cmmc-guide/AssessmentGuideL3.pdf",
+      "sha256": "6601eb20e8f1490b49c4addd83505eb269062abb3c2bae9b5256449187048ef3",
+      "downloadedBytes": 1069207,
+      "publicationNotice": "[DISTRIBUTION STATEMENT A] Approved for public release.",
+      "retrievedDate": "2026-10-13",
+      "acquisitionNote": "Direct official-host access was blocked by the execution environment. Source bytes acquired from a pinned public PDF mirror; original document cover, publication identity and public-distribution notice inspected. This is a versioned September 2024 snapshot, not independent verification of the latest DoD publication.",
+      "extractionNote": "Uppercase body requirement heading, followed by the requirement paragraph ending immediately before ASSESSMENT OBJECTIVES. Whitespace normalized and physical hyphenated line wraps joined retaining the hyphen. No discussion/examples or assessment-objective text is included. Level 3 statements retain DoD parameter values; underlining is not reproduced.",
+      "file": "cmmc-assessment-l3-213.pdf"
+    }
+  ],
+  "verification": {
+    "counts": {
+      "level1": 15,
+      "level2": 110,
+      "level3": 24
+    },
+    "identifiers": 149,
+    "sameStatementAcrossModelAndGuides": 139,
+    "differentStatementAcrossModelAndGuides": 10,
+    "directOfficialHostFetch": "blocked: proxy CONNECT403 (ordinary Chromium also ERR_TUNNEL_CONNECTION_FAILED)",
+    "latestEditionIndependentlyVerified": false,
+    "l2PdfHashMatchesIndependentExtractionRecord": "https://github.com/winsorlabs/wingrc/blob/b27e8a68b22a256ed4ab128aea25f51a43070d42/scripts/cmmc_guidance/README.md"
+  }
+}

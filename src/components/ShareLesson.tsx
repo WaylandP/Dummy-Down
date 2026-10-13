@@ -3,16 +3,20 @@ import { Check, Link } from 'lucide-react'
 
 interface ShareLessonProps {
   url: string
+  subject?: 'lesson' | 'reference'
 }
 
 type CopyPhase = 'idle' | 'pending' | 'copied' | 'fallback'
 
 /** A new keyed lifetime invalidates obsolete writes, including A → B → A. */
-export function ShareLesson({ url }: ShareLessonProps) {
-  return <ShareLessonSession key={url} url={url} />
+export function ShareLesson({ url, subject = 'lesson' }: ShareLessonProps) {
+  return (
+    <ShareLessonSession key={`${subject}:${url}`} url={url} subject={subject} />
+  )
 }
 
-function ShareLessonSession({ url }: ShareLessonProps) {
+function ShareLessonSession({ url, subject = 'lesson' }: ShareLessonProps) {
+  const name = subject === 'reference' ? 'Reference' : 'Lesson'
   const prefix = useId()
   const [feedback, setFeedback] = useState<{ phase: CopyPhase }>({
     phase: 'idle',
@@ -72,16 +76,16 @@ function ShareLessonSession({ url }: ShareLessonProps) {
         ) : (
           <Link size={16} aria-hidden="true" />
         )}
-        {feedback.phase === 'pending' ? 'Copying…' : 'Copy lesson link'}
+        {feedback.phase === 'pending' ? 'Copying…' : `Copy ${subject} link`}
       </button>
       <p className="share-feedback" role="status" aria-live="polite">
-        {feedback.phase === 'copied' && 'Lesson link copied.'}
+        {feedback.phase === 'copied' && `${name} link copied.`}
         {feedback.phase === 'fallback' &&
           "Copy isn't available. Select the link below."}
       </p>
       {feedback.phase === 'fallback' && (
         <div className="share-fallback">
-          <label htmlFor={`${prefix}-link`}>Lesson link</label>
+          <label htmlFor={`${prefix}-link`}>{name} link</label>
           <textarea
             ref={fallback}
             id={`${prefix}-link`}

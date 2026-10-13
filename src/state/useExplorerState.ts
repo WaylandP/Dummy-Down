@@ -12,12 +12,12 @@ import type {
   LessonResolution,
   ParsedExplorerState,
 } from './explorer-state'
-import type { Control, Framework } from '../types/content'
+import type { CatalogControl, Framework } from '../types/content'
 
 export interface ExplorerController {
   readonly parsed: ParsedExplorerState
   readonly resolution: LessonResolution | null
-  readonly results: readonly Control[]
+  readonly results: readonly CatalogControl[]
   readonly catalogFramework: Framework | undefined
   readonly historyStatus: 'ok' | 'failed'
   readonly dispatch: (intent: ExplorerIntent) => void

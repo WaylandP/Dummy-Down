@@ -1,8 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { controls } from '../data/controls'
-import type { Control, LessonIdentity } from '../types/content'
+import type {
+  Control,
+  LessonIdentity,
+  ReferenceControl,
+} from '../types/content'
 import {
   createLessonUrl,
+  effectiveCollection,
+  explorerResults,
   parseExplorerSearch,
   resolveLesson,
   serializeExplorerSearch,
@@ -29,6 +35,12 @@ const independentIdentity: LessonIdentity = {
   frameworkId: 'research-framework',
   editionId: 'guide-v1',
   controlKey: 'access',
+}
+
+const referenceIdentity: LessonIdentity = {
+  frameworkId: 'cmmc',
+  editionId: 'source-fixture',
+  controlKey: 'source-access',
 }
 
 const sample: Control = {
@@ -63,6 +75,47 @@ const independent: Control = {
   level: undefined,
 }
 
+/** Synthetic source records exercise navigation, not real control requirements. */
+const reference: ReferenceControl = {
+  id: 'REFERENCE.ONE',
+  key: referenceIdentity.controlKey,
+  frameworkId: referenceIdentity.frameworkId,
+  editionId: referenceIdentity.editionId,
+  title: 'Synthetic access reference',
+  family: 'REF',
+  familyName: 'Reference fixture',
+  level: 'Level 1',
+  contentKind: 'official-reference',
+  reviewStatus: 'unreviewed-import',
+  versionContext: 'Synthetic quotation fixture used only for state tests.',
+  disclaimer: 'This fixture is not cybersecurity teaching content.',
+  tags: ['source fixture'],
+  sources: sample.sources,
+  requirement: {
+    text: 'Synthetic guide text with a unique guide-search token.',
+    sourceId: 'fixture-guide',
+    pdfPage: 4,
+    printedPage: 2,
+  },
+  modelRequirement: {
+    text: 'Synthetic model text with a unique model-search token.',
+    sourceId: 'fixture-model',
+    pdfPage: 5,
+    printedPage: 3,
+    differsFromGuide: true,
+  },
+  sourceDocuments: [],
+}
+
+const otherReference: ReferenceControl = {
+  ...reference,
+  id: 'REFERENCE.TWO',
+  key: 'source-device',
+  family: 'SOURCE',
+  familyName: 'Another reference fixture',
+  level: 'Level 2',
+}
+
 const catalog: ExplorerCatalog = {
   frameworks: [
     {
@@ -71,7 +124,7 @@ const catalog: ExplorerCatalog = {
       shortName: 'CMMC',
       description: 'Test fixture, not teaching content.',
       status: 'preview',
-      levels: ['Level 1', 'Level 2'],
+      levels: ['Level 1', 'Level 2', 'Level 3'],
       sourceUrl: 'https://example.com/cmmc',
     },
     {
@@ -112,8 +165,22 @@ const catalog: ExplorerCatalog = {
       title: 'Independent guide',
       versionContext: 'An independent editorial fixture.',
     },
+    {
+      id: referenceIdentity.editionId,
+      frameworkId: referenceIdentity.frameworkId,
+      title: 'Synthetic publication fixture',
+      versionContext: 'A source snapshot fixture, not a project explanation.',
+      kind: 'publication',
+    },
   ],
-  controls: [sample, nextEdition, differentFamily, independent],
+  controls: [
+    sample,
+    nextEdition,
+    differentFamily,
+    independent,
+    reference,
+    otherReference,
+  ],
   defaultLesson: sampleIdentity,
 }
 
@@ -918,6 +985,390 @@ describe('createLessonUrl', () => {
             filters: { ...unfiltered, catalog: 'research-framework' },
           },
           independentIdentity,
+        ),
+      ),
+    )
+  })
+})
+
+describe('source-reference collections', () => {
+  const referenceFilters: ExplorerFilters = {
+    ...unfiltered,
+    collection: 'references',
+  }
+
+  it('defaults discovery, the sample and unknown tuples to teaching lessons', () => {
+    expect(effectiveCollection(unfiltered)).toBe('lessons')
+    expect(effectiveCollection({ ...unfiltered, collection: 'lessons' })).toBe(
+      'lessons',
+    )
+    for (const search of [
+      '?view=discover',
+      lessonSearch(),
+      lessonSearch({ ...referenceIdentity, editionId: 'unknown-edition' }),
+      lessonSearch({ ...referenceIdentity, controlKey: 'unknown-control' }),
+      lessonSearch({ ...referenceIdentity, frameworkId: 'research-framework' }),
+    ]) {
+      const parsed = parseExplorerSearch(search, catalog)
+      if (parsed.kind !== 'ready') throw new Error('Expected complete state')
+      expect(effectiveCollection(parsed.state.filters)).toBe('lessons')
+      expect(parsed.state.filters.collection).toBeUndefined()
+    }
+  })
+
+  it('infers references only from the exact known source identity', () => {
+    expect(
+      parseExplorerSearch(lessonSearch(referenceIdentity), catalog),
+    ).toEqual(ready(lesson({ filters: referenceFilters }, referenceIdentity)))
+    expect(
+      parseExplorerSearch(
+        `${lessonSearch(referenceIdentity)}&mode=compliance&q=guide-search&family=REF&level=Level+1`,
+        catalog,
+      ),
+    ).toEqual(
+      ready(
+        lesson(
+          {
+            mode: 'compliance',
+            filters: {
+              ...referenceFilters,
+              query: 'guide-search',
+              family: 'REF',
+              level: 'Level 1',
+            },
+          },
+          referenceIdentity,
+        ),
+      ),
+    )
+  })
+
+  it.each(['', 'all', 'REFERENCES', 'references%2520'])(
+    'rejects unsupported or empty explicit collection without silently choosing lessons: %s',
+    (collection) => {
+      expect(
+        parseExplorerSearch(`?view=discover&collection=${collection}`, catalog),
+      ).toEqual({ kind: 'invalid', reason: 'invalid-collection' })
+    },
+  )
+
+  it('strictly decodes collection names and rejects encoded duplicate aliases', () => {
+    expect(
+      parseExplorerSearch('?view=discover&collection=%72eferences', catalog),
+    ).toEqual(ready(discovery(referenceFilters)))
+    expect(
+      parseExplorerSearch(
+        '?view=discover&collection=references&%63ollection=references',
+        catalog,
+      ),
+    ).toEqual({ kind: 'invalid', reason: 'duplicate-parameter' })
+    expect(
+      parseExplorerSearch('?view=discover&collection=%E0%A4%A', catalog),
+    ).toEqual({ kind: 'invalid', reason: 'malformed-encoding' })
+  })
+
+  it('keeps explicit collection authoritative while preserving a mismatched source identity', () => {
+    const parsed = parseExplorerSearch(
+      `${lessonSearch(referenceIdentity)}&collection=lessons`,
+      catalog,
+    )
+    expect(parsed).toEqual(
+      ready(
+        lesson(
+          { filters: { ...unfiltered, collection: 'lessons' } },
+          referenceIdentity,
+        ),
+      ),
+    )
+    expect(
+      parseExplorerSearch(
+        serializeExplorerSearch(
+          parsed.kind === 'ready' ? parsed.state : discovery(),
+        ),
+        catalog,
+      ),
+    ).toEqual(parsed)
+    expect(resolveLesson(referenceIdentity, unfiltered, catalog)).toMatchObject(
+      {
+        kind: 'lesson',
+        control: reference,
+        excludedByFilters: true,
+      },
+    )
+    expect(
+      parseExplorerSearch(`${lessonSearch()}&collection=references`, catalog),
+    ).toEqual(ready(lesson({ filters: referenceFilters })))
+    expect(
+      resolveLesson(sampleIdentity, referenceFilters, catalog),
+    ).toMatchObject({
+      kind: 'lesson',
+      control: sample,
+      excludedByFilters: true,
+    })
+  })
+
+  it('validates family and level against entries in the active collection', () => {
+    expect(
+      parseExplorerSearch(
+        '?view=discover&collection=references&family=AC&level=Level+3',
+        catalog,
+      ),
+    ).toEqual({
+      ...ready(discovery(referenceFilters)),
+      notices: ['family-reset', 'level-reset'],
+    })
+    expect(
+      parseExplorerSearch('?view=discover&family=REF&level=Level+3', catalog),
+    ).toEqual({
+      ...ready(discovery()),
+      notices: ['family-reset', 'level-reset'],
+    })
+    expect(
+      parseExplorerSearch(
+        '?view=discover&collection=references&family=REF&level=Level+1',
+        catalog,
+      ),
+    ).toEqual(
+      ready(
+        discovery({ ...referenceFilters, family: 'REF', level: 'Level 1' }),
+      ),
+    )
+  })
+
+  it('roundtrips reference discovery explicitly and omits the default lessons collection', () => {
+    const state = discovery({ ...referenceFilters, query: 'guide-search' })
+    expect(parameters(state).get('collection')).toBe('references')
+    expect(
+      parseExplorerSearch(serializeExplorerSearch(state), catalog),
+    ).toEqual(ready(state))
+    expect(parameters(discovery()).has('collection')).toBe(false)
+    expect(
+      parameters(discovery({ ...unfiltered, collection: 'lessons' })).has(
+        'collection',
+      ),
+    ).toBe(false)
+  })
+
+  it('keeps source requirement and model text searchable independently of teaching prose', () => {
+    expect(
+      explorerResults(
+        discovery({ ...referenceFilters, query: 'guide-search' }),
+        catalog,
+      ),
+    ).toEqual([reference, otherReference])
+    expect(
+      explorerResults(
+        discovery({ ...referenceFilters, query: 'model-search' }),
+        catalog,
+      ),
+    ).toEqual([reference, otherReference])
+    expect(explorerResults(discovery(), catalog)).toEqual([
+      sample,
+      nextEdition,
+      differentFamily,
+    ])
+    expect(
+      explorerResults(
+        discovery({ ...unfiltered, query: 'guide-search' }),
+        catalog,
+      ),
+    ).toEqual([])
+    expect(
+      explorerResults(
+        discovery({ ...referenceFilters, query: 'locked front door' }),
+        catalog,
+      ),
+    ).toEqual([])
+  })
+
+  it('changes collection with query retained, constraints cleared and excluded selection removed', () => {
+    const current = ready(
+      lesson({
+        mode: 'it-cyber',
+        filters: {
+          ...unfiltered,
+          query: 'accounts',
+          family: 'AC',
+          level: 'Level 2',
+        },
+      }),
+    )
+    expect(
+      transitionExplorerState(
+        current,
+        { type: 'set-collection', collection: 'references' },
+        catalog,
+      ),
+    ).toMatchObject({
+      parsed: ready({
+        ...discovery({ ...referenceFilters, query: 'accounts' }),
+        mode: 'it-cyber',
+      }),
+      history: 'push',
+    })
+    expect(
+      transitionExplorerState(
+        ready(lesson({ filters: referenceFilters }, referenceIdentity)),
+        { type: 'set-collection', collection: 'lessons' },
+        catalog,
+      ),
+    ).toMatchObject({ parsed: ready(discovery()), history: 'push' })
+  })
+
+  it('does not write redundant history for a collection that is already selected', () => {
+    for (const collection of ['lessons', 'references'] as const) {
+      const current = ready(
+        discovery(collection === 'lessons' ? unfiltered : referenceFilters),
+      )
+      expect(
+        transitionExplorerState(
+          current,
+          { type: 'set-collection', collection },
+          catalog,
+        ),
+      ).toMatchObject({ parsed: current, history: 'none' })
+    }
+  })
+
+  it('keeps a known restored source outside current results until deliberate filtering', () => {
+    const filters: ExplorerFilters = { ...referenceFilters, family: 'SOURCE' }
+    const parsed = parseExplorerSearch(
+      `${lessonSearch(referenceIdentity)}&family=SOURCE`,
+      catalog,
+    )
+    expect(parsed).toEqual(ready(lesson({ filters }, referenceIdentity)))
+    expect(resolveLesson(referenceIdentity, filters, catalog)).toMatchObject({
+      kind: 'lesson',
+      control: reference,
+      excludedByFilters: true,
+    })
+    expect(
+      transitionExplorerState(
+        parsed,
+        { type: 'set-query', query: 'guide-search' },
+        catalog,
+      ),
+    ).toMatchObject({
+      parsed: ready(discovery({ ...filters, query: 'guide-search' })),
+      history: 'replace',
+    })
+  })
+
+  it('selects source results using the exact edition tuple and retains their collection', () => {
+    expect(
+      transitionExplorerState(
+        ready(discovery(referenceFilters)),
+        { type: 'select-lesson', identity: referenceIdentity },
+        catalog,
+      ),
+    ).toMatchObject({
+      parsed: ready(lesson({ filters: referenceFilters }, referenceIdentity)),
+      history: 'push',
+    })
+  })
+
+  it('shows the exact entry in its own collection when recovering a mismatch', () => {
+    expect(
+      transitionExplorerState(
+        ready(lesson({ mode: 'compliance' }, referenceIdentity)),
+        { type: 'show-lesson-in-results' },
+        catalog,
+      ),
+    ).toMatchObject({
+      parsed: ready(
+        lesson(
+          { mode: 'compliance', filters: referenceFilters },
+          referenceIdentity,
+        ),
+      ),
+      history: 'push',
+    })
+    expect(
+      transitionExplorerState(
+        ready(lesson({ filters: referenceFilters })),
+        { type: 'show-lesson-in-results' },
+        catalog,
+      ),
+    ).toMatchObject({ parsed: ready(lesson()), history: 'push' })
+  })
+
+  it('clears filters and returns to discovery without leaving the selected collection', () => {
+    expect(
+      transitionExplorerState(
+        ready(
+          discovery({
+            ...referenceFilters,
+            query: 'none',
+            family: 'REF',
+            level: 'Level 1',
+          }),
+        ),
+        { type: 'clear-filters' },
+        catalog,
+      ),
+    ).toMatchObject({
+      parsed: ready(discovery(referenceFilters)),
+      history: 'push',
+    })
+    const current = ready(
+      lesson(
+        {
+          mode: 'compliance',
+          filters: { ...referenceFilters, query: 'guide-search' },
+        },
+        referenceIdentity,
+      ),
+    )
+    expect(
+      transitionExplorerState(current, { type: 'back-to-discovery' }, catalog),
+    ).toMatchObject({
+      parsed: ready({
+        ...discovery({ ...referenceFilters, query: 'guide-search' }),
+        mode: 'compliance',
+      }),
+      history: 'push',
+    })
+  })
+
+  it('returns recovery and homepage example actions to teaching lessons', () => {
+    expect(
+      transitionExplorerState(
+        { kind: 'invalid', reason: 'invalid-collection' },
+        { type: 'recover-discovery' },
+        catalog,
+      ),
+    ).toMatchObject({ parsed: ready(discovery()), history: 'push' })
+    expect(
+      transitionExplorerState(
+        ready(lesson({ filters: referenceFilters }, referenceIdentity)),
+        { type: 'open-example', mode: 'compliance' },
+        catalog,
+      ),
+    ).toMatchObject({
+      parsed: ready(lesson({ mode: 'compliance' })),
+      history: 'push',
+      fragment: 'explorer',
+    })
+  })
+
+  it('copies only source identity and mode, then infers references on recipient load', () => {
+    const copied = new URL(
+      createLessonUrl(
+        referenceIdentity,
+        'it-cyber',
+        new URL(
+          'https://preview.example.com/?collection=lessons&q=private&family=AC#old',
+        ),
+      ),
+    )
+    expect(copied.searchParams.has('collection')).toBe(false)
+    expect(copied.searchParams.has('q')).toBe(false)
+    expect(copied.hash).toBe('#explorer')
+    expect(parseExplorerSearch(copied.search, catalog)).toEqual(
+      ready(
+        lesson(
+          { mode: 'it-cyber', filters: referenceFilters },
+          referenceIdentity,
         ),
       ),
     )

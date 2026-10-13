@@ -190,8 +190,9 @@ export default function App() {
           <div className="mission-copy">
             <p>
               Dummy-Down is an independent, open-source project. We’re starting
-              small: one draft example and a foundation for better cybersecurity
-              education.
+              with a draft lesson and 149 source references from the September
+              2024 CMMC v2.13 snapshot. Teaching content grows through careful
+              review.
             </p>
             <p className="roadmap-note">
               On the roadmap: reviewed CMMC content, NIST SP 800-53, FedRAMP,

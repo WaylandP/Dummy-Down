@@ -1,7 +1,7 @@
 import { filterControls } from '../data/control-search'
 import type {
   ContentEdition,
-  Control,
+  CatalogControl,
   ExplanationMode,
   Framework,
   LessonIdentity,
@@ -10,15 +10,18 @@ import type {
 export interface ExplorerCatalog {
   readonly frameworks: readonly Framework[]
   readonly editions: readonly ContentEdition[]
-  readonly controls: readonly Control[]
+  readonly controls: readonly CatalogControl[]
   readonly defaultLesson: LessonIdentity | null
 }
+
+export type ExplorerCollection = 'lessons' | 'references'
 
 export interface ExplorerFilters {
   readonly catalog: string
   readonly query: string
   readonly family: string
   readonly level: string
+  readonly collection?: ExplorerCollection
 }
 
 export type ValidExplorerState = {
@@ -37,6 +40,7 @@ export type AddressError =
   | 'conflicting-state'
   | 'invalid-identity'
   | 'unknown-catalog'
+  | 'invalid-collection'
 
 export type NormalizationNotice = 'mode-reset' | 'family-reset' | 'level-reset'
 
@@ -51,7 +55,7 @@ export type ParsedExplorerState =
 export type LessonResolution =
   | {
       readonly kind: 'lesson'
-      readonly control: Control
+      readonly control: CatalogControl
       readonly framework: Framework
       readonly edition: ContentEdition
       readonly excludedByFilters: boolean
@@ -64,6 +68,7 @@ export type ExplorerIntent =
   | { readonly type: 'change-mode'; readonly mode: ExplanationMode }
   | { readonly type: 'set-query'; readonly query: string }
   | { readonly type: 'set-catalog'; readonly catalog: string }
+  | { readonly type: 'set-collection'; readonly collection: ExplorerCollection }
   | { readonly type: 'set-family'; readonly family: string }
   | { readonly type: 'set-level'; readonly level: string }
   | { readonly type: 'clear-filters' }
@@ -88,11 +93,12 @@ const recognizedKeys = new Set([
   'q',
   'family',
   'level',
+  'collection',
 ])
 const identitySlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const modes: readonly ExplanationMode[] = ['beginner', 'it-cyber', 'compliance']
 
-export function lessonIdentity(control: Control): LessonIdentity {
+export function lessonIdentity(control: CatalogControl): LessonIdentity {
   return {
     frameworkId: control.frameworkId,
     editionId: control.editionId,
@@ -114,8 +120,36 @@ function defaultCatalog(catalog: ExplorerCatalog): string {
   )
 }
 
-function emptyFilters(catalogId: string): ExplorerFilters {
-  return { catalog: catalogId, query: '', family: '', level: '' }
+export function effectiveCollection(
+  filters: ExplorerFilters,
+): ExplorerCollection {
+  return filters.collection ?? 'lessons'
+}
+
+function controlCollection(control: CatalogControl): ExplorerCollection {
+  return control.contentKind === 'official-reference' ? 'references' : 'lessons'
+}
+
+function controlsInCollection(
+  catalog: ExplorerCatalog,
+  collection: ExplorerCollection,
+): CatalogControl[] {
+  return catalog.controls.filter(
+    (control) => controlCollection(control) === collection,
+  )
+}
+
+function emptyFilters(
+  catalogId: string,
+  collection: ExplorerCollection = 'lessons',
+): ExplorerFilters {
+  return {
+    catalog: catalogId,
+    query: '',
+    family: '',
+    level: '',
+    ...(collection === 'references' ? { collection } : {}),
+  }
 }
 
 function defaultState(catalog: ExplorerCatalog): ValidExplorerState {
@@ -147,17 +181,16 @@ function normalizeFilters(
   filters: ExplorerFilters,
   catalog: ExplorerCatalog,
 ): { filters: ExplorerFilters; notices: NormalizationNotice[] } {
-  const available = catalog.controls.filter(
-    (control) => control.frameworkId === filters.catalog,
-  )
-  const framework = catalog.frameworks.find(
-    (item) => item.id === filters.catalog,
-  )
+  const available = controlsInCollection(
+    catalog,
+    effectiveCollection(filters),
+  ).filter((control) => control.frameworkId === filters.catalog)
   const validFamily =
     !filters.family ||
     available.some((control) => control.family === filters.family)
   const validLevel =
-    !filters.level || Boolean(framework?.levels.includes(filters.level))
+    !filters.level ||
+    available.some((control) => control.level === filters.level)
   const notices: NormalizationNotice[] = []
   if (!validFamily) notices.push('family-reset')
   if (!validLevel) notices.push('level-reset')
@@ -233,6 +266,22 @@ export function parseExplorerSearch(
     return invalid('unknown-catalog')
   const catalogId =
     explicitCatalog ?? identity?.frameworkId ?? defaultCatalog(catalog)
+  const explicitCollection = values.get('collection')
+  if (
+    values.has('collection') &&
+    explicitCollection !== 'lessons' &&
+    explicitCollection !== 'references'
+  )
+    return invalid('invalid-collection')
+  const resolved = identity
+    ? resolveLesson(identity, emptyFilters(catalogId), catalog)
+    : null
+  const collection: ExplorerCollection =
+    explicitCollection === 'references' || explicitCollection === 'lessons'
+      ? explicitCollection
+      : resolved?.kind === 'lesson'
+        ? controlCollection(resolved.control)
+        : 'lessons'
   const rawMode = values.get('mode')
   const mode = modes.find((item) => item === rawMode) ?? 'beginner'
   const notices: NormalizationNotice[] = []
@@ -243,6 +292,9 @@ export function parseExplorerSearch(
       query: values.get('q') ?? '',
       family: values.get('family') ?? '',
       level: values.get('level') ?? '',
+      ...(collection === 'references' || (identity && values.has('collection'))
+        ? { collection }
+        : {}),
     },
     catalog,
   )
@@ -274,19 +326,27 @@ export function serializeExplorerSearch(state: ValidExplorerState): string {
   if (state.filters.query) params.set('q', state.filters.query)
   if (state.filters.family) params.set('family', state.filters.family)
   if (state.filters.level) params.set('level', state.filters.level)
+  if (
+    effectiveCollection(state.filters) === 'references' ||
+    (state.view === 'lesson' && state.filters.collection === 'lessons')
+  )
+    params.set('collection', effectiveCollection(state.filters))
   return `?${params.toString()}`
 }
 
 export function explorerResults(
   state: ValidExplorerState,
   catalog: ExplorerCatalog,
-): Control[] {
-  return filterControls(catalog.controls, {
-    frameworkId: state.filters.catalog,
-    query: state.filters.query,
-    family: state.filters.family,
-    level: state.filters.level,
-  })
+): CatalogControl[] {
+  return filterControls(
+    controlsInCollection(catalog, effectiveCollection(state.filters)),
+    {
+      frameworkId: state.filters.catalog,
+      query: state.filters.query,
+      family: state.filters.family,
+      level: state.filters.level,
+    },
+  )
 }
 
 export function resolveLesson(
@@ -404,6 +464,19 @@ export function transitionExplorerState(
           catalog,
         )
         break
+      case 'set-collection':
+        if (intent.collection !== effectiveCollection(state.filters))
+          next = withFilters(
+            state,
+            {
+              ...state.filters,
+              collection: intent.collection,
+              family: '',
+              level: '',
+            },
+            catalog,
+          )
+        break
       case 'set-level':
         next = withFilters(
           state,
@@ -412,7 +485,13 @@ export function transitionExplorerState(
         )
         break
       case 'clear-filters':
-        next = ready({ ...state, filters: emptyFilters(state.filters.catalog) })
+        next = ready({
+          ...state,
+          filters: emptyFilters(
+            state.filters.catalog,
+            effectiveCollection(state.filters),
+          ),
+        })
         break
       case 'back-to-discovery':
         if (
@@ -427,14 +506,17 @@ export function transitionExplorerState(
           })
         break
       case 'show-lesson-in-results':
-        if (
-          state.view === 'lesson' &&
-          resolveLesson(state.lesson, state.filters, catalog).kind === 'lesson'
-        )
-          next = ready({
-            ...state,
-            filters: emptyFilters(state.lesson.frameworkId),
-          })
+        if (state.view === 'lesson') {
+          const resolution = resolveLesson(state.lesson, state.filters, catalog)
+          if (resolution.kind === 'lesson')
+            next = ready({
+              ...state,
+              filters: emptyFilters(
+                state.lesson.frameworkId,
+                controlCollection(resolution.control),
+              ),
+            })
+        }
         break
     }
   }
