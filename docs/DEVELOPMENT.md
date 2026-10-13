@@ -44,6 +44,11 @@ available from the npm registry during installation.
 
 ## Understand the code
 
+The [design notes](DESIGN.md) describe the dark topographic direction, palette,
+self-hosted fonts, and interaction principles. `src/components/Topography.tsx`
+contains the static hero contours; `public/font-licenses/` contains licenses
+distributed with the fonts.
+
 | Location                     | Purpose                                                                                |
 | ---------------------------- | -------------------------------------------------------------------------------------- |
 | `src/main.tsx`               | Mounts React into the HTML page.                                                       |

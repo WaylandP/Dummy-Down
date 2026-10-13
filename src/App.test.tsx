@@ -7,7 +7,7 @@ function renderApp() {
   const user = userEvent.setup()
   render(<App />)
   const explorer = within(
-    screen.getByRole('region', { name: 'Meet the Control Explorer.' }),
+    screen.getByRole('region', { name: 'Control Explorer' }),
   )
   return { user, explorer }
 }
@@ -19,7 +19,7 @@ describe('Control Explorer learning experience', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /Less jargon\.\s*More understanding\./,
+        name: /Navigate the\s*complexity\./,
       }),
     ).toBeVisible()
     expect(explorer.getByRole('status')).toHaveTextContent('1 example found')
@@ -106,7 +106,7 @@ describe('Control Explorer learning experience', () => {
   })
 
   it.each(['Beginner', 'IT & Cyber', 'Compliance'])(
-    'opens the %s perspective from its homepage card',
+    'opens the %s perspective from its homepage link',
     async (mode) => {
       const { user, explorer } = renderApp()
       // Start from another perspective so the beginner entry also proves a change.
@@ -117,7 +117,9 @@ describe('Control Explorer learning experience', () => {
       )
       await user.click(
         screen.getByRole('link', {
-          name: `Try this perspective : ${mode} in the Control Explorer`,
+          name: new RegExp(
+            `^${mode} .*Try this perspective in the Control Explorer$`,
+          ),
         }),
       )
 

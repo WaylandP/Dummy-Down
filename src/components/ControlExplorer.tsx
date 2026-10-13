@@ -3,7 +3,6 @@ import {
   ArrowUpRight,
   Check,
   ChevronRight,
-  ExternalLink,
   Info,
   Search,
   SlidersHorizontal,
@@ -66,29 +65,27 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
     >
       <div className="section-heading">
         <div>
-          <p className="eyebrow">
-            <span className="section-number">02 /</span> MAKE IT CLICK
-          </p>
-          <h2 id="explorer-heading">Meet the Control Explorer.</h2>
-          <p>One concept. Three perspectives. Start with a draft example.</p>
+          <p className="section-caption">Explore the idea</p>
+          <h2 id="explorer-heading">Control Explorer</h2>
+          <p>Start with one draft example. Find the explanation that clicks.</p>
         </div>
-        <span className="status-badge">
-          <span /> Early preview
-        </span>
+        <span className="status-badge">Early preview · 1 draft example</span>
       </div>
 
       <div className="explorer-shell">
         <div className="explorer-toolbar">
           <label className="search-field">
-            <Search size={18} aria-hidden="true" />
-            <span className="sr-only">Search controls</span>
-            <input
-              type="search"
-              ref={searchInput}
-              placeholder="Search a topic or control ID…"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-            />
+            <span className="field-caption">Search controls</span>
+            <span className="search-input-wrap">
+              <Search size={18} aria-hidden="true" />
+              <input
+                type="search"
+                ref={searchInput}
+                placeholder="Search a topic or control ID…"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+            </span>
           </label>
           <label className="framework-field">
             <span>Framework</span>
@@ -190,7 +187,7 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
               <h3 id="control-title">{selected.title}</h3>
               <p className="control-reference">{selected.id}</p>
               <div className="concept-box">
-                <span className="small-label">THE CONCEPT, SIMPLIFIED</span>
+                <span className="small-label">The concept, simplified</span>
                 <p>{selected.concept}</p>
                 <span>
                   Paraphrase from our README; not the official requirement.
@@ -230,10 +227,7 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
                 </p>
               </div>
               <details className="source-details">
-                <summary>
-                  Sources & content context{' '}
-                  <ExternalLink size={14} aria-hidden="true" />
-                </summary>
+                <summary>Sources & content context</summary>
                 <div className="source-content">
                   <p>{selected.versionContext}</p>
                   <ul>
@@ -272,7 +266,7 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
                   : 'Try “access”, “authorized”, or “AC.L2-3.1.1”. This preview contains one draft example.'}
               </p>
               <button
-                className="button button-dark"
+                className="button button-primary"
                 type="button"
                 onClick={() => {
                   resetFilters()
