@@ -3,7 +3,13 @@ import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it } from 'vitest'
 import App from '../App'
 
-beforeEach(() => window.history.replaceState(null, '', '/'))
+beforeEach(() =>
+  window.history.replaceState(
+    null,
+    '',
+    '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access',
+  ),
+)
 
 // Regression: ISSUE-001/002/003 — deliberate lesson navigation preserves focus.
 // Found by /review and /qa on 2026-10-13.

@@ -1,8 +1,14 @@
 # Dummy-Down development
 
 Read README.md for the mission and roadmap, docs/DEVELOPMENT.md for the project
-commands, and docs/DESIGN.md for the dark, spacious topographic design direction.
-Preserve README.md and LICENSE unless the user explicitly asks to change them.
+commands, and docs/DESIGN.md for the active proposed editorial design direction.
+Keep the name Dummy-Down and the working tagline “Compliance, translated.” The
+owner explicitly superseded the dark/topographic direction: start with neutral
+light/off-white, charcoal type and restrained teal. Improve composition, reading
+and interactions rather than restoring the rejected contours, background, logo,
+or cybersecurity-vendor styling. This direction remains a proposal for review.
+Update documentation to match implemented behavior and honest content status.
+Preserve LICENSE and third-party notices; do not claim approval of a proposed brand.
 
 ## Branches, review, and previews
 
@@ -14,8 +20,9 @@ Preserve README.md and LICENSE unless the user explicitly asks to change them.
   then commit and push it. Push reviewable progress during large features rather
   than waiting for the whole feature to finish.
 - Before every push, run the checks appropriate to the change. Frontend changes
-  require npm run lint, npm run format:check, npm test, and npm run build (which
-  includes typechecking). Check meaningful browser interactions for UI changes.
+  require npm run typecheck, npm run lint, npm run format:check, npm test, and
+  npm run build. Run the content-summary check when published inventory or source
+  metadata changes. Check meaningful browser interactions for UI changes.
 - After pushing, inspect GitHub CI and Vercel deployments for that exact commit.
   Provide the PR and successful Vercel preview URL when available. Distinguish
   pending/failed previews, deployment protection, and production URLs. Never
@@ -37,6 +44,20 @@ CMMC levels. Keep draft explanations and planned features clearly labeled. Do no
 invent official requirements, assessment objectives, certifications, or evidence
 sufficiency. Keep source/version context with the content. Prefer focused changes,
 semantic HTML, keyboard support, readable contrast, and restrained decoration.
+
+Distinguish source transcription checks, AI-assisted editorial review and qualified
+human approval. Record actual reviewers and review dates only for reviews that
+occurred. Source links and tests are not professional content approval. Preserve
+stable edition identities and pinned source snapshots; do not silently replace an
+applicable baseline with the newest NIST publication. Record blocked official-host
+verification precisely and keep limitations visible. Source inventory or three
+perspectives per entry does not establish full assessment-objective coverage.
+
+Keep analytics production gating, allowlisted properties, opt-out, Do Not Track
+and Global Privacy Control protections intact. Never collect raw search text,
+answers, shared links, organizational evidence or visitor identifiers. Do not
+enable paid services, activate analytics accounts, change collection permissions,
+or claim provider data receipt without evidence and the owner's authorization.
 
 ## gstack for Codex
 

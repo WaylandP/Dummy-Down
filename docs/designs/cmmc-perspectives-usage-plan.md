@@ -1,5 +1,10 @@
 # CMMC perspectives, source accuracy and usage
 
+> Historical record: its dark/topographic visual direction was superseded by the
+> owner’s October 13, 2026 editorial redesign request. See [the active design
+> system](../DESIGN.md). Prior functional/source review evidence remains scoped
+> to the implementation and fingerprints recorded below.
+
 Date: 2026-10-13  
 Repository: WaylandP/Dummy-Down  
 Branch: feat/cmmc-perspectives-usage  

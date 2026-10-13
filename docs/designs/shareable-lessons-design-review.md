@@ -1,5 +1,10 @@
 # Shareable lessons and contextual glossary: design plan review
 
+> Historical record: its dark/topographic visual direction was superseded by the
+> owner’s October 13, 2026 editorial redesign request. See [the active design
+> system](../DESIGN.md). Prior functional/source review evidence remains scoped
+> to the implementation and fingerprints recorded below.
+
 Reviewed target: [shareable-lessons-plan.md](shareable-lessons-plan.md), including
 the completed engineering sections. Date: 2026-10-13. Source: `ac60936`, branch
 `feat/shareable-control-lessons`. This report records implementation specifications;

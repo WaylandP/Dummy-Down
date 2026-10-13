@@ -7,7 +7,11 @@ import { trackUsage } from './usage'
 vi.mock('./usage', () => ({ trackUsage: vi.fn() }))
 
 beforeEach(() => {
-  window.history.replaceState(null, '', '/')
+  window.history.replaceState(
+    null,
+    '',
+    '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access',
+  )
   vi.mocked(trackUsage).mockClear()
 })
 

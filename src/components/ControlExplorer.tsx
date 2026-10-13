@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import {
   ArrowUpRight,
   Check,
@@ -34,6 +34,7 @@ interface ControlExplorerProps {
 }
 
 export function ControlExplorer({ controller }: ControlExplorerProps) {
+  const [mobileResultsOpen, setMobileResultsOpen] = useState(false)
   const searchInput = useRef<HTMLInputElement>(null)
   const searchUsage = useSearchUsage('explorer')
   const focusLesson = useRef(false)
@@ -131,7 +132,6 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
           {referenceControls.length} CMMC controls · 3 draft perspectives each
         </span>
       </div>
-      <CmmcLevels mode={mode} />
       {controller.historyStatus === 'failed' && (
         <p className="explorer-notice" role="alert">
           Your browser couldn’t update the address. You can keep exploring, but
@@ -212,91 +212,108 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
             </select>
           </label>
         </div>
+        <CmmcLevels mode={mode} />
         <div className="explorer-body">
           <aside
-            className="control-sidebar"
+            className={`control-sidebar ${selected && !mobileResultsOpen ? 'is-collapsed' : ''}`}
             aria-label="Control results and filters"
           >
-            <div className="filter-title">
-              <SlidersHorizontal size={15} aria-hidden="true" />
-              <span>Refine your view</span>
-            </div>
-            <label className="filter-field">
-              Control family
-              <select
-                value={filters.family}
-                disabled={parsed.kind === 'invalid'}
-                onChange={(event) =>
-                  dispatch({ type: 'set-family', family: event.target.value })
-                }
+            {selected && (
+              <button
+                type="button"
+                className="mobile-results-toggle"
+                aria-expanded={mobileResultsOpen}
+                aria-controls="control-results-body"
+                onClick={() => setMobileResultsOpen(!mobileResultsOpen)}
               >
-                <option value="">All families</option>
-                {families.map(([id, name]) => (
-                  <option key={id} value={id}>
-                    {name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            {levels.length > 0 && (
+                {mobileResultsOpen
+                  ? 'Return to reading'
+                  : `Browse & filter controls (${results.length})`}
+              </button>
+            )}
+            <div id="control-results-body" className="results-body">
+              <div className="filter-title">
+                <SlidersHorizontal size={15} aria-hidden="true" />
+                <span>Refine your view</span>
+              </div>
               <label className="filter-field">
-                Level
+                Control family
                 <select
-                  value={filters.level}
+                  value={filters.family}
                   disabled={parsed.kind === 'invalid'}
                   onChange={(event) =>
-                    dispatch({ type: 'set-level', level: event.target.value })
+                    dispatch({ type: 'set-family', family: event.target.value })
                   }
                 >
-                  <option value="">All levels</option>
-                  {levels.map((item) => (
-                    <option key={item} value={item}>
-                      {item}
+                  <option value="">All families</option>
+                  {families.map(([id, name]) => (
+                    <option key={id} value={id}>
+                      {name}
                     </option>
                   ))}
                 </select>
               </label>
-            )}
-            <div
-              className="result-count"
-              role="status"
-              aria-label="Control search results"
-            >
-              {results.length}{' '}
-              {collection === 'references'
-                ? results.length === 1
-                  ? 'reference'
-                  : 'references'
-                : results.length === 1
-                  ? 'example'
-                  : 'examples'}{' '}
-              found
+              {levels.length > 0 && (
+                <label className="filter-field">
+                  Level
+                  <select
+                    value={filters.level}
+                    disabled={parsed.kind === 'invalid'}
+                    onChange={(event) =>
+                      dispatch({ type: 'set-level', level: event.target.value })
+                    }
+                  >
+                    <option value="">All levels</option>
+                    {levels.map((item) => (
+                      <option key={item} value={item}>
+                        {item}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              )}
+              <div
+                className="result-count"
+                role="status"
+                aria-label="Control search results"
+              >
+                {results.length}{' '}
+                {collection === 'references'
+                  ? results.length === 1
+                    ? 'reference'
+                    : 'references'
+                  : results.length === 1
+                    ? 'example'
+                    : 'examples'}{' '}
+                found
+              </div>
+              <ControlResults
+                key={results
+                  .map((control) => lessonIdentityKey(lessonIdentity(control)))
+                  .join('|')}
+                results={results}
+                selectedKey={selectedKey}
+                onSelect={(control) => {
+                  const key = lessonIdentityKey(lessonIdentity(control))
+                  setMobileResultsOpen(false)
+                  if (selectedKey === key) {
+                    lessonHeading.current?.focus()
+                    return
+                  }
+                  focusLesson.current = true
+                  dispatch({
+                    type: 'select-lesson',
+                    identity: lessonIdentity(control),
+                  })
+                }}
+              />
+              <p className="sidebar-note">
+                <Info size={15} aria-hidden="true" />
+                {collection === 'references'
+                  ? 'September 2024 CMMC v2.13 snapshot. All controls have draft teaching perspectives; qualified editorial review is pending.'
+                  : 'Original demo lesson. Choose a level above or Controls & sources to explore all 149 controls.'}
+              </p>
             </div>
-            <ControlResults
-              key={results
-                .map((control) => lessonIdentityKey(lessonIdentity(control)))
-                .join('|')}
-              results={results}
-              selectedKey={selectedKey}
-              onSelect={(control) => {
-                const key = lessonIdentityKey(lessonIdentity(control))
-                if (selectedKey === key) {
-                  lessonHeading.current?.focus()
-                  return
-                }
-                focusLesson.current = true
-                dispatch({
-                  type: 'select-lesson',
-                  identity: lessonIdentity(control),
-                })
-              }}
-            />
-            <p className="sidebar-note">
-              <Info size={15} aria-hidden="true" />
-              {collection === 'references'
-                ? 'September 2024 CMMC v2.13 snapshot. All controls have draft teaching perspectives; qualified editorial review is pending.'
-                : 'Original demo lesson. Choose a level above or Controls & sources to explore all 149 controls.'}
-            </p>
           </aside>
           {selected?.contentKind === 'educational-example' &&
           explanation &&

@@ -54,9 +54,9 @@ available from the npm registry during installation.
 
 ## Understand the code
 
-The [design notes](DESIGN.md) describe the dark topographic direction, palette,
-self-hosted fonts, and interaction principles. `src/components/Topography.tsx`
-contains the static hero contours; `public/font-licenses/` contains licenses
+The [design notes](DESIGN.md) describe the proposed neutral editorial direction, palette,
+wordmark, fonts and interaction principles. The old topographic component and
+background have been removed; `public/font-licenses/` contains licenses
 distributed with the fonts.
 
 | Location                        | Purpose                                                                                |
@@ -121,8 +121,9 @@ reads the clipboard. If writing is unavailable, it shows a labeled selectable
 link; outdated asynchronous results do not report success for a different lesson.
 
 Discovery state uses `view=discover` with optional `catalog`, `q`, `family`,
-`level`, `mode` and `collection=references`. The original demo remains the default
-reading identity; the hero and level links open the full source collection.
+`level`, `mode` and `collection=references`. The homepage starts with the explicit Level 1 source identity
+`cmmc/cmmc-2-13-sep-2024/ac-l1-b-1-i` and the full source collection. The original
+demo remains available through its existing address and the Demo lesson collection.
 The source collection is inferred only for an exact known source identity on a
 shared link; explicit `collection=lessons` remains authoritative on a mismatch. Search updates the current history entry; deliberate selection,
 filter and mode changes create entries. Back/Forward restores the entire address.
@@ -190,6 +191,7 @@ Run these checks from the repository directory before opening a pull request:
 
 ```sh
 npm run typecheck
+npm run check:content
 npm run lint
 npm run format:check
 npm test

@@ -22,6 +22,6 @@ export const editions: readonly ContentEdition[] = [
 /** An explicit homepage starting point; never substitute the first search result. */
 export const defaultLesson: LessonIdentity = {
   frameworkId: 'cmmc',
-  editionId: 'readme-example',
-  controlKey: 'authorized-access',
+  editionId: 'cmmc-2-13-sep-2024',
+  controlKey: 'ac-l1-b-1-i',
 }

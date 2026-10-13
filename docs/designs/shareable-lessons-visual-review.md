@@ -1,5 +1,10 @@
 # Shareable lessons: independent rendered screenshot review
 
+> Historical record: its dark/topographic visual direction was superseded by the
+> owner’s October 13, 2026 editorial redesign request. See [the active design
+> system](../DESIGN.md). Prior functional/source review evidence remains scoped
+> to the implementation and fingerprints recorded below.
+
 Date: 2026-10-13. Scope: independent visual contribution to the root agent's
 design-review, using real app screenshots supplied by that agent. The applicable
 installed design-review workflow was read. Root owns browser navigation, interaction

@@ -33,6 +33,8 @@ jobs:
         run: npm run typecheck
       - name: Lint
         run: npm run lint
+      - name: Check published content summary
+        run: npm run check:content
       - name: Check formatting
         run: npm run format:check
       - name: Test

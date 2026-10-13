@@ -142,7 +142,7 @@ describe('useExplorerState browser controller', () => {
       },
     })
     expect(result.current.resolution).toBeNull()
-    expect(result.current.results).toHaveLength(1)
+    expect(result.current.results).toHaveLength(149)
     unmount()
     const restored = renderHook(() => useExplorerState(explorerCatalog))
     expect(restored.result.current.parsed).toMatchObject({
@@ -282,7 +282,7 @@ describe('useExplorerState browser controller', () => {
     expect(window.location.search).not.toContain('q=')
     expect(result.current.resolution).toMatchObject({
       kind: 'lesson',
-      control: { key: 'authorized-access' },
+      control: { key: 'ac-l1-b-1-i' },
     })
     act(() =>
       result.current.dispatch({ type: 'open-example', mode: 'it-cyber' }),

@@ -1,39 +1,36 @@
 # Dummy-Down follow-up work
 
-These are sequenced roadmap items, not a claim that the next feature PR implements
-them. The README remains the mission and roadmap source.
+The [README roadmap](README.md#roadmap) distinguishes implemented interfaces,
+available teaching drafts and pending review. No completion percentage is implied.
 
-- **P1: qualified editorial review and source freshness.** Establish the
-  applicable publications, version/scope context and a contribution/review template,
-  then obtain qualified review of educational explanations. Why: source links and
-  software tests do not establish correctness. Benefit: trustworthy content and
-  maintainable revisions. Cost: reviewer time and licensing checks. Start with
-  `src/data/perspectives/` and `docs/DEVELOPMENT.md`. All 149 versioned CMMC
-  references now have three original teaching drafts each and an agent source
-  audit; qualified human approval and latest-edition verification remain pending.
-  Human effort: L; agent-assisted:
-  M for tooling, review availability unknown. Depends on reviewed source/applicability
-  decisions; never replace them with invented requirements.
-- **P2: expand fictional scenarios and explanatory knowledge checks.** Why:
-  connect reviewed lessons to memorable situations. The first draft authorized-access
-  activity now includes a four-step scenario and three questions; reference entries
-  still have no activities. Benefit: learning beyond
-  browsing. Cost: reviewed scenario/feedback wording and accessible interaction.
-  Human effort: M; agent-assisted: S–M. Depends on the shareable lesson/glossary
-  foundation and suitable reviewed content. Begin with authorized access; do not
-  introduce compliance scoring or real organizational evidence. Build on
-  `src/data/learning.ts` and `src/components/LearningPractice.tsx`.
-- **P3: additional frameworks and reviewed concept relationships.** Why: fulfill
-  the framework-independent vision. Benefit: broader educational reach. Cost:
-  framework-specific taxonomy, applicable versions, redistribution rights and real
-  review. Human effort: XL; agent-assisted: L for implementation, review timing
-  unknown. Start with framework/content-edition metadata; no automatic equivalence
-  or invented coverage. Depends on source/licensing/review readiness.
-- **P2: expand vocabulary and improve confusing perspectives.** The glossary has
-  six draft terms for the original demo. Use aggregate, opt-in-eligible usage
-  signals (unclear feedback by control/mode, glossary opens and zero-result search
-  buckets) alongside voluntary issue reports to choose further vocabulary and
-  teaching revisions. Do not infer individual learning or compliance readiness.
-  Check Vercel Analytics activation and custom-event entitlement in the owner's
-  account before depending on dashboard data. Never collect raw search text or
-  organizational information to prioritize this work.
+- **P1: focused Level 1 source and editorial review.** Maintain publication,
+  edition, exact pages/sections, control ID, source-check date, explanation status
+  and unresolved questions. Audit all 15 Level 1 drafts against requirements and
+  objectives, retaining visible source-access limits. AI-assisted review is not
+  qualified human approval. Obtain real qualified review before marking content
+  professionally approved. Establish current DoD/FAR/NIST applicability without
+  silently replacing the September 2024 v2.13 snapshot.
+- **P1: demonstrate and review the new editorial identity.** Replace the rejected
+  dark/topographic branding with the proposed neutral light, charcoal and teal
+  direction. Capture actual desktop/mobile homepage and control views, check
+  keyboard/focus, contrast, zoom, touch and recovery, and publish validated previews
+  for owner feedback. Preserve source/draft notices and all working interactions.
+- **P2: focused Level 1 learning examples and vocabulary.** Add three fictional
+  scenarios for different existing Level 1 concepts, three explained questions
+  each, helpful accessible diagrams and linked sourced terms. The original demo
+  already has a four-step flow and three questions; it does not establish catalog-
+  wide practice coverage. Keep new material draft until qualified review. Expand
+  further only when the content is ready; no compliance scores or real evidence.
+- **P2: assessment-objective coverage and learner feedback.** Track coverage
+  separately from source links and existence of 447 perspective drafts. Test
+  beginner comprehension and distinct mode usefulness with real readers. Broader
+  Level 2/3 curriculum and short animations remain future work.
+- **P2: confirm analytics account status through owner review.** The privacy-
+  preserving Vercel SDK integration exists; activation, custom-event entitlement
+  and data receipt are not confirmed. Use actual aggregate signals and voluntary
+  issue reports to choose revisions, without inferring individual learning or
+  compliance readiness. Do not activate paid services or collect free text.
+- **P3: additional frameworks and reviewed relationships.** Remain planned until
+  source licensing, applicable editions, taxonomy and qualified review are ready.
+  Do not claim equivalence automatically. Authentication, a backend, subscriptions
+  and an AI chatbot are outside this iteration.

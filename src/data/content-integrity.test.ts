@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   controls,
+  explorerCatalog,
   defaultLesson,
   editions,
   explanationModes,
@@ -65,7 +66,7 @@ describe('editorial content integrity', () => {
     }
 
     expect(
-      controls.filter(
+      explorerCatalog.controls.filter(
         (control) =>
           control.frameworkId === defaultLesson.frameworkId &&
           control.editionId === defaultLesson.editionId &&
