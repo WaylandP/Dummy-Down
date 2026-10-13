@@ -607,6 +607,7 @@
   }
   .source-details summary {
     @apply text-accent;
+    min-height: 44px;
     font-size: 13px;
     padding-block: 12px;
   }
