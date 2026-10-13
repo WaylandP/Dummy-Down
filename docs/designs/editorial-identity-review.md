@@ -20,6 +20,13 @@ swaps. The chosen direction has no shield, circuit, contour mark or overlapping 
 letters. “Dummy-Down” stays readable and literal. Its home link has the accessible
 name “Dummy-Down home”; the styled duplicate is hidden from assistive technology.
 
+![Three one-color wordmark proposals: translation cut, stacked reference margin and sans plain-language line](../screenshots/editorial-wordmark-options.png)
+
+The comparison is a browser-rendered HTML type specimen, inspected at 1000 × 870
+on October 13, 2026. It enlarges the three treatments for comparison; the actual
+selected header uses the smaller spacing and sizes in the application. The other
+two are proposals rather than implemented alternate brands.
+
 ## Selected system
 
 The serif/sans transition echoes the act of translation, while the interface
@@ -57,8 +64,17 @@ This record distinguishes implementation from later browser verification:
   enlarged text and interaction observations are recorded by the coordinating
   browser QA pass. Do not infer their result from this implementation note.
 
+The later browser pass rendered the actual favicon at
+[16 and 32 pixels](../screenshots/editorial-favicon-16-32.png), checked the header
+on desktop and mobile, and inspected Chromium forced-colors mode. That last check
+found the background-drawn hyphen disappeared. The application now uses a
+`currentColor` border for the same separator; a fresh
+[high-contrast header capture](../screenshots/editorial-high-contrast-header.png)
+confirms it remains visible while respecting the browser's color choices.
+
 The installed gstack design-consultation guidance was read for applicable product
 context, type verification, coherence and anti-template rules. No external design
-service, competitor browser session or generated comparison board was run. The
+service or competitor browser session was used. The comparison above was rendered
+locally from HTML and licensed/platform typography, without image generation. The
 owner delegated routine direction choices and authorized active documentation
 updates; the working proposal is demonstrated through the actual application.

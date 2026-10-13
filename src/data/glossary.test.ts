@@ -13,7 +13,7 @@ describe('filterGlossaryTerms', () => {
       filterGlossaryTerms(glossaryTerms, 'RUNNING PROGRAM').map(
         (term) => term.id,
       ),
-    ).toEqual(['process'])
+    ).toEqual(['process', 'authentication'])
   })
 
   it('requires every word, including words across the title and definition', () => {

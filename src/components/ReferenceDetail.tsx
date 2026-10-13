@@ -11,6 +11,12 @@ import { ShareLesson } from './ShareLesson'
 import { lessonIdentity } from '../state/explorer-state'
 import { trackUsage } from '../analytics/usage'
 import { ReferencePerspectives } from './ReferencePerspectives'
+import { ContextTerms } from './ContextTerms'
+import { glossaryTerms } from '../data/content'
+import { getLevelOneTermIds } from '../data/level-one-terms'
+import { lessonIdentityKey } from '../state/explorer-state'
+import { LearningPractice } from './LearningPractice'
+import { EditorialReviewContext } from './EditorialReviewContext'
 
 interface ReferenceDetailProps {
   control: ReferenceControl
@@ -151,6 +157,16 @@ export function ReferenceDetail({
         control={control}
         mode={mode}
         onChange={onModeChange}
+      />
+      <ContextTerms
+        key={`terms:${lessonIdentityKey(lessonIdentity(control))}`}
+        termIds={getLevelOneTermIds(control)}
+        terms={glossaryTerms}
+      />
+      <LearningPractice lesson={lessonIdentity(control)} />
+      <EditorialReviewContext
+        key={`review:${lessonIdentityKey(lessonIdentity(control))}`}
+        control={control}
       />
       {control.modelRequirement.differsFromGuide && (
         <details className="source-details reference-comparison">

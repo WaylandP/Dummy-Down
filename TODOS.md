@@ -3,27 +3,31 @@
 The [README roadmap](README.md#roadmap) distinguishes implemented interfaces,
 available teaching drafts and pending review. No completion percentage is implied.
 
-- **P1: focused Level 1 source and editorial review.** Maintain publication,
-  edition, exact pages/sections, control ID, source-check date, explanation status
-  and unresolved questions. Audit all 15 Level 1 drafts against requirements and
-  objectives, retaining visible source-access limits. AI-assisted review is not
-  qualified human approval. Obtain real qualified review before marking content
-  professionally approved. Establish current DoD/FAR/NIST applicability without
-  silently replacing the September 2024 v2.13 snapshot.
-- **P1: demonstrate and review the new editorial identity.** Replace the rejected
-  dark/topographic branding with the proposed neutral light, charcoal and teal
-  direction. Capture actual desktop/mobile homepage and control views, check
-  keyboard/focus, contrast, zoom, touch and recovery, and publish validated previews
-  for owner feedback. Preserve source/draft notices and all working interactions.
-- **P2: focused Level 1 learning examples and vocabulary.** Add three fictional
-  scenarios for different existing Level 1 concepts, three explained questions
-  each, helpful accessible diagrams and linked sourced terms. The original demo
-  already has a four-step flow and three questions; it does not establish catalog-
-  wide practice coverage. Keep new material draft until qualified review. Expand
-  further only when the content is ready; no compliance scores or real evidence.
+- **P1: qualified Level 1 review and current applicability.** The
+  [AI-assisted audit](docs/content-review/level-1-audit-2026-10-13.md) compared all
+  15 controls' perspectives with 59 determination statements and made four
+  clarifications. Per-control records retain exact publication, section/pages,
+  identity, dates and unresolved questions; all human approvals are pending.
+  Obtain real qualified review before approval claims. Resolve the recorded
+  official-host access failures and verify current DoD/FAR/NIST applicability
+  without silently replacing the September 2024 v2.13 snapshot.
+- **P1: owner and learner review of the proposed editorial identity.** The
+  rejected dark/topographic treatment has been replaced by a neutral light,
+  charcoal and teal proposal, with actual before/after captures. Keep reviewing
+  reading, keyboard/focus, contrast, zoom, touch and recovery through validated
+  previews. Retain source/draft notices and working interactions; implementation
+  does not constitute owner brand approval or a complete accessibility audit.
+- **P2: review the focused learning milestone.** Three Level 1 activities now
+  cover authorized access, public information and media disposal with fictional
+  scenarios, common misunderstandings, nine explained questions and three
+  accessible diagrams. The original demo adds three questions; 14 sourced
+  vocabulary additions bring the glossary to 20 draft terms. Seek qualified review
+  and real learner feedback before expanding. These drafts do not establish
+  catalog-wide practice coverage; do not introduce compliance scores or real evidence.
 - **P2: assessment-objective coverage and learner feedback.** Track coverage
-  separately from source links and existence of 447 perspective drafts. Test
-  beginner comprehension and distinct mode usefulness with real readers. Broader
+  separately from source links, the 13 quoted statements for three activities and
+  existence of 447 perspective drafts. Test beginner comprehension and distinct
+  mode usefulness with real readers. Broader
   Level 2/3 curriculum and short animations remain future work.
 - **P2: confirm analytics account status through owner review.** The privacy-
   preserving Vercel SDK integration exists; activation, custom-event entitlement

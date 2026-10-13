@@ -3,6 +3,7 @@ import { findLearningActivity } from '../data/learning'
 import type { LessonIdentity } from '../types/content'
 import type { LearningActivity } from '../types/learning'
 import { trackUsage } from '../analytics/usage'
+import { LessonDiagram } from './LessonDiagram'
 
 interface LearningPracticeProps {
   lesson: LessonIdentity
@@ -199,6 +200,22 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
         <span className="draft-label">Draft learning activity</span>
       </div>
       <p>{activity.introduction}</p>
+      {activity.plainEnglish && (
+        <div className="learning-meaning">
+          <h5>The idea in plain English</h5>
+          <p>{activity.plainEnglish}</p>
+        </div>
+      )}
+      {activity.commonMisunderstanding && (
+        <div className="learning-misunderstanding">
+          <h5>A common misunderstanding</h5>
+          <p>
+            <strong>{activity.commonMisunderstanding.claim}</strong>
+          </p>
+          <p>{activity.commonMisunderstanding.correction}</p>
+        </div>
+      )}
+      {activity.diagram && <LessonDiagram diagram={activity.diagram} />}
       <details
         className="practice-disclosure"
         onToggle={(event) => {
@@ -234,7 +251,9 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          README simplified example
+          {activity.teachingSource.kind === 'project-readme'
+            ? 'README simplified example'
+            : activity.teachingSource.title}
           <span className="sr-only"> (opens in a new tab)</span>
         </a>
       </p>

@@ -2,6 +2,7 @@ import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { controls } from '../data/controls'
+import { referenceControls } from '../data/cmmc-references'
 import { findLearningActivity, learningActivities } from '../data/learning'
 import type { LessonIdentity } from '../types/content'
 import { LearningPractice } from './LearningPractice'
@@ -32,7 +33,7 @@ describe('learning activity integrity', () => {
       expect(identities.has(identity)).toBe(false)
       identities.add(identity)
       expect(
-        controls.some(
+        [...controls, ...referenceControls].some(
           (control) =>
             control.frameworkId === item.lesson.frameworkId &&
             control.editionId === item.lesson.editionId &&
@@ -40,7 +41,11 @@ describe('learning activity integrity', () => {
         ),
       ).toBe(true)
       expect(item.reviewStatus).toBe('draft')
-      expect(item.teachingSource.kind).toBe('project-readme')
+      expect(item.teachingSource.kind).toBe(
+        item.lesson.editionId === 'readme-example'
+          ? 'project-readme'
+          : 'official-publication',
+      )
       expect(new URL(item.teachingSource.url).protocol).toBe('https:')
       expect(new Set(item.scenario.map((step) => step.id)).size).toBe(
         item.scenario.length,

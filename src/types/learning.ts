@@ -19,6 +19,14 @@ export interface LearningQuestion {
   readonly correctChoiceId: string
 }
 
+/** A readable teaching flow, separate from official assessment diagrams. */
+export interface LearningDiagram {
+  readonly title: string
+  readonly steps: readonly ScenarioStep[]
+  readonly branches?: readonly ScenarioStep[]
+  readonly textEquivalent: string
+}
+
 /** Fictional teaching material, separate from requirements or assessment results. */
 export interface LearningActivity {
   readonly id: string
@@ -26,6 +34,12 @@ export interface LearningActivity {
   readonly reviewStatus: 'draft'
   readonly title: string
   readonly introduction: string
+  readonly plainEnglish?: string
+  readonly commonMisunderstanding?: {
+    readonly claim: string
+    readonly correction: string
+  }
+  readonly diagram?: LearningDiagram
   readonly scenarioTitle: string
   readonly scenario: readonly ScenarioStep[]
   readonly questions: readonly LearningQuestion[]

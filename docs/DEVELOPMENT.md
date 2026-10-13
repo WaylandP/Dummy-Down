@@ -8,14 +8,13 @@ and the original README-based example.
 
 The example is an educational interpretation, not a complete official requirement
 or reviewed assessment guide. The Explorer restores exact lessons and modes from
-shareable addresses; a small searchable glossary supplies draft educational
-definitions. A separate source collection contains all149 CMMC identifiers in the
-September2024v2.13 snapshot. The existing draft lesson has a fictional scenario,
-a four-step visual flow and three learning questions. Each reference now has
-three original control-specific teaching perspectives, including fictional
-examples, technical cautions, assessment-reading questions and possible evidence.
-Qualified editorial review, more activities, accounts and a backend remain future
-work.
+shareable addresses; a searchable glossary supplies 20 draft definitions. The
+source collection contains all 149 identifiers in the September 2024 v2.13
+snapshot, each with three original control-specific teaching perspectives. Three
+Level 1 draft activities cover authorized access, public information and media
+disposal; together with the original demo, there are four activities and 12
+explained questions. Qualified human review and current applicability verification
+remain pending. Accounts and a backend are outside this iteration.
 
 ## Start locally
 
@@ -59,27 +58,32 @@ wordmark, fonts and interaction principles. The old topographic component and
 background have been removed; `public/font-licenses/` contains licenses
 distributed with the fonts.
 
-| Location                        | Purpose                                                                                |
-| ------------------------------- | -------------------------------------------------------------------------------------- |
-| `src/main.tsx`                  | Mounts React into the HTML page.                                                       |
-| `src/App.tsx`                   | Assembles the page and coordinates the interactive experience.                         |
-| `src/components/`               | Reusable interface pieces, including the Control Explorer.                             |
-| `src/types/content.ts`          | TypeScript definitions for frameworks, controls, learning modes, and content metadata. |
-| `src/data/frameworks.ts`        | Framework metadata, including supported versus planned status.                         |
-| `src/data/controls.ts`          | Educational control examples and learning-mode definitions.                            |
-| `src/data/control-search.ts`    | Shared search and filtering behavior.                                                  |
-| `src/data/editions.ts`          | Project editorial editions and the explicit sample identity.                           |
-| `src/data/cmmc-references.ts`   | Attributed CMMC publication quotations with snapshot/page provenance.                  |
-| `src/data/cmmc-perspectives.ts` | Separately authored, edition-bound teaching drafts, loaded on demand.                  |
-| `src/analytics/`                | Allowlisted usage events, production gating and visitor privacy preferences.           |
-| `src/data/learning.ts`          | Fictional scenarios and questions tied to an exact teaching identity.                  |
-| `src/data/glossary.ts`          | Draft definitions with source and review context.                                      |
-| `src/state/explorer-state.ts`   | Pure address parsing, exact resolution and navigation transitions.                     |
-| `src/state/useExplorerState.ts` | One browser-history controller mounted by App.                                         |
-| `src/styles.css`                | Tailwind integration and shared visual styles.                                         |
-| `src/` test files               | Behavioral checks for the user-facing experience.                                      |
-| `vite.config.ts`                | Vite development/build settings and Vitest test configuration.                         |
-| `.github/workflows/ci.yml`      | Runs automated checks on pull requests and changes to `main`.                          |
+| Location                         | Purpose                                                                                |
+| -------------------------------- | -------------------------------------------------------------------------------------- |
+| `src/main.tsx`                   | Mounts React into the HTML page.                                                       |
+| `src/App.tsx`                    | Assembles the page and coordinates the interactive experience.                         |
+| `src/components/`                | Reusable interface pieces, including the Control Explorer.                             |
+| `src/types/content.ts`           | TypeScript definitions for frameworks, controls, learning modes, and content metadata. |
+| `src/data/frameworks.ts`         | Framework metadata, including supported versus planned status.                         |
+| `src/data/controls.ts`           | Educational control examples and learning-mode definitions.                            |
+| `src/data/control-search.ts`     | Shared search and filtering behavior.                                                  |
+| `src/data/editions.ts`           | Project editorial editions and the explicit sample identity.                           |
+| `src/data/cmmc-references.ts`    | Attributed CMMC publication quotations with snapshot/page provenance.                  |
+| `src/data/cmmc-perspectives.ts`  | Separately authored, edition-bound teaching drafts, loaded on demand.                  |
+| `src/analytics/`                 | Allowlisted usage events, production gating and visitor privacy preferences.           |
+| `src/data/learning.ts`           | Fictional scenarios and questions tied to an exact teaching identity.                  |
+| `src/data/level-one-learning.ts` | Three Level 1 draft activities, misunderstandings and accessible diagram data.         |
+| `src/data/glossary.ts`           | Draft definitions with source and review context.                                      |
+| `src/data/level-one-glossary.ts` | Fourteen sourced draft vocabulary additions.                                           |
+| `src/data/level-one-terms.ts`    | Contextual term links guarded by framework, edition and requirement identifier.        |
+| `src/types/review.ts`            | Separate source comparison, AI-assisted review and attributable human approval types.  |
+| `src/data/level-one-review.ts`   | Fifteen publication-bound review records and scoped objective quotations.              |
+| `src/state/explorer-state.ts`    | Pure address parsing, exact resolution and navigation transitions.                     |
+| `src/state/useExplorerState.ts`  | One browser-history controller mounted by App.                                         |
+| `src/styles.css`                 | Tailwind integration and shared visual styles.                                         |
+| `src/` test files                | Behavioral checks for the user-facing experience.                                      |
+| `vite.config.ts`                 | Vite development/build settings and Vitest test configuration.                         |
+| `.github/workflows/ci.yml`       | Runs automated checks on pull requests and changes to `main`.                          |
 
 React renders the interface from data and state. TypeScript catches inconsistent
 data and component props before the app runs. Vite handles local development and
@@ -94,10 +98,10 @@ Listed future frameworks are roadmap information; they are not searchable contro
 libraries yet.
 
 Official source links, applicable versions, and review status travel with the
-content. Source records distinguish project educational sources, official resource indexes
-and official publications. The `readme-example` edition is a project snapshot,
-not an official CMMC release.
-The first control has `contentKind: 'educational-example'` and
+content. Source records distinguish project educational sources, official resource
+indexes and official publications. The `readme-example` edition is a project
+snapshot, not an official CMMC release.
+The original demo control has `contentKind: 'educational-example'` and
 `reviewStatus: 'draft'`. Its version context identifies the README's simplified
 CMMC Level 2 example using a NIST SP 800-171 Rev. 2 identifier; it does not claim a
 reviewed interpretation or automatically map to every current framework version.
@@ -141,15 +145,17 @@ writes shows a message while the in-session experience remains usable.
 
 Glossary search is independent of control search and is not persisted. Contextual
 term definitions open one at a time inline without changing the lesson, mode,
-filters or history. Close/Escape returns focus to the invoking button. Six terms
-are educational drafts, not reviewed or official definitions.
+filters or history. Close/Escape returns focus to the invoking button. All 20
+terms are educational drafts, not approved or official definitions. The 14 new
+terms cite precise snapshot guide pages; contextual links cover all 15 Level 1
+entries and remain bound to that framework and edition.
 
 ## Source catalog and learning coverage
 
 [Source provenance and verification](sources/cmmc-2-13-sep-2024.md) records four
-September2024v2.13 public PDFs, pinned mirror URLs, SHA-256 values and extraction
-rules. The catalog has15 Level1,110 Level2and24 Level3identifiers. Older inventories
-and newer NIST editions are not silently substituted. Direct official-host access
+September 2024 v2.13 public PDFs, pinned mirror URLs, SHA-256 values and extraction
+rules. The catalog has 15 Level 1, 110 Level 2 and 24 Level 3 identifiers. Older
+inventories and newer NIST editions are not silently substituted. Direct official-host access
 was blocked in the research environment; the app presents a versioned snapshot,
 not independently verified current applicability. Guide quotations match their
 cited pages. Ten genuine model/guide wording differences remain separately visible.
@@ -159,18 +165,39 @@ references. Teaching drafts are stored separately and bound to framework,
 publication edition and control ID; the same ID in another edition does not
 borrow this content. All 149 entries have Beginner, IT & Cyber and Compliance
 perspectives with a visible draft label. The
-[complete agent editorial audit](designs/cmmc-perspectives-editorial-audit.md)
+[earlier catalog-wide AI-assisted audit](designs/cmmc-perspectives-editorial-audit.md)
 records source-supported corrections and content fingerprints; it is not
 qualified human approval. Examples, discussion prompts and possible evidence do
 not replace official assessment objectives.
+
+The [focused Level 1 audit](content-review/level-1-audit-2026-10-13.md) compared all
+15 controls' perspectives with 59 determination statements and made four
+clarifications: public processing versus posting, person versus printer-device
+authentication, disposal versus reuse, and publicly accessible facility areas.
+`ControlEditorialReview` keeps pinned-source verification, dated AI-assisted
+comparison and human approval separate. Each record includes publication edition,
+document ID/hash, requirement section, PDF/printed pages and unresolved questions.
+All 15 human approvals are pending; software tests cannot change that status.
+
+`EditorialReviewContext` exposes these stages through a disclosure in each Level 1
+source view. Only the three activities' controls quote determination statements:
+six for `AC.L1-b.1.i`, five for `AC.L1-b.1.iv`, and two for `MP.L1-b.1.vii`.
+These 13 attributed statements provide learning context; neither quoting them nor
+comparing all 59 establishes complete objective-by-objective teaching coverage.
+Other Level 1 records explicitly leave coverage unmapped. The
+[editorial review process](content-review/REVIEW_PROCESS.md) describes evidence and
+qualified approval requirements. Current official-host checks failed with proxy
+CONNECT 403 before origin responses for 11 recorded DoD, FAR/CFR and NIST URLs;
+current applicability remains unresolved.
 
 The teaching collection is a separate dynamic-import chunk requested only when
 a source control is opened. During loading or failure, the attributed requirement
 and source links remain usable; the UI offers a page reload that preserves the
 current lesson address. Retrying the same failed module import alone is unreliable
 because browser module-load failures can be cached. Unknown
-framework/edition coverage remains explicitly pending. Reference entries do not
-claim interactive practice coverage.
+framework/edition coverage remains explicitly pending. Interactive practice is
+available for three exact Level 1 identities and the original demo; the remaining
+146 source entries do not claim it.
 
 Discovery uses eight results per page
 and follows a restored selection. Pagination stays local to the result list;
@@ -180,6 +207,11 @@ collection/query/family/level and selected identity remain in browser history.
 and questions stay consistent across modes, explain both correct and incorrect
 choices, and preserve reader progress during mode changes. They never write URL,
 clipboard, storage or server state. A completed activity is not a compliance grade.
+The three new activities add plain-English explanations, common misunderstandings
+and `LearningDiagram` data. `LessonDiagram` renders ordered HTML steps and an
+optional disposal/reuse branch, with a text equivalent. These structures can
+support future animation, but no animation system is implemented. All activities
+and diagrams remain drafts, with source context and explicit review limits.
 
 ## Validate a change
 
@@ -200,8 +232,11 @@ npm run build
 
 - **Typecheck** validates TypeScript without producing application files.
 - **Lint** checks code conventions and common programming mistakes.
+- **Content check** compares the README's snapshot inventory with catalog and
+  perspective data, validates required source/teaching metadata, and runs mutation
+  regression tests. It does not prove interpretation accuracy or human approval.
 - **Formatting** checks consistent layout with Prettier. Run `npm run format` to
-  apply it; the original README and LICENSE are deliberately excluded.
+  apply it; LICENSE and dependency lockfiles are deliberately excluded.
 - **Tests** exercise meaningful behavior, such as selecting a learning mode or
   finding a control. They are not a substitute for cybersecurity content review.
 - **Build** runs typechecking, then creates the production frontend in the
