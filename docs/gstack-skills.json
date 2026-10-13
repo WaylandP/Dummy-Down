@@ -1,0 +1,1415 @@
+{
+  "schemaVersion": 1,
+  "pinnedRevision": "945ac301a91dff5db9fc1ddaea5b77828eeca2ed",
+  "canonicalCount": 58,
+  "codexSupportedCount": 57,
+  "aliases": [
+    {
+      "alias": "connect-chrome",
+      "target": "open-gstack-browser",
+      "sourceKind": "top-level symlink, excluded by discoverTemplates Dirent.isDirectory",
+      "codexAliasInstalled": false,
+      "note": "Codex install does not add this legacy alias; Claude-only installer alias registration is not canonical coverage."
+    },
+    {
+      "alias": "_gstack-command",
+      "target": "gstack",
+      "sourceKind": "Claude-only rewritten router alias",
+      "codexAliasInstalled": false
+    },
+    {
+      "alias": "agents",
+      "target": "codex",
+      "sourceKind": "host CLI alias, not skill"
+    },
+    {
+      "alias": "claude",
+      "target": "claude-code",
+      "sourceKind": "retired skill name migration, not current canonical skill"
+    }
+  ],
+  "notCanonical": [
+    "README.md.tmpl (documentation)",
+    "hosts/templates/add-host/SKILL.md.example (host example)",
+    "browser-skills/hackernews-frontpage/SKILL.md (site exemplar)",
+    "test/fixtures/**/SKILL.md (fixtures)",
+    "capy/skill/gstack/SKILL.md (nested agent wrapper)",
+    "openclaw/skills/**/SKILL.md (generated/nested host-specific wrappers)",
+    "*/sections/*.md.tmpl and *.md (supporting sections)",
+    "Generated .agents/skills/* variants and metadata (host renders, not additional canonical skills)"
+  ],
+  "hostRules": [
+    "hosts/codex.ts: experimental, advisory safetyHooks, delegation false, generation.skipSkills=[codex], metadata true; emitted frontmatter name/description only",
+    "scripts/discover-skills.ts: root+one actual directory level; exclude hidden/node_modules/.git/dist; symlink dirs excluded by Dirent.isDirectory",
+    "scripts/external-skill-names.ts: root->gstack; nonprefixed directory/frontmatter -> gstack-; upgrade already prefixed",
+    "scripts/resolvers/sections.ts: Codex lazy sections only qa,qa-only,ship,plan-ceo-review,office-hours; other sections inline; cross-QA paths target installed qa"
+  ],
+  "notice": "Authoritative pinned inventory and expected project mappings. Availability observations belong to the execution record; structural checks do not prove review quality, authenticity or live native discovery.",
+  "skills": [
+    {
+      "canonicalName": "gstack",
+      "sourcePath": "SKILL.md.tmpl",
+      "sourceInstructionPath": "SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "gstack",
+      "codexFacingDisplayName": "gstack",
+      "installedPath": ".agents/skills/gstack",
+      "metadataPath": null,
+      "purposeAndTrigger": "Router for the gstack skill suite. Sends any gstack request to the right skill (planning, review, QA, shipping, debugging, docs, security, design). Routes QA by intent and browser interaction to /browse. Use when you invoke gstack without a specific skill, or ask \"which gstack skill fits this?\". (gstack)",
+      "explicitTriggers": "gstack which gstack skill route this with gstack",
+      "upstreamAllowedTools": "Bash Read AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Readable installed instruction files; no provider authentication needed for routing"
+      ],
+      "sideEffectsAndGates": [
+        "Plan/source review and local report state only; owner delegation covers routine decisions, never merge/paid providers.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "22c1a0772bec7bc6bcc68ea52be7a4f1aa7c265d899eac3ea04c85a99026a843"
+    },
+    {
+      "canonicalName": "autoplan",
+      "sourcePath": "autoplan/SKILL.md.tmpl",
+      "sourceInstructionPath": "autoplan/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "autoplan",
+      "codexFacingDisplayName": "gstack-autoplan",
+      "installedPath": ".agents/skills/gstack-autoplan",
+      "metadataPath": ".agents/skills/gstack-autoplan/agents/openai.yaml",
+      "purposeAndTrigger": "Auto-review pipeline — reads the full CEO, design, eng, and DX review skills from disk and runs them sequentially with auto-decisions using 6 decision principles. Surfaces taste decisions (close approaches, borderline scope, outside-review disagreements) at a final approval gate. One command, fully reviewed plan out. Use when asked to \"auto review\", \"autoplan\", \"run all reviews\", \"review this plan automatically\", or \"make the decisions for me\". Proactively suggest when the user has a plan file and wants to run the full review gauntlet without answering 15-30 intermediate questions. (gstack)",
+      "explicitTriggers": "run all reviews automatic review pipeline auto plan review",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep WebSearch AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Plan file; Bun runtime; pinned snapshot/phase helpers; actual installed CEO/design/DX/engineering instructions; native independent-voice dispatcher or explicitly unavailable voice record; outside providers optional and disabled here"
+      ],
+      "sideEffectsAndGates": [
+        "Strict CEO -> design if UI -> DX if developer-facing -> engineering LAST; snapshots/phase artifacts; final approval/taste gates; outside-model reviews disabled; exact helper failure leaves stage incomplete.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "ecd72118091cfd8db0f176eb492fe435617274eff2d9f7da6e836fd375572654"
+    },
+    {
+      "canonicalName": "benchmark",
+      "sourcePath": "benchmark/SKILL.md.tmpl",
+      "sourceInstructionPath": "benchmark/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "benchmark",
+      "codexFacingDisplayName": "gstack-benchmark",
+      "installedPath": ".agents/skills/gstack-benchmark",
+      "metadataPath": ".agents/skills/gstack-benchmark/agents/openai.yaml",
+      "purposeAndTrigger": "Web performance regression detection. Establishes baselines for page load times, Core Web Vitals, and resource sizes. Compares before/after on every PR. Tracks performance trends over time. Use when: \"web performance benchmark\", \"page speed\", \"lighthouse\", \"web vitals\", \"bundle size\", \"load time\". Not for AI model, agent eval or business benchmarks; use /benchmark-models for cross-model skill comparisons. (gstack)",
+      "explicitTriggers": "web performance benchmark check page speed detect page performance regression",
+      "upstreamAllowedTools": "Bash Read Write Glob AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Running authorized local or preview web target; browser runtime; performance timing/resource metrics; baseline required for before/after comparison"
+      ],
+      "sideEffectsAndGates": [
+        "Browser timing/resource reads and local baseline/report writes; no stress/load generation; baseline comparison needs real matching baseline.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "51bd1c23fda2c26ea5a3b35248ff8a11c760c0d37f0ccd9edf369df8a5d20994"
+    },
+    {
+      "canonicalName": "benchmark-models",
+      "sourcePath": "benchmark-models/SKILL.md.tmpl",
+      "sourceInstructionPath": "benchmark-models/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "benchmark-models",
+      "codexFacingDisplayName": "gstack-benchmark-models",
+      "installedPath": ".agents/skills/gstack-benchmark-models",
+      "metadataPath": ".agents/skills/gstack-benchmark-models/agents/openai.yaml",
+      "purposeAndTrigger": "Cross-model benchmark for gstack skills. Runs the same prompt through Claude, GPT (via Codex CLI), and Gemini side-by-side — compares latency, tokens, cost, and optionally quality via LLM judge. Answers \"which model is actually best for this skill?\" with data instead of vibes. Separate from /benchmark, which measures web page performance. Use when: \"benchmark models\", \"compare models\", \"which model is best for X\", \"cross-model comparison\", \"model shootout\". (gstack)",
+      "explicitTriggers": "cross model benchmark compare claude gpt gemini benchmark skill across models which model should I use",
+      "upstreamAllowedTools": "Bash Read AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "gstack-model-benchmark binary; at least one authenticated external provider CLI; dry-run adapter check; selected providers; judge requires separate paid opt-in"
+      ],
+      "sideEffectsAndGates": [
+        "External model calls and optional paid judge; dry-run required but current task forbids new/paid outside reviews and credential inspection.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "6a2845acf5e0f9fa53d1a3c9225de3fe9f58e96a71aff4d0990d6b872c105696"
+    },
+    {
+      "canonicalName": "browse",
+      "sourcePath": "browse/SKILL.md.tmpl",
+      "sourceInstructionPath": "browse/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "browse",
+      "codexFacingDisplayName": "gstack-browse",
+      "installedPath": ".agents/skills/gstack-browse",
+      "metadataPath": ".agents/skills/gstack-browse/agents/openai.yaml",
+      "purposeAndTrigger": "Drive a real browser through Aside: open a page, read it, click through a flow, take screenshots, check console errors. Use when asked to open a site, test a page, take a screenshot, or dogfood a flow. (gstack)",
+      "explicitTriggers": "browse a page open this url take page screenshot",
+      "upstreamAllowedTools": "Bash Read AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Aside driver if available, or consented compiled gstack browser fallback; Chromium and Playwright; do not switch drivers silently"
+      ],
+      "sideEffectsAndGates": [
+        "Browser navigation/click/screenshots; authentication/payment/user credentials delegated to human; no cookie import/tunnel.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "b9f93a386920d1d69976d952d915a633ac779c961f9106a9c28eb8272ae28957"
+    },
+    {
+      "canonicalName": "canary",
+      "sourcePath": "canary/SKILL.md.tmpl",
+      "sourceInstructionPath": "canary/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "canary",
+      "codexFacingDisplayName": "gstack-canary",
+      "installedPath": ".agents/skills/gstack-canary",
+      "metadataPath": ".agents/skills/gstack-canary/agents/openai.yaml",
+      "purposeAndTrigger": "Post-deploy canary monitoring. Watches the live app for console errors, performance regressions, and page failures. Takes periodic screenshots, compares against pre-deploy baselines, and alerts on anomalies. Use when: \"monitor deploy\", \"canary\", \"post-deploy check\", \"watch production\", \"verify deploy\". (gstack)",
+      "explicitTriggers": "monitor after deploy canary check watch for errors post-deploy",
+      "upstreamAllowedTools": "Bash Read Write Glob AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Authorized deployed target; browser runtime; pre-deploy baseline or clearly labeled first baseline; bounded monitoring interval"
+      ],
+      "sideEffectsAndGates": [
+        "Periodic authorized target navigation/screenshots and local baseline/report; bounded preview monitoring only; no production stress or invented deploy evidence.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "22017735be6cd096a736d4723134b2a2449aa03727a87c876ac9abf6eb3b7ffd"
+    },
+    {
+      "canonicalName": "careful",
+      "sourcePath": "careful/SKILL.md.tmpl",
+      "sourceInstructionPath": "careful/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "careful",
+      "codexFacingDisplayName": "gstack-careful",
+      "installedPath": ".agents/skills/gstack-careful",
+      "metadataPath": ".agents/skills/gstack-careful/agents/openai.yaml",
+      "purposeAndTrigger": "Safety guardrails for destructive commands. Warns before rm -rf, DROP TABLE, force-push, git reset --hard, kubectl delete, and similar destructive operations. User can override each warning. Use when touching prod, debugging live systems, or working in a shared environment. Use when asked to \"be careful\", \"safety mode\", \"prod mode\", or \"careful mode\". (gstack)",
+      "explicitTriggers": "be careful warn before destructive safety mode",
+      "upstreamAllowedTools": "Bash Read",
+      "requiredToolsAuthRuntime": [
+        "careful command checker and state helpers; Codex safety checks advisory, not enforced hooks"
+      ],
+      "sideEffectsAndGates": [
+        "Advisory destructive-command checks on Codex; does not activate enforced hooks.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "60ea3fc1daf930e761938960971ce3e28c1dc42400d875a5c1d9a943f6520710"
+    },
+    {
+      "canonicalName": "claude-code",
+      "sourcePath": "claude-code/SKILL.md.tmpl",
+      "sourceInstructionPath": "claude-code/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "claude-code",
+      "codexFacingDisplayName": "gstack-claude-code",
+      "installedPath": ".agents/skills/gstack-claude-code",
+      "metadataPath": ".agents/skills/gstack-claude-code/agents/openai.yaml",
+      "purposeAndTrigger": "Claude Code CLI second opinion for non-Claude Code hosts. Review a diff, challenge a change for failure modes, or consult Claude with read-only repo access and session continuity. Use for \"claude review\", \"claude challenge\", \"ask claude\", or an explicit Claude Code second opinion. (gstack)",
+      "explicitTriggers": "claude review claude challenge ask claude",
+      "upstreamAllowedTools": "Bash Read Write AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Authenticated Claude Code CLI and explicit second-opinion request; missing CLI here; outside-model reviews disabled"
+      ],
+      "sideEffectsAndGates": [
+        "External authenticated Claude second opinion; disabled/unavailable, no new provider integration.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "17db2c496e692019f449d5944ac0422858dec2a41e8b321e5d5cd94ae8b898fa"
+    },
+    {
+      "canonicalName": "codex",
+      "sourcePath": "codex/SKILL.md.tmpl",
+      "sourceInstructionPath": "codex/SKILL.md",
+      "codexSupported": false,
+      "codexFrontmatterName": null,
+      "codexFacingDisplayName": null,
+      "installedPath": null,
+      "metadataPath": null,
+      "purposeAndTrigger": "OpenAI Codex CLI wrapper — three modes. Code review: independent diff review via codex review with pass/fail gate. Challenge: adversarial mode that tries to break your code. Consult: ask codex anything with session continuity for follow-ups. The \"200 IQ autistic developer\" second opinion. Use when asked to \"codex review\", \"codex challenge\", \"ask codex\", \"second opinion\", or \"consult codex\". (gstack)",
+      "explicitTriggers": "codex review second opinion outside voice challenge",
+      "upstreamAllowedTools": "Bash Read Write Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Codex CLI authentication/model probe; excluded from Codex host to avoid recursive wrapper"
+      ],
+      "sideEffectsAndGates": [
+        "External Codex wrapper; excluded on Codex host by upstream, not a missing-install defect.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "e1f74bf322aef40380415f96841f5da970e16a280f8fda90fd292cc5fa4d9680"
+    },
+    {
+      "canonicalName": "context-restore",
+      "sourcePath": "context-restore/SKILL.md.tmpl",
+      "sourceInstructionPath": "context-restore/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "context-restore",
+      "codexFacingDisplayName": "gstack-context-restore",
+      "installedPath": ".agents/skills/gstack-context-restore",
+      "metadataPath": ".agents/skills/gstack-context-restore/agents/openai.yaml",
+      "purposeAndTrigger": "Restore working context saved earlier by /context-save. Loads the most recent saved state (preferring the current branch, falling back across branches) so you can pick up where you left off — even across Conductor workspace handoffs. Use when asked to \"resume\", \"restore context\", \"where was I\", or \"pick up where I left off\". Pair with /context-save. (gstack)",
+      "explicitTriggers": "resume where i left off restore context where was i pick up where i left off context restore",
+      "upstreamAllowedTools": "Bash Read Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Project identity and existing saved-context records; missing records must be reported, not fabricated"
+      ],
+      "sideEffectsAndGates": [
+        "Reads existing saved context; missing is absent, not permission to invent earlier work.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "0fffa1cb70ccaa938c18e7b87254a037ba99fbc2c9e92f64900863d2a4b1625a"
+    },
+    {
+      "canonicalName": "context-save",
+      "sourcePath": "context-save/SKILL.md.tmpl",
+      "sourceInstructionPath": "context-save/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "context-save",
+      "codexFacingDisplayName": "gstack-context-save",
+      "installedPath": ".agents/skills/gstack-context-save",
+      "metadataPath": ".agents/skills/gstack-context-save/agents/openai.yaml",
+      "purposeAndTrigger": "Save working context. Captures git state, decisions made, and remaining work so any future session can pick up without losing a beat. Use when asked to \"save progress\", \"save state\", \"context save\", or \"save my work\". Pair with /context-restore to resume later. (gstack)",
+      "explicitTriggers": "save progress save state save my work context save",
+      "upstreamAllowedTools": "Bash Read Write Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Git state and project identity; writable project-local gstack context state"
+      ],
+      "sideEffectsAndGates": [
+        "Writes append-only local context checkpoint; no transcript/artifact upload.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "2c83effb2373d7aa7d02557e3dc719354b3c2920ae93d49af3ed221c0bd12ca3"
+    },
+    {
+      "canonicalName": "cso",
+      "sourcePath": "cso/SKILL.md.tmpl",
+      "sourceInstructionPath": "cso/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "cso",
+      "codexFacingDisplayName": "gstack-cso",
+      "installedPath": ".agents/skills/gstack-cso",
+      "metadataPath": ".agents/skills/gstack-cso/agents/openai.yaml",
+      "purposeAndTrigger": "Security audit: supported static findings; qualified profiles add reproduction and repair candidates. (gstack) Use when: \"security audit\", \"threat model\", \"OWASP\", \"CSO review\", \"recheck a vulnerability\".",
+      "explicitTriggers": "security audit check for vulnerabilities owasp review",
+      "upstreamAllowedTools": "\"Bash(~/.claude/skills/gstack/bin/gstack-cso-launcher *)\" \"Bash(~/.claude/skills/gstack/bin/gstack-cso-launcher.exe *)\"",
+      "requiredToolsAuthRuntime": [
+        "Trusted absolute gstack-cso-launcher from installed distribution, never repository/PATH/Bun/Node; helper-only source access after start; qualified catalog needed for runtime/scanners; launcher absent here"
+      ],
+      "sideEffectsAndGates": [
+        "Private startup; trusted helper owns redaction/execution/persistence; no shared telemetry/learnings; no generic code review relabeled CSO; absent launcher is not assessed.",
+        "Private CSO startup skips shared preamble and ledgers."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "3a52363a88e2a2810fe0f7164e03c54753c1fdb7900604055977f23c224bc977"
+    },
+    {
+      "canonicalName": "design-consultation",
+      "sourcePath": "design-consultation/SKILL.md.tmpl",
+      "sourceInstructionPath": "design-consultation/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "design-consultation",
+      "codexFacingDisplayName": "gstack-design-consultation",
+      "installedPath": ".agents/skills/gstack-design-consultation",
+      "metadataPath": ".agents/skills/gstack-design-consultation/agents/openai.yaml",
+      "purposeAndTrigger": "Design consultation: understands your product, researches the landscape, proposes a complete design system (aesthetic, typography, color, layout, spacing, motion), and generates font+color preview pages. Creates DESIGN.md as your project's design source of truth. For existing sites, use /plan-design-review to infer the system instead. Use when asked to \"design system\", \"brand guidelines\", or \"create DESIGN.md\". Proactively suggest when starting a new project's UI with no existing design system or DESIGN.md. (gstack)",
+      "explicitTriggers": "design system create a brand design from scratch",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep AskUserQuestion WebSearch",
+      "requiredToolsAuthRuntime": [
+        "Product/taste context; existing design system check; landscape research only with permission; optional design binary/browser preview"
+      ],
+      "sideEffectsAndGates": [
+        "May write proposed DESIGN.md/tokens/previews; research only if allowed; do not replace settled design to demonstrate coverage.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "4c9d6ae14293aa401c34591367451c20051c915a9efa245d9068c2b0bef39779"
+    },
+    {
+      "canonicalName": "design-html",
+      "sourcePath": "design-html/SKILL.md.tmpl",
+      "sourceInstructionPath": "design-html/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "design-html",
+      "codexFacingDisplayName": "gstack-design-html",
+      "installedPath": ".agents/skills/gstack-design-html",
+      "metadataPath": ".agents/skills/gstack-design-html/agents/openai.yaml",
+      "purposeAndTrigger": "Design finalization: generates production-quality Pretext-native HTML/CSS. Works with approved mockups from /design-shotgun, CEO plans from /plan-ceo-review, design review context from /plan-design-review, or from scratch with a user description. Text actually reflows, heights are computed, layouts are dynamic. 30KB overhead, zero deps. Smart API routing: picks the right Pretext patterns for each design type. Use when: \"finalize this design\", \"turn this into HTML\", \"build me a page\", \"implement this design\", or after any planning skill. Proactively suggest when user has approved a design or has a plan ready. (gstack)",
+      "explicitTriggers": "build the design code the mockup make design real",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep Agent AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Design intent or approved mockup; design-html vendored Pretext source; framework detection; preview/browser runtime; no external provider required for authored HTML"
+      ],
+      "sideEffectsAndGates": [
+        "Writes HTML/framework files, Pretext source, metadata and preview server; additive/approved implementation only; do not rewrite shipped React merely to exercise utility.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "6ae51352d4d7ff9eb767109f12882f4026e31283ec6365c4200cbfeb7d0cb6b0"
+    },
+    {
+      "canonicalName": "design-review",
+      "sourcePath": "design-review/SKILL.md.tmpl",
+      "sourceInstructionPath": "design-review/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "design-review",
+      "codexFacingDisplayName": "gstack-design-review",
+      "installedPath": ".agents/skills/gstack-design-review",
+      "metadataPath": ".agents/skills/gstack-design-review/agents/openai.yaml",
+      "purposeAndTrigger": "Designer's eye QA: finds visual inconsistency, spacing issues, hierarchy problems, AI slop patterns, and slow interactions — then fixes them. Iteratively fixes issues in source code, committing each fix atomically and re-verifying with before/after screenshots. For plan-mode design review (before implementation), use /plan-design-review. Use when asked to \"audit the design\", \"visual QA\", \"check if it looks good\", or \"design polish\". Proactively suggest when the user mentions visual inconsistencies or wants to polish the look of a live site. (gstack)",
+      "explicitTriggers": "visual design audit design qa fix design issues",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep AskUserQuestion WebSearch",
+      "requiredToolsAuthRuntime": [
+        "Running authorized UI; installed design audit methodology and checklist; browser screenshots; actual source checkout; optional design model runtime"
+      ],
+      "sideEffectsAndGates": [
+        "Fixes source with atomic commits and before/after browser evidence; obey two-round user bound; unresolved stricter upstream gate means incomplete.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "f46e1457933ae9ead5fdc7882e46dfc17ce07dfcd1d8884799af0191413d3314"
+    },
+    {
+      "canonicalName": "design-shotgun",
+      "sourcePath": "design-shotgun/SKILL.md.tmpl",
+      "sourceInstructionPath": "design-shotgun/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "design-shotgun",
+      "codexFacingDisplayName": "gstack-design-shotgun",
+      "installedPath": ".agents/skills/gstack-design-shotgun",
+      "metadataPath": ".agents/skills/gstack-design-shotgun/agents/openai.yaml",
+      "purposeAndTrigger": "Design shotgun: generate multiple AI design variants, open a comparison board, collect structured feedback, and iterate. Standalone design exploration you can run anytime. Use when: \"explore designs\", \"show me options\", \"design variants\", \"visual brainstorm\", or \"I don't like how this looks\". Proactively suggest when the user describes a UI feature but hasn't seen what it could look like. (gstack)",
+      "explicitTriggers": "explore design variants show me design options visual design brainstorm",
+      "upstreamAllowedTools": "Bash Read Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Design exploration brief; compiled design binary; image generation model/provider and auth; feedback board; confirmed user selection"
+      ],
+      "sideEffectsAndGates": [
+        "Generates model-backed design variants/feedback board/taste state; provider spend and final selection require consent; cannot invent variants/approval.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "62cead21d23887a252e4b82c67c8333ce1e895decb4f3fd0e45f1003f053cd74"
+    },
+    {
+      "canonicalName": "deslop-shared-libs",
+      "sourcePath": "deslop-shared-libs/SKILL.md.tmpl",
+      "sourceInstructionPath": "deslop-shared-libs/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "deslop-shared-libs",
+      "codexFacingDisplayName": "gstack-deslop-shared-libs",
+      "installedPath": ".agents/skills/gstack-deslop-shared-libs",
+      "metadataPath": ".agents/skills/gstack-deslop-shared-libs/agents/openai.yaml",
+      "purposeAndTrigger": "Find worthwhile shared-code extractions in recent work. Use for /deslop-shared-libs, $deslop-shared-libs, or requests to find code worth sharing. Recommendations only. (gstack)",
+      "explicitTriggers": "find code worth sharing shared-code extraction opportunities",
+      "upstreamAllowedTools": "Bash Read Glob Grep",
+      "requiredToolsAuthRuntime": [
+        "Recent diff and repository search; public GitHub search via authenticated gh when available; no model provider required"
+      ],
+      "sideEffectsAndGates": [
+        "Recommendations only; no application/library extraction in this skill.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "1c533efb8ccdb3bfb0ed148a9abe65b28a9da3f7d9810137c975dae29577de5b"
+    },
+    {
+      "canonicalName": "devex-review",
+      "sourcePath": "devex-review/SKILL.md.tmpl",
+      "sourceInstructionPath": "devex-review/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "devex-review",
+      "codexFacingDisplayName": "gstack-devex-review",
+      "installedPath": ".agents/skills/gstack-devex-review",
+      "metadataPath": ".agents/skills/gstack-devex-review/agents/openai.yaml",
+      "purposeAndTrigger": "Live developer experience audit. Actually TESTS the developer experience in the Aside browser: navigates docs, tries the getting started flow, times TTHW, screenshots error messages, evaluates CLI help text. Produces a DX scorecard with evidence. Compares against /plan-devex-review scores if they exist (the boomerang: plan said 3 minutes, reality says 8). Use when asked to \"test the DX\", \"DX audit\", \"developer experience test\", or \"try the onboarding\". Proactively suggest after shipping a developer-facing feature. (gstack)",
+      "explicitTriggers": "live dx audit test developer experience measure onboarding time",
+      "upstreamAllowedTools": "Read Edit Grep Glob Bash AskUserQuestion WebSearch",
+      "requiredToolsAuthRuntime": [
+        "Getting-started/docs/CLI surfaces; browser driver for live documentation audit; project tools; measured TTHW and artifact evidence"
+      ],
+      "sideEffectsAndGates": [
+        "Plan/source review and local report state only; owner delegation covers routine decisions, never merge/paid providers.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "76b42df20b6876ff69d8f365e3d5e46c715eb092a851b0554a17de4527df306d"
+    },
+    {
+      "canonicalName": "diagram",
+      "sourcePath": "diagram/SKILL.md.tmpl",
+      "sourceInstructionPath": "diagram/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "diagram",
+      "codexFacingDisplayName": "gstack-diagram",
+      "installedPath": ".agents/skills/gstack-diagram",
+      "metadataPath": ".agents/skills/gstack-diagram/agents/openai.yaml",
+      "purposeAndTrigger": "Turn an English description (or mermaid source) into a diagram triplet: the source, an editable .excalidraw file you can open on excalidraw.com, and rendered SVG + PNG. The SVG/PNG use clean mermaid style; the .excalidraw carries the hand-drawn aesthetic. Fully offline. Use when asked to \"make a diagram\", \"draw the architecture\", \"create a flowchart\", \"diagram this\", or \"visualize this flow\". (gstack)",
+      "explicitTriggers": "make a diagram draw a diagram create a flowchart diagram this visualize this flow architecture diagram",
+      "upstreamAllowedTools": "Bash Read Write AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Mermaid description/source; Aside offline diagram render bundle or staged gstack fallback bundle; browser renderer"
+      ],
+      "sideEffectsAndGates": [
+        "Writes source/editable Excalidraw/SVG/PNG offline artifact triplet; no new diagram artifact requested.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "2c95ac50a24e4663c7080599bd724fdb49d8623b2ae7882bfda04807db579d38"
+    },
+    {
+      "canonicalName": "document-generate",
+      "sourcePath": "document-generate/SKILL.md.tmpl",
+      "sourceInstructionPath": "document-generate/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "document-generate",
+      "codexFacingDisplayName": "gstack-document-generate",
+      "installedPath": ".agents/skills/gstack-document-generate",
+      "metadataPath": ".agents/skills/gstack-document-generate/agents/openai.yaml",
+      "purposeAndTrigger": "Generate missing documentation from scratch for a feature, module, or entire project. Uses the Diataxis framework (tutorial / how-to / reference / explanation) to produce complete, structured documentation. Can be invoked standalone or called by /document-release when it finds coverage gaps. Use when asked to \"write docs\", \"generate documentation\", \"document this feature\", \"create a tutorial\", or \"explain this module\". (gstack)",
+      "explicitTriggers": "write docs for this generate documentation document this feature create a tutorial write a how-to explain this module docs for this project",
+      "upstreamAllowedTools": "Bash Read Write Edit Grep Glob AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Relevant implementation and docs; Diataxis scope; documentation sanitization/secret gate before commit"
+      ],
+      "sideEffectsAndGates": [
+        "Writes scoped docs and links; secret gate before commit; no fabricated approval/quality claims.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "81392cc551346b6de1a96c10e83936a4f126e6cb00812572e56e2642f3791f07"
+    },
+    {
+      "canonicalName": "document-release",
+      "sourcePath": "document-release/SKILL.md.tmpl",
+      "sourceInstructionPath": "document-release/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "document-release",
+      "codexFacingDisplayName": "gstack-document-release",
+      "installedPath": ".agents/skills/gstack-document-release",
+      "metadataPath": ".agents/skills/gstack-document-release/agents/openai.yaml",
+      "purposeAndTrigger": "Release documentation audit. Reads relevant project docs, cross-references the diff, builds a Diataxis coverage map (reference/how-to/tutorial/explanation), updates README/ARCHITECTURE/CONTRIBUTING/CLAUDE.md to match what shipped, detects architecture diagram drift, polishes CHANGELOG voice with a sell-test rubric, cleans up TODOS, and optionally bumps VERSION. Surfaces documentation debt in the PR body. Use when asked to \"update the docs\", \"sync documentation\", or \"post-ship docs\". Proactively suggest a documentation audit before merge. (gstack)",
+      "explicitTriggers": "update docs after ship document what changed post-ship docs",
+      "upstreamAllowedTools": "Bash Read Write Edit Grep Glob AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Release/base comparison; relevant docs and diff; installed audit sections; ship-owned authorization if called by ship"
+      ],
+      "sideEffectsAndGates": [
+        "Updates documentation/TODOS/changelog to diff; diagrams advisory; version bump optional; no auto-generation unless document-generate separately routed.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "3d938ac98009a23e4201c4754b84f8affe37043c9bd6738a7487a005eab11758"
+    },
+    {
+      "canonicalName": "eval-plan",
+      "sourcePath": "eval-plan/SKILL.md.tmpl",
+      "sourceInstructionPath": "eval-plan/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "eval-plan",
+      "codexFacingDisplayName": "gstack-eval-plan",
+      "installedPath": ".agents/skills/gstack-eval-plan",
+      "metadataPath": ".agents/skills/gstack-eval-plan/agents/openai.yaml",
+      "purposeAndTrigger": "Preregister a paid eval (bars, arms, decoys, stop rules), dry-run it at zero cost, then run a three-item priced pilot whose spend table gates approval. (gstack)",
+      "explicitTriggers": "plan an eval preregister an eval how much will this eval cost pilot the eval",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Preregisration, scoring/decoy bars and spend ledger; zero-cost model stub; authorized priced providers for pilot; explicit full-run gate"
+      ],
+      "sideEffectsAndGates": [
+        "Zero-cost stub then priced pilot and explicit spend/full-run gate; no paid eval authorized.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "de45aeaf9b3f5da182e46c676755ff5183973a30f89f925337422f06933893e8"
+    },
+    {
+      "canonicalName": "freeze",
+      "sourcePath": "freeze/SKILL.md.tmpl",
+      "sourceInstructionPath": "freeze/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "freeze",
+      "codexFacingDisplayName": "gstack-freeze",
+      "installedPath": ".agents/skills/gstack-freeze",
+      "metadataPath": ".agents/skills/gstack-freeze/agents/openai.yaml",
+      "purposeAndTrigger": "Restrict file edits to a specific directory for the session. Blocks Edit, Write and NotebookEdit outside the allowed path. Use when debugging to prevent accidentally \"fixing\" unrelated code, or when you want to scope changes to one module. Use when asked to \"freeze\", \"restrict edits\", \"only edit this folder\", or \"lock down edits\". (gstack)",
+      "explicitTriggers": "freeze edits to directory lock editing scope restrict file changes",
+      "upstreamAllowedTools": "Bash Read AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Shared freeze boundary writer/checker; desired directory scope; Codex advisory checks only"
+      ],
+      "sideEffectsAndGates": [
+        "Writes persistent directory boundary; Codex cannot enforce hooks; do not contradict scoped multi-file task.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "2059841edda9f9a8fae566f5ebb42140c578a9d68efaf69146ff428bacea3275"
+    },
+    {
+      "canonicalName": "gstack-upgrade",
+      "sourcePath": "gstack-upgrade/SKILL.md.tmpl",
+      "sourceInstructionPath": "gstack-upgrade/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "gstack-upgrade",
+      "codexFacingDisplayName": "gstack-upgrade",
+      "installedPath": ".agents/skills/gstack-upgrade",
+      "metadataPath": ".agents/skills/gstack-upgrade/agents/openai.yaml",
+      "purposeAndTrigger": "Upgrade gstack to the latest version. Detects global vs vendored install, runs the upgrade, and shows what's new. Use when asked to \"upgrade gstack\", \"update gstack\", or \"get latest version\".",
+      "explicitTriggers": "upgrade gstack update gstack version get latest gstack",
+      "upstreamAllowedTools": "Bash Read Write AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Network/Git or vendored install upgrade tools; unsupported by current exact-pin authorization"
+      ],
+      "sideEffectsAndGates": [
+        "Upgrades source and installs/migrations; prohibited beyond exact pin; do not execute.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "8128d6815a02c89f71e0ae879154472b2c934ba5a9cd3f48be08e02ca328db31"
+    },
+    {
+      "canonicalName": "guard",
+      "sourcePath": "guard/SKILL.md.tmpl",
+      "sourceInstructionPath": "guard/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "guard",
+      "codexFacingDisplayName": "gstack-guard",
+      "installedPath": ".agents/skills/gstack-guard",
+      "metadataPath": ".agents/skills/gstack-guard/agents/openai.yaml",
+      "purposeAndTrigger": "Full safety mode: destructive command warnings + directory-scoped edits. Combines /careful (warns before rm -rf, DROP TABLE, force-push, etc.) with /freeze (blocks edits outside a specified directory). Use for maximum safety when touching prod or debugging live systems. Use when asked to \"guard mode\", \"full safety\", \"lock it down\", or \"maximum safety\". (gstack)",
+      "explicitTriggers": "full safety mode guard against mistakes maximum safety",
+      "upstreamAllowedTools": "Bash Read AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Both careful and freeze helpers; chosen directory; shared state writer; Codex advisory only"
+      ],
+      "sideEffectsAndGates": [
+        "Combines careful/freeze advisory modes, writes scope state; avoid contradictory activation.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "9f3ac06acb085789ad8dc815710ceb4abd3493091eed349eaa4eef5129af1891"
+    },
+    {
+      "canonicalName": "health",
+      "sourcePath": "health/SKILL.md.tmpl",
+      "sourceInstructionPath": "health/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "health",
+      "codexFacingDisplayName": "gstack-health",
+      "installedPath": ".agents/skills/gstack-health",
+      "metadataPath": ".agents/skills/gstack-health/agents/openai.yaml",
+      "purposeAndTrigger": "Code quality dashboard. Wraps existing project tools (type checker, linter, test runner, dead code detector, shell linter), computes a weighted composite 0-10 score, and tracks trends over time. Use when: \"health check\", \"code quality\", \"how healthy is the codebase\", \"run all checks\", \"quality score\". (gstack)",
+      "explicitTriggers": "code health check quality dashboard how healthy is codebase",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Existing project typechecker/linter/test tools; optional dead-code/shell-lint/GBrain tools individually availability-checked; no numeric history if attempted tool unavailable/incomplete"
+      ],
+      "sideEffectsAndGates": [
+        "Report-only hard gate; never fix issues; do not turn failing commands into skipped or fabricate a composite score.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "6efbea1ac86a4e30b1931941c76d4d5d84a67a72887d6efb2c92bea62494753c"
+    },
+    {
+      "canonicalName": "investigate",
+      "sourcePath": "investigate/SKILL.md.tmpl",
+      "sourceInstructionPath": "investigate/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "investigate",
+      "codexFacingDisplayName": "gstack-investigate",
+      "installedPath": ".agents/skills/gstack-investigate",
+      "metadataPath": ".agents/skills/gstack-investigate/agents/openai.yaml",
+      "purposeAndTrigger": "Systematic debugging with root cause investigation. Four phases: investigate, analyze, hypothesize, implement. Iron Law: no fixes without root cause. Use when asked to \"debug this\", \"fix this bug\", \"why is this broken\", \"investigate this error\", or \"root cause analysis\". Proactively invoke this skill (do NOT debug directly) when the user reports errors, 500 errors, stack traces, unexpected behavior, \"it was working yesterday\", or is troubleshooting why something stopped working. (gstack)",
+      "explicitTriggers": "debug this fix this bug why is this broken root cause analysis investigate this error",
+      "upstreamAllowedTools": "Bash Read Write Edit Grep Glob AskUserQuestion WebSearch",
+      "requiredToolsAuthRuntime": [
+        "Reproduction or observed failure; source/log access; root-cause methodology; freeze helpers if chosen; regression checks"
+      ],
+      "sideEffectsAndGates": [
+        "No fixes without reproduced cause; optional scope freeze; safe authorized regression fixes only.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "f8a7833e7fc52a19d174625f3b602a3042f0a18fd10d8714a7df74d9072149d0"
+    },
+    {
+      "canonicalName": "ios-clean",
+      "sourcePath": "ios-clean/SKILL.md.tmpl",
+      "sourceInstructionPath": "ios-clean/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "ios-clean",
+      "codexFacingDisplayName": "gstack-ios-clean",
+      "installedPath": ".agents/skills/gstack-ios-clean",
+      "metadataPath": ".agents/skills/gstack-ios-clean/agents/openai.yaml",
+      "purposeAndTrigger": "Remove the DebugBridge SPM package and all #if DEBUG wiring from an iOS app. Cleans up StateServer, DebugOverlay, accessor codegen output, and app-side hooks installed by /ios-qa. This is a convenience wrapper — the structural Release-build guard (Package.swift conditional + CI swift build -c release check) is the safety-critical path. Use when asked to \"clean the iOS debug bridge\", \"remove DebugBridge\", or \"strip the gstack iOS instrumentation\". (gstack)",
+      "explicitTriggers": "clean the ios debug bridge remove debugbridge strip the gstack ios instrumentation",
+      "upstreamAllowedTools": "Bash Read Edit Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Swift iOS source and generated DebugBridge; macOS Xcode/build/nm; no such app here"
+      ],
+      "sideEffectsAndGates": [
+        "Removes generated DebugBridge from native app then build verifies; not a web cleanup utility.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "cc571a44852e0e9ac6f7c8a3498d5a504e5fd7a2376018a246058bf89a30bc5f"
+    },
+    {
+      "canonicalName": "ios-design-review",
+      "sourcePath": "ios-design-review/SKILL.md.tmpl",
+      "sourceInstructionPath": "ios-design-review/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "ios-design-review",
+      "codexFacingDisplayName": "gstack-ios-design-review",
+      "installedPath": ".agents/skills/gstack-ios-design-review",
+      "metadataPath": ".agents/skills/gstack-ios-design-review/agents/openai.yaml",
+      "purposeAndTrigger": "Visual design audit for iOS apps on real hardware. Connects to a real iPhone via the same StateServer as /ios-qa, screenshots every screen, evaluates against Apple HIG, DESIGN.md, and design best practices. Scores each dimension 0-10 with \"what would make it a 10\" framing — mirrors /plan-design-review for browser. For plan-stage design review (before implementation), use /plan-design-review. For live web visual audits, use /design-review. Use when asked to \"review the iOS design\", \"audit the iPhone app's visuals\", or \"design QA the iOS app\". (gstack)",
+      "explicitTriggers": "review the ios design audit the iphone app visuals design qa the ios app",
+      "upstreamAllowedTools": "Bash Read Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Real iOS device session and StateServer screenshot observe capability; macOS daemon; Swift source"
+      ],
+      "sideEffectsAndGates": [
+        "Native live-device visual audit; no native app here.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "66b251302b561e2f06c0f26d3cfe3fb9599bb90c583d45ba1edb1cf505b5a237"
+    },
+    {
+      "canonicalName": "ios-fix",
+      "sourcePath": "ios-fix/SKILL.md.tmpl",
+      "sourceInstructionPath": "ios-fix/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "ios-fix",
+      "codexFacingDisplayName": "gstack-ios-fix",
+      "installedPath": ".agents/skills/gstack-ios-fix",
+      "metadataPath": ".agents/skills/gstack-ios-fix/agents/openai.yaml",
+      "purposeAndTrigger": "Autonomous iOS bug fixer. Takes a bug found by /ios-qa, reads the source, writes the fix, rebuilds, redeploys, and verifies the fix on the real device. Closes the loop: find bug → fix bug → confirm fix — zero human intervention. Captures the pre-bug state snapshot as a regression test fixture, so the bug can never recur silently. Use when /ios-qa reports a bug and you want it fixed automatically, or when asked to \"fix this iOS bug\", \"patch the iPhone app\", or \"auto-fix the iOS issue\". (gstack)",
+      "explicitTriggers": "fix this ios bug patch the iphone app auto-fix the ios issue",
+      "upstreamAllowedTools": "Bash Read Write Edit Grep Glob AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Live-device iOS QA session; reproducible GET /state/snapshot; Swift source and rebuild/deploy tools"
+      ],
+      "sideEffectsAndGates": [
+        "Native source repair/device redeploy only after snapshot repro; max three iterations upstream, user current two-round bound is stricter.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "41d1fd20b7e110e30aa92584385b1786d502b8985d997b5c920e92b5a69d484d"
+    },
+    {
+      "canonicalName": "ios-qa",
+      "sourcePath": "ios-qa/SKILL.md.tmpl",
+      "sourceInstructionPath": "ios-qa/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "ios-qa",
+      "codexFacingDisplayName": "gstack-ios-qa",
+      "installedPath": ".agents/skills/gstack-ios-qa",
+      "metadataPath": ".agents/skills/gstack-ios-qa/agents/openai.yaml",
+      "purposeAndTrigger": "Live-device iOS QA for SwiftUI apps. Connects to a real iPhone or iPad via USB CoreDevice IPv6 tunnel, reads Swift source to understand every screen, then runs a vision-driven agent loop: screenshot → analyze → decide → act → verify → repeat. All interaction happens via HTTP to an embedded StateServer in the app under test. Optionally exposes the device over Tailscale so remote agents (OpenClaw, Codex, any HTTP-capable agent) can run iOS QA from anywhere without touching the hardware. Use when asked to \"ios qa\", \"test my iPhone app\", \"test my iPad app\", \"find bugs on the device\", or \"qa the iOS app\". (gstack)",
+      "explicitTriggers": "ios qa test the iphone app test the ipad app test my ios app find bugs on the device qa the ios app",
+      "upstreamAllowedTools": "Bash Read Write Edit Grep Glob AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "macOS/Xcode Swift>=5.9; trusted USB device; file-scope @Observable classes; compatible SwiftPM debug bridge; optional Tailscale explicit authorization"
+      ],
+      "sideEffectsAndGates": [
+        "Installs debug bridge/device build and optional USB/Tailscale tunnel after specific consent; no iOS target here.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "e0e478ef641acd6acd1f9a5458d9399fc3ac4d0a45b920cf756dc55d7ec9bb61"
+    },
+    {
+      "canonicalName": "ios-sync",
+      "sourcePath": "ios-sync/SKILL.md.tmpl",
+      "sourceInstructionPath": "ios-sync/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "ios-sync",
+      "codexFacingDisplayName": "gstack-ios-sync",
+      "installedPath": ".agents/skills/gstack-ios-sync",
+      "metadataPath": ".agents/skills/gstack-ios-sync/agents/openai.yaml",
+      "purposeAndTrigger": "Regenerate the iOS debug bridge against the latest upstream gstack templates. Updates StateServer.swift, DebugOverlay.swift, Package.swift, and the typed @Observable state accessors. Use after you upgrade gstack or add new ViewModels/properties that need accessor coverage. Use when asked to \"resync the iOS debug bridge\", \"regenerate iOS accessors\", or \"update the gstack iOS instrumentation\". (gstack)",
+      "explicitTriggers": "resync the ios debug bridge regenerate ios accessors update the gstack ios instrumentation",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Swift iOS source and compatible marked @Observable declarations; gstack-ios-qa regenerator; existing device bridge"
+      ],
+      "sideEffectsAndGates": [
+        "Regenerates typed native DebugBridge output; no native app here.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "81f649f9cb19e0dc9e795cd0edbcde24b540873f7799f92974c098a0ca921448"
+    },
+    {
+      "canonicalName": "land-and-deploy",
+      "sourcePath": "land-and-deploy/SKILL.md.tmpl",
+      "sourceInstructionPath": "land-and-deploy/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "land-and-deploy",
+      "codexFacingDisplayName": "gstack-land-and-deploy",
+      "installedPath": ".agents/skills/gstack-land-and-deploy",
+      "metadataPath": ".agents/skills/gstack-land-and-deploy/agents/openai.yaml",
+      "purposeAndTrigger": "Land and deploy workflow. Merges the PR, waits for CI and deploy, verifies production health via canary checks. Takes over after /ship creates the PR. Use when: \"merge\", \"land\", \"deploy\", \"merge and verify\", \"land it\", \"ship it to production\". (gstack)",
+      "explicitTriggers": "merge and deploy land the pr ship to production",
+      "upstreamAllowedTools": "Bash Read Write Glob AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Explicit user merge approval; matching clean PR checkout; gh auth; CI on exact head; deploy config; independent premerge gate; no release authorization here"
+      ],
+      "sideEffectsAndGates": [
+        "Merges exact PR, monitors production and optional rollback; requires explicit approval; categorically gated for this task.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "416b03d54912f7d780ff97bd4a8a26dc6434b84e110e1362f1fe640264e6462a"
+    },
+    {
+      "canonicalName": "landing-report",
+      "sourcePath": "landing-report/SKILL.md.tmpl",
+      "sourceInstructionPath": "landing-report/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "landing-report",
+      "codexFacingDisplayName": "gstack-landing-report",
+      "installedPath": ".agents/skills/gstack-landing-report",
+      "metadataPath": ".agents/skills/gstack-landing-report/agents/openai.yaml",
+      "purposeAndTrigger": "Read-only queue dashboard for workspace-aware ship. Shows which VERSION slots are currently claimed by open PRs, which sibling Conductor workspaces have WIP work likely to ship soon, and what slot /ship would pick next. No mutations — just a snapshot. Use when asked to \"landing report\", \"what's in the queue\", \"show me open PRs\", or \"which version do I claim next\". (gstack)",
+      "explicitTriggers": "landing report version queue ship queue what version comes next show open PR versions",
+      "upstreamAllowedTools": "Bash Read",
+      "requiredToolsAuthRuntime": [
+        "Git/base/project state; authenticated gh for read-only open-PR queue; optional Conductor workspace inventory"
+      ],
+      "sideEffectsAndGates": [
+        "Read-only queue snapshot; no version reservation or branch changes.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "4a409fc29fcd57fc5fea309c8c81cfbccd36e4e26d9cbaf5c38d93e2befbb497"
+    },
+    {
+      "canonicalName": "learn",
+      "sourcePath": "learn/SKILL.md.tmpl",
+      "sourceInstructionPath": "learn/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "learn",
+      "codexFacingDisplayName": "gstack-learn",
+      "installedPath": ".agents/skills/gstack-learn",
+      "metadataPath": ".agents/skills/gstack-learn/agents/openai.yaml",
+      "purposeAndTrigger": "Manage project learnings. Review, search, prune, and export what gstack has learned across sessions. Use when asked to \"what have we learned\", \"show learnings\", \"prune stale learnings\", or \"export learnings\". Proactively suggest when the user asks about past patterns or wonders \"didn't we fix this before?\"",
+      "explicitTriggers": "show learnings what have we learned manage project learnings",
+      "upstreamAllowedTools": "Bash Read Write Edit AskUserQuestion Glob Grep",
+      "requiredToolsAuthRuntime": [
+        "Project-local learning storage and gstack-learn helper; relevant patterns with source attribution"
+      ],
+      "sideEffectsAndGates": [
+        "Manages local learnings only; no code changes; prune/export changes require chosen intent.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "a258de328488940b85db6e03dd54cf8aa5bd4d90cd0a5b108f496f90f567e851"
+    },
+    {
+      "canonicalName": "make-pdf",
+      "sourcePath": "make-pdf/SKILL.md.tmpl",
+      "sourceInstructionPath": "make-pdf/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "make-pdf",
+      "codexFacingDisplayName": "gstack-make-pdf",
+      "installedPath": ".agents/skills/gstack-make-pdf",
+      "metadataPath": ".agents/skills/gstack-make-pdf/agents/openai.yaml",
+      "purposeAndTrigger": "Turn any markdown file into a publication-quality PDF. Proper 1in margins, intelligent page breaks, page numbers, cover pages, running headers, curly quotes and em dashes, clickable TOC, diagonal DRAFT watermark. Not a draft artifact — a finished artifact. Use when asked to \"make a PDF\", \"export to PDF\", \"turn this markdown into a PDF\", or \"generate a document\". (gstack)",
+      "explicitTriggers": "markdown to pdf generate pdf make pdf export pdf",
+      "upstreamAllowedTools": "Bash Read AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Compiled make-pdf binary; local fonts and referenced assets; markdown input; optional Mermaid/Excalidraw renderer"
+      ],
+      "sideEffectsAndGates": [
+        "Writes standalone PDF/preview outputs; no export requested.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "7d48f5b025e1f2b7bedcd9d7bcd33e62e2c852ae1b13f42f18a47e4e35343cb1"
+    },
+    {
+      "canonicalName": "office-hours",
+      "sourcePath": "office-hours/SKILL.md.tmpl",
+      "sourceInstructionPath": "office-hours/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "office-hours",
+      "codexFacingDisplayName": "gstack-office-hours",
+      "installedPath": ".agents/skills/gstack-office-hours",
+      "metadataPath": ".agents/skills/gstack-office-hours/agents/openai.yaml",
+      "purposeAndTrigger": "YC Office Hours — two modes. Startup mode: six forcing questions that expose demand reality, status quo, desperate specificity, narrowest wedge, observation, and future-fit. Builder mode: design thinking brainstorming for side projects, hackathons, learning, and open source. Saves a design doc. Use when asked to \"brainstorm this\", \"I have an idea\", \"help me think through this\", \"office hours\", or \"is this worth building\". Proactively invoke this skill (do NOT answer directly) when the user describes a new product idea, asks whether something is worth building, wants to think through design decisions for something that doesn't exist yet, or is exploring a concept before any code is written. Use before /plan-ceo-review or /plan-eng-review. (gstack)",
+      "explicitTriggers": "brainstorm this is this worth building help me think through office hours",
+      "upstreamAllowedTools": "Bash Read Grep Glob Write Edit AskUserQuestion WebSearch",
+      "requiredToolsAuthRuntime": [
+        "README/project intent; builder/startup context; full applicable diagnostic and handoff sections; design document output only"
+      ],
+      "sideEffectsAndGates": [
+        "Design doc only; no implementation during the stage; approach gate normally explicit; owner delegation may support labeled retrospective assumptions, never fabricated approval.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [
+        {
+          "path": "sections/design-and-handoff.md"
+        },
+        {
+          "path": "sections/phase-2a-startup-diagnostic.md"
+        },
+        {
+          "path": "sections/phase-2b-builder-brainstorm.md"
+        }
+      ],
+      "sourceSha256": "e0eee0cf83c00897860149d9d423fd6a3c81486e8fa48494a25171e5a4569676"
+    },
+    {
+      "canonicalName": "open-gstack-browser",
+      "sourcePath": "open-gstack-browser/SKILL.md.tmpl",
+      "sourceInstructionPath": "open-gstack-browser/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "open-gstack-browser",
+      "codexFacingDisplayName": "gstack-open-gstack-browser",
+      "installedPath": ".agents/skills/gstack-open-gstack-browser",
+      "metadataPath": ".agents/skills/gstack-open-gstack-browser/agents/openai.yaml",
+      "purposeAndTrigger": "Launch GStack Browser — AI-controlled Chromium with the sidebar extension baked in. Opens a visible browser window where you can watch every action in real time. The sidebar shows a live activity feed and chat. Anti-bot stealth built in. Use when asked to \"open gstack browser\", \"launch browser\", \"connect chrome\", \"open chrome\", \"real browser\", \"launch chrome\", \"side panel\", or \"control my browser\".",
+      "explicitTriggers": "open gstack browser launch chromium show me the browser",
+      "upstreamAllowedTools": "Bash Read AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Compiled gstack browser; visible headed desktop/session and sidebar extension; check live daemon before replacement"
+      ],
+      "sideEffectsAndGates": [
+        "Can launch visible browser or replace daemon only after safe check/user choice; no need to replace working headless audit browser.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "d33bbd01af12812a368f27d73fd198baf884174702fdd61a987d8c819f2ee8c3"
+    },
+    {
+      "canonicalName": "pair-agent",
+      "sourcePath": "pair-agent/SKILL.md.tmpl",
+      "sourceInstructionPath": "pair-agent/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "pair-agent",
+      "codexFacingDisplayName": "gstack-pair-agent",
+      "installedPath": ".agents/skills/gstack-pair-agent",
+      "metadataPath": ".agents/skills/gstack-pair-agent/agents/openai.yaml",
+      "purposeAndTrigger": "Pair a remote AI agent with your browser. One command generates a setup key and prints instructions the other agent can follow to connect. Works with OpenClaw, Hermes, Codex, Cursor, or any agent that can make HTTP requests. The remote agent gets its own tab with full page access by default (the pairing ceremony is the trust boundary; --restrict narrows it). Use when asked to \"pair agent\", \"connect agent\", \"share browser\", \"remote browser\", \"let another agent use my browser\", or \"give browser access\". (gstack)",
+      "explicitTriggers": "pair with agent connect remote agent share my browser",
+      "upstreamAllowedTools": "Bash Read AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Running browser daemon; pairing trust ceremony; remote mode feature opt-in and authenticated ngrok/tunnel; no credential access authorized"
+      ],
+      "sideEffectsAndGates": [
+        "Generates browser access tokens; may start ngrok tunnel; specifically unauthorized here.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "4b78a66ad267def88382e2330b65c1df38319ae2d4dd29949437ea2462514c6f"
+    },
+    {
+      "canonicalName": "plan-ceo-review",
+      "sourcePath": "plan-ceo-review/SKILL.md.tmpl",
+      "sourceInstructionPath": "plan-ceo-review/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "plan-ceo-review",
+      "codexFacingDisplayName": "gstack-plan-ceo-review",
+      "installedPath": ".agents/skills/gstack-plan-ceo-review",
+      "metadataPath": ".agents/skills/gstack-plan-ceo-review/agents/openai.yaml",
+      "purposeAndTrigger": "CEO/founder-mode plan review. Rethink the problem, find the 10-star product, challenge premises, expand scope when it creates a better product. Four modes: SCOPE EXPANSION (dream big), SELECTIVE EXPANSION (hold scope + cherry-pick expansions), HOLD SCOPE (maximum rigor), SCOPE REDUCTION (strip to essentials). Use when asked to \"think bigger\", \"expand scope\", \"strategy review\", \"rethink this\", or \"is this ambitious enough\". Proactively suggest when the user is questioning scope or ambition of a plan, or when the plan feels like it could be thinking bigger. (gstack)",
+      "explicitTriggers": "think bigger expand scope strategy review rethink this plan",
+      "upstreamAllowedTools": "Read Grep Glob Bash AskUserQuestion WebSearch",
+      "requiredToolsAuthRuntime": [
+        "Plan/design doc; scope/mode decision; full deep-review installed section; relevant project evidence"
+      ],
+      "sideEffectsAndGates": [
+        "Plan/source review and local report state only; owner delegation covers routine decisions, never merge/paid providers.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [
+        {
+          "path": "sections/checklist.md"
+        },
+        {
+          "path": "sections/review-sections.md"
+        }
+      ],
+      "sourceSha256": "616198f1bf66a4e6122b7f29697fd4820cbe008f13a157e1cc1d70402a01ba65"
+    },
+    {
+      "canonicalName": "plan-design-review",
+      "sourcePath": "plan-design-review/SKILL.md.tmpl",
+      "sourceInstructionPath": "plan-design-review/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "plan-design-review",
+      "codexFacingDisplayName": "gstack-plan-design-review",
+      "installedPath": ".agents/skills/gstack-plan-design-review",
+      "metadataPath": ".agents/skills/gstack-plan-design-review/agents/openai.yaml",
+      "purposeAndTrigger": "Designer's eye plan review — interactive, like CEO and Eng review. Rates each design dimension 0-10, explains what would make it a 10, then fixes the plan to get there. Works in plan mode. For live site visual audits, use /design-review. Use when asked to \"review the design plan\" or \"design critique\". Proactively suggest when the user has a plan with UI/UX components that should be reviewed before implementation. (gstack)",
+      "explicitTriggers": "design plan review review ux plan check design decisions",
+      "upstreamAllowedTools": "Read Edit Grep Glob Bash AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Plan with UI scope; design system/source audit; seven inlined design passes; optional mockup generation provider"
+      ],
+      "sideEffectsAndGates": [
+        "Plan/source review and local report state only; owner delegation covers routine decisions, never merge/paid providers.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "1361350d5b96ac12f4ad33511490b4b40c26147ad0c0a6f0b7e19bb48ed384c4"
+    },
+    {
+      "canonicalName": "plan-devex-review",
+      "sourcePath": "plan-devex-review/SKILL.md.tmpl",
+      "sourceInstructionPath": "plan-devex-review/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "plan-devex-review",
+      "codexFacingDisplayName": "gstack-plan-devex-review",
+      "installedPath": ".agents/skills/gstack-plan-devex-review",
+      "metadataPath": ".agents/skills/gstack-plan-devex-review/agents/openai.yaml",
+      "purposeAndTrigger": "Interactive developer experience plan review. Explores developer personas, benchmarks against competitors, designs magical moments, and traces friction points before scoring. Three modes: DX EXPANSION (competitive advantage), DX POLISH (bulletproof every touchpoint), DX TRIAGE (critical gaps only). Use when asked to \"DX review\", \"developer experience audit\", \"devex review\", or \"API design review\". Proactively suggest when the user has a plan for developer-facing products (APIs, CLIs, SDKs, libraries, platforms, docs). (gstack)",
+      "explicitTriggers": "developer experience review dx plan review check developer onboarding",
+      "upstreamAllowedTools": "Read Edit Grep Glob Bash AskUserQuestion WebSearch",
+      "requiredToolsAuthRuntime": [
+        "Developer-facing scope/applicability gate; persona and journey; eight inlined DX passes; docs/CLI evidence"
+      ],
+      "sideEffectsAndGates": [
+        "Plan/source review and local report state only; owner delegation covers routine decisions, never merge/paid providers.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "c440f8283bbcdb4b3153f01e280491660182890b2f164f7c642971aa8a2f0a66"
+    },
+    {
+      "canonicalName": "plan-eng-review",
+      "sourcePath": "plan-eng-review/SKILL.md.tmpl",
+      "sourceInstructionPath": "plan-eng-review/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "plan-eng-review",
+      "codexFacingDisplayName": "gstack-plan-eng-review",
+      "installedPath": ".agents/skills/gstack-plan-eng-review",
+      "metadataPath": ".agents/skills/gstack-plan-eng-review/agents/openai.yaml",
+      "purposeAndTrigger": "Eng manager-mode plan review. Lock in the execution plan — architecture, data flow, diagrams, edge cases, test coverage, performance. Walks through issues interactively with opinionated recommendations. Use when asked to \"review the architecture\", \"engineering review\", or \"lock in the plan\". Proactively suggest when the user has a plan or design doc and is about to start coding — to catch architecture issues before implementation. (gstack)",
+      "explicitTriggers": "review architecture eng plan review check the implementation plan",
+      "upstreamAllowedTools": "Read Write Grep Glob AskUserQuestion Bash WebSearch",
+      "requiredToolsAuthRuntime": [
+        "Plan and actual architecture/source; design context; scope gate; test/failure/dataflow review; recovery mapping"
+      ],
+      "sideEffectsAndGates": [
+        "Plan/source review and local report state only; owner delegation covers routine decisions, never merge/paid providers.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "2522b2f3e2133cf52d3e8071e4bddea0bafdf25772e4c831749c4c962f293061"
+    },
+    {
+      "canonicalName": "plan-tune",
+      "sourcePath": "plan-tune/SKILL.md.tmpl",
+      "sourceInstructionPath": "plan-tune/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "plan-tune",
+      "codexFacingDisplayName": "gstack-plan-tune",
+      "installedPath": ".agents/skills/gstack-plan-tune",
+      "metadataPath": ".agents/skills/gstack-plan-tune/agents/openai.yaml",
+      "purposeAndTrigger": "Self-tuning question sensitivity + developer psychographic for gstack (v1: observational). Review which AskUserQuestion prompts fire across gstack skills, set per-question preferences (never-ask / always-ask / ask-only-for-one-way), inspect the dual-track profile (what you declared vs what your behavior suggests), and enable/disable question tuning. Conversational interface — no CLI syntax required.  Use when asked to \"tune questions\", \"stop asking me that\", \"too many questions\", \"show my profile\", \"what questions have I been asked\", \"show my vibe\", \"developer profile\", or \"turn off question tuning\". (gstack)  Proactively suggest when the user says the same gstack question has come up before, or when they explicitly override a recommendation for the Nth time.",
+      "explicitTriggers": "tune questions stop asking me that too many questions show my profile show my vibe developer profile turn off question tuning",
+      "upstreamAllowedTools": "Bash Read Write Edit AskUserQuestion Glob Grep",
+      "requiredToolsAuthRuntime": [
+        "Explicit tuning consent; question registry and profile/log helpers; no profile enabled in audit"
+      ],
+      "sideEffectsAndGates": [
+        "Consent before enabling profile/tuning; edits question preferences/log state; no silent global settings change.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "5554a4306af14fb7d69f5d6bffd5351dfd77d817d21492cb10bc36352d1df5d7"
+    },
+    {
+      "canonicalName": "qa",
+      "sourcePath": "qa/SKILL.md.tmpl",
+      "sourceInstructionPath": "qa/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "qa",
+      "codexFacingDisplayName": "gstack-qa",
+      "installedPath": ".agents/skills/gstack-qa",
+      "metadataPath": ".agents/skills/gstack-qa/agents/openai.yaml",
+      "purposeAndTrigger": "Fix browser/API/CLI/job/worker/webhook bugs. Commit verified fixes atomically. Use when asked to \"qa\", \"QA\", \"test this site\", \"find bugs\", \"test and fix\", or \"fix what's broken\". Proactively suggest when the user says a feature is ready for testing or asks \"does this work?\". Three tiers: Quick (critical/high only), Standard (+ medium), Exhaustive (+ cosmetic). Produces contract outcomes or browser health scores, fix evidence, and a ship-readiness summary. For report-only mode, use /qa-only. (gstack)",
+      "explicitTriggers": "qa test this find bugs on site test the site",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep AskUserQuestion WebSearch",
+      "requiredToolsAuthRuntime": [
+        "Authorized browser/system surface; exact installed scope/setup/exploratory/verification/test-bootstrap sections; browser or harness; actual repro before fix"
+      ],
+      "sideEffectsAndGates": [
+        "Fix-enabled QA; reproduce, regression test before repair, verified atomic fixes; no destructive/external probes.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [
+        {
+          "path": "sections/browser-setup.md"
+        },
+        {
+          "path": "sections/browser-verify.md"
+        },
+        {
+          "path": "sections/exploratory.md"
+        },
+        {
+          "path": "sections/qa-patterns.md"
+        },
+        {
+          "path": "sections/scope.md"
+        },
+        {
+          "path": "sections/system-functional.md"
+        },
+        {
+          "path": "sections/test-bootstrap.md"
+        }
+      ],
+      "sourceSha256": "fb39c88ec68ce3143fda85e8ef119aac6fbb4051ad826c0528f2518ce331d2ba"
+    },
+    {
+      "canonicalName": "qa-only",
+      "sourcePath": "qa-only/SKILL.md.tmpl",
+      "sourceInstructionPath": "qa-only/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "qa-only",
+      "codexFacingDisplayName": "gstack-qa-only",
+      "installedPath": ".agents/skills/gstack-qa-only",
+      "metadataPath": ".agents/skills/gstack-qa-only/agents/openai.yaml",
+      "purposeAndTrigger": "Report browser/API/CLI/job/worker/webhook bugs. Produces a structured report with contract evidence or browser scores and repro steps — but never fixes anything. Use when asked to \"just report bugs\", \"qa report only\", or \"test but don't fix\". For the full test-fix-verify loop, use /qa instead. Proactively suggest when the user wants a bug report without any code changes. (gstack)",
+      "explicitTriggers": "qa report only just report bugs test but dont fix",
+      "upstreamAllowedTools": "Bash Read Write AskUserQuestion WebSearch",
+      "requiredToolsAuthRuntime": [
+        "Same selected browser/system surface and neighboring qa setup; installed reporting/exploratory sections; report formatter; no fixes"
+      ],
+      "sideEffectsAndGates": [
+        "Report-only; no application edits; an alternative to qa rather than a second mandatory independent run.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [
+        {
+          "path": "sections/exploratory.md"
+        },
+        {
+          "path": "sections/reporting.md"
+        }
+      ],
+      "sourceSha256": "c5103a9f9d9e4812cf06e4004f65db88380671e93c90edde01d0851d33fb19f4"
+    },
+    {
+      "canonicalName": "retro",
+      "sourcePath": "retro/SKILL.md.tmpl",
+      "sourceInstructionPath": "retro/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "retro",
+      "codexFacingDisplayName": "gstack-retro",
+      "installedPath": ".agents/skills/gstack-retro",
+      "metadataPath": ".agents/skills/gstack-retro/agents/openai.yaml",
+      "purposeAndTrigger": "Weekly engineering retrospective. Analyzes commit history, work patterns, and code quality metrics with persistent history and trend tracking. Team-aware: breaks down per-person contributions with praise and growth areas. Use when asked to \"weekly retro\", \"what did we ship\", or \"engineering retrospective\". Proactively suggest at the end of a work week or sprint. (gstack)",
+      "explicitTriggers": "weekly retro what did we ship engineering retrospective",
+      "upstreamAllowedTools": "Bash Read Write Glob AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Git history and read-only remote fetch; bounded repository/window; first run has no comparable trend; writable local retro record"
+      ],
+      "sideEffectsAndGates": [
+        "Read-only Git metrics and local history write; fetch safe; no team message sending or repo-wide discovery beyond task.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "8c92208fb37b59bd01d530ff6514f0ad1fa6e4931f195ce4a5c968a8cf4f5b67"
+    },
+    {
+      "canonicalName": "review",
+      "sourcePath": "review/SKILL.md.tmpl",
+      "sourceInstructionPath": "review/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "review",
+      "codexFacingDisplayName": "gstack-review",
+      "installedPath": ".agents/skills/gstack-review",
+      "metadataPath": ".agents/skills/gstack-review/agents/openai.yaml",
+      "purposeAndTrigger": "Pre-landing PR review. Analyzes diff against the base branch for SQL safety, LLM trust boundary violations, conditional side effects, and other structural issues. Use when asked to \"review this PR\", \"code review\", \"pre-landing review\", or \"check my diff\". Proactively suggest when the user is about to merge or land code changes. (gstack)",
+      "explicitTriggers": "review this pr code review check my diff pre-landing review",
+      "upstreamAllowedTools": "Bash Read Edit Write Grep Glob Agent AskUserQuestion WebSearch",
+      "requiredToolsAuthRuntime": [
+        "Actual diff against base; checklist and shared-code proof; authenticated gh for existing reviews optional; independent voices if available; QA assets for runtime review"
+      ],
+      "sideEffectsAndGates": [
+        "Fix-first AUTO-FIX within scope; ask-items follow owner authorization; independent tools must be actually invoked or marked unavailable, not renamed native reviews.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "2ba2500452dab83fafe13a3a04210efd48cafb47437921da29999f168b0454cd"
+    },
+    {
+      "canonicalName": "scrape",
+      "sourcePath": "scrape/SKILL.md.tmpl",
+      "sourceInstructionPath": "scrape/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "scrape",
+      "codexFacingDisplayName": "gstack-scrape",
+      "installedPath": ".agents/skills/gstack-scrape",
+      "metadataPath": ".agents/skills/gstack-scrape/agents/openai.yaml",
+      "purposeAndTrigger": "Pull data from a web page through the Aside browser — your real, already signed-in sessions. Read-only; returns one JSON document. Use when asked to \"scrape\", \"get data from\", \"pull\", \"extract from\", or \"what's on\" a page. (gstack)",
+      "explicitTriggers": "scrape this page get data from pull from extract from what is on",
+      "upstreamAllowedTools": "Bash Read AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Aside or consented browser read-only target; no personal session/cookie import; successful scrape provenance for future skillify"
+      ],
+      "sideEffectsAndGates": [
+        "Read-only page data extraction; real signed-in session use needs consent, forbidden by current personal-session boundary.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "ebf0b799d101a1b91fe08c059b74062b23a6cfdfccaa1f5a517994a41eb0ae5c"
+    },
+    {
+      "canonicalName": "setup-browser-cookies",
+      "sourcePath": "setup-browser-cookies/SKILL.md.tmpl",
+      "sourceInstructionPath": "setup-browser-cookies/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "setup-browser-cookies",
+      "codexFacingDisplayName": "gstack-setup-browser-cookies",
+      "installedPath": ".agents/skills/gstack-setup-browser-cookies",
+      "metadataPath": ".agents/skills/gstack-setup-browser-cookies/agents/openai.yaml",
+      "purposeAndTrigger": "Import cookies from your real Chromium browser into the headless browse session. Opens an interactive picker UI where you select which cookie domains to import. Use before QA testing authenticated pages. Use when asked to \"import cookies\", \"login to the site\", or \"authenticate the browser\". (gstack)",
+      "explicitTriggers": "import browser cookies login to test site setup authenticated session",
+      "upstreamAllowedTools": "Bash Read AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Real Chromium browser cookie store; explicit chosen browser/domains and import consent; unavailable personal-session access not permitted"
+      ],
+      "sideEffectsAndGates": [
+        "Reads personal cookie stores and imports selected domains; specifically unauthorized here.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "10524607b4685ef339321a849a07e1eaf185024b61d98a389226200c11c9934a"
+    },
+    {
+      "canonicalName": "setup-deploy",
+      "sourcePath": "setup-deploy/SKILL.md.tmpl",
+      "sourceInstructionPath": "setup-deploy/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "setup-deploy",
+      "codexFacingDisplayName": "gstack-setup-deploy",
+      "installedPath": ".agents/skills/gstack-setup-deploy",
+      "metadataPath": ".agents/skills/gstack-setup-deploy/agents/openai.yaml",
+      "purposeAndTrigger": "Configure deployment settings for /land-and-deploy. Detects your deploy platform (Fly.io, Render, Vercel, Netlify, Heroku, GitHub Actions, custom), production URL, health check endpoints, and deploy status commands. Writes the configuration to CLAUDE.md so all future deploys are automatic. Use when: \"setup deploy\", \"configure deployment\", \"set up land-and-deploy\", \"how do I deploy with gstack\", \"add deploy config\".",
+      "explicitTriggers": "configure deploy setup deployment set deploy platform",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Actual deploy platform config/read-only repository inspection; verified URLs/status commands; no new account/provider required"
+      ],
+      "sideEffectsAndGates": [
+        "Writes deployment config/instructions; inspection is allowed but do not set automatic production/merge behavior.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "7d3dd15dec7f0d1b2d432ba074ba761a34c396ce5fae7402b01fca86afcf6b74"
+    },
+    {
+      "canonicalName": "setup-gbrain",
+      "sourcePath": "setup-gbrain/SKILL.md.tmpl",
+      "sourceInstructionPath": "setup-gbrain/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "setup-gbrain",
+      "codexFacingDisplayName": "gstack-setup-gbrain",
+      "installedPath": ".agents/skills/gstack-setup-gbrain",
+      "metadataPath": ".agents/skills/gstack-setup-gbrain/agents/openai.yaml",
+      "purposeAndTrigger": "Set up gbrain for this coding agent: install the CLI, initialize a local PGLite or Supabase brain, register MCP, capture per-remote trust policy. One command from zero to \"gbrain is running, and this agent can call it.\" Use when: \"setup gbrain\", \"connect gbrain\", \"start gbrain\", \"install gbrain\", \"configure gbrain for this machine\". (gstack)",
+      "explicitTriggers": "setup gbrain install gbrain connect gbrain start gbrain configure gbrain",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Explicit GBrain integration consent; CLI install, local PGLite or Supabase/remote auth; MCP registration and per-remote trust policy; optional artifacts/transcript separate consent"
+      ],
+      "sideEffectsAndGates": [
+        "New memory/provider/MCP integration; artifacts and transcript upload independently gated; excluded by current integration limits.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "3febd46b2937df65242aa09fa8d306daf1bd7b689d4754fa256898012788d640"
+    },
+    {
+      "canonicalName": "ship",
+      "sourcePath": "ship/SKILL.md.tmpl",
+      "sourceInstructionPath": "ship/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "ship",
+      "codexFacingDisplayName": "gstack-ship",
+      "installedPath": ".agents/skills/gstack-ship",
+      "metadataPath": ".agents/skills/gstack-ship/agents/openai.yaml",
+      "purposeAndTrigger": "Ship workflow: detect + merge base branch, run tests, review diff, bump VERSION, update CHANGELOG, commit, push, create PR. Use when asked to \"ship\", \"deploy\", \"push to main\", \"create a PR\", \"merge and push\", or \"get it deployed\". Proactively invoke this skill (do NOT push/PR directly) when the user says code is ready, asks about deploying, wants to push code up, or asks to create a PR. (gstack)",
+      "explicitTriggers": "ship it create a pr push to main deploy this",
+      "upstreamAllowedTools": "Bash Read Write Edit Grep Glob Agent AskUserQuestion WebSearch",
+      "requiredToolsAuthRuntime": [
+        "Feature branch, base ref, relevant tests/build, exact review evidence and frozen candidate; git/gh auth; PR metadata; supported evidence helpers"
+      ],
+      "sideEffectsAndGates": [
+        "Merge-base synchronization, tests, version/changelog/docs/commit/push/PR and evidence binding; feature-branch publication allowed; no main merge, production promotion, unsupported provider gate bypass.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [
+        {
+          "path": "sections/adversarial.md"
+        },
+        {
+          "path": "sections/apple-release.md"
+        },
+        {
+          "path": "sections/changelog.md"
+        },
+        {
+          "path": "sections/documentation.md"
+        },
+        {
+          "path": "sections/greptile-early.md"
+        },
+        {
+          "path": "sections/greptile.md"
+        },
+        {
+          "path": "sections/handoff.md"
+        },
+        {
+          "path": "sections/measure.md"
+        },
+        {
+          "path": "sections/plan-completion.md"
+        },
+        {
+          "path": "sections/pr-body.md"
+        },
+        {
+          "path": "sections/review-army.md"
+        },
+        {
+          "path": "sections/shared-code-reuse.md"
+        },
+        {
+          "path": "sections/test-coverage.md"
+        },
+        {
+          "path": "sections/tests.md"
+        }
+      ],
+      "sourceSha256": "5aff5f84de41aa1c2488b112df97878aa84cc435e80146eedbc179b6accb6842"
+    },
+    {
+      "canonicalName": "skillify",
+      "sourcePath": "skillify/SKILL.md.tmpl",
+      "sourceInstructionPath": "skillify/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "skillify",
+      "codexFacingDisplayName": "gstack-skillify",
+      "installedPath": ".agents/skills/gstack-skillify",
+      "metadataPath": ".agents/skills/gstack-skillify/agents/openai.yaml",
+      "purposeAndTrigger": "Codify the most recent successful /scrape flow into a permanent browser-skill on disk. Future /scrape calls with the same intent run the codified script in ~200ms instead of re-driving the page. Walks back through the conversation, synthesizes script.ts + script.test.ts + fixture, runs the test in a temp dir, and asks before committing. Use when asked to \"skillify\", \"codify\", \"save this scrape\", or \"make this permanent\". (gstack)",
+      "explicitTriggers": "skillify codify this scrape save this scrape make this permanent",
+      "upstreamAllowedTools": "Bash Read Write AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Most recent successful scrape provenance; canonical browser SDK; staged script/test/fixture; native skill test runtime; explicit commit gate"
+      ],
+      "sideEffectsAndGates": [
+        "Writes persistent browser skill only after provenance/test gate; final commit approval required; no scrape requested.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "e344f7111b40535c1466d994ede0e154b395dc28d9036393dcb4754e3ac9fca9"
+    },
+    {
+      "canonicalName": "spec",
+      "sourcePath": "spec/SKILL.md.tmpl",
+      "sourceInstructionPath": "spec/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "spec",
+      "codexFacingDisplayName": "gstack-spec",
+      "installedPath": ".agents/skills/gstack-spec",
+      "metadataPath": ".agents/skills/gstack-spec/agents/openai.yaml",
+      "purposeAndTrigger": "Turn vague intent into a precise, executable spec in five phases. Files the issue, optionally spawns a Claude Code agent in a fresh worktree, and lets /ship close the source issue on merge. Use when asked to \"spec this out\", \"file an issue\", \"write up a ticket\", \"make this a GitHub issue\", or \"turn this into a backlog item\". (gstack)",
+      "explicitTriggers": "spec this out file an issue write up a ticket turn this into an issue make this a github issue turn this into a backlog item",
+      "upstreamAllowedTools": "Bash Read Grep Glob AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Intent and source; GitHub/GitLab issue permission; draft review and final issue filing gate; optional Claude/worktree handoff unavailable/unrequested"
+      ],
+      "sideEffectsAndGates": [
+        "Files external issue and may spawn Claude agent in fresh worktree; no issue/spawn requested, owner forbids unsolicited worktree.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "0ac1787fba16754b2695bfed05e3f8827e1cd1d7fa1717a74d2d492bbb96a95c"
+    },
+    {
+      "canonicalName": "sync-gbrain",
+      "sourcePath": "sync-gbrain/SKILL.md.tmpl",
+      "sourceInstructionPath": "sync-gbrain/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "sync-gbrain",
+      "codexFacingDisplayName": "gstack-sync-gbrain",
+      "installedPath": ".agents/skills/gstack-sync-gbrain",
+      "metadataPath": ".agents/skills/gstack-sync-gbrain/agents/openai.yaml",
+      "purposeAndTrigger": "Keep gbrain current with this repo's code and refresh agent search guidance in CLAUDE.md. Wraps the gstack-gbrain-sync orchestrator with state probing, native code-surface registration, capability checks, and a verdict block. Re-runnable, idempotent. Use when: \"sync gbrain\", \"refresh gbrain\", \"re-index this repo\", \"gbrain search isn't finding things\". (gstack)",
+      "explicitTriggers": "sync gbrain refresh gbrain reindex repo update gbrain",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Existing installed authorized GBrain configuration and trust/ingest consent; sync and doctor helpers; indexing provider ready"
+      ],
+      "sideEffectsAndGates": [
+        "Indexes/uploads configured source under trust policy; transcript consent required; no configured approved integration to sync.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "8e4e2b39d2266ad361c27fce8ff26ad537ffbb2eefe3730ea1778faf39d982a4"
+    },
+    {
+      "canonicalName": "test-audit",
+      "sourcePath": "test-audit/SKILL.md.tmpl",
+      "sourceInstructionPath": "test-audit/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "test-audit",
+      "codexFacingDisplayName": "gstack-test-audit",
+      "installedPath": ".agents/skills/gstack-test-audit",
+      "metadataPath": ".agents/skills/gstack-test-audit/agents/openai.yaml",
+      "purposeAndTrigger": "Find low-value or duplicate tests and the test-only code they keep alive. Report-only unless you approve a batch. Use for /test-audit. (gstack)",
+      "explicitTriggers": "audit the test suite find low-value tests prune useless tests",
+      "upstreamAllowedTools": "Bash Read Write Edit Glob Grep AskUserQuestion",
+      "requiredToolsAuthRuntime": [
+        "Test source and production callers; meaningful invariant/repro evidence; report/sidecar output; explicit approval before deletion batch"
+      ],
+      "sideEffectsAndGates": [
+        "Report-only unless explicit approved batch; no test deletions solely to improve numbers.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "c2571ce79bb689b0eae34d7446755324d67536b082fe4c5301d8d30860ec2f25"
+    },
+    {
+      "canonicalName": "unfreeze",
+      "sourcePath": "unfreeze/SKILL.md.tmpl",
+      "sourceInstructionPath": "unfreeze/SKILL.md",
+      "codexSupported": true,
+      "codexFrontmatterName": "unfreeze",
+      "codexFacingDisplayName": "gstack-unfreeze",
+      "installedPath": ".agents/skills/gstack-unfreeze",
+      "metadataPath": ".agents/skills/gstack-unfreeze/agents/openai.yaml",
+      "purposeAndTrigger": "Clear the freeze boundary set by /freeze, allowing edits to all directories again. Use when you want to widen edit scope without ending the session. Use when asked to \"unfreeze\", \"unlock edits\", \"remove freeze\", or \"allow all edits\". (gstack)",
+      "explicitTriggers": "unfreeze edits unlock all directories remove edit restrictions",
+      "upstreamAllowedTools": "Bash Read",
+      "requiredToolsAuthRuntime": [
+        "Existing shared freeze boundary and helper; no active freeze identified for this audit"
+      ],
+      "sideEffectsAndGates": [
+        "Clears existing persistent scope through shared helper, not by direct deletion.",
+        "Shared startup may write local checkpoints/learnings; project telemetry, updates, outside-model reviews and artifact sync remain disabled."
+      ],
+      "supportingSections": [],
+      "sourceSha256": "da05ec4a9f1f536d676e7751f907ae407dd8325babe76d5342f6701772e9c24c"
+    }
+  ]
+}
