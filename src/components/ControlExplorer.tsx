@@ -1,42 +1,80 @@
-import { useRef, useState } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import {
   ArrowUpRight,
   Check,
-  ChevronRight,
   Info,
   Search,
   SlidersHorizontal,
 } from 'lucide-react'
-import { controls, frameworks } from '../data/content'
-import { filterControls } from '../data/control-search'
-import type { ExplanationMode } from '../types/content'
+import {
+  explorerCatalog,
+  frameworks,
+  glossaryTerms,
+  referenceControls,
+} from '../data/content'
+import {
+  createLessonUrl,
+  effectiveCollection,
+  lessonIdentity,
+  lessonIdentityKey,
+} from '../state/explorer-state'
+import type { ExplorerController } from '../state/useExplorerState'
 import { LearningModes } from './LearningModes'
+import { ContextTerms } from './ContextTerms'
+import { ShareLesson } from './ShareLesson'
+import { LearningPractice } from './LearningPractice'
+import { ControlResults } from './ControlResults'
+import { ReferenceDetail } from './ReferenceDetail'
 
 interface ControlExplorerProps {
-  mode: ExplanationMode
-  onModeChange: (mode: ExplanationMode) => void
+  controller: ExplorerController
 }
 
-export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
+export function ControlExplorer({ controller }: ControlExplorerProps) {
   const searchInput = useRef<HTMLInputElement>(null)
-  const [query, setQuery] = useState('')
-  const [frameworkId, setFrameworkId] = useState('cmmc')
-  const [family, setFamily] = useState('')
-  const [level, setLevel] = useState('')
-  const [selectedId, setSelectedId] = useState(controls[0]?.id)
-  const framework = frameworks.find((item) => item.id === frameworkId)
-  const frameworkControls = controls.filter(
-    (control) => control.frameworkId === frameworkId,
-  )
-  const results = filterControls(controls, {
-    query,
-    frameworkId,
-    family,
-    level,
+  const focusLesson = useRef(false)
+  const lessonHeading = useRef<HTMLHeadingElement>(null)
+  const focusRecoveredSearch = useRef(false)
+
+  useLayoutEffect(() => {
+    if (
+      focusRecoveredSearch.current &&
+      searchInput.current &&
+      !searchInput.current.disabled
+    ) {
+      focusRecoveredSearch.current = false
+      searchInput.current.focus()
+    }
   })
+  const {
+    parsed,
+    resolution,
+    results,
+    catalogFramework: framework,
+    dispatch,
+  } = controller
+  const ready = parsed.kind === 'ready' ? parsed.state : null
+  const filters = ready?.filters ?? {
+    catalog: 'cmmc',
+    query: '',
+    family: '',
+    level: '',
+  }
+  const mode = ready?.mode ?? 'beginner'
   const selected =
-    results.find((control) => control.id === selectedId) ?? results[0]
-  const explanation = selected?.explanations[mode]
+    resolution?.kind === 'lesson' ? resolution.control : undefined
+  const collection = effectiveCollection(filters)
+  const explanation =
+    selected?.contentKind === 'educational-example'
+      ? selected.explanations[mode]
+      : undefined
+  const frameworkControls = explorerCatalog.controls.filter(
+    (control) =>
+      control.frameworkId === filters.catalog &&
+      (collection === 'references'
+        ? control.contentKind === 'official-reference'
+        : control.contentKind === 'educational-example'),
+  )
   const families = [
     ...new Map(
       frameworkControls.map((control) => [control.family, control.familyName]),
@@ -49,12 +87,25 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
       ),
     ),
   ]
+  const selectedKey = selected
+    ? lessonIdentityKey(lessonIdentity(selected))
+    : null
+  const unavailable =
+    parsed.kind === 'invalid' || resolution?.kind === 'not-found'
+  const planned =
+    resolution?.kind === 'planned-framework'
+      ? resolution.framework
+      : framework?.status === 'planned'
+        ? framework
+        : null
 
-  function resetFilters() {
-    setQuery('')
-    setFamily('')
-    setLevel('')
+  function clearFilters() {
+    dispatch({ type: 'clear-filters' })
     searchInput.current?.focus()
+  }
+  function recover() {
+    focusRecoveredSearch.current = true
+    dispatch({ type: 'recover-discovery' })
   }
 
   return (
@@ -67,11 +118,32 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
         <div>
           <p className="section-caption">Explore the idea</p>
           <h2 id="explorer-heading">Control Explorer</h2>
-          <p>Start with one draft example. Find the explanation that clicks.</p>
+          <p>
+            Read a draft explanation or explore the versioned source references.
+          </p>
         </div>
-        <span className="status-badge">Early preview · 1 draft example</span>
+        <span className="status-badge">
+          {referenceControls.length} CMMC source references · 1 draft lesson
+        </span>
       </div>
-
+      {controller.historyStatus === 'failed' && (
+        <p className="explorer-notice" role="alert">
+          Your browser couldn’t update the address. You can keep exploring, but
+          refresh and Back may not preserve these changes.
+        </p>
+      )}
+      {parsed.kind === 'ready' && parsed.notices.length > 0 && (
+        <p className="explorer-notice" role="status">
+          {parsed.notices.includes('mode-reset') &&
+            (selected?.contentKind === 'official-reference'
+              ? 'That learning mode is unavailable; displaying the source reference. '
+              : 'That learning mode is unavailable; showing Beginner. ')}
+          {parsed.notices.includes('family-reset') &&
+            'That family filter is unavailable and was cleared. '}
+          {parsed.notices.includes('level-reset') &&
+            'That level filter is unavailable and was cleared.'}
+        </p>
+      )}
       <div className="explorer-shell">
         <div className="explorer-toolbar">
           <label className="search-field">
@@ -82,21 +154,45 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
                 type="search"
                 ref={searchInput}
                 placeholder="Search a topic or control ID…"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                value={filters.query}
+                disabled={parsed.kind === 'invalid'}
+                onChange={(event) =>
+                  dispatch({ type: 'set-query', query: event.target.value })
+                }
               />
             </span>
+          </label>
+          <label className="framework-field collection-field">
+            <span>Content collection</span>
+            <select
+              value={collection}
+              disabled={parsed.kind === 'invalid'}
+              onChange={(event) =>
+                dispatch({
+                  type: 'set-collection',
+                  collection:
+                    event.target.value === 'references'
+                      ? 'references'
+                      : 'lessons',
+                })
+              }
+            >
+              <option value="lessons">Draft explanations</option>
+              <option value="references">Source references</option>
+            </select>
           </label>
           <label className="framework-field">
             <span>Framework</span>
             <select
-              value={frameworkId}
-              onChange={(event) => {
-                setFrameworkId(event.target.value)
-                setFamily('')
-                setLevel('')
-              }}
+              value={filters.catalog}
+              disabled={parsed.kind === 'invalid'}
+              onChange={(event) =>
+                dispatch({ type: 'set-catalog', catalog: event.target.value })
+              }
             >
+              {!frameworks.some((item) => item.id === filters.catalog) && (
+                <option value={filters.catalog}>Unavailable framework</option>
+              )}
               {frameworks.map((item) => (
                 <option value={item.id} key={item.id}>
                   {item.shortName}
@@ -106,7 +202,6 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
             </select>
           </label>
         </div>
-
         <div className="explorer-body">
           <aside
             className="control-sidebar"
@@ -119,8 +214,11 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
             <label className="filter-field">
               Control family
               <select
-                value={family}
-                onChange={(event) => setFamily(event.target.value)}
+                value={filters.family}
+                disabled={parsed.kind === 'invalid'}
+                onChange={(event) =>
+                  dispatch({ type: 'set-family', family: event.target.value })
+                }
               >
                 <option value="">All families</option>
                 {families.map(([id, name]) => (
@@ -130,73 +228,155 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
                 ))}
               </select>
             </label>
-            <label className="filter-field">
-              Level
-              <select
-                value={level}
-                onChange={(event) => setLevel(event.target.value)}
-              >
-                <option value="">All levels</option>
-                {levels.map((item) => (
-                  <option key={item} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <div className="result-count" role="status">
-              {results.length} {results.length === 1 ? 'example' : 'examples'}{' '}
+            {levels.length > 0 && (
+              <label className="filter-field">
+                Level
+                <select
+                  value={filters.level}
+                  disabled={parsed.kind === 'invalid'}
+                  onChange={(event) =>
+                    dispatch({ type: 'set-level', level: event.target.value })
+                  }
+                >
+                  <option value="">All levels</option>
+                  {levels.map((item) => (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
+            <div
+              className="result-count"
+              role="status"
+              aria-label="Control search results"
+            >
+              {results.length}{' '}
+              {collection === 'references'
+                ? results.length === 1
+                  ? 'reference'
+                  : 'references'
+                : results.length === 1
+                  ? 'example'
+                  : 'examples'}{' '}
               found
             </div>
-            <div className="control-list">
-              {results.map((control) => (
-                <button
-                  type="button"
-                  key={control.id}
-                  className={`control-item ${selected?.id === control.id ? 'is-selected' : ''}`}
-                  aria-pressed={selected?.id === control.id}
-                  onClick={() => setSelectedId(control.id)}
-                >
-                  <span className="control-code">{control.id}</span>
-                  <span className="control-item-title">
-                    {control.title}
-                    <ChevronRight size={16} aria-hidden="true" />
-                  </span>
-                  <span className="control-item-meta">
-                    {control.familyName} <span>·</span> Draft
-                  </span>
-                </button>
-              ))}
-            </div>
+            <ControlResults
+              key={results
+                .map((control) => lessonIdentityKey(lessonIdentity(control)))
+                .join('|')}
+              results={results}
+              selectedKey={selectedKey}
+              onSelect={(control) => {
+                const key = lessonIdentityKey(lessonIdentity(control))
+                if (selectedKey === key) {
+                  lessonHeading.current?.focus()
+                  return
+                }
+                focusLesson.current = true
+                dispatch({
+                  type: 'select-lesson',
+                  identity: lessonIdentity(control),
+                })
+              }}
+            />
             <p className="sidebar-note">
-              <Info size={15} aria-hidden="true" /> A small starting point, not
-              a complete control catalog.
+              <Info size={15} aria-hidden="true" />
+              {collection === 'references'
+                ? 'September 2024 CMMC v2.13 snapshot. Teaching explanations for these references are pending.'
+                : 'One draft lesson. The source collection contains 149 versioned CMMC references.'}
             </p>
           </aside>
-
-          {selected && explanation ? (
+          {selected?.contentKind === 'educational-example' &&
+          explanation &&
+          resolution?.kind === 'lesson' ? (
             <article className="control-detail" aria-labelledby="control-title">
+              <button
+                type="button"
+                className="back-to-results inline-action"
+                onClick={() => {
+                  dispatch({ type: 'back-to-discovery' })
+                  searchInput.current?.focus()
+                }}
+              >
+                Back to results
+              </button>
               <div className="control-kicker">
                 <span>
-                  {[framework?.shortName, selected.level, selected.familyName]
+                  {[
+                    resolution.framework.shortName,
+                    selected.level,
+                    selected.familyName,
+                  ]
                     .filter(Boolean)
                     .join(' / ')}
                 </span>
                 <span className="draft-tag">Draft educational example</span>
               </div>
-              <h3 id="control-title">{selected.title}</h3>
-              <p className="control-reference">{selected.id}</p>
+              {resolution.excludedByFilters && (
+                <div className="lesson-mismatch">
+                  <p>This lesson is outside the current results.</p>
+                  <button
+                    type="button"
+                    className="inline-action"
+                    onClick={() => dispatch({ type: 'show-lesson-in-results' })}
+                  >
+                    Show this lesson in results
+                  </button>
+                </div>
+              )}
+              <div className="lesson-heading-row">
+                <div>
+                  <h3
+                    id="control-title"
+                    tabIndex={-1}
+                    ref={(node) => {
+                      lessonHeading.current = node
+                      if (node && focusLesson.current) {
+                        focusLesson.current = false
+                        node.focus()
+                      }
+                    }}
+                  >
+                    {selected.title}
+                  </h3>
+                  <p className="control-reference">{selected.id}</p>
+                  <p className="edition-context">
+                    Project edition: {resolution.edition.title}
+                  </p>
+                </div>
+                <ShareLesson
+                  url={createLessonUrl(
+                    lessonIdentity(selected),
+                    mode,
+                    new URL(window.location.href),
+                  )}
+                />
+              </div>
               <div className="concept-box">
                 <span className="small-label">The concept, simplified</span>
                 <p>{selected.concept}</p>
                 <span>
-                  Paraphrase from our README; not the official requirement.
+                  {selected.sources.some(
+                    (source) => source.kind === 'project-readme',
+                  )
+                    ? 'Paraphrase from our README; not the official requirement.'
+                    : 'Educational interpretation; not the official requirement.'}
                 </span>
               </div>
+              <ContextTerms
+                key={selectedKey}
+                termIds={selected.glossaryTermIds}
+                terms={glossaryTerms}
+                fallbackFocusId="control-title"
+              />
               <p className="mode-label">Choose your perspective</p>
               <LearningModes
                 value={mode}
-                onChange={onModeChange}
+                onChange={(nextMode) =>
+                  dispatch({ type: 'change-mode', mode: nextMode })
+                }
                 idPrefix="control"
               />
               <div
@@ -226,9 +406,11 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
                   <span>{explanation.takeaway}</span>
                 </p>
               </div>
+              <LearningPractice lesson={lessonIdentity(selected)} />
               <details className="source-details">
-                <summary>Sources & content context</summary>
+                <summary>Sources &amp; content context</summary>
                 <div className="source-content">
+                  <p>{resolution.edition.versionContext}</p>
                   <p>{selected.versionContext}</p>
                   <ul>
                     {selected.sources.map((source) => (
@@ -242,7 +424,14 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
                           <ArrowUpRight size={14} aria-hidden="true" />
                           <span className="sr-only"> (opens in a new tab)</span>
                         </a>
-                        <span>{source.versionContext}</span>
+                        <span>
+                          {source.kind === 'project-readme'
+                            ? 'Project educational source'
+                            : source.kind === 'official-resource-index'
+                              ? 'Official resource index'
+                              : 'Official publication'}
+                          . {source.versionContext}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -250,41 +439,95 @@ export function ControlExplorer({ mode, onModeChange }: ControlExplorerProps) {
                 </div>
               </details>
             </article>
+          ) : selected?.contentKind === 'official-reference' &&
+            resolution?.kind === 'lesson' ? (
+            <ReferenceDetail
+              control={selected}
+              framework={resolution.framework}
+              edition={resolution.edition}
+              shareUrl={createLessonUrl(
+                lessonIdentity(selected),
+                mode,
+                new URL(window.location.href),
+              )}
+              excludedByFilters={resolution.excludedByFilters}
+              onBack={() => {
+                dispatch({ type: 'back-to-discovery' })
+                searchInput.current?.focus()
+              }}
+              onShowInResults={() =>
+                dispatch({ type: 'show-lesson-in-results' })
+              }
+              headingRef={(node) => {
+                lessonHeading.current = node
+                if (node && focusLesson.current) {
+                  focusLesson.current = false
+                  node.focus()
+                }
+              }}
+            />
           ) : (
             <div className="empty-state">
               <span className="empty-icon">
                 <Search size={30} aria-hidden="true" />
               </span>
               <h3>
-                {framework?.status === 'planned'
-                  ? `${framework.shortName} is on the roadmap.`
-                  : 'No matching examples yet.'}
+                {parsed.kind === 'invalid'
+                  ? 'This lesson link is invalid.'
+                  : resolution?.kind === 'not-found'
+                    ? 'This lesson isn’t available here.'
+                    : planned
+                      ? `${planned.shortName} is on the roadmap.`
+                      : results.length
+                        ? collection === 'references'
+                          ? 'Choose a source reference.'
+                          : 'Choose a draft example.'
+                        : collection === 'references'
+                          ? 'No matching references.'
+                          : 'No matching examples.'}
               </h3>
               <p>
-                {framework?.status === 'planned'
-                  ? 'This framework has no published content here yet. Try our CMMC draft to explore the learning experience.'
-                  : 'Try “access”, “authorized”, or “AC.L2-3.1.1”. This preview contains one draft example.'}
+                {unavailable
+                  ? 'This address doesn’t identify an available lesson. Browse the draft examples to choose where to begin.'
+                  : planned
+                    ? 'This framework has no published content here yet. Browse the available draft examples to explore the learning experience.'
+                    : results.length
+                      ? collection === 'references'
+                        ? 'Select a reference to read the attributed publication text. Teaching explanations are pending for these entries.'
+                        : 'Select an example from the results to begin reading. Your learning mode is kept as you browse.'
+                      : collection === 'references'
+                        ? 'Try a control identifier, topic, family or level in the September 2024 source snapshot.'
+                        : 'Try “access”, “authorized”, or “AC.L2-3.1.1”. This collection contains one draft example.'}
               </p>
-              <button
-                className="button button-primary"
-                type="button"
-                onClick={() => {
-                  resetFilters()
-                  setFrameworkId('cmmc')
-                }}
-              >
-                {framework?.status === 'planned'
-                  ? 'Explore the CMMC example'
-                  : 'Clear filters'}
-              </button>
+              {unavailable || planned ? (
+                <button
+                  className="button button-primary"
+                  type="button"
+                  onClick={recover}
+                >
+                  {planned
+                    ? 'Browse available examples'
+                    : 'Browse draft examples'}
+                </button>
+              ) : (
+                !results.length && (
+                  <button
+                    className="button button-primary"
+                    type="button"
+                    onClick={clearFilters}
+                  >
+                    Clear filters
+                  </button>
+                )
+              )}
             </div>
           )}
         </div>
       </div>
       <p className="explorer-disclaimer">
-        <Info size={14} aria-hidden="true" /> Learning material, not a
-        compliance checklist. Always consult the applicable official
-        requirements and assessment guidance.
+        <Info size={14} aria-hidden="true" />
+        Learning material, not a compliance checklist. Always consult the
+        applicable official requirements and assessment guidance.
       </p>
     </section>
   )

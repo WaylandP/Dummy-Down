@@ -23,7 +23,8 @@ Do not imply that a prototype contains comprehensive or reviewed control coverag
    `git switch -c feature/improve-control-search`.
 3. Run `npm ci`, make your change, and add a meaningful behavioral test when the
    change affects how the application works.
-4. Run `npm run typecheck`, `npm run lint`, `npm test`, and `npm run build`.
+4. Run `npm run typecheck`, `npm run lint`, `npm run format:check`, `npm test`,
+   and `npm run build`.
 5. Commit the change and open a pull request against `main` with a clear summary
    and validation results. Maintainers review and merge accepted contributions.
 
@@ -57,7 +58,16 @@ When proposing a control explanation:
 - Explain any uncertainty in the pull request. Passing application tests does not
   establish that regulatory content is accurate or complete.
 
-The initial CMMC example is draft educational content. Additional CMMC coverage
+The initial CMMC lesson and its fictional activity are draft educational content.
+The separate149-entry [source snapshot](docs/sources/cmmc-2-13-sep-2024.md) contains
+attributed publication quotations with page/version provenance. It is not149
+reviewed lessons. Preserve guide/model wording differences and the pinned source
+manifest; run the optional source verifier against matching local PDFs when
+changing imported records. Do not replace the Rev.2/February2021 baselines with a
+newer NIST catalog simply because it is newer. Separate a transcription check from
+qualified review of explanations and applicability.
+
+Additional CMMC teaching coverage
 and future frameworks require their own content work and review; adding a name to
 the framework model does not constitute support for that framework.
 

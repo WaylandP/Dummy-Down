@@ -1,7 +1,10 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it } from 'vitest'
+import { act, render as renderView } from '@testing-library/react'
+import { beforeEach, describe, expect, it } from 'vitest'
 import App from './App'
+
+beforeEach(() => window.history.replaceState(null, '', '/'))
 
 function renderApp() {
   const user = userEvent.setup()
@@ -22,7 +25,9 @@ describe('Control Explorer learning experience', () => {
         name: /Navigate the\s*complexity\./,
       }),
     ).toBeVisible()
-    expect(explorer.getByRole('status')).toHaveTextContent('1 example found')
+    expect(
+      explorer.getByRole('status', { name: 'Control search results' }),
+    ).toHaveTextContent('1 example found')
     expect(
       explorer.getByRole('button', {
         name: /AC\.L2-3\.1\.1.*Authorized access/,
@@ -136,23 +141,38 @@ describe('Control Explorer learning experience', () => {
     const search = explorer.getByRole('searchbox', { name: 'Search controls' })
 
     await user.type(search, 'AC.L2-3.1.1')
-    expect(explorer.getByRole('status')).toHaveTextContent('1 example found')
+    expect(
+      explorer.getByRole('status', { name: 'Control search results' }),
+    ).toHaveTextContent('1 example found')
     expect(
       explorer.getByRole('heading', { name: 'Authorized access' }),
     ).toBeVisible()
 
     await user.clear(search)
     await user.type(search, 'unavailable control')
-    expect(explorer.getByRole('status')).toHaveTextContent('0 examples found')
     expect(
-      explorer.getByRole('heading', { name: 'No matching examples yet.' }),
+      explorer.getByRole('status', { name: 'Control search results' }),
+    ).toHaveTextContent('0 examples found')
+    expect(
+      explorer.getByRole('heading', { name: 'No matching examples.' }),
     ).toBeVisible()
     expect(explorer.queryByRole('tabpanel')).not.toBeInTheDocument()
 
     await user.click(explorer.getByRole('button', { name: 'Clear filters' }))
     expect(search).toHaveValue('')
     expect(search).toHaveFocus()
-    expect(explorer.getByRole('status')).toHaveTextContent('1 example found')
+    expect(
+      explorer.getByRole('status', { name: 'Control search results' }),
+    ).toHaveTextContent('1 example found')
+    expect(
+      explorer.getByRole('heading', { name: 'Choose a draft example.' }),
+    ).toBeVisible()
+    expect(explorer.queryByRole('tabpanel')).not.toBeInTheDocument()
+    await user.click(
+      explorer.getByRole('button', {
+        name: /AC\.L2-3\.1\.1.*Authorized access/,
+      }),
+    )
     expect(
       explorer.getByRole('heading', { name: 'Authorized access' }),
     ).toBeVisible()
@@ -168,14 +188,18 @@ describe('Control Explorer learning experience', () => {
     await user.selectOptions(level, 'Level 2')
     expect(family).toHaveValue('AC')
     expect(level).toHaveValue('Level 2')
-    expect(explorer.getByRole('status')).toHaveTextContent('1 example found')
+    expect(
+      explorer.getByRole('status', { name: 'Control search results' }),
+    ).toHaveTextContent('1 example found')
 
     await user.type(search, 'no matching topic')
     await user.click(explorer.getByRole('button', { name: 'Clear filters' }))
     expect(family).toHaveValue('')
     expect(level).toHaveValue('')
     expect(search).toHaveValue('')
-    expect(explorer.getByRole('status')).toHaveTextContent('1 example found')
+    expect(
+      explorer.getByRole('status', { name: 'Control search results' }),
+    ).toHaveTextContent('1 example found')
   })
 
   it('labels future frameworks as planned and restores the CMMC example without claiming coverage', async () => {
@@ -192,8 +216,12 @@ describe('Control Explorer learning experience', () => {
     await user.selectOptions(framework, 'nist-sp-800-53')
 
     expect(family).toHaveValue('')
-    expect(level).toHaveValue('')
-    expect(explorer.getByRole('status')).toHaveTextContent('0 examples found')
+    expect(
+      explorer.queryByRole('combobox', { name: 'Level' }),
+    ).not.toBeInTheDocument()
+    expect(
+      explorer.getByRole('status', { name: 'Control search results' }),
+    ).toHaveTextContent('0 examples found')
     expect(
       explorer.getByRole('heading', { name: 'NIST 800-53 is on the roadmap.' }),
     ).toBeVisible()
@@ -203,13 +231,23 @@ describe('Control Explorer learning experience', () => {
     expect(explorer.queryByRole('tabpanel')).not.toBeInTheDocument()
 
     await user.click(
-      explorer.getByRole('button', { name: 'Explore the CMMC example' }),
+      explorer.getByRole('button', { name: 'Browse available examples' }),
     )
     expect(
       explorer.getByRole('searchbox', { name: 'Search controls' }),
     ).toHaveFocus()
     expect(framework).toHaveValue('cmmc')
-    expect(explorer.getByRole('status')).toHaveTextContent('1 example found')
+    expect(
+      explorer.getByRole('status', { name: 'Control search results' }),
+    ).toHaveTextContent('1 example found')
+    expect(
+      explorer.getByRole('heading', { name: 'Choose a draft example.' }),
+    ).toBeVisible()
+    await user.click(
+      explorer.getByRole('button', {
+        name: /AC\.L2-3\.1\.1.*Authorized access/,
+      }),
+    )
     expect(
       explorer.getByRole('heading', { name: 'Authorized access' }),
     ).toBeVisible()
@@ -242,5 +280,118 @@ describe('Control Explorer learning experience', () => {
         /This is not the full official requirement, an assessment checklist, or a guarantee of compliance/,
       ),
     ).toBeVisible()
+  })
+})
+
+const lessonAddress =
+  '?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access'
+
+describe('Shareable lessons and reading tools', () => {
+  it('restores a shared perspective and preserves an incoming lesson excluded by search', async () => {
+    window.history.replaceState(
+      null,
+      '',
+      `${lessonAddress}&mode=compliance&q=unavailable`,
+    )
+    const { user, explorer } = renderApp()
+    expect(explorer.getByRole('tabpanel', { name: 'Compliance' })).toBeVisible()
+    expect(
+      explorer.getByRole('status', { name: 'Control search results' }),
+    ).toHaveTextContent('0 examples found')
+    expect(
+      explorer.getByText('This lesson is outside the current results.'),
+    ).toBeVisible()
+    await user.click(
+      explorer.getByRole('button', { name: 'Show this lesson in results' }),
+    )
+    expect(
+      explorer.getByRole('searchbox', { name: 'Search controls' }),
+    ).toHaveValue('')
+    expect(explorer.getByRole('tabpanel', { name: 'Compliance' })).toBeVisible()
+    expect(
+      explorer.getByRole('status', { name: 'Control search results' }),
+    ).toHaveTextContent('1 example found')
+  })
+
+  it.each([
+    ['?view=lesson&framework=cmmc', 'This lesson link is invalid.'],
+    [
+      '?view=lesson&framework=cmmc&edition=readme-example&control=missing',
+      'This lesson isn’t available here.',
+    ],
+    ['?view=discover&catalog=nist-sp-800-53', 'NIST 800-53 is on the roadmap.'],
+    ['?view=discover', 'Choose a draft example.'],
+  ])(
+    'opens a homepage sample from %s without substituting an unavailable lesson',
+    async (address, title) => {
+      window.history.replaceState(null, '', address)
+      const { user, explorer } = renderApp()
+      expect(explorer.getByRole('heading', { name: title })).toBeVisible()
+      expect(explorer.queryByRole('tabpanel')).not.toBeInTheDocument()
+      await user.click(
+        screen.getByRole('link', {
+          name: /^Compliance .*Try this perspective in the Control Explorer$/,
+        }),
+      )
+      expect(
+        explorer.getByRole('tabpanel', { name: 'Compliance' }),
+      ).toBeVisible()
+      expect(window.location.hash).toBe('#explorer')
+      expect(new URLSearchParams(window.location.search).get('control')).toBe(
+        'authorized-access',
+      )
+    },
+  )
+
+  it('replays navigation addresses without reopening a lesson on discovery reload', () => {
+    window.history.replaceState(
+      null,
+      '',
+      '?view=discover&q=access&mode=it-cyber',
+    )
+    const view = renderView(<App />)
+    expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
+    act(() => {
+      window.history.replaceState(null, '', `${lessonAddress}&mode=compliance`)
+      window.dispatchEvent(new PopStateEvent('popstate'))
+    })
+    expect(screen.getByRole('tabpanel', { name: 'Compliance' })).toBeVisible()
+    act(() => {
+      window.history.replaceState(
+        null,
+        '',
+        '?view=discover&q=access&mode=it-cyber',
+      )
+      window.dispatchEvent(new PopStateEvent('popstate'))
+    })
+    expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
+    view.unmount()
+    renderView(<App />)
+    expect(
+      screen.getByRole('heading', { name: 'Choose a draft example.' }),
+    ).toBeVisible()
+    expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
+  })
+
+  it('keeps definitions and glossary search independent of lesson navigation', async () => {
+    const { user, explorer } = renderApp()
+    await user.click(explorer.getByRole('tab', { name: 'IT & Cyber' }))
+    const address = window.location.href
+    const term = explorer.getByRole('button', { name: 'Account' })
+    await user.click(term)
+    expect(term).toHaveFocus()
+    expect(term).toHaveAttribute('aria-expanded', 'true')
+    await user.keyboard('{Escape}')
+    expect(term).toHaveFocus()
+    expect(term).toHaveAttribute('aria-expanded', 'false')
+    await user.type(
+      screen.getByRole('searchbox', { name: 'Search glossary' }),
+      'offboarding',
+    )
+    expect(
+      screen.getByRole('status', { name: 'Glossary search results' }),
+    ).toHaveTextContent('1 term')
+    expect(explorer.getByRole('tabpanel', { name: 'IT & Cyber' })).toBeVisible()
+    expect(window.location.href).toBe(address)
   })
 })
