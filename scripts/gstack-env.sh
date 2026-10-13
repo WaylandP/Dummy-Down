@@ -16,4 +16,3 @@ if [[ -z "${GSTACK_CHROMIUM_PATH:-}" && -x /usr/bin/chromium ]]; then
 fi
 export GSTACK_SETUP_SKIP_CSO_BUILD=1
 export GSTACK_SKIP_FONTS=1
-

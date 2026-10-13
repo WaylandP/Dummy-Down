@@ -94,7 +94,7 @@ if [[ "$dummy_down_current_probe" != "$dummy_down_integration_root/check-gstack-
   ln -s "$dummy_down_integration_root/check-gstack-browser.sh" "$GSTACK_ROOT/bin/gstack-browser-ensure"
 fi
 # Runtime files stay private across branch switches, even before this PR merges.
-dummy_down_git_exclude="$(git -C "$dummy_down_repo_root" rev-parse --git-path info/exclude)"
+dummy_down_git_exclude="$(git -C "$dummy_down_repo_root" rev-parse --path-format=absolute --git-path info/exclude)"
 for dummy_down_ignore in '/.agents/skills/' '/.claude/skills/' '/.gstack/'; do
   if ! rg -q -F -x "$dummy_down_ignore" "$dummy_down_git_exclude"; then
     printf '\n%s\n' "$dummy_down_ignore" >> "$dummy_down_git_exclude"
