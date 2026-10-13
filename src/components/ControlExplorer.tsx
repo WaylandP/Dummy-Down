@@ -123,7 +123,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
           </p>
         </div>
         <span className="status-badge">
-          {referenceControls.length} source references · 1 draft lesson
+          {referenceControls.length} CMMC source references · 1 draft lesson
         </span>
       </div>
       {controller.historyStatus === 'failed' && (
@@ -135,7 +135,9 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
       {parsed.kind === 'ready' && parsed.notices.length > 0 && (
         <p className="explorer-notice" role="status">
           {parsed.notices.includes('mode-reset') &&
-            'That learning mode is unavailable; showing Beginner. '}
+            (selected?.contentKind === 'official-reference'
+              ? 'That learning mode is unavailable; displaying the source reference. '
+              : 'That learning mode is unavailable; showing Beginner. ')}
           {parsed.notices.includes('family-reset') &&
             'That family filter is unavailable and was cleared. '}
           {parsed.notices.includes('level-reset') &&

@@ -58,26 +58,33 @@ describe('Versioned CMMC reference catalog', () => {
     }
   })
 
-  it('opens an exact source quotation with citations and honest pending explanations', () => {
-    window.history.replaceState(null, '', address('AC.L2-3.1.1'))
-    const { explorer } = setup()
-    expect(
-      explorer.getByRole('combobox', { name: 'Content collection' }),
-    ).toHaveValue('references')
-    expect(
-      explorer.getByText(reference('AC.L2-3.1.1').requirement.text),
-    ).toBeVisible()
-    expect(
-      explorer.getByText('Teaching explanations are pending.'),
-    ).toBeVisible()
-    expect(
-      explorer.getByRole('button', { name: 'Copy reference link' }),
-    ).toBeVisible()
-    expect(explorer.queryByRole('tab')).not.toBeInTheDocument()
-    expect(
-      explorer.queryByText('Draft learning activity'),
-    ).not.toBeInTheDocument()
-  })
+  it.each(['compliance', 'unsupported-mode'])(
+    'opens an exact source quotation with honest pending explanations for mode %s',
+    (mode) => {
+      window.history.replaceState(
+        null,
+        '',
+        address('AC.L2-3.1.1').replace('mode=compliance', `mode=${mode}`),
+      )
+      const { explorer } = setup()
+      expect(
+        explorer.getByRole('combobox', { name: 'Content collection' }),
+      ).toHaveValue('references')
+      expect(
+        explorer.getByText(reference('AC.L2-3.1.1').requirement.text),
+      ).toBeVisible()
+      expect(
+        explorer.getByText('Teaching explanations are pending.'),
+      ).toBeVisible()
+      expect(
+        explorer.getByRole('button', { name: 'Copy reference link' }),
+      ).toBeVisible()
+      expect(explorer.queryByRole('tab')).not.toBeInTheDocument()
+      expect(
+        explorer.queryByText('Draft learning activity'),
+      ).not.toBeInTheDocument()
+    },
+  )
 
   it('preserves model/guide differences and safe original and pinned page references', async () => {
     window.history.replaceState(null, '', address('AT.L2-3.2.1'))

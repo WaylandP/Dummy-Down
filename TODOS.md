@@ -3,7 +3,7 @@
 These are sequenced roadmap items, not a claim that the next feature PR implements
 them. The README remains the mission and roadmap source.
 
-- **P1: real editorial review before published control coverage.** Establish the
+- **P1: qualified editorial review and teaching coverage.** Establish the
   applicable publications, version/scope context and a contribution/review template,
   then obtain qualified review of educational explanations. Why: source links and
   software tests do not establish correctness. Benefit: trustworthy content and
@@ -11,12 +11,15 @@ them. The README remains the mission and roadmap source.
   `src/data/controls.ts` and `docs/DEVELOPMENT.md`. Human effort: L; agent-assisted:
   M for tooling, review availability unknown. Depends on reviewed source/applicability
   decisions; never replace them with invented requirements.
-- **P2: one fictional scenario with explanatory knowledge-check feedback.** Why:
-  connect a reviewed lesson to a memorable situation. Benefit: learning beyond
+- **P2: expand fictional scenarios and explanatory knowledge checks.** Why:
+  connect reviewed lessons to memorable situations. The first draft authorized-access
+  activity now includes a four-step scenario and three questions; reference entries
+  still have no activities. Benefit: learning beyond
   browsing. Cost: reviewed scenario/feedback wording and accessible interaction.
   Human effort: M; agent-assisted: S–M. Depends on the shareable lesson/glossary
   foundation and suitable reviewed content. Begin with authorized access; do not
-  introduce compliance scoring or real organizational evidence.
+  introduce compliance scoring or real organizational evidence. Build on
+  `src/data/learning.ts` and `src/components/LearningPractice.tsx`.
 - **P3: additional frameworks and reviewed concept relationships.** Why: fulfill
   the framework-independent vision. Benefit: broader educational reach. Cost:
   framework-specific taxonomy, applicable versions, redistribution rights and real

@@ -130,11 +130,9 @@ export function ReferenceDetail({
       <div className="reference-pending">
         <h4>Teaching explanations are pending.</h4>
         <p>
-          This entry contains source quotations from the September 2024 v2.13
-          snapshot. Beginner, IT &amp; Cyber, and Compliance explanations have
-          not been written or reviewed for this reference. Assessment
-          objectives, implementation examples, and knowledge checks are not
-          included here.
+          This is attributed publication text, not a teaching lesson. Learning
+          modes, implementation examples and practice are not available for this
+          reference yet.
         </p>
         <p>
           This import has not received qualified editorial review. Consult the
