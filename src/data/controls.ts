@@ -18,7 +18,8 @@ export const explanationModes: readonly ExplanationModeInfo[] = [
     id: 'compliance',
     label: 'Compliance',
     shortLabel: 'Compliance',
-    description: 'Source context and candidate evidence examples to discuss.',
+    description:
+      'Read the source, ask assessment questions, and discuss possible evidence.',
   },
 ]
 

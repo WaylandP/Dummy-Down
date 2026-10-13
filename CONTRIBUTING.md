@@ -67,8 +67,15 @@ changing imported records. Do not replace the Rev.2/February2021 baselines with 
 newer NIST catalog simply because it is newer. Separate a transcription check from
 qualified review of explanations and applicability.
 
-Additional CMMC teaching coverage
-and future frameworks require their own content work and review; adding a name to
+The 149 references have separately authored teaching drafts under
+`src/data/perspectives/`, bound to the exact publication edition. The
+[agent editorial audit](docs/designs/cmmc-perspectives-editorial-audit.md) records
+source checks and content fingerprints; it does not replace qualified review.
+Substantive changes need an affected-content review, new citations where needed,
+and updated coverage/semantic regression checks. Keep the official source text
+unchanged when improving a teaching explanation.
+
+Additional activities and future frameworks require their own content work and review; adding a name to
 the framework model does not constitute support for that framework.
 
 ## Protect sensitive information
@@ -77,3 +84,8 @@ Do not place CUI, real organizational assessment evidence, credentials, personal
 information, or other protected data in issues, pull requests, fixtures, or example
 content. Use fictional, non-sensitive examples. Report ordinary bugs with steps to
 reproduce them, the expected behavior, and relevant browser details.
+
+Usage events must stay within the catalog/category allowlist in `src/analytics/`.
+Never add search text, answer choices, copied URLs, organizational evidence or
+visitor identifiers. Keep the production gate, opt-out and browser privacy
+preferences intact; see [Usage measurement](docs/USAGE.md).

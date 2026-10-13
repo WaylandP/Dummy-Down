@@ -14,6 +14,7 @@ export type UsageEvent =
       section: 'explorer' | 'glossary' | 'approach' | 'usage'
     }
   | { name: 'control_open'; lesson: LessonIdentity }
+  | { name: 'control_view'; lesson: LessonIdentity; mode: ExplanationMode }
   | {
       name: 'perspective_change'
       lesson: LessonIdentity
@@ -95,6 +96,13 @@ export function usageProperties(event: UsageEvent): Properties | null {
     case 'control_open':
       return controlProperties(event.lesson)
     case 'perspective_change': {
+      const properties = controlProperties(event.lesson)
+      return properties &&
+        oneOf(event.mode, ['beginner', 'it-cyber', 'compliance'])
+        ? { ...properties, mode: event.mode }
+        : null
+    }
+    case 'control_view': {
       const properties = controlProperties(event.lesson)
       return properties &&
         oneOf(event.mode, ['beginner', 'it-cyber', 'compliance'])

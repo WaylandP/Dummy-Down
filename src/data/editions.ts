@@ -15,7 +15,7 @@ export const editions: readonly ContentEdition[] = [
     title: 'CMMC 2.13 · September 2024 snapshot',
     kind: 'publication',
     versionContext:
-      'Versioned September 2024 model and assessment-guide quotations, acquired from pinned public PDF mirrors. The latest DoD edition and present contract applicability have not been independently verified. Learning explanations for these references have not been written or reviewed.',
+      'Versioned September 2024 model and assessment-guide quotations, acquired from pinned public PDF mirrors, with separately authored draft teaching perspectives. The latest DoD edition and present contract applicability have not been independently verified. Qualified editorial review of the teaching interpretations is pending.',
   },
 ]
 

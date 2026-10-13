@@ -59,8 +59,8 @@ describe('Versioned CMMC reference catalog', () => {
   })
 
   it.each(['compliance', 'unsupported-mode'])(
-    'opens an exact source quotation with honest pending explanations for mode %s',
-    (mode) => {
+    'opens an exact source quotation with separate draft perspectives for mode %s',
+    async (mode) => {
       window.history.replaceState(
         null,
         '',
@@ -74,12 +74,15 @@ describe('Versioned CMMC reference catalog', () => {
         explorer.getByText(reference('AC.L2-3.1.1').requirement.text),
       ).toBeVisible()
       expect(
-        explorer.getByText('Teaching explanations are pending.'),
+        await explorer.findByRole('tabpanel', {
+          name: mode === 'compliance' ? 'Compliance' : 'Beginner',
+        }),
       ).toBeVisible()
+      expect(explorer.getByText('Draft teaching content')).toBeVisible()
       expect(
         explorer.getByRole('button', { name: 'Copy reference link' }),
       ).toBeVisible()
-      expect(explorer.queryByRole('tab')).not.toBeInTheDocument()
+      expect(explorer.getAllByRole('tab')).toHaveLength(3)
       expect(
         explorer.queryByText('Draft learning activity'),
       ).not.toBeInTheDocument()

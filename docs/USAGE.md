@@ -30,19 +30,20 @@ It disables automatic pageviews for the query-driven Explorer's history updates,
 so typing a search does not create a series of artificial visits. Deliberate
 actions explain where readers go inside the single-page application:
 
-| Event                  | Purpose                                       | Allowed metadata                                              |
-| ---------------------- | --------------------------------------------- | ------------------------------------------------------------- |
-| `section_open`         | Which main sections readers choose            | Known section                                                 |
-| `control_open`         | Which controls attract attention              | Catalog-resolved framework, edition, official ID, kind, level |
-| `perspective_change`   | Which explanations readers choose             | Known control and mode                                        |
-| `perspective_feedback` | Where explanations need improvement           | Known control, mode, helpful yes/no                           |
-| `filter_change`        | How readers narrow the catalog                | Known filter and catalog value                                |
-| `search_used`          | Whether search produces useful results        | Search scope, active yes/no, result bucket: none/one/few/many |
-| `results_page`         | Whether readers explore beyond the first page | Previous/next and content collection                          |
-| `glossary_open`        | Which terms need explanation                  | Known term ID                                                 |
-| `practice_action`      | Whether readers try and continue practice     | Known supported lesson and action category                    |
-| `source_open`          | Whether readers consult primary publications  | Known control, source ID, publisher/mirror/index category     |
-| `share_link`           | Whether readers share the material            | Known control and copied/fallback category                    |
+| Event                  | Purpose                                                         | Allowed metadata                                              |
+| ---------------------- | --------------------------------------------------------------- | ------------------------------------------------------------- |
+| `section_open`         | Which main sections readers choose                              | Known section                                                 |
+| `control_open`         | Which controls attract attention                                | Catalog-resolved framework, edition, official ID, kind, level |
+| `control_view`         | Which controls are rendered, including shared links and history | Known control and mode                                        |
+| `perspective_change`   | Which explanations readers choose                               | Known control and mode                                        |
+| `perspective_feedback` | Where explanations need improvement                             | Known control, mode, helpful yes/no                           |
+| `filter_change`        | How readers narrow the catalog                                  | Known filter and catalog value                                |
+| `search_used`          | Whether search produces useful results                          | Search scope, active yes/no, result bucket: none/one/few/many |
+| `results_page`         | Whether readers explore beyond the first page                   | Previous/next and content collection                          |
+| `glossary_open`        | Which terms need explanation                                    | Known term ID                                                 |
+| `practice_action`      | Whether readers try and continue practice                       | Known supported lesson and action category                    |
+| `source_open`          | Whether readers consult primary publications                    | Known control, source ID, publisher/mirror/index category     |
+| `share_link`           | Whether readers share the material                              | Known control and copied/fallback category                    |
 
 Helpers validate values at runtime against the shipped catalog, and construct
 new property objects instead of forwarding caller payloads. There are no raw
@@ -52,6 +53,11 @@ event properties. Do not add free-text properties to this allowlist. Search
 measurements happen on deliberate submission or leaving the search field, not
 on every keystroke. Incoming links and browser Back/Forward are not counted as
 fresh deliberate control selections or perspective changes.
+Their rendered controls are measured separately as `control_view`, without
+duplicating unchanged rerenders or React StrictMode effects. A rendered control
+may be below the fold; this event does not establish visibility, reading,
+understanding or time spent. Do not add view and open counts together as unique
+visitors or treat either as assessment progress.
 
 ## Deployment and visitor preferences
 

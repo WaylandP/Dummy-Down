@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 import type {
   ContentEdition,
+  ExplanationMode,
   Framework,
   ReferenceControl,
   RequirementQuote,
@@ -9,6 +10,7 @@ import type {
 import { ShareLesson } from './ShareLesson'
 import { lessonIdentity } from '../state/explorer-state'
 import { trackUsage } from '../analytics/usage'
+import { ReferencePerspectives } from './ReferencePerspectives'
 
 interface ReferenceDetailProps {
   control: ReferenceControl
@@ -19,6 +21,8 @@ interface ReferenceDetailProps {
   onBack: () => void
   onShowInResults: () => void
   headingRef?: (node: HTMLHeadingElement | null) => void
+  mode: ExplanationMode
+  onModeChange: (mode: ExplanationMode) => void
 }
 
 function isHttps(url: string): boolean {
@@ -74,6 +78,8 @@ export function ReferenceDetail({
   onBack,
   onShowInResults,
   headingRef,
+  mode,
+  onModeChange,
 }: ReferenceDetailProps) {
   const guideSource = control.sourceDocuments.find(
     (source) => source.id === control.requirement.sourceId,
@@ -141,18 +147,11 @@ export function ReferenceDetail({
         </blockquote>
         <PageCitation quote={control.requirement} source={guideSource} />
       </div>
-      <div className="reference-pending">
-        <h4>Teaching explanations are pending.</h4>
-        <p>
-          This is attributed publication text, not a teaching lesson. Learning
-          modes, implementation examples and practice are not available for this
-          reference yet.
-        </p>
-        <p>
-          This import has not received qualified editorial review. Consult the
-          applicable official publication and assessment guidance.
-        </p>
-      </div>
+      <ReferencePerspectives
+        control={control}
+        mode={mode}
+        onChange={onModeChange}
+      />
       {control.modelRequirement.differsFromGuide && (
         <details className="source-details reference-comparison">
           <summary>Compare model wording</summary>

@@ -12,10 +12,19 @@ beforeEach(() => {
 })
 
 describe('Usage interaction wiring', () => {
-  it('measures deliberate mode changes, never hydration, history replay or unchanged selection', async () => {
+  it('keeps rendered controls separate from intent and ignores unchanged selection', async () => {
     const user = userEvent.setup()
     render(<App />)
-    expect(trackUsage).not.toHaveBeenCalled()
+    expect(trackUsage).toHaveBeenCalledWith({
+      name: 'control_view',
+      lesson: {
+        frameworkId: 'cmmc',
+        editionId: 'readme-example',
+        controlKey: 'authorized-access',
+      },
+      mode: 'beginner',
+    })
+    vi.mocked(trackUsage).mockClear()
     await user.click(screen.getByRole('tab', { name: 'Beginner' }))
     expect(trackUsage).not.toHaveBeenCalled()
     await user.click(screen.getByRole('tab', { name: 'IT & Cyber' }))
@@ -38,12 +47,16 @@ describe('Usage interaction wiring', () => {
       window.dispatchEvent(new PopStateEvent('popstate'))
     })
     expect(screen.getByRole('tabpanel', { name: 'Compliance' })).toBeVisible()
-    expect(trackUsage).not.toHaveBeenCalled()
+    expect(trackUsage).toHaveBeenCalledTimes(1)
+    expect(trackUsage).toHaveBeenCalledWith(
+      expect.objectContaining({ name: 'control_view', mode: 'compliance' }),
+    )
   })
 
   it('records search outcomes only when submitted or left, without recording the text', async () => {
     const user = userEvent.setup()
     render(<App />)
+    vi.mocked(trackUsage).mockClear()
     const search = screen.getByRole('searchbox', { name: 'Search controls' })
     await user.type(search, 'private-example-search')
     expect(trackUsage).not.toHaveBeenCalled()
@@ -64,6 +77,7 @@ describe('Usage interaction wiring', () => {
   it('ignores an untouched search field and measures another edit separately', async () => {
     const user = userEvent.setup()
     render(<App />)
+    vi.mocked(trackUsage).mockClear()
     const search = screen.getByRole('searchbox', { name: 'Search glossary' })
     await user.click(search)
     await user.tab()

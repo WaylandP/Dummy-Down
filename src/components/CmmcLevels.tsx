@@ -30,8 +30,8 @@ export function CmmcLevels({ mode }: { mode: ExplanationMode }) {
             <span className="level-path-name">
               {level.name}
               <ArrowUpRight size={16} aria-hidden="true" />
-            </span>
-            <span>{level.description}</span>
+            </span>{' '}
+            <span>{level.description}</span>{' '}
             <span className="level-path-count">
               {
                 referenceControls.filter(
