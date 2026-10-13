@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "round": 2,
+  "document": "/workspace/Dummy-Down/docs/designs/field-guide.md",
+  "quality_score": 8,
+  "dimensions": {
+    "completeness": "ISSUES",
+    "consistency": "ISSUES",
+    "clarity": "PASS",
+    "scope": "PASS",
+    "feasibility": "PASS"
+  },
+  "findings": [
+    {
+      "id": "R2-1",
+      "dimension": "consistency",
+      "severity": "blocking",
+      "changed_text": "\u201cCopy lesson link\u201d serializes only the complete lesson identity, current mode and",
+      "problem": "The new parsing contract rejects any recognized state parameters without view, while Copy lesson link serializes only the complete lesson identity, mode and fragment. The contract defines that identity as framework, edition and control; view is a separate discriminator. The literal copy policy therefore omits view=lesson and produces a link that its recipient must reject instead of opening the intended lesson.",
+      "remedy": "Require Copy lesson link to serialize view=lesson alongside framework, edition, control, current mode and #explorer, and make the copied-link acceptance check verify that the output is a valid explicit lesson state."
+    },
+    {
+      "id": "R2-2",
+      "dimension": "completeness",
+      "severity": "blocking",
+      "changed_text": "lesson link without discovery parameters defaults `catalog` to the lesson's",
+      "problem": "The new default for a missing catalog is specified only for a direct lesson address without any discovery parameters and for a discovery address. A complete lesson address containing q, family or level but omitting catalog satisfies neither condition. Its discovery framework and therefore filter validation, result list and mismatch behavior are undecided, despite the contract promising deterministic restoration of complete URL state.",
+      "remedy": "Specify the missing-catalog rule for every valid view=lesson address, including those with other discovery parameters. For example, default catalog to the lesson framework whenever catalog is absent, then validate family and level against that resolved catalog and retain q."
+    }
+  ],
+  "prior": [
+    {
+      "id": "R1-1",
+      "status": "resolved",
+      "evidence": "The URL state contract explicitly represents intentional absence as view=discover without framework, edition or control and requires reload and history restoration to preserve it. Architecture decision 6 writes that state when a deliberate filter change excludes the lesson; the initial sample default is limited to addresses with no recognized state parameters.",
+      "current_id": null
+    },
+    {
+      "id": "R1-2",
+      "status": "resolved",
+      "evidence": "The URL state table rejects repeated recognized parameters even when equal, rejects malformed recognized key/value encoding and invalid slug characters, and shows an incomplete-link state for missing or empty lesson identity fields with no partial completion. Unknown complete identities show not found and never substitute another lesson.",
+      "current_id": null
+    },
+    {
+      "id": "R1-3",
+      "status": "resolved",
+      "evidence": "Discovery query and filters are explicitly stored as catalog, q, family and level in the URL. Back/Forward reparses the complete URL, opening results retains discovery parameters, and Back to field guide writes the same discovery context without lesson identity. Direct lesson links without discovery parameters start unfiltered in the lesson framework; incoming or restored lessons excluded by supplied filters retain their identity with a mismatch notice. The distinct missing-catalog case exposed by this expanded contract is recorded as new finding R2-2.",
+      "current_id": null
+    }
+  ]
+}
