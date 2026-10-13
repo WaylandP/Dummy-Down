@@ -51,6 +51,13 @@ for architecture. The user can request these by name even if this chat does not
 advertise them as tools. They are experimental Codex filesystem skills, not a
 promise of complete Claude Code feature parity.
 
+Start new product and feature planning with office-hours. When the user delegates
+its questions and decisions, answer from the README and session context, label
+assumptions, choose an approach, and complete a draft without intermediate interview
+or approval pauses. Run available independent reviews and disclose any unverified
+work. Keep the final document ready for owner review; delegated planning does not
+constitute approval to merge.
+
 Keep installation/configuration scoped to this project. Automatic outside-model
 reviews are disabled; enabling another provider or paid reviews needs a user
 request. The no-merge rule above overrides ship/land-and-deploy defaults. Do not

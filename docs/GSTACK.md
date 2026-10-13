@@ -67,6 +67,7 @@ skill directories include:
 
 | Directory under `.agents/skills/` | Purpose                                                |
 | --------------------------------- | ------------------------------------------------------ |
+| `gstack-office-hours`             | Explore product direction and save a decision document |
 | `gstack-design-consultation`      | Establish design direction and principles              |
 | `gstack-plan-design-review`       | Review a planned interface before implementation       |
 | `gstack-design-review`            | Inspect and improve the running interface              |
@@ -77,6 +78,11 @@ skill directories include:
 
 These are Codex filesystem skills. This chat may not advertise them as plugin
 tools; request a skill by name and the agent can read its installed instructions.
+
+For example: “Use gstack office-hours to plan the next Dummy-Down feature.” The
+[field-guide design draft](designs/field-guide.md) records the first autonomous
+session, proposed desktop/mobile sketches, assumptions and implementation slices.
+It is a plan for review, not a claim that those features have shipped.
 
 Telemetry, automatic updates, and automatic outside-model reviews are disabled.
 Optional Claude second opinions require that CLI and its authentication, and are
