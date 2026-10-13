@@ -1,4 +1,5 @@
 import type { Control, ExplanationModeInfo } from '../types/content'
+import { authorizedAccessSources } from './sources'
 
 export const explanationModes: readonly ExplanationModeInfo[] = [
   {
@@ -28,7 +29,9 @@ export const explanationModes: readonly ExplanationModeInfo[] = [
 export const controls: readonly Control[] = [
   {
     id: 'AC.L2-3.1.1',
+    key: 'authorized-access',
     frameworkId: 'cmmc',
+    editionId: 'readme-example',
     title: 'Authorized access',
     family: 'AC',
     familyName: 'Access Control',
@@ -83,31 +86,14 @@ export const controls: readonly Control[] = [
           'These are discussion examples, not an official evidence list or assessment objectives. Their relevance and sufficiency depend on the applicable guidance and system scope. Do not post sensitive organizational evidence to this public project.',
       },
     },
-    sources: [
-      {
-        id: 'project-readme',
-        title: 'Dummy-Down README — simplified example',
-        url: 'https://github.com/WaylandP/Dummy-Down/blob/5cc78c255224d3a8cbaa9ab3dd52ee19be28f076/README.md#example-making-a-control-understandable',
-        kind: 'project-readme',
-        versionContext:
-          'Project README snapshot used as this draft’s educational starting point.',
-      },
-      {
-        id: 'dod-cmmc-resources',
-        title: 'DoD CMMC resources and documentation',
-        url: 'https://dodcio.defense.gov/CMMC/Resources-Documentation/',
-        kind: 'official-publication',
-        versionContext:
-          'Official resource index. Consult the applicable level, version, and assessment guidance; this draft does not claim coverage of them.',
-      },
-      {
-        id: 'nist-800-171-rev-2',
-        title: 'NIST SP 800-171 Rev. 2',
-        url: 'https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final',
-        kind: 'official-publication',
-        versionContext:
-          'Revision 2 publication linked by the README. Later NIST revisions exist; a publication update alone does not establish which version applies to a CMMC assessment.',
-      },
+    sources: authorizedAccessSources,
+    glossaryTermIds: [
+      'account',
+      'authorized-user',
+      'device',
+      'process',
+      'offboarding',
+      'access-review',
     ],
   },
 ]

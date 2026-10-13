@@ -20,12 +20,28 @@ export interface Framework {
   readonly sourceUrl: string
 }
 
+/** An editorial lesson address, separate from an official control identifier. */
+export interface LessonIdentity {
+  readonly frameworkId: string
+  readonly editionId: string
+  readonly controlKey: string
+}
+
+/** Project editions identify teaching content, not official framework releases. */
+export interface ContentEdition {
+  readonly id: string
+  readonly frameworkId: string
+  readonly title: string
+  readonly versionContext: string
+}
+
 export interface SourceReference {
   readonly id: string
   readonly title: string
   readonly url: string
   readonly versionContext: string
-  readonly kind: 'project-readme' | 'official-publication'
+  readonly kind:
+    'project-readme' | 'official-publication' | 'official-resource-index'
 }
 
 export interface Explanation {
@@ -41,8 +57,11 @@ export interface Explanation {
  * an explanation must never be treated as the requirement or a compliance verdict.
  */
 export interface Control {
+  /** Official display/search identifier; never used as the editorial URL key. */
   readonly id: string
+  readonly key: string
   readonly frameworkId: string
+  readonly editionId: string
   readonly title: string
   readonly family: string
   readonly familyName: string
@@ -54,5 +73,16 @@ export interface Control {
   readonly disclaimer: string
   readonly tags: readonly string[]
   readonly explanations: Readonly<Record<ExplanationMode, Explanation>>
+  readonly sources: readonly SourceReference[]
+  readonly glossaryTermIds: readonly string[]
+}
+
+/** A plain-language teaching draft, not an official regulatory definition. */
+export interface GlossaryTerm {
+  readonly id: string
+  readonly title: string
+  readonly definition: string
+  readonly reviewStatus: 'draft'
+  readonly versionContext: string
   readonly sources: readonly SourceReference[]
 }

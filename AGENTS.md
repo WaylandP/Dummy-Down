@@ -51,12 +51,19 @@ for architecture. The user can request these by name even if this chat does not
 advertise them as tools. They are experimental Codex filesystem skills, not a
 promise of complete Claude Code feature parity.
 
-Start new product and feature planning with office-hours. When the user delegates
-its questions and decisions, answer from the README and session context, label
-assumptions, choose an approach, and complete a draft without intermediate interview
-or approval pauses. Run available independent reviews and disclose any unverified
-work. Keep the final document ready for owner review; delegated planning does not
-constitute approval to merge.
+Start new product and feature planning with office-hours unless the user names the
+next skill to run. The owner has delegated routine planning and implementation
+decisions: use the README and session context, label assumptions, and continue
+through applicable CEO, engineering and design reviews into implementation, QA and
+code review. Do not end a turn merely because one planning skill produced a document.
+Run available independent reviews and disclose unverified work. Keep the results
+reviewable for owner edits; delegated decisions do not constitute approval to merge.
+
+Continue validated progress on the same open feature PR without asking the owner
+to squash or merge between skills or commits. If they merge or close it, create the
+next feature branch and PR from current main. A merge is never a prerequisite for
+the next reviewable slice. Choose a coherent, complete delivery slice from the
+roadmap; do not fabricate reviewed content to claim the entire roadmap is finished.
 
 Keep installation/configuration scoped to this project. Automatic outside-model
 reviews are disabled; enabling another provider or paid reviews needs a user
