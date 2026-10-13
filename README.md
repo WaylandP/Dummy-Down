@@ -118,6 +118,7 @@ Before pushing a change, run:
 ```sh
 npm run typecheck
 npm run check:content
+npm run check:gstack
 npm run lint
 npm run format:check
 npm test
@@ -137,6 +138,8 @@ frontend locally.
   AI-assisted review, qualified approval and unresolved questions.
 - [Deployment guide](docs/DEPLOYMENT.md): GitHub CI, Vercel previews and production.
 - [Design notes](docs/DESIGN.md): the proposed identity and interaction direction.
+- [Pinned gstack inventory](docs/GSTACK-SKILLS.md): complete skill routing,
+  installation checks and coverage evidence.
 
 ## Usage measurement
 
