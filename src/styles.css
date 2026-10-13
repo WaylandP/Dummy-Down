@@ -1338,8 +1338,8 @@
     line-height: 1.75;
   }
   .usage-preferences summary {
-    display: flex;
-    align-items: center;
+    display: list-item;
+    padding-block: 8px;
     min-height: 44px;
     color: var(--color-foreground);
   }
