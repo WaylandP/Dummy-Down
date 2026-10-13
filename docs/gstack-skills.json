@@ -30,7 +30,7 @@
   ],
   "notCanonical": [
     "README.md.tmpl (documentation)",
-    "hosts/templates/add-host/SKILL.md.example (host example)",
+    "contrib/add-host/SKILL.md.tmpl (contributor skill template outside canonical discovery)",
     "browser-skills/hackernews-frontpage/SKILL.md (site exemplar)",
     "test/fixtures/**/SKILL.md (fixtures)",
     "capy/skill/gstack/SKILL.md (nested agent wrapper)",
@@ -77,7 +77,7 @@
       "codexFacingDisplayName": "gstack-autoplan",
       "installedPath": ".agents/skills/gstack-autoplan",
       "metadataPath": ".agents/skills/gstack-autoplan/agents/openai.yaml",
-      "purposeAndTrigger": "Auto-review pipeline — reads the full CEO, design, eng, and DX review skills from disk and runs them sequentially with auto-decisions using 6 decision principles. Surfaces taste decisions (close approaches, borderline scope, outside-review disagreements) at a final approval gate. One command, fully reviewed plan out. Use when asked to \"auto review\", \"autoplan\", \"run all reviews\", \"review this plan automatically\", or \"make the decisions for me\". Proactively suggest when the user has a plan file and wants to run the full review gauntlet without answering 15-30 intermediate questions. (gstack)",
+      "purposeAndTrigger": "Auto-review pipeline \u2014 reads the full CEO, design, eng, and DX review skills from disk and runs them sequentially with auto-decisions using 6 decision principles. Surfaces taste decisions (close approaches, borderline scope, outside-review disagreements) at a final approval gate. One command, fully reviewed plan out. Use when asked to \"auto review\", \"autoplan\", \"run all reviews\", \"review this plan automatically\", or \"make the decisions for me\". Proactively suggest when the user has a plan file and wants to run the full review gauntlet without answering 15-30 intermediate questions. (gstack)",
       "explicitTriggers": "run all reviews automatic review pipeline auto plan review",
       "upstreamAllowedTools": "Bash Read Write Edit Glob Grep WebSearch AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -121,7 +121,7 @@
       "codexFacingDisplayName": "gstack-benchmark-models",
       "installedPath": ".agents/skills/gstack-benchmark-models",
       "metadataPath": ".agents/skills/gstack-benchmark-models/agents/openai.yaml",
-      "purposeAndTrigger": "Cross-model benchmark for gstack skills. Runs the same prompt through Claude, GPT (via Codex CLI), and Gemini side-by-side — compares latency, tokens, cost, and optionally quality via LLM judge. Answers \"which model is actually best for this skill?\" with data instead of vibes. Separate from /benchmark, which measures web page performance. Use when: \"benchmark models\", \"compare models\", \"which model is best for X\", \"cross-model comparison\", \"model shootout\". (gstack)",
+      "purposeAndTrigger": "Cross-model benchmark for gstack skills. Runs the same prompt through Claude, GPT (via Codex CLI), and Gemini side-by-side \u2014 compares latency, tokens, cost, and optionally quality via LLM judge. Answers \"which model is actually best for this skill?\" with data instead of vibes. Separate from /benchmark, which measures web page performance. Use when: \"benchmark models\", \"compare models\", \"which model is best for X\", \"cross-model comparison\", \"model shootout\". (gstack)",
       "explicitTriggers": "cross model benchmark compare claude gpt gemini benchmark skill across models which model should I use",
       "upstreamAllowedTools": "Bash Read AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -231,7 +231,7 @@
       "codexFacingDisplayName": null,
       "installedPath": null,
       "metadataPath": null,
-      "purposeAndTrigger": "OpenAI Codex CLI wrapper — three modes. Code review: independent diff review via codex review with pass/fail gate. Challenge: adversarial mode that tries to break your code. Consult: ask codex anything with session continuity for follow-ups. The \"200 IQ autistic developer\" second opinion. Use when asked to \"codex review\", \"codex challenge\", \"ask codex\", \"second opinion\", or \"consult codex\". (gstack)",
+      "purposeAndTrigger": "OpenAI Codex CLI wrapper \u2014 three modes. Code review: independent diff review via codex review with pass/fail gate. Challenge: adversarial mode that tries to break your code. Consult: ask codex anything with session continuity for follow-ups. The \"200 IQ autistic developer\" second opinion. Use when asked to \"codex review\", \"codex challenge\", \"ask codex\", \"second opinion\", or \"consult codex\". (gstack)",
       "explicitTriggers": "codex review second opinion outside voice challenge",
       "upstreamAllowedTools": "Bash Read Write Glob Grep AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -253,7 +253,7 @@
       "codexFacingDisplayName": "gstack-context-restore",
       "installedPath": ".agents/skills/gstack-context-restore",
       "metadataPath": ".agents/skills/gstack-context-restore/agents/openai.yaml",
-      "purposeAndTrigger": "Restore working context saved earlier by /context-save. Loads the most recent saved state (preferring the current branch, falling back across branches) so you can pick up where you left off — even across Conductor workspace handoffs. Use when asked to \"resume\", \"restore context\", \"where was I\", or \"pick up where I left off\". Pair with /context-save. (gstack)",
+      "purposeAndTrigger": "Restore working context saved earlier by /context-save. Loads the most recent saved state (preferring the current branch, falling back across branches) so you can pick up where you left off \u2014 even across Conductor workspace handoffs. Use when asked to \"resume\", \"restore context\", \"where was I\", or \"pick up where I left off\". Pair with /context-save. (gstack)",
       "explicitTriggers": "resume where i left off restore context where was i pick up where i left off context restore",
       "upstreamAllowedTools": "Bash Read Glob Grep AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -363,7 +363,7 @@
       "codexFacingDisplayName": "gstack-design-review",
       "installedPath": ".agents/skills/gstack-design-review",
       "metadataPath": ".agents/skills/gstack-design-review/agents/openai.yaml",
-      "purposeAndTrigger": "Designer's eye QA: finds visual inconsistency, spacing issues, hierarchy problems, AI slop patterns, and slow interactions — then fixes them. Iteratively fixes issues in source code, committing each fix atomically and re-verifying with before/after screenshots. For plan-mode design review (before implementation), use /plan-design-review. Use when asked to \"audit the design\", \"visual QA\", \"check if it looks good\", or \"design polish\". Proactively suggest when the user mentions visual inconsistencies or wants to polish the look of a live site. (gstack)",
+      "purposeAndTrigger": "Designer's eye QA: finds visual inconsistency, spacing issues, hierarchy problems, AI slop patterns, and slow interactions \u2014 then fixes them. Iteratively fixes issues in source code, committing each fix atomically and re-verifying with before/after screenshots. For plan-mode design review (before implementation), use /plan-design-review. Use when asked to \"audit the design\", \"visual QA\", \"check if it looks good\", or \"design polish\". Proactively suggest when the user mentions visual inconsistencies or wants to polish the look of a live site. (gstack)",
       "explicitTriggers": "visual design audit design qa fix design issues",
       "upstreamAllowedTools": "Bash Read Write Edit Glob Grep AskUserQuestion WebSearch",
       "requiredToolsAuthRuntime": [
@@ -649,7 +649,7 @@
       "codexFacingDisplayName": "gstack-ios-clean",
       "installedPath": ".agents/skills/gstack-ios-clean",
       "metadataPath": ".agents/skills/gstack-ios-clean/agents/openai.yaml",
-      "purposeAndTrigger": "Remove the DebugBridge SPM package and all #if DEBUG wiring from an iOS app. Cleans up StateServer, DebugOverlay, accessor codegen output, and app-side hooks installed by /ios-qa. This is a convenience wrapper — the structural Release-build guard (Package.swift conditional + CI swift build -c release check) is the safety-critical path. Use when asked to \"clean the iOS debug bridge\", \"remove DebugBridge\", or \"strip the gstack iOS instrumentation\". (gstack)",
+      "purposeAndTrigger": "Remove the DebugBridge SPM package and all #if DEBUG wiring from an iOS app. Cleans up StateServer, DebugOverlay, accessor codegen output, and app-side hooks installed by /ios-qa. This is a convenience wrapper \u2014 the structural Release-build guard (Package.swift conditional + CI swift build -c release check) is the safety-critical path. Use when asked to \"clean the iOS debug bridge\", \"remove DebugBridge\", or \"strip the gstack iOS instrumentation\". (gstack)",
       "explicitTriggers": "clean the ios debug bridge remove debugbridge strip the gstack ios instrumentation",
       "upstreamAllowedTools": "Bash Read Edit Glob Grep AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -671,7 +671,7 @@
       "codexFacingDisplayName": "gstack-ios-design-review",
       "installedPath": ".agents/skills/gstack-ios-design-review",
       "metadataPath": ".agents/skills/gstack-ios-design-review/agents/openai.yaml",
-      "purposeAndTrigger": "Visual design audit for iOS apps on real hardware. Connects to a real iPhone via the same StateServer as /ios-qa, screenshots every screen, evaluates against Apple HIG, DESIGN.md, and design best practices. Scores each dimension 0-10 with \"what would make it a 10\" framing — mirrors /plan-design-review for browser. For plan-stage design review (before implementation), use /plan-design-review. For live web visual audits, use /design-review. Use when asked to \"review the iOS design\", \"audit the iPhone app's visuals\", or \"design QA the iOS app\". (gstack)",
+      "purposeAndTrigger": "Visual design audit for iOS apps on real hardware. Connects to a real iPhone via the same StateServer as /ios-qa, screenshots every screen, evaluates against Apple HIG, DESIGN.md, and design best practices. Scores each dimension 0-10 with \"what would make it a 10\" framing \u2014 mirrors /plan-design-review for browser. For plan-stage design review (before implementation), use /plan-design-review. For live web visual audits, use /design-review. Use when asked to \"review the iOS design\", \"audit the iPhone app's visuals\", or \"design QA the iOS app\". (gstack)",
       "explicitTriggers": "review the ios design audit the iphone app visuals design qa the ios app",
       "upstreamAllowedTools": "Bash Read Glob Grep AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -693,7 +693,7 @@
       "codexFacingDisplayName": "gstack-ios-fix",
       "installedPath": ".agents/skills/gstack-ios-fix",
       "metadataPath": ".agents/skills/gstack-ios-fix/agents/openai.yaml",
-      "purposeAndTrigger": "Autonomous iOS bug fixer. Takes a bug found by /ios-qa, reads the source, writes the fix, rebuilds, redeploys, and verifies the fix on the real device. Closes the loop: find bug → fix bug → confirm fix — zero human intervention. Captures the pre-bug state snapshot as a regression test fixture, so the bug can never recur silently. Use when /ios-qa reports a bug and you want it fixed automatically, or when asked to \"fix this iOS bug\", \"patch the iPhone app\", or \"auto-fix the iOS issue\". (gstack)",
+      "purposeAndTrigger": "Autonomous iOS bug fixer. Takes a bug found by /ios-qa, reads the source, writes the fix, rebuilds, redeploys, and verifies the fix on the real device. Closes the loop: find bug \u2192 fix bug \u2192 confirm fix \u2014 zero human intervention. Captures the pre-bug state snapshot as a regression test fixture, so the bug can never recur silently. Use when /ios-qa reports a bug and you want it fixed automatically, or when asked to \"fix this iOS bug\", \"patch the iPhone app\", or \"auto-fix the iOS issue\". (gstack)",
       "explicitTriggers": "fix this ios bug patch the iphone app auto-fix the ios issue",
       "upstreamAllowedTools": "Bash Read Write Edit Grep Glob AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -715,7 +715,7 @@
       "codexFacingDisplayName": "gstack-ios-qa",
       "installedPath": ".agents/skills/gstack-ios-qa",
       "metadataPath": ".agents/skills/gstack-ios-qa/agents/openai.yaml",
-      "purposeAndTrigger": "Live-device iOS QA for SwiftUI apps. Connects to a real iPhone or iPad via USB CoreDevice IPv6 tunnel, reads Swift source to understand every screen, then runs a vision-driven agent loop: screenshot → analyze → decide → act → verify → repeat. All interaction happens via HTTP to an embedded StateServer in the app under test. Optionally exposes the device over Tailscale so remote agents (OpenClaw, Codex, any HTTP-capable agent) can run iOS QA from anywhere without touching the hardware. Use when asked to \"ios qa\", \"test my iPhone app\", \"test my iPad app\", \"find bugs on the device\", or \"qa the iOS app\". (gstack)",
+      "purposeAndTrigger": "Live-device iOS QA for SwiftUI apps. Connects to a real iPhone or iPad via USB CoreDevice IPv6 tunnel, reads Swift source to understand every screen, then runs a vision-driven agent loop: screenshot \u2192 analyze \u2192 decide \u2192 act \u2192 verify \u2192 repeat. All interaction happens via HTTP to an embedded StateServer in the app under test. Optionally exposes the device over Tailscale so remote agents (OpenClaw, Codex, any HTTP-capable agent) can run iOS QA from anywhere without touching the hardware. Use when asked to \"ios qa\", \"test my iPhone app\", \"test my iPad app\", \"find bugs on the device\", or \"qa the iOS app\". (gstack)",
       "explicitTriggers": "ios qa test the iphone app test the ipad app test my ios app find bugs on the device qa the ios app",
       "upstreamAllowedTools": "Bash Read Write Edit Grep Glob AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -781,7 +781,7 @@
       "codexFacingDisplayName": "gstack-landing-report",
       "installedPath": ".agents/skills/gstack-landing-report",
       "metadataPath": ".agents/skills/gstack-landing-report/agents/openai.yaml",
-      "purposeAndTrigger": "Read-only queue dashboard for workspace-aware ship. Shows which VERSION slots are currently claimed by open PRs, which sibling Conductor workspaces have WIP work likely to ship soon, and what slot /ship would pick next. No mutations — just a snapshot. Use when asked to \"landing report\", \"what's in the queue\", \"show me open PRs\", or \"which version do I claim next\". (gstack)",
+      "purposeAndTrigger": "Read-only queue dashboard for workspace-aware ship. Shows which VERSION slots are currently claimed by open PRs, which sibling Conductor workspaces have WIP work likely to ship soon, and what slot /ship would pick next. No mutations \u2014 just a snapshot. Use when asked to \"landing report\", \"what's in the queue\", \"show me open PRs\", or \"which version do I claim next\". (gstack)",
       "explicitTriggers": "landing report version queue ship queue what version comes next show open PR versions",
       "upstreamAllowedTools": "Bash Read",
       "requiredToolsAuthRuntime": [
@@ -825,7 +825,7 @@
       "codexFacingDisplayName": "gstack-make-pdf",
       "installedPath": ".agents/skills/gstack-make-pdf",
       "metadataPath": ".agents/skills/gstack-make-pdf/agents/openai.yaml",
-      "purposeAndTrigger": "Turn any markdown file into a publication-quality PDF. Proper 1in margins, intelligent page breaks, page numbers, cover pages, running headers, curly quotes and em dashes, clickable TOC, diagonal DRAFT watermark. Not a draft artifact — a finished artifact. Use when asked to \"make a PDF\", \"export to PDF\", \"turn this markdown into a PDF\", or \"generate a document\". (gstack)",
+      "purposeAndTrigger": "Turn any markdown file into a publication-quality PDF. Proper 1in margins, intelligent page breaks, page numbers, cover pages, running headers, curly quotes and em dashes, clickable TOC, diagonal DRAFT watermark. Not a draft artifact \u2014 a finished artifact. Use when asked to \"make a PDF\", \"export to PDF\", \"turn this markdown into a PDF\", or \"generate a document\". (gstack)",
       "explicitTriggers": "markdown to pdf generate pdf make pdf export pdf",
       "upstreamAllowedTools": "Bash Read AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -847,7 +847,7 @@
       "codexFacingDisplayName": "gstack-office-hours",
       "installedPath": ".agents/skills/gstack-office-hours",
       "metadataPath": ".agents/skills/gstack-office-hours/agents/openai.yaml",
-      "purposeAndTrigger": "YC Office Hours — two modes. Startup mode: six forcing questions that expose demand reality, status quo, desperate specificity, narrowest wedge, observation, and future-fit. Builder mode: design thinking brainstorming for side projects, hackathons, learning, and open source. Saves a design doc. Use when asked to \"brainstorm this\", \"I have an idea\", \"help me think through this\", \"office hours\", or \"is this worth building\". Proactively invoke this skill (do NOT answer directly) when the user describes a new product idea, asks whether something is worth building, wants to think through design decisions for something that doesn't exist yet, or is exploring a concept before any code is written. Use before /plan-ceo-review or /plan-eng-review. (gstack)",
+      "purposeAndTrigger": "YC Office Hours \u2014 two modes. Startup mode: six forcing questions that expose demand reality, status quo, desperate specificity, narrowest wedge, observation, and future-fit. Builder mode: design thinking brainstorming for side projects, hackathons, learning, and open source. Saves a design doc. Use when asked to \"brainstorm this\", \"I have an idea\", \"help me think through this\", \"office hours\", or \"is this worth building\". Proactively invoke this skill (do NOT answer directly) when the user describes a new product idea, asks whether something is worth building, wants to think through design decisions for something that doesn't exist yet, or is exploring a concept before any code is written. Use before /plan-ceo-review or /plan-eng-review. (gstack)",
       "explicitTriggers": "brainstorm this is this worth building help me think through office hours",
       "upstreamAllowedTools": "Bash Read Grep Glob Write Edit AskUserQuestion WebSearch",
       "requiredToolsAuthRuntime": [
@@ -879,7 +879,7 @@
       "codexFacingDisplayName": "gstack-open-gstack-browser",
       "installedPath": ".agents/skills/gstack-open-gstack-browser",
       "metadataPath": ".agents/skills/gstack-open-gstack-browser/agents/openai.yaml",
-      "purposeAndTrigger": "Launch GStack Browser — AI-controlled Chromium with the sidebar extension baked in. Opens a visible browser window where you can watch every action in real time. The sidebar shows a live activity feed and chat. Anti-bot stealth built in. Use when asked to \"open gstack browser\", \"launch browser\", \"connect chrome\", \"open chrome\", \"real browser\", \"launch chrome\", \"side panel\", or \"control my browser\".",
+      "purposeAndTrigger": "Launch GStack Browser \u2014 AI-controlled Chromium with the sidebar extension baked in. Opens a visible browser window where you can watch every action in real time. The sidebar shows a live activity feed and chat. Anti-bot stealth built in. Use when asked to \"open gstack browser\", \"launch browser\", \"connect chrome\", \"open chrome\", \"real browser\", \"launch chrome\", \"side panel\", or \"control my browser\".",
       "explicitTriggers": "open gstack browser launch chromium show me the browser",
       "upstreamAllowedTools": "Bash Read AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -952,7 +952,7 @@
       "codexFacingDisplayName": "gstack-plan-design-review",
       "installedPath": ".agents/skills/gstack-plan-design-review",
       "metadataPath": ".agents/skills/gstack-plan-design-review/agents/openai.yaml",
-      "purposeAndTrigger": "Designer's eye plan review — interactive, like CEO and Eng review. Rates each design dimension 0-10, explains what would make it a 10, then fixes the plan to get there. Works in plan mode. For live site visual audits, use /design-review. Use when asked to \"review the design plan\" or \"design critique\". Proactively suggest when the user has a plan with UI/UX components that should be reviewed before implementation. (gstack)",
+      "purposeAndTrigger": "Designer's eye plan review \u2014 interactive, like CEO and Eng review. Rates each design dimension 0-10, explains what would make it a 10, then fixes the plan to get there. Works in plan mode. For live site visual audits, use /design-review. Use when asked to \"review the design plan\" or \"design critique\". Proactively suggest when the user has a plan with UI/UX components that should be reviewed before implementation. (gstack)",
       "explicitTriggers": "design plan review review ux plan check design decisions",
       "upstreamAllowedTools": "Read Edit Grep Glob Bash AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -996,7 +996,7 @@
       "codexFacingDisplayName": "gstack-plan-eng-review",
       "installedPath": ".agents/skills/gstack-plan-eng-review",
       "metadataPath": ".agents/skills/gstack-plan-eng-review/agents/openai.yaml",
-      "purposeAndTrigger": "Eng manager-mode plan review. Lock in the execution plan — architecture, data flow, diagrams, edge cases, test coverage, performance. Walks through issues interactively with opinionated recommendations. Use when asked to \"review the architecture\", \"engineering review\", or \"lock in the plan\". Proactively suggest when the user has a plan or design doc and is about to start coding — to catch architecture issues before implementation. (gstack)",
+      "purposeAndTrigger": "Eng manager-mode plan review. Lock in the execution plan \u2014 architecture, data flow, diagrams, edge cases, test coverage, performance. Walks through issues interactively with opinionated recommendations. Use when asked to \"review the architecture\", \"engineering review\", or \"lock in the plan\". Proactively suggest when the user has a plan or design doc and is about to start coding \u2014 to catch architecture issues before implementation. (gstack)",
       "explicitTriggers": "review architecture eng plan review check the implementation plan",
       "upstreamAllowedTools": "Read Write Grep Glob AskUserQuestion Bash WebSearch",
       "requiredToolsAuthRuntime": [
@@ -1018,7 +1018,7 @@
       "codexFacingDisplayName": "gstack-plan-tune",
       "installedPath": ".agents/skills/gstack-plan-tune",
       "metadataPath": ".agents/skills/gstack-plan-tune/agents/openai.yaml",
-      "purposeAndTrigger": "Self-tuning question sensitivity + developer psychographic for gstack (v1: observational). Review which AskUserQuestion prompts fire across gstack skills, set per-question preferences (never-ask / always-ask / ask-only-for-one-way), inspect the dual-track profile (what you declared vs what your behavior suggests), and enable/disable question tuning. Conversational interface — no CLI syntax required.  Use when asked to \"tune questions\", \"stop asking me that\", \"too many questions\", \"show my profile\", \"what questions have I been asked\", \"show my vibe\", \"developer profile\", or \"turn off question tuning\". (gstack)  Proactively suggest when the user says the same gstack question has come up before, or when they explicitly override a recommendation for the Nth time.",
+      "purposeAndTrigger": "Self-tuning question sensitivity + developer psychographic for gstack (v1: observational). Review which AskUserQuestion prompts fire across gstack skills, set per-question preferences (never-ask / always-ask / ask-only-for-one-way), inspect the dual-track profile (what you declared vs what your behavior suggests), and enable/disable question tuning. Conversational interface \u2014 no CLI syntax required.  Use when asked to \"tune questions\", \"stop asking me that\", \"too many questions\", \"show my profile\", \"what questions have I been asked\", \"show my vibe\", \"developer profile\", or \"turn off question tuning\". (gstack)  Proactively suggest when the user says the same gstack question has come up before, or when they explicitly override a recommendation for the Nth time.",
       "explicitTriggers": "tune questions stop asking me that too many questions show my profile show my vibe developer profile turn off question tuning",
       "upstreamAllowedTools": "Bash Read Write Edit AskUserQuestion Glob Grep",
       "requiredToolsAuthRuntime": [
@@ -1084,7 +1084,7 @@
       "codexFacingDisplayName": "gstack-qa-only",
       "installedPath": ".agents/skills/gstack-qa-only",
       "metadataPath": ".agents/skills/gstack-qa-only/agents/openai.yaml",
-      "purposeAndTrigger": "Report browser/API/CLI/job/worker/webhook bugs. Produces a structured report with contract evidence or browser scores and repro steps — but never fixes anything. Use when asked to \"just report bugs\", \"qa report only\", or \"test but don't fix\". For the full test-fix-verify loop, use /qa instead. Proactively suggest when the user wants a bug report without any code changes. (gstack)",
+      "purposeAndTrigger": "Report browser/API/CLI/job/worker/webhook bugs. Produces a structured report with contract evidence or browser scores and repro steps \u2014 but never fixes anything. Use when asked to \"just report bugs\", \"qa report only\", or \"test but don't fix\". For the full test-fix-verify loop, use /qa instead. Proactively suggest when the user wants a bug report without any code changes. (gstack)",
       "explicitTriggers": "qa report only just report bugs test but dont fix",
       "upstreamAllowedTools": "Bash Read Write AskUserQuestion WebSearch",
       "requiredToolsAuthRuntime": [
@@ -1157,7 +1157,7 @@
       "codexFacingDisplayName": "gstack-scrape",
       "installedPath": ".agents/skills/gstack-scrape",
       "metadataPath": ".agents/skills/gstack-scrape/agents/openai.yaml",
-      "purposeAndTrigger": "Pull data from a web page through the Aside browser — your real, already signed-in sessions. Read-only; returns one JSON document. Use when asked to \"scrape\", \"get data from\", \"pull\", \"extract from\", or \"what's on\" a page. (gstack)",
+      "purposeAndTrigger": "Pull data from a web page through the Aside browser \u2014 your real, already signed-in sessions. Read-only; returns one JSON document. Use when asked to \"scrape\", \"get data from\", \"pull\", \"extract from\", or \"what's on\" a page. (gstack)",
       "explicitTriggers": "scrape this page get data from pull from extract from what is on",
       "upstreamAllowedTools": "Bash Read AskUserQuestion",
       "requiredToolsAuthRuntime": [
@@ -1410,6 +1410,14 @@
       ],
       "supportingSections": [],
       "sourceSha256": "da05ec4a9f1f536d676e7751f907ae407dd8325babe76d5342f6701772e9c24c"
+    }
+  ],
+  "coverageRecord": "docs/reviews/gstack-coverage-2026-10-13.md",
+  "supportingAssetRepairs": [
+    {
+      "path": ".agents/skills/gstack-qa/templates/qa-report-template.md",
+      "sourcePath": "qa/templates/qa-report-template.md",
+      "scope": "ignored project QA overlay; generated Codex asset omitted at exact pin; upstream unchanged"
     }
   ]
 }

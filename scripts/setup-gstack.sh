@@ -34,6 +34,11 @@ if [[ "$(git -C "$DUMMY_DOWN_GSTACK_SOURCE" rev-parse HEAD)" != "$dummy_down_gst
   exit 1
 fi
 
+# Verify the whole pinned instruction inventory before touching configuration.
+# This is read-only and refuses modified tracked upstream files.
+node "$dummy_down_repo_root/scripts/check-gstack.mjs" --inventory-only \
+  --upstream "$DUMMY_DOWN_GSTACK_SOURCE"
+
 "$DUMMY_DOWN_GSTACK_SOURCE/bin/gstack-config" set telemetry off
 "$DUMMY_DOWN_GSTACK_SOURCE/bin/gstack-config" set auto_upgrade false
 "$DUMMY_DOWN_GSTACK_SOURCE/bin/gstack-config" set update_check false
@@ -53,10 +58,22 @@ fi
 if [[ ! -d "$DUMMY_DOWN_GSTACK_SOURCE/node_modules/playwright" ]]; then
   (cd "$DUMMY_DOWN_GSTACK_SOURCE" && bun install --frozen-lockfile)
 fi
-if [[ ! -f "$GSTACK_ROOT/SKILL.md" || ! -x "$GSTACK_ROOT/browse/dist/browse" ]]; then
+
+# The pinned Codex generator emits the functional QA template but omits the
+# browser template required by qa-only. Add it in a private project overlay;
+# never write through the generated skill link into the retained source.
+node "$dummy_down_repo_root/scripts/repair-gstack-qa.mjs" \
+  "$dummy_down_repo_root" "$DUMMY_DOWN_GSTACK_SOURCE"
+if ! node "$dummy_down_repo_root/scripts/check-gstack.mjs" --inventory-only \
+  --installed; then
+  node "$dummy_down_repo_root/scripts/repair-gstack-qa.mjs" \
+    "$dummy_down_repo_root" "$DUMMY_DOWN_GSTACK_SOURCE" --preflight
+  echo 'Pinned Codex instruction mappings need repair; running the project-scoped installer.'
   "$dummy_down_source_link/setup" --host codex --prefix --no-browser \
     --no-plan-tune-hooks --no-timeline-stop-hook
 fi
+node "$dummy_down_repo_root/scripts/repair-gstack-qa.mjs" \
+  "$dummy_down_repo_root" "$DUMMY_DOWN_GSTACK_SOURCE"
 
 # The upstream minimal Codex runtime omits dependencies, while its browser
 # readiness probe resolves Playwright from that runtime. Link the retained copy.
@@ -104,4 +121,6 @@ if [[ -z "${GSTACK_CHROMIUM_PATH:-}" ]] && ! "$GSTACK_ROOT/bin/gstack-browser-en
   node "$DUMMY_DOWN_GSTACK_SOURCE/node_modules/playwright/cli.js" install chromium
 fi
 "$dummy_down_source_link/setup" --status
+node "$dummy_down_repo_root/scripts/check-gstack.mjs" --inventory-only \
+  --installed --upstream "$DUMMY_DOWN_GSTACK_SOURCE"
 "$GSTACK_ROOT/bin/gstack-browser-ensure" --check

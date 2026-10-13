@@ -53,8 +53,12 @@ keep those private runtime files out of status and commits across branch switche
 `scripts/check-gstack-browser.mjs` contains the check. Chromium uses the container
 launch configuration; package integrity and TLS verification remain enabled.
 
-Installation readiness was verified with the official install inventory (25
-section links resolved), repeated bootstrap, and the custom browser render check.
+Installation readiness now checks all **57 Codex-supported instructions**, their
+metadata, **28 supporting sections**, both QA templates and required runtime assets.
+The upstream installer's older “25 checked” output was a selected section count,
+not a complete skill inventory. The bootstrap rejects changed tracked upstream
+source and validates the full mapping before reusing a healthy installation.
+Repeated bootstrap and the custom browser render check passed in this environment.
 The original compiled gstack browser opened Dummy-Down, switched all learning
 modes, exercised search and planned-framework recovery, captured a mobile
 screenshot, and inspected console errors. No paid model or outside-provider
@@ -62,8 +66,48 @@ review was run. This is current-environment evidence, not host-wide certificatio
 
 ## Using the skills
 
-Read the applicable installed SKILL.md before following its workflow. Useful
-skill directories include:
+The pinned Codex generator omits `qa/templates/qa-report-template.md`, although
+`qa-only` requires it. The bootstrap copies the generated QA skill into an ignored
+project overlay and adds the exact pinned browser template there. It changes only
+the expected project QA link, preserves its instructions/sections, and never
+writes through the link into upstream. Unexpected or incomplete overlays stop for
+inspection instead of being overwritten. This repair is independent of the browser
+readiness adapter described above.
+
+### How to verify or repair project skills
+
+From the repository root with Node >=22.12, Git and the retained/fetchable source:
+
+1. Run `npm run check:gstack` for the complete registry, current coverage record
+   and isolated regression fixtures. This command requires no gstack installation.
+2. Run `npm run check:gstack:installed` to check actual project mappings/assets.
+3. If mappings are missing, run `bash scripts/setup-gstack.sh`, then
+   `source scripts/gstack-env.sh`. A healthy installation is reused. The exact
+   source pin and unmodified tracked templates are verified before configuration.
+
+To include source validation directly:
+
+```sh
+source scripts/gstack-env.sh
+node scripts/check-gstack.mjs --inventory-only --installed --upstream "$DUMMY_DOWN_GSTACK_SOURCE"
+```
+
+Missing mappings/assets fail with their name and path. A wrong pin or modified
+upstream fails without overwriting it; inspect the retained checkout. Initial
+official registration still needs the HOME write described above. Do not change
+HOME/CODEX_HOME, enable upgrades, or add a new provider as a workaround.
+
+The registry points `coverageRecord` to the current dated 58-row execution record.
+For a new catch-up record, update that relative path and retain older evidence;
+ordinary scoped task reviews can link to it and record invalidated stages.
+CI checks record structure, not execution authenticity or AI review quality.
+Instruction files and generated metadata do not prove native discovery; a fresh
+Codex session may be needed, and reload remains unverified here.
+
+Read the [complete 58-skill inventory and routing policy](GSTACK-SKILLS.md), then
+the applicable installed SKILL.md before following its workflow. The complete
+registry separates canonical skills, aliases, host exclusions and support files;
+the highlighted examples below are not the full inventory.
 
 | Directory under `.agents/skills/` | Purpose                                                |
 | --------------------------------- | ------------------------------------------------------ |
