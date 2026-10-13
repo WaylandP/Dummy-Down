@@ -8,6 +8,10 @@ import { Glossary } from './components/Glossary'
 import { Brand } from './components/Brand'
 import { ControlExplorer } from './components/ControlExplorer'
 import { Topography } from './components/Topography'
+import { UsageAnalytics } from './analytics/UsageAnalytics'
+import { UsagePreferences } from './analytics/UsagePreferences'
+import { trackUsage } from './analytics/usage'
+import { useControlView } from './analytics/useControlView'
 
 const repositoryUrl = 'https://github.com/WaylandP/Dummy-Down'
 const perspectives = [
@@ -34,6 +38,12 @@ export default function App() {
     controller.parsed.kind === 'ready'
       ? controller.parsed.state.mode
       : 'beginner'
+  useControlView(
+    controller.resolution?.kind === 'lesson'
+      ? controller.resolution.control
+      : null,
+    mode,
+  )
   function sampleUrl(perspective: ExplanationMode) {
     return createLessonUrl(
       defaultLesson,
@@ -54,6 +64,7 @@ export default function App() {
     )
       return
     event.preventDefault()
+    trackUsage({ name: 'section_open', section: 'explorer' })
     controller.dispatch({ type: 'open-example', mode: perspective })
     document.getElementById('explorer')?.scrollIntoView?.({ block: 'start' })
   }
@@ -66,9 +77,29 @@ export default function App() {
       <header className="site-header section-shell">
         <Brand />
         <nav aria-label="Main navigation">
-          <a href="#explorer">Control Explorer</a>
-          <a href="#approach">Learning modes</a>
-          <a className="glossary-nav" href="#glossary">
+          <a
+            href="#explorer"
+            onClick={() =>
+              trackUsage({ name: 'section_open', section: 'explorer' })
+            }
+          >
+            Control Explorer
+          </a>
+          <a
+            href="#approach"
+            onClick={() =>
+              trackUsage({ name: 'section_open', section: 'approach' })
+            }
+          >
+            Learning modes
+          </a>
+          <a
+            className="glossary-nav"
+            href="#glossary"
+            onClick={() =>
+              trackUsage({ name: 'section_open', section: 'glossary' })
+            }
+          >
             Glossary
           </a>
           <a
@@ -105,10 +136,13 @@ export default function App() {
               <div className="hero-actions">
                 <a
                   className="button button-primary"
-                  href={sampleUrl(mode)}
-                  onClick={(event) => openSample(event, mode)}
+                  href={`/?view=discover&catalog=cmmc&collection=references&mode=${mode}#explorer`}
+                  onClick={() =>
+                    trackUsage({ name: 'section_open', section: 'explorer' })
+                  }
                 >
-                  Explore a control <ArrowRight size={18} aria-hidden="true" />
+                  Explore CMMC controls{' '}
+                  <ArrowRight size={18} aria-hidden="true" />
                 </a>
                 <span className="hero-access">
                   Free to explore. No account needed.
@@ -190,9 +224,10 @@ export default function App() {
           <div className="mission-copy">
             <p>
               Dummy-Down is an independent, open-source project. We’re starting
-              with a draft lesson and 149 source references from the September
-              2024 CMMC v2.13 snapshot. Teaching content grows through careful
-              review.
+              with 149 CMMC source references across all three levels and draft
+              explanations for each perspective. The catalog follows the
+              September 2024 v2.13 publications. Teaching content grows through
+              careful review.
             </p>
             <p className="roadmap-note">
               On the roadmap: reviewed CMMC content, NIST SP 800-53, FedRAMP,
@@ -213,6 +248,7 @@ export default function App() {
       </main>
 
       <footer className="site-footer section-shell">
+        <UsagePreferences />
         <div className="footer-top">
           <Brand />
           <p>Make cybersecurity make sense.</p>
@@ -235,6 +271,7 @@ export default function App() {
           <span>Stay curious.</span>
         </div>
       </footer>
+      <UsageAnalytics />
     </div>
   )
 }

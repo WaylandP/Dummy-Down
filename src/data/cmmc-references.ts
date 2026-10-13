@@ -81,7 +81,7 @@ export const referenceControls: readonly ReferenceControl[] =
         'Versioned source snapshot acquired from pinned public PDF mirrors; ' +
         'the latest edition and present contract applicability have not been independently verified.',
       disclaimer:
-        'Source reference only. Educational explanations have not been written or reviewed for this entry. ' +
+        'Attributed source reference with separate educational teaching drafts; qualified editorial review is pending. ' +
         'A quoted requirement is not the complete assessment guidance, evidence checklist, or a guarantee of compliance. ' +
         'Consult the applicable official publications and assessment scope.',
       tags: [record.familyName, `Level ${record.level}`, 'CMMC 2.13'],

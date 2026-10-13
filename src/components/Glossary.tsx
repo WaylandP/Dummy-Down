@@ -3,6 +3,8 @@ import { Search } from 'lucide-react'
 import { filterGlossaryTerms } from '../data/glossary-search'
 import type { GlossaryTerm } from '../types/content'
 import { TermDefinition } from './ContextTerms'
+import { trackUsage } from '../analytics/usage'
+import { useSearchUsage } from '../analytics/useSearchUsage'
 
 interface GlossaryProps {
   terms: readonly GlossaryTerm[]
@@ -13,6 +15,7 @@ export function Glossary({ terms }: GlossaryProps) {
   const prefix = useId()
   const input = useRef<HTMLInputElement>(null)
   const [query, setQuery] = useState('')
+  const searchUsage = useSearchUsage('glossary')
   const results = filterGlossaryTerms(terms, query).sort((left, right) =>
     left.title.localeCompare(right.title, 'en-US'),
   )
@@ -43,7 +46,15 @@ export function Glossary({ terms }: GlossaryProps) {
             type="search"
             placeholder="Try account, device, or offboarding"
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => {
+              searchUsage.edited(event.target.value)
+              setQuery(event.target.value)
+            }}
+            onBlur={() => searchUsage.report(query, results.length)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter')
+                searchUsage.report(query, results.length)
+            }}
           />
         </div>
       </div>
@@ -57,7 +68,14 @@ export function Glossary({ terms }: GlossaryProps) {
       {results.length ? (
         <div className="glossary-list">
           {results.map((term) => (
-            <details className="glossary-term" key={term.id}>
+            <details
+              className="glossary-term"
+              key={term.id}
+              onToggle={(event) => {
+                if (event.currentTarget.open)
+                  trackUsage({ name: 'glossary_open', termId: term.id })
+              }}
+            >
               <summary>{term.title}</summary>
               <TermDefinition term={term} />
             </details>

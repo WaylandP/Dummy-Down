@@ -2,12 +2,19 @@ import { useEffect, useId, useRef, useState } from 'react'
 import { findLearningActivity } from '../data/learning'
 import type { LessonIdentity } from '../types/content'
 import type { LearningActivity } from '../types/learning'
+import { trackUsage } from '../analytics/usage'
 
 interface LearningPracticeProps {
   lesson: LessonIdentity
 }
 
-function KnowledgeCheck({ activity }: { activity: LearningActivity }) {
+function KnowledgeCheck({
+  activity,
+  lesson,
+}: {
+  activity: LearningActivity
+  lesson: LessonIdentity
+}) {
   const prefix = useId()
   const [questionIndex, setQuestionIndex] = useState(0)
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -29,6 +36,7 @@ function KnowledgeCheck({ activity }: { activity: LearningActivity }) {
   }, [questionIndex, complete, checked])
 
   function reset() {
+    trackUsage({ name: 'practice_action', lesson, action: 'reset' })
     focusRequested.current = true
     setSelectedId(null)
     setChecked(false)
@@ -45,8 +53,10 @@ function KnowledgeCheck({ activity }: { activity: LearningActivity }) {
     if (!checked) return
     focusRequested.current = true
     if (questionIndex === activity.questions.length - 1) {
+      trackUsage({ name: 'practice_action', lesson, action: 'complete' })
       setComplete(true)
     } else {
+      trackUsage({ name: 'practice_action', lesson, action: 'next' })
       setQuestionIndex(questionIndex + 1)
       setSelectedId(null)
       setChecked(false)
@@ -103,7 +113,14 @@ function KnowledgeCheck({ activity }: { activity: LearningActivity }) {
               type="button"
               disabled={!selected || checked}
               onClick={() => {
-                if (selected) setChecked(true)
+                if (selected) {
+                  trackUsage({
+                    name: 'practice_action',
+                    lesson,
+                    action: 'check',
+                  })
+                  setChecked(true)
+                }
               }}
             >
               Check answer
@@ -113,6 +130,11 @@ function KnowledgeCheck({ activity }: { activity: LearningActivity }) {
                 className="practice-action practice-secondary"
                 type="button"
                 onClick={() => {
+                  trackUsage({
+                    name: 'practice_action',
+                    lesson,
+                    action: 'retry',
+                  })
                   focusRequested.current = true
                   setSelectedId(null)
                   setChecked(false)
@@ -177,7 +199,13 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
         <span className="draft-label">Draft learning activity</span>
       </div>
       <p>{activity.introduction}</p>
-      <details className="practice-disclosure">
+      <details
+        className="practice-disclosure"
+        onToggle={(event) => {
+          if (event.currentTarget.open)
+            trackUsage({ name: 'practice_action', lesson, action: 'open' })
+        }}
+      >
         <summary>Fictional scenario: {activity.scenarioTitle}</summary>
         <ol className="scenario-flow">
           {activity.scenario.map((step) => (
@@ -188,9 +216,15 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
           ))}
         </ol>
       </details>
-      <details className="practice-disclosure">
+      <details
+        className="practice-disclosure"
+        onToggle={(event) => {
+          if (event.currentTarget.open)
+            trackUsage({ name: 'practice_action', lesson, action: 'open' })
+        }}
+      >
         <summary>Check your understanding</summary>
-        <KnowledgeCheck key={activity.id} activity={activity} />
+        <KnowledgeCheck key={activity.id} activity={activity} lesson={lesson} />
       </details>
       <p className="practice-context">{activity.disclaimer}</p>
       <p className="practice-source">

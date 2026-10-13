@@ -1098,6 +1098,143 @@
     color: var(--color-muted);
     max-width: 68ch;
   }
+  .cmmc-levels {
+    margin-bottom: 28px;
+  }
+  .level-paths {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .level-paths a {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 120px;
+    border-top: 1px solid var(--color-line);
+    padding-block: 18px;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .level-paths a:hover .level-path-name {
+    color: var(--color-accent);
+  }
+  .level-path-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-foreground);
+    font-size: 19px;
+  }
+  .level-path-count,
+  .cmmc-levels > p {
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .cmmc-levels > p {
+    margin-top: 4px;
+  }
+  .perspective-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-block: 28px 12px;
+  }
+  .perspective-heading .mode-label {
+    margin: 0;
+  }
+  .explanation-panel .perspective-purpose {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .perspective-example,
+  .perspective-watch,
+  .perspective-questions {
+    margin-top: 24px;
+    max-width: 68ch;
+  }
+  .perspective-example {
+    border-left: 2px solid var(--color-line);
+    padding-left: 20px;
+  }
+  .control-perspective h5 {
+    color: var(--color-foreground);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .perspective-example p,
+  .perspective-watch p,
+  .perspective-questions li {
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  .perspective-questions ul {
+    list-style: disc;
+    padding-left: 22px;
+  }
+  .perspective-questions li + li {
+    margin-top: 8px;
+  }
+  .perspective-evidence {
+    margin-top: 24px;
+  }
+  .explanation-panel .perspective-context {
+    border-top: 1px solid var(--color-line);
+    padding-top: 18px;
+    margin-top: 28px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .perspective-reflection {
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--color-muted);
+  }
+  .reflection-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-top: 8px;
+  }
+  .reflection-actions button[aria-pressed='true'] {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+  .perspective-reflection p {
+    margin-top: 8px;
+    max-width: 68ch;
+    line-height: 1.7;
+  }
+  .usage-preferences {
+    padding-block: 20px;
+    border-bottom: 1px solid var(--color-line);
+    margin-bottom: 24px;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .usage-preferences summary {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--color-foreground);
+  }
+  .usage-preferences p {
+    max-width: 76ch;
+    margin-block: 12px;
+  }
+  .usage-preferences a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
   .reference-pending h4 {
     color: var(--color-foreground);
     font-size: 22px;
@@ -1476,6 +1613,15 @@
   .mode-tabs {
     justify-content: space-between;
     gap: 0;
+  }
+  .level-paths {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .level-paths a {
+    min-height: 0;
+    padding-block: 16px;
+    gap: 4px;
   }
   .mode-tabs button {
     font-size: 12px;

@@ -269,7 +269,7 @@ describe('Control Explorer learning experience', () => {
       'https://dodcio.defense.gov/CMMC/Resources-Documentation/',
     )
     expect(
-      explorer.getByRole('link', { name: /NIST SP 800-171 Rev. 2/ }),
+      explorer.getByRole('link', { name: /^NIST SP 800-171 Rev. 2/ }),
     ).toHaveAttribute(
       'href',
       'https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final',

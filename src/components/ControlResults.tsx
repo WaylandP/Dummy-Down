@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type { CatalogControl } from '../types/content'
 import { lessonIdentity, lessonIdentityKey } from '../state/explorer-state'
+import { trackUsage } from '../analytics/usage'
 
 interface ControlResultsProps {
   results: readonly CatalogControl[]
@@ -83,9 +84,17 @@ export function ControlResults({
               type="button"
               className="inline-action"
               disabled={currentPage === 0}
-              onClick={() =>
+              onClick={() => {
+                trackUsage({
+                  name: 'results_page',
+                  direction: 'previous',
+                  collection:
+                    results[0]?.contentKind === 'official-reference'
+                      ? 'references'
+                      : 'lessons',
+                })
                 setNavigation({ selectedKey, page: currentPage - 1 })
-              }
+              }}
             >
               <ChevronLeft size={14} aria-hidden="true" /> Previous results
             </button>
@@ -93,9 +102,17 @@ export function ControlResults({
               type="button"
               className="inline-action"
               disabled={currentPage >= pageCount - 1}
-              onClick={() =>
+              onClick={() => {
+                trackUsage({
+                  name: 'results_page',
+                  direction: 'next',
+                  collection:
+                    results[0]?.contentKind === 'official-reference'
+                      ? 'references'
+                      : 'lessons',
+                })
                 setNavigation({ selectedKey, page: currentPage + 1 })
-              }
+              }}
             >
               Next results <ChevronRight size={14} aria-hidden="true" />
             </button>

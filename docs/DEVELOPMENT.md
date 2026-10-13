@@ -3,15 +3,18 @@
 Dummy-Down is an early educational application. Start by reading the project's
 [mission and roadmap](../README.md). This frontend foundation provides a responsive
 homepage, an initial Control Explorer, and Beginner, IT & Cybersecurity, and
-Compliance & Assessment explanation modes for one draft CMMC example.
+Compliance & Assessment explanation modes for all 149 versioned CMMC references
+and the original README-based example.
 
 The example is an educational interpretation, not a complete official requirement
 or reviewed assessment guide. The Explorer restores exact lessons and modes from
 shareable addresses; a small searchable glossary supplies draft educational
 definitions. A separate source collection contains all149 CMMC identifiers in the
 September2024v2.13 snapshot. The existing draft lesson has a fictional scenario,
-a four-step visual flow and three learning questions. Reviewed explanations for
-the reference collection, more activities, accounts and a backend remain future
+a four-step visual flow and three learning questions. Each reference now has
+three original control-specific teaching perspectives, including fictional
+examples, technical cautions, assessment-reading questions and possible evidence.
+Qualified editorial review, more activities, accounts and a backend remain future
 work.
 
 ## Start locally
@@ -43,8 +46,10 @@ npm run dev -- --host 0.0.0.0
 
 Use port forwarding if your development environment supports it. Codex's environment
 onboarding UI does not provide web previews; validate the app with local requests
-and browser checks inside the machine instead. The frontend requires no
-credentials, external service, or environment variables. Dependencies must be
+and browser checks inside the machine instead. Exploring the learning content
+requires no credentials or external service. Optional usage measurement uses
+Vercel's production deployment category and Analytics service; see
+[Usage measurement](USAGE.md) for setup, privacy and dashboard limits. Dependencies must be
 available from the npm registry during installation.
 
 ## Understand the code
@@ -65,6 +70,8 @@ distributed with the fonts.
 | `src/data/control-search.ts`    | Shared search and filtering behavior.                                                  |
 | `src/data/editions.ts`          | Project editorial editions and the explicit sample identity.                           |
 | `src/data/cmmc-references.ts`   | Attributed CMMC publication quotations with snapshot/page provenance.                  |
+| `src/data/cmmc-perspectives.ts` | Separately authored, edition-bound teaching drafts, loaded on demand.                  |
+| `src/analytics/`                | Allowlisted usage events, production gating and visitor privacy preferences.           |
 | `src/data/learning.ts`          | Fictional scenarios and questions tied to an exact teaching identity.                  |
 | `src/data/glossary.ts`          | Draft definitions with source and review context.                                      |
 | `src/state/explorer-state.ts`   | Pure address parsing, exact resolution and navigation transitions.                     |
@@ -114,7 +121,8 @@ reads the clipboard. If writing is unavailable, it shows a labeled selectable
 link; outdated asynchronous results do not report success for a different lesson.
 
 Discovery state uses `view=discover` with optional `catalog`, `q`, `family`,
-`level`, `mode` and `collection=references`. Draft explanations remain the default.
+`level`, `mode` and `collection=references`. The original demo remains the default
+reading identity; the hero and level links open the full source collection.
 The source collection is inferred only for an exact known source identity on a
 shared link; explicit `collection=lessons` remains authoritative on a mismatch. Search updates the current history entry; deliberate selection,
 filter and mode changes create entries. Back/Forward restores the entire address.
@@ -146,8 +154,24 @@ not independently verified current applicability. Guide quotations match their
 cited pages. Ten genuine model/guide wording differences remain separately visible.
 
 The `CatalogControl` union distinguishes educational examples from source
-references. Reference records have no invented explanation modes or activities;
-the UI displays pending coverage explicitly. Discovery uses eight results per page
+references. Teaching drafts are stored separately and bound to framework,
+publication edition and control ID; the same ID in another edition does not
+borrow this content. All 149 entries have Beginner, IT & Cyber and Compliance
+perspectives with a visible draft label. The
+[complete agent editorial audit](designs/cmmc-perspectives-editorial-audit.md)
+records source-supported corrections and content fingerprints; it is not
+qualified human approval. Examples, discussion prompts and possible evidence do
+not replace official assessment objectives.
+
+The teaching collection is a separate dynamic-import chunk requested only when
+a source control is opened. During loading or failure, the attributed requirement
+and source links remain usable; the UI offers a page reload that preserves the
+current lesson address. Retrying the same failed module import alone is unreliable
+because browser module-load failures can be cached. Unknown
+framework/edition coverage remains explicitly pending. Reference entries do not
+claim interactive practice coverage.
+
+Discovery uses eight results per page
 and follows a restored selection. Pagination stays local to the result list;
 collection/query/family/level and selected identity remain in browser history.
 

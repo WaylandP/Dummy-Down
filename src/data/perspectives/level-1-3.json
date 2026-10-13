@@ -1,0 +1,899 @@
+[
+  {
+    "id": "AC.L1-b.1.i",
+    "beginner": {
+      "meaning": "Keep a clear list of the people, software acting for them, and devices allowed into a system. Being connected to the office network does not automatically mean something has permission to use it.",
+      "example": "At fictional Cedar Point Design, an employee requests a new network printer. IT records the approved printer before allowing it to connect, just as it records an approved employee account."
+    },
+    "technical": {
+      "focus": "Map approved user, process and device identities to enforced access decisions. Directory accounts cover people; service identities and device admission controls address other paths into the system.",
+      "example": "The team could pair an approved-account register with managed service accounts and a network device allowlist, then test that an unapproved device cannot connect.",
+      "watchFor": "A list alone does not enforce access, and human accounts do not describe every automated process."
+    },
+    "compliance": {
+      "focus": "The guide separately considers identifying approved users, processes and devices, then limiting access to each category. Trace the approval through to the actual system behavior.",
+      "reviewQuestions": [
+        "Who approves each category of identity before access is granted?",
+        "How would an unapproved process or device be prevented from accessing the system?"
+      ],
+      "evidenceExamples": [
+        "An authorized account and device register with approval records.",
+        "Configuration records and demonstrations of permitted and rejected access attempts."
+      ]
+    }
+  },
+  {
+    "id": "AC.L1-b.1.ii",
+    "beginner": {
+      "meaning": "Getting into a system and being allowed to do something inside it are different decisions. Give people only the actions their approved role permits, such as reading a document or changing a record.",
+      "example": "At Cedar Point Design, a reviewer can read contract records but cannot delete them. An approved records manager has a different set of permissions for that work."
+    },
+    "technical": {
+      "focus": "Define permitted transactions and functions, then enforce them at the application or data layer. Role-based access can group permissions, but the mapping must reflect actual responsibilities.",
+      "example": "A document application could assign separate read, edit and delete permissions to named roles, with tests showing that a reviewer cannot perform a deletion through its API.",
+      "watchFor": "Hiding a button is insufficient if the server still accepts the forbidden action."
+    },
+    "compliance": {
+      "focus": "The assessment focus is the definition of allowed actions and their enforcement. An authorized login alone does not demonstrate that permitted functions are restricted.",
+      "reviewQuestions": [
+        "Which transactions and functions are defined for each authorized role?",
+        "Where are those permissions enforced when a user attempts a restricted action?"
+      ],
+      "evidenceExamples": [
+        "A role-to-permission matrix describing allowed application operations.",
+        "Access-control settings and test records for allowed and blocked functions."
+      ]
+    }
+  },
+  {
+    "id": "AC.L1-b.1.iii",
+    "beginner": {
+      "meaning": "Know which outside systems your organization connects to or uses, and set conditions for those connections. Outside can mean a personal laptop, a cloud service, or another network beyond the system’s defined scope.",
+      "example": "Cedar Point Design approves one collaboration service for contract work. A teammate’s personal file-sharing account is not automatically approved just because it is convenient."
+    },
+    "technical": {
+      "focus": "Inventory external connections and uses, verify their authorization, and apply restrictions appropriate to each relationship. Network filtering, service configuration and device policies can address different connection paths.",
+      "example": "The team could record its approved cloud service, restrict access from unknown devices, and configure outbound connection rules for the relevant system boundary.",
+      "watchFor": "External is about control and system boundaries, not simply whether a server is off-site."
+    },
+    "compliance": {
+      "focus": "The guide addresses identifying, verifying and controlling both connections and use. Consider organizational devices reaching external services as well as external devices reaching organizational systems.",
+      "reviewQuestions": [
+        "Which external systems and uses have been identified and verified?",
+        "What technical or procedural limits apply to each approved connection and use?"
+      ],
+      "evidenceExamples": [
+        "External-system connection records and documented terms of authorized use.",
+        "Firewall, device-access or service settings demonstrating the stated limits."
+      ]
+    }
+  },
+  {
+    "id": "AC.L1-b.1.iv",
+    "beginner": {
+      "meaning": "Public websites and similar systems need a publishing process that keeps nonpublic contract information out. Know who can publish, check material before release, and handle information that was posted improperly.",
+      "example": "Before Cedar Point Design publishes a project announcement, an approved reviewer checks the draft for Federal Contract Information. The website editor publishes only the cleared material."
+    },
+    "technical": {
+      "focus": "Limit publishing permissions and build content review into release workflows. Also check already published content and define removal and escalation steps when protected information appears.",
+      "example": "The company could use a restricted editor role, a required review stage and a documented takedown process for its public website.",
+      "watchFor": "Internal approval does not make FCI eligible for public release; a website login also does not replace content review."
+    },
+    "compliance": {
+      "focus": "The guide considers authorized publishers, preventive procedures, pre-publication review, review of existing content and responses to improper postings. These are connected parts of managing public information.",
+      "reviewQuestions": [
+        "Who can post content, and how is it reviewed before publication?",
+        "How is existing public content checked and an improper posting removed and addressed?"
+      ],
+      "evidenceExamples": [
+        "Publisher authorization records and a documented content-review procedure.",
+        "Review records and an example response record for an improper posting."
+      ]
+    }
+  },
+  {
+    "id": "IA.L1-b.1.v",
+    "beginner": {
+      "meaning": "Give users, software acting for users, and devices recognizable identities. Identification answers “which one is this?” It supplies the names that access decisions and identity checks can work with.",
+      "example": "Cedar Point Design assigns a named employee account, a distinct backup-service identity and an inventory identifier for its network printer instead of treating every connection as an unknown visitor."
+    },
+    "technical": {
+      "focus": "Keep identities distinguishable across people, delegated processes and devices. Directory entries, service identities and device identifiers should map back to the entity they represent.",
+      "example": "An administrator could link each account to its owner, document the service that uses a process identity, and associate a device identifier with the equipment inventory.",
+      "watchFor": "An identifier labels an entity; it does not by itself prove identity or grant authorization."
+    },
+    "compliance": {
+      "focus": "The guide’s assessment objectives cover all three identity categories. Follow how an observed connection or action can be connected to the relevant user, process or device.",
+      "reviewQuestions": [
+        "How are users, user-associated processes and connecting devices identified?",
+        "Can the team connect an observed identity to the entity it represents?"
+      ],
+      "evidenceExamples": [
+        "User and service-account listings with documented identity associations.",
+        "Device identifiers and configuration records showing their use during access."
+      ]
+    }
+  },
+  {
+    "id": "IA.L1-b.1.vi",
+    "beginner": {
+      "meaning": "Check that a person, process or device is who it claims to be before giving it system access. A username is a claim; authentication is the check supporting that claim.",
+      "example": "Cedar Point Design’s printer has an identity, but its administrative interface also requires valid credentials before access. The team changes the factory credentials during setup."
+    },
+    "technical": {
+      "focus": "Identify the authentication mechanism for each access path, including service and device connections. Passwords, certificates and other mechanisms serve different contexts; verify that checks occur before access.",
+      "example": "The team could use individual credentials for users and certificates for a managed service connection, then test rejection when the credential is missing or invalid.",
+      "watchFor": "This control does not itself prescribe MFA; do not substitute a product label for testing identity verification."
+    },
+    "compliance": {
+      "focus": "The guide separately considers authentication of users, processes acting for users and devices. Examine the prerequisite identity check for each relevant type of system access.",
+      "reviewQuestions": [
+        "What verifies each type of identity before access is allowed?",
+        "What happens when that verification fails or credentials are absent?"
+      ],
+      "evidenceExamples": [
+        "Authentication configurations and documented credential-management procedures.",
+        "Test results showing rejected invalid credentials across relevant access paths."
+      ]
+    }
+  },
+  {
+    "id": "MP.L1-b.1.vii",
+    "beginner": {
+      "meaning": "Before disposing of storage or giving it another use, make the contract information on it unreadable through appropriate sanitization or destruction. Media includes paper and digital storage, not only laptop drives.",
+      "example": "Cedar Point Design retires a USB drive used for Federal Contract Information. It follows its selected sanitization process and checks the result before considering the drive available for reuse."
+    },
+    "technical": {
+      "focus": "Identify media containing FCI and choose a sanitization or destruction method suited to the media and intended disposition. Track the operation and its outcome through disposal or reuse.",
+      "example": "A retirement workflow could record a drive’s identifier, the approved method, verification of the result and the authorized destination after processing.",
+      "watchFor": "Deleting a file or performing an ordinary format may leave recoverable information; the method depends on the media."
+    },
+    "compliance": {
+      "focus": "The guide distinguishes disposal from release for reuse. Consider how the organization prevents FCI from remaining on each type of media when custody or purpose changes.",
+      "reviewQuestions": [
+        "How is media containing FCI identified before disposal or reuse?",
+        "How is the sanitization or destruction outcome checked and recorded?"
+      ],
+      "evidenceExamples": [
+        "Media disposition procedures and an inventory of affected storage.",
+        "Sanitization verification records or documented destruction records for disposed media."
+      ]
+    }
+  },
+  {
+    "id": "PE.L1-b.1.viii",
+    "beginner": {
+      "meaning": "Protect the places and equipment where systems operate by limiting physical access to approved people. A network password cannot protect a printer tray, server cabinet or workstation someone can physically reach.",
+      "example": "Cedar Point Design places its contract printer inside a staff-only work area and keeps the equipment room locked. Staff permissions identify who may enter each area."
+    },
+    "technical": {
+      "focus": "Define authorized individuals and apply physical controls appropriate to systems, equipment and operating environments. Badges, keys and equipment placement address different ways someone could reach information or hardware.",
+      "example": "The facilities team could map authorized staff to a locked equipment room and position document output where visitors cannot collect it unattended.",
+      "watchFor": "Protecting the main doorway alone may leave equipment and shared work areas exposed."
+    },
+    "compliance": {
+      "focus": "The guide considers identification of authorized individuals and restriction of access to systems, equipment and their environments. Review the actual physical layout and access practices together.",
+      "reviewQuestions": [
+        "Who is authorized to access each relevant physical environment?",
+        "How do controls prevent other people from reaching protected systems and equipment?"
+      ],
+      "evidenceExamples": [
+        "Authorized physical-access lists and area-access procedures.",
+        "Badge or key permissions and observations of equipment placement and barriers."
+      ]
+    }
+  },
+  {
+    "id": "PE.L1-b.1.ix",
+    "beginner": {
+      "meaning": "Keep visitors accompanied and their activity monitored, retain records of physical access, and know who holds access devices such as keys and badges. These activities help control entry after a lock is installed.",
+      "example": "At Cedar Point Design, a technician signs in, receives a visitor badge and is escorted to the printer. When an employee leaves, their assigned access card is recovered or disabled."
+    },
+    "technical": {
+      "focus": "Combine visitor handling, physical-access logging and access-device lifecycle management. Manual logs or electronic systems can support these functions when they reflect how the facility actually operates.",
+      "example": "A small office could maintain a sign-in record and assigned-key register, while a badge system records entrances and disables credentials when access changes.",
+      "watchFor": "A visitor log alone does not demonstrate escorting, and an issued badge must still be managed."
+    },
+    "compliance": {
+      "focus": "The assessment objectives cover escorting, monitoring, access logs, and identifying, controlling and managing access devices. Trace each activity rather than relying on one facilities policy.",
+      "reviewQuestions": [
+        "How are visitors escorted and their activity monitored in practice?",
+        "How are access records retained and keys or badges controlled as personnel change?"
+      ],
+      "evidenceExamples": [
+        "Visitor procedures and retained physical-access records.",
+        "Key or badge assignment records with issuance, return and deactivation entries."
+      ]
+    }
+  },
+  {
+    "id": "SC.L1-b.1.x",
+    "beginner": {
+      "meaning": "Know where communications cross into, out of, and between important parts of your systems. At those boundaries, watch the traffic, limit it and protect it rather than letting everything communicate freely.",
+      "example": "Cedar Point Design controls internet traffic at its network edge and separately restricts traffic between its contract-work network and its development lab. Both boundaries matter."
+    },
+    "technical": {
+      "focus": "Define external and key internal boundaries, then map monitoring, control and protection mechanisms to each. Firewalls, proxies and segmentation controls are possible tools, depending on the architecture.",
+      "example": "A network team could document allowed flows between two network zones, enforce them in firewall rules and review boundary logs for unexpected communications.",
+      "watchFor": "An internet firewall may leave important internal boundaries unprotected or unmonitored."
+    },
+    "compliance": {
+      "focus": "The guide separately considers defined boundaries and monitoring, control and protection at each category. Start with the architecture, then trace every stated boundary to its implemented mechanisms.",
+      "reviewQuestions": [
+        "Which external and key internal boundaries have been defined?",
+        "How are communications monitored, controlled and protected at each boundary?"
+      ],
+      "evidenceExamples": [
+        "Network diagrams and documented permitted communication flows.",
+        "Boundary-device settings, monitoring records and tests of restricted traffic."
+      ]
+    }
+  },
+  {
+    "id": "SC.L1-b.1.xi",
+    "beginner": {
+      "meaning": "Put publicly reachable systems on networks separated from the internal environment. The public-facing website should not provide an easy path into the systems where employees do their private work.",
+      "example": "Cedar Point Design hosts its public site in a separate network segment. A compromise of that site should not automatically grant a connection to the internal contract file server."
+    },
+    "technical": {
+      "focus": "Identify public components and separate their subnetworks physically or logically from internal networks. A DMZ is one possible design; separated cloud infrastructure can also support this architecture.",
+      "example": "The team could place a web server in a dedicated subnet and narrowly control any necessary connections to internal services rather than permitting broad network access.",
+      "watchFor": "A different subnet name does not demonstrate separation if unrestricted routes still connect the environments."
+    },
+    "compliance": {
+      "focus": "The guide focuses on identifying public components and implementing network separation. Examine reachable paths and access controls as well as the drawing of the intended architecture.",
+      "reviewQuestions": [
+        "Which system components are publicly accessible?",
+        "What demonstrates physical or logical separation from internal networks?"
+      ],
+      "evidenceExamples": [
+        "An inventory of public components and their network placement.",
+        "Routing and firewall configurations with tests of public-to-internal access."
+      ]
+    }
+  },
+  {
+    "id": "SI.L1-b.1.xii",
+    "beginner": {
+      "meaning": "Find software, firmware and system flaws, report them to the responsible people, and correct them promptly. The organization needs defined time frames rather than relying on someone eventually noticing an update.",
+      "example": "Cedar Point Design learns that its router has a security flaw. The team records it, reports it to the owner and schedules a tested fix within its defined correction time frame."
+    },
+    "technical": {
+      "focus": "Build a flaw-management process covering identification, reporting and correction. Vendor notices, vulnerability detection, patch testing and remediation tracking can support those stages without being interchangeable.",
+      "example": "The team could route a vendor advisory into a tracked ticket, test the firmware update, deploy it and verify the device is running the corrected version.",
+      "watchFor": "The requirement does not state a universal patch deadline; apply the organization’s specified time frames."
+    },
+    "compliance": {
+      "focus": "The guide considers defined time frames and whether identification, reporting and correction occur within them. A scanner report is only one stage of the workflow.",
+      "reviewQuestions": [
+        "What time frames are specified for identifying, reporting and correcting flaws?",
+        "How do records show those stages occurred within the specified time frames?"
+      ],
+      "evidenceExamples": [
+        "Flaw-remediation procedures and documented time-frame definitions.",
+        "Timestamped flaw tickets, patch records and verification of corrected versions."
+      ]
+    }
+  },
+  {
+    "id": "SI.L1-b.1.xiii",
+    "beginner": {
+      "meaning": "Place protection against malicious software where it can reduce the threat to your systems. Malicious code includes software that steals information, damages files or locks them for ransom.",
+      "example": "Cedar Point Design protects its managed workstations and examines where emailed files enter its environment. It chooses protection locations based on those paths rather than assuming one protected laptop covers everything."
+    },
+    "technical": {
+      "focus": "Identify appropriate protection locations and deploy mechanisms suited to the platforms and entry points. Endpoint anti-malware and gateway protection are examples; their coverage and operating state need attention.",
+      "example": "The team could centrally manage endpoint protection, monitor deployment status and apply supported malicious-code inspection to relevant inbound file paths.",
+      "watchFor": "A purchased license does not show that protection is installed and active at designated locations."
+    },
+    "compliance": {
+      "focus": "The guide asks whether designated locations are identified and malicious-code protection is provided there. Relate the planned coverage to actual systems and delivery paths.",
+      "reviewQuestions": [
+        "Which locations are designated for malicious-code protection, and why?",
+        "How is protection provided and its operational coverage confirmed there?"
+      ],
+      "evidenceExamples": [
+        "A protection-location inventory and malicious-code protection procedures.",
+        "Deployment records and configuration or health records for protection mechanisms."
+      ]
+    }
+  },
+  {
+    "id": "SI.L1-b.1.xiv",
+    "beginner": {
+      "meaning": "Keep malicious-software protection current when new releases become available. Protection that never receives updates may miss threats it was not prepared to recognize or handle.",
+      "example": "Cedar Point Design’s security tool normally updates automatically. An administrator notices a laptop has missed updates while offline and resolves the problem before treating its protection as current."
+    },
+    "technical": {
+      "focus": "Manage updates to malicious-code protection mechanisms, including the applicable detection content and software releases. Monitor update failures rather than relying only on an enabled automatic-update setting.",
+      "example": "The team could track protection versions and last successful updates centrally, alert on stale endpoints and troubleshoot blocked update connections.",
+      "watchFor": "“Automatic updates enabled” is a setting; it is not evidence that every device receives updates successfully."
+    },
+    "compliance": {
+      "focus": "The assessment focus is whether malicious-code protection mechanisms are updated when new releases are available. Follow release availability through deployment and exception handling across the relevant environment.",
+      "reviewQuestions": [
+        "How does the team identify and apply newly available protection updates?",
+        "How are failed or stale updates detected and addressed?"
+      ],
+      "evidenceExamples": [
+        "Update procedures and configured update schedules or policies.",
+        "Protection version reports, update logs and records resolving update failures."
+      ]
+    }
+  },
+  {
+    "id": "SI.L1-b.1.xv",
+    "beginner": {
+      "meaning": "Scan systems periodically for malicious software, and check files arriving from outside as they are downloaded, opened or executed. A scheduled scan and an immediate file check serve different purposes.",
+      "example": "Cedar Point Design schedules regular workstation scans. When an employee downloads an external file, real-time protection checks it at the point of use instead of waiting for the next scheduled scan."
+    },
+    "technical": {
+      "focus": "Define the frequency of periodic malicious-code scans and configure real-time inspection for external-source files. Confirm these capabilities operate on relevant systems rather than confusing them with vulnerability scanning.",
+      "example": "An endpoint tool could run the defined scan schedule, inspect downloaded files and report scan outcomes and disabled real-time protection to administrators.",
+      "watchFor": "A weekly vulnerability scan does not demonstrate real-time malicious-code scanning of incoming files."
+    },
+    "compliance": {
+      "focus": "The guide considers defined scan frequency, scans at that frequency, and real-time checks of external files. Review scheduling and immediate file inspection as separate behaviors.",
+      "reviewQuestions": [
+        "What periodic malicious-code scan frequency is defined and followed?",
+        "How are external-source files checked during download, opening or execution?"
+      ],
+      "evidenceExamples": [
+        "Scan policies, schedules and retained periodic scan results.",
+        "Real-time protection settings and demonstrations using safe test material."
+      ]
+    }
+  },
+  {
+    "id": "AC.L3-3.1.2e",
+    "beginner": {
+      "meaning": "For this Level 3 requirement, resources accessing systems must be owned, provisioned or issued by the organization. Provisioned means the organization exercises control; outright ownership is not the only permitted relationship.",
+      "example": "Cedar Point Design permits access from a laptop it configures under an approved agreement. An employee’s unrelated personal laptop is not treated as equivalent simply because the employee has a valid password."
+    },
+    "technical": {
+      "focus": "Identify the organization-controlled information resources and enforce that boundary in access paths. Device management, provisioning records and access policies can connect a resource’s status to its permitted use.",
+      "example": "The team could restrict access to enrolled devices whose provisioning relationship is documented, while accounting for government-furnished equipment and agreed external-party controls.",
+      "watchFor": "Do not translate this into “company-owned only”; the guide also recognizes provisioning through policy or agreements."
+    },
+    "compliance": {
+      "focus": "The guide considers identifying owned, provisioned or issued resources and restricting access to them. Trace organizational control as well as the technical admission decision.",
+      "reviewQuestions": [
+        "Which resources qualify as owned, provisioned or issued, and on what basis?",
+        "How is access restricted when a resource lacks that recognized relationship?"
+      ],
+      "evidenceExamples": [
+        "Resource inventories, provisioning records and relevant control agreements.",
+        "Access-policy configurations and tests rejecting resources outside the approved population."
+      ]
+    }
+  },
+  {
+    "id": "AC.L3-3.1.3e",
+    "beginner": {
+      "meaning": "A security domain is an area with its own protection rules. When information moves between connected domains, use a controlled transfer solution so that the connection does not bypass those rules.",
+      "example": "Cedar Point Design uses an approved transfer gateway between its protected work environment and another business network. Staff do not replace that route with an unrestricted shared folder."
+    },
+    "technical": {
+      "focus": "Identify inter-domain information flows and define secure transfer solutions for them. Configure allowed directions, destinations and content handling according to the organization’s security-domain design.",
+      "example": "A gateway could enforce approved transfer routes, inspect transferred material and log the result while allowing only the information flows the team has authorized.",
+      "watchFor": "Encrypting a connection alone does not demonstrate control of what may flow between security domains."
+    },
+    "compliance": {
+      "focus": "The guide considers defining transfer solutions, identifying domain-crossing flows and employing the solutions to control them. The relevant controls depend on the domains and information involved.",
+      "reviewQuestions": [
+        "Which information flows cross security domains on connected systems?",
+        "How do the defined transfer solutions constrain those flows in operation?"
+      ],
+      "evidenceExamples": [
+        "Security-domain diagrams and documented transfer-solution decisions.",
+        "Transfer configurations, flow rules and observed allowed and blocked transfer tests."
+      ]
+    }
+  },
+  {
+    "id": "AT.L3-3.2.1e",
+    "beginner": {
+      "meaning": "This Level 3 training goes beyond naming common scams. People learn to recognize and respond to manipulation, persistent attackers, breaches and suspicious behavior, with training at hire, after a significant cyber event and at least annually.",
+      "example": "Cedar Point Design updates its training after a significant account compromise. Staff practice recognizing the new warning signs and learn where to report them instead of relying on last year’s slides."
+    },
+    "technical": {
+      "focus": "Build training around the specified threat categories and reporting or response actions. Track delivery triggers and revise content at least annually or when significant threat changes occur.",
+      "example": "The security team could use onboarding sessions, an annual training cycle and event-triggered briefings, with updated scenarios drawn from relevant threat information.",
+      "watchFor": "Annual attendance alone does not cover the initial-hire, significant-event or content-update conditions."
+    },
+    "compliance": {
+      "focus": "The guide considers identified threats, required training delivery, significant threat changes and content updates. These timing conditions belong to this pinned Level 3 requirement.",
+      "reviewQuestions": [
+        "How is training delivered at initial hire, after significant cyber events and at least annually?",
+        "How are threat changes identified and training updated at least annually or when threats significantly change?"
+      ],
+      "evidenceExamples": [
+        "Training content covering the stated threats and appropriate responses.",
+        "Dated delivery records and versioned training revisions tied to relevant triggers."
+      ]
+    }
+  },
+  {
+    "id": "AT.L3-3.2.2e",
+    "beginner": {
+      "meaning": "People learn by practicing realistic situations, not only watching a presentation. This Level 3 requirement includes exercises for all users, shaped by their roles, and feedback for participants and their supervisors.",
+      "example": "Cedar Point Design gives office staff a suspicious-message exercise and administrators a scenario involving misuse of privileged access. Each group receives feedback on its decisions and supervisors learn where support is needed."
+    },
+    "technical": {
+      "focus": "Connect practical exercises to current threats and the responsibilities of general, specialized and privileged users. Plan feedback so results improve skills rather than becoming unexplained scores.",
+      "example": "The team could run a reporting exercise for general staff and a separate administrative-response drill, recording the scenario, participating roles and follow-up feedback.",
+      "watchFor": "A single generic phishing simulation may miss specialized and privileged responsibilities; training should support learning."
+    },
+    "compliance": {
+      "focus": "The guide considers identified exercises, current scenarios, role coverage and feedback to individuals and supervisors. Review those relationships rather than counting only completed sessions.",
+      "reviewQuestions": [
+        "How do practical exercises reflect current threats and each relevant user role?",
+        "How is useful feedback provided to participants and their supervisors?"
+      ],
+      "evidenceExamples": [
+        "Exercise plans mapped to general, specialized and privileged roles.",
+        "Participation records, feedback records and documented training improvements."
+      ]
+    }
+  },
+  {
+    "id": "CM.L3-3.4.1e",
+    "beginner": {
+      "meaning": "Have a trusted place and source for the system components the organization approves and actually uses. It should support knowing where a component came from and who is accountable for it.",
+      "example": "Cedar Point Design deploys software from its controlled repository instead of a teammate’s downloaded copy. The repository records the approved version and its trusted origin before deployment."
+    },
+    "technical": {
+      "focus": "Establish and maintain an authoritative source and repository for approved and implemented components. Integrity checks, controlled changes and traceable handling help keep that source trustworthy over time.",
+      "example": "The team could store approved software with validated hashes or signatures, control repository changes and maintain accountable handling for hardware components.",
+      "watchFor": "A file share is not automatically authoritative; its contents, approvals and integrity still need management."
+    },
+    "compliance": {
+      "focus": "The guide considers identifying approved and implemented components, and establishing and maintaining their trusted repository. Connect repository contents to the components actually deployed.",
+      "reviewQuestions": [
+        "Which approved and implemented components are represented by the authoritative source?",
+        "How is that source kept trustworthy and accountable as components change?"
+      ],
+      "evidenceExamples": [
+        "Approved-component records and repository governance procedures.",
+        "Repository access records, integrity checks and traceability to deployed versions."
+      ]
+    }
+  },
+  {
+    "id": "CM.L3-3.4.2e",
+    "beginner": {
+      "meaning": "Use automated checks to spot components that are unauthorized or configured incorrectly. After detection, remove them or restrict them in a quarantine or remediation network while the problem is addressed.",
+      "example": "Cedar Point Design’s checks detect a laptop with an unexpected configuration. Its access is restricted to a repair environment while the administrator investigates and restores the approved setup."
+    },
+    "technical": {
+      "focus": "Deploy automated detection against approved configuration and component expectations. Define the subsequent removal, quarantine or remediation action; detection can be automated while some corrective work remains manual.",
+      "example": "The team could evaluate device posture automatically and apply restricted access after a failed check, allowing only the services needed for repair and re-evaluation.",
+      "watchFor": "An alert by itself does not complete the post-detection action; test that quarantine actually limits CUI handling."
+    },
+    "compliance": {
+      "focus": "The guide considers identifying and employing automated detection, detecting affected components and taking the specified post-detection action. Quarantine need not mean physically disconnecting the device.",
+      "reviewQuestions": [
+        "Which automated mechanisms detect unauthorized or misconfigured components?",
+        "What removal or quarantine action occurs after detection and how is it verified?"
+      ],
+      "evidenceExamples": [
+        "Configuration baselines and automated detection rules.",
+        "Detection records, quarantine settings and remediation or removal records."
+      ]
+    }
+  },
+  {
+    "id": "CM.L3-3.4.3e",
+    "beginner": {
+      "meaning": "Use automated tools to discover and manage the components in your systems. The inventory needs to stay current, complete, accurate and available to the people who use it, rather than becoming an old spreadsheet.",
+      "example": "Cedar Point Design’s inventory tools notice a newly connected server and its installed software. IT reconciles that finding with the approved deployment instead of waiting for the next manual list update."
+    },
+    "technical": {
+      "focus": "Combine discovery and management capabilities with inventory reconciliation. Agents, network observations and management platforms can expose different component attributes and coverage gaps.",
+      "example": "The team could reconcile endpoint-agent results with switch observations, assign owners to unmatched findings and publish the maintained inventory for operational use.",
+      "watchFor": "Automated discovery does not eliminate blind spots, duplicate entries or the need to correct inaccurate records."
+    },
+    "compliance": {
+      "focus": "The guide considers the identified automated tools, the quality and availability of the inventory, and tool use to maintain it. Review resulting inventory quality as well as tool deployment.",
+      "reviewQuestions": [
+        "Which automated discovery and management tools maintain the component inventory?",
+        "How are completeness, accuracy, currency and availability checked and corrected?"
+      ],
+      "evidenceExamples": [
+        "Inventory-tool configurations and documented reconciliation procedures.",
+        "Current inventory exports and records resolving missing or inconsistent components."
+      ]
+    }
+  },
+  {
+    "id": "IA.L3-3.5.1e",
+    "beginner": {
+      "meaning": "Where possible, systems should verify each other before connecting, using cryptographic checks that resist reuse of a captured exchange. Both sides checking identity is different from only checking the server.",
+      "example": "Cedar Point Design configures a service connection so the client and server each present trusted credentials. An attacker cannot obtain a new accepted connection simply by replaying an old exchange."
+    },
+    "technical": {
+      "focus": "Define the systems and components involved and select bidirectional, cryptographically based, replay-resistant authentication. Mutual TLS or appropriately configured network authentication can be possible approaches.",
+      "example": "The team could configure mutual TLS with validated certificates on both sides, manage trust anchors and test rejection of untrusted peers.",
+      "watchFor": "Ordinary server-only HTTPS does not establish bidirectional authentication; each selected protocol’s replay protections matter."
+    },
+    "compliance": {
+      "focus": "The guide considers cryptographic bidirectional authentication, replay resistance and its use before connections where possible. Keep the defined component scope and feasibility context visible.",
+      "reviewQuestions": [
+        "Which systems and components are defined for this authentication approach?",
+        "How are both identities verified and captured authentication exchanges prevented from being reused?"
+      ],
+      "evidenceExamples": [
+        "Authentication architecture, trust configuration and certificate-management records.",
+        "Protocol configurations and tests of untrusted-peer rejection and replay protections."
+      ]
+    }
+  },
+  {
+    "id": "IA.L3-3.5.3e",
+    "beginner": {
+      "meaning": "Do not let an unknown or untrusted component connect without a recognized basis for trust. The requirement names being known, authenticated, properly configured or in a trust profile as possible conditions.",
+      "example": "Cedar Point Design restricts a newly discovered device until its admission checks establish an accepted trust condition. A network socket alone does not make the device welcome."
+    },
+    "technical": {
+      "focus": "Identify components meeting the stated trust conditions and the mechanisms that prohibit other connections. Automated posture checks, conditional access and manual procedures are possible approaches.",
+      "example": "The team could configure device-admission rules that evaluate its defined trust profile and route unmatched components away from organizational systems for review.",
+      "watchFor": "The official wording uses “or”; do not silently rewrite the alternatives into a universal four-condition checklist."
+    },
+    "compliance": {
+      "focus": "The guide considers identification of trusted components, identification of blocking mechanisms and use of those mechanisms. Understand the chosen trust criteria and how connection prohibitions actually operate.",
+      "reviewQuestions": [
+        "Which trust conditions are used to identify components allowed to connect?",
+        "How do automated or manual mechanisms prohibit connections lacking an accepted condition?"
+      ],
+      "evidenceExamples": [
+        "Defined trust profiles, admission policies and approved-component records.",
+        "Admission settings, manual verification records and blocked-connection demonstrations."
+      ]
+    }
+  },
+  {
+    "id": "IR.L3-3.6.1e",
+    "beginner": {
+      "meaning": "A security operations center is a capability for watching and responding to suspicious activity. This Level 3 requirement calls for it to operate 24/7, while allowing remote or on-call staff.",
+      "example": "Cedar Point Design uses a provider for overnight monitoring and a documented on-call arrangement for its own team. An alert at midnight has an available responder rather than waiting for the next office day."
+    },
+    "technical": {
+      "focus": "Establish and maintain continuous security operations coverage, including detection, notification and available response staff. Physical, virtual, internal and provider-supported arrangements can be appropriate designs.",
+      "example": "The team could document provider responsibilities, alert routing, on-call rotations and escalation paths, then exercise an out-of-hours alert to check the coverage.",
+      "watchFor": "A tool collecting logs continuously is not equivalent to an operational 24/7 SOC capability."
+    },
+    "compliance": {
+      "focus": "The guide considers establishment, 24/7 operation and maintenance of the capability. Remote or on-call staffing is allowed, but the operational availability still matters.",
+      "reviewQuestions": [
+        "What maintains the SOC capability across all hours, including nights and holidays?",
+        "How are alerts received, staffed and escalated when routine office staff are unavailable?"
+      ],
+      "evidenceExamples": [
+        "SOC operating procedures, coverage schedules and provider responsibility agreements.",
+        "Alert-handling records and exercises demonstrating out-of-hours operational coverage."
+      ]
+    }
+  },
+  {
+    "id": "IR.L3-3.6.2e",
+    "beginner": {
+      "meaning": "Have an established incident response team that the organization can deploy within 24 hours. Deployment means making the team able to act; it can involve remote access when that supports the response.",
+      "example": "When Cedar Point Design discovers a serious incident, its response coordinator activates the team. A remote responder can investigate immediately, while a physically isolated site has a plan for on-site access."
+    },
+    "technical": {
+      "focus": "Maintain a deployable response capability with defined roles, contact paths, access and equipment. Plan remote and physical deployment around the environments the team must handle.",
+      "example": "The team could exercise activation outside normal hours, verify responder access and confirm arrangements for a remote site requiring physical attendance.",
+      "watchFor": "The 24-hour parameter concerns deployment, not a promise to resolve every incident within 24 hours."
+    },
+    "compliance": {
+      "focus": "The guide considers establishing and maintaining the team and its ability to deploy within the specified time. Examine realistic activation conditions and operational readiness.",
+      "reviewQuestions": [
+        "How can the organization deploy its incident response team within 24 hours?",
+        "What access, personnel and logistical arrangements are needed for each response environment?"
+      ],
+      "evidenceExamples": [
+        "Team rosters, activation procedures and deployment arrangements.",
+        "Exercise timelines and records demonstrating responder access and team readiness."
+      ]
+    }
+  },
+  {
+    "id": "PS.L3-3.9.2e",
+    "beginner": {
+      "meaning": "When information raises concerns about someone’s ability to safeguard protected information, protect the systems they can access. The response should follow a defined organizational process rather than treating a rumor as an automatic verdict.",
+      "example": "Cedar Point Design receives a credible report of unauthorized disclosure. Appropriate personnel review the concern, identify the affected access and apply protective measures under the organization’s policy."
+    },
+    "technical": {
+      "focus": "Define adverse information, identify people with CUI access and map their system access. Establish coordinated review and protective actions such as increased monitoring or access restriction where appropriate.",
+      "example": "The team could route a validated concern through designated personnel, review relevant access and logs, and document proportionate protective steps while the review proceeds.",
+      "watchFor": "A personnel-security workflow involves sensitive information; protect confidentiality and use authorized decision makers."
+    },
+    "compliance": {
+      "focus": "The guide considers individuals, adverse-information definitions, accessible systems and mechanisms protecting those systems when concerns develop. This perspective does not prescribe a universal disciplinary outcome.",
+      "reviewQuestions": [
+        "How is adverse information defined, received and reviewed by responsible personnel?",
+        "How are the individual’s accessible systems identified and protective mechanisms applied?"
+      ],
+      "evidenceExamples": [
+        "Personnel-security procedures and system-access mappings with appropriately restricted access.",
+        "Records of authorized reviews and implemented protective access or monitoring actions."
+      ]
+    }
+  },
+  {
+    "id": "RA.L3-3.11.1e",
+    "beginner": {
+      "meaning": "Threat intelligence is information about attackers and their methods. Use it in risk assessment to shape systems, defenses, monitoring, hunting and recovery rather than collecting reports that never change decisions.",
+      "example": "Cedar Point Design learns how a relevant attacker targets remote access. The team uses that knowledge to reassess its architecture and detection strategy, not just forward an advisory email."
+    },
+    "technical": {
+      "focus": "Apply defined threat-intelligence sources through the risk-assessment methodology. The requirement specifies open or commercial sources at minimum; any DoD-provided sources must also be used across the named security activities.",
+      "example": "Analysts could connect a relevant attack technique to a risk scenario, then document resulting changes to access design, monitoring, hunt priorities and response planning.",
+      "watchFor": "The guide’s further discussion requires more than one source; subscribing to feeds without actionable analysis does not demonstrate their use."
+    },
+    "compliance": {
+      "focus": "The guide considers defined sources and methodology, then application to architecture, solution selection, monitoring, hunting, response and recovery. Review the decision trail across those areas.",
+      "reviewQuestions": [
+        "Which multiple intelligence sources, including any DoD-provided sources, inform risk assessment?",
+        "How does relevant intelligence influence the specified engineering and operational activities?"
+      ],
+      "evidenceExamples": [
+        "Threat-source definitions and risk-assessment methodology records.",
+        "Risk assessments linking intelligence to architecture, detection and response decisions."
+      ]
+    }
+  },
+  {
+    "id": "RA.L3-3.11.2e",
+    "beginner": {
+      "meaning": "Threat hunting means actively looking for attackers that existing defenses might have missed. This Level 3 requirement calls for ongoing aperiodic hunts or hunts when indications warrant, rather than waiting only for automated alarms.",
+      "example": "Cedar Point Design receives a report about a relevant attack technique. Its analysts search retained endpoint and authentication activity for the pattern even though no existing alert has fired."
+    },
+    "technical": {
+      "focus": "Define systems to hunt, identify indicators and combine ongoing data collection with analyst-led searches. Aperiodic means activities need not follow a fixed repeating pattern; context can trigger a hunt.",
+      "example": "The team could formulate a hypothesis, query retained telemetry, investigate linked devices and pass credible findings to incident response for disruption of the threat.",
+      "watchFor": "Routine alert triage is not automatically a hunt, and a single annual exercise does not demonstrate ongoing activity."
+    },
+    "compliance": {
+      "focus": "The guide considers indicator identification and hunting to find, detect, track and disrupt threats evading existing controls. Keep hypotheses, investigation and response connections visible.",
+      "reviewQuestions": [
+        "Which systems and indicators guide ongoing or indication-triggered hunting?",
+        "How are hunt findings tracked and connected to action against evasive threats?"
+      ],
+      "evidenceExamples": [
+        "Hunt plans or hypotheses and records of relevant telemetry sources.",
+        "Dated hunt investigations and documented escalation or disruption actions."
+      ]
+    }
+  },
+  {
+    "id": "RA.L3-3.11.3e",
+    "beginner": {
+      "meaning": "Help analysts predict and identify risks with advanced automation and analysis. The aim is to make large amounts of security data useful to people who assess risk, not to replace their judgment with an unexplained score.",
+      "example": "Cedar Point Design correlates unusual account activity with device and network observations. An analyst investigates the combined pattern instead of reviewing each isolated event without context."
+    },
+    "technical": {
+      "focus": "Identify the analysts and analytics capabilities used to predict and identify organizational, system and component risks. Correlation and automated enrichment can reduce data overload and support timely analysis.",
+      "example": "The team could correlate endpoint, identity and network data, enrich anomalies with asset context, and retain the analyst’s reasoning when a finding becomes a risk issue.",
+      "watchFor": "An “AI-powered” product label does not establish the capability or how analysts use its output."
+    },
+    "compliance": {
+      "focus": "The guide considers identified capabilities, identified analysts and actual use of automation and analytics in support of risk prediction and identification. Examine the operational workflow.",
+      "reviewQuestions": [
+        "Which advanced automation and analytics capabilities support the identified analysts?",
+        "How do their outputs help predict or identify risks to systems and the organization?"
+      ],
+      "evidenceExamples": [
+        "Analytics architecture and documented analyst responsibilities.",
+        "Analysis records showing correlated findings, analyst review and resulting risk identification."
+      ]
+    }
+  },
+  {
+    "id": "RA.L3-3.11.4e",
+    "beginner": {
+      "meaning": "Explain why a security solution was chosen, what it is and how its risks were determined. Put that reasoning in the system security plan, or reference it there, so future decisions have a traceable starting point.",
+      "example": "Cedar Point Design chooses an isolation design for a sensitive environment. Its plan records the selected approach, the threat it addresses and the risk determination instead of only naming a firewall product."
+    },
+    "technical": {
+      "focus": "Connect enhanced security solutions to the assessed threat and risk-based selection rationale. Document or reference the solution, reasoning and risk determination in the system security plan.",
+      "example": "The team could link a design decision record from its SSP, describing the implemented solution, relevant threat assumptions and the resulting assessment of risk.",
+      "watchFor": "A purchase order or diagram alone may not explain the security rationale and risk determination."
+    },
+    "compliance": {
+      "focus": "The guide separately considers the selected solution, its rationale and the risk determination in or referenced by the SSP. Alternative comparisons may help, but are not prescribed by this requirement.",
+      "reviewQuestions": [
+        "Where does the SSP document or reference each selected security solution?",
+        "How do the rationale and risk determination connect to the assessed threat?"
+      ],
+      "evidenceExamples": [
+        "SSP sections or referenced security-design decision records.",
+        "Risk determinations and rationale records tied to implemented enhanced security solutions."
+      ]
+    }
+  },
+  {
+    "id": "RA.L3-3.11.5e",
+    "beginner": {
+      "meaning": "Check whether security solutions still work against the risks you expect. For this Level 3 requirement, assess effectiveness at least annually or when relevant threat information arrives, or in response to a relevant cyber incident.",
+      "example": "Cedar Point Design learns that an attacker bypasses a detection method it uses. The team examines its deployed settings and response coverage instead of relying on the product’s old capability brochure."
+    },
+    "technical": {
+      "focus": "Identify solutions, relevant current and accumulated intelligence, and anticipated risks. Assess operational effectiveness, including actual configuration, against those risks under the specified time and event conditions.",
+      "example": "The team could test whether a newly reported technique is detected, review configuration drift and record changes needed to restore useful protection.",
+      "watchFor": "A conceptual product review does not show effectiveness of the configuration actually running in the environment."
+    },
+    "compliance": {
+      "focus": "The guide links effectiveness assessment to identified solutions, intelligence and anticipated organizational and system risk. Review the resulting adjustments as well as the assessment timing.",
+      "reviewQuestions": [
+        "How are annual and relevant intelligence or incident-triggered effectiveness assessments handled?",
+        "How do assessments examine deployed solutions against risks informed by accumulated threat intelligence?"
+      ],
+      "evidenceExamples": [
+        "Effectiveness-review schedules and relevant threat or incident records.",
+        "Operational configuration reviews, test results and documented improvement decisions."
+      ]
+    }
+  },
+  {
+    "id": "RA.L3-3.11.6e",
+    "beginner": {
+      "meaning": "Systems depend on suppliers, products and services that can introduce risks. Identify and assess those supply-chain risks, respond to them and keep watching for changes rather than stopping after a vendor is selected.",
+      "example": "Cedar Point Design learns that a software supplier’s update process has been compromised. The team evaluates exposure, changes its acceptance checks and monitors later updates from that supplier."
+    },
+    "technical": {
+      "focus": "Apply a repeatable process to risks affecting system components and their supply chains. Responses can include changes to acquisition, supplier relationships, component validation or monitoring, depending on the identified risk.",
+      "example": "The team could map a critical product to its supplier, assess a new concern, record the chosen mitigation and review indicators that would change that decision.",
+      "watchFor": "A completed vendor questionnaire alone does not demonstrate response and ongoing monitoring of supply-chain risk."
+    },
+    "compliance": {
+      "focus": "The guide considers identifying, assessing, responding to and monitoring supply-chain risks. The organization’s process should fit its systems, suppliers and strategy while connecting those stages.",
+      "reviewQuestions": [
+        "Which supply-chain risks associated with systems and components have been identified and assessed?",
+        "How are responses selected and risks monitored as supplier or threat conditions change?"
+      ],
+      "evidenceExamples": [
+        "Supply-chain risk assessments and supplier or component dependency records.",
+        "Risk-response decisions and monitoring records showing follow-up on identified concerns."
+      ]
+    }
+  },
+  {
+    "id": "RA.L3-3.11.7e",
+    "beginner": {
+      "meaning": "Have a plan for managing risks from the products and services your systems depend on. This Level 3 plan must be updated at least annually, and upon relevant threat information or in response to a relevant incident.",
+      "example": "Cedar Point Design’s plan covers a managed service provider and software suppliers. After a supplier incident, the team revisits the affected dependencies and updates responsibilities and planned responses."
+    },
+    "technical": {
+      "focus": "Define the systems, components and supply-chain risks covered by the plan. Include relevant operational dependencies, identify accountable actions and maintain updates under the stated annual and event conditions.",
+      "example": "The team could document critical suppliers, risk-review responsibilities and response options, with revision records explaining changes prompted by a supplier advisory or incident.",
+      "watchFor": "A supplier contract does not substitute for the risk-management plan; dependencies outside a system boundary can still matter."
+    },
+    "compliance": {
+      "focus": "The guide considers identified risks and covered systems, plan development and required updates. Examine whether the plan reflects real dependencies and changing risk information.",
+      "reviewQuestions": [
+        "Which systems, components and relevant service dependencies are covered by the plan?",
+        "How are annual updates and relevant threat-information or incident updates carried out?"
+      ],
+      "evidenceExamples": [
+        "A versioned supply-chain risk-management plan and dependency inventory.",
+        "Plan review records and revisions linked to relevant intelligence or cyber incidents."
+      ]
+    }
+  },
+  {
+    "id": "CA.L3-3.12.1e",
+    "beginner": {
+      "meaning": "Penetration testing checks how an attacker could exploit weaknesses in an authorized environment. This Level 3 requirement calls for testing at least annually or when significant security changes occur, using scanning tools and expert-led ad hoc tests.",
+      "example": "Cedar Point Design authorizes a test after a significant security architecture change. Qualified testers work within agreed limits and report findings the organization can use to improve defenses."
+    },
+    "technical": {
+      "focus": "Build a repeatable, authorized testing capability combining automated scanning and subject-matter expertise. Set scope, rules of engagement and operational safeguards before testing, then use findings to inform improvements.",
+      "example": "The team could commission a scoped assessment, provide approved test conditions and track prioritized findings into remediation work with follow-up verification.",
+      "watchFor": "A vulnerability scan alone does not include the expert ad hoc testing described by the requirement."
+    },
+    "compliance": {
+      "focus": "The guide considers identified scanning tools, expert tests and the specified testing triggers. Scope and objectivity matter; it does not say every architecture component must be penetration tested.",
+      "reviewQuestions": [
+        "How are annual and significant-security-change testing conditions addressed?",
+        "How does the authorized approach combine scanning tools with expert ad hoc tests?"
+      ],
+      "evidenceExamples": [
+        "Test scope, rules of engagement and identified testing personnel or capabilities.",
+        "Dated penetration-test reports and records of resulting mitigation decisions."
+      ]
+    }
+  },
+  {
+    "id": "SC.L3-3.13.4e",
+    "beginner": {
+      "meaning": "Isolation keeps selected systems or components apart through physical separation, logical separation or both. The appropriate design depends on what needs to be separated and which connections, if any, remain permitted.",
+      "example": "Cedar Point Design isolates a sensitive work environment in a dedicated network zone. Its engineers document the permitted interfaces and verify that unrelated office devices cannot connect directly."
+    },
+    "technical": {
+      "focus": "Select, define and implement the physical or logical isolation techniques. Communications across managed interfaces between security domains count as remote access even within the organization, including administration; apply the relevant remote-access safeguards.",
+      "example": "The team could document its selected enclave boundary and enforce approved interfaces with segmentation and access rules, testing paths that should be prohibited.",
+      "watchFor": "Logical isolation requires enforced controls; a VLAN label or a separate address range alone is not a guarantee."
+    },
+    "compliance": {
+      "focus": "The guide considers selecting and defining isolation techniques and employing them. Review the implementation against the intended separation, with relevant details available beyond a high-level diagram.",
+      "reviewQuestions": [
+        "Which physical or logical isolation techniques have been selected and defined?",
+        "How is the intended isolation demonstrated in actual system connections?"
+      ],
+      "evidenceExamples": [
+        "Isolation architecture and relevant SSP descriptions or references.",
+        "Routing, interface and access-control settings with separation test results."
+      ]
+    }
+  },
+  {
+    "id": "SI.L3-3.14.1e",
+    "beginner": {
+      "meaning": "Check that important security and essential software has not been altered, using a trusted starting point or cryptographic signatures. Integrity is about trustworthy software contents, not simply whether an application launches successfully.",
+      "example": "Cedar Point Design’s device validates its boot chain and checks signed software before execution. An unexpected change causes verification to fail rather than being accepted as the approved version."
+    },
+    "technical": {
+      "focus": "Define security-critical and essential software and implement integrity verification using root-of-trust mechanisms or signatures. Manage trusted keys and verification behavior as software and configuration change.",
+      "example": "The team could use supported secure-boot mechanisms and validated application signatures, with controlled signing for internally developed software and tests for altered packages.",
+      "watchFor": "A valid signature is not proof that software is vulnerability-free; trustworthy verification keys and enforcement still matter."
+    },
+    "compliance": {
+      "focus": "The guide considers defined software, identified verification mechanisms and integrity verification. Its further discussion describes checking integrity each time the relevant software executes.",
+      "reviewQuestions": [
+        "Which software is defined as security-critical or essential?",
+        "How are integrity checks enforced and maintained as that software changes?"
+      ],
+      "evidenceExamples": [
+        "Defined software scope and documented trust or signing configuration.",
+        "Verification records and tests showing altered or untrusted software is rejected."
+      ]
+    }
+  },
+  {
+    "id": "SI.L3-3.14.3e",
+    "beginner": {
+      "meaning": "Specialized equipment still creates security risk, even if ordinary endpoint tools do not fit it. This requirement addresses including these assets under the specified enhanced protections or segregating them in purpose-specific networks.",
+      "example": "Cedar Point Design operates a manufacturing controller that cannot run its standard security agent. Engineers document the asset, its connections and the selected protection or separation approach instead of treating it as invisible."
+    },
+    "technical": {
+      "focus": "Apply this requirement together with Level 3 scoping guidance. Inventory specialized assets, document their SSP treatment and network relationships, and evaluate purpose-specific separation or suitable intermediary protections.",
+      "example": "The team could use a controlled intermediary for a constrained device and document which protections it supplies, with tests of the device’s permitted network paths.",
+      "watchFor": "The guide and model wording differ; consult the quoted sources and scoping guidance rather than inferring an automatic exemption."
+    },
+    "compliance": {
+      "focus": "The guide discusses specialized assets, assessment or purpose-specific segregation, documented mitigations and network diagrams. Device limitations require explicit treatment; examples here do not determine assessment scope.",
+      "reviewQuestions": [
+        "Which specialized assets and connections are documented in the inventory and SSP?",
+        "How is their protection or purpose-specific segregation justified against applicable scoping guidance?"
+      ],
+      "evidenceExamples": [
+        "Specialized-asset inventories, SSP descriptions and network diagrams.",
+        "Isolation configurations and documented intermediary protections or mitigation decisions."
+      ]
+    }
+  },
+  {
+    "id": "SI.L3-3.14.6e",
+    "beginner": {
+      "meaning": "Turn information about attacker indicators and effective defenses into better detection and hunting. A suspicious address or behavior is useful only when your team can apply it to the environment and decide what to do.",
+      "example": "Cedar Point Design receives a relevant threat indicator, searches endpoint and log data for it, and checks whether its detection and response playbook can handle the associated activity."
+    },
+    "technical": {
+      "focus": "Define threat-information sources and integrate relevant indicators and mitigations into intrusion detection and hunts. The requirement includes at least open or commercial sources and any DoD-provided sources.",
+      "example": "The team could validate a sample indicator across endpoint and central log tools, tune detection for its environment and document the associated mitigation or response action.",
+      "watchFor": "Importing a feed without usable detections, hunt coverage or response actions does not demonstrate effective integration."
+    },
+    "compliance": {
+      "focus": "The guide considers sources, indicators, mitigations, detection and hunting approaches, then their use together. Clarify responsibilities if an external provider operates part of this capability.",
+      "reviewQuestions": [
+        "Which sources provide the threat indicators and effective mitigations used by the team?",
+        "How are they applied and validated in intrusion detection and threat hunting?"
+      ],
+      "evidenceExamples": [
+        "Threat-source definitions, indicator-integration settings and mitigation playbooks.",
+        "Detection and hunt records demonstrating application of relevant threat information."
+      ]
+    }
+  }
+]

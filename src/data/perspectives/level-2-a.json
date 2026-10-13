@@ -1,0 +1,1244 @@
+[
+  {
+    "id": "AC.L2-3.1.1",
+    "beginner": {
+      "meaning": "Decide who and what may enter your systems, then enforce that decision. This includes people, software working on their behalf, and devices or other systems. Knowing a password does not automatically make someone approved.",
+      "example": "CedarPoint approves Maya's account, the automated job working for her team, and a company laptop. A visitor's account and an unapproved printer cannot connect simply because they are nearby."
+    },
+    "technical": {
+      "focus": "Map authorized user identities, delegated processes, and device or system identities to access enforcement at relevant services. Account provisioning, service identities, and device admission are related parts of this requirement, not interchangeable substitutes.",
+      "example": "A directory group permits approved staff, a scoped service identity runs their export job, and device controls reject an unapproved endpoint.",
+      "watchFor": "A clean employee account list can still leave unattended service accounts or connected devices outside the authorization process."
+    },
+    "compliance": {
+      "focus": "Compare how all three categories are identified with how unauthorized access is actually prevented. An approved roster alone does not demonstrate enforcement.",
+      "reviewQuestions": [
+        "How are authorized users, delegated processes, and connected devices or systems identified?",
+        "What prevents an identity outside those authorizations from obtaining system access?"
+      ],
+      "evidenceExamples": [
+        "Sanitized account, process, and device authorization records with responsible owners.",
+        "Relevant access settings and a controlled demonstration rejecting unauthorized access."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.2",
+    "beginner": {
+      "meaning": "Being allowed into a system does not mean being allowed to do everything inside it. Define which actions each authorized person may perform, such as viewing, creating, changing, or deleting information, and limit access accordingly.",
+      "example": "Maya can read project drawings and update her assigned work. She cannot delete the project archive or change another employee's permissions, even though she can sign into the same application."
+    },
+    "technical": {
+      "focus": "Translate permitted transactions and functions into application permissions, roles, or other enforceable attributes. Check backend authorization as well as interface visibility; a hidden button does not stop an unauthorized API request.",
+      "example": "The project service checks Maya's role before accepting an edit request and rejects an attempted archive deletion.",
+      "watchFor": "Broad default roles, inherited permissions, and direct API paths can grant actions that the role description never intended."
+    },
+    "compliance": {
+      "focus": "Connect the organization's defined permitted actions to actual restrictions for authorized users. Account approval addresses entry; this requirement addresses what happens afterward.",
+      "reviewQuestions": [
+        "Which transaction and function types are permitted for each relevant role?",
+        "How do system settings restrict users to those defined actions?"
+      ],
+      "evidenceExamples": [
+        "A role-to-function matrix covering the relevant application actions.",
+        "Permission settings and controlled allowed-action and denied-action demonstrations."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.3",
+    "beginner": {
+      "meaning": "Control where Controlled Unclassified Information, or CUI, can travel. Approving a person to read something is different from approving its movement to another network, device, recipient, or service. The route and destination need authorized rules too.",
+      "example": "CedarPoint allows a project file to move between two approved workspaces. Its transfer rules block the same file from being sent to a personal storage service, even by an otherwise authorized employee."
+    },
+    "technical": {
+      "focus": "Identify CUI sources, destinations, and approved flows, then implement suitable enforcement across system boundaries and internal paths. Possible mechanisms include segmentation, gateway rules, transfer workflows, and content-aware controls, selected for the actual environment.",
+      "example": "A transfer gateway accepts an approved destination while firewall and application rules prevent a direct unapproved route.",
+      "watchFor": "A network diagram describes paths but does not prove those paths are authorized or that prohibited flows are blocked."
+    },
+    "compliance": {
+      "focus": "Follow the chain from information-flow policy and defined authorizations through identified endpoints to enforcement. Evaluate CUI movement separately from user access permissions.",
+      "reviewQuestions": [
+        "Which CUI sources, destinations, and flows have approved authorizations?",
+        "How are those authorizations enforced within and between interconnected systems?"
+      ],
+      "evidenceExamples": [
+        "A sanitized CUI flow diagram with approved transfer rules.",
+        "Gateway or application configurations and controlled permitted and prohibited transfer tests."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.4",
+    "beginner": {
+      "meaning": "Split sensitive duties between different people so one person cannot quietly misuse a whole process alone. The goal is to reduce harmful activity that could happen without anyone else cooperating, rather than simply giving people different job titles.",
+      "example": "One CedarPoint employee requests a sensitive permission change and another approves it. The requester cannot also grant the permission and erase the records showing what happened."
+    },
+    "technical": {
+      "focus": "Identify duties whose combination creates risk, assign them to separate individuals, and align privileges with that separation across systems. Workflow approvals and separate security-administration and audit responsibilities are possible implementation patterns.",
+      "example": "An access administrator can apply approved permissions while an independently assigned audit administrator controls the relevant logging settings.",
+      "watchFor": "Two accounts owned by the same person do not separate individuals; overlapping emergency or inherited rights can undo the design."
+    },
+    "compliance": {
+      "focus": "Examine defined incompatible duties, their assigned individuals, and the privileges that enable those duties. Consider combinations across application and infrastructure boundaries.",
+      "reviewQuestions": [
+        "Which duties require separation to reduce the risk of unilateral misuse?",
+        "Do assigned privileges preserve that separation in practice?"
+      ],
+      "evidenceExamples": [
+        "Documented duty assignments and a conflict-of-responsibilities analysis.",
+        "Role memberships and an approval workflow showing different responsible individuals."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.5",
+    "beginner": {
+      "meaning": "Give people and software only the permissions their work needs. Pay particular attention to powerful accounts and security functions, because unnecessary permission to change protection settings or manage accounts can turn a small mistake into a large problem.",
+      "example": "Maya needs to edit drawings, not create administrator accounts. CedarPoint gives her project permissions while reserving account creation for an approved administrator with that specific responsibility."
+    },
+    "technical": {
+      "focus": "Identify privileged accounts and security functions, then scope their authorizations to actual duties. Apply least privilege to users and processes, considering role design, scoped administrative permissions, and the privileges available on different system components.",
+      "example": "A backup process receives access to required backup resources without permission to alter directory-wide security settings.",
+      "watchFor": "Calling a role 'limited administrator' does not establish least privilege if its effective rights still exceed the documented need."
+    },
+    "compliance": {
+      "focus": "Look for a clear relationship between required duties and granted privileges, including access to privileged accounts and identified security functions.",
+      "reviewQuestions": [
+        "Which accounts and functions carry privileged or security-relevant capabilities?",
+        "What business need explains each granted privilege and its scope?"
+      ],
+      "evidenceExamples": [
+        "A privileged-account inventory and security-function authorization matrix.",
+        "Effective permission settings linked to documented job or process responsibilities."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.6",
+    "beginner": {
+      "meaning": "Use ordinary permissions for ordinary work, even if you also have an administrator role. Reading email or browsing a website with powerful privileges gives mistakes and malicious content more opportunity to affect the system.",
+      "example": "CedarPoint's administrator reads email using a regular account. When an approved security task needs extra authority, they switch to the appropriate privileged account or role for that task."
+    },
+    "technical": {
+      "focus": "Identify nonsecurity functions and require non-privileged accounts or roles for them. A role change can serve this purpose when it actually changes the user's authorizations and those of processes acting on their behalf.",
+      "example": "Administrative work uses a separate elevated context, while browsing and document editing remain in a standard-user context.",
+      "watchFor": "A different account name is not enough if the ordinary account retains administrative rights or its processes remain elevated."
+    },
+    "compliance": {
+      "focus": "Distinguish the existence of a standard account from the requirement to use it for identified nonsecurity functions. Check the operating practice as well as the assigned roles.",
+      "reviewQuestions": [
+        "Which everyday activities are identified as nonsecurity functions?",
+        "How are privileged users required to perform those activities without privileged authority?"
+      ],
+      "evidenceExamples": [
+        "Account-use guidance describing ordinary and privileged work contexts.",
+        "Role settings and a demonstration of the actual non-privileged work context."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.7",
+    "beginner": {
+      "meaning": "Keep powerful system actions out of ordinary users' reach and record when those actions are performed. Both parts matter: permission checks prevent unauthorized use, while audit records help explain who used privileged capabilities and what happened.",
+      "example": "Maya cannot disable CedarPoint's security monitoring. An authorized administrator can change a monitoring setting, but the action produces an audit record that the team can later examine."
+    },
+    "technical": {
+      "focus": "Define privileged functions and non-privileged users, enforce the boundary, and capture execution of privileged functions in audit logs. Relevant actions might include account administration, security configuration, patching, or cryptographic key management, depending on the system.",
+      "example": "The administration service rejects a standard user's permission change and records the corresponding action when an authorized administrator performs it.",
+      "watchFor": "Logging failed attempts alone misses the requirement to capture privileged functions that are actually executed."
+    },
+    "compliance": {
+      "focus": "Review prevention and logging together. Neither an administrative policy without enforcement nor logs without access restrictions addresses the full requirement.",
+      "reviewQuestions": [
+        "Which functions are privileged, and which users lack authorization to execute them?",
+        "How is actual execution of those functions captured in audit records?"
+      ],
+      "evidenceExamples": [
+        "Privileged-function definitions and associated permission settings.",
+        "Sanitized records of authorized privileged actions and controlled denial demonstrations."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.8",
+    "beginner": {
+      "meaning": "Do not let someone make unlimited failed sign-in attempts. A system needs a defined way to limit repeated failures, such as a delay or lockout, so guessing credentials is harder. The official requirement does not supply one universal attempt limit.",
+      "example": "After repeated incorrect passwords, CedarPoint's system applies its configured restriction instead of accepting guesses indefinitely. The team also plans how a legitimate employee can recover access."
+    },
+    "technical": {
+      "focus": "Define and implement unsuccessful-logon limits for relevant local and network entry points. Consider operating-system and application behavior, automated attack resistance, and denial-of-service risks when choosing thresholds, delay algorithms, and recovery handling.",
+      "example": "A controlled test verifies that both the workstation login and project application apply their defined failed-attempt responses.",
+      "watchFor": "Protecting one sign-in page can leave a legacy protocol or separate local-login path open to unlimited attempts."
+    },
+    "compliance": {
+      "focus": "Compare the organization's defined limiting mechanism with implemented behavior. Avoid treating a sample threshold in guidance as a universally mandated number.",
+      "reviewQuestions": [
+        "What means of limiting unsuccessful logon attempts has been defined?",
+        "Where is it implemented, and what happens when the defined limit is reached?"
+      ],
+      "evidenceExamples": [
+        "Failed-logon policy and relevant application or operating-system settings.",
+        "A controlled test record showing the configured restriction and recovery behavior."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.9",
+    "beginner": {
+      "meaning": "Tell users the applicable privacy and security rules for using a system. The notice needs to fit the CUI rules that apply; copying a random warning banner is not a reliable way to establish that its wording is appropriate.",
+      "example": "Before Maya signs in, CedarPoint displays a reviewed notice explaining the applicable system-use conditions. The team checks the notice against its relevant CUI categories instead of assuming a generic message covers everything."
+    },
+    "technical": {
+      "focus": "Identify the applicable notice requirements and display appropriate notices at relevant human logon interfaces. The guide discusses banners and, where necessary, printed notices; it does not require a human-facing banner for interfaces with no human logon.",
+      "example": "The workstation and remote-access sign-in screens display the approved notice using managed configuration.",
+      "watchFor": "A technically visible banner can still omit required context, use outdated wording, or appear only after the relevant access point."
+    },
+    "compliance": {
+      "focus": "Check both consistency with applicable CUI-specific rules and actual display. Notice wording may require appropriate legal review rather than a developer-created promise.",
+      "reviewQuestions": [
+        "Which privacy and security notices apply to the relevant CUI categories?",
+        "Where and how are the identified notices displayed to users?"
+      ],
+      "evidenceExamples": [
+        "Reviewed notice text with its applicable rule references.",
+        "Sanitized sign-in captures or demonstrations of configured notice display."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.10",
+    "beginner": {
+      "meaning": "When a session sits unused for the defined period, lock it and hide what was on screen. A moving image that leaves a sensitive document visible underneath is not enough. Locking pauses access; it is different from ending the session.",
+      "example": "Maya steps away from a workstation. After CedarPoint's defined inactivity period, it locks and replaces the drawing on screen with a neutral display until authorized access is restored."
+    },
+    "technical": {
+      "focus": "Define an inactivity period and configure session locking with a pattern-hiding display at suitable system or application layers. Verify both access prevention and concealment of previously visible information, including relevant multi-display and remote-session behavior.",
+      "example": "A test session becomes locked after the configured idle period and no longer displays the open project document.",
+      "watchFor": "A screen saver without an access lock, or a lock screen revealing document previews, addresses only part of the behavior."
+    },
+    "compliance": {
+      "focus": "Check the defined inactivity parameter and both lock outcomes. The guide's example durations are examples, not a single required timeout for every organization.",
+      "reviewQuestions": [
+        "What inactivity period triggers the session lock?",
+        "Does the resulting state prevent access and conceal previously visible information?"
+      ],
+      "evidenceExamples": [
+        "Session-lock policy and effective device or application settings.",
+        "A timed controlled demonstration of locking and pattern-hiding display behavior."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.11",
+    "beginner": {
+      "meaning": "Automatically end a user's session when an organization-defined condition occurs. This might involve inactivity or an approved time-of-day condition. Ending the session removes that session's access; merely hiding the screen or dropping a network connection is a different action.",
+      "example": "CedarPoint defines when its project application should end an inactive session. When that condition occurs, Maya must start a new authorized session rather than resume the old one."
+    },
+    "technical": {
+      "focus": "Define termination conditions and implement them for relevant logical user sessions. Evaluate server-side session state, tokens, and application behavior so automatic termination ends access rather than only changing a browser screen or transport connection.",
+      "example": "The application invalidates an expired session server-side and rejects its subsequent request even if the browser still holds an old token.",
+      "watchFor": "A VPN disconnect or a client-side redirect may leave the logical application session usable; session locking is also distinct."
+    },
+    "compliance": {
+      "focus": "Trace defined termination conditions to demonstrated automatic behavior. Keep this separate from the inactivity lock requirement and avoid inventing a universal duration.",
+      "reviewQuestions": [
+        "Which conditions require a user session to terminate automatically?",
+        "Does each defined condition actually end the relevant logical session?"
+      ],
+      "evidenceExamples": [
+        "Session-termination rules and corresponding system configurations.",
+        "Controlled session-expiry tests showing that old session access is rejected."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.12",
+    "beginner": {
+      "meaning": "Control and monitor sessions that reach organizational systems through external networks. Letting someone connect from home is only the beginning: the organization also needs to manage that connection and observe relevant activity while it is in use.",
+      "example": "Maya connects to CedarPoint's approved remote service. The team can identify her session, apply its access restrictions, and examine relevant connection activity instead of treating the connection as invisible once she signs in."
+    },
+    "technical": {
+      "focus": "Identify permitted remote-access types and implement session controls and monitoring. Consider remote access to applicable cloud environments as well as traditional VPN connections; encrypted transport does not remove the need to control and monitor the session.",
+      "example": "An approved gateway restricts remote destinations and records session activity for the designated monitoring process.",
+      "watchFor": "An encrypted VPN can still allow excessive access or provide too little visibility; encryption and session monitoring solve different problems."
+    },
+    "compliance": {
+      "focus": "Establish whether remote access is permitted, which types are permitted, and how actual sessions are both controlled and monitored.",
+      "reviewQuestions": [
+        "What remote-access types and sessions are permitted in the applicable environment?",
+        "How are those sessions controlled and their relevant activity monitored?"
+      ],
+      "evidenceExamples": [
+        "Remote-access authorizations and configuration of permitted connection methods.",
+        "Sanitized session records and monitoring or review procedures."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.13",
+    "beginner": {
+      "meaning": "Protect remote-access conversations with cryptography so someone observing the connection cannot read their contents. The connection needs confidentiality protection, not just a login password. When cryptography protects CUI, related CMMC requirements also matter.",
+      "example": "Maya connects from home using CedarPoint's approved encrypted remote-access service. Someone observing the intervening network does not receive her session information as readable text."
+    },
+    "technical": {
+      "focus": "Identify and implement cryptographic mechanisms protecting remote-session confidentiality. Evaluate the actual protected path and configuration. For CUI confidentiality, consider SC.L2-3.13.11's FIPS-validated cryptography requirement; an algorithm name or encryption logo alone is not module validation.",
+      "example": "The team checks the remote service's negotiated protection and the applicable validated module and operating configuration rather than assuming every VPN qualifies.",
+      "watchFor": "Protecting an initial tunnel while leaving a later session leg unprotected can expose information beyond that tunnel's endpoint."
+    },
+    "compliance": {
+      "focus": "Match identified cryptographic mechanisms to their implementation and protection boundaries. Evaluate related CUI cryptography requirements without treating all encrypted products as equivalent.",
+      "reviewQuestions": [
+        "Which mechanisms protect the confidentiality of the relevant remote-access sessions?",
+        "Where are they implemented, and what parts of the session path do they protect?"
+      ],
+      "evidenceExamples": [
+        "Remote-access cryptographic design and effective protocol settings.",
+        "Relevant module-validation documentation and sanitized connection-protection demonstrations."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.14",
+    "beginner": {
+      "meaning": "Route remote access through entry points the organization manages. Think of a staffed entrance rather than many hidden side doors: central control makes it easier to apply connection rules and know where remote access can enter.",
+      "example": "CedarPoint sends approved remote connections through its managed gateway. An employee cannot create a separate direct remote connection to a workstation that bypasses that entry point."
+    },
+    "technical": {
+      "focus": "Identify and implement managed access control points, then route remote access through them. Gateway architecture, routing rules, and restrictions on direct inbound paths can support this design; the requirement does not specify one mandatory gateway product.",
+      "example": "Firewall rules deny direct remote-management access to endpoints and allow the approved path through a managed access service.",
+      "watchFor": "A managed VPN does not cover unapproved remote-desktop tools, exposed administration ports, or alternative cloud access paths that bypass it."
+    },
+    "compliance": {
+      "focus": "Compare the identified control points with actual remote-access routes. A diagram naming a gateway is less informative than evidence that relevant access is routed through it.",
+      "reviewQuestions": [
+        "Which implemented access control points manage remote connections?",
+        "How are bypass routes prevented or brought within the managed design?"
+      ],
+      "evidenceExamples": [
+        "A sanitized remote-access architecture diagram with managed entry points.",
+        "Gateway, routing, and firewall settings with controlled route-verification results."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.15",
+    "beginner": {
+      "meaning": "Permission to connect remotely does not automatically include permission to perform powerful administrative actions or view security-relevant information. Those remote capabilities need their own authorization because they can affect how the system protects itself.",
+      "example": "CedarPoint lets an administrator view routine project information remotely. Changing firewall settings from outside the office requires a separate approved authorization; having an administrator account alone does not grant that remote permission."
+    },
+    "technical": {
+      "focus": "Identify privileged commands and security-relevant information authorized for remote use, then enforce the corresponding authorizations. Distinguish local administrative rights from remote rights, including commands run by a process acting on a person's behalf.",
+      "example": "A managed administration path permits an approved role to execute specified remote commands while denying other remote security-management actions.",
+      "watchFor": "Treating every administrator as automatically authorized for every remote command can bypass the organization's explicit remote-access decisions."
+    },
+    "compliance": {
+      "focus": "Review both remote execution of privileged commands and remote access to security-relevant information. Confirm that identified capabilities have approved remote authorizations.",
+      "reviewQuestions": [
+        "Which privileged commands and security-relevant information are authorized for remote access?",
+        "How are those authorizations associated with the permitted users or roles?"
+      ],
+      "evidenceExamples": [
+        "Documented remote administrative capabilities and role authorizations.",
+        "Relevant access restrictions and sanitized records of authorized remote administration."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.16",
+    "beginner": {
+      "meaning": "Approve wireless access before allowing a connection. A wireless signal being available is not permission to use it, and a device connecting successfully is not evidence that someone made the required authorization decision beforehand.",
+      "example": "CedarPoint identifies its workplace wireless access points and defines who and what may use them. Maya's device is approved before it can connect to the relevant organizational wireless network."
+    },
+    "technical": {
+      "focus": "Identify wireless access points and establish authorization criteria before enabling wireless connections. Connection requirements might consider ownership, device configuration, and permitted users. Apply those decisions through the chosen admission process and access controls.",
+      "example": "A device enters the authorized wireless-access group only after the team's approval process verifies the defined connection requirements.",
+      "watchFor": "Knowing a shared wireless password does not, by itself, document prior authorization or identify every access point offering a connection."
+    },
+    "compliance": {
+      "focus": "Connect identified wireless entry points and defined connection requirements to evidence of authorization before access is allowed. Authentication and encryption are addressed separately by AC.L2-3.1.17.",
+      "reviewQuestions": [
+        "Which wireless access points provide access to the relevant system?",
+        "How is wireless access authorized before a connection is permitted?"
+      ],
+      "evidenceExamples": [
+        "An access-point inventory and documented wireless authorization criteria.",
+        "Sanitized connection approvals and the associated admission-control configuration."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.17",
+    "beginner": {
+      "meaning": "Protect wireless access in two ways: verify who or what is connecting, and encrypt the connection. A wireless network that asks for no proof of identity, or one that sends readable information over the air, misses an important protection.",
+      "example": "CedarPoint's approved wireless network authenticates Maya's connection and encrypts its traffic. The team treats a nearby open guest network as a different environment rather than a substitute for that protected access."
+    },
+    "technical": {
+      "focus": "Implement wireless authentication and encryption using an architecture appropriate to the environment. Consider user and device identities, including connected wireless devices beyond laptops. For cryptography protecting CUI confidentiality, also evaluate the FIPS-validation context in SC.L2-3.13.11.",
+      "example": "An enterprise wireless service authenticates an approved identity and negotiates the configured encrypted connection before allowing organizational access.",
+      "watchFor": "A network name that sounds private, or a product advertising AES, establishes neither authentication coverage nor applicable cryptographic-module validation."
+    },
+    "compliance": {
+      "focus": "Examine authentication and encryption separately, then confirm both operate on the relevant wireless access paths. Prior authorization remains a complementary requirement.",
+      "reviewQuestions": [
+        "How is wireless access authenticated for the relevant users and devices?",
+        "What encryption protects that wireless access and its applicable CUI traffic?"
+      ],
+      "evidenceExamples": [
+        "Wireless authentication architecture and effective access-point security settings.",
+        "Sanitized authentication results and documentation of the implemented cryptographic protection."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.18",
+    "beginner": {
+      "meaning": "Manage how mobile devices connect to organizational systems. The guide includes identifying devices that handle CUI, authorizing their connections, and monitoring and logging those connections. Phones are only one example; tablets and other portable computing devices may matter too.",
+      "example": "CedarPoint records a tablet used for project work, approves its connection, and can trace its connection activity. A personally owned tablet is evaluated under the team's rules rather than automatically allowed or universally forbidden."
+    },
+    "technical": {
+      "focus": "Use consistent device identifiers and defined connection controls for mobile devices processing, storing, or transmitting CUI. Device-management and network-admission mechanisms can help implement authorizations and retain useful connection visibility, selected for the actual device types.",
+      "example": "An enrolled tablet's identity maps to its approved connection policy and associated connection logs.",
+      "watchFor": "Installing a device-management agent does not prove that connections are authorized, monitored, or logged across every relevant mobile access path."
+    },
+    "compliance": {
+      "focus": "Follow identified mobile devices through authorization and connection monitoring. Distinguish this requirement from encryption of CUI on mobile devices under AC.L2-3.1.19.",
+      "reviewQuestions": [
+        "Which mobile devices process, store, or transmit CUI?",
+        "How are their connections authorized, monitored, and logged?"
+      ],
+      "evidenceExamples": [
+        "A sanitized mobile-device inventory and connection authorizations.",
+        "Device-specific connection settings and corresponding monitoring or logging records."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.19",
+    "beginner": {
+      "meaning": "Encrypt CUI on mobile devices and mobile computing platforms. If a portable device is lost, readable stored information should not be the easy prize. A screen password controls access but is not itself encryption of the information.",
+      "example": "CedarPoint identifies the laptops and tablets that handle project CUI and checks how that information is encrypted on each. The team does not assume that locking Maya's tablet protects its stored files cryptographically."
+    },
+    "technical": {
+      "focus": "Identify applicable mobile devices and computing platforms, then protect their CUI with suitable full-device or container-based encryption. Evaluate where CUI actually resides, configuration and key handling, and the FIPS-validated cryptography context in SC.L2-3.13.11.",
+      "example": "A managed laptop uses the appropriate validated cryptographic module and configuration, and the team verifies that relevant CUI storage is covered.",
+      "watchFor": "An encrypted container may leave downloaded copies, caches, or exports outside its protection; encryption branding alone does not establish FIPS validation."
+    },
+    "compliance": {
+      "focus": "Compare the inventory of mobile CUI handling with implemented encryption coverage. Review the relevant related cryptographic requirements rather than treating a checked encryption box as the whole assessment.",
+      "reviewQuestions": [
+        "Which mobile devices and platforms process, store, or transmit CUI?",
+        "How is CUI encrypted on each identified device or platform?"
+      ],
+      "evidenceExamples": [
+        "Mobile CUI-storage inventories and encryption configuration records.",
+        "Relevant module-validation documentation and sanitized verification of encryption coverage."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.20",
+    "beginner": {
+      "meaning": "Verify and control both connections to external systems and use of those systems. 'External' concerns supervision and control, not just a different company name: a personal device, outside service, or separate environment may sit beyond the relevant system's authority.",
+      "example": "Before employees use an outside file service for project work, CedarPoint evaluates the connection and permitted use. The team also restricts unapproved personal devices from accessing the organizational environment."
+    },
+    "technical": {
+      "focus": "Identify external connections and uses, establish how they are verified, and implement the defined limits. Possible measures include service approval, agreed security conditions, access restrictions, and boundary controls appropriate to the external system relationship.",
+      "example": "An approved partner connection is limited to its defined application path while unapproved external storage access is restricted.",
+      "watchFor": "A firewall rule covering network connections may not control users' separate use of external cloud services or personally owned endpoints."
+    },
+    "compliance": {
+      "focus": "Evaluate connection and use as two related but distinct subjects. Trace each from identification through verification to actual control or limitation.",
+      "reviewQuestions": [
+        "Which external-system connections and uses are identified and verified?",
+        "What controls or limits apply to each identified connection and use?"
+      ],
+      "evidenceExamples": [
+        "External-system inventories, approved-use conditions, or relevant agreements.",
+        "Boundary and access settings with controlled demonstrations of implemented limits."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.21",
+    "beginner": {
+      "meaning": "Limit how portable storage is used on external systems. A removable drive can carry information into an environment the organization does not control. The guide focuses on portable storage containing CUI and permits defined restrictions, including prohibition where chosen.",
+      "example": "CedarPoint defines which approved external systems may use a project USB drive. Maya cannot plug it into a hotel computer simply because the drive belongs to the company."
+    },
+    "technical": {
+      "focus": "Identify and document portable-storage use involving CUI on external systems, define limits, and enforce or administer those limits through suitable policy and technical controls. Consider removable drives, memory cards, and other relevant portable media.",
+      "example": "A controlled media-use process associates an approved removable drive with permitted external systems and the conditions under which it may be used.",
+      "watchFor": "Encrypting a removable drive does not, by itself, define where it may be used or prevent unauthorized external-system use."
+    },
+    "compliance": {
+      "focus": "Connect identified portable-storage use to defined restrictions and actual limitation. An external system can include a separately controlled environment inside the same organization.",
+      "reviewQuestions": [
+        "Where is portable storage containing CUI used on external systems?",
+        "What limits are defined, and how is that use limited accordingly?"
+      ],
+      "evidenceExamples": [
+        "Documented portable-media use cases and approved external-system conditions.",
+        "Relevant media-use policies, authorizations, and device-control configurations."
+      ]
+    }
+  },
+  {
+    "id": "AC.L2-3.1.22",
+    "beginner": {
+      "meaning": "Keep CUI from being posted or processed on publicly accessible systems. Decide who may publish, review content before publishing, and have a way to find and address an improper posting. Public websites and presentations can expose more than intended.",
+      "example": "CedarPoint reviews a project-success article before publishing it. The reviewer removes protected drawing details, and the team has a response process if sensitive material is later discovered on the public site."
+    },
+    "technical": {
+      "focus": "Implement authorized-publisher controls, pre-publication review, review of public content, and removal or response procedures. Consider public systems that process information as well as pages that display it; a private-looking upload form may still feed a public service.",
+      "example": "A publishing workflow limits upload rights and routes proposed material through review before it reaches the public website.",
+      "watchFor": "An employee's permission to publish company content is not authority to publicly release CUI; the guide distinguishes government release authority."
+    },
+    "compliance": {
+      "focus": "Review authorized publishers, prevention procedures, pre-posting and public-content review, and mechanisms to remove and address improper CUI posting.",
+      "reviewQuestions": [
+        "How is proposed public content reviewed to keep CUI out?",
+        "What happens when CUI is discovered on a publicly accessible system?"
+      ],
+      "evidenceExamples": [
+        "Publisher authorizations and sanitized pre-publication review records.",
+        "Public-content review procedures and a documented removal or response exercise."
+      ]
+    }
+  },
+  {
+    "id": "AT.L2-3.2.1",
+    "beginner": {
+      "meaning": "Help managers, system administrators, and users understand the security risks of their own activities and the rules that apply to them. Awareness means recognizing why behavior matters, not merely receiving a document nobody understands.",
+      "example": "CedarPoint explains why sending project files to a personal account creates risk. Managers learn their approval responsibilities, administrators learn risks of powerful accounts, and users learn the relevant handling and reporting rules."
+    },
+    "technical": {
+      "focus": "Identify activity-related risks and applicable policies, standards, and procedures, then communicate them to the relevant groups. Training, practical reminders, and simulations are possible methods; choose material that matches actual activities involving CUI.",
+      "example": "A short awareness session connects project-sharing risks to CedarPoint's approved transfer procedure, with tailored examples for managers and administrators.",
+      "watchFor": "A generic phishing presentation can omit the organization's own security procedures or the distinct risks faced by managers and system administrators."
+    },
+    "compliance": {
+      "focus": "Examine what risks and rules were identified and how all named audiences were made aware of them. Awareness differs from job-specific skills training under AT.L2-3.2.2.",
+      "reviewQuestions": [
+        "Which security risks and applicable system-security rules are covered?",
+        "How are managers, system administrators, and users made aware of their relevant risks and rules?"
+      ],
+      "evidenceExamples": [
+        "Awareness material mapped to organizational activities and applicable procedures.",
+        "Sanitized participation or communication records for the relevant audience groups."
+      ]
+    }
+  },
+  {
+    "id": "AT.L2-3.2.2",
+    "beginner": {
+      "meaning": "Train people to perform the information-security duties assigned to them. Knowing that security matters is different from knowing how to carry out a particular task, such as reviewing access, administering accounts, or responding to an incident.",
+      "example": "When CedarPoint assigns Maya responsibility for access reviews, she learns the actual review process and how to handle an unexplained permission. A general awareness video does not teach that job by itself."
+    },
+    "technical": {
+      "focus": "Define security-related roles, duties, and responsibilities, assign them to designated personnel, and provide training suited to those duties. Consider changed responsibilities and the knowledge and practical skills needed in the actual environment.",
+      "example": "An administrator practices the approved account-recovery workflow in a nonsensitive training environment before taking responsibility for it.",
+      "watchFor": "Training records may show attendance without showing that the material covers the assigned security responsibilities."
+    },
+    "compliance": {
+      "focus": "Connect defined and assigned security duties to adequate role-specific training. The source does not prescribe one universal course, vendor certificate, or training duration.",
+      "reviewQuestions": [
+        "Which security duties and responsibilities are assigned to each relevant role?",
+        "How does the training prepare designated personnel to perform those duties?"
+      ],
+      "evidenceExamples": [
+        "Role assignments and a training-needs mapping for security responsibilities.",
+        "Relevant course material, practice exercises, and sanitized training completion records."
+      ]
+    }
+  },
+  {
+    "id": "AT.L2-3.2.3",
+    "beginner": {
+      "meaning": "Teach people to recognize and report potential signs of insider threat. An insider can cause harm intentionally or unintentionally using access they already have. A warning sign calls for the defined reporting process, not an assumption that a colleague is guilty.",
+      "example": "CedarPoint trains employees to report unusual requests to bypass approved sharing rules through a designated channel. Maya knows what to report and where, rather than confronting a coworker or investigating privately."
+    },
+    "technical": {
+      "focus": "Identify potential insider-threat indicators and include recognition and reporting guidance in awareness training for managers and employees. Tailor examples to relevant roles and information needs; the guide permits integrating this material into the general awareness program.",
+      "example": "A training exercise shows an unusual data-access request and walks through CedarPoint's established reporting route.",
+      "watchFor": "Lists of suspicious behaviors without context or reporting instructions can encourage unsupported accusations instead of useful, proportionate reporting."
+    },
+    "compliance": {
+      "focus": "Review identified potential indicators and whether training covers both recognition and reporting. A separate standalone course is not inherently required by this requirement.",
+      "reviewQuestions": [
+        "Which potential insider-threat indicators are identified for this environment?",
+        "Are managers and employees taught how to recognize and report those indicators?"
+      ],
+      "evidenceExamples": [
+        "Context-sensitive insider-threat awareness material and reporting guidance.",
+        "Sanitized training records and a nonsensitive recognition-and-reporting exercise."
+      ]
+    }
+  },
+  {
+    "id": "AU.L2-3.3.1",
+    "beginner": {
+      "meaning": "Create and keep useful records of system activity so the organization can monitor, analyze, investigate, and report unlawful or unauthorized behavior. Recording something is not enough if important details are missing or the records disappear before an investigation needs them.",
+      "example": "CedarPoint can examine relevant sign-ins and permission changes after discovering an unexplained account action. Its defined retention approach keeps the needed records available instead of letting them vanish during routine cleanup."
+    },
+    "technical": {
+      "focus": "Specify required event types, record contents, and retention needs; configure applicable systems to generate those records and retain them accordingly. Consider the delay between compromise and discovery rather than choosing retention only to save storage.",
+      "example": "A project service records the defined user, action, outcome, and timestamp fields, and a retention configuration preserves the selected audit records.",
+      "watchFor": "A running log collector can still receive incomplete events, omit a relevant application, or discard records earlier than the defined retention requires."
+    },
+    "compliance": {
+      "focus": "Compare specified event types, content, and retention with generated records and actual retention. The requirement does not impose one universal log-retention duration.",
+      "reviewQuestions": [
+        "What events, record contents, and retention requirements support the stated investigation needs?",
+        "Are records generated with that content and retained as defined?"
+      ],
+      "evidenceExamples": [
+        "An event-selection and retention specification with relevant logging settings.",
+        "Sanitized generated audit records and verification of the configured retention behavior."
+      ]
+    }
+  },
+  {
+    "id": "AU.L2-3.3.2",
+    "beginner": {
+      "meaning": "Make individual users' actions traceable to the people who performed them. An activity record saying only 'someone changed the file' leaves an important question unanswered. Traceability needs the right identifying information, not just a large quantity of logs.",
+      "example": "When a project permission changes, CedarPoint's records associate the action with Maya's individual identity and the relevant context. A shared label that cannot distinguish team members would make accountability difficult."
+    },
+    "technical": {
+      "focus": "Define audit-record content needed to uniquely trace user actions and ensure generated records contain it. Consider identity mapping across applications, servers, clients, and network records so a local identifier remains attributable in the wider investigation.",
+      "example": "An application records a stable individual user identifier with the action and timestamp, and the identity directory explains which person held that identifier.",
+      "watchFor": "Shared accounts, reused identifiers, or missing identity mappings can break attribution even when an action and timestamp are recorded."
+    },
+    "compliance": {
+      "focus": "Check defined attribution content against actual records. The guide's wording emphasizes traceability of individual users, rather than merely identifying a source computer.",
+      "reviewQuestions": [
+        "Which audit fields and identity mappings uniquely connect users to their actions?",
+        "Do generated records contain the defined attribution information?"
+      ],
+      "evidenceExamples": [
+        "An audit-content specification and sanitized individual identity mapping.",
+        "A controlled action traced through relevant records to the responsible test user."
+      ]
+    }
+  },
+  {
+    "id": "AU.L2-3.3.3",
+    "beginner": {
+      "meaning": "Review which kinds of events your systems record and update that selection when needed. This is about keeping the logging setup relevant, rather than reading yesterday's log entries. New applications or risks can make an old event selection incomplete.",
+      "example": "CedarPoint introduces an application with sensitive permission changes. During its defined logging review, the team checks whether those changes are being recorded and updates the selected event types where necessary."
+    },
+    "technical": {
+      "focus": "Define when logged event types will be reviewed, review them through that process, and update the configuration based on the findings. Evaluate whether selected events still support organizational investigation needs after changes in systems or threats.",
+      "example": "A logging-configuration review identifies an omitted administrative event and changes the application audit settings to capture it.",
+      "watchFor": "An analyst reviewing existing log entries every day does not, by itself, review and update the types of events selected for logging."
+    },
+    "compliance": {
+      "focus": "Look for the defined event-selection review process, its operation, and resulting updates. Keep this distinct from review and analysis of generated audit records.",
+      "reviewQuestions": [
+        "What process determines when selected logged event types are reviewed?",
+        "How are event types updated based on the results of those reviews?"
+      ],
+      "evidenceExamples": [
+        "An event-selection review procedure and sanitized review findings.",
+        "Change records showing logging configurations updated in response to the review."
+      ]
+    }
+  },
+  {
+    "id": "AU.L2-3.3.4",
+    "beginner": {
+      "meaning": "Tell the right people when the process that records system activity fails. A security team can mistakenly believe everything is quiet when the real problem is that its logs have stopped arriving or being created.",
+      "example": "CedarPoint's logging service runs out of usable storage during a controlled exercise. The defined alert reaches the responsible team, which can investigate the loss of visibility instead of assuming no events occurred."
+    },
+    "technical": {
+      "focus": "Identify alert recipients and define audit-logging failure types, then implement corresponding alerts. Depending on the design, relevant failures might include record-generation problems, collection interruption, or storage failures; verify the alert route remains usable during the failure.",
+      "example": "A monitoring rule sends an actionable notification to the designated logging owner when a test collector fails.",
+      "watchFor": "Monitoring only the collector's process status can miss other defined failures; an alert written solely into the failed logging path may never reach anyone."
+    },
+    "compliance": {
+      "focus": "Connect identified people or roles and defined failure types to delivered alerts. Distinguish a logging failure alert from an alert about suspicious user activity.",
+      "reviewQuestions": [
+        "Which audit-logging failures generate alerts, and who receives them?",
+        "How does a controlled failure demonstrate that the designated recipient is alerted?"
+      ],
+      "evidenceExamples": [
+        "Defined failure conditions, alert rules, and recipient assignments.",
+        "Sanitized controlled-failure results showing notification delivery and relevant follow-up."
+      ]
+    }
+  },
+  {
+    "id": "AU.L2-3.3.5",
+    "beginner": {
+      "meaning": "Connect the processes for reviewing, analyzing, and reporting audit records so unusual activity can be investigated and answered. One record may be ordinary alone but meaningful when compared with activity elsewhere; the people and processes need to connect those clues.",
+      "example": "CedarPoint links an unusual sign-in, a permission change, and a file access into one investigation. The analyst's findings reach the response team rather than remaining in an isolated report."
+    },
+    "technical": {
+      "focus": "Define and correlate audit review, analysis, and reporting processes for investigation and response. Central collection and correlation tooling can help, but well-managed manual processes may also be appropriate; the objective is connected analysis and response, not buying a particular platform.",
+      "example": "A documented workflow joins relevant account and application records, records the analyst's reasoning, and routes suspicious findings to incident responders.",
+      "watchFor": "Storing logs together without a review, analysis, reporting, and response workflow can create a large repository with little usable investigation capability."
+    },
+    "compliance": {
+      "focus": "Examine how the defined processes work together when activity appears unlawful, unauthorized, suspicious, or unusual, including the connection to investigation and response.",
+      "reviewQuestions": [
+        "How are audit review, analysis, and reporting processes defined for investigation and response?",
+        "How are those processes correlated rather than performed as unrelated activities?"
+      ],
+      "evidenceExamples": [
+        "A documented correlated audit-review and escalation workflow.",
+        "A sanitized investigation example linking relevant records, analysis, reporting, and response."
+      ]
+    }
+  },
+  {
+    "id": "AU.L2-3.3.6",
+    "beginner": {
+      "meaning": "Make large volumes of audit records usable through reduction and reporting capabilities. Reduction creates a focused view for analysis, such as grouping or filtering relevant events. It should not quietly destroy the original records needed to understand what happened.",
+      "example": "Maya asks CedarPoint's analyst for a report of permission changes affecting a test project. The analyst can produce it on demand without manually reading every unrelated event in the original log collection."
+    },
+    "technical": {
+      "focus": "Provide audit-record reduction for on-demand analysis and report generation for on-demand reporting. Querying, aggregation, and tailored views can support these capabilities while preserving original audit records and relevant investigative detail.",
+      "example": "An analyst filters a time range and action type, then generates a report containing the relevant events and identifying context.",
+      "watchFor": "A fixed daily dashboard may not support an unexpected investigation question; reducing a working view is different from deleting original audit records."
+    },
+    "compliance": {
+      "focus": "Evaluate the availability of both reduction and report-generation capabilities for on-demand use. Check practical capability rather than assuming a product license proves useful analysis is available.",
+      "reviewQuestions": [
+        "How can relevant audit records be reduced for an on-demand analysis request?",
+        "How can personnel generate a report suited to that request?"
+      ],
+      "evidenceExamples": [
+        "Configured audit queries, reduction views, and report-generation procedures.",
+        "A sanitized demonstration producing a targeted report from retained records."
+      ]
+    }
+  },
+  {
+    "id": "AU.L2-3.3.7",
+    "beginner": {
+      "meaning": "Keep the clocks used for audit timestamps aligned with an authoritative time source. When two systems disagree about the time, an investigator may connect events in the wrong order or struggle to tell whether records describe the same activity.",
+      "example": "CedarPoint compares and synchronizes its relevant system clocks with the designated time source. A sign-in record and the following application action can then be understood on a consistent timeline."
+    },
+    "technical": {
+      "focus": "Specify the authoritative source and provide comparison and synchronization for internal clocks generating audit timestamps. Time-service configuration, source reachability, and actual clock status matter; selecting a time server without synchronization is not enough.",
+      "example": "Servers use the defined organizational time hierarchy, and the team checks synchronization status for systems supplying investigation logs.",
+      "watchFor": "A configured source can be unreachable or unused; differing time zones also need clear interpretation even when underlying clocks are synchronized."
+    },
+    "compliance": {
+      "focus": "Review the specified authoritative source, the clocks used for audit timestamps, and evidence of comparison and synchronization. Avoid inventing a universal drift threshold or required vendor.",
+      "reviewQuestions": [
+        "Which authoritative source is specified for the relevant audit-record clocks?",
+        "How are those internal clocks compared and synchronized with it?"
+      ],
+      "evidenceExamples": [
+        "A time-source design and relevant system time-service settings.",
+        "Sanitized synchronization-status records and correlated test-event timestamps."
+      ]
+    }
+  },
+  {
+    "id": "AU.L2-3.3.8",
+    "beginner": {
+      "meaning": "Protect both audit records and the tools that create or manage them from unauthorized reading, changing, and deletion. An attacker who can alter the record of their actions can make an investigation much harder, even if logging originally worked.",
+      "example": "Maya can read project documents but cannot open or delete CedarPoint's audit archive. Only appropriately authorized staff can use the logging tools, and their access is limited to their assigned responsibilities."
+    },
+    "technical": {
+      "focus": "Apply suitable access, modification, and deletion protections to audit information and audit tools. Consider permissions on stored files, log platforms, administrative interfaces, backups, and other relevant paths; tool protection and information protection are distinct subjects.",
+      "example": "Separate permissions restrict audit-data viewing and logging-tool administration, while protected storage limits unauthorized alteration or removal.",
+      "watchFor": "Read-only dashboard roles do not protect an underlying log file or management API that remains writable by unauthorized identities."
+    },
+    "compliance": {
+      "focus": "Examine all three protection goals for both audit information and logging tools. A storage-protection claim alone leaves the tool-side controls unexplained.",
+      "reviewQuestions": [
+        "How are audit information and logging tools protected against unauthorized access?",
+        "How are unauthorized modification and deletion prevented for both?"
+      ],
+      "evidenceExamples": [
+        "Effective permissions and protected-storage or tool-administration configurations.",
+        "Controlled unauthorized-read, modification, and deletion denial demonstrations."
+      ]
+    }
+  },
+  {
+    "id": "AU.L2-3.3.9",
+    "beginner": {
+      "meaning": "Only a defined subset of privileged users should manage audit logging. Being an administrator elsewhere should not automatically include the power to change what gets recorded. Otherwise, a person could misuse another privilege and also weaken its record.",
+      "example": "CedarPoint's application administrator can maintain the project service but cannot disable central audit collection. Logging management belongs to the specifically authorized audit-management group."
+    },
+    "technical": {
+      "focus": "Define the privileged users permitted to manage audit logging and restrict management accordingly. Examine effective rights to change event selection, collection behavior, and other audit functionality across local systems and centralized services.",
+      "example": "The audit platform's management role is assigned only to the defined privileged subset, separate from ordinary dashboard viewing permissions.",
+      "watchFor": "A restricted dashboard role can be bypassed if general administrators retain an unrestricted local or API path to change logging behavior."
+    },
+    "compliance": {
+      "focus": "Compare the defined privileged subset with actual audit-management permissions. This complements audit-data protection and separation of duties; those related goals do not replace the subset restriction.",
+      "reviewQuestions": [
+        "Which subset of privileged users is authorized to manage audit logging?",
+        "How is management limited to that subset across relevant interfaces?"
+      ],
+      "evidenceExamples": [
+        "Audit-management responsibility assignments and authorized group membership.",
+        "Effective logging-management permissions and controlled unauthorized-management denial results."
+      ]
+    }
+  },
+  {
+    "id": "CM.L2-3.4.1",
+    "beginner": {
+      "meaning": "Keep an approved picture of how systems should be configured and an inventory of what they contain. Include hardware, software, firmware, and documentation, and maintain both as systems change throughout their life cycles. A one-time equipment list quickly becomes unreliable.",
+      "example": "CedarPoint records the approved configuration for a project workstation and its installed components. When the machine is replaced or its firmware changes, the team updates the baseline and inventory rather than leaving the original records untouched."
+    },
+    "technical": {
+      "focus": "Establish and maintain baseline configurations and inventories across system development life cycles. Distinguish the approved configuration from observed inventory; account for hardware, software, firmware, and documentation in both relevant records and maintenance processes.",
+      "example": "A deployment baseline describes the approved workstation build, while inventory records identify the actual device, component versions, and associated documentation.",
+      "watchFor": "An asset spreadsheet containing only serial numbers omits important baseline and inventory content; a deployment image alone does not maintain the actual inventory."
+    },
+    "compliance": {
+      "focus": "Review establishment and ongoing maintenance of both baselines and inventories, including the named component categories and their life-cycle coverage.",
+      "reviewQuestions": [
+        "How do baselines and inventories cover hardware, software, firmware, and documentation?",
+        "How are both reviewed and updated as systems change over their life cycles?"
+      ],
+      "evidenceExamples": [
+        "Sanitized baseline specifications and component inventories with version history.",
+        "Change or life-cycle records showing corresponding baseline and inventory updates."
+      ]
+    }
+  },
+  {
+    "id": "CM.L2-3.4.2",
+    "beginner": {
+      "meaning": "Decide the security settings that organizational technology should use, then make those settings take effect. Writing down a secure configuration helps only if the actual products are configured accordingly and required deviations are handled deliberately.",
+      "example": "CedarPoint defines approved workstation security settings and applies them to its project devices. If one application needs a deviation, the team reviews and documents it instead of quietly weakening settings for everyone."
+    },
+    "technical": {
+      "focus": "Establish security configuration settings for employed IT products and enforce them. Include relevant settings in the configuration baseline and consider appropriate hardening guidance, managed policy deployment, and verification of effective configuration in the specific environment.",
+      "example": "A device policy applies the approved settings, and a configuration check identifies a workstation whose effective settings differ from the approved baseline.",
+      "watchFor": "Importing a hardening template does not prove enforcement if devices fail to receive it or product-specific exceptions remain unreviewed."
+    },
+    "compliance": {
+      "focus": "Compare established security settings with implemented enforcement. Distinguish published guidance, the organization's chosen baseline, and the actual configuration of deployed products.",
+      "reviewQuestions": [
+        "Which security settings are established for the IT products in use?",
+        "How are those settings enforced, including handling of approved deviations?"
+      ],
+      "evidenceExamples": [
+        "Approved product-specific security baselines and documented deviations.",
+        "Effective policy settings and sanitized configuration-verification results."
+      ]
+    }
+  },
+  {
+    "id": "CM.L2-3.4.3",
+    "beginner": {
+      "meaning": "Keep system changes accountable: track them, review them, approve or disapprove them, and record them. A change that works technically can still introduce risk, so the process needs more than an informal message saying somebody fixed something.",
+      "example": "CedarPoint proposes a firewall change with a stated reason. The relevant people review it, record their decision, and log what was implemented rather than discovering an unexplained rule later."
+    },
+    "technical": {
+      "focus": "Implement a change process covering tracking, review, approval or disapproval, and logging for organizational systems. Include relevant physical-environment and system changes; connect requested changes, decisions, implementation details, and the resulting configuration record.",
+      "example": "A change record links a proposed configuration update to reviewer comments, the approval decision, implementation details, and the final result.",
+      "watchFor": "A ticket marked 'done' may omit the review or decision; recording changes only after they occur can bypass the intended pre-production approval process."
+    },
+    "compliance": {
+      "focus": "Examine every named change-management activity rather than treating the existence of a ticketing tool as the requirement's completion.",
+      "reviewQuestions": [
+        "How are system changes tracked, reviewed, and approved or disapproved?",
+        "How are decisions and implemented changes logged and connected?"
+      ],
+      "evidenceExamples": [
+        "A change-management procedure identifying review and decision responsibilities.",
+        "Sanitized change records showing requests, reviews, decisions, and implementation logs."
+      ]
+    }
+  },
+  {
+    "id": "CM.L2-3.4.4",
+    "beginner": {
+      "meaning": "Understand how a proposed system change could affect security before implementing it. Asking whether an update breaks a useful feature is important, but so is asking whether it exposes information, changes permissions, or weakens a protection.",
+      "example": "Before enabling a new sharing feature, CedarPoint checks whether it could expose project files outside the approved workspace. The team considers that security impact before turning the feature on."
+    },
+    "technical": {
+      "focus": "Analyze security impacts before changes take effect, considering relevant access, information flow, logging, protective configuration, and dependencies. Use the actual proposed change and environment; a generic statement that changes are risky does not analyze this change.",
+      "example": "A proposed integration is reviewed for new data destinations, token privileges, and logging effects before its production connection is enabled.",
+      "watchFor": "Functional testing or a rollback plan alone can miss a security-impact analysis; analysis performed only after deployment misses the stated timing."
+    },
+    "compliance": {
+      "focus": "Look for a change-specific security-impact analysis and evidence that it occurred before implementation. The source does not prescribe one universal template or tool.",
+      "reviewQuestions": [
+        "What security effects were considered for the proposed change?",
+        "How is that analysis completed and used before the change is implemented?"
+      ],
+      "evidenceExamples": [
+        "Sanitized security-impact analysis linked to a proposed change.",
+        "Dated review and implementation records showing the required ordering."
+      ]
+    }
+  },
+  {
+    "id": "CM.L2-3.4.5",
+    "beginner": {
+      "meaning": "Control who can make physical and logical changes to systems. Both the person who can open a hardware cabinet and the person who can change software settings can affect security. Define, document, approve, and enforce the restrictions for each.",
+      "example": "CedarPoint limits who may enter the server area to replace equipment and who may apply system configuration changes. Those permissions reflect approved responsibilities rather than everyone who happens to work nearby."
+    },
+    "technical": {
+      "focus": "Establish approved physical and logical access restrictions associated with system changes, then enforce them. Possible measures include restricted equipment access, scoped administrative credentials, controlled change interfaces, and workflows that connect authorized individuals to approved change activities.",
+      "example": "Only authorized maintenance staff can access the hardware area, while approved configuration changes use a separately restricted management interface.",
+      "watchFor": "Strong software permissions do not address unrestricted physical modification, and a locked room does not control remote configuration rights."
+    },
+    "compliance": {
+      "focus": "Check definition, documentation, approval, and enforcement for both physical and logical restrictions. Keep access restrictions connected to changes rather than assuming general building access is sufficient.",
+      "reviewQuestions": [
+        "Which physical and logical restrictions apply to system changes?",
+        "Are both categories documented, approved, and actually enforced?"
+      ],
+      "evidenceExamples": [
+        "Approved maintenance and configuration-change access assignments.",
+        "Relevant facility and system access settings with controlled restriction demonstrations."
+      ]
+    }
+  },
+  {
+    "id": "CM.L2-3.4.6",
+    "beginner": {
+      "meaning": "Configure systems to provide only the capabilities they need. Extra features can introduce unnecessary ways to misuse or attack a system. The key question is what is essential to its job, rather than whether the feature came enabled in the box.",
+      "example": "CedarPoint's document server needs document services but not an unrelated remote-control feature. The team defines its essential capabilities and configures the server accordingly."
+    },
+    "technical": {
+      "focus": "Define essential system capabilities using least functionality and configure systems to provide only those capabilities. Consider optional components, applications, services, and exposed features in the approved system role; coordinate changes with operational needs.",
+      "example": "A server baseline includes the components needed for its approved role and disables unrelated built-in capabilities after compatibility review.",
+      "watchFor": "A vendor's default installation can include capabilities unrelated to the system's purpose; disabling features without understanding dependencies can also disrupt needed work."
+    },
+    "compliance": {
+      "focus": "Compare the defined essential capabilities with the actual system configuration. A generic 'hardened' label does not explain which capabilities are essential or why others remain enabled.",
+      "reviewQuestions": [
+        "Which capabilities are defined as essential for this system's purpose?",
+        "How does the configuration limit the system to those defined capabilities?"
+      ],
+      "evidenceExamples": [
+        "System-role documentation and an approved essential-capability baseline.",
+        "Sanitized configuration records or demonstrations of disabled nonessential capabilities."
+      ]
+    }
+  },
+  {
+    "id": "CM.L2-3.4.7",
+    "beginner": {
+      "meaning": "Restrict, disable, or prevent nonessential programs, functions, ports, protocols, and services. These are different ways systems operate or communicate. Removing an unused application is helpful, but it does not automatically close every unnecessary network or service capability.",
+      "example": "CedarPoint identifies an unused file-transfer service on a project server. The team disables the service and restricts its unnecessary communication path while keeping the approved project services available."
+    },
+    "technical": {
+      "focus": "Define essential items and how nonessential use is handled across all five named categories, then implement those restrictions. Configuration controls, service management, execution restrictions, and network policy can complement one another according to the environment.",
+      "example": "The server baseline disables an unnecessary protocol and service, removes an unneeded program, and restricts the associated unused port path.",
+      "watchFor": "Closing a port does not remove an unnecessary local function; checking only network services can miss nonessential programs and other system capabilities."
+    },
+    "compliance": {
+      "focus": "Review defined essential and nonessential use, plus implemented restrictions, for programs, functions, ports, protocols, and services. Preserve the requirement's coverage across all named categories.",
+      "reviewQuestions": [
+        "How are essential items and permitted handling of nonessential use defined in each category?",
+        "How is nonessential use restricted, disabled, or prevented as defined?"
+      ],
+      "evidenceExamples": [
+        "An approved functionality specification covering all five named categories.",
+        "Effective execution, service, protocol, and network restriction settings."
+      ]
+    }
+  },
+  {
+    "id": "CM.L2-3.4.8",
+    "beginner": {
+      "meaning": "Choose and enforce a policy for which software can run. One approach allows software except specifically denied items; another denies software except specifically approved items. The requirement describes either policy, so the two approaches should not be presented as the same design.",
+      "example": "CedarPoint chooses an approved-software execution policy for a workstation group. An unapproved application cannot run until it is evaluated and included in the permitted set."
+    },
+    "technical": {
+      "focus": "Specify the deny-by-exception or deny-all, permit-by-exception policy, identify the software denied or allowed under it, and implement the corresponding execution control. Scope configuration and exception handling to relevant systems and executable paths.",
+      "example": "A managed application-control configuration enforces the chosen allow policy and records a controlled attempt to execute an unapproved program.",
+      "watchFor": "An approved-software inventory does not prevent execution on its own; a selected policy can also be undermined by unmanaged execution paths."
+    },
+    "compliance": {
+      "focus": "Compare the selected policy, specified software set, and implemented enforcement. Avoid turning the guide's preference for stronger allow-listing into a claim that the requirement permits only that option.",
+      "reviewQuestions": [
+        "Which of the specified execution-policy approaches has the organization chosen?",
+        "How does implementation enforce its identified allowed or denied software set?"
+      ],
+      "evidenceExamples": [
+        "The application-execution policy and managed allowed or denied software definitions.",
+        "Effective execution-control settings and controlled allowed and blocked execution tests."
+      ]
+    }
+  },
+  {
+    "id": "CM.L2-3.4.9",
+    "beginner": {
+      "meaning": "Control and monitor software that users install. A program can create risk even when installed for a useful reason. The organization needs a policy for user installation, a way to apply that policy, and visibility into what users actually install.",
+      "example": "Maya requests a drawing utility through CedarPoint's approved process. The team can identify installed software and detect an unapproved personal utility instead of assuming employees install only what they need."
+    },
+    "technical": {
+      "focus": "Establish a user-installation policy, control installation according to it, and monitor installations. Possible measures include scoped installation privileges, managed distribution, application inventory, and review of installation events or discovered software.",
+      "example": "A managed installation channel supplies approved applications, while inventory review identifies a user-installed application outside the defined process.",
+      "watchFor": "Removing local administrator rights can leave per-user installers or portable software paths; controls without monitoring may miss installations that bypass the expected route."
+    },
+    "compliance": {
+      "focus": "Examine both control and monitoring of user installation against the established policy. This differs from the broader software-execution policy addressed in CM.L2-3.4.8.",
+      "reviewQuestions": [
+        "What policy controls installation of software by users?",
+        "How are installations controlled according to that policy and monitored?"
+      ],
+      "evidenceExamples": [
+        "User-installation rules and relevant installation permission settings.",
+        "Sanitized application inventories, installation records, or exception-review findings."
+      ]
+    }
+  },
+  {
+    "id": "IA.L2-3.5.1",
+    "beginner": {
+      "meaning": "Give system users, software working on their behalf, and devices identifiable identities. The system needs to know who or what is involved before it can sensibly decide about access or explain activity later. Naming something and proving its identity are separate steps.",
+      "example": "CedarPoint identifies Maya individually, identifies the scheduled process working for her team, and identifies its project printer. They do not all appear as an unexplained generic 'user' in the relevant records."
+    },
+    "technical": {
+      "focus": "Identify users, processes acting for users, and devices accessing the system. Establish usable identity records and mappings for each relevant category, so access decisions and activity attribution can refer to known entities rather than ambiguous labels.",
+      "example": "A service identity has a responsible owner, user identities map to individuals, and device identifiers distinguish connected organizational devices.",
+      "watchFor": "A complete employee directory can still leave delegated processes and devices unidentified; a network address alone may not be a stable identity mapping."
+    },
+    "compliance": {
+      "focus": "Check identification across all three named categories. This supports authorized access under AC.L2-3.1.1 but does not replace verification of identities under IA.L2-3.5.2.",
+      "reviewQuestions": [
+        "How are users and processes acting on their behalf identified?",
+        "How are devices accessing the relevant system identified?"
+      ],
+      "evidenceExamples": [
+        "Sanitized user, delegated-process, and device identity records.",
+        "Identity assignment procedures and mappings to responsible owners or entities."
+      ]
+    }
+  },
+  {
+    "id": "IA.L2-3.5.2",
+    "beginner": {
+      "meaning": "Verify that users, processes, and devices are who or what they claim to be before allowing system access. A name on a list is an identity claim, not proof. Different kinds of entities may use different suitable ways to prove their identities.",
+      "example": "CedarPoint verifies Maya's sign-in and verifies the identity of an approved system integration before either receives access. Simply sending an approved-looking username or device label is not enough."
+    },
+    "technical": {
+      "focus": "Implement authentication or verification before access for each relevant user, delegated process, and device path. Suitable mechanisms may include user authenticators and service or device credentials; examine the actual enforcement point and default or unmanaged credentials.",
+      "example": "An application validates a service credential before accepting requests from the process, while a device access path verifies its configured identity proof.",
+      "watchFor": "Verifying interactive users alone leaves automated processes or device connections unresolved; collecting an identifier without validating it is identification, not authentication."
+    },
+    "compliance": {
+      "focus": "Review whether each named entity category is authenticated or verified as a prerequisite to system access. Describe the relevant paths rather than assuming one sign-in screen covers everything.",
+      "reviewQuestions": [
+        "How are users, processes, and devices authenticated or verified?",
+        "What prevents access before that verification succeeds?"
+      ],
+      "evidenceExamples": [
+        "Authentication architecture and effective user, service, or device verification settings.",
+        "Controlled verification-success and verification-failure demonstrations using test identities."
+      ]
+    }
+  },
+  {
+    "id": "IA.L2-3.5.3",
+    "beginner": {
+      "meaning": "Use more than one kind of proof for the specified access: local and network access to privileged accounts, and network access to non-privileged accounts. Two passwords are still the same kind of proof; different factors can involve knowledge, possession, or an inherent characteristic.",
+      "example": "CedarPoint protects administrator access and ordinary users' network access with its implemented multifactor approach. The team checks local administrator access too rather than considering only the remote sign-in page."
+    },
+    "technical": {
+      "focus": "Identify privileged accounts and implement MFA for their local and network access, plus network access to non-privileged accounts. Evaluate each relevant access path and the actual independent factors; MFA solely on a VPN may leave other covered paths unprotected.",
+      "example": "A coverage review checks privileged workstation sign-in, administrative network access, and ordinary-user network application access against the MFA design.",
+      "watchFor": "An MFA-enabled identity provider does not prove that legacy protocols, bypass paths, or local privileged access use the required factors."
+    },
+    "compliance": {
+      "focus": "Preserve the requirement's distinct local, network, privileged, and non-privileged scope. Do not rewrite it as a blanket statement that every local ordinary-user login is specified here.",
+      "reviewQuestions": [
+        "Which accounts are privileged, and how is their local and network access protected with MFA?",
+        "How is network access to non-privileged accounts protected with MFA?"
+      ],
+      "evidenceExamples": [
+        "A privileged-account inventory and access-path MFA coverage matrix.",
+        "Effective authentication settings and controlled demonstrations for each specified access category."
+      ]
+    }
+  },
+  {
+    "id": "IA.L2-3.5.4",
+    "beginner": {
+      "meaning": "Protect network sign-in so recording an earlier authentication exchange does not let someone simply replay it to get in. This applies to privileged and non-privileged accounts. A successful sign-in message should not become a reusable recording that opens the door again.",
+      "example": "CedarPoint uses a suitable challenge-based authentication mechanism for a covered network path. A previously captured response does not work for a different fresh challenge."
+    },
+    "technical": {
+      "focus": "Implement replay-resistant authentication for network access to both account categories. Evaluate mechanisms using fresh challenges, nonces, or appropriately designed one-time authenticators, and inspect actual protocol behavior rather than assuming encryption or an MFA label establishes replay resistance.",
+      "example": "A supported authentication protocol binds the response to a fresh server challenge and rejects reuse outside that authentication exchange.",
+      "watchFor": "A static credential sent in an encrypted channel still needs evaluation of the authentication mechanism's replay properties; multifactor and replay resistance are distinct characteristics."
+    },
+    "compliance": {
+      "focus": "Connect each relevant network authentication path to a mechanism whose design resists recorded authentication-message replay. Avoid inventing a required protocol or claiming all tokens are replay resistant.",
+      "reviewQuestions": [
+        "Which replay-resistant mechanisms protect privileged and non-privileged network access?",
+        "What protocol properties prevent successful reuse of a prior authentication exchange?"
+      ],
+      "evidenceExamples": [
+        "Authentication protocol documentation and relevant effective configuration.",
+        "A sanitized design review or controlled replay-resistance demonstration with test credentials."
+      ]
+    }
+  },
+  {
+    "id": "IA.L2-3.5.5",
+    "beginner": {
+      "meaning": "Do not reuse identifiers during the defined period. If a former employee's username is quickly reassigned, old records can become confusing about who performed an action. This requirement concerns identifiers such as account names, rather than how recently a password was used.",
+      "example": "After Sam leaves CedarPoint, the team reserves his retired identifier for its defined non-reuse period. A new employee receives a different identifier instead of inheriting Sam's identity label immediately."
+    },
+    "technical": {
+      "focus": "Define the identifier non-reuse period and implement mechanisms that prevent reuse during it. Coordinate provisioning, deletion, identity records, and relevant mappings so account recreation does not silently reassign an identifier earlier than policy allows.",
+      "example": "The provisioning workflow checks a retained identifier-reservation record before assigning a proposed new account name.",
+      "watchFor": "Deleting an account can remove the directory's immediate evidence of its old name; an account-creation process may then unintentionally reuse that identifier."
+    },
+    "compliance": {
+      "focus": "Review the defined period and actual prevention of identifier reuse within it. Do not substitute password-history settings or invent a universally required reservation duration.",
+      "reviewQuestions": [
+        "What period is defined during which identifiers cannot be reused?",
+        "How does identity provisioning prevent reuse within that period?"
+      ],
+      "evidenceExamples": [
+        "Identifier-assignment rules and sanitized reservation or retirement records.",
+        "Provisioning checks and a controlled attempt to reuse a reserved test identifier."
+      ]
+    }
+  },
+  {
+    "id": "IA.L2-3.5.6",
+    "beginner": {
+      "meaning": "Disable identifiers after the defined period of inactivity. An unused account or other identifier can become an overlooked route into the system. The organization defines the inactivity period and needs to apply it, rather than leaving dormant identities active indefinitely.",
+      "example": "CedarPoint's review identifies a test account unused beyond its defined inactivity period. The account is disabled according to the team's process instead of remaining available simply because nobody requested its deletion."
+    },
+    "technical": {
+      "focus": "Define inactivity criteria and the period after which identifiers are disabled, then implement the disabling behavior for relevant identities. Examine how actual use is measured, including applicable noninteractive identities, rather than relying only on visible browser sign-ins.",
+      "example": "An identity-management process detects an identifier meeting the defined inactivity condition and disables it while retaining appropriate traceability records.",
+      "watchFor": "A last-login field may not capture every relevant use; disabling an account without evaluating its dependencies can interrupt a legitimate process."
+    },
+    "compliance": {
+      "focus": "Compare the defined inactivity period with identification of inactive identifiers and actual disabling. Keep this separate from unsuccessful-login lockouts and immediate offboarding decisions.",
+      "reviewQuestions": [
+        "What inactivity period and measurement method are defined for relevant identifiers?",
+        "How are identifiers disabled after that defined inactivity period?"
+      ],
+      "evidenceExamples": [
+        "Inactive-identifier policy and relevant review or automation settings.",
+        "Sanitized inactivity findings and corresponding identifier-disable records."
+      ]
+    }
+  },
+  {
+    "id": "IA.L2-3.5.7",
+    "beginner": {
+      "meaning": "When new passwords are created, enforce the defined minimum complexity and change-of-character requirements. The organization must decide and apply those rules. This requirement does not supply one universal password length or character-change count for every system.",
+      "example": "Maya changes a password at CedarPoint. The system checks both the defined complexity rules and the required character changes instead of accepting a near-identical password that violates the organization's policy."
+    },
+    "technical": {
+      "focus": "Define complexity and character-change requirements, then enforce them during new-password creation and relevant password changes. Check each password-management path, including reset interfaces and application-local accounts, rather than relying on a directory setting that some applications bypass.",
+      "example": "A controlled test submits passwords violating each defined rule and confirms that the covered creation or change workflow rejects them.",
+      "watchFor": "A complexity setting alone can omit the separate change-of-characters requirement; current password advice should not silently replace this versioned source requirement."
+    },
+    "compliance": {
+      "focus": "Review both defined parameters and enforcement of each. Keep the specific CMMC publication context visible when discussing modern authentication guidance or different framework editions.",
+      "reviewQuestions": [
+        "What minimum complexity and change-of-character requirements are defined?",
+        "How are both enforced when new passwords are created?"
+      ],
+      "evidenceExamples": [
+        "Password rules and effective directory or application password-policy settings.",
+        "Controlled password-creation and change tests without recording actual secrets."
+      ]
+    }
+  },
+  {
+    "id": "IA.L2-3.5.8",
+    "beginner": {
+      "meaning": "Prevent password reuse for the specified number of password generations. A generation means a successive password in the account's history. This is a history restriction, not the same thing as reserving a retired username or inventing a required password-change schedule.",
+      "example": "Maya tries to return to a recently used password. CedarPoint rejects it because it is still within the organization's specified password-history window."
+    },
+    "technical": {
+      "focus": "Specify the number of generations for which reuse is prohibited and implement password-history enforcement on relevant password-change and reset paths. Evaluate whether different credential stores and administrative resets preserve the intended history restriction.",
+      "example": "A test account changes passwords through the supported workflow, and an attempt to reuse one inside the configured history window is rejected.",
+      "watchFor": "Reset or alternate account-management paths may bypass ordinary password history; a time-based expiration setting does not itself prevent reuse for the specified generations."
+    },
+    "compliance": {
+      "focus": "Match the specified history-generation count with actual reuse prohibition. The requirement's official text supplies no universal count and does not itself establish a periodic rotation interval.",
+      "reviewQuestions": [
+        "How many password generations are specified for prohibited reuse?",
+        "How is that restriction enforced across relevant password-management paths?"
+      ],
+      "evidenceExamples": [
+        "Password-history rules and corresponding effective configuration.",
+        "Controlled reuse-denial results using test passwords without exposing their values."
+      ]
+    }
+  },
+  {
+    "id": "IA.L2-3.5.9",
+    "beginner": {
+      "meaning": "If a temporary password is used for system logon, require an immediate change to a permanent password. A temporary credential should not become a convenient long-term secret that remains known to the person or process that originally supplied it.",
+      "example": "CedarPoint issues Maya a temporary password through its approved onboarding process. On first use for logon, she must change it before continuing with ordinary system access."
+    },
+    "technical": {
+      "focus": "Implement immediate password change for temporary-password logons, including applicable onboarding and recovery workflows. Check that covered access paths honor the change requirement rather than accepting the temporary credential indefinitely through another interface.",
+      "example": "The identity service marks a temporary password for required change and the application does not permit normal activity until the permanent password is established.",
+      "watchFor": "A 'change on next login' flag can be ineffective if an alternate protocol accepts the temporary credential without enforcing that first-logon change."
+    },
+    "compliance": {
+      "focus": "Review what happens when temporary passwords are used. The requirement does not mandate that every organization issue temporary passwords or prescribe one particular delivery mechanism.",
+      "reviewQuestions": [
+        "Where can temporary passwords be used for system logon?",
+        "How is an immediate change to a permanent password required on that use?"
+      ],
+      "evidenceExamples": [
+        "Temporary-password onboarding or recovery procedures and effective account settings.",
+        "A controlled first-logon demonstration using a disposable test credential."
+      ]
+    }
+  },
+  {
+    "id": "IA.L2-3.5.10",
+    "beginner": {
+      "meaning": "Protect passwords cryptographically both where they are stored and when they are transmitted. Hiding characters on a screen is a different protection. Stored password verification data and the communication carrying authentication information each need appropriate treatment.",
+      "example": "CedarPoint's application does not keep readable passwords in its account database, and its password-handling connection is cryptographically protected. The team also checks that diagnostic logs do not accidentally retain submitted passwords."
+    },
+    "technical": {
+      "focus": "Review password handling across storage and transmission. The guide discusses salted one-way hashes; evaluate appropriate password-verifier storage and protected transport in the actual authentication design. A transmitted hash that acts as a reusable credential is not automatically safe.",
+      "example": "A design review examines the credential store, authentication transport, and supporting logs using test accounts without printing their passwords or verifier values.",
+      "watchFor": "Hashing is not a complete transport-protection design, and masking an input field does not protect database contents, network exchanges, or diagnostic output."
+    },
+    "compliance": {
+      "focus": "Examine cryptographic protection in storage and in transit separately. Preserve the exact source wording while assessing implementation details through applicable official guidance.",
+      "reviewQuestions": [
+        "How are passwords cryptographically protected in storage?",
+        "How are they cryptographically protected during relevant transmission paths?"
+      ],
+      "evidenceExamples": [
+        "Sanitized credential-storage design and relevant protection settings.",
+        "Authentication-flow documentation and controlled verification of transport protection without real secrets."
+      ]
+    }
+  },
+  {
+    "id": "IA.L2-3.5.11",
+    "beginner": {
+      "meaning": "Obscure authentication information while it is being entered or otherwise shown as authentication feedback. Someone nearby should not learn a secret merely by watching the screen. This protects visible feedback; it does not replace cryptographic protection or stronger authentication.",
+      "example": "When Maya types a password into CedarPoint's sign-in form, the form shows masking symbols according to its defined behavior rather than leaving the secret readable to a person standing behind her."
+    },
+    "technical": {
+      "focus": "Configure authentication interfaces to obscure relevant information during the authentication process. Review workstation, application, device, and other applicable interfaces, including any brief character display or reveal behavior in the context of the defined policy.",
+      "example": "A controlled interface review confirms that the sign-in form masks the test password and that its feedback does not echo the secret.",
+      "watchFor": "Masking one browser field does not cover every authentication interface; visible error messages or a separate terminal prompt can expose information unexpectedly."
+    },
+    "compliance": {
+      "focus": "Review the obscuring behavior of relevant authentication interfaces. Distinguish visible feedback protection from password storage and transmission protection under IA.L2-3.5.10.",
+      "reviewQuestions": [
+        "Which interfaces present authentication information or feedback?",
+        "How is relevant authentication information obscured during the process?"
+      ],
+      "evidenceExamples": [
+        "Authentication-interface settings and documented feedback behavior.",
+        "Sanitized interface demonstrations using nonsensitive test authentication information."
+      ]
+    }
+  }
+]

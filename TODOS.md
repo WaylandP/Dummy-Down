@@ -3,12 +3,15 @@
 These are sequenced roadmap items, not a claim that the next feature PR implements
 them. The README remains the mission and roadmap source.
 
-- **P1: qualified editorial review and teaching coverage.** Establish the
+- **P1: qualified editorial review and source freshness.** Establish the
   applicable publications, version/scope context and a contribution/review template,
   then obtain qualified review of educational explanations. Why: source links and
   software tests do not establish correctness. Benefit: trustworthy content and
   maintainable revisions. Cost: reviewer time and licensing checks. Start with
-  `src/data/controls.ts` and `docs/DEVELOPMENT.md`. Human effort: L; agent-assisted:
+  `src/data/perspectives/` and `docs/DEVELOPMENT.md`. All 149 versioned CMMC
+  references now have three original teaching drafts each and an agent source
+  audit; qualified human approval and latest-edition verification remain pending.
+  Human effort: L; agent-assisted:
   M for tooling, review availability unknown. Depends on reviewed source/applicability
   decisions; never replace them with invented requirements.
 - **P2: expand fictional scenarios and explanatory knowledge checks.** Why:
@@ -26,3 +29,11 @@ them. The README remains the mission and roadmap source.
   review. Human effort: XL; agent-assisted: L for implementation, review timing
   unknown. Start with framework/content-edition metadata; no automatic equivalence
   or invented coverage. Depends on source/licensing/review readiness.
+- **P2: expand vocabulary and improve confusing perspectives.** The glossary has
+  six draft terms for the original demo. Use aggregate, opt-in-eligible usage
+  signals (unclear feedback by control/mode, glossary opens and zero-result search
+  buckets) alongside voluntary issue reports to choose further vocabulary and
+  teaching revisions. Do not infer individual learning or compliance readiness.
+  Check Vercel Analytics activation and custom-event entitlement in the owner's
+  account before depending on dashboard data. Never collect raw search text or
+  organizational information to prioritize this work.

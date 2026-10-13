@@ -25,6 +25,9 @@ import { ShareLesson } from './ShareLesson'
 import { LearningPractice } from './LearningPractice'
 import { ControlResults } from './ControlResults'
 import { ReferenceDetail } from './ReferenceDetail'
+import { trackUsage } from '../analytics/usage'
+import { useSearchUsage } from '../analytics/useSearchUsage'
+import { CmmcLevels } from './CmmcLevels'
 
 interface ControlExplorerProps {
   controller: ExplorerController
@@ -32,6 +35,7 @@ interface ControlExplorerProps {
 
 export function ControlExplorer({ controller }: ControlExplorerProps) {
   const searchInput = useRef<HTMLInputElement>(null)
+  const searchUsage = useSearchUsage('explorer')
   const focusLesson = useRef(false)
   const lessonHeading = useRef<HTMLHeadingElement>(null)
   const focusRecoveredSearch = useRef(false)
@@ -119,13 +123,15 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
           <p className="section-caption">Explore the idea</p>
           <h2 id="explorer-heading">Control Explorer</h2>
           <p>
-            Read a draft explanation or explore the versioned source references.
+            Explore all three CMMC levels, with source text and teaching
+            perspectives.
           </p>
         </div>
         <span className="status-badge">
-          {referenceControls.length} CMMC source references · 1 draft lesson
+          {referenceControls.length} CMMC controls · 3 draft perspectives each
         </span>
       </div>
+      <CmmcLevels mode={mode} />
       {controller.historyStatus === 'failed' && (
         <p className="explorer-notice" role="alert">
           Your browser couldn’t update the address. You can keep exploring, but
@@ -135,9 +141,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
       {parsed.kind === 'ready' && parsed.notices.length > 0 && (
         <p className="explorer-notice" role="status">
           {parsed.notices.includes('mode-reset') &&
-            (selected?.contentKind === 'official-reference'
-              ? 'That learning mode is unavailable; displaying the source reference. '
-              : 'That learning mode is unavailable; showing Beginner. ')}
+            'That learning mode is unavailable; showing Beginner. '}
           {parsed.notices.includes('family-reset') &&
             'That family filter is unavailable and was cleared. '}
           {parsed.notices.includes('level-reset') &&
@@ -156,9 +160,15 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                 placeholder="Search a topic or control ID…"
                 value={filters.query}
                 disabled={parsed.kind === 'invalid'}
-                onChange={(event) =>
+                onChange={(event) => {
+                  searchUsage.edited(event.target.value)
                   dispatch({ type: 'set-query', query: event.target.value })
-                }
+                }}
+                onBlur={() => searchUsage.report(filters.query, results.length)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter')
+                    searchUsage.report(filters.query, results.length)
+                }}
               />
             </span>
           </label>
@@ -177,8 +187,8 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                 })
               }
             >
-              <option value="lessons">Draft explanations</option>
-              <option value="references">Source references</option>
+              <option value="lessons">Demo lesson</option>
+              <option value="references">Controls &amp; sources</option>
             </select>
           </label>
           <label className="framework-field">
@@ -284,8 +294,8 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
             <p className="sidebar-note">
               <Info size={15} aria-hidden="true" />
               {collection === 'references'
-                ? 'September 2024 CMMC v2.13 snapshot. Teaching explanations for these references are pending.'
-                : 'One draft lesson. The source collection contains 149 versioned CMMC references.'}
+                ? 'September 2024 CMMC v2.13 snapshot. All controls have draft teaching perspectives; qualified editorial review is pending.'
+                : 'Original demo lesson. Choose a level above or Controls & sources to explore all 149 controls.'}
             </p>
           </aside>
           {selected?.contentKind === 'educational-example' &&
@@ -347,6 +357,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                   </p>
                 </div>
                 <ShareLesson
+                  lesson={lessonIdentity(selected)}
                   url={createLessonUrl(
                     lessonIdentity(selected),
                     mode,
@@ -417,6 +428,17 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                       <li key={source.id}>
                         <a
                           href={source.url}
+                          onClick={() =>
+                            trackUsage({
+                              name: 'source_open',
+                              lesson: lessonIdentity(selected),
+                              sourceId: source.id,
+                              destination:
+                                source.kind === 'official-resource-index'
+                                  ? 'index'
+                                  : 'publisher',
+                            })
+                          }
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -443,6 +465,10 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
             resolution?.kind === 'lesson' ? (
             <ReferenceDetail
               control={selected}
+              mode={mode}
+              onModeChange={(nextMode) =>
+                dispatch({ type: 'change-mode', mode: nextMode })
+              }
               framework={resolution.framework}
               edition={resolution.edition}
               shareUrl={createLessonUrl(
@@ -493,7 +519,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                     ? 'This framework has no published content here yet. Browse the available draft examples to explore the learning experience.'
                     : results.length
                       ? collection === 'references'
-                        ? 'Select a reference to read the attributed publication text. Teaching explanations are pending for these entries.'
+                        ? 'Select a control to compare its official text with Beginner, IT & Cyber and Compliance teaching drafts.'
                         : 'Select an example from the results to begin reading. Your learning mode is kept as you browse.'
                       : collection === 'references'
                         ? 'Try a control identifier, topic, family or level in the September 2024 source snapshot.'
