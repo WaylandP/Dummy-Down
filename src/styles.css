@@ -593,7 +593,7 @@
   }
   .explanation-panel .takeaway {
     @apply flex items-start gap-2 text-muted;
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.8;
     margin-top: 16px;
   }
@@ -617,7 +617,7 @@
   }
   .source-content {
     @apply text-muted;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.8;
     max-width: 68ch;
     padding-top: 12px;
@@ -637,7 +637,7 @@
   }
   .source-content li > span {
     @apply mt-2 block;
-    font-size: 13px;
+    font-size: 16px;
   }
   .empty-state {
     @apply flex flex-col items-center justify-center text-center;
@@ -666,6 +666,250 @@
   }
   .explorer-disclaimer svg {
     margin-top: 3px;
+  }
+  .lesson-heading-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .lesson-heading-row > div:first-child {
+    min-width: 0;
+  }
+  .edition-context {
+    color: var(--color-muted);
+    font-size: 12px;
+    line-height: 1.7;
+    margin-top: 8px;
+  }
+  .share-lesson {
+    max-width: 100%;
+  }
+  .share-button,
+  .term-trigger,
+  .term-close,
+  .text-action,
+  .inline-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    color: var(--color-accent);
+    font-size: 14px;
+  }
+  .share-button {
+    border: 1px solid var(--color-field-border);
+    border-radius: 4px;
+    padding: 10px 12px;
+  }
+  .share-button:hover:not(:disabled),
+  .term-trigger:hover {
+    background: var(--color-raised);
+  }
+  .share-button:disabled {
+    cursor: progress;
+  }
+  .share-feedback {
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.7;
+    max-width: 28ch;
+  }
+  .share-feedback:not(:empty) {
+    margin-top: 8px;
+  }
+  .share-fallback {
+    margin-top: 12px;
+    max-width: 340px;
+  }
+  .share-fallback label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .share-fallback textarea {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    background: var(--color-canvas);
+    color: var(--color-foreground);
+    border: 1px solid var(--color-field-border);
+    border-radius: 4px;
+    font: inherit;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+    resize: vertical;
+  }
+  .explorer-notice,
+  .lesson-mismatch {
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.7;
+    padding: 16px 0;
+  }
+  .lesson-mismatch {
+    border-bottom: 1px solid var(--color-line);
+    margin-bottom: 24px;
+    padding-top: 0;
+  }
+  .inline-action,
+  .text-action {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .context-terms {
+    margin-top: 24px;
+  }
+  .context-terms > h4 {
+    font: inherit;
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+  .term-triggers {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 18px;
+    margin-top: 4px;
+  }
+  .term-trigger {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .term-trigger[aria-expanded='true'] {
+    text-decoration-thickness: 2px;
+  }
+  .context-definition {
+    border-left: 2px solid var(--color-accent);
+    padding: 16px 0 0 20px;
+    margin-block: 12px 24px;
+  }
+  .context-definition-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .context-definition-heading h4 {
+    font-size: 20px;
+  }
+  .term-definition {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-muted);
+    max-width: 68ch;
+  }
+  .term-context {
+    margin-top: 16px;
+  }
+  .draft-label {
+    color: var(--color-draft);
+  }
+  .term-unavailable {
+    font-size: 16px;
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+  .term-sources {
+    margin-top: 16px;
+  }
+  .source-kind {
+    display: block;
+  }
+  .source-content > p + p {
+    margin-top: 16px;
+  }
+  .source-content a:visited {
+    color: var(--color-draft);
+  }
+  .glossary {
+    padding-bottom: var(--space-section);
+  }
+  .glossary .section-heading {
+    align-items: flex-start;
+  }
+  .glossary .section-heading > p {
+    max-width: 48ch;
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .glossary .eyebrow {
+    display: block;
+    color: var(--color-accent);
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .glossary-search {
+    max-width: 600px;
+  }
+  .glossary-search > label {
+    display: block;
+    color: var(--color-muted);
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .glossary-search-field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--color-field-border);
+    border-radius: 4px;
+    min-height: 46px;
+    padding: 10px 14px;
+  }
+  .glossary-search-field input {
+    min-width: 0;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--color-foreground);
+    font-size: 16px;
+  }
+  .glossary-search-field svg {
+    color: var(--color-muted);
+  }
+  .glossary-search-field input::placeholder {
+    color: var(--color-muted);
+  }
+  .glossary-count {
+    font-size: 13px;
+    color: var(--color-muted);
+    margin-block: 24px 14px;
+  }
+  .glossary-list {
+    border-top: 1px solid var(--color-line);
+  }
+  .glossary-term {
+    border-bottom: 1px solid var(--color-line);
+  }
+  .glossary-term > summary {
+    min-height: 64px;
+    padding-block: 20px;
+    color: var(--color-foreground);
+    font-size: 18px;
+  }
+  .glossary-term[open] > summary {
+    color: var(--color-accent);
+  }
+  .glossary-term > .term-definition {
+    padding-block: 4px 28px;
+  }
+  .glossary-empty {
+    padding-block: 28px;
+  }
+  .glossary-empty h3 {
+    font-size: 24px;
+  }
+  .glossary-empty p {
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-block: 16px;
   }
   .mission-section {
     @apply grid;
@@ -805,6 +1049,13 @@
   .site-header nav {
     gap: 20px;
     font-size: 13px;
+  }
+  .site-header {
+    flex-wrap: wrap;
+    padding-block: 16px;
+  }
+  .site-header nav {
+    flex-wrap: wrap;
   }
   .site-header nav > a:nth-child(2) {
     display: none;
@@ -981,6 +1232,15 @@
   .control-kicker {
     gap: 12px;
   }
+  .lesson-heading-row {
+    flex-direction: column;
+  }
+  .share-lesson {
+    width: 100%;
+  }
+  .share-fallback {
+    max-width: none;
+  }
   .control-detail h3 {
     font-size: 30px;
   }
@@ -1010,7 +1270,7 @@
     font-size: 16px;
   }
   .source-content {
-    font-size: 15px;
+    font-size: 16px;
   }
   .source-content a {
     display: inline;

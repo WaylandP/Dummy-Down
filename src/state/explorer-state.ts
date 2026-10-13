@@ -1,0 +1,471 @@
+import { filterControls } from '../data/control-search'
+import type {
+  ContentEdition,
+  Control,
+  ExplanationMode,
+  Framework,
+  LessonIdentity,
+} from '../types/content'
+
+export interface ExplorerCatalog {
+  readonly frameworks: readonly Framework[]
+  readonly editions: readonly ContentEdition[]
+  readonly controls: readonly Control[]
+  readonly defaultLesson: LessonIdentity | null
+}
+
+export interface ExplorerFilters {
+  readonly catalog: string
+  readonly query: string
+  readonly family: string
+  readonly level: string
+}
+
+export type ValidExplorerState = {
+  readonly mode: ExplanationMode
+  readonly filters: ExplorerFilters
+} & (
+  | { readonly view: 'lesson'; readonly lesson: LessonIdentity }
+  | { readonly view: 'discover' }
+)
+
+export type AddressError =
+  | 'malformed-encoding'
+  | 'duplicate-parameter'
+  | 'invalid-view'
+  | 'incomplete-identity'
+  | 'conflicting-state'
+  | 'invalid-identity'
+  | 'unknown-catalog'
+
+export type NormalizationNotice = 'mode-reset' | 'family-reset' | 'level-reset'
+
+export type ParsedExplorerState =
+  | {
+      readonly kind: 'ready'
+      readonly state: ValidExplorerState
+      readonly notices: readonly NormalizationNotice[]
+    }
+  | { readonly kind: 'invalid'; readonly reason: AddressError }
+
+export type LessonResolution =
+  | {
+      readonly kind: 'lesson'
+      readonly control: Control
+      readonly framework: Framework
+      readonly edition: ContentEdition
+      readonly excludedByFilters: boolean
+    }
+  | { readonly kind: 'not-found'; readonly identity: LessonIdentity }
+  | { readonly kind: 'planned-framework'; readonly framework: Framework }
+
+export type ExplorerIntent =
+  | { readonly type: 'select-lesson'; readonly identity: LessonIdentity }
+  | { readonly type: 'change-mode'; readonly mode: ExplanationMode }
+  | { readonly type: 'set-query'; readonly query: string }
+  | { readonly type: 'set-catalog'; readonly catalog: string }
+  | { readonly type: 'set-family'; readonly family: string }
+  | { readonly type: 'set-level'; readonly level: string }
+  | { readonly type: 'clear-filters' }
+  | { readonly type: 'back-to-discovery' }
+  | { readonly type: 'recover-discovery' }
+  | { readonly type: 'open-example'; readonly mode: ExplanationMode }
+  | { readonly type: 'show-lesson-in-results' }
+
+export interface ExplorerTransition {
+  readonly parsed: ParsedExplorerState
+  readonly history: 'push' | 'replace' | 'none'
+  readonly fragment?: 'explorer'
+}
+
+const recognizedKeys = new Set([
+  'view',
+  'framework',
+  'edition',
+  'control',
+  'mode',
+  'catalog',
+  'q',
+  'family',
+  'level',
+])
+const identitySlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+const modes: readonly ExplanationMode[] = ['beginner', 'it-cyber', 'compliance']
+
+export function lessonIdentity(control: Control): LessonIdentity {
+  return {
+    frameworkId: control.frameworkId,
+    editionId: control.editionId,
+    controlKey: control.key,
+  }
+}
+
+/** Official display identifiers can collide; editorial tuples cannot. */
+export function lessonIdentityKey(identity: LessonIdentity): string {
+  return `${identity.frameworkId}/${identity.editionId}/${identity.controlKey}`
+}
+
+function defaultCatalog(catalog: ExplorerCatalog): string {
+  return (
+    catalog.defaultLesson?.frameworkId ??
+    catalog.frameworks.find((framework) => framework.id === 'cmmc')?.id ??
+    catalog.frameworks[0]?.id ??
+    'cmmc'
+  )
+}
+
+function emptyFilters(catalogId: string): ExplorerFilters {
+  return { catalog: catalogId, query: '', family: '', level: '' }
+}
+
+function defaultState(catalog: ExplorerCatalog): ValidExplorerState {
+  const shared = {
+    mode: 'beginner' as const,
+    filters: emptyFilters(defaultCatalog(catalog)),
+  }
+  return catalog.defaultLesson
+    ? { ...shared, view: 'lesson', lesson: catalog.defaultLesson }
+    : { ...shared, view: 'discover' }
+}
+
+function ready(
+  state: ValidExplorerState,
+  notices: readonly NormalizationNotice[] = [],
+): ParsedExplorerState {
+  return { kind: 'ready', state, notices }
+}
+
+function invalid(reason: AddressError): ParsedExplorerState {
+  return { kind: 'invalid', reason }
+}
+
+function decodeQueryPart(value: string): string {
+  return decodeURIComponent(value.replace(/\+/g, ' '))
+}
+
+function normalizeFilters(
+  filters: ExplorerFilters,
+  catalog: ExplorerCatalog,
+): { filters: ExplorerFilters; notices: NormalizationNotice[] } {
+  const available = catalog.controls.filter(
+    (control) => control.frameworkId === filters.catalog,
+  )
+  const framework = catalog.frameworks.find(
+    (item) => item.id === filters.catalog,
+  )
+  const validFamily =
+    !filters.family ||
+    available.some((control) => control.family === filters.family)
+  const validLevel =
+    !filters.level || Boolean(framework?.levels.includes(filters.level))
+  const notices: NormalizationNotice[] = []
+  if (!validFamily) notices.push('family-reset')
+  if (!validLevel) notices.push('level-reset')
+  return {
+    filters: {
+      ...filters,
+      family: validFamily ? filters.family : '',
+      level: validLevel ? filters.level : '',
+    },
+    notices,
+  }
+}
+
+/**
+ * location.search -> strict raw decoding -> explicit state -> exact local lesson.
+ * Intent transitions alone may clear a selection; history replay never does.
+ */
+export function parseExplorerSearch(
+  search: string,
+  catalog: ExplorerCatalog,
+): ParsedExplorerState {
+  const values = new Map<string, string>()
+  for (const pair of search.replace(/^\?/, '').split('&')) {
+    if (!pair) continue
+    const separator = pair.indexOf('=')
+    const rawKey = separator === -1 ? pair : pair.slice(0, separator)
+    const rawValue = separator === -1 ? '' : pair.slice(separator + 1)
+    let key: string
+    try {
+      key = decodeQueryPart(rawKey)
+    } catch {
+      // An undecodable name cannot safely be classified as unrelated input.
+      return invalid('malformed-encoding')
+    }
+    if (!recognizedKeys.has(key)) continue
+    if (values.has(key)) return invalid('duplicate-parameter')
+    try {
+      values.set(key, decodeQueryPart(rawValue))
+    } catch {
+      return invalid('malformed-encoding')
+    }
+  }
+  if (!values.size) return ready(defaultState(catalog))
+
+  const view = values.get('view')
+  if (view !== 'lesson' && view !== 'discover') return invalid('invalid-view')
+  const hasIdentity = ['framework', 'edition', 'control'].some((key) =>
+    values.has(key),
+  )
+  if (view === 'discover' && hasIdentity) return invalid('conflicting-state')
+
+  let identity: LessonIdentity | undefined
+  if (view === 'lesson') {
+    const frameworkId = values.get('framework')
+    const editionId = values.get('edition')
+    const controlKey = values.get('control')
+    if (!frameworkId || !editionId || !controlKey)
+      return invalid('incomplete-identity')
+    if (
+      ![frameworkId, editionId, controlKey].every((key) =>
+        identitySlug.test(key),
+      )
+    )
+      return invalid('invalid-identity')
+    identity = { frameworkId, editionId, controlKey }
+  }
+
+  const explicitCatalog = values.get('catalog')
+  if (
+    values.has('catalog') &&
+    !catalog.frameworks.some((framework) => framework.id === explicitCatalog)
+  )
+    return invalid('unknown-catalog')
+  const catalogId =
+    explicitCatalog ?? identity?.frameworkId ?? defaultCatalog(catalog)
+  const rawMode = values.get('mode')
+  const mode = modes.find((item) => item === rawMode) ?? 'beginner'
+  const notices: NormalizationNotice[] = []
+  if (values.has('mode') && rawMode !== mode) notices.push('mode-reset')
+  const normalized = normalizeFilters(
+    {
+      catalog: catalogId,
+      query: values.get('q') ?? '',
+      family: values.get('family') ?? '',
+      level: values.get('level') ?? '',
+    },
+    catalog,
+  )
+  notices.push(...normalized.notices)
+  const shared = { mode, filters: normalized.filters }
+  return ready(
+    identity
+      ? { ...shared, view: 'lesson', lesson: identity }
+      : { ...shared, view: 'discover' },
+    notices,
+  )
+}
+
+export function serializeExplorerSearch(state: ValidExplorerState): string {
+  const params = new URLSearchParams({ view: state.view })
+  if (state.view === 'lesson') {
+    params.set('framework', state.lesson.frameworkId)
+    params.set('edition', state.lesson.editionId)
+    params.set('control', state.lesson.controlKey)
+  }
+  params.set('mode', state.mode)
+  // The implicit lesson catalog may be an unknown framework in a not-found URL.
+  // Emitting it explicitly would turn that exact address into a catalog error.
+  if (
+    state.view === 'discover' ||
+    state.filters.catalog !== state.lesson.frameworkId
+  )
+    params.set('catalog', state.filters.catalog)
+  if (state.filters.query) params.set('q', state.filters.query)
+  if (state.filters.family) params.set('family', state.filters.family)
+  if (state.filters.level) params.set('level', state.filters.level)
+  return `?${params.toString()}`
+}
+
+export function explorerResults(
+  state: ValidExplorerState,
+  catalog: ExplorerCatalog,
+): Control[] {
+  return filterControls(catalog.controls, {
+    frameworkId: state.filters.catalog,
+    query: state.filters.query,
+    family: state.filters.family,
+    level: state.filters.level,
+  })
+}
+
+export function resolveLesson(
+  identity: LessonIdentity,
+  filters: ExplorerFilters,
+  catalog: ExplorerCatalog,
+): LessonResolution {
+  const framework = catalog.frameworks.find(
+    (item) => item.id === identity.frameworkId,
+  )
+  if (framework?.status === 'planned')
+    return { kind: 'planned-framework', framework }
+  const edition = catalog.editions.find(
+    (item) =>
+      item.frameworkId === identity.frameworkId &&
+      item.id === identity.editionId,
+  )
+  const matching = catalog.controls.filter(
+    (control) =>
+      lessonIdentityKey(lessonIdentity(control)) ===
+      lessonIdentityKey(identity),
+  )
+  const control = matching.length === 1 ? matching[0] : undefined
+  if (!framework || !edition || !control) return { kind: 'not-found', identity }
+  const excludedByFilters = !explorerResults(
+    { view: 'lesson', lesson: identity, mode: 'beginner', filters },
+    catalog,
+  ).includes(control)
+  return { kind: 'lesson', framework, edition, control, excludedByFilters }
+}
+
+function withFilters(
+  state: ValidExplorerState,
+  filters: ExplorerFilters,
+  catalog: ExplorerCatalog,
+): ParsedExplorerState {
+  const normalized = normalizeFilters(filters, catalog)
+  const updated = { ...state, filters: normalized.filters }
+  if (
+    updated.view === 'lesson' &&
+    resolveLesson(updated.lesson, updated.filters, catalog).kind === 'lesson' &&
+    !explorerResults(updated, catalog).some(
+      (control) =>
+        lessonIdentityKey(lessonIdentity(control)) ===
+        lessonIdentityKey(updated.lesson),
+    )
+  ) {
+    return ready(
+      { view: 'discover', mode: updated.mode, filters: updated.filters },
+      normalized.notices,
+    )
+  }
+  return ready(updated, normalized.notices)
+}
+
+export function transitionExplorerState(
+  current: ParsedExplorerState,
+  intent: ExplorerIntent,
+  catalog: ExplorerCatalog,
+): ExplorerTransition {
+  let next: ParsedExplorerState = current
+  const fragment = intent.type === 'open-example' ? 'explorer' : undefined
+  if (intent.type === 'recover-discovery') {
+    next = ready({
+      view: 'discover',
+      mode: 'beginner',
+      filters: emptyFilters(defaultCatalog(catalog)),
+    })
+  } else if (intent.type === 'open-example') {
+    next = ready({ ...defaultState(catalog), mode: intent.mode })
+  } else if (current.kind === 'ready') {
+    const state = current.state
+    switch (intent.type) {
+      case 'select-lesson': {
+        const resolution = resolveLesson(
+          intent.identity,
+          state.filters,
+          catalog,
+        )
+        if (resolution.kind === 'lesson' && !resolution.excludedByFilters)
+          next = ready({ ...state, view: 'lesson', lesson: intent.identity })
+        break
+      }
+      case 'change-mode':
+        next = ready({ ...state, mode: intent.mode })
+        break
+      case 'set-query':
+        next = withFilters(
+          state,
+          { ...state.filters, query: intent.query },
+          catalog,
+        )
+        break
+      case 'set-catalog':
+        if (
+          catalog.frameworks.some(
+            (framework) => framework.id === intent.catalog,
+          )
+        )
+          next = withFilters(
+            state,
+            {
+              ...state.filters,
+              catalog: intent.catalog,
+              family: '',
+              level: '',
+            },
+            catalog,
+          )
+        break
+      case 'set-family':
+        next = withFilters(
+          state,
+          { ...state.filters, family: intent.family },
+          catalog,
+        )
+        break
+      case 'set-level':
+        next = withFilters(
+          state,
+          { ...state.filters, level: intent.level },
+          catalog,
+        )
+        break
+      case 'clear-filters':
+        next = ready({ ...state, filters: emptyFilters(state.filters.catalog) })
+        break
+      case 'back-to-discovery':
+        if (
+          catalog.frameworks.some(
+            (framework) => framework.id === state.filters.catalog,
+          )
+        )
+          next = ready({
+            view: 'discover',
+            mode: state.mode,
+            filters: state.filters,
+          })
+        break
+      case 'show-lesson-in-results':
+        if (
+          state.view === 'lesson' &&
+          resolveLesson(state.lesson, state.filters, catalog).kind === 'lesson'
+        )
+          next = ready({
+            ...state,
+            filters: emptyFilters(state.lesson.frameworkId),
+          })
+        break
+    }
+  }
+  const unchanged =
+    next === current ||
+    (next.kind === 'ready' &&
+      current.kind === 'ready' &&
+      serializeExplorerSearch(next.state) ===
+        serializeExplorerSearch(current.state))
+  if (unchanged) return { parsed: current, history: 'none', fragment }
+  return {
+    parsed: next,
+    history: intent.type === 'set-query' ? 'replace' : 'push',
+    fragment,
+  }
+}
+
+/** A share URL contains the lesson and mode, never someone's discovery query. */
+export function createLessonUrl(
+  identity: LessonIdentity,
+  mode: ExplanationMode,
+  location: URL,
+): string {
+  const url = new URL(location.href)
+  url.search = new URLSearchParams({
+    view: 'lesson',
+    framework: identity.frameworkId,
+    edition: identity.editionId,
+    control: identity.controlKey,
+    mode,
+  }).toString()
+  url.hash = 'explorer'
+  return url.href
+}

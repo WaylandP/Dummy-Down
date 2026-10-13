@@ -1,6 +1,10 @@
-import { useState } from 'react'
+import type { MouseEvent } from 'react'
 import { ArrowRight, ArrowUpRight, GitFork } from 'lucide-react'
 import type { ExplanationMode } from './types/content'
+import { explorerCatalog, defaultLesson, glossaryTerms } from './data/content'
+import { createLessonUrl } from './state/explorer-state'
+import { useExplorerState } from './state/useExplorerState'
+import { Glossary } from './components/Glossary'
 import { Brand } from './components/Brand'
 import { ControlExplorer } from './components/ControlExplorer'
 import { Topography } from './components/Topography'
@@ -25,7 +29,34 @@ const perspectives = [
 ] satisfies { mode: ExplanationMode; title: string; description: string }[]
 
 export default function App() {
-  const [mode, setMode] = useState<ExplanationMode>('beginner')
+  const controller = useExplorerState(explorerCatalog)
+  const mode =
+    controller.parsed.kind === 'ready'
+      ? controller.parsed.state.mode
+      : 'beginner'
+  function sampleUrl(perspective: ExplanationMode) {
+    return createLessonUrl(
+      defaultLesson,
+      perspective,
+      new URL(window.location.href),
+    )
+  }
+  function openSample(
+    event: MouseEvent<HTMLAnchorElement>,
+    perspective: ExplanationMode,
+  ) {
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return
+    event.preventDefault()
+    controller.dispatch({ type: 'open-example', mode: perspective })
+    document.getElementById('explorer')?.scrollIntoView?.({ block: 'start' })
+  }
 
   return (
     <div id="top">
@@ -37,6 +68,9 @@ export default function App() {
         <nav aria-label="Main navigation">
           <a href="#explorer">Control Explorer</a>
           <a href="#approach">Learning modes</a>
+          <a className="glossary-nav" href="#glossary">
+            Glossary
+          </a>
           <a
             className="github-link"
             aria-label="Dummy-Down on GitHub (opens in a new tab)"
@@ -69,7 +103,11 @@ export default function App() {
                 controls. Learn at your level, one concept at a time.
               </p>
               <div className="hero-actions">
-                <a className="button button-primary" href="#explorer">
+                <a
+                  className="button button-primary"
+                  href={sampleUrl(mode)}
+                  onClick={(event) => openSample(event, mode)}
+                >
                   Explore a control <ArrowRight size={18} aria-hidden="true" />
                 </a>
                 <span className="hero-access">
@@ -87,7 +125,8 @@ export default function App() {
                 </span>
               </div>
               <a
-                href="#explorer"
+                href={sampleUrl(mode)}
+                onClick={(event) => openSample(event, mode)}
                 className="hero-start"
                 aria-label="Start with the draft authorized-access example"
               >
@@ -116,8 +155,8 @@ export default function App() {
               <a
                 key={item.mode}
                 className="perspective-link"
-                href="#explorer"
-                onClick={() => setMode(item.mode)}
+                href={sampleUrl(item.mode)}
+                onClick={(event) => openSample(event, item.mode)}
               >
                 <span className="perspective-title">
                   {item.title} <ArrowUpRight size={16} aria-hidden="true" />
@@ -134,7 +173,8 @@ export default function App() {
           </div>
         </section>
 
-        <ControlExplorer mode={mode} onModeChange={setMode} />
+        <ControlExplorer controller={controller} />
+        <Glossary terms={glossaryTerms} />
 
         <section
           className="mission-section section-shell"
@@ -155,7 +195,7 @@ export default function App() {
             </p>
             <p className="roadmap-note">
               On the roadmap: reviewed CMMC content, NIST SP 800-53, FedRAMP,
-              SOC 2, ISO 27001, HIPAA, a glossary, and interactive learning.
+              SOC 2, ISO 27001, HIPAA, and interactive learning.
             </p>
             <a
               className="text-link"

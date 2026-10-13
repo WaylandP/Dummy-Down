@@ -6,8 +6,10 @@ homepage, an initial Control Explorer, and Beginner, IT & Cybersecurity, and
 Compliance & Assessment explanation modes for one draft CMMC example.
 
 The example is an educational interpretation, not a complete official requirement
-or reviewed assessment guide. Glossary, quizzes, comprehensive framework coverage,
-accounts, and a backend remain future work.
+or reviewed assessment guide. The Explorer restores exact lessons and modes from
+shareable addresses; a small searchable glossary supplies draft educational
+definitions. Quizzes, reviewed framework coverage, accounts and a backend remain
+future work.
 
 ## Start locally
 
@@ -49,26 +51,30 @@ self-hosted fonts, and interaction principles. `src/components/Topography.tsx`
 contains the static hero contours; `public/font-licenses/` contains licenses
 distributed with the fonts.
 
-| Location                     | Purpose                                                                                |
-| ---------------------------- | -------------------------------------------------------------------------------------- |
-| `src/main.tsx`               | Mounts React into the HTML page.                                                       |
-| `src/App.tsx`                | Assembles the page and coordinates the interactive experience.                         |
-| `src/components/`            | Reusable interface pieces, including the Control Explorer.                             |
-| `src/types/content.ts`       | TypeScript definitions for frameworks, controls, learning modes, and content metadata. |
-| `src/data/frameworks.ts`     | Framework metadata, including supported versus planned status.                         |
-| `src/data/controls.ts`       | Educational control examples and learning-mode definitions.                            |
-| `src/data/control-search.ts` | Shared search and filtering behavior.                                                  |
-| `src/styles.css`             | Tailwind integration and shared visual styles.                                         |
-| `src/` test files            | Behavioral checks for the user-facing experience.                                      |
-| `vite.config.ts`             | Vite development/build settings and Vitest test configuration.                         |
-| `.github/workflows/ci.yml`   | Runs automated checks on pull requests and changes to `main`.                          |
+| Location                        | Purpose                                                                                |
+| ------------------------------- | -------------------------------------------------------------------------------------- |
+| `src/main.tsx`                  | Mounts React into the HTML page.                                                       |
+| `src/App.tsx`                   | Assembles the page and coordinates the interactive experience.                         |
+| `src/components/`               | Reusable interface pieces, including the Control Explorer.                             |
+| `src/types/content.ts`          | TypeScript definitions for frameworks, controls, learning modes, and content metadata. |
+| `src/data/frameworks.ts`        | Framework metadata, including supported versus planned status.                         |
+| `src/data/controls.ts`          | Educational control examples and learning-mode definitions.                            |
+| `src/data/control-search.ts`    | Shared search and filtering behavior.                                                  |
+| `src/data/editions.ts`          | Project editorial editions and the explicit sample identity.                           |
+| `src/data/glossary.ts`          | Draft definitions with source and review context.                                      |
+| `src/state/explorer-state.ts`   | Pure address parsing, exact resolution and navigation transitions.                     |
+| `src/state/useExplorerState.ts` | One browser-history controller mounted by App.                                         |
+| `src/styles.css`                | Tailwind integration and shared visual styles.                                         |
+| `src/` test files               | Behavioral checks for the user-facing experience.                                      |
+| `vite.config.ts`                | Vite development/build settings and Vitest test configuration.                         |
+| `.github/workflows/ci.yml`      | Runs automated checks on pull requests and changes to `main`.                          |
 
 React renders the interface from data and state. TypeScript catches inconsistent
 data and component props before the app runs. Vite handles local development and
 the production build. Tailwind supplies styling utilities while shared components
 keep repeated interface patterns consistent.
 
-The content model separates a framework's identity, version, families, and control
+The content model separates a framework's identity, edition, families, and control
 identifiers from how the interface displays them. Learning modes are part of the
 educational content, not a CMMC-specific UI rule. This allows future frameworks to
 use the same explorer without pretending they have CMMC's levels or terminology.
@@ -76,7 +82,9 @@ Listed future frameworks are roadmap information; they are not searchable contro
 libraries yet.
 
 Official source links, applicable versions, and review status travel with the
-content. Source records distinguish the project README from official publications.
+content. Source records distinguish project educational sources, official resource indexes
+and official publications. The `readme-example` edition is a project snapshot,
+not an official CMMC release.
 The first control has `contentKind: 'educational-example'` and
 `reviewStatus: 'draft'`. Its version context identifies the README's simplified
 CMMC Level 2 example using a NIST SP 800-171 Rev. 2 identifier; it does not claim a
@@ -86,6 +94,39 @@ A source link identifies the basis for an explanation; it does not make that
 explanation official or reviewed. Keep draft status visible until a qualified review
 has taken place, and consult the applicable authoritative publications when
 assessing an organization's requirements.
+
+## Lesson addresses and reading tools
+
+Lessons use the composite `{frameworkId, editionId, controlKey}` identity. The
+official identifier remains display/search data. For example:
+
+```text
+/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access&mode=compliance#explorer
+```
+
+Copy lesson link includes only that known lesson and learning mode. The app never
+reads the clipboard. If writing is unavailable, it shows a labeled selectable
+link; outdated asynchronous results do not report success for a different lesson.
+
+Discovery state uses `view=discover` with optional `catalog`, `q`, `family`,
+`level` and `mode`. Search updates the current history entry; deliberate selection,
+filter and mode changes create entries. Back/Forward restores the entire address.
+Search text appears in URLs and browser history: use generic learning topics and
+keep organizational evidence and secrets out of it. No query content controls a
+network destination or becomes rendered HTML.
+
+Malformed, duplicate or partial lesson addresses remain explicit errors until
+recovery. A well-formed missing identity never falls back to a different example.
+An incoming lesson outside its discovery filters remains visible, with an action
+to show it in results. Changing filters intentionally can clear the selection;
+clearing filters keeps discovery until a reader chooses a result. Unsupported
+mode/filter values normalize with visible notices. A browser that denies history
+writes shows a message while the in-session experience remains usable.
+
+Glossary search is independent of control search and is not persisted. Contextual
+term definitions open one at a time inline without changing the lesson, mode,
+filters or history. Close/Escape returns focus to the invoking button. Six terms
+are educational drafts, not reviewed or official definitions.
 
 ## Validate a change
 
