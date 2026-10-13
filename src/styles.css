@@ -583,7 +583,7 @@
   }
   .example-box li {
     @apply flex items-start gap-3;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.8;
     margin-top: 12px;
   }
@@ -666,6 +666,9 @@
   }
   .explorer-disclaimer svg {
     margin-top: 3px;
+  }
+  .back-to-results {
+    margin-bottom: 16px;
   }
   .lesson-heading-row {
     display: flex;

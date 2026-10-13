@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import {
   ArrowUpRight,
   Check,
@@ -25,6 +25,19 @@ interface ControlExplorerProps {
 export function ControlExplorer({ controller }: ControlExplorerProps) {
   const searchInput = useRef<HTMLInputElement>(null)
   const focusLesson = useRef(false)
+  const lessonHeading = useRef<HTMLHeadingElement>(null)
+  const focusRecoveredSearch = useRef(false)
+
+  useLayoutEffect(() => {
+    if (
+      focusRecoveredSearch.current &&
+      searchInput.current &&
+      !searchInput.current.disabled
+    ) {
+      focusRecoveredSearch.current = false
+      searchInput.current.focus()
+    }
+  })
   const {
     parsed,
     resolution,
@@ -69,8 +82,8 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
     searchInput.current?.focus()
   }
   function recover() {
+    focusRecoveredSearch.current = true
     dispatch({ type: 'recover-discovery' })
-    searchInput.current?.focus()
   }
 
   return (
@@ -205,6 +218,10 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                     className={`control-item ${selectedKey === key ? 'is-selected' : ''}`}
                     aria-pressed={selectedKey === key}
                     onClick={() => {
+                      if (selectedKey === key) {
+                        lessonHeading.current?.focus()
+                        return
+                      }
                       focusLesson.current = true
                       dispatch({
                         type: 'select-lesson',
@@ -231,6 +248,16 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
           </aside>
           {selected && explanation && resolution?.kind === 'lesson' ? (
             <article className="control-detail" aria-labelledby="control-title">
+              <button
+                type="button"
+                className="back-to-results inline-action"
+                onClick={() => {
+                  dispatch({ type: 'back-to-discovery' })
+                  searchInput.current?.focus()
+                }}
+              >
+                Back to results
+              </button>
               <div className="control-kicker">
                 <span>
                   {[
@@ -261,6 +288,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                     id="control-title"
                     tabIndex={-1}
                     ref={(node) => {
+                      lessonHeading.current = node
                       if (node && focusLesson.current) {
                         focusLesson.current = false
                         node.focus()
