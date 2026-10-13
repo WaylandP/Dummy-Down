@@ -37,3 +37,22 @@ CMMC levels. Keep draft explanations and planned features clearly labeled. Do no
 invent official requirements, assessment objectives, certifications, or evidence
 sufficiency. Keep source/version context with the content. Prefer focused changes,
 semantic HTML, keyboard support, readable contrast, and restrained decoration.
+
+## gstack for Codex
+
+Read docs/GSTACK.md for the reviewed pin, supported skills, and known limitations.
+Activate the project-local runtime with `source scripts/gstack-env.sh` in each
+shell session. If installation is missing, run `bash scripts/setup-gstack.sh`.
+
+Read the applicable installed SKILL.md under `.agents/skills/gstack-<name>/` before
+using it. Use design-consultation for design direction, design-review for visual
+QA, qa/qa-only for functional checks, review for code review, and plan-eng-review
+for architecture. The user can request these by name even if this chat does not
+advertise them as tools. They are experimental Codex filesystem skills, not a
+promise of complete Claude Code feature parity.
+
+Keep installation/configuration scoped to this project. Automatic outside-model
+reviews are disabled; enabling another provider or paid reviews needs a user
+request. The no-merge rule above overrides ship/land-and-deploy defaults. Do not
+start tunnels, import browser cookies, sync artifacts, or deploy to production
+merely because a skill mentions those capabilities.

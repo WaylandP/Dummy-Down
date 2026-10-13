@@ -89,6 +89,10 @@ assessing an organization's requirements.
 
 ## Validate a change
 
+Follow [AGENTS.md](../AGENTS.md) for feature branches, incremental validated pushes,
+and GitHub/Vercel browser review. The [gstack guide](GSTACK.md) covers the optional
+project-local Codex skills and their current compatibility limits.
+
 Run these checks from the repository directory before opening a pull request:
 
 ```sh
