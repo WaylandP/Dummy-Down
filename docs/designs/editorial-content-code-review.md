@@ -35,7 +35,7 @@ have identical trees. Earlier review evidence therefore retains its content
 scope despite the branch transition. The final reader-order adjustment below has
 separate current-input verification.
 
-## Finding and disposition
+## Findings and disposition
 
 **Resolved informational defect, confidence 10/10:** the original
 `ReferenceDetail` integration gave its sibling `ContextTerms` and
@@ -64,6 +64,30 @@ the distinct tuple-bound keys and FCI mapping remain intact. No source, identity
 quiz, privacy or history contract changed. An affected fourteen-test replay
 passed on the new branch without warnings. Actual phone geometry belongs to the
 separate browser report.
+
+**Resolved informational accessibility defect, confidence 10/10:** native browser
+QA found that forced-colors rendering removed the background-drawn wordmark
+hyphen. The coordinator changed only `.brand-hyphen` at `src/styles.css:241` from
+`background: currentColor` to `border-top: 3px solid currentColor`. The width,
+height, spacing, alignment and accessible name remain intact. Static inspection
+found no new identity, source, privacy or reading-state change.
+
+The QA agent replayed forced-colors mode after the fix and reported a restored
+visible separator without console or asset errors. This code reviewer inspected
+both actual before/after screenshots and confirmed that the displayed wordmark
+changes from `Dummy Down` to `Dummy-Down` in that rendering. The paired local
+evidence is under the ignored runtime artifact directory
+`.gstack/qa-reports/editorial-independent-20261013T2208Z/screenshots/`, named
+`forced-colors-monochrome-header.png` and
+`forced-colors-monochrome-header-1791929787282.png`. The QA agent owns the live
+browser checks and their final report; this reviewer inspected the captured
+images rather than conducting that browser replay.
+
+The first learning commit, `36f6965`, is now published on
+[PR #6](https://github.com/WaylandP/Dummy-Down/pull/6). The coordinator reported
+successful CI and Vercel for that exact commit. This one-line rendering repair
+is a follow-up on the same open feature branch; earlier successful deployment
+checks do not establish deployment of the repair before it is pushed and checked.
 
 ## Technical assessment
 
@@ -165,7 +189,7 @@ affected delta review; this report is not blanket approval for future editions.
 | `src/data/perspectives/level-1-3.json`           | `9e5911574632036641675494e69036f5f6fc7ed0e0e41d0a22a63355b3aef084` |
 | `src/types/review.ts`                            | `e757433067fc30e63311fdcdf1db5f1a62adaeefd297e637de5a702398453fc5` |
 | `src/types/learning.ts`                          | `b68bfdb769266eed951ca53db1602a53d9d72df55b2318f270c9339e1aa85ad2` |
-| `src/styles.css`                                 | `88247416360574a49f4a74af74cf50d750412d8d0b05183aabe3e869b897cecd` |
+| `src/styles.css`                                 | `87b4b8cba79fa4e6be46e254dddcb8e319c3bd3c271f2ee953d7e1fd71464240` |
 | `src/analytics/usage.ts`                         | `dd19728c75ef2e465fbf118bc3cc825bf77941448f0aef285ed91d9b6e47604d` |
 | `src/analytics/privacy.ts`                       | `806c372261b7faf39da9a44e6450b9070981e638b0cc23e897bdbe697f28b78c` |
 | `src/components/EditorialReviewContext.test.tsx` | `40ac19d3f3e8fef5daed740724f88af2085ebd1a6e552521a230b79f8e0c8506` |

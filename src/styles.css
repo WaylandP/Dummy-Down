@@ -238,7 +238,7 @@
     height: 3px;
     margin-inline: 3px 2px;
     align-self: center;
-    background: currentColor;
+    border-top: 3px solid currentColor;
     font-size: 0;
     transform: translateY(2px);
   }
