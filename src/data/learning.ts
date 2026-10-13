@@ -1,6 +1,7 @@
 import type { LessonIdentity } from '../types/content'
 import type { LearningActivity } from '../types/learning'
 import { projectReadmeSource } from './sources'
+import { levelOneLearningActivities } from './level-one-learning'
 
 export const learningActivities: readonly LearningActivity[] = [
   {
@@ -129,6 +130,7 @@ export const learningActivities: readonly LearningActivity[] = [
       'Draft fictional practice, not an assessment checklist. This activity checks understanding of an example; it does not measure compliance. It does not cover the full official requirement, processes acting on users’ behalf, or assessment objectives.',
     teachingSource: projectReadmeSource,
   },
+  ...levelOneLearningActivities,
 ]
 
 /** Resolve the complete editorial address; never attach a neighboring activity. */

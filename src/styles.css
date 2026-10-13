@@ -95,6 +95,101 @@
 }
 
 @layer components {
+  .learning-meaning,
+  .learning-misunderstanding {
+    max-width: 68ch;
+    margin-block: 24px;
+  }
+  .learning-misunderstanding {
+    padding-left: 18px;
+    border-left: 3px solid var(--color-line);
+  }
+  .learning-meaning h5,
+  .learning-misunderstanding h5,
+  .lesson-diagram h5 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    color: var(--color-foreground);
+  }
+  .learning-meaning p,
+  .learning-misunderstanding p {
+    margin-block: 8px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  .lesson-diagram {
+    margin: 24px 0;
+    padding-block: 24px;
+    border-block: 1px solid var(--color-line);
+    max-width: 76ch;
+  }
+  .lesson-diagram-flow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+    list-style: decimal;
+    padding-left: 22px;
+    margin-block: 18px;
+  }
+  .lesson-diagram-flow li {
+    padding-left: 4px;
+  }
+  .lesson-diagram-flow p,
+  .lesson-diagram-branches p,
+  .lesson-diagram-equivalent {
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-top: 8px;
+  }
+  .lesson-diagram-branches {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style: disc;
+    padding-left: 22px;
+    gap: 24px;
+    margin-block: 12px 24px;
+  }
+  .lesson-diagram-equivalent {
+    max-width: 68ch;
+  }
+  .review-stages {
+    display: grid;
+    gap: 20px;
+    max-width: 70ch;
+  }
+  .review-stages dt {
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+  .review-stages dd {
+    margin: 4px 0 0;
+  }
+  .objective-list {
+    padding-left: 22px;
+    list-style: decimal;
+  }
+  .objective-list li {
+    margin-bottom: 18px;
+  }
+  .objective-list code {
+    color: var(--color-foreground);
+    overflow-wrap: anywhere;
+  }
+  .objective-list blockquote {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  .objective-list li > span {
+    font-size: 14px;
+  }
+  @media (max-width: 760px) {
+    .lesson-diagram-flow,
+    .lesson-diagram-branches {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
   .section-shell {
     width: min(1240px, calc(100% - 80px));
     margin-inline: auto;

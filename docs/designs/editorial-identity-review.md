@@ -20,6 +20,13 @@ swaps. The chosen direction has no shield, circuit, contour mark or overlapping 
 letters. “Dummy-Down” stays readable and literal. Its home link has the accessible
 name “Dummy-Down home”; the styled duplicate is hidden from assistive technology.
 
+![Three one-color wordmark proposals: translation cut, stacked reference margin and sans plain-language line](../screenshots/editorial-wordmark-options.png)
+
+The comparison is a browser-rendered HTML type specimen, inspected at 1000 × 870
+on October 13, 2026. It enlarges the three treatments for comparison; the actual
+selected header uses the smaller spacing and sizes in the application. The other
+two are proposals rather than implemented alternate brands.
+
 ## Selected system
 
 The serif/sans transition echoes the act of translation, while the interface
@@ -59,6 +66,7 @@ This record distinguishes implementation from later browser verification:
 
 The installed gstack design-consultation guidance was read for applicable product
 context, type verification, coherence and anti-template rules. No external design
-service, competitor browser session or generated comparison board was run. The
+service or competitor browser session was used. The comparison above was rendered
+locally from HTML and licensed/platform typography, without image generation. The
 owner delegated routine direction choices and authorized active documentation
 updates; the working proposal is demonstrated through the actual application.

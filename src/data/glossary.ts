@@ -1,11 +1,12 @@
 import type { GlossaryTerm } from '../types/content'
 import { projectReadmeSource } from './sources'
+import { levelOneGlossaryTerms } from './level-one-glossary'
 
 const glossaryContext =
   'Project glossary draft expanding the README’s authorized-access teaching example. These plain-language explanations are not official definitions or complete requirements.'
 
-/** Small, local teaching vocabulary; publication does not imply expert review. */
-export const glossaryTerms: readonly GlossaryTerm[] = [
+/** Preserve the existing teaching vocabulary and its stable identifiers. */
+const projectGlossaryTerms: readonly GlossaryTerm[] = [
   {
     id: 'access-review',
     title: 'Access review',
@@ -60,4 +61,10 @@ export const glossaryTerms: readonly GlossaryTerm[] = [
     versionContext: glossaryContext,
     sources: [projectReadmeSource],
   },
+]
+
+/** Versioned educational vocabulary; publication does not imply expert review. */
+export const glossaryTerms: readonly GlossaryTerm[] = [
+  ...projectGlossaryTerms,
+  ...levelOneGlossaryTerms,
 ]

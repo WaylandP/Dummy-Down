@@ -26,10 +26,12 @@ production and a pull request's preview can show different versions. See
 - Copy a link to a specific control and perspective. Search, filters, and browser
   Back/Forward preserve the reading context.
 - Open contextual definitions and a searchable draft glossary.
-- Try the original fictional authorized-access scenario and its three
-  knowledge-check questions, with explanations for every answer.
+- Practice three Level 1 concepts—authorized access, public information, and media
+  disposal—with fictional scenarios, explained questions, and diagrams with text
+  equivalents. The original demo activity remains available too.
 - Use visible draft labels, edition/page citations, source comparison, and
-  loading/error recovery to understand the limits of the material.
+  loading/error recovery to understand the limits of the material. Level 1 review
+  records separate source checking, AI-assisted review, and pending human approval.
 - Pause optional usage measurement through **Usage & privacy**.
 
 For example, an approved account does not automatically approve every device that
@@ -60,30 +62,41 @@ that edition, not distinct security concepts or professionally reviewed lessons.
 
 Each of the 149 references has three separately authored teaching drafts. The
 original README-based Level 2 demo is a separate educational example and is not
-counted as another official requirement. The glossary currently has six draft
-terms; interactive practice currently covers that demo, not the entire catalog.
+counted as another official requirement. There are **20 draft glossary terms**,
+including 14 sourced additions linked from Level 1 content. Interactive practice
+covers **four draft activities and 12 questions**: the original demo plus three
+Level 1 activities, each with a common misunderstanding, three explained questions,
+and an accessible diagram. These activities do not cover the entire catalog.
 
 **Qualified human approval is pending.** Source transcription checks and
-[AI-assisted editorial review](docs/designs/cmmc-perspectives-editorial-audit.md)
-have occurred; neither establishes professional approval, complete assessment-
-objective coverage, current applicability, or a guarantee of accuracy. The guide
-and model have ten wording differences, preserved rather than silently reconciled.
+AI-assisted editorial review have occurred; neither establishes professional
+approval, complete assessment-objective coverage, current applicability, or a
+guarantee of accuracy. The [focused Level 1 audit](docs/content-review/level-1-audit-2026-10-13.md)
+compared all 15 controls' perspectives with **59 determination statements** and
+made four source-supported clarifications. The app quotes **13 statements** as
+context for the three new activities; quotation and AI comparison are not verified
+curriculum coverage. All 15 review records keep human approval pending. The
+[review process](docs/content-review/REVIEW_PROCESS.md) records these stages
+separately. The guide and model have ten wording differences, preserved rather
+than silently reconciled.
 
-Direct access to official DoD publication hosts was blocked in the source-check
-environment. The stored PDFs came from pinned public mirrors, with document
-identity, page citations, and SHA-256 checks recorded. The application presents the
+Direct access to official DoD, FAR/CFR and NIST sources was blocked in the
+source-check environment before an origin response; the Level 1 audit records the
+11 attempted URLs and proxy CONNECT 403 results. The stored PDFs came from pinned
+public mirrors, with document identity, page citations, and SHA-256 checks recorded.
+The application presents the
 dated snapshot; the latest applicable edition has not been independently verified.
 Consult the official publications and your applicable contractual requirements.
 See [source provenance and verification](docs/sources/cmmc-2-13-sep-2024.md).
 
 ## Roadmap
 
-| Phase                            | Implemented or available drafts                                                                                                                   | Remaining work                                                                                                                                                                            |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1. Build the foundation**      | React/TypeScript frontend, responsive Explorer, framework-independent identities, search, filters, sharing, glossary, tests and preview workflow. | Continue usability and accessibility checks with real learners; refine the proposed editorial identity through review.                                                                    |
-| **2. Make CMMC understandable**  | Versioned Level 1–3 source inventory and three draft perspectives per entry, with practical examples and source links.                            | Qualified human approval, current applicability checks, explicit assessment-objective coverage and reviewed Level 1 lessons before broader curriculum claims. This phase is not complete. |
-| **3. Make learning interactive** | A fictional demo scenario, a step-by-step visual flow, and three formative questions with answer explanations.                                    | Focused Level 1 scenarios, useful explanatory diagrams and linked vocabulary; later, short animated explanations and broader reviewed practice coverage.                                  |
-| **4. Expand the platform**       | Framework-independent architecture and published contribution guidelines.                                                                         | Additional frameworks, reviewed relationships between controls and a sustainable community editorial process. No automatic equivalence claims or new framework libraries yet.             |
+| Phase                            | Implemented or available drafts                                                                                                                   | Remaining work                                                                                                                                                                |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1. Build the foundation**      | React/TypeScript frontend, responsive Explorer, framework-independent identities, search, filters, sharing, glossary, tests and preview workflow. | Continue usability and accessibility checks with real learners; refine the proposed editorial identity through review.                                                        |
+| **2. Make CMMC understandable**  | Versioned Level 1–3 source inventory, three draft perspectives per entry, a focused Level 1 AI-assisted audit and separate review records.        | Qualified human approval, current applicability checks and explicit assessment-objective teaching coverage before broader curriculum claims. This phase is not complete.      |
+| **3. Make learning interactive** | Three Level 1 draft activities plus the original demo: four scenarios, 12 explained questions, three new diagrams and 20 glossary terms.          | Qualified review and learner feedback on these activities; broader reviewed practice coverage and short animated explanations remain planned.                                 |
+| **4. Expand the platform**       | Framework-independent architecture and published contribution guidelines.                                                                         | Additional frameworks, reviewed relationships between controls and a sustainable community editorial process. No automatic equivalence claims or new framework libraries yet. |
 
 [TODOS.md](TODOS.md) keeps the next priorities aligned with this roadmap.
 
@@ -104,21 +117,24 @@ Before pushing a change, run:
 
 ```sh
 npm run typecheck
+npm run check:content
 npm run lint
 npm run format:check
 npm test
 npm run build
-node scripts/check-content-summary.mjs
 ```
 
-The last command checks the published inventory against repository data and
-required source/teaching metadata. It does not judge compliance accuracy. Use
-`npm run preview` to inspect an already built frontend locally.
+The content check compares the published inventory with repository data and
+required source/teaching metadata, then runs its regression tests. It does not
+judge compliance accuracy. Use `npm run preview` to inspect an already built
+frontend locally.
 
 - [Development guide](docs/DEVELOPMENT.md): architecture, addresses and checks.
 - [Contribution guide](CONTRIBUTING.md): code, educational content and safeguards.
 - [Source-review documentation](docs/sources/cmmc-2-13-sep-2024.md): edition,
   quotations, evidence and known limits.
+- [Editorial review process](docs/content-review/REVIEW_PROCESS.md): source checks,
+  AI-assisted review, qualified approval and unresolved questions.
 - [Deployment guide](docs/DEPLOYMENT.md): GitHub CI, Vercel previews and production.
 - [Design notes](docs/DESIGN.md): the proposed identity and interaction direction.
 

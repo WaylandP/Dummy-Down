@@ -71,16 +71,16 @@
   {
     "id": "AC.L1-b.1.iv",
     "beginner": {
-      "meaning": "Public websites and similar systems need a publishing process that keeps nonpublic contract information out. Know who can publish, check material before release, and handle information that was posted improperly.",
+      "meaning": "Public websites and other publicly accessible systems need controls that keep nonpublic government contract information from being posted or processed there. Know who can publish or process material, review it before posting, check existing content, and remove and address improper postings.",
       "example": "Before Cedar Point Design publishes a project announcement, an approved reviewer checks the draft for Federal Contract Information. The website editor publishes only the cleared material."
     },
     "technical": {
-      "focus": "Limit publishing permissions and build content review into release workflows. Also check already published content and define removal and escalation steps when protected information appears.",
+      "focus": "Limit permissions to post or process information on publicly accessible systems and build content review into release workflows. Also check already published content and define removal and escalation steps when protected information appears.",
       "example": "The company could use a restricted editor role, a required review stage and a documented takedown process for its public website.",
       "watchFor": "Internal approval does not make FCI eligible for public release; a website login also does not replace content review."
     },
     "compliance": {
-      "focus": "The guide considers authorized publishers, preventive procedures, pre-publication review, review of existing content and responses to improper postings. These are connected parts of managing public information.",
+      "focus": "The guide considers authorized people who post or process information, procedures that keep FCI out of publicly accessible systems, pre-publication review, review of existing content, and responses to improper postings. These are connected parts of managing public information.",
       "reviewQuestions": [
         "Who can post content, and how is it reviewed before publication?",
         "How is existing public content checked and an improper posting removed and addressed?"
@@ -118,7 +118,7 @@
     "id": "IA.L1-b.1.vi",
     "beginner": {
       "meaning": "Check that a person, process or device is who it claims to be before giving it system access. A username is a claim; authentication is the check supporting that claim.",
-      "example": "Cedar Point Design’s printer has an identity, but its administrative interface also requires valid credentials before access. The team changes the factory credentials during setup."
+      "example": "Cedar Point Design verifies its printer’s identity before letting it connect to the company system. The administrator also signs in before changing printer settings; that sign-in verifies the person, not the printer."
     },
     "technical": {
       "focus": "Identify the authentication mechanism for each access path, including service and device connections. Passwords, certificates and other mechanisms serve different contexts; verify that checks occur before access.",
@@ -140,7 +140,7 @@
   {
     "id": "MP.L1-b.1.vii",
     "beginner": {
-      "meaning": "Before disposing of storage or giving it another use, make the contract information on it unreadable through appropriate sanitization or destruction. Media includes paper and digital storage, not only laptop drives.",
+      "meaning": "Before disposing of media containing Federal Contract Information, sanitize it or destroy it so the information cannot be recovered. Before releasing media for reuse, sanitize it. Media includes paper and digital storage, not only laptop drives.",
       "example": "Cedar Point Design retires a USB drive used for Federal Contract Information. It follows its selected sanitization process and checks the result before considering the drive available for reuse."
     },
     "technical": {
@@ -149,7 +149,7 @@
       "watchFor": "Deleting a file or performing an ordinary format may leave recoverable information; the method depends on the media."
     },
     "compliance": {
-      "focus": "The guide distinguishes disposal from release for reuse. Consider how the organization prevents FCI from remaining on each type of media when custody or purpose changes.",
+      "focus": "The guide distinguishes disposal from release for reuse: media containing FCI is sanitized or destroyed before disposal, and sanitized before release for reuse. Consider how the organization prevents FCI from remaining when media changes custody or purpose.",
       "reviewQuestions": [
         "How is media containing FCI identified before disposal or reuse?",
         "How is the sanitization or destruction outcome checked and recorded?"
@@ -163,11 +163,11 @@
   {
     "id": "PE.L1-b.1.viii",
     "beginner": {
-      "meaning": "Protect the places and equipment where systems operate by limiting physical access to approved people. A network password cannot protect a printer tray, server cabinet or workstation someone can physically reach.",
+      "meaning": "In facility areas not designated for public access, limit physical access to systems, equipment and the spaces where they operate to approved people. A network password cannot protect a printer tray, server cabinet or workstation someone can physically reach.",
       "example": "Cedar Point Design places its contract printer inside a staff-only work area and keeps the equipment room locked. Staff permissions identify who may enter each area."
     },
     "technical": {
-      "focus": "Define authorized individuals and apply physical controls appropriate to systems, equipment and operating environments. Badges, keys and equipment placement address different ways someone could reach information or hardware.",
+      "focus": "Define authorized individuals and apply physical controls appropriate to systems, equipment and operating environments. The guide applies this requirement to facility areas not designated publicly accessible. Badges, keys and equipment placement address different ways someone could reach information or hardware.",
       "example": "The facilities team could map authorized staff to a locked equipment room and position document output where visitors cannot collect it unattended.",
       "watchFor": "Protecting the main doorway alone may leave equipment and shared work areas exposed."
     },

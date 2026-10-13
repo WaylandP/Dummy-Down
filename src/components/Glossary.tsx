@@ -32,8 +32,8 @@ export function Glossary({ terms }: GlossaryProps) {
           <h2 id={`${prefix}-heading`}>A little less jargon.</h2>
         </div>
         <p>
-          Draft educational definitions for the authorized-access example. These
-          explain the language; they are not official framework definitions.
+          Plain-language definitions for the demo and Level 1 learning material.
+          These are educational drafts, not official framework definitions.
         </p>
       </div>
       <div className="glossary-search">

@@ -57,9 +57,14 @@ describe('Control-specific teaching perspectives', () => {
         'Qualified editorial review is pending',
       )
       expect(quote).toBeVisible()
-      expect(
-        explorer.queryByText('Draft learning activity'),
-      ).not.toBeInTheDocument()
+      if (id === 'AC.L1-b.1.i') {
+        expect(explorer.getByText('Draft learning activity')).toBeVisible()
+        expect(explorer.getByText(/^Fictional scenario:/)).toBeVisible()
+      } else {
+        expect(
+          explorer.queryByText('Draft learning activity'),
+        ).not.toBeInTheDocument()
+      }
       expect(new URLSearchParams(window.location.search).get('mode')).toBe(
         'compliance',
       )
