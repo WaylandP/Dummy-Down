@@ -13,6 +13,49 @@ import type {
   ParsedExplorerState,
 } from './explorer-state'
 import type { CatalogControl, Framework } from '../types/content'
+import { trackUsage } from '../analytics/usage'
+
+function trackIntent(intent: ExplorerIntent, parsed: ParsedExplorerState) {
+  if (parsed.kind !== 'ready') return
+  const state = parsed.state
+  if (intent.type === 'select-lesson' || intent.type === 'open-example') {
+    if (state.view === 'lesson')
+      trackUsage({ name: 'control_open', lesson: state.lesson })
+  } else if (intent.type === 'change-mode') {
+    if (state.view === 'lesson')
+      trackUsage({
+        name: 'perspective_change',
+        lesson: state.lesson,
+        mode: state.mode,
+      })
+  } else if (intent.type === 'set-catalog') {
+    trackUsage({
+      name: 'filter_change',
+      filter: 'framework',
+      value: state.filters.catalog,
+    })
+  } else if (intent.type === 'set-family') {
+    trackUsage({
+      name: 'filter_change',
+      filter: 'family',
+      value: state.filters.family || 'all',
+    })
+  } else if (intent.type === 'set-level') {
+    trackUsage({
+      name: 'filter_change',
+      filter: 'level',
+      value: state.filters.level || 'all',
+    })
+  } else if (intent.type === 'set-collection') {
+    trackUsage({
+      name: 'filter_change',
+      filter: 'collection',
+      value: state.filters.collection ?? 'lessons',
+    })
+  } else if (intent.type === 'clear-filters') {
+    trackUsage({ name: 'filter_change', filter: 'clear' })
+  }
+}
 
 export interface ExplorerController {
   readonly parsed: ParsedExplorerState
@@ -119,6 +162,7 @@ function createExplorerStore(catalog: ExplorerCatalog) {
         history,
         transition.fragment,
       )
+      trackIntent(intent, transition.parsed)
       publish({ parsed: transition.parsed, historyStatus })
     },
   }

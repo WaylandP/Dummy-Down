@@ -8,6 +8,9 @@ import { Glossary } from './components/Glossary'
 import { Brand } from './components/Brand'
 import { ControlExplorer } from './components/ControlExplorer'
 import { Topography } from './components/Topography'
+import { UsageAnalytics } from './analytics/UsageAnalytics'
+import { UsagePreferences } from './analytics/UsagePreferences'
+import { trackUsage } from './analytics/usage'
 
 const repositoryUrl = 'https://github.com/WaylandP/Dummy-Down'
 const perspectives = [
@@ -54,6 +57,7 @@ export default function App() {
     )
       return
     event.preventDefault()
+    trackUsage({ name: 'section_open', section: 'explorer' })
     controller.dispatch({ type: 'open-example', mode: perspective })
     document.getElementById('explorer')?.scrollIntoView?.({ block: 'start' })
   }
@@ -66,9 +70,29 @@ export default function App() {
       <header className="site-header section-shell">
         <Brand />
         <nav aria-label="Main navigation">
-          <a href="#explorer">Control Explorer</a>
-          <a href="#approach">Learning modes</a>
-          <a className="glossary-nav" href="#glossary">
+          <a
+            href="#explorer"
+            onClick={() =>
+              trackUsage({ name: 'section_open', section: 'explorer' })
+            }
+          >
+            Control Explorer
+          </a>
+          <a
+            href="#approach"
+            onClick={() =>
+              trackUsage({ name: 'section_open', section: 'approach' })
+            }
+          >
+            Learning modes
+          </a>
+          <a
+            className="glossary-nav"
+            href="#glossary"
+            onClick={() =>
+              trackUsage({ name: 'section_open', section: 'glossary' })
+            }
+          >
             Glossary
           </a>
           <a
@@ -213,6 +237,7 @@ export default function App() {
       </main>
 
       <footer className="site-footer section-shell">
+        <UsagePreferences />
         <div className="footer-top">
           <Brand />
           <p>Make cybersecurity make sense.</p>
@@ -235,6 +260,7 @@ export default function App() {
           <span>Stay curious.</span>
         </div>
       </footer>
+      <UsageAnalytics />
     </div>
   )
 }

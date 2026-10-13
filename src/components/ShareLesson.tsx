@@ -1,21 +1,37 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
 import { Check, Link } from 'lucide-react'
+import type { LessonIdentity } from '../types/content'
+import { trackUsage } from '../analytics/usage'
 
 interface ShareLessonProps {
   url: string
   subject?: 'lesson' | 'reference'
+  lesson?: LessonIdentity
 }
 
 type CopyPhase = 'idle' | 'pending' | 'copied' | 'fallback'
 
 /** A new keyed lifetime invalidates obsolete writes, including A → B → A. */
-export function ShareLesson({ url, subject = 'lesson' }: ShareLessonProps) {
+export function ShareLesson({
+  url,
+  subject = 'lesson',
+  lesson,
+}: ShareLessonProps) {
   return (
-    <ShareLessonSession key={`${subject}:${url}`} url={url} subject={subject} />
+    <ShareLessonSession
+      key={`${subject}:${url}`}
+      url={url}
+      subject={subject}
+      lesson={lesson}
+    />
   )
 }
 
-function ShareLessonSession({ url, subject = 'lesson' }: ShareLessonProps) {
+function ShareLessonSession({
+  url,
+  subject = 'lesson',
+  lesson,
+}: ShareLessonProps) {
   const name = subject === 'reference' ? 'Reference' : 'Lesson'
   const prefix = useId()
   const [feedback, setFeedback] = useState<{ phase: CopyPhase }>({
@@ -50,13 +66,24 @@ function ShareLessonSession({ url, subject = 'lesson' }: ShareLessonProps) {
 
     try {
       if (typeof navigator.clipboard?.writeText !== 'function') {
-        if (alive.current) setFeedback({ phase: 'fallback' })
+        if (alive.current) {
+          setFeedback({ phase: 'fallback' })
+          if (lesson)
+            trackUsage({ name: 'share_link', lesson, action: 'fallback' })
+        }
         return
       }
       await navigator.clipboard.writeText(url)
-      if (alive.current) setFeedback({ phase: 'copied' })
+      if (alive.current) {
+        setFeedback({ phase: 'copied' })
+        if (lesson) trackUsage({ name: 'share_link', lesson, action: 'copied' })
+      }
     } catch {
-      if (alive.current) setFeedback({ phase: 'fallback' })
+      if (alive.current) {
+        setFeedback({ phase: 'fallback' })
+        if (lesson)
+          trackUsage({ name: 'share_link', lesson, action: 'fallback' })
+      }
     } finally {
       pending.current = false
     }

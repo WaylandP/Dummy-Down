@@ -25,6 +25,9 @@ import { ShareLesson } from './ShareLesson'
 import { LearningPractice } from './LearningPractice'
 import { ControlResults } from './ControlResults'
 import { ReferenceDetail } from './ReferenceDetail'
+import { trackUsage } from '../analytics/usage'
+import { useSearchUsage } from '../analytics/useSearchUsage'
+import { CmmcLevels } from './CmmcLevels'
 
 interface ControlExplorerProps {
   controller: ExplorerController
@@ -32,6 +35,7 @@ interface ControlExplorerProps {
 
 export function ControlExplorer({ controller }: ControlExplorerProps) {
   const searchInput = useRef<HTMLInputElement>(null)
+  const searchUsage = useSearchUsage('explorer')
   const focusLesson = useRef(false)
   const lessonHeading = useRef<HTMLHeadingElement>(null)
   const focusRecoveredSearch = useRef(false)
@@ -126,6 +130,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
           {referenceControls.length} CMMC source references · 1 draft lesson
         </span>
       </div>
+      <CmmcLevels mode={mode} />
       {controller.historyStatus === 'failed' && (
         <p className="explorer-notice" role="alert">
           Your browser couldn’t update the address. You can keep exploring, but
@@ -156,9 +161,15 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                 placeholder="Search a topic or control ID…"
                 value={filters.query}
                 disabled={parsed.kind === 'invalid'}
-                onChange={(event) =>
+                onChange={(event) => {
+                  searchUsage.edited(event.target.value)
                   dispatch({ type: 'set-query', query: event.target.value })
-                }
+                }}
+                onBlur={() => searchUsage.report(filters.query, results.length)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter')
+                    searchUsage.report(filters.query, results.length)
+                }}
               />
             </span>
           </label>
@@ -347,6 +358,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                   </p>
                 </div>
                 <ShareLesson
+                  lesson={lessonIdentity(selected)}
                   url={createLessonUrl(
                     lessonIdentity(selected),
                     mode,
@@ -417,6 +429,17 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                       <li key={source.id}>
                         <a
                           href={source.url}
+                          onClick={() =>
+                            trackUsage({
+                              name: 'source_open',
+                              lesson: lessonIdentity(selected),
+                              sourceId: source.id,
+                              destination:
+                                source.kind === 'official-resource-index'
+                                  ? 'index'
+                                  : 'publisher',
+                            })
+                          }
                           target="_blank"
                           rel="noopener noreferrer"
                         >

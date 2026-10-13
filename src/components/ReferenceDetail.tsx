@@ -7,6 +7,8 @@ import type {
   SourceDocumentCitation,
 } from '../types/content'
 import { ShareLesson } from './ShareLesson'
+import { lessonIdentity } from '../state/explorer-state'
+import { trackUsage } from '../analytics/usage'
 
 interface ReferenceDetailProps {
   control: ReferenceControl
@@ -27,9 +29,17 @@ function isHttps(url: string): boolean {
   }
 }
 
-function DocumentLink({ url, label }: { url: string; label: string }) {
+function DocumentLink({
+  url,
+  label,
+  onOpen,
+}: {
+  url: string
+  label: string
+  onOpen: () => void
+}) {
   return isHttps(url) ? (
-    <a href={url} target="_blank" rel="noopener noreferrer">
+    <a href={url} target="_blank" rel="noopener noreferrer" onClick={onOpen}>
       {label}
       <ArrowUpRight size={14} aria-hidden="true" />
       <span className="sr-only"> (opens in a new tab)</span>
@@ -116,7 +126,11 @@ export function ReferenceDetail({
             Publication snapshot: {edition.title}
           </p>
         </div>
-        <ShareLesson url={shareUrl} subject="reference" />
+        <ShareLesson
+          url={shareUrl}
+          subject="reference"
+          lesson={lessonIdentity(control)}
+        />
       </div>
       <div className="reference-requirement">
         <span className="small-label">
@@ -179,11 +193,27 @@ export function ReferenceDetail({
                   <DocumentLink
                     url={`${source.url}#page=${source.pdfPage}`}
                     label="Official publication URL"
+                    onOpen={() =>
+                      trackUsage({
+                        name: 'source_open',
+                        lesson: lessonIdentity(control),
+                        sourceId: source.id,
+                        destination: 'publisher',
+                      })
+                    }
                   />
                   {' · '}
                   <DocumentLink
                     url={`${source.mirrorUrl}#page=${source.pdfPage}`}
                     label="Pinned third-party PDF mirror"
+                    onOpen={() =>
+                      trackUsage({
+                        name: 'source_open',
+                        lesson: lessonIdentity(control),
+                        sourceId: source.id,
+                        destination: 'mirror',
+                      })
+                    }
                   />
                 </span>
                 <span>{source.acquisitionNote}</span>
