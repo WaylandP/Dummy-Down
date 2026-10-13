@@ -4,7 +4,13 @@ import { act, render as renderView } from '@testing-library/react'
 import { beforeEach, describe, expect, it } from 'vitest'
 import App from './App'
 
-beforeEach(() => window.history.replaceState(null, '', '/'))
+beforeEach(() =>
+  window.history.replaceState(
+    null,
+    '',
+    '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access',
+  ),
+)
 
 function renderApp() {
   const user = userEvent.setup()
@@ -16,13 +22,13 @@ function renderApp() {
 }
 
 describe('Control Explorer learning experience', () => {
-  it('starts with a clearly marked draft and the beginner explanation', () => {
+  it('renders the original demo with a clearly marked draft and beginner explanation', () => {
     const { explorer } = renderApp()
 
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /Navigate the\s*complexity\./,
+        name: 'What does this requirement actually mean?',
       }),
     ).toBeVisible()
     expect(
@@ -128,11 +134,13 @@ describe('Control Explorer learning experience', () => {
         }),
       )
 
-      expect(explorer.getByRole('tab', { name: mode })).toHaveAttribute(
+      expect(await explorer.findByRole('tab', { name: mode })).toHaveAttribute(
         'aria-selected',
         'true',
       )
-      expect(explorer.getByRole('tabpanel', { name: mode })).toBeVisible()
+      expect(
+        await explorer.findByRole('tabpanel', { name: mode }),
+      ).toBeVisible()
     },
   )
 
@@ -334,11 +342,11 @@ describe('Shareable lessons and reading tools', () => {
         }),
       )
       expect(
-        explorer.getByRole('tabpanel', { name: 'Compliance' }),
+        await explorer.findByRole('tabpanel', { name: 'Compliance' }),
       ).toBeVisible()
       expect(window.location.hash).toBe('#explorer')
       expect(new URLSearchParams(window.location.search).get('control')).toBe(
-        'authorized-access',
+        'ac-l1-b-1-i',
       )
     },
   )

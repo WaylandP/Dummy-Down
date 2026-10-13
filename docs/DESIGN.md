@@ -1,70 +1,117 @@
 # Dummy-Down visual direction
 
-Dummy-Down is a field guide for navigating cybersecurity concepts. The interface
-uses a dark, spacious composition with a single topographic illustration. The
-Explorer and its explanations are the destination; decoration should never
-compete with them.
+**Working identity: Dummy-Down. Compliance, translated.**
 
-## Palette and typography
+This is a proposed editorial learning identity for owner review, implemented in
+the running application. It supersedes the rejected dark/topographic direction.
+Historical field-guide notes document earlier work; they are not instructions to
+restore the old appearance.
 
-Shared tokens live in `src/styles.css` and are exposed through Tailwind's theme.
+## Purpose and first impression
 
-| Role            | Color     | Use                                            |
-| --------------- | --------- | ---------------------------------------------- |
-| Canvas          | `#0e1418` | Dark base and quiet margins                    |
-| Reading surface | `#141d24` | Explanation pane and explorer toolbar          |
-| Foreground      | `#e9edf0` | Headings and primary text                      |
-| Muted           | `#a3adb7` | Secondary text, not disabled content           |
-| Accent          | `#bdd3da` | Primary action, focus, and selected mode       |
-| Draft           | `#d6bc8f` | Draft text labels, always accompanied by words |
+Help someone read an unfamiliar requirement, understand its meaning and explore
+a practical example. The first impression should be clear reference material with
+personality. The working search belongs directly beneath a compact introduction;
+the Explorer and its reading panel are the product.
 
-Space Grotesk carries headings and the wordmark. IBM Plex Sans handles reading and
-controls. Monospace is limited to actual control identifiers. Fonts are bundled
-locally through Fontsource packages, with `font-display: swap`; the app does not
-request fonts from an external service. Their SIL Open Font Licenses are retained
-in `public/font-licenses/` and copied to production output by Vite. The original
-application LICENSE remains unchanged.
+The homepage question is **“What does this requirement actually mean?”** The copy
+states the actual offer: plain-English explanations, practical examples and
+different learning perspectives for cybersecurity requirements, starting with
+CMMC. Draft status and edition context remain visible.
 
-## Composition and interaction
+## Identity and typography
 
-- Give the hero one memorable element: a static, custom contour illustration.
-  Keep it away from the reading area and subtle on mobile. It is decorative,
-  hidden from assistive technology, and conveys no compliance progress or data.
-- Use clear alignment, generous margins, and restrained separators. Avoid
-  repeated feature-card grids, neon, glow, parallax, and decorative status numbers.
-- Keep learning-mode introductions short and descriptive. Each link opens its
-  corresponding perspective in the Explorer.
-- Use a 16px reading size, comfortable line height, and a limited line length.
-  The sidebar supports discovery; the explanation pane supports reading.
-- Native selects and disclosure controls retain familiar behavior. Selected tabs
-  use both an underline and `aria-selected`, with arrow/Home/End navigation.
-- Keep visible keyboard focus and persistent draft/source context. Returning from
-  an empty state focuses the search field. Respect reduced motion.
-- Future framework names belong in factual roadmap information and explicit empty
-  states. They are not endorsements or claims of available coverage.
+The wordmark changes typographic register at its designed hyphen: an upright serif
+“Dummy” meets a plain sans-serif “Down.” The transition reflects translating
+formal language into something approachable. It is text with an accessible home
+link label, not a stock symbol. The mark works in a single color; teal is reserved
+for interactions. The favicon is a deliberately simple, open-counter letter D,
+drawn as original SVG paths on the neutral canvas.
 
-## Research and judgment
+Upright Georgia / Times New Roman / the device's generic serif carries the
+wordmark's first word and major headings. These are platform fonts, not downloaded
+or redistributed assets; their appearance varies by device. The Linux QA machine
+resolves the serif fallback to locally installed Noto Serif. IBM Plex Sans
+400/500 carries reading, controls and the wordmark's second word. It is bundled
+locally through Fontsource with `font-display: swap`. Its SIL Open Font License
+is retained in `public/font-licenses/ibm-plex-sans.txt`. Existing Space Grotesk
+license notices are preserved, although it is no longer the design voice.
 
-Two public skills informed this direction:
+The display choice is an intentional upright reading convention rather than an
+italic magazine flourish. Paragraphs use at least 16px; principal teaching text
+uses 17px with a 1.75 line height and a maximum of 68 characters. Control IDs alone
+use the platform monospace fallback. No font service or new dependency is needed.
 
-- [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/7246805992a42b7bba37d4cac83b01416f0c6c44/.claude/skills/ui-ux-pro-max/SKILL.md)
-  supplies searchable curated patterns and accessibility guidance.
-- [Anthropic frontend-design](https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/frontend-design/SKILL.md)
-  supplies an intentional composition and screenshot-critique process.
+## Palette
 
-These skills do not scan live design experts. Their guidance was read from public
-sources; no skill runner or external research data is required by the application.
-Pro Max's local design-system search matched its cybersecurity-platform profile,
-which proposes neon colors and monitoring UI. Those defaults do not fit a quiet
-educational site. A narrower editorial query fell back to a general profile, so
-it was not treated as a verified education recommendation. The final palette and
-composition follow the user's brief; the verified minimal-layout and contrast
-guidance informs implementation and review.
+Tokens live in `src/styles.css` and are exposed through Tailwind's theme.
 
-## Validation
+| Role             | Color     | Use                                                |
+| ---------------- | --------- | -------------------------------------------------- |
+| Canvas           | `#f6f7f7` | Neutral off-white margins; no cream or yellow cast |
+| Reading surface  | `#ffffff` | The explanation area and native input surfaces     |
+| Foreground       | `#20292b` | Charcoal headings and reading text                 |
+| Muted            | `#526164` | Secondary text and explicit draft labels           |
+| Accent           | `#126a68` | Links, selected perspectives and visible focus     |
+| Selected surface | `#e8efee` | A quiet tint for the chosen result                 |
+| Separator        | `#d6dddd` | Structure between distinct reading sections        |
+| Field border     | `#738285` | Visible native input boundaries                    |
 
-Run the checks in [DEVELOPMENT.md](DEVELOPMENT.md). Review desktop, small phone,
-tablet, and landscape layouts, including empty search and planned frameworks.
-Test all modes and source disclosures with a keyboard, and check contrast in the
-actual dark theme. Automated checks support review; they do not establish complete
-accessibility or cybersecurity content accuracy.
+Draft labels use words and typography, not a decorative trust badge or warning
+color. Selected tabs use both an underline and `aria-selected`. Selected results
+use a tint and `aria-pressed`; color is not their only state signal.
+
+## Composition
+
+- A compact header and left-aligned question lead directly to usable controls.
+  There is no decorative hero background or large empty presentation area.
+- A stronger rule introduces the tool. Search gets the widest toolbar column;
+  collection and framework remain familiar native selects.
+- Level choices are short inline navigation, not feature cards. The left column
+  supports scanning and filtering; the white reading panel supports concentration.
+- Result rows have square edges and a calm selection tint. Sections use whitespace
+  and occasional separators, with no layered cards, glow, shadows or floating pills.
+- Explanation perspectives are visible tabs. Official quotations, teaching drafts
+  and source context remain separately labeled; practical examples do not become
+  implied requirements or compliance scores.
+- The approach links, glossary and factual project context follow the Explorer.
+  Other frameworks remain explicitly planned rather than implied libraries.
+
+## Mobile and interaction
+
+At 760px and below, search becomes a full-width first row, controls remain readable,
+and the reading panel fills the viewport width. A real button opens/closes the
+results and filters; its collapse applies only on phones, so desktop discovery is
+never hidden by stale mobile state. Selecting a control gives reading priority.
+Perspective labels fit three equal columns with at least 48px touch areas.
+
+Links, native disclosures and controls have clear hover and active states. Keyboard
+focus uses a 3px teal outline with an offset. Keep existing arrow/Home/End tab
+navigation, search recovery, sharing fallback and browser history behavior.
+Reduced-motion preferences remove smooth scrolling; no decorative animation runs.
+
+## Design process and review
+
+The installed experimental gstack `design-consultation` instructions informed the
+product-context, typography, three-look calibration and coherence checks. The
+owner's implementation brief supplies the direction and delegates routine
+decisions; it does not constitute final brand approval. The existing documentation
+format is retained. No paid outside voices, image-generation service or competitor
+session access was used. Live competitive research was not performed.
+
+Three materially different wordmark treatments and the selected proposal are
+recorded in [the identity review](designs/editorial-identity-review.md). Review the
+actual rendered application at desktop, tablet and phone sizes, in monochrome,
+at favicon size, with keyboard navigation and enlarged text. Build success alone
+does not establish visual quality or complete accessibility.
+
+## Do and do not
+
+Do use readable type, familiar controls, precise language and content that teaches.
+Do make draft/source distinctions easy to see at the moment they matter. Do verify
+new content and actual browser interactions before updating claims.
+
+Do not restore topography, shields, hacker imagery or the prior contour identity.
+Do not substitute a pale skin over the former layout. Do not add elaborate
+backgrounds, repeated feature-card grids, invented statistics or review badges.
+Do not describe this working proposal as owner-approved branding.

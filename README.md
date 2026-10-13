@@ -1,220 +1,151 @@
 # Dummy-Down
 
-**Complex compliance. Dummy-simple explanations.**
-
-Making cybersecurity compliance make sense, one control at a time.
-
-Dummy-Down is an open-source educational platform designed to turn complicated cybersecurity frameworks, security controls, and regulatory requirements into plain-English explanations that anyone can understand.
-
-**Starting with CMMC. Built for much more.**
-
----
-
-## The Problem
-
-Cybersecurity compliance shouldn't require a dictionary, years of experience, or an expensive consultant just to understand what a requirement is asking.
-
-Yet for many people entering the cybersecurity and defense contracting world, that's exactly what it feels like.
-
-Frameworks like CMMC and NIST contain hundreds of requirements filled with technical terminology, complicated language, and concepts that can be difficult to translate into practical action.
-
-Whether you're an IT administrator suddenly responsible for compliance, a small business preparing for its first assessment, or someone just starting a cybersecurity career, understanding the requirements shouldn't be the hardest part.
-
-**That's why Dummy-Down exists.**
-
-## Our Mission
-
-Make cybersecurity compliance accessible, understandable, and less intimidating for everyone.
-
-Dummy-Down aims to bridge the gap between complicated regulatory language and practical understanding through straightforward explanations, relatable examples, and interactive learning experiences.
-
-**No unnecessary jargon. No assumed expertise. Just explanations that make sense.**
-
-## How Dummy-Down Will Work
-
-Every supported control will be broken down into explanations designed for different experience levels.
-
-### 1. Beginner Mode
-
-**"Explain it like I've never worked in cybersecurity."**
-
-Simple, jargon-free explanations using everyday situations and relatable examples.
-
-### 2. IT & Cybersecurity Mode
-
-**"I understand technology. Show me what this actually means."**
-
-More technical explanations with realistic implementation scenarios, common technologies, and considerations for IT and security teams.
-
-### 3. Compliance & Assessment Mode
-
-**"Help me understand what this requirement expects."**
-
-Detailed explanations referencing official assessment objectives, potential evidence examples, and relevant regulatory guidance.
-
-These explanations are educational and do not replace official compliance requirements.
-
-## Example: Making a Control Understandable
-
-**CMMC Level 2: AC.L2-3.1.1 — Access Control**
-
-*Simplified example, not the full official requirement.*
-
-**The complicated concept:**
-
-Restrict system access to authorized users, processes acting on behalf of authorized users, and devices.
-
-**The Dummy-Down explanation:**
-
-Only approved people, applications, and devices should be able to access your company's systems.
-
-Think of it like giving employees keys to a building. Not everyone needs access to every room, and someone who no longer works there shouldn't still have a working key.
-
-**What this might look like in practice:**
-
-- Creating and maintaining approved user accounts.
-- Controlling which devices can access company resources.
-- Removing access when employees leave.
-- Reviewing who has permission to access important systems.
-
-Real compliance requires addressing the applicable assessment objectives, not simply completing these examples.
-
-## Features & Learning Experience
-
-Dummy-Down is being designed with different learning styles in mind.
-
-| Feature | Description |
-|---|---|
-| Control Explorer | Browse and search controls by framework, family, level, or identifier |
-| Plain-English Explanations | Translate complicated requirements into understandable language |
-| Multiple Learning Modes | Tailor explanations to different experience levels |
-| Real-World Scenarios | Connect compliance requirements to everyday IT and business situations |
-| Technical Examples | Explore possible implementation approaches |
-| Compliance Glossary | Understand common cybersecurity and regulatory terminology |
-| Visual Learning | Short animations and diagrams that explain complex concepts |
-| Interactive Learning | Quizzes and knowledge checks to reinforce understanding |
-| Official References | Link explanations to authoritative source documents |
-
-**All features listed above are planned. They are not yet available in a released application.**
-
-## Supported Frameworks & Future Expansion
-
-### First Focus: CMMC
-
-Our initial goal is to simplify the Cybersecurity Maturity Model Certification (CMMC) framework, including:
-
-- Level 1: Foundational safeguarding requirements.
-- Level 2: Advanced requirements aligned with NIST SP 800-171.
-- Level 3: Additional requirements for protecting against advanced threats.
-
-### Future Frameworks
-
-The long-term vision includes expanding to:
-
-- NIST SP 800-53
-- FedRAMP
-- SOC 2
-- ISO/IEC 27001
-- HIPAA Security Rule
-
-Framework support will be developed incrementally, with accuracy and maintainability prioritized over quantity.
-
-## Project Roadmap
-
-### Phase 1: Build the Foundation
-
-- [ ] Initialize the application and development environment.
-- [ ] Build a clean, accessible, responsive interface.
-- [ ] Create the framework-independent control data structure.
-- [ ] Develop the Control Explorer.
-- [ ] Add searchable controls and a cybersecurity glossary.
-
-### Phase 2: Make CMMC Understandable
-
-- [ ] Publish reviewed CMMC Level 1 explanations.
-- [ ] Add beginner, technical, and compliance learning modes.
-- [ ] Expand coverage to CMMC Level 2.
-- [ ] Add assessment objective references and practical examples.
-- [ ] Expand to CMMC Level 3.
-
-### Phase 3: Make Learning Interactive
-
-- [ ] Create visual diagrams and short animated explanations.
-- [ ] Add interactive quizzes and knowledge checks.
-- [ ] Develop contextual learning scenarios.
-- [ ] Improve navigation and accessibility for different learning styles.
-
-### Phase 4: Expand the Platform
-
-- [ ] Introduce additional cybersecurity frameworks.
-- [ ] Add relationships between overlapping security controls.
-- [ ] Explore AI-assisted educational explanations grounded in official sources.
-- [ ] Support community-contributed learning content with review processes.
-
-This roadmap represents the project's current direction and will evolve as development progresses.
-
-## Who Is Dummy-Down For?
-
-Dummy-Down is intended for:
-
-- People entering cybersecurity, IT, or compliance for the first time.
-- IT administrators and cybersecurity professionals.
-- Department of Defense contractors and subcontractors.
-- Small businesses navigating federal cybersecurity requirements.
-- Students, educators, and certification candidates.
-- Compliance teams and professionals looking for clearer ways to explain requirements.
-
-If you've ever read a security control three times and still wondered what it actually meant, this project is being built for you.
-
-## Accuracy, Transparency & Security
-
-Simplifying a requirement should never mean changing its intent.
-
-Dummy-Down aims to reference authoritative publications, identify applicable framework versions, and distinguish official requirements from educational interpretations and examples.
-
-When framework requirements change, the goal is to track and review those changes rather than silently presenting outdated guidance.
-
-**Important:** Dummy-Down is an independent educational project. It is not affiliated with, endorsed by, or certified by the Department of Defense, NIST, or any certification body.
-
-Content is provided for educational purposes and does not constitute compliance certification, legal advice, or a guarantee of assessment success.
-
-Do not submit Controlled Unclassified Information (CUI), sensitive organizational evidence, credentials, or other protected information through project issues or public contributions.
-
-### Official Resources
-
-- [DoD CMMC Program](https://dodcio.defense.gov/CMMC/)
-- [DoD CMMC Resources and Documentation](https://dodcio.defense.gov/CMMC/Resources-Documentation/)
-- [NIST SP 800-171](https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final)
-- [NIST SP 800-172](https://csrc.nist.gov/pubs/sp/800/172/final)
-
-Always consult the applicable official requirements and assessment guidance.
-
-## Contributing
-
-Dummy-Down is intended to grow into a community-driven educational resource.
-
-Ideas, corrections, suggestions, and contributions from cybersecurity professionals, educators, developers, and beginners are welcome.
-
-Have an idea that would make compliance easier to understand?
-
-[Open a GitHub Issue](https://github.com/WaylandP/Dummy-Down/issues) to share your feedback or propose a feature.
-
-Additional contribution guidelines will be published as the project develops.
-
-## Project Status
-
-**Early development — building the foundation.**
-
-Dummy-Down is currently an independent open-source project in its initial development stage. The application, framework content, and learning features are being planned and built incrementally.
-
-Follow the repository to track progress and upcoming releases.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-**Dummy-Down**
-
-*Because understanding cybersecurity shouldn't be harder than securing it.*
+**Compliance, translated.**
+
+**What does this requirement actually mean?** Dummy-Down helps people understand
+cybersecurity requirements through plain-English explanations, practical examples,
+and different learning perspectives. Starting with CMMC.
+
+[Visit Dummy-Down](https://dummy-down.vercel.app) ·
+[Report a problem](https://github.com/WaylandP/Dummy-Down/issues) ·
+[Contribute](CONTRIBUTING.md)
+
+The public website returned the application successfully on October 13, 2026.
+Feature work is reviewed in separate Vercel previews before an approved merge;
+production and a pull request's preview can show different versions. See
+[deployment and preview review](docs/DEPLOYMENT.md).
+
+![Proposed editorial homepage with working Control Explorer](docs/screenshots/redesign-after-home-desktop.png)
+
+## What you can use today
+
+- Browse CMMC Level 1, 2, and 3 source references; search by identifier, topic,
+  family, or level.
+- Switch between **Beginner**, **IT & Cyber**, and **Compliance** teaching drafts
+  for every catalog entry. Read the official quotation alongside the explanation.
+- Copy a link to a specific control and perspective. Search, filters, and browser
+  Back/Forward preserve the reading context.
+- Open contextual definitions and a searchable draft glossary.
+- Try the original fictional authorized-access scenario and its three
+  knowledge-check questions, with explanations for every answer.
+- Use visible draft labels, edition/page citations, source comparison, and
+  loading/error recovery to understand the limits of the material.
+- Pause optional usage measurement through **Usage & privacy**.
+
+For example, an approved account does not automatically approve every device that
+uses it. A workplace scenario makes that distinction concrete; the source view
+lets you check the full wording instead of treating the scenario as a checklist.
+
+This is an early educational application. There are no accounts, organizational
+assessment uploads, compliance scores, or chatbot. Other frameworks are planned;
+their names in the interface do not represent available control libraries.
+
+## Content coverage and review
+
+The catalog is a **September 2024 CMMC v2.13 publication snapshot**, with quotations
+from the model and Level 1–3 assessment guides. Counts describe identifiers in
+that edition, not distinct security concepts or professionally reviewed lessons.
+
+<!-- content-summary:start -->
+
+| Snapshot inventory      | Available |
+| ----------------------- | --------: |
+| Level 1 references      |        15 |
+| Level 2 references      |       110 |
+| Level 3 references      |        24 |
+| Total references        |       149 |
+| Draft perspective texts |       447 |
+
+<!-- content-summary:end -->
+
+Each of the 149 references has three separately authored teaching drafts. The
+original README-based Level 2 demo is a separate educational example and is not
+counted as another official requirement. The glossary currently has six draft
+terms; interactive practice currently covers that demo, not the entire catalog.
+
+**Qualified human approval is pending.** Source transcription checks and
+[AI-assisted editorial review](docs/designs/cmmc-perspectives-editorial-audit.md)
+have occurred; neither establishes professional approval, complete assessment-
+objective coverage, current applicability, or a guarantee of accuracy. The guide
+and model have ten wording differences, preserved rather than silently reconciled.
+
+Direct access to official DoD publication hosts was blocked in the source-check
+environment. The stored PDFs came from pinned public mirrors, with document
+identity, page citations, and SHA-256 checks recorded. The application presents the
+dated snapshot; the latest applicable edition has not been independently verified.
+Consult the official publications and your applicable contractual requirements.
+See [source provenance and verification](docs/sources/cmmc-2-13-sep-2024.md).
+
+## Roadmap
+
+| Phase                            | Implemented or available drafts                                                                                                                   | Remaining work                                                                                                                                                                            |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1. Build the foundation**      | React/TypeScript frontend, responsive Explorer, framework-independent identities, search, filters, sharing, glossary, tests and preview workflow. | Continue usability and accessibility checks with real learners; refine the proposed editorial identity through review.                                                                    |
+| **2. Make CMMC understandable**  | Versioned Level 1–3 source inventory and three draft perspectives per entry, with practical examples and source links.                            | Qualified human approval, current applicability checks, explicit assessment-objective coverage and reviewed Level 1 lessons before broader curriculum claims. This phase is not complete. |
+| **3. Make learning interactive** | A fictional demo scenario, a step-by-step visual flow, and three formative questions with answer explanations.                                    | Focused Level 1 scenarios, useful explanatory diagrams and linked vocabulary; later, short animated explanations and broader reviewed practice coverage.                                  |
+| **4. Expand the platform**       | Framework-independent architecture and published contribution guidelines.                                                                         | Additional frameworks, reviewed relationships between controls and a sustainable community editorial process. No automatic equivalence claims or new framework libraries yet.             |
+
+[TODOS.md](TODOS.md) keeps the next priorities aligned with this roadmap.
+
+## Development
+
+Use **Node.js 22.12 or newer**; CI uses Node 24. From the repository directory:
+
+```sh
+npm ci
+npm run dev
+```
+
+Open Vite's printed local URL. A cloud environment with port forwarding can use
+`npm run dev -- --host 0.0.0.0`. For owner review, use the pull request's Vercel
+preview in a browser rather than a terminal or Codespaces.
+
+Before pushing a change, run:
+
+```sh
+npm run typecheck
+npm run lint
+npm run format:check
+npm test
+npm run build
+node scripts/check-content-summary.mjs
+```
+
+The last command checks the published inventory against repository data and
+required source/teaching metadata. It does not judge compliance accuracy. Use
+`npm run preview` to inspect an already built frontend locally.
+
+- [Development guide](docs/DEVELOPMENT.md): architecture, addresses and checks.
+- [Contribution guide](CONTRIBUTING.md): code, educational content and safeguards.
+- [Source-review documentation](docs/sources/cmmc-2-13-sep-2024.md): edition,
+  quotations, evidence and known limits.
+- [Deployment guide](docs/DEPLOYMENT.md): GitHub CI, Vercel previews and production.
+- [Design notes](docs/DESIGN.md): the proposed identity and interaction direction.
+
+## Usage measurement
+
+The official Vercel Analytics SDK integration is implemented with production-only
+collection, an opt-out, browser privacy preferences, and allowlisted interactions.
+It excludes raw search text, answer choices, full shared links, organizational
+evidence, and app-generated visitor identifiers. Preview traffic is excluded.
+
+**Account activation, custom-event entitlement, and actual dashboard data receipt
+have not been confirmed.** Installing the SDK is not proof that analytics is live.
+See [Usage measurement](docs/USAGE.md) for owner setup and measurement limits.
+
+## Educational disclaimer and license
+
+Dummy-Down's mission is to make cybersecurity compliance accessible,
+understandable, and less intimidating without changing a requirement's intent.
+It is an independent educational project, not affiliated with, endorsed by, or
+certified by DoD, NIST, or any certification body. Draft explanations, fictional
+examples, and possible evidence are not official requirements, legal advice,
+certification, or a guarantee of assessment success.
+
+Do not submit CUI, sensitive organizational evidence, credentials, personal
+information, or other protected data through searches, issues, or contributions.
+
+The application is licensed under the [MIT License](LICENSE). Source quotations
+retain their attribution; bundled font notices are in
+[public/font-licenses](public/font-licenses). The application's license does not
+grant new rights over third-party publications.

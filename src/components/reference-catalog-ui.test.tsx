@@ -27,6 +27,11 @@ function setup() {
 
 describe('Versioned CMMC reference catalog', () => {
   it('provides every source level in a restrained paginated collection without fabricated teaching content', async () => {
+    window.history.replaceState(
+      null,
+      '',
+      '/?view=discover&collection=references&catalog=cmmc',
+    )
     const { user, explorer } = setup()
     await user.selectOptions(
       explorer.getByRole('combobox', { name: 'Content collection' }),
@@ -165,7 +170,18 @@ describe('Versioned CMMC reference catalog', () => {
     await user.click(
       screen.getByRole('link', { name: /^Beginner .*Try this perspective/ }),
     )
-    expect(explorer.getByRole('tabpanel', { name: 'Beginner' })).toBeVisible()
+    expect(
+      await explorer.findByRole('tabpanel', { name: 'Beginner' }),
+    ).toBeVisible()
+    await user.selectOptions(
+      explorer.getByRole('combobox', { name: 'Content collection' }),
+      'lessons',
+    )
+    await user.click(
+      explorer.getByRole('button', {
+        name: /AC\.L2-3\.1\.1.*Authorized access/,
+      }),
+    )
     expect(
       explorer.getByRole('combobox', { name: 'Content collection' }),
     ).toHaveValue('lessons')

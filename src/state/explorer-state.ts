@@ -153,9 +153,22 @@ function emptyFilters(
 }
 
 function defaultState(catalog: ExplorerCatalog): ValidExplorerState {
+  const identity = catalog.defaultLesson
+  const defaults = identity
+    ? catalog.controls.filter(
+        (control) =>
+          lessonIdentityKey(lessonIdentity(control)) ===
+          lessonIdentityKey(identity),
+      )
+    : []
   const shared = {
     mode: 'beginner' as const,
-    filters: emptyFilters(defaultCatalog(catalog)),
+    filters: emptyFilters(
+      defaultCatalog(catalog),
+      defaults.length === 1 && defaults[0]
+        ? controlCollection(defaults[0])
+        : 'lessons',
+    ),
   }
   return catalog.defaultLesson
     ? { ...shared, view: 'lesson', lesson: catalog.defaultLesson }
