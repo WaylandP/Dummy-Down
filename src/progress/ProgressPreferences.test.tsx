@@ -93,9 +93,9 @@ describe('optional learning settings', () => {
     expect(screen.getByText('Marked to revisit: false')).toBeVisible()
     expect(window.localStorage.getItem(PROGRESS_DATA_KEY)).toBeNull()
     expect(window.localStorage.getItem(PROGRESS_CONSENT_KEY)).toBeNull()
-    expect(window.localStorage.getItem('cipher-and-chalk:usage-preference')).toBe(
-      'off',
-    )
+    expect(
+      window.localStorage.getItem('cipher-and-chalk:usage-preference'),
+    ).toBe('off')
   })
 
   it.each([
@@ -122,9 +122,9 @@ describe('optional learning settings', () => {
       )
       expect(screen.getByText('Checked here: true')).toBeVisible()
       expect(window.localStorage.getItem(PROGRESS_DATA_KEY)).toBeNull()
-      expect(window.localStorage.getItem('cipher-and-chalk:usage-preference')).toBe(
-        'on',
-      )
+      expect(
+        window.localStorage.getItem('cipher-and-chalk:usage-preference'),
+      ).toBe('on')
     },
   )
 

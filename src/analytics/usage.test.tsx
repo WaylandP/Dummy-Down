@@ -158,7 +158,9 @@ describe('usage deployment and privacy gates', () => {
     act(() => {
       window.localStorage.setItem('cipher-and-chalk:usage-preference', 'off')
       window.dispatchEvent(
-        new StorageEvent('storage', { key: 'cipher-and-chalk:usage-preference' }),
+        new StorageEvent('storage', {
+          key: 'cipher-and-chalk:usage-preference',
+        }),
       )
     })
     expect(screen.getByRole('status')).toHaveTextContent(

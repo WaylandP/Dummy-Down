@@ -32,8 +32,8 @@ Everything taught remains a visibly marked educational draft.
 
 ## Three visual explanations
 
-| Level | Lesson                                                                                                                                                    | What the diagram teaches                                                           |
-| ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Level | Lesson                                                                                                                                                        | What the diagram teaches                                                           |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | 1     | [Authorized access](https://cipherandchalk.vercel.app/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l1-b-1-i&mode=beginner)          | Users, user-acting processes and devices need authorization that matches access.   |
 | 2     | [Multifactor authentication](https://cipherandchalk.vercel.app/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ia-l2-3-5-3&mode=beginner) | Distinct factors and the requirement's account/access-path scope.                  |
 | 3     | [Response-team deployment](https://cipherandchalk.vercel.app/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ir-l3-3-6-2e&mode=beginner)  | A deployable team within 24 hours is different from promising incident resolution. |
