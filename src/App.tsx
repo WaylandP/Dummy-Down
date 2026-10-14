@@ -15,6 +15,7 @@ import { UsagePreferences } from './analytics/UsagePreferences'
 import { trackUsage } from './analytics/usage'
 import { LocalProgressProvider } from './progress/LocalProgressProvider'
 import { learningActivities } from './data/learning'
+import { setPageMeta } from './seo/page-meta'
 
 const repositoryUrl = 'https://github.com/WaylandP/cipher-and-chalk'
 const browseUrl = '/learn?view=discover&collection=references'
@@ -59,15 +60,40 @@ function Application() {
   const page = useSyncExternalStore(subscribePage, currentPage)
   useEffect(() => {
     if (page !== 'learn') {
-      const title = {
-        home: 'Home',
-        glossary: 'Glossary',
-        about: 'About',
-        coverage: 'Assessment coverage',
-        practice: 'Practice',
-        'not-found': 'Page not found',
+      const meta = {
+        home: {
+          title: 'Home',
+          description:
+            'Search every CMMC control, read it from three perspectives, and practice with short situations. Open source and free.',
+          canonicalPath: '/',
+        },
+        glossary: {
+          title: 'Glossary',
+          description:
+            'Plain-language definitions of the terms used in CMMC lessons, with sources.',
+          canonicalPath: '/glossary',
+        },
+        about: {
+          title: 'About',
+          description:
+            'Why Cipher & Chalk exists, how its CMMC explanations are written and reviewed, and how to help.',
+          canonicalPath: '/about',
+        },
+        coverage: {
+          title: 'Assessment objectives',
+          description:
+            'All 468 CMMC assessment objectives from the Level 1–3 guides, searchable by control and linked to the explanation that covers each one.',
+          canonicalPath: '/coverage',
+        },
+        practice: {
+          title: 'Practice',
+          description:
+            'Short fictional situations that check your understanding of specific CMMC controls, with explained answers.',
+          canonicalPath: '/practice',
+        },
+        'not-found': { title: 'Page not found' },
       }[page]
-      document.title = `${title} | Cipher & Chalk`
+      setPageMeta(meta)
     }
     // On a native page load, the browser can resolve the fragment before React
     // mounts its target. Honor an explicit skip link once the main exists.

@@ -9,7 +9,7 @@ const routes = [
   ['Glossary', '/glossary'],
   ['Practice', '/practice'],
   ['About', '/about'],
-  ['Assessment coverage', '/coverage?control=SC.L3-3.13.4e'],
+  ['Assessment objectives', '/coverage?control=SC.L3-3.13.4e'],
   ['AC.L1-b.1.i', reader],
 ] as const
 
