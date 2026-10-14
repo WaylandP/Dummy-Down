@@ -120,10 +120,10 @@ is the single most valuable contribution right now.
 
 ## Roadmap
 
-1. **Foundation** — Explorer, search, glossary, keyboard and reduced-motion support. *Done.*
-2. **Make CMMC understandable** — all 149 controls with three perspectives. *Done; qualified review pending.*
-3. **Make learning interactive** — practice activities, visual explanations, local progress. *Done; learner validation pending.*
-4. **Expand the platform** — NIST SP 800-53, FedRAMP, SOC 2, ISO/IEC 27001, HIPAA. *Not started.*
+1. **Foundation** — Explorer, search, glossary, keyboard and reduced-motion support. _Done._
+2. **Make CMMC understandable** — all 149 controls with three perspectives. _Done; qualified review pending._
+3. **Make learning interactive** — practice activities, visual explanations, local progress. _Done; learner validation pending._
+4. **Expand the platform** — NIST SP 800-53, FedRAMP, SOC 2, ISO/IEC 27001, HIPAA. _Not started._
 
 Details, open work and merged changes: [ROADMAP](docs/ROADMAP.md) · [TODOS](TODOS.md) · [CHANGELOG](CHANGELOG.md).
 
