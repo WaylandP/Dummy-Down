@@ -8,6 +8,7 @@ const routes = [
   ['Control Explorer', '/learn?view=discover&collection=references'],
   ['Glossary', '/glossary'],
   ['About', '/about'],
+  ['Assessment coverage', '/coverage?control=SC.L3-3.13.4e'],
   ['AC.L1-b.1.i', reader],
 ] as const
 
@@ -22,6 +23,10 @@ for (const width of [1440, 768, 640, 390, 320]) {
       const errors: string[] = []
       page.on('pageerror', (error) => errors.push(error.message))
       await page.goto(path)
+      if (path.startsWith('/coverage'))
+        await expect(
+          page.getByRole('heading', { name: '4 statements · 1 control' }),
+        ).toBeVisible()
       if (path === reader)
         await expect(page.getByRole('tabpanel')).toBeVisible()
       await page.evaluate(() => document.fonts.ready)

@@ -1,0 +1,1667 @@
+{
+  "schemaVersion": 1,
+  "frameworkId": "cmmc",
+  "editionId": "cmmc-2-13-sep-2024",
+  "sourceStatementsSha256": "e75619510411e51be571b13270eba8883a6fb6821e49dc30aa19fdaa207f18d0",
+  "reviewer": "Codex coordinating agent (AI-assisted comparison)",
+  "reviewedAt": "2026-10-14",
+  "humanReview": "pending",
+  "controls": [
+    {
+      "controlId": "AC.L1-b.1.i",
+      "perspectiveSha256": "21d04f41dd18c896ab90a889a99aa8ab7b2e42e1c19511369bd9b1d10a74f363",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"],
+          "practiceStep": {
+            "activityId": "level-one-authorized-access",
+            "stepId": "person"
+          }
+        },
+        {
+          "labels": ["b"],
+          "locations": ["technical.focus"],
+          "practiceStep": {
+            "activityId": "level-one-authorized-access",
+            "stepId": "process"
+          }
+        },
+        {
+          "labels": ["c"],
+          "locations": ["technical.focus"],
+          "practiceStep": {
+            "activityId": "level-one-authorized-access",
+            "stepId": "device"
+          }
+        },
+        {
+          "labels": ["d"],
+          "locations": ["technical.focus"],
+          "practiceStep": {
+            "activityId": "level-one-authorized-access",
+            "stepId": "enforcement"
+          }
+        },
+        {
+          "labels": ["e"],
+          "locations": ["technical.focus"],
+          "practiceStep": {
+            "activityId": "level-one-authorized-access",
+            "stepId": "enforcement"
+          }
+        },
+        {
+          "labels": ["f"],
+          "locations": ["technical.focus"],
+          "practiceStep": {
+            "activityId": "level-one-authorized-access",
+            "stepId": "enforcement"
+          }
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L1-b.1.ii",
+      "perspectiveSha256": "d7c9dde497845ba092f16876395372c8338a5b70eadad0219589971d85d22ed6",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L1-b.1.iii",
+      "perspectiveSha256": "217aded76301e6da119fa21e386db3139f203fec8e7dcffe9f4f416cb4730c4c",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L1-b.1.iv",
+      "perspectiveSha256": "80623069a29b427b94775c50b5ff535df1f858f5e125a76d22a883392cc93ec3",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["compliance.focus"],
+          "practiceStep": {
+            "activityId": "level-one-public-information",
+            "stepId": "authorized-editors"
+          }
+        },
+        {
+          "labels": ["b"],
+          "locations": ["compliance.focus"],
+          "practiceStep": {
+            "activityId": "level-one-public-information",
+            "stepId": "review-before"
+          }
+        },
+        {
+          "labels": ["c"],
+          "locations": ["compliance.focus"],
+          "practiceStep": {
+            "activityId": "level-one-public-information",
+            "stepId": "review-before"
+          }
+        },
+        {
+          "labels": ["d"],
+          "locations": ["compliance.focus"],
+          "practiceStep": {
+            "activityId": "level-one-public-information",
+            "stepId": "review-existing"
+          }
+        },
+        {
+          "labels": ["e"],
+          "locations": ["compliance.focus"],
+          "practiceStep": {
+            "activityId": "level-one-public-information",
+            "stepId": "respond"
+          }
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L1-b.1.v",
+      "perspectiveSha256": "68b3b0d41cbc38ca0765d1908eae9bbc25144c9f8a980073f5fea40d99d53cb6",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L1-b.1.vi",
+      "perspectiveSha256": "a813364485d07081ec4f4556ff4271e89af2509ecf7a7b6ba0089a1978c56ea5",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MP.L1-b.1.vii",
+      "perspectiveSha256": "c99828f7e88635690c25dd1845882dd84b3aa79639bf3d2afccffbeaeb612353",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["beginner.meaning", "compliance.focus"],
+          "practiceStep": {
+            "activityId": "level-one-media-disposal",
+            "stepId": "dispose-paper"
+          }
+        },
+        {
+          "labels": ["b"],
+          "locations": ["beginner.meaning", "compliance.focus"],
+          "practiceStep": {
+            "activityId": "level-one-media-disposal",
+            "stepId": "reuse-scanner"
+          }
+        }
+      ]
+    },
+    {
+      "controlId": "PE.L1-b.1.viii",
+      "perspectiveSha256": "5cbdfc11475bbded14fecde01f18f3459ec6aadda014615245bcf00207faa345",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "PE.L1-b.1.ix",
+      "perspectiveSha256": "41ab01303bca2d6462b4271d68a9974af929449d0683e4e7185228470f0d6871",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f"],
+          "locations": ["compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L1-b.1.x",
+      "perspectiveSha256": "5e208720de48cb8530de74d822d09d72d20fd4175ce7c84529cecff892a21aaa",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f", "g", "h"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L1-b.1.xi",
+      "perspectiveSha256": "6376e337a84b373ef22ddb8cd39d1214f20a71228582e87b3d1b45cc1d3ab51d",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L1-b.1.xii",
+      "perspectiveSha256": "1af216eedbcf8c33bd92a7251ad1256ea68ee5455e87195dbb9cfdff90475fea",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f"],
+          "locations": ["compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L1-b.1.xiii",
+      "perspectiveSha256": "e733ebd19038c559333232ae1575c97744514110c0bc310ca0e8d5aefd86d00c",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L1-b.1.xiv",
+      "perspectiveSha256": "86b88be10c98bb80ec4679cd05bb112c35e2b139a4738c629f9d5a27767704ed",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L1-b.1.xv",
+      "perspectiveSha256": "8323e6c3dbc881c7804d127504a410585eb6962cabbcf5fe06a657470cd4dadb",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.1",
+      "perspectiveSha256": "5fbb31ad6792d043d36e47c7a9ff3d1dec2a341b208a846aac2b9c61d04171d5",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.2",
+      "perspectiveSha256": "1f8f314f68ef2531ca372b7d1cd9a65b2987aacf31aae44189b1b0764e530877",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.3",
+      "perspectiveSha256": "98b4dd20e8448b53c8165b7257bcb2c6904b0b5be2f9d989bce43fa60dba639d",
+      "mappings": [
+        {
+          "labels": ["b", "c", "d", "e"],
+          "locations": ["technical.focus"]
+        },
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"],
+          "explanation": "Define the rules governing permitted CUI movement, then connect approved flows and enforcement mechanisms to that information-flow policy."
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.4",
+      "perspectiveSha256": "b5512b20bea15c62a10c1a1c4fda05dd7d9ca5baa07a86ec6cfd80296745b061",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.5",
+      "perspectiveSha256": "f115e948fed1132479f9f305726b3f95e6be454f56d6e77772674ef50474193e",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.6",
+      "perspectiveSha256": "702ba8c76705682a2f24058e60f4db4453ec7fbaa09c40c929f8ccf27ce6ab7e",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.7",
+      "perspectiveSha256": "5be2bea3421a23092725b5ead66d8a3922f991338895970f8b58c61ac5ae1fc5",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.8",
+      "perspectiveSha256": "64ddb46517af7eac07db87be1a82b5e694101ed7482a4657209f2a5b39345c70",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.9",
+      "perspectiveSha256": "aedb95d7c7e100ab08cedfddc321f7e9d65d759c5feb2ef91662cc9d501f30db",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus", "compliance.focus"],
+          "explanation": "Identify the privacy and security notices required by the specific CUI categories handled by the system, then display the associated notices. A generic sign-in banner may not reflect the applicable category requirements."
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.10",
+      "perspectiveSha256": "880bfb241b183a51a68eb9033f04285f8ba3be1cb161f8cbd0e9f2b192c25f39",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.11",
+      "perspectiveSha256": "69ea1e8c0bfd70d7c6ecd904b0a5696bc22a21d35e10adefd653e303484b9673",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.12",
+      "perspectiveSha256": "c4f5ebef3418341dad1cf8e478e3dd45edef7a7c194e95393ad9a321fd302c27",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.13",
+      "perspectiveSha256": "7225732e720fbc7ccb7288bc6a0e8826503e9d885ec29500fe710eff4ed808ce",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.14",
+      "perspectiveSha256": "cda4dd61412b11109ed909d033a0f30995cac06081ec327bd27942fe227997fd",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.15",
+      "perspectiveSha256": "325f891440b57d71fa615951230b9cfb987c67b4286db6bbbeb1f40bee3c09ca",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.16",
+      "perspectiveSha256": "e5146486ab33e947acbf38499b029d5cef37dd60eb115c858220071dd7f5b58a",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.17",
+      "perspectiveSha256": "628b83c6bbe8f0c5947505e5d8a017db5391f438f9853235fd10ff118212004d",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.18",
+      "perspectiveSha256": "ef15ca670b672a2e9526160a08edbe996c1df83c7c35888db96ca86a5646d363",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.19",
+      "perspectiveSha256": "88f427d2fae541cdaca6cbab4b5934f517a573941066f922cc00f0f9ef055661",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.20",
+      "perspectiveSha256": "0d9f2e4131f8dc24c0fb6ef729e5dc3e81dcad4ce5090921f3fc4810a5eb38aa",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.21",
+      "perspectiveSha256": "1983519a4224b2cd973ec846c50613f704447c9ec55c38dba754b12ec3d00d2c",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.22",
+      "perspectiveSha256": "45bded65701b86d23087bacbd6c7ec2616cb5bae693eb87d5329c6859d9050a6",
+      "mappings": [
+        {
+          "labels": ["c", "d", "e"],
+          "locations": ["compliance.focus"]
+        },
+        {
+          "labels": ["a", "b"],
+          "locations": ["compliance.focus"],
+          "explanation": "Identify who is authorized to post or process information on publicly accessible systems, and the procedures keeping CUI out of both activities. Authorization to use a public system is not permission to expose CUI."
+        }
+      ]
+    },
+    {
+      "controlId": "AT.L2-3.2.1",
+      "perspectiveSha256": "c1c1ccec2b9c130589e975044f34eb2acf8ac4f409aa2235e95b4d6d7763534b",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus", "beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "AT.L2-3.2.2",
+      "perspectiveSha256": "32e6809afec5fce6d40eeafd197596fbfa8e4111eb992fbe0b2ccb2dab6186c5",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AT.L2-3.2.3",
+      "perspectiveSha256": "ecdfdfac6ac341bd8432916ef40678b0d9357b6470603f994a92054d65f2a699",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.1",
+      "perspectiveSha256": "a3394ba85f9d468d93bf4d514d9c631a3b474b0ac3f6a6c26a6f915df89f55ef",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.2",
+      "perspectiveSha256": "f24489541d37f446c90ac43088fa3d31687214225461eeaf1f5d8b3392d8df8d",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.3",
+      "perspectiveSha256": "6977613afcf8fd410a7da103fc2381030937b4fae6e02c3486e8a8aa3b9ec771",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.4",
+      "perspectiveSha256": "4a377f28549c71c4f36eb40148c1a5491e104fa91268b7825482bfde77f6c226",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.5",
+      "perspectiveSha256": "5ce5d361aa292becd9e3072f23cca2c7b097bcf70b3cd612be63de8e4ca82dd0",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.6",
+      "perspectiveSha256": "e8a802bb0f5413f0abe859b34af408e3b7bc3691959844c229e781fb9c657a1c",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.7",
+      "perspectiveSha256": "74862a1167075f8b2b4636067722729eb64ace2230144e6f63a94566488a25ac",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.8",
+      "perspectiveSha256": "3385427aaa0481125193124e756bf8a5acaa631cdc4890d5559d88f277e1e74a",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.9",
+      "perspectiveSha256": "2ee18db5eccf14d1836c0f0cfed4add3f09ceac6d6f91ef3665925af887591c5",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.1",
+      "perspectiveSha256": "1c6f257379f458ee42bfee360478a8b802fbd90386ec7cc009db71443ad7d489",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.2",
+      "perspectiveSha256": "cbad2b396fb2407b523ca7d16c87859ff4bbc416a1c6891f169505e9b93d12a6",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.3",
+      "perspectiveSha256": "8abbf813b68d873612b8e9703c9a27d8abdb9bab34740641546754cfe3d9367d",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.4",
+      "perspectiveSha256": "2cec6250e57798043917ceb79193e374f5b63e0f861fef1697660a9fa17a5aae",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.5",
+      "perspectiveSha256": "a97dc2784dc24a1f6b6d641b4aafbc6d12c2f4e5183441b93f7a7d0d04ed4349",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f", "g", "h"],
+          "locations": ["compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.6",
+      "perspectiveSha256": "ff380b73ed77c3fd03037b9ba365f41313e0bac4a401b3702afac55e61b92029",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.7",
+      "perspectiveSha256": "a69777996d30f734e9aca44339444e530836c22cc004f568884d7d3a0da83ad1",
+      "mappings": [
+        {
+          "labels": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k",
+            "l",
+            "m",
+            "n",
+            "o"
+          ],
+          "locations": ["compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.8",
+      "perspectiveSha256": "17de270f6dfb8ec7ae09b79994e9f0f1a7f8cd56bcd569f10932d4c741d53d39",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.9",
+      "perspectiveSha256": "404affbf105caa17ae306806064f8fe1b4413c50a5a17de15054109b8f72affb",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.1",
+      "perspectiveSha256": "59d6f51600126b961d815847ea34b28e393c85e4b53cccb36a381dc0ec1f4e99",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.2",
+      "perspectiveSha256": "76e508b921f7d8bb91fba6b68a46790820a7b947e0114e66d1dafd56e6dda21c",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.3",
+      "perspectiveSha256": "40a00ba97f66ca0f7423d3ec73c0c32fcb7f2434fe8d78abc2208377c030de94",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.4",
+      "perspectiveSha256": "9a9da6cd2361ef409c39fdc957249de2374fa5a1fc7dbb44698ac95fed83021e",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.5",
+      "perspectiveSha256": "ee8c926dc83c152dc9f5e0bbd22dc8df73215710bc448d91eb1c5ad60e4993ee",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.6",
+      "perspectiveSha256": "8a9cbd96a28055496d2ef6af2d00dce827b53c70c502f2b0f3a5d83065937d8b",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.7",
+      "perspectiveSha256": "753f3cbfa43cf0fe9841bc4c1e5fa7fe7d3aa4e6c63dff7b212f14cf6989a2c5",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.8",
+      "perspectiveSha256": "15f971d53e032cd97c940c726b4990234fdd39a46d6601683f91f4eb2c061817",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.9",
+      "perspectiveSha256": "40572511fd19d48fe570d0b9ddd9f7ad8d5522363e642cde99354f89d88ce9ed",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.10",
+      "perspectiveSha256": "2ecb50cb434b24dc26d883c9c0cdf3cfeda2313a3efa18358cb384aea53c75fc",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.11",
+      "perspectiveSha256": "fa8977cdab25fdfe98c5a1522f50c14c5243f06d666c0e19b8462f5523ad0ac4",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IR.L2-3.6.1",
+      "perspectiveSha256": "91503c9120bb7e493bcf68c709d89547ff49aff838711eccd3dec34aaf493ea4",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f", "g"],
+          "locations": ["technical.focus", "beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "IR.L2-3.6.2",
+      "perspectiveSha256": "06553525af727091b1ed138e555b3826c774991321f1317f33e6df3f8cd10085",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IR.L2-3.6.3",
+      "perspectiveSha256": "d215aeb2a2450dfdbb0e1ab12e84928c0ba8caab5ea6ede632a110b60dd7ee3e",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MA.L2-3.7.1",
+      "perspectiveSha256": "0dc422abd4363f13043f340f463b8f25a41c9cfd1e80c07c08e555ef5ca248b1",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MA.L2-3.7.2",
+      "perspectiveSha256": "b122f173897d6f4ccb79c0ec920d2ff399005c733dafe73db3eec77bf8465400",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MA.L2-3.7.3",
+      "perspectiveSha256": "ec29c9cbc4f83627544ef069cb0595c9fa2fac69faa9bd7b330bf1689834098c",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MA.L2-3.7.4",
+      "perspectiveSha256": "08ae65b24e62ba25b46105c8e61f789b8ee2d12c654c955721258ca5754846b2",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MA.L2-3.7.5",
+      "perspectiveSha256": "94b9e0d8710854e15db38336c5690edcb3a97f32493da703f5b8d753ecb0b595",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MA.L2-3.7.6",
+      "perspectiveSha256": "6156e6d127a32f368c3f31ff0645949d905fc8aff2f02bc154feb3c3b044acb0",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.1",
+      "perspectiveSha256": "5257408b178b64ffed6d481b681189f28d6a15bcb572b1c9722711b909879402",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.2",
+      "perspectiveSha256": "c67c85f155f868304e06492a836923d7bb9aaed11b007a75ed5a34f0d1c36218",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.3",
+      "perspectiveSha256": "3e4a7deb01bf2bfd3a552c55cbc0352aa73803b8d39ea6909ac12c2cfa8c6418",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.4",
+      "perspectiveSha256": "0033361c912b47b4b53c5ff5cbb50ada812144e56ef231a3ce7bc551b62d600b",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.5",
+      "perspectiveSha256": "180a78b12afb003972d46f92db3ff36927e727ee0938a433271cf6ddd2d35bdc",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.6",
+      "perspectiveSha256": "bc46ae0d9dcdab76b8d8fba2526e73a3507594a3e73eab57944f0d39fd3242d3",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["compliance.focus", "beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.7",
+      "perspectiveSha256": "43da9e367923541459e61f8df5665d6c9d5e1a85fa80b01b6f5ff70d64849bc4",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.8",
+      "perspectiveSha256": "53260c2a002aa602f95b85adc07f15169db6daf862f4d2f8bf9c2efe90dee842",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.9",
+      "perspectiveSha256": "c292497f88e8d787860b45a2904530772b7dd73de545a6d29ddfa3d8d2f440fa",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "PS.L2-3.9.1",
+      "perspectiveSha256": "9e79ae67b340b3755a4b4e3037082432cc66931f0972e637f7d6ecfc4d27a178",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus", "beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "PS.L2-3.9.2",
+      "perspectiveSha256": "4fa8ee803e78de5ca970226dd86b2f0b2d0a668ee5c4c406b30de89f466093a8",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"],
+          "explanation": "Establish a policy or process that ties access and credential termination to personnel actions, then carry it out consistently with the departure or transfer. A transfer changes the access needed for the new role; identify and terminate the former access and credentials as appropriate to that action. Protect the system during the transition and afterward."
+        },
+        {
+          "labels": ["c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.1",
+      "perspectiveSha256": "aab4594542d7ede11b291768f20e366bafdc731db66e8cf4a85c56c4975f40d6",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.2",
+      "perspectiveSha256": "53d1ffa2238531249808f8c178149df844b7ae4c9afe43ae886347b862f3c6a6",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.3",
+      "perspectiveSha256": "77ad5ce8a333335c64a1ab495405bd2c5c1f7fd407bf55f890643f9ce554e4a9",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.4",
+      "perspectiveSha256": "12dbff48c85051fd15dd8de1701cddffb36dda5a232ff38bcf2e5edbf5d78508",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.5",
+      "perspectiveSha256": "1ccdeca7010a2f7323586ea4dcd2989b8871fe34337b2828663d8f3d1e7c2a08",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.6",
+      "perspectiveSha256": "6793ccd6a86481300f4bfa9344350984dc9d724a48ceb54e56ca5b8d92ae78e7",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "RA.L2-3.11.1",
+      "perspectiveSha256": "56281288df495fe47722cdb60e7eb9539c532dace168c03063ed9eadbf885890",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "RA.L2-3.11.2",
+      "perspectiveSha256": "0ae690dfbb3fe4edf9ab15a8da8fe20dcbbe2b313dacf6e4f91a8c59fc36fdb2",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "RA.L2-3.11.3",
+      "perspectiveSha256": "9e042bb3c0a939efa5cfe01f3fe31a5d86ae6341553a3090d527e2a6a5f2a785",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CA.L2-3.12.1",
+      "perspectiveSha256": "9bcce96f6fe6b313c0edce72a28c87531a1de215a39c380452b1313abcab178f",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CA.L2-3.12.2",
+      "perspectiveSha256": "59aab2c983809c13dfa4eb34b0590cc999e1661c193829ccfb134462b46a1987",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CA.L2-3.12.3",
+      "perspectiveSha256": "426e8f5ef4fc5f44e06a27ce3f217305b1a518f0f621cd893b118ea93ef46d1d",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CA.L2-3.12.4",
+      "perspectiveSha256": "fccf8af438bdf157ab8d17a284031291c12f782cf971b4a66773057894cbe41f",
+      "mappings": [
+        {
+          "labels": ["d"],
+          "locations": ["beginner.meaning", "technical.focus"],
+          "explanation": "Identify the requirements that the designated authority has identified and approved as non-applicable. Record that determination; a blank section or a team deciding a safeguard is inconvenient does not establish the required authority approval."
+        },
+        {
+          "labels": ["g", "h"],
+          "locations": ["beginner.meaning", "technical.focus"],
+          "explanation": "Define how frequently the system security plan will be updated, and actually update it on that schedule. The pinned guide’s Further Discussion says at least annually. Keep the plan aligned with the system it describes; a schedule alone does not show that updates occurred."
+        },
+        {
+          "labels": ["a", "b", "c", "e", "f"],
+          "locations": ["beginner.meaning", "technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.1",
+      "perspectiveSha256": "cd7651b9ed7c240b633bf5dddfc5d6ea8e21758e105a29790f4e92d341973bf8",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f", "g", "h"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.2",
+      "perspectiveSha256": "2e54a60805464eaa8346d772aa4ff2621a593e9eb985b60878e8be156b9fa849",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.3",
+      "perspectiveSha256": "50a04bcd3d328c6f924450e692963d77f02be237bc820b3d5aff5dc6fd303aaf",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.4",
+      "perspectiveSha256": "4f63dc46a52474d932d15045ed376cd208eaf497c65fe777a16b3af694d8382c",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.5",
+      "perspectiveSha256": "1cd98d53074905228a8cb2f4f07745ec929ece1caa4a536180640cbe021b84c4",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.6",
+      "perspectiveSha256": "273fac4613e23314c33112c280d9fb000094eb10fc4df9a8f3ffbd747660381f",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.7",
+      "perspectiveSha256": "3b8a8f4cd9a18c489d29d0358fa4ebc2b9f2558cc06f6d8fea0f2fc75ea84000",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus", "beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.8",
+      "perspectiveSha256": "66a7b364cd7ea4bc55560d6ed68160d294014756c5e90d0e0467f8edeb9ff99a",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.9",
+      "perspectiveSha256": "3c87c1161ea21e5edc1fc1e81c13a9f5b015250d70279971fb4e949eea800a1c",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.10",
+      "perspectiveSha256": "6139eeafc22bca579de7b392b05d204cd7163b4a3824a756672ef5feb7036607",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.11",
+      "perspectiveSha256": "823771bd173d8b4058e6dafe3ef638d641bd6b3913461ee40c9a62f1ff0d4fc1",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.12",
+      "perspectiveSha256": "db3689c9dbec896369d892533bdd40a32172b1b28960d2d454b700928da3aa8f",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.13",
+      "perspectiveSha256": "b017af83df5fa2e8f6ce3814d52fb959cc6fdc85a1893d12a63cb9a795c3692f",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.14",
+      "perspectiveSha256": "b9162d335a9569c0a76b03a037ce1e54f311aa6bc2d9179df420623922fcd377",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.15",
+      "perspectiveSha256": "ee9798e5d9e56c9f54f26b9f5311e4d538c5b6b88699f8d7e5e1a8e5eaa949e3",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.16",
+      "perspectiveSha256": "9c731531376e6d0d800d354d70fc2d28053d5dcac57f7e9d8a84756c3806d9e9",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.1",
+      "perspectiveSha256": "dfe807efeed91b38184d392a3d6e2222da9552b3ddec3601101097bbbcb8725d",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e", "f"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.2",
+      "perspectiveSha256": "82d15520bc8593385d7cb3208b2f461d27794828d898aacd1cd3b0129f404d68",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.3",
+      "perspectiveSha256": "724afdbe05a153c2dee97bc782c26bfce2bd3a256015c6f36ed1ac187e128f52",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.4",
+      "perspectiveSha256": "1db8e56efe77ff944678b1879f88c5e4e78ea3b623e6b128467b76fa6fedf941",
+      "mappings": [
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.5",
+      "perspectiveSha256": "94fca4adb1ff30565d579af2c15f350bd88c870df9610845eca702eca70e8eb4",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.6",
+      "perspectiveSha256": "eb2962bd3494eb3dd0701886972b9ed63c4b3f2abd537a29a7e59204d0689dcf",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.7",
+      "perspectiveSha256": "b278f88befbdfce086042693c7b5dac5d053aa8bd70a2972a608a4186495f1f9",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L3-3.1.2e",
+      "perspectiveSha256": "4d712b372e8502eb245670f68f95468d1db4a09a29d4d721afb73b8a95673e3d",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": ["beginner.meaning", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AC.L3-3.1.3e",
+      "perspectiveSha256": "23a5dedd38cb859e5de7931033203d67fccbd997723987c484144ae1debd1a1b",
+      "mappings": [
+        {
+          "labels": ["ODP1", "a", "b"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "AT.L3-3.2.1e",
+      "perspectiveSha256": "030cfc2564ede379a592aa1bf1f016a28725ee8b38995c7d8006036aabcb01af",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": [
+            "technical.focus",
+            "beginner.meaning",
+            "compliance.focus"
+          ]
+        }
+      ]
+    },
+    {
+      "controlId": "AT.L3-3.2.2e",
+      "perspectiveSha256": "5168207a35aad0331610dd7f517971e64c1f3e001c3b90b0b171bdf872b1d0ee",
+      "mappings": [
+        {
+          "labels": ["c"],
+          "locations": ["technical.focus", "compliance.focus"],
+          "explanation": "Identify the people involved in the training and their supervisors. Knowing only which job categories the exercise covers is different from knowing which participants and supervisors should receive its feedback."
+        },
+        {
+          "labels": ["a", "b"],
+          "locations": ["technical.focus", "compliance.focus"]
+        },
+        {
+          "labels": ["d", "e"],
+          "locations": [
+            "technical.focus",
+            "compliance.focus",
+            "beginner.meaning"
+          ]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L3-3.4.1e",
+      "perspectiveSha256": "8f9be24f340d1ca46e8020ec1d88eb92d7658a4806beaca9a498d5d3296de013",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L3-3.4.2e",
+      "perspectiveSha256": "0d8722605c75425ed751ef65cd6a120ea1004fffc9be495837cb5b573b500f00",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["compliance.focus", "beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "CM.L3-3.4.3e",
+      "perspectiveSha256": "a7fe3718105a3c2b90ec8fea0ddc639cf73e475e69ab8427ca577f5731eeda3c",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["beginner.meaning", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L3-3.5.1e",
+      "perspectiveSha256": "6e5d89a8078a852f67e7a378379c763eeaeec8422f508d497d12c1993d19fbe7",
+      "mappings": [
+        {
+          "labels": ["ODP1", "a", "b", "c"],
+          "locations": ["technical.focus", "beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "IA.L3-3.5.3e",
+      "perspectiveSha256": "457581d905e542dc480270dfaee94b40587ed52528c545e84fbf0710d8b20b3a",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["beginner.meaning", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IR.L3-3.6.1e",
+      "perspectiveSha256": "7fd0b768a79c24e8a4955ae28ce9fc943ed14ab52e1c572c9413b75e0b57b630",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "IR.L3-3.6.2e",
+      "perspectiveSha256": "77508328fdd27a5e3ec4fcb80bf8e8f21f28b7dff1f821ff0cb04367edb94b9c",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["beginner.meaning", "technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "PS.L3-3.9.2e",
+      "perspectiveSha256": "c73334e2e5878be92987af1f4fd4d5779ef8d3949397c157bb48b32a729ac8e0",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.1e",
+      "perspectiveSha256": "f0fa658cc00db563fb41ba54939b8e33d84cf3f722abf07ee6d16c4f16c19b5e",
+      "mappings": [
+        {
+          "labels": ["ODP1", "a", "b", "c", "d", "e", "f"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.2e",
+      "perspectiveSha256": "8ac34c349393b0a4817ea0618fc0c168470ab8adf9a9d70c736cba6b3ea95f99",
+      "mappings": [
+        {
+          "labels": ["ODP4", "a", "b", "c"],
+          "locations": [
+            "technical.focus",
+            "beginner.meaning",
+            "compliance.focus"
+          ]
+        }
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.3e",
+      "perspectiveSha256": "c0f6c53e152bbf38dd7ca457725334660968e218ad85678a12d58b406ade7afd",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.4e",
+      "perspectiveSha256": "9e6f9d76048d45aa52794c844ec3fdabd681c2a14e9a17c7fe022c9ea71b27f1",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["technical.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.5e",
+      "perspectiveSha256": "acb5e4b38c3f916a9a9460455128cef14c4a5134f8036da566736b9edd125f48",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus", "beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.6e",
+      "perspectiveSha256": "91f205c9cecd0c44e209096429a1d72eca28bc1b3724af0e5f3a461512d32833",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.7e",
+      "perspectiveSha256": "d9d0517051489c46503a95f15270211fe106cf510526cb2085f5cee75e0dfccd",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d"],
+          "locations": ["technical.focus", "beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "CA.L3-3.12.1e",
+      "perspectiveSha256": "e1769408291a7c9bd62be7c00335af607c2a2c6c21b95ef3bac78e5343f2bb2e",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c"],
+          "locations": ["beginner.meaning", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SC.L3-3.13.4e",
+      "perspectiveSha256": "428202953149e20450d01154398105b78ae9a258f89af3df6dc6b6b0f9328a9d",
+      "mappings": [
+        {
+          "labels": ["ODP1", "ODP2", "ODP3"],
+          "locations": ["technical.focus", "beginner.meaning"],
+          "explanation": "Select physical isolation, logical isolation, or both. Define the physical techniques if physical isolation is selected, and define the logical techniques if logical isolation is selected. These conditional definitions do not require every organization to select both options."
+        },
+        {
+          "labels": ["a"],
+          "locations": ["technical.focus", "beginner.meaning"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L3-3.14.1e",
+      "perspectiveSha256": "6798205f4d1265aefccc80827cba565ef43f0646686f73f4e933e1fcd6a95f60",
+      "mappings": [
+        {
+          "labels": ["ODP1", "a", "b"],
+          "locations": ["technical.focus", "compliance.focus"]
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L3-3.14.3e",
+      "perspectiveSha256": "010623e44df3d5c6a880857c24fa60f2b65f720158c06c1854b0e5ab8669aa49",
+      "mappings": [
+        {
+          "labels": ["a", "b"],
+          "locations": [],
+          "unresolvedQuestion": "The guide’s determination [b] describes systems not included in specialized assets, while the requirement and discussion describe specialized-asset inclusion or segregation. A qualified reviewer must reconcile the scope and both determinations with applicable Level 3 scoping guidance before these explanations can be marked mapped."
+        }
+      ]
+    },
+    {
+      "controlId": "SI.L3-3.14.6e",
+      "perspectiveSha256": "2d21ed4cbcdd95ce58266e2e862fca3e4c71fa9b5e03bbed8a16957d4232b82a",
+      "mappings": [
+        {
+          "labels": ["a", "b", "c", "d", "e"],
+          "locations": ["technical.focus", "compliance.focus"]
+        },
+        {
+          "labels": ["ODP1"],
+          "locations": ["technical.focus", "compliance.focus"],
+          "explanation": "Name the external organizations from which threat indicators and effective mitigations are obtained. Defining the providers is different from identifying individual indicators or mitigation information received from them."
+        }
+      ]
+    }
+  ]
+}

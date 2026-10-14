@@ -84,9 +84,10 @@ export function EditorialReviewContext({
           </>
         ) : (
           <p>
-            Objective-by-objective teaching coverage has not been mapped for
-            this entry. The AI comparison count is not a curriculum completion
-            score.
+            No practice-specific statement quotations are shown here. Use the
+            assessment coverage link above for the complete source inventory and
+            explanation mappings. The AI comparison count is not a curriculum
+            completion score.
           </p>
         )}
         <details className="source-details">

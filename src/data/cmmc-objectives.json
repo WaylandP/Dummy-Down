@@ -1,0 +1,4693 @@
+{
+  "schemaVersion": 1,
+  "frameworkId": "cmmc",
+  "editionId": "cmmc-2-13-sep-2024",
+  "sourceVerification": "pinned-snapshot-verified",
+  "sourceSha256": {
+    "cmmc-assessment-l1-213": "88116fa807b3685703f08c1992580ad0cfbc22ad2bcf76f99378fadf964f7368",
+    "cmmc-assessment-l2-213": "0dcaba1626a0d23893981d74dd3f0f2338fff54cece67d81bc811ce76392d867",
+    "cmmc-assessment-l3-213": "6601eb20e8f1490b49c4addd83505eb269062abb3c2bae9b5256449187048ef3"
+  },
+  "objectives": [
+    {
+      "id": "AC.L1-b.1.i[a]",
+      "controlId": "AC.L1-b.1.i",
+      "label": "a",
+      "kind": "determination",
+      "text": "authorized users are identified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 16,
+      "printedPage": 12
+    },
+    {
+      "id": "AC.L1-b.1.i[b]",
+      "controlId": "AC.L1-b.1.i",
+      "label": "b",
+      "kind": "determination",
+      "text": "processes acting on behalf of authorized users are identified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 16,
+      "printedPage": 12
+    },
+    {
+      "id": "AC.L1-b.1.i[c]",
+      "controlId": "AC.L1-b.1.i",
+      "label": "c",
+      "kind": "determination",
+      "text": "devices (and other systems) authorized to connect to the system are identified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 16,
+      "printedPage": 12
+    },
+    {
+      "id": "AC.L1-b.1.i[d]",
+      "controlId": "AC.L1-b.1.i",
+      "label": "d",
+      "kind": "determination",
+      "text": "system access is limited to authorized users;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 16,
+      "printedPage": 12
+    },
+    {
+      "id": "AC.L1-b.1.i[e]",
+      "controlId": "AC.L1-b.1.i",
+      "label": "e",
+      "kind": "determination",
+      "text": "system access is limited to processes acting on behalf of authorized users; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 16,
+      "printedPage": 12
+    },
+    {
+      "id": "AC.L1-b.1.i[f]",
+      "controlId": "AC.L1-b.1.i",
+      "label": "f",
+      "kind": "determination",
+      "text": "system access is limited to authorized devices (including other systems).",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 16,
+      "printedPage": 12
+    },
+    {
+      "id": "AC.L1-b.1.ii[a]",
+      "controlId": "AC.L1-b.1.ii",
+      "label": "a",
+      "kind": "determination",
+      "text": "the types of transactions and functions that authorized users are permitted to execute are defined; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 19,
+      "printedPage": 15
+    },
+    {
+      "id": "AC.L1-b.1.ii[b]",
+      "controlId": "AC.L1-b.1.ii",
+      "label": "b",
+      "kind": "determination",
+      "text": "system access is limited to the defined types of transactions and functions for authorized users.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 19,
+      "printedPage": 15
+    },
+    {
+      "id": "AC.L1-b.1.iii[a]",
+      "controlId": "AC.L1-b.1.iii",
+      "label": "a",
+      "kind": "determination",
+      "text": "connections to external systems are identified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 21,
+      "printedPage": 17
+    },
+    {
+      "id": "AC.L1-b.1.iii[b]",
+      "controlId": "AC.L1-b.1.iii",
+      "label": "b",
+      "kind": "determination",
+      "text": "the use of external systems is identified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 21,
+      "printedPage": 17
+    },
+    {
+      "id": "AC.L1-b.1.iii[c]",
+      "controlId": "AC.L1-b.1.iii",
+      "label": "c",
+      "kind": "determination",
+      "text": "connections to external systems are verified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 21,
+      "printedPage": 17
+    },
+    {
+      "id": "AC.L1-b.1.iii[d]",
+      "controlId": "AC.L1-b.1.iii",
+      "label": "d",
+      "kind": "determination",
+      "text": "the use of external systems is verified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 21,
+      "printedPage": 17
+    },
+    {
+      "id": "AC.L1-b.1.iii[e]",
+      "controlId": "AC.L1-b.1.iii",
+      "label": "e",
+      "kind": "determination",
+      "text": "connections to external systems are controlled/limited; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 21,
+      "printedPage": 17
+    },
+    {
+      "id": "AC.L1-b.1.iii[f]",
+      "controlId": "AC.L1-b.1.iii",
+      "label": "f",
+      "kind": "determination",
+      "text": "the use of external systems is controlled/limited.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 21,
+      "printedPage": 17
+    },
+    {
+      "id": "AC.L1-b.1.iv[a]",
+      "controlId": "AC.L1-b.1.iv",
+      "label": "a",
+      "kind": "determination",
+      "text": "individuals authorized to post or process information on publicly accessible systems are identified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 24,
+      "printedPage": 20
+    },
+    {
+      "id": "AC.L1-b.1.iv[b]",
+      "controlId": "AC.L1-b.1.iv",
+      "label": "b",
+      "kind": "determination",
+      "text": "procedures to ensure [FCI] is not posted or processed on publicly accessible systems are identified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 24,
+      "printedPage": 20
+    },
+    {
+      "id": "AC.L1-b.1.iv[c]",
+      "controlId": "AC.L1-b.1.iv",
+      "label": "c",
+      "kind": "determination",
+      "text": "a review process is in place prior to posting of any content to publicly accessible systems;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 24,
+      "printedPage": 20
+    },
+    {
+      "id": "AC.L1-b.1.iv[d]",
+      "controlId": "AC.L1-b.1.iv",
+      "label": "d",
+      "kind": "determination",
+      "text": "content on publicly accessible systems is reviewed to ensure that it does not include [FCI]; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 24,
+      "printedPage": 20
+    },
+    {
+      "id": "AC.L1-b.1.iv[e]",
+      "controlId": "AC.L1-b.1.iv",
+      "label": "e",
+      "kind": "determination",
+      "text": "mechanisms are in place to remove and address improper posting of [FCI].",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 24,
+      "printedPage": 20
+    },
+    {
+      "id": "IA.L1-b.1.v[a]",
+      "controlId": "IA.L1-b.1.v",
+      "label": "a",
+      "kind": "determination",
+      "text": "system users are identified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 26,
+      "printedPage": 22
+    },
+    {
+      "id": "IA.L1-b.1.v[b]",
+      "controlId": "IA.L1-b.1.v",
+      "label": "b",
+      "kind": "determination",
+      "text": "processes acting on behalf of users are identified; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 26,
+      "printedPage": 22
+    },
+    {
+      "id": "IA.L1-b.1.v[c]",
+      "controlId": "IA.L1-b.1.v",
+      "label": "c",
+      "kind": "determination",
+      "text": "devices accessing the system are identified.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 26,
+      "printedPage": 22
+    },
+    {
+      "id": "IA.L1-b.1.vi[a]",
+      "controlId": "IA.L1-b.1.vi",
+      "label": "a",
+      "kind": "determination",
+      "text": "the identity of each user is authenticated or verified as a prerequisite to system access;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 28,
+      "printedPage": 24
+    },
+    {
+      "id": "IA.L1-b.1.vi[b]",
+      "controlId": "IA.L1-b.1.vi",
+      "label": "b",
+      "kind": "determination",
+      "text": "the identity of each process acting on behalf of a user is authenticated or verified as a prerequisite to system access; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 28,
+      "printedPage": 24
+    },
+    {
+      "id": "IA.L1-b.1.vi[c]",
+      "controlId": "IA.L1-b.1.vi",
+      "label": "c",
+      "kind": "determination",
+      "text": "the identity of each device accessing or connecting to the system is authenticated or verified as a prerequisite to system access.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 28,
+      "printedPage": 24
+    },
+    {
+      "id": "MP.L1-b.1.vii[a]",
+      "controlId": "MP.L1-b.1.vii",
+      "label": "a",
+      "kind": "determination",
+      "text": "system media containing [FCI] is sanitized or destroyed before disposal; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 31,
+      "printedPage": 27
+    },
+    {
+      "id": "MP.L1-b.1.vii[b]",
+      "controlId": "MP.L1-b.1.vii",
+      "label": "b",
+      "kind": "determination",
+      "text": "system media containing [FCI] is sanitized before it is released for reuse.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 31,
+      "printedPage": 27
+    },
+    {
+      "id": "PE.L1-b.1.viii[a]",
+      "controlId": "PE.L1-b.1.viii",
+      "label": "a",
+      "kind": "determination",
+      "text": "authorized individuals allowed physical access are identified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 33,
+      "printedPage": 29
+    },
+    {
+      "id": "PE.L1-b.1.viii[b]",
+      "controlId": "PE.L1-b.1.viii",
+      "label": "b",
+      "kind": "determination",
+      "text": "physical access to organizational systems is limited to authorized individuals;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 33,
+      "printedPage": 29
+    },
+    {
+      "id": "PE.L1-b.1.viii[c]",
+      "controlId": "PE.L1-b.1.viii",
+      "label": "c",
+      "kind": "determination",
+      "text": "physical access to equipment is limited to authorized individuals; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 33,
+      "printedPage": 29
+    },
+    {
+      "id": "PE.L1-b.1.viii[d]",
+      "controlId": "PE.L1-b.1.viii",
+      "label": "d",
+      "kind": "determination",
+      "text": "physical access to operating environments is limited to authorized individuals.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 33,
+      "printedPage": 29
+    },
+    {
+      "id": "PE.L1-b.1.ix[a]",
+      "controlId": "PE.L1-b.1.ix",
+      "label": "a",
+      "kind": "determination",
+      "text": "visitors are escorted;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 35,
+      "printedPage": 31
+    },
+    {
+      "id": "PE.L1-b.1.ix[b]",
+      "controlId": "PE.L1-b.1.ix",
+      "label": "b",
+      "kind": "determination",
+      "text": "visitor activity is monitored;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 35,
+      "printedPage": 31
+    },
+    {
+      "id": "PE.L1-b.1.ix[c]",
+      "controlId": "PE.L1-b.1.ix",
+      "label": "c",
+      "kind": "determination",
+      "text": "audit logs of physical access are maintained;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 35,
+      "printedPage": 31
+    },
+    {
+      "id": "PE.L1-b.1.ix[d]",
+      "controlId": "PE.L1-b.1.ix",
+      "label": "d",
+      "kind": "determination",
+      "text": "physical access devices are identified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 35,
+      "printedPage": 31
+    },
+    {
+      "id": "PE.L1-b.1.ix[e]",
+      "controlId": "PE.L1-b.1.ix",
+      "label": "e",
+      "kind": "determination",
+      "text": "physical access devices are controlled; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 35,
+      "printedPage": 31
+    },
+    {
+      "id": "PE.L1-b.1.ix[f]",
+      "controlId": "PE.L1-b.1.ix",
+      "label": "f",
+      "kind": "determination",
+      "text": "physical access devices are managed.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 35,
+      "printedPage": 31
+    },
+    {
+      "id": "SC.L1-b.1.x[a]",
+      "controlId": "SC.L1-b.1.x",
+      "label": "a",
+      "kind": "determination",
+      "text": "the external system boundary is defined;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "SC.L1-b.1.x[b]",
+      "controlId": "SC.L1-b.1.x",
+      "label": "b",
+      "kind": "determination",
+      "text": "key internal system boundaries are defined;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "SC.L1-b.1.x[c]",
+      "controlId": "SC.L1-b.1.x",
+      "label": "c",
+      "kind": "determination",
+      "text": "communications are monitored at the external system boundary;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "SC.L1-b.1.x[d]",
+      "controlId": "SC.L1-b.1.x",
+      "label": "d",
+      "kind": "determination",
+      "text": "communications are monitored at key internal boundaries;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "SC.L1-b.1.x[e]",
+      "controlId": "SC.L1-b.1.x",
+      "label": "e",
+      "kind": "determination",
+      "text": "communications are controlled at the external system boundary;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "SC.L1-b.1.x[f]",
+      "controlId": "SC.L1-b.1.x",
+      "label": "f",
+      "kind": "determination",
+      "text": "communications are controlled at key internal boundaries;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "SC.L1-b.1.x[g]",
+      "controlId": "SC.L1-b.1.x",
+      "label": "g",
+      "kind": "determination",
+      "text": "communications are protected at the external system boundary; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "SC.L1-b.1.x[h]",
+      "controlId": "SC.L1-b.1.x",
+      "label": "h",
+      "kind": "determination",
+      "text": "communications are protected at key internal boundaries.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "SC.L1-b.1.xi[a]",
+      "controlId": "SC.L1-b.1.xi",
+      "label": "a",
+      "kind": "determination",
+      "text": "publicly accessible system components are identified; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 41,
+      "printedPage": 37
+    },
+    {
+      "id": "SC.L1-b.1.xi[b]",
+      "controlId": "SC.L1-b.1.xi",
+      "label": "b",
+      "kind": "determination",
+      "text": "subnetworks for publicly accessible system components are physically or logically separated from internal networks.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 41,
+      "printedPage": 37
+    },
+    {
+      "id": "SI.L1-b.1.xii[a]",
+      "controlId": "SI.L1-b.1.xii",
+      "label": "a",
+      "kind": "determination",
+      "text": "the time within which to identify system flaws is specified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 43,
+      "printedPage": 39
+    },
+    {
+      "id": "SI.L1-b.1.xii[b]",
+      "controlId": "SI.L1-b.1.xii",
+      "label": "b",
+      "kind": "determination",
+      "text": "system flaws are identified within the specified time frame;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 43,
+      "printedPage": 39
+    },
+    {
+      "id": "SI.L1-b.1.xii[c]",
+      "controlId": "SI.L1-b.1.xii",
+      "label": "c",
+      "kind": "determination",
+      "text": "the time within which to report system flaws is specified;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 43,
+      "printedPage": 39
+    },
+    {
+      "id": "SI.L1-b.1.xii[d]",
+      "controlId": "SI.L1-b.1.xii",
+      "label": "d",
+      "kind": "determination",
+      "text": "system flaws are reported within the specified time frame;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 43,
+      "printedPage": 39
+    },
+    {
+      "id": "SI.L1-b.1.xii[e]",
+      "controlId": "SI.L1-b.1.xii",
+      "label": "e",
+      "kind": "determination",
+      "text": "the time within which to correct system flaws is specified; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 43,
+      "printedPage": 39
+    },
+    {
+      "id": "SI.L1-b.1.xii[f]",
+      "controlId": "SI.L1-b.1.xii",
+      "label": "f",
+      "kind": "determination",
+      "text": "system flaws are corrected within the specified time frame.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 43,
+      "printedPage": 39
+    },
+    {
+      "id": "SI.L1-b.1.xiii[a]",
+      "controlId": "SI.L1-b.1.xiii",
+      "label": "a",
+      "kind": "determination",
+      "text": "designated locations for malicious code protection are identified; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 46,
+      "printedPage": 42
+    },
+    {
+      "id": "SI.L1-b.1.xiii[b]",
+      "controlId": "SI.L1-b.1.xiii",
+      "label": "b",
+      "kind": "determination",
+      "text": "protection from malicious code at designated locations is provided.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 46,
+      "printedPage": 42
+    },
+    {
+      "id": "SI.L1-b.1.xiv[a]",
+      "controlId": "SI.L1-b.1.xiv",
+      "label": "a",
+      "kind": "determination",
+      "text": "malicious code protection mechanisms are updated when new releases are available.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 49,
+      "printedPage": 45
+    },
+    {
+      "id": "SI.L1-b.1.xv[a]",
+      "controlId": "SI.L1-b.1.xv",
+      "label": "a",
+      "kind": "determination",
+      "text": "the frequency for malicious code scans is defined;",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 51,
+      "printedPage": 47
+    },
+    {
+      "id": "SI.L1-b.1.xv[b]",
+      "controlId": "SI.L1-b.1.xv",
+      "label": "b",
+      "kind": "determination",
+      "text": "malicious code scans are performed with the defined frequency; and",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 51,
+      "printedPage": 47
+    },
+    {
+      "id": "SI.L1-b.1.xv[c]",
+      "controlId": "SI.L1-b.1.xv",
+      "label": "c",
+      "kind": "determination",
+      "text": "real-time malicious code scans of files from external sources as files are downloaded, opened, or executed are performed.",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 51,
+      "printedPage": 47
+    },
+    {
+      "id": "AC.L2-3.1.1[a]",
+      "controlId": "AC.L2-3.1.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "authorized users are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 22,
+      "printedPage": 14
+    },
+    {
+      "id": "AC.L2-3.1.1[b]",
+      "controlId": "AC.L2-3.1.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "processes acting on behalf of authorized users are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 22,
+      "printedPage": 14
+    },
+    {
+      "id": "AC.L2-3.1.1[c]",
+      "controlId": "AC.L2-3.1.1",
+      "label": "c",
+      "kind": "determination",
+      "text": "devices (and other systems) authorized to connect to the system are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 22,
+      "printedPage": 14
+    },
+    {
+      "id": "AC.L2-3.1.1[d]",
+      "controlId": "AC.L2-3.1.1",
+      "label": "d",
+      "kind": "determination",
+      "text": "system access is limited to authorized users;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 22,
+      "printedPage": 14
+    },
+    {
+      "id": "AC.L2-3.1.1[e]",
+      "controlId": "AC.L2-3.1.1",
+      "label": "e",
+      "kind": "determination",
+      "text": "system access is limited to processes acting on behalf of authorized users; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 22,
+      "printedPage": 14
+    },
+    {
+      "id": "AC.L2-3.1.1[f]",
+      "controlId": "AC.L2-3.1.1",
+      "label": "f",
+      "kind": "determination",
+      "text": "system access is limited to authorized devices (including other systems).",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 22,
+      "printedPage": 14
+    },
+    {
+      "id": "AC.L2-3.1.2[a]",
+      "controlId": "AC.L2-3.1.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "the types of transactions and functions that authorized users are permitted to execute are defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 25,
+      "printedPage": 17
+    },
+    {
+      "id": "AC.L2-3.1.2[b]",
+      "controlId": "AC.L2-3.1.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "system access is limited to the defined types of transactions and functions for authorized users.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 25,
+      "printedPage": 17
+    },
+    {
+      "id": "AC.L2-3.1.3[a]",
+      "controlId": "AC.L2-3.1.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "information flow control policies are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 27,
+      "printedPage": 19
+    },
+    {
+      "id": "AC.L2-3.1.3[b]",
+      "controlId": "AC.L2-3.1.3",
+      "label": "b",
+      "kind": "determination",
+      "text": "methods and enforcement mechanisms for controlling the flow of CUI are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 27,
+      "printedPage": 19
+    },
+    {
+      "id": "AC.L2-3.1.3[c]",
+      "controlId": "AC.L2-3.1.3",
+      "label": "c",
+      "kind": "determination",
+      "text": "designated sources and destinations (e.g., networks, individuals, and devices) for CUI within the system and between interconnected systems are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 27,
+      "printedPage": 19
+    },
+    {
+      "id": "AC.L2-3.1.3[d]",
+      "controlId": "AC.L2-3.1.3",
+      "label": "d",
+      "kind": "determination",
+      "text": "authorizations for controlling the flow of CUI are defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 27,
+      "printedPage": 19
+    },
+    {
+      "id": "AC.L2-3.1.3[e]",
+      "controlId": "AC.L2-3.1.3",
+      "label": "e",
+      "kind": "determination",
+      "text": "approved authorizations for controlling the flow of CUI are enforced.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 27,
+      "printedPage": 19
+    },
+    {
+      "id": "AC.L2-3.1.4[a]",
+      "controlId": "AC.L2-3.1.4",
+      "label": "a",
+      "kind": "determination",
+      "text": "the duties of individuals requiring separation are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 30,
+      "printedPage": 22
+    },
+    {
+      "id": "AC.L2-3.1.4[b]",
+      "controlId": "AC.L2-3.1.4",
+      "label": "b",
+      "kind": "determination",
+      "text": "responsibilities for duties that require separation are assigned to separate individuals; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 30,
+      "printedPage": 22
+    },
+    {
+      "id": "AC.L2-3.1.4[c]",
+      "controlId": "AC.L2-3.1.4",
+      "label": "c",
+      "kind": "determination",
+      "text": "access privileges that enable individuals to exercise the duties that require separation are granted to separate individuals.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 30,
+      "printedPage": 22
+    },
+    {
+      "id": "AC.L2-3.1.5[a]",
+      "controlId": "AC.L2-3.1.5",
+      "label": "a",
+      "kind": "determination",
+      "text": "privileged accounts are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 32,
+      "printedPage": 24
+    },
+    {
+      "id": "AC.L2-3.1.5[b]",
+      "controlId": "AC.L2-3.1.5",
+      "label": "b",
+      "kind": "determination",
+      "text": "access to privileged accounts is authorized in accordance with the principle of least privilege;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 32,
+      "printedPage": 24
+    },
+    {
+      "id": "AC.L2-3.1.5[c]",
+      "controlId": "AC.L2-3.1.5",
+      "label": "c",
+      "kind": "determination",
+      "text": "security functions are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 32,
+      "printedPage": 24
+    },
+    {
+      "id": "AC.L2-3.1.5[d]",
+      "controlId": "AC.L2-3.1.5",
+      "label": "d",
+      "kind": "determination",
+      "text": "access to security functions is authorized in accordance with the principle of least privilege.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 32,
+      "printedPage": 24
+    },
+    {
+      "id": "AC.L2-3.1.6[a]",
+      "controlId": "AC.L2-3.1.6",
+      "label": "a",
+      "kind": "determination",
+      "text": "nonsecurity functions are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 35,
+      "printedPage": 27
+    },
+    {
+      "id": "AC.L2-3.1.6[b]",
+      "controlId": "AC.L2-3.1.6",
+      "label": "b",
+      "kind": "determination",
+      "text": "users are required to use non-privileged accounts or roles when accessing nonsecurity functions.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 35,
+      "printedPage": 27
+    },
+    {
+      "id": "AC.L2-3.1.7[a]",
+      "controlId": "AC.L2-3.1.7",
+      "label": "a",
+      "kind": "determination",
+      "text": "privileged functions are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 37,
+      "printedPage": 29
+    },
+    {
+      "id": "AC.L2-3.1.7[b]",
+      "controlId": "AC.L2-3.1.7",
+      "label": "b",
+      "kind": "determination",
+      "text": "non-privileged users are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 37,
+      "printedPage": 29
+    },
+    {
+      "id": "AC.L2-3.1.7[c]",
+      "controlId": "AC.L2-3.1.7",
+      "label": "c",
+      "kind": "determination",
+      "text": "non-privileged users are prevented from executing privileged functions; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 37,
+      "printedPage": 29
+    },
+    {
+      "id": "AC.L2-3.1.7[d]",
+      "controlId": "AC.L2-3.1.7",
+      "label": "d",
+      "kind": "determination",
+      "text": "the execution of privileged functions is captured in audit logs.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 37,
+      "printedPage": 29
+    },
+    {
+      "id": "AC.L2-3.1.8[a]",
+      "controlId": "AC.L2-3.1.8",
+      "label": "a",
+      "kind": "determination",
+      "text": "the means of limiting unsuccessful logon attempts is defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 40,
+      "printedPage": 32
+    },
+    {
+      "id": "AC.L2-3.1.8[b]",
+      "controlId": "AC.L2-3.1.8",
+      "label": "b",
+      "kind": "determination",
+      "text": "the defined means of limiting unsuccessful logon attempts is implemented.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 40,
+      "printedPage": 32
+    },
+    {
+      "id": "AC.L2-3.1.9[a]",
+      "controlId": "AC.L2-3.1.9",
+      "label": "a",
+      "kind": "determination",
+      "text": "privacy and security notices required by CUI-specified rules are identified, consistent, and associated with the specific CUI category; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 42,
+      "printedPage": 34
+    },
+    {
+      "id": "AC.L2-3.1.9[b]",
+      "controlId": "AC.L2-3.1.9",
+      "label": "b",
+      "kind": "determination",
+      "text": "privacy and security notices are displayed.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 42,
+      "printedPage": 34
+    },
+    {
+      "id": "AC.L2-3.1.10[a]",
+      "controlId": "AC.L2-3.1.10",
+      "label": "a",
+      "kind": "determination",
+      "text": "the period of inactivity after which the system initiates a session lock is defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 44,
+      "printedPage": 36
+    },
+    {
+      "id": "AC.L2-3.1.10[b]",
+      "controlId": "AC.L2-3.1.10",
+      "label": "b",
+      "kind": "determination",
+      "text": "access to the system and viewing of data is prevented by initiating a session lock after the defined period of inactivity; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 44,
+      "printedPage": 36
+    },
+    {
+      "id": "AC.L2-3.1.10[c]",
+      "controlId": "AC.L2-3.1.10",
+      "label": "c",
+      "kind": "determination",
+      "text": "previously visible information is concealed via a pattern-hiding display after the defined period of inactivity.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 44,
+      "printedPage": 36
+    },
+    {
+      "id": "AC.L2-3.1.11[a]",
+      "controlId": "AC.L2-3.1.11",
+      "label": "a",
+      "kind": "determination",
+      "text": "conditions requiring a user session to terminate are defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 46,
+      "printedPage": 38
+    },
+    {
+      "id": "AC.L2-3.1.11[b]",
+      "controlId": "AC.L2-3.1.11",
+      "label": "b",
+      "kind": "determination",
+      "text": "a user session is automatically terminated after any of the defined conditions occur.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 46,
+      "printedPage": 38
+    },
+    {
+      "id": "AC.L2-3.1.12[a]",
+      "controlId": "AC.L2-3.1.12",
+      "label": "a",
+      "kind": "determination",
+      "text": "remote access sessions are permitted;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 48,
+      "printedPage": 40
+    },
+    {
+      "id": "AC.L2-3.1.12[b]",
+      "controlId": "AC.L2-3.1.12",
+      "label": "b",
+      "kind": "determination",
+      "text": "the types of permitted remote access are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 48,
+      "printedPage": 40
+    },
+    {
+      "id": "AC.L2-3.1.12[c]",
+      "controlId": "AC.L2-3.1.12",
+      "label": "c",
+      "kind": "determination",
+      "text": "remote access sessions are controlled; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 48,
+      "printedPage": 40
+    },
+    {
+      "id": "AC.L2-3.1.12[d]",
+      "controlId": "AC.L2-3.1.12",
+      "label": "d",
+      "kind": "determination",
+      "text": "remote access sessions are monitored.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 48,
+      "printedPage": 40
+    },
+    {
+      "id": "AC.L2-3.1.13[a]",
+      "controlId": "AC.L2-3.1.13",
+      "label": "a",
+      "kind": "determination",
+      "text": "cryptographic mechanisms to protect the confidentiality of remote access sessions are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 51,
+      "printedPage": 43
+    },
+    {
+      "id": "AC.L2-3.1.13[b]",
+      "controlId": "AC.L2-3.1.13",
+      "label": "b",
+      "kind": "determination",
+      "text": "cryptographic mechanisms to protect the confidentiality of remote access sessions are implemented.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 51,
+      "printedPage": 43
+    },
+    {
+      "id": "AC.L2-3.1.14[a]",
+      "controlId": "AC.L2-3.1.14",
+      "label": "a",
+      "kind": "determination",
+      "text": "managed access control points are identified and implemented; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 53,
+      "printedPage": 45
+    },
+    {
+      "id": "AC.L2-3.1.14[b]",
+      "controlId": "AC.L2-3.1.14",
+      "label": "b",
+      "kind": "determination",
+      "text": "remote access is routed through managed network access control points.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 53,
+      "printedPage": 45
+    },
+    {
+      "id": "AC.L2-3.1.15[a]",
+      "controlId": "AC.L2-3.1.15",
+      "label": "a",
+      "kind": "determination",
+      "text": "privileged commands authorized for remote execution are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 55,
+      "printedPage": 47
+    },
+    {
+      "id": "AC.L2-3.1.15[b]",
+      "controlId": "AC.L2-3.1.15",
+      "label": "b",
+      "kind": "determination",
+      "text": "security-relevant information authorized to be accessed remotely is identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 55,
+      "printedPage": 47
+    },
+    {
+      "id": "AC.L2-3.1.15[c]",
+      "controlId": "AC.L2-3.1.15",
+      "label": "c",
+      "kind": "determination",
+      "text": "the execution of the identified privileged commands via remote access is authorized; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 55,
+      "printedPage": 47
+    },
+    {
+      "id": "AC.L2-3.1.15[d]",
+      "controlId": "AC.L2-3.1.15",
+      "label": "d",
+      "kind": "determination",
+      "text": "access to the identified security-relevant information via remote access is authorized.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 55,
+      "printedPage": 47
+    },
+    {
+      "id": "AC.L2-3.1.16[a]",
+      "controlId": "AC.L2-3.1.16",
+      "label": "a",
+      "kind": "determination",
+      "text": "wireless access points are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 58,
+      "printedPage": 50
+    },
+    {
+      "id": "AC.L2-3.1.16[b]",
+      "controlId": "AC.L2-3.1.16",
+      "label": "b",
+      "kind": "determination",
+      "text": "wireless access is authorized prior to allowing such connections.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 58,
+      "printedPage": 50
+    },
+    {
+      "id": "AC.L2-3.1.17[a]",
+      "controlId": "AC.L2-3.1.17",
+      "label": "a",
+      "kind": "determination",
+      "text": "wireless access to the system is protected using authentication; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 60,
+      "printedPage": 52
+    },
+    {
+      "id": "AC.L2-3.1.17[b]",
+      "controlId": "AC.L2-3.1.17",
+      "label": "b",
+      "kind": "determination",
+      "text": "wireless access to the system is protected using encryption.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 60,
+      "printedPage": 52
+    },
+    {
+      "id": "AC.L2-3.1.18[a]",
+      "controlId": "AC.L2-3.1.18",
+      "label": "a",
+      "kind": "determination",
+      "text": "mobile devices that process, store, or transmit CUI are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 62,
+      "printedPage": 54
+    },
+    {
+      "id": "AC.L2-3.1.18[b]",
+      "controlId": "AC.L2-3.1.18",
+      "label": "b",
+      "kind": "determination",
+      "text": "mobile device connections are authorized; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 62,
+      "printedPage": 54
+    },
+    {
+      "id": "AC.L2-3.1.18[c]",
+      "controlId": "AC.L2-3.1.18",
+      "label": "c",
+      "kind": "determination",
+      "text": "mobile device connections are monitored and logged.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 62,
+      "printedPage": 54
+    },
+    {
+      "id": "AC.L2-3.1.19[a]",
+      "controlId": "AC.L2-3.1.19",
+      "label": "a",
+      "kind": "determination",
+      "text": "mobile devices and mobile computing platforms that process, store, or transmit CUI are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 64,
+      "printedPage": 56
+    },
+    {
+      "id": "AC.L2-3.1.19[b]",
+      "controlId": "AC.L2-3.1.19",
+      "label": "b",
+      "kind": "determination",
+      "text": "encryption is employed to protect CUI on identified mobile devices and mobile computing platforms.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 64,
+      "printedPage": 56
+    },
+    {
+      "id": "AC.L2-3.1.20[a]",
+      "controlId": "AC.L2-3.1.20",
+      "label": "a",
+      "kind": "determination",
+      "text": "connections to external systems are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 66,
+      "printedPage": 58
+    },
+    {
+      "id": "AC.L2-3.1.20[b]",
+      "controlId": "AC.L2-3.1.20",
+      "label": "b",
+      "kind": "determination",
+      "text": "the use of external systems is identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 66,
+      "printedPage": 58
+    },
+    {
+      "id": "AC.L2-3.1.20[c]",
+      "controlId": "AC.L2-3.1.20",
+      "label": "c",
+      "kind": "determination",
+      "text": "connections to external systems are verified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 66,
+      "printedPage": 58
+    },
+    {
+      "id": "AC.L2-3.1.20[d]",
+      "controlId": "AC.L2-3.1.20",
+      "label": "d",
+      "kind": "determination",
+      "text": "the use of external systems is verified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 66,
+      "printedPage": 58
+    },
+    {
+      "id": "AC.L2-3.1.20[e]",
+      "controlId": "AC.L2-3.1.20",
+      "label": "e",
+      "kind": "determination",
+      "text": "connections to external systems are controlled/limited; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 66,
+      "printedPage": 58
+    },
+    {
+      "id": "AC.L2-3.1.20[f]",
+      "controlId": "AC.L2-3.1.20",
+      "label": "f",
+      "kind": "determination",
+      "text": "the use of external systems is controlled/limited.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 66,
+      "printedPage": 58
+    },
+    {
+      "id": "AC.L2-3.1.21[a]",
+      "controlId": "AC.L2-3.1.21",
+      "label": "a",
+      "kind": "determination",
+      "text": "the use of portable storage devices containing CUI on external systems is identified and documented;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 69,
+      "printedPage": 61
+    },
+    {
+      "id": "AC.L2-3.1.21[b]",
+      "controlId": "AC.L2-3.1.21",
+      "label": "b",
+      "kind": "determination",
+      "text": "limits on the use of portable storage devices containing CUI on external systems are defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 69,
+      "printedPage": 61
+    },
+    {
+      "id": "AC.L2-3.1.21[c]",
+      "controlId": "AC.L2-3.1.21",
+      "label": "c",
+      "kind": "determination",
+      "text": "the use of portable storage devices containing CUI on external systems is limited as defined.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 69,
+      "printedPage": 61
+    },
+    {
+      "id": "AC.L2-3.1.22[a]",
+      "controlId": "AC.L2-3.1.22",
+      "label": "a",
+      "kind": "determination",
+      "text": "individuals authorized to post or process information on publicly accessible systems are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 71,
+      "printedPage": 63
+    },
+    {
+      "id": "AC.L2-3.1.22[b]",
+      "controlId": "AC.L2-3.1.22",
+      "label": "b",
+      "kind": "determination",
+      "text": "procedures to ensure CUI is not posted or processed on publicly accessible systems are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 71,
+      "printedPage": 63
+    },
+    {
+      "id": "AC.L2-3.1.22[c]",
+      "controlId": "AC.L2-3.1.22",
+      "label": "c",
+      "kind": "determination",
+      "text": "a review process is in place prior to posting of any content to publicly accessible systems;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 71,
+      "printedPage": 63
+    },
+    {
+      "id": "AC.L2-3.1.22[d]",
+      "controlId": "AC.L2-3.1.22",
+      "label": "d",
+      "kind": "determination",
+      "text": "content on publicly accessible systems is reviewed to ensure that it does not include CUI; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 71,
+      "printedPage": 63
+    },
+    {
+      "id": "AC.L2-3.1.22[e]",
+      "controlId": "AC.L2-3.1.22",
+      "label": "e",
+      "kind": "determination",
+      "text": "mechanisms are in place to remove and address improper posting of CUI.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 71,
+      "printedPage": 63
+    },
+    {
+      "id": "AT.L2-3.2.1[a]",
+      "controlId": "AT.L2-3.2.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "security risks associated with organizational activities involving CUI are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 73,
+      "printedPage": 65
+    },
+    {
+      "id": "AT.L2-3.2.1[b]",
+      "controlId": "AT.L2-3.2.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "policies, standards, and procedures related to the security of the system are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 73,
+      "printedPage": 65
+    },
+    {
+      "id": "AT.L2-3.2.1[c]",
+      "controlId": "AT.L2-3.2.1",
+      "label": "c",
+      "kind": "determination",
+      "text": "managers, systems administrators, and users of the system are made aware of the security risks associated with their activities; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 73,
+      "printedPage": 65
+    },
+    {
+      "id": "AT.L2-3.2.1[d]",
+      "controlId": "AT.L2-3.2.1",
+      "label": "d",
+      "kind": "determination",
+      "text": "managers, systems administrators, and users of the system are made aware of the applicable policies, standards, and procedures related to the security of the system.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 73,
+      "printedPage": 65
+    },
+    {
+      "id": "AT.L2-3.2.2[a]",
+      "controlId": "AT.L2-3.2.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "information security-related duties, roles, and responsibilities are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 76,
+      "printedPage": 68
+    },
+    {
+      "id": "AT.L2-3.2.2[b]",
+      "controlId": "AT.L2-3.2.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "information security-related duties, roles, and responsibilities are assigned to designated personnel; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 76,
+      "printedPage": 68
+    },
+    {
+      "id": "AT.L2-3.2.2[c]",
+      "controlId": "AT.L2-3.2.2",
+      "label": "c",
+      "kind": "determination",
+      "text": "personnel are adequately trained to carry out their assigned information security-related duties, roles, and responsibilities.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 76,
+      "printedPage": 68
+    },
+    {
+      "id": "AT.L2-3.2.3[a]",
+      "controlId": "AT.L2-3.2.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "potential indicators associated with insider threats are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 78,
+      "printedPage": 70
+    },
+    {
+      "id": "AT.L2-3.2.3[b]",
+      "controlId": "AT.L2-3.2.3",
+      "label": "b",
+      "kind": "determination",
+      "text": "security awareness training on recognizing and reporting potential indicators of insider threat is provided to managers and employees.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 78,
+      "printedPage": 70
+    },
+    {
+      "id": "AU.L2-3.3.1[a]",
+      "controlId": "AU.L2-3.3.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "audit logs needed (i.e., event types to be logged) to enable the monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity are specified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 80,
+      "printedPage": 72
+    },
+    {
+      "id": "AU.L2-3.3.1[b]",
+      "controlId": "AU.L2-3.3.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "the content of audit records needed to support monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity is defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 80,
+      "printedPage": 72
+    },
+    {
+      "id": "AU.L2-3.3.1[c]",
+      "controlId": "AU.L2-3.3.1",
+      "label": "c",
+      "kind": "determination",
+      "text": "audit records are created (generated);",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 80,
+      "printedPage": 72
+    },
+    {
+      "id": "AU.L2-3.3.1[d]",
+      "controlId": "AU.L2-3.3.1",
+      "label": "d",
+      "kind": "determination",
+      "text": "audit records, once created, contain the defined content;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 80,
+      "printedPage": 72
+    },
+    {
+      "id": "AU.L2-3.3.1[e]",
+      "controlId": "AU.L2-3.3.1",
+      "label": "e",
+      "kind": "determination",
+      "text": "retention requirements for audit records are defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 80,
+      "printedPage": 72
+    },
+    {
+      "id": "AU.L2-3.3.1[f]",
+      "controlId": "AU.L2-3.3.1",
+      "label": "f",
+      "kind": "determination",
+      "text": "audit records are retained as defined.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 80,
+      "printedPage": 72
+    },
+    {
+      "id": "AU.L2-3.3.2[a]",
+      "controlId": "AU.L2-3.3.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "the content of the audit records needed to support the ability to uniquely trace users to their actions is defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 83,
+      "printedPage": 75
+    },
+    {
+      "id": "AU.L2-3.3.2[b]",
+      "controlId": "AU.L2-3.3.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "audit records, once created, contain the defined content.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 83,
+      "printedPage": 75
+    },
+    {
+      "id": "AU.L2-3.3.3[a]",
+      "controlId": "AU.L2-3.3.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "a process for determining when to review logged events is defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 85,
+      "printedPage": 77
+    },
+    {
+      "id": "AU.L2-3.3.3[b]",
+      "controlId": "AU.L2-3.3.3",
+      "label": "b",
+      "kind": "determination",
+      "text": "event types being logged are reviewed in accordance with the defined review process; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 85,
+      "printedPage": 77
+    },
+    {
+      "id": "AU.L2-3.3.3[c]",
+      "controlId": "AU.L2-3.3.3",
+      "label": "c",
+      "kind": "determination",
+      "text": "event types being logged are updated based on the review.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 85,
+      "printedPage": 77
+    },
+    {
+      "id": "AU.L2-3.3.4[a]",
+      "controlId": "AU.L2-3.3.4",
+      "label": "a",
+      "kind": "determination",
+      "text": "personnel or roles to be alerted in the event of an audit logging process failure are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 87,
+      "printedPage": 79
+    },
+    {
+      "id": "AU.L2-3.3.4[b]",
+      "controlId": "AU.L2-3.3.4",
+      "label": "b",
+      "kind": "determination",
+      "text": "types of audit logging process failures for which alert will be generated are defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 87,
+      "printedPage": 79
+    },
+    {
+      "id": "AU.L2-3.3.4[c]",
+      "controlId": "AU.L2-3.3.4",
+      "label": "c",
+      "kind": "determination",
+      "text": "identified personnel or roles are alerted in the event of an audit logging process failure.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 87,
+      "printedPage": 79
+    },
+    {
+      "id": "AU.L2-3.3.5[a]",
+      "controlId": "AU.L2-3.3.5",
+      "label": "a",
+      "kind": "determination",
+      "text": "audit record review, analysis, and reporting processes for investigation and response to indications of unlawful, unauthorized, suspicious, or unusual activity are defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 89,
+      "printedPage": 81
+    },
+    {
+      "id": "AU.L2-3.3.5[b]",
+      "controlId": "AU.L2-3.3.5",
+      "label": "b",
+      "kind": "determination",
+      "text": "defined audit record review, analysis, and reporting processes are correlated.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 89,
+      "printedPage": 81
+    },
+    {
+      "id": "AU.L2-3.3.6[a]",
+      "controlId": "AU.L2-3.3.6",
+      "label": "a",
+      "kind": "determination",
+      "text": "an audit record reduction capability that supports on-demand analysis is provided; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 91,
+      "printedPage": 83
+    },
+    {
+      "id": "AU.L2-3.3.6[b]",
+      "controlId": "AU.L2-3.3.6",
+      "label": "b",
+      "kind": "determination",
+      "text": "a report generation capability that supports on-demand reporting is provided.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 91,
+      "printedPage": 83
+    },
+    {
+      "id": "AU.L2-3.3.7[a]",
+      "controlId": "AU.L2-3.3.7",
+      "label": "a",
+      "kind": "determination",
+      "text": "internal system clocks are used to generate time stamps for audit records;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 93,
+      "printedPage": 85
+    },
+    {
+      "id": "AU.L2-3.3.7[b]",
+      "controlId": "AU.L2-3.3.7",
+      "label": "b",
+      "kind": "determination",
+      "text": "an authoritative source with which to compare and synchronize internal system clocks is specified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 93,
+      "printedPage": 85
+    },
+    {
+      "id": "AU.L2-3.3.7[c]",
+      "controlId": "AU.L2-3.3.7",
+      "label": "c",
+      "kind": "determination",
+      "text": "internal system clocks used to generate time stamps for audit records are compared to and synchronized with the specified authoritative time source.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 93,
+      "printedPage": 85
+    },
+    {
+      "id": "AU.L2-3.3.8[a]",
+      "controlId": "AU.L2-3.3.8",
+      "label": "a",
+      "kind": "determination",
+      "text": "audit information is protected from unauthorized access;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 95,
+      "printedPage": 87
+    },
+    {
+      "id": "AU.L2-3.3.8[b]",
+      "controlId": "AU.L2-3.3.8",
+      "label": "b",
+      "kind": "determination",
+      "text": "audit information is protected from unauthorized modification;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 95,
+      "printedPage": 87
+    },
+    {
+      "id": "AU.L2-3.3.8[c]",
+      "controlId": "AU.L2-3.3.8",
+      "label": "c",
+      "kind": "determination",
+      "text": "audit information is protected from unauthorized deletion;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 95,
+      "printedPage": 87
+    },
+    {
+      "id": "AU.L2-3.3.8[d]",
+      "controlId": "AU.L2-3.3.8",
+      "label": "d",
+      "kind": "determination",
+      "text": "audit logging tools are protected from unauthorized access;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 95,
+      "printedPage": 87
+    },
+    {
+      "id": "AU.L2-3.3.8[e]",
+      "controlId": "AU.L2-3.3.8",
+      "label": "e",
+      "kind": "determination",
+      "text": "audit logging tools are protected from unauthorized modification; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 95,
+      "printedPage": 87
+    },
+    {
+      "id": "AU.L2-3.3.8[f]",
+      "controlId": "AU.L2-3.3.8",
+      "label": "f",
+      "kind": "determination",
+      "text": "audit logging tools are protected from unauthorized deletion.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 95,
+      "printedPage": 87
+    },
+    {
+      "id": "AU.L2-3.3.9[a]",
+      "controlId": "AU.L2-3.3.9",
+      "label": "a",
+      "kind": "determination",
+      "text": "a subset of privileged users granted access to manage audit logging functionality is defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 97,
+      "printedPage": 89
+    },
+    {
+      "id": "AU.L2-3.3.9[b]",
+      "controlId": "AU.L2-3.3.9",
+      "label": "b",
+      "kind": "determination",
+      "text": "management of audit logging functionality is limited to the defined subset of privileged users.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 97,
+      "printedPage": 89
+    },
+    {
+      "id": "CM.L2-3.4.1[a]",
+      "controlId": "CM.L2-3.4.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "a baseline configuration is established;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 99,
+      "printedPage": 91
+    },
+    {
+      "id": "CM.L2-3.4.1[b]",
+      "controlId": "CM.L2-3.4.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "the baseline configuration includes hardware, software, firmware, and documentation;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 99,
+      "printedPage": 91
+    },
+    {
+      "id": "CM.L2-3.4.1[c]",
+      "controlId": "CM.L2-3.4.1",
+      "label": "c",
+      "kind": "determination",
+      "text": "the baseline configuration is maintained (reviewed and updated) throughout the system development life cycle;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 99,
+      "printedPage": 91
+    },
+    {
+      "id": "CM.L2-3.4.1[d]",
+      "controlId": "CM.L2-3.4.1",
+      "label": "d",
+      "kind": "determination",
+      "text": "a system inventory is established;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 99,
+      "printedPage": 91
+    },
+    {
+      "id": "CM.L2-3.4.1[e]",
+      "controlId": "CM.L2-3.4.1",
+      "label": "e",
+      "kind": "determination",
+      "text": "the system inventory includes hardware, software, firmware, and documentation; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 99,
+      "printedPage": 91
+    },
+    {
+      "id": "CM.L2-3.4.1[f]",
+      "controlId": "CM.L2-3.4.1",
+      "label": "f",
+      "kind": "determination",
+      "text": "the inventory is maintained (reviewed and updated) throughout the system development life cycle.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 99,
+      "printedPage": 91
+    },
+    {
+      "id": "CM.L2-3.4.2[a]",
+      "controlId": "CM.L2-3.4.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "security configuration settings for information technology products employed in the system are established and included in the baseline configuration; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 102,
+      "printedPage": 94
+    },
+    {
+      "id": "CM.L2-3.4.2[b]",
+      "controlId": "CM.L2-3.4.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "security configuration settings for information technology products employed in the system are enforced.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 102,
+      "printedPage": 94
+    },
+    {
+      "id": "CM.L2-3.4.3[a]",
+      "controlId": "CM.L2-3.4.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "changes to the system are tracked;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 104,
+      "printedPage": 96
+    },
+    {
+      "id": "CM.L2-3.4.3[b]",
+      "controlId": "CM.L2-3.4.3",
+      "label": "b",
+      "kind": "determination",
+      "text": "changes to the system are reviewed;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 104,
+      "printedPage": 96
+    },
+    {
+      "id": "CM.L2-3.4.3[c]",
+      "controlId": "CM.L2-3.4.3",
+      "label": "c",
+      "kind": "determination",
+      "text": "changes to the system are approved or disapproved; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 104,
+      "printedPage": 96
+    },
+    {
+      "id": "CM.L2-3.4.3[d]",
+      "controlId": "CM.L2-3.4.3",
+      "label": "d",
+      "kind": "determination",
+      "text": "changes to the system are logged.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 104,
+      "printedPage": 96
+    },
+    {
+      "id": "CM.L2-3.4.4[a]",
+      "controlId": "CM.L2-3.4.4",
+      "label": "a",
+      "kind": "determination",
+      "text": "the security impact of changes to the system is analyzed prior to implementation.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 106,
+      "printedPage": 98
+    },
+    {
+      "id": "CM.L2-3.4.5[a]",
+      "controlId": "CM.L2-3.4.5",
+      "label": "a",
+      "kind": "determination",
+      "text": "physical access restrictions associated with changes to the system are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 108,
+      "printedPage": 100
+    },
+    {
+      "id": "CM.L2-3.4.5[b]",
+      "controlId": "CM.L2-3.4.5",
+      "label": "b",
+      "kind": "determination",
+      "text": "physical access restrictions associated with changes to the system are documented;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 108,
+      "printedPage": 100
+    },
+    {
+      "id": "CM.L2-3.4.5[c]",
+      "controlId": "CM.L2-3.4.5",
+      "label": "c",
+      "kind": "determination",
+      "text": "physical access restrictions associated with changes to the system are approved;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 108,
+      "printedPage": 100
+    },
+    {
+      "id": "CM.L2-3.4.5[d]",
+      "controlId": "CM.L2-3.4.5",
+      "label": "d",
+      "kind": "determination",
+      "text": "physical access restrictions associated with changes to the system are enforced;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 108,
+      "printedPage": 100
+    },
+    {
+      "id": "CM.L2-3.4.5[e]",
+      "controlId": "CM.L2-3.4.5",
+      "label": "e",
+      "kind": "determination",
+      "text": "logical access restrictions associated with changes to the system are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 108,
+      "printedPage": 100
+    },
+    {
+      "id": "CM.L2-3.4.5[f]",
+      "controlId": "CM.L2-3.4.5",
+      "label": "f",
+      "kind": "determination",
+      "text": "logical access restrictions associated with changes to the system are documented;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 108,
+      "printedPage": 100
+    },
+    {
+      "id": "CM.L2-3.4.5[g]",
+      "controlId": "CM.L2-3.4.5",
+      "label": "g",
+      "kind": "determination",
+      "text": "logical access restrictions associated with changes to the system are approved; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 108,
+      "printedPage": 100
+    },
+    {
+      "id": "CM.L2-3.4.5[h]",
+      "controlId": "CM.L2-3.4.5",
+      "label": "h",
+      "kind": "determination",
+      "text": "logical access restrictions associated with changes to the system are enforced.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 108,
+      "printedPage": 100
+    },
+    {
+      "id": "CM.L2-3.4.6[a]",
+      "controlId": "CM.L2-3.4.6",
+      "label": "a",
+      "kind": "determination",
+      "text": "essential system capabilities are defined based on the principle of least functionality; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 111,
+      "printedPage": 103
+    },
+    {
+      "id": "CM.L2-3.4.6[b]",
+      "controlId": "CM.L2-3.4.6",
+      "label": "b",
+      "kind": "determination",
+      "text": "the system is configured to provide only the defined essential capabilities.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 111,
+      "printedPage": 103
+    },
+    {
+      "id": "CM.L2-3.4.7[a]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "a",
+      "kind": "determination",
+      "text": "essential programs are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[b]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "b",
+      "kind": "determination",
+      "text": "the use of nonessential programs is defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[c]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "c",
+      "kind": "determination",
+      "text": "the use of nonessential programs is restricted, disabled, or prevented as defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[d]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "d",
+      "kind": "determination",
+      "text": "essential functions are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[e]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "e",
+      "kind": "determination",
+      "text": "the use of nonessential functions is defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[f]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "f",
+      "kind": "determination",
+      "text": "the use of nonessential functions is restricted, disabled, or prevented as defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[g]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "g",
+      "kind": "determination",
+      "text": "essential ports are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[h]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "h",
+      "kind": "determination",
+      "text": "the use of nonessential ports is defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[i]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "i",
+      "kind": "determination",
+      "text": "the use of nonessential ports is restricted, disabled, or prevented as defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[j]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "j",
+      "kind": "determination",
+      "text": "essential protocols are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[k]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "k",
+      "kind": "determination",
+      "text": "the use of nonessential protocols is defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[l]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "l",
+      "kind": "determination",
+      "text": "the use of nonessential protocols is restricted, disabled, or prevented as defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[m]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "m",
+      "kind": "determination",
+      "text": "essential services are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[n]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "n",
+      "kind": "determination",
+      "text": "the use of nonessential services is defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.7[o]",
+      "controlId": "CM.L2-3.4.7",
+      "label": "o",
+      "kind": "determination",
+      "text": "the use of nonessential services is restricted, disabled, or prevented as defined.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105
+    },
+    {
+      "id": "CM.L2-3.4.8[a]",
+      "controlId": "CM.L2-3.4.8",
+      "label": "a",
+      "kind": "determination",
+      "text": "a policy specifying whether whitelisting or blacklisting is to be implemented is specified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 116,
+      "printedPage": 108
+    },
+    {
+      "id": "CM.L2-3.4.8[b]",
+      "controlId": "CM.L2-3.4.8",
+      "label": "b",
+      "kind": "determination",
+      "text": "the software allowed to execute under whitelisting or denied use under blacklisting is specified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 116,
+      "printedPage": 108
+    },
+    {
+      "id": "CM.L2-3.4.8[c]",
+      "controlId": "CM.L2-3.4.8",
+      "label": "c",
+      "kind": "determination",
+      "text": "whitelisting to allow the execution of authorized software or blacklisting to prevent the use of unauthorized software is implemented as specified.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 116,
+      "printedPage": 108
+    },
+    {
+      "id": "CM.L2-3.4.9[a]",
+      "controlId": "CM.L2-3.4.9",
+      "label": "a",
+      "kind": "determination",
+      "text": "a policy for controlling the installation of software by users is established;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 118,
+      "printedPage": 110
+    },
+    {
+      "id": "CM.L2-3.4.9[b]",
+      "controlId": "CM.L2-3.4.9",
+      "label": "b",
+      "kind": "determination",
+      "text": "installation of software by users is controlled based on the established policy; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 118,
+      "printedPage": 110
+    },
+    {
+      "id": "CM.L2-3.4.9[c]",
+      "controlId": "CM.L2-3.4.9",
+      "label": "c",
+      "kind": "determination",
+      "text": "installation of software by users is monitored.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 118,
+      "printedPage": 110
+    },
+    {
+      "id": "IA.L2-3.5.1[a]",
+      "controlId": "IA.L2-3.5.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "system users are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 120,
+      "printedPage": 112
+    },
+    {
+      "id": "IA.L2-3.5.1[b]",
+      "controlId": "IA.L2-3.5.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "processes acting on behalf of users are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 120,
+      "printedPage": 112
+    },
+    {
+      "id": "IA.L2-3.5.1[c]",
+      "controlId": "IA.L2-3.5.1",
+      "label": "c",
+      "kind": "determination",
+      "text": "devices accessing the system are identified.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 120,
+      "printedPage": 112
+    },
+    {
+      "id": "IA.L2-3.5.2[a]",
+      "controlId": "IA.L2-3.5.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "the identity of each user is authenticated or verified as a prerequisite to system access;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 122,
+      "printedPage": 114
+    },
+    {
+      "id": "IA.L2-3.5.2[b]",
+      "controlId": "IA.L2-3.5.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "the identity of each process acting on behalf of a user is authenticated or verified as a prerequisite to system access; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 122,
+      "printedPage": 114
+    },
+    {
+      "id": "IA.L2-3.5.2[c]",
+      "controlId": "IA.L2-3.5.2",
+      "label": "c",
+      "kind": "determination",
+      "text": "the identity of each device accessing or connecting to the system is authenticated or verified as a prerequisite to system access.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 122,
+      "printedPage": 114
+    },
+    {
+      "id": "IA.L2-3.5.3[a]",
+      "controlId": "IA.L2-3.5.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "privileged accounts are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 125,
+      "printedPage": 117
+    },
+    {
+      "id": "IA.L2-3.5.3[b]",
+      "controlId": "IA.L2-3.5.3",
+      "label": "b",
+      "kind": "determination",
+      "text": "multifactor authentication is implemented for local access to privileged accounts;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 125,
+      "printedPage": 117
+    },
+    {
+      "id": "IA.L2-3.5.3[c]",
+      "controlId": "IA.L2-3.5.3",
+      "label": "c",
+      "kind": "determination",
+      "text": "multifactor authentication is implemented for network access to privileged accounts; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 125,
+      "printedPage": 117
+    },
+    {
+      "id": "IA.L2-3.5.3[d]",
+      "controlId": "IA.L2-3.5.3",
+      "label": "d",
+      "kind": "determination",
+      "text": "multifactor authentication is implemented for network access to non-privileged accounts.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 125,
+      "printedPage": 117
+    },
+    {
+      "id": "IA.L2-3.5.4[a]",
+      "controlId": "IA.L2-3.5.4",
+      "label": "a",
+      "kind": "determination",
+      "text": "replay-resistant authentication mechanisms are implemented for network account access to privileged and non-privileged accounts.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 128,
+      "printedPage": 120
+    },
+    {
+      "id": "IA.L2-3.5.5[a]",
+      "controlId": "IA.L2-3.5.5",
+      "label": "a",
+      "kind": "determination",
+      "text": "a period within which identifiers cannot be reused is defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 130,
+      "printedPage": 122
+    },
+    {
+      "id": "IA.L2-3.5.5[b]",
+      "controlId": "IA.L2-3.5.5",
+      "label": "b",
+      "kind": "determination",
+      "text": "reuse of identifiers is prevented within the defined period.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 130,
+      "printedPage": 122
+    },
+    {
+      "id": "IA.L2-3.5.6[a]",
+      "controlId": "IA.L2-3.5.6",
+      "label": "a",
+      "kind": "determination",
+      "text": "a period of inactivity after which an identifier is disabled is defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 132,
+      "printedPage": 124
+    },
+    {
+      "id": "IA.L2-3.5.6[b]",
+      "controlId": "IA.L2-3.5.6",
+      "label": "b",
+      "kind": "determination",
+      "text": "identifiers are disabled after the defined period of inactivity.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 132,
+      "printedPage": 124
+    },
+    {
+      "id": "IA.L2-3.5.7[a]",
+      "controlId": "IA.L2-3.5.7",
+      "label": "a",
+      "kind": "determination",
+      "text": "password complexity requirements are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 134,
+      "printedPage": 126
+    },
+    {
+      "id": "IA.L2-3.5.7[b]",
+      "controlId": "IA.L2-3.5.7",
+      "label": "b",
+      "kind": "determination",
+      "text": "password change of character requirements are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 134,
+      "printedPage": 126
+    },
+    {
+      "id": "IA.L2-3.5.7[c]",
+      "controlId": "IA.L2-3.5.7",
+      "label": "c",
+      "kind": "determination",
+      "text": "minimum password complexity requirements as defined are enforced when new passwords are created; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 134,
+      "printedPage": 126
+    },
+    {
+      "id": "IA.L2-3.5.7[d]",
+      "controlId": "IA.L2-3.5.7",
+      "label": "d",
+      "kind": "determination",
+      "text": "minimum password change of character requirements as defined are enforced when new passwords are created.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 134,
+      "printedPage": 126
+    },
+    {
+      "id": "IA.L2-3.5.8[a]",
+      "controlId": "IA.L2-3.5.8",
+      "label": "a",
+      "kind": "determination",
+      "text": "the number of generations during which a password cannot be reused is specified and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 136,
+      "printedPage": 128
+    },
+    {
+      "id": "IA.L2-3.5.8[b]",
+      "controlId": "IA.L2-3.5.8",
+      "label": "b",
+      "kind": "determination",
+      "text": "reuse of passwords is prohibited during the specified number of generations.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 136,
+      "printedPage": 128
+    },
+    {
+      "id": "IA.L2-3.5.9[a]",
+      "controlId": "IA.L2-3.5.9",
+      "label": "a",
+      "kind": "determination",
+      "text": "an immediate change to a permanent password is required when a temporary password is used for system logon.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 138,
+      "printedPage": 130
+    },
+    {
+      "id": "IA.L2-3.5.10[a]",
+      "controlId": "IA.L2-3.5.10",
+      "label": "a",
+      "kind": "determination",
+      "text": "passwords are cryptographically protected in storage; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 140,
+      "printedPage": 132
+    },
+    {
+      "id": "IA.L2-3.5.10[b]",
+      "controlId": "IA.L2-3.5.10",
+      "label": "b",
+      "kind": "determination",
+      "text": "passwords are cryptographically protected in transit.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 140,
+      "printedPage": 132
+    },
+    {
+      "id": "IA.L2-3.5.11[a]",
+      "controlId": "IA.L2-3.5.11",
+      "label": "a",
+      "kind": "determination",
+      "text": "authentication information is obscured during the authentication process.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 142,
+      "printedPage": 134
+    },
+    {
+      "id": "IR.L2-3.6.1[a]",
+      "controlId": "IR.L2-3.6.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "an operational incident-handling capability is established;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 144,
+      "printedPage": 136
+    },
+    {
+      "id": "IR.L2-3.6.1[b]",
+      "controlId": "IR.L2-3.6.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "the operational incident-handling capability includes preparation;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 144,
+      "printedPage": 136
+    },
+    {
+      "id": "IR.L2-3.6.1[c]",
+      "controlId": "IR.L2-3.6.1",
+      "label": "c",
+      "kind": "determination",
+      "text": "the operational incident-handling capability includes detection;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 144,
+      "printedPage": 136
+    },
+    {
+      "id": "IR.L2-3.6.1[d]",
+      "controlId": "IR.L2-3.6.1",
+      "label": "d",
+      "kind": "determination",
+      "text": "the operational incident-handling capability includes analysis;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 144,
+      "printedPage": 136
+    },
+    {
+      "id": "IR.L2-3.6.1[e]",
+      "controlId": "IR.L2-3.6.1",
+      "label": "e",
+      "kind": "determination",
+      "text": "the operational incident-handling capability includes containment;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 144,
+      "printedPage": 136
+    },
+    {
+      "id": "IR.L2-3.6.1[f]",
+      "controlId": "IR.L2-3.6.1",
+      "label": "f",
+      "kind": "determination",
+      "text": "the operational incident-handling capability includes recovery; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 144,
+      "printedPage": 136
+    },
+    {
+      "id": "IR.L2-3.6.1[g]",
+      "controlId": "IR.L2-3.6.1",
+      "label": "g",
+      "kind": "determination",
+      "text": "the operational incident-handling capability includes user response activities.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 144,
+      "printedPage": 136
+    },
+    {
+      "id": "IR.L2-3.6.2[a]",
+      "controlId": "IR.L2-3.6.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "incidents are tracked;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 147,
+      "printedPage": 139
+    },
+    {
+      "id": "IR.L2-3.6.2[b]",
+      "controlId": "IR.L2-3.6.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "incidents are documented;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 147,
+      "printedPage": 139
+    },
+    {
+      "id": "IR.L2-3.6.2[c]",
+      "controlId": "IR.L2-3.6.2",
+      "label": "c",
+      "kind": "determination",
+      "text": "authorities to whom incidents are to be reported are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 147,
+      "printedPage": 139
+    },
+    {
+      "id": "IR.L2-3.6.2[d]",
+      "controlId": "IR.L2-3.6.2",
+      "label": "d",
+      "kind": "determination",
+      "text": "organizational officials to whom incidents are to be reported are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 147,
+      "printedPage": 139
+    },
+    {
+      "id": "IR.L2-3.6.2[e]",
+      "controlId": "IR.L2-3.6.2",
+      "label": "e",
+      "kind": "determination",
+      "text": "identified authorities are notified of incidents; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 147,
+      "printedPage": 139
+    },
+    {
+      "id": "IR.L2-3.6.2[f]",
+      "controlId": "IR.L2-3.6.2",
+      "label": "f",
+      "kind": "determination",
+      "text": "identified organizational officials are notified of incidents.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 147,
+      "printedPage": 139
+    },
+    {
+      "id": "IR.L2-3.6.3[a]",
+      "controlId": "IR.L2-3.6.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "the incident response capability is tested.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 150,
+      "printedPage": 142
+    },
+    {
+      "id": "MA.L2-3.7.1[a]",
+      "controlId": "MA.L2-3.7.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "system maintenance is performed.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 152,
+      "printedPage": 144
+    },
+    {
+      "id": "MA.L2-3.7.2[a]",
+      "controlId": "MA.L2-3.7.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "tools used to conduct system maintenance are controlled;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 154,
+      "printedPage": 146
+    },
+    {
+      "id": "MA.L2-3.7.2[b]",
+      "controlId": "MA.L2-3.7.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "techniques used to conduct system maintenance are controlled;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 154,
+      "printedPage": 146
+    },
+    {
+      "id": "MA.L2-3.7.2[c]",
+      "controlId": "MA.L2-3.7.2",
+      "label": "c",
+      "kind": "determination",
+      "text": "mechanisms used to conduct system maintenance are controlled; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 154,
+      "printedPage": 146
+    },
+    {
+      "id": "MA.L2-3.7.2[d]",
+      "controlId": "MA.L2-3.7.2",
+      "label": "d",
+      "kind": "determination",
+      "text": "personnel used to conduct system maintenance are controlled.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 154,
+      "printedPage": 146
+    },
+    {
+      "id": "MA.L2-3.7.3[a]",
+      "controlId": "MA.L2-3.7.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "equipment to be removed from organizational spaces for off-site maintenance is sanitized of any CUI.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 156,
+      "printedPage": 148
+    },
+    {
+      "id": "MA.L2-3.7.4[a]",
+      "controlId": "MA.L2-3.7.4",
+      "label": "a",
+      "kind": "determination",
+      "text": "media containing diagnostic and test programs are checked for malicious code before being used in organizational systems that process, store, or transmit CUI.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 158,
+      "printedPage": 150
+    },
+    {
+      "id": "MA.L2-3.7.5[a]",
+      "controlId": "MA.L2-3.7.5",
+      "label": "a",
+      "kind": "determination",
+      "text": "multifactor authentication is used to establish nonlocal maintenance sessions via external network connections; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 160,
+      "printedPage": 152
+    },
+    {
+      "id": "MA.L2-3.7.5[b]",
+      "controlId": "MA.L2-3.7.5",
+      "label": "b",
+      "kind": "determination",
+      "text": "nonlocal maintenance sessions established via external network connections are terminated when nonlocal maintenance is complete.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 160,
+      "printedPage": 152
+    },
+    {
+      "id": "MA.L2-3.7.6[a]",
+      "controlId": "MA.L2-3.7.6",
+      "label": "a",
+      "kind": "determination",
+      "text": "maintenance personnel without required access authorization are supervised during maintenance activities.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 163,
+      "printedPage": 155
+    },
+    {
+      "id": "MP.L2-3.8.1[a]",
+      "controlId": "MP.L2-3.8.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "paper media containing CUI is physically controlled;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 165,
+      "printedPage": 157
+    },
+    {
+      "id": "MP.L2-3.8.1[b]",
+      "controlId": "MP.L2-3.8.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "digital media containing CUI is physically controlled;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 165,
+      "printedPage": 157
+    },
+    {
+      "id": "MP.L2-3.8.1[c]",
+      "controlId": "MP.L2-3.8.1",
+      "label": "c",
+      "kind": "determination",
+      "text": "paper media containing CUI is securely stored; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 165,
+      "printedPage": 157
+    },
+    {
+      "id": "MP.L2-3.8.1[d]",
+      "controlId": "MP.L2-3.8.1",
+      "label": "d",
+      "kind": "determination",
+      "text": "digital media containing CUI is securely stored.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 165,
+      "printedPage": 157
+    },
+    {
+      "id": "MP.L2-3.8.2[a]",
+      "controlId": "MP.L2-3.8.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "access to CUI on system media is limited to authorized users.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 167,
+      "printedPage": 159
+    },
+    {
+      "id": "MP.L2-3.8.3[a]",
+      "controlId": "MP.L2-3.8.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "system media containing CUI is sanitized or destroyed before disposal; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 169,
+      "printedPage": 161
+    },
+    {
+      "id": "MP.L2-3.8.3[b]",
+      "controlId": "MP.L2-3.8.3",
+      "label": "b",
+      "kind": "determination",
+      "text": "system media containing CUI is sanitized before it is released for reuse.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 169,
+      "printedPage": 161
+    },
+    {
+      "id": "MP.L2-3.8.4[a]",
+      "controlId": "MP.L2-3.8.4",
+      "label": "a",
+      "kind": "determination",
+      "text": "media containing CUI is marked with applicable CUI markings; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 171,
+      "printedPage": 163
+    },
+    {
+      "id": "MP.L2-3.8.4[b]",
+      "controlId": "MP.L2-3.8.4",
+      "label": "b",
+      "kind": "determination",
+      "text": "media containing CUI is marked with distribution limitations.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 171,
+      "printedPage": 163
+    },
+    {
+      "id": "MP.L2-3.8.5[a]",
+      "controlId": "MP.L2-3.8.5",
+      "label": "a",
+      "kind": "determination",
+      "text": "access to media containing CUI is controlled; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 173,
+      "printedPage": 165
+    },
+    {
+      "id": "MP.L2-3.8.5[b]",
+      "controlId": "MP.L2-3.8.5",
+      "label": "b",
+      "kind": "determination",
+      "text": "accountability for media containing CUI is maintained during transport outside of controlled areas.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 173,
+      "printedPage": 165
+    },
+    {
+      "id": "MP.L2-3.8.6[a]",
+      "controlId": "MP.L2-3.8.6",
+      "label": "a",
+      "kind": "determination",
+      "text": "the confidentiality of CUI stored on digital media is protected during transport using cryptographic mechanisms or alternative physical safeguards.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 175,
+      "printedPage": 167
+    },
+    {
+      "id": "MP.L2-3.8.7[a]",
+      "controlId": "MP.L2-3.8.7",
+      "label": "a",
+      "kind": "determination",
+      "text": "the use of removable media on system components is controlled.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 177,
+      "printedPage": 169
+    },
+    {
+      "id": "MP.L2-3.8.8[a]",
+      "controlId": "MP.L2-3.8.8",
+      "label": "a",
+      "kind": "determination",
+      "text": "the use of portable storage devices is prohibited when such devices have no identifiable owner.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 179,
+      "printedPage": 171
+    },
+    {
+      "id": "MP.L2-3.8.9[a]",
+      "controlId": "MP.L2-3.8.9",
+      "label": "a",
+      "kind": "determination",
+      "text": "the confidentiality of backup CUI is protected at storage locations.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 181,
+      "printedPage": 173
+    },
+    {
+      "id": "PS.L2-3.9.1[a]",
+      "controlId": "PS.L2-3.9.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "individuals are screened prior to authorizing access to organizational systems containing CUI.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 183,
+      "printedPage": 175
+    },
+    {
+      "id": "PS.L2-3.9.2[a]",
+      "controlId": "PS.L2-3.9.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "a policy and/or process for terminating system access and any credentials coincident with personnel actions is established;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 185,
+      "printedPage": 177
+    },
+    {
+      "id": "PS.L2-3.9.2[b]",
+      "controlId": "PS.L2-3.9.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "system access and credentials are terminated consistent with personnel actions such as termination or transfer; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 185,
+      "printedPage": 177
+    },
+    {
+      "id": "PS.L2-3.9.2[c]",
+      "controlId": "PS.L2-3.9.2",
+      "label": "c",
+      "kind": "determination",
+      "text": "the system is protected during and after personnel transfer actions.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 185,
+      "printedPage": 177
+    },
+    {
+      "id": "PE.L2-3.10.1[a]",
+      "controlId": "PE.L2-3.10.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "authorized individuals allowed physical access are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 188,
+      "printedPage": 180
+    },
+    {
+      "id": "PE.L2-3.10.1[b]",
+      "controlId": "PE.L2-3.10.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "physical access to organizational systems is limited to authorized individuals;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 188,
+      "printedPage": 180
+    },
+    {
+      "id": "PE.L2-3.10.1[c]",
+      "controlId": "PE.L2-3.10.1",
+      "label": "c",
+      "kind": "determination",
+      "text": "physical access to equipment is limited to authorized individuals; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 188,
+      "printedPage": 180
+    },
+    {
+      "id": "PE.L2-3.10.1[d]",
+      "controlId": "PE.L2-3.10.1",
+      "label": "d",
+      "kind": "determination",
+      "text": "physical access to operating environments is limited to authorized individuals.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 188,
+      "printedPage": 180
+    },
+    {
+      "id": "PE.L2-3.10.2[a]",
+      "controlId": "PE.L2-3.10.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "the physical facility where organizational systems reside is protected;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 190,
+      "printedPage": 182
+    },
+    {
+      "id": "PE.L2-3.10.2[b]",
+      "controlId": "PE.L2-3.10.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "the support infrastructure for organizational systems is protected;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 190,
+      "printedPage": 182
+    },
+    {
+      "id": "PE.L2-3.10.2[c]",
+      "controlId": "PE.L2-3.10.2",
+      "label": "c",
+      "kind": "determination",
+      "text": "the physical facility where organizational systems reside is monitored; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 190,
+      "printedPage": 182
+    },
+    {
+      "id": "PE.L2-3.10.2[d]",
+      "controlId": "PE.L2-3.10.2",
+      "label": "d",
+      "kind": "determination",
+      "text": "the support infrastructure for organizational systems is monitored.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 190,
+      "printedPage": 182
+    },
+    {
+      "id": "PE.L2-3.10.3[a]",
+      "controlId": "PE.L2-3.10.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "visitors are escorted; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 192,
+      "printedPage": 184
+    },
+    {
+      "id": "PE.L2-3.10.3[b]",
+      "controlId": "PE.L2-3.10.3",
+      "label": "b",
+      "kind": "determination",
+      "text": "visitor activity is monitored.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 192,
+      "printedPage": 184
+    },
+    {
+      "id": "PE.L2-3.10.4[a]",
+      "controlId": "PE.L2-3.10.4",
+      "label": "a",
+      "kind": "determination",
+      "text": "audit logs of physical access are maintained.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 194,
+      "printedPage": 186
+    },
+    {
+      "id": "PE.L2-3.10.5[a]",
+      "controlId": "PE.L2-3.10.5",
+      "label": "a",
+      "kind": "determination",
+      "text": "physical access devices are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 196,
+      "printedPage": 188
+    },
+    {
+      "id": "PE.L2-3.10.5[b]",
+      "controlId": "PE.L2-3.10.5",
+      "label": "b",
+      "kind": "determination",
+      "text": "physical access devices are controlled; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 196,
+      "printedPage": 188
+    },
+    {
+      "id": "PE.L2-3.10.5[c]",
+      "controlId": "PE.L2-3.10.5",
+      "label": "c",
+      "kind": "determination",
+      "text": "physical access devices are managed.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 196,
+      "printedPage": 188
+    },
+    {
+      "id": "PE.L2-3.10.6[a]",
+      "controlId": "PE.L2-3.10.6",
+      "label": "a",
+      "kind": "determination",
+      "text": "safeguarding measures for CUI are defined for alternate work sites; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 198,
+      "printedPage": 190
+    },
+    {
+      "id": "PE.L2-3.10.6[b]",
+      "controlId": "PE.L2-3.10.6",
+      "label": "b",
+      "kind": "determination",
+      "text": "safeguarding measures for CUI are enforced for alternate work sites.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 198,
+      "printedPage": 190
+    },
+    {
+      "id": "RA.L2-3.11.1[a]",
+      "controlId": "RA.L2-3.11.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "the frequency to assess risk to organizational operations, organizational assets, and individuals is defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 200,
+      "printedPage": 192
+    },
+    {
+      "id": "RA.L2-3.11.1[b]",
+      "controlId": "RA.L2-3.11.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "risk to organizational operations, organizational assets, and individuals resulting from the operation of an organizational system that processes, stores, or transmits CUI is assessed with the defined frequency.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 200,
+      "printedPage": 192
+    },
+    {
+      "id": "RA.L2-3.11.2[a]",
+      "controlId": "RA.L2-3.11.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "the frequency to scan for vulnerabilities in organizational systems and applications is defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 203,
+      "printedPage": 195
+    },
+    {
+      "id": "RA.L2-3.11.2[b]",
+      "controlId": "RA.L2-3.11.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "vulnerability scans are performed on organizational systems with the defined frequency;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 203,
+      "printedPage": 195
+    },
+    {
+      "id": "RA.L2-3.11.2[c]",
+      "controlId": "RA.L2-3.11.2",
+      "label": "c",
+      "kind": "determination",
+      "text": "vulnerability scans are performed on applications with the defined frequency;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 203,
+      "printedPage": 195
+    },
+    {
+      "id": "RA.L2-3.11.2[d]",
+      "controlId": "RA.L2-3.11.2",
+      "label": "d",
+      "kind": "determination",
+      "text": "vulnerability scans are performed on organizational systems when new vulnerabilities are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 203,
+      "printedPage": 195
+    },
+    {
+      "id": "RA.L2-3.11.2[e]",
+      "controlId": "RA.L2-3.11.2",
+      "label": "e",
+      "kind": "determination",
+      "text": "vulnerability scans are performed on applications when new vulnerabilities are identified.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 203,
+      "printedPage": 195
+    },
+    {
+      "id": "RA.L2-3.11.3[a]",
+      "controlId": "RA.L2-3.11.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "vulnerabilities are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 206,
+      "printedPage": 198
+    },
+    {
+      "id": "RA.L2-3.11.3[b]",
+      "controlId": "RA.L2-3.11.3",
+      "label": "b",
+      "kind": "determination",
+      "text": "vulnerabilities are remediated in accordance with risk assessments.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 206,
+      "printedPage": 198
+    },
+    {
+      "id": "CA.L2-3.12.1[a]",
+      "controlId": "CA.L2-3.12.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "the frequency of security control assessments is defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 208,
+      "printedPage": 200
+    },
+    {
+      "id": "CA.L2-3.12.1[b]",
+      "controlId": "CA.L2-3.12.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "security controls are assessed with the defined frequency to determine if the controls are effective in their application.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 208,
+      "printedPage": 200
+    },
+    {
+      "id": "CA.L2-3.12.2[a]",
+      "controlId": "CA.L2-3.12.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "deficiencies and vulnerabilities to be addressed by the plan of action are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 211,
+      "printedPage": 203
+    },
+    {
+      "id": "CA.L2-3.12.2[b]",
+      "controlId": "CA.L2-3.12.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "a plan of action is developed to correct identified deficiencies and reduce or eliminate identified vulnerabilities; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 211,
+      "printedPage": 203
+    },
+    {
+      "id": "CA.L2-3.12.2[c]",
+      "controlId": "CA.L2-3.12.2",
+      "label": "c",
+      "kind": "determination",
+      "text": "the plan of action is implemented to correct identified deficiencies and reduce or eliminate identified vulnerabilities.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 211,
+      "printedPage": 203
+    },
+    {
+      "id": "CA.L2-3.12.3[a]",
+      "controlId": "CA.L2-3.12.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "security controls are monitored on an ongoing basis to ensure the continued effectiveness of those controls.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 214,
+      "printedPage": 206
+    },
+    {
+      "id": "CA.L2-3.12.4[a]",
+      "controlId": "CA.L2-3.12.4",
+      "label": "a",
+      "kind": "determination",
+      "text": "a system security plan is developed;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 216,
+      "printedPage": 208
+    },
+    {
+      "id": "CA.L2-3.12.4[b]",
+      "controlId": "CA.L2-3.12.4",
+      "label": "b",
+      "kind": "determination",
+      "text": "the system boundary is described and documented in the system security plan;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 216,
+      "printedPage": 208
+    },
+    {
+      "id": "CA.L2-3.12.4[c]",
+      "controlId": "CA.L2-3.12.4",
+      "label": "c",
+      "kind": "determination",
+      "text": "the system environment of operation is described and documented in the system security plan;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 216,
+      "printedPage": 208
+    },
+    {
+      "id": "CA.L2-3.12.4[d]",
+      "controlId": "CA.L2-3.12.4",
+      "label": "d",
+      "kind": "determination",
+      "text": "the security requirements identified and approved by the designated authority as non-applicable are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 216,
+      "printedPage": 208
+    },
+    {
+      "id": "CA.L2-3.12.4[e]",
+      "controlId": "CA.L2-3.12.4",
+      "label": "e",
+      "kind": "determination",
+      "text": "the method of security requirement implementation is described and documented in the system security plan;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 216,
+      "printedPage": 208
+    },
+    {
+      "id": "CA.L2-3.12.4[f]",
+      "controlId": "CA.L2-3.12.4",
+      "label": "f",
+      "kind": "determination",
+      "text": "the relationship with or connection to other systems is described and documented in the system security plan;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 216,
+      "printedPage": 208
+    },
+    {
+      "id": "CA.L2-3.12.4[g]",
+      "controlId": "CA.L2-3.12.4",
+      "label": "g",
+      "kind": "determination",
+      "text": "the frequency to update the system security plan is defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 216,
+      "printedPage": 208
+    },
+    {
+      "id": "CA.L2-3.12.4[h]",
+      "controlId": "CA.L2-3.12.4",
+      "label": "h",
+      "kind": "determination",
+      "text": "system security plan is updated with the defined frequency.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 216,
+      "printedPage": 208
+    },
+    {
+      "id": "SC.L2-3.13.1[a]",
+      "controlId": "SC.L2-3.13.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "the external system boundary is defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 219,
+      "printedPage": 211
+    },
+    {
+      "id": "SC.L2-3.13.1[b]",
+      "controlId": "SC.L2-3.13.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "key internal system boundaries are defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 219,
+      "printedPage": 211
+    },
+    {
+      "id": "SC.L2-3.13.1[c]",
+      "controlId": "SC.L2-3.13.1",
+      "label": "c",
+      "kind": "determination",
+      "text": "communications are monitored at the external system boundary;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 219,
+      "printedPage": 211
+    },
+    {
+      "id": "SC.L2-3.13.1[d]",
+      "controlId": "SC.L2-3.13.1",
+      "label": "d",
+      "kind": "determination",
+      "text": "communications are monitored at key internal boundaries;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 219,
+      "printedPage": 211
+    },
+    {
+      "id": "SC.L2-3.13.1[e]",
+      "controlId": "SC.L2-3.13.1",
+      "label": "e",
+      "kind": "determination",
+      "text": "communications are controlled at the external system boundary;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 219,
+      "printedPage": 211
+    },
+    {
+      "id": "SC.L2-3.13.1[f]",
+      "controlId": "SC.L2-3.13.1",
+      "label": "f",
+      "kind": "determination",
+      "text": "communications are controlled at key internal boundaries;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 219,
+      "printedPage": 211
+    },
+    {
+      "id": "SC.L2-3.13.1[g]",
+      "controlId": "SC.L2-3.13.1",
+      "label": "g",
+      "kind": "determination",
+      "text": "communications are protected at the external system boundary; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 219,
+      "printedPage": 211
+    },
+    {
+      "id": "SC.L2-3.13.1[h]",
+      "controlId": "SC.L2-3.13.1",
+      "label": "h",
+      "kind": "determination",
+      "text": "communications are protected at key internal boundaries.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 219,
+      "printedPage": 211
+    },
+    {
+      "id": "SC.L2-3.13.2[a]",
+      "controlId": "SC.L2-3.13.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "architectural designs that promote effective information security are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 222,
+      "printedPage": 214
+    },
+    {
+      "id": "SC.L2-3.13.2[b]",
+      "controlId": "SC.L2-3.13.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "software development techniques that promote effective information security are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 222,
+      "printedPage": 214
+    },
+    {
+      "id": "SC.L2-3.13.2[c]",
+      "controlId": "SC.L2-3.13.2",
+      "label": "c",
+      "kind": "determination",
+      "text": "systems engineering principles that promote effective information security are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 222,
+      "printedPage": 214
+    },
+    {
+      "id": "SC.L2-3.13.2[d]",
+      "controlId": "SC.L2-3.13.2",
+      "label": "d",
+      "kind": "determination",
+      "text": "identified architectural designs that promote effective information security are employed;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 222,
+      "printedPage": 214
+    },
+    {
+      "id": "SC.L2-3.13.2[e]",
+      "controlId": "SC.L2-3.13.2",
+      "label": "e",
+      "kind": "determination",
+      "text": "identified software development techniques that promote effective information security are employed; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 222,
+      "printedPage": 214
+    },
+    {
+      "id": "SC.L2-3.13.2[f]",
+      "controlId": "SC.L2-3.13.2",
+      "label": "f",
+      "kind": "determination",
+      "text": "identified systems engineering principles that promote effective information security are employed.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 222,
+      "printedPage": 214
+    },
+    {
+      "id": "SC.L2-3.13.3[a]",
+      "controlId": "SC.L2-3.13.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "user functionality is identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 225,
+      "printedPage": 217
+    },
+    {
+      "id": "SC.L2-3.13.3[b]",
+      "controlId": "SC.L2-3.13.3",
+      "label": "b",
+      "kind": "determination",
+      "text": "system management functionality is identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 225,
+      "printedPage": 217
+    },
+    {
+      "id": "SC.L2-3.13.3[c]",
+      "controlId": "SC.L2-3.13.3",
+      "label": "c",
+      "kind": "determination",
+      "text": "user functionality is separated from system management functionality.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 225,
+      "printedPage": 217
+    },
+    {
+      "id": "SC.L2-3.13.4[a]",
+      "controlId": "SC.L2-3.13.4",
+      "label": "a",
+      "kind": "determination",
+      "text": "unauthorized and unintended information transfer via shared system resources is prevented.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 227,
+      "printedPage": 219
+    },
+    {
+      "id": "SC.L2-3.13.5[a]",
+      "controlId": "SC.L2-3.13.5",
+      "label": "a",
+      "kind": "determination",
+      "text": "publicly accessible system components are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 229,
+      "printedPage": 221
+    },
+    {
+      "id": "SC.L2-3.13.5[b]",
+      "controlId": "SC.L2-3.13.5",
+      "label": "b",
+      "kind": "determination",
+      "text": "subnetworks for publicly accessible system components are physically or logically separated from internal networks.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 229,
+      "printedPage": 221
+    },
+    {
+      "id": "SC.L2-3.13.6[a]",
+      "controlId": "SC.L2-3.13.6",
+      "label": "a",
+      "kind": "determination",
+      "text": "network communications traffic is denied by default; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 231,
+      "printedPage": 223
+    },
+    {
+      "id": "SC.L2-3.13.6[b]",
+      "controlId": "SC.L2-3.13.6",
+      "label": "b",
+      "kind": "determination",
+      "text": "network communications traffic is allowed by exception.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 231,
+      "printedPage": 223
+    },
+    {
+      "id": "SC.L2-3.13.7[a]",
+      "controlId": "SC.L2-3.13.7",
+      "label": "a",
+      "kind": "determination",
+      "text": "remote devices are prevented from simultaneously establishing non-remote connections with the system and communicating via some other connection to resources in external networks (i.e., split tunneling).",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 233,
+      "printedPage": 225
+    },
+    {
+      "id": "SC.L2-3.13.8[a]",
+      "controlId": "SC.L2-3.13.8",
+      "label": "a",
+      "kind": "determination",
+      "text": "cryptographic mechanisms intended to prevent unauthorized disclosure of CUI are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 235,
+      "printedPage": 227
+    },
+    {
+      "id": "SC.L2-3.13.8[b]",
+      "controlId": "SC.L2-3.13.8",
+      "label": "b",
+      "kind": "determination",
+      "text": "alternative physical safeguards intended to prevent unauthorized disclosure of CUI are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 235,
+      "printedPage": 227
+    },
+    {
+      "id": "SC.L2-3.13.8[c]",
+      "controlId": "SC.L2-3.13.8",
+      "label": "c",
+      "kind": "determination",
+      "text": "either cryptographic mechanisms or alternative physical safeguards are implemented to prevent unauthorized disclosure of CUI during transmission.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 235,
+      "printedPage": 227
+    },
+    {
+      "id": "SC.L2-3.13.9[a]",
+      "controlId": "SC.L2-3.13.9",
+      "label": "a",
+      "kind": "determination",
+      "text": "a period of inactivity to terminate network connections associated with communications sessions is defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 237,
+      "printedPage": 229
+    },
+    {
+      "id": "SC.L2-3.13.9[b]",
+      "controlId": "SC.L2-3.13.9",
+      "label": "b",
+      "kind": "determination",
+      "text": "network connections associated with communications sessions are terminated at the end of the sessions; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 237,
+      "printedPage": 229
+    },
+    {
+      "id": "SC.L2-3.13.9[c]",
+      "controlId": "SC.L2-3.13.9",
+      "label": "c",
+      "kind": "determination",
+      "text": "network connections associated with communications sessions are terminated after the defined period of inactivity.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 237,
+      "printedPage": 229
+    },
+    {
+      "id": "SC.L2-3.13.10[a]",
+      "controlId": "SC.L2-3.13.10",
+      "label": "a",
+      "kind": "determination",
+      "text": "cryptographic keys are established whenever cryptography is employed; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 239,
+      "printedPage": 231
+    },
+    {
+      "id": "SC.L2-3.13.10[b]",
+      "controlId": "SC.L2-3.13.10",
+      "label": "b",
+      "kind": "determination",
+      "text": "cryptographic keys are managed whenever cryptography is employed.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 239,
+      "printedPage": 231
+    },
+    {
+      "id": "SC.L2-3.13.11[a]",
+      "controlId": "SC.L2-3.13.11",
+      "label": "a",
+      "kind": "determination",
+      "text": "FIPS-validated cryptography is employed to protect the confidentiality of CUI.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 242,
+      "printedPage": 234
+    },
+    {
+      "id": "SC.L2-3.13.12[a]",
+      "controlId": "SC.L2-3.13.12",
+      "label": "a",
+      "kind": "determination",
+      "text": "collaborative computing devices are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 244,
+      "printedPage": 236
+    },
+    {
+      "id": "SC.L2-3.13.12[b]",
+      "controlId": "SC.L2-3.13.12",
+      "label": "b",
+      "kind": "determination",
+      "text": "collaborative computing devices provide indication to users of devices in use; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 244,
+      "printedPage": 236
+    },
+    {
+      "id": "SC.L2-3.13.12[c]",
+      "controlId": "SC.L2-3.13.12",
+      "label": "c",
+      "kind": "determination",
+      "text": "remote activation of collaborative computing devices is prohibited.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 244,
+      "printedPage": 236
+    },
+    {
+      "id": "SC.L2-3.13.13[a]",
+      "controlId": "SC.L2-3.13.13",
+      "label": "a",
+      "kind": "determination",
+      "text": "use of mobile code is controlled; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 246,
+      "printedPage": 238
+    },
+    {
+      "id": "SC.L2-3.13.13[b]",
+      "controlId": "SC.L2-3.13.13",
+      "label": "b",
+      "kind": "determination",
+      "text": "use of mobile code is monitored.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 246,
+      "printedPage": 238
+    },
+    {
+      "id": "SC.L2-3.13.14[a]",
+      "controlId": "SC.L2-3.13.14",
+      "label": "a",
+      "kind": "determination",
+      "text": "use of Voice over Internet Protocol (VoIP) technologies is controlled; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 248,
+      "printedPage": 240
+    },
+    {
+      "id": "SC.L2-3.13.14[b]",
+      "controlId": "SC.L2-3.13.14",
+      "label": "b",
+      "kind": "determination",
+      "text": "use of Voice over Internet Protocol (VoIP) technologies is monitored.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 248,
+      "printedPage": 240
+    },
+    {
+      "id": "SC.L2-3.13.15[a]",
+      "controlId": "SC.L2-3.13.15",
+      "label": "a",
+      "kind": "determination",
+      "text": "the authenticity of communications sessions is protected.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 250,
+      "printedPage": 242
+    },
+    {
+      "id": "SC.L2-3.13.16[a]",
+      "controlId": "SC.L2-3.13.16",
+      "label": "a",
+      "kind": "determination",
+      "text": "the confidentiality of CUI at rest is protected.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 252,
+      "printedPage": 244
+    },
+    {
+      "id": "SI.L2-3.14.1[a]",
+      "controlId": "SI.L2-3.14.1",
+      "label": "a",
+      "kind": "determination",
+      "text": "the time within which to identify system flaws is specified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 254,
+      "printedPage": 246
+    },
+    {
+      "id": "SI.L2-3.14.1[b]",
+      "controlId": "SI.L2-3.14.1",
+      "label": "b",
+      "kind": "determination",
+      "text": "system flaws are identified within the specified time frame;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 254,
+      "printedPage": 246
+    },
+    {
+      "id": "SI.L2-3.14.1[c]",
+      "controlId": "SI.L2-3.14.1",
+      "label": "c",
+      "kind": "determination",
+      "text": "the time within which to report system flaws is specified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 254,
+      "printedPage": 246
+    },
+    {
+      "id": "SI.L2-3.14.1[d]",
+      "controlId": "SI.L2-3.14.1",
+      "label": "d",
+      "kind": "determination",
+      "text": "system flaws are reported within the specified time frame;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 254,
+      "printedPage": 246
+    },
+    {
+      "id": "SI.L2-3.14.1[e]",
+      "controlId": "SI.L2-3.14.1",
+      "label": "e",
+      "kind": "determination",
+      "text": "the time within which to correct system flaws is specified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 254,
+      "printedPage": 246
+    },
+    {
+      "id": "SI.L2-3.14.1[f]",
+      "controlId": "SI.L2-3.14.1",
+      "label": "f",
+      "kind": "determination",
+      "text": "system flaws are corrected within the specified time frame.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 254,
+      "printedPage": 246
+    },
+    {
+      "id": "SI.L2-3.14.2[a]",
+      "controlId": "SI.L2-3.14.2",
+      "label": "a",
+      "kind": "determination",
+      "text": "designated locations for malicious code protection are identified; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 257,
+      "printedPage": 249
+    },
+    {
+      "id": "SI.L2-3.14.2[b]",
+      "controlId": "SI.L2-3.14.2",
+      "label": "b",
+      "kind": "determination",
+      "text": "protection from malicious code at designated locations is provided.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 257,
+      "printedPage": 249
+    },
+    {
+      "id": "SI.L2-3.14.3[a]",
+      "controlId": "SI.L2-3.14.3",
+      "label": "a",
+      "kind": "determination",
+      "text": "response actions to system security alerts and advisories are identified;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 260,
+      "printedPage": 252
+    },
+    {
+      "id": "SI.L2-3.14.3[b]",
+      "controlId": "SI.L2-3.14.3",
+      "label": "b",
+      "kind": "determination",
+      "text": "system security alerts and advisories are monitored; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 260,
+      "printedPage": 252
+    },
+    {
+      "id": "SI.L2-3.14.3[c]",
+      "controlId": "SI.L2-3.14.3",
+      "label": "c",
+      "kind": "determination",
+      "text": "actions in response to system security alerts and advisories are taken.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 260,
+      "printedPage": 252
+    },
+    {
+      "id": "SI.L2-3.14.4[a]",
+      "controlId": "SI.L2-3.14.4",
+      "label": "a",
+      "kind": "determination",
+      "text": "malicious code protection mechanisms are updated when new releases are available.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 262,
+      "printedPage": 254
+    },
+    {
+      "id": "SI.L2-3.14.5[a]",
+      "controlId": "SI.L2-3.14.5",
+      "label": "a",
+      "kind": "determination",
+      "text": "the frequency for malicious code scans is defined;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 264,
+      "printedPage": 256
+    },
+    {
+      "id": "SI.L2-3.14.5[b]",
+      "controlId": "SI.L2-3.14.5",
+      "label": "b",
+      "kind": "determination",
+      "text": "malicious code scans are performed with the defined frequency; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 264,
+      "printedPage": 256
+    },
+    {
+      "id": "SI.L2-3.14.5[c]",
+      "controlId": "SI.L2-3.14.5",
+      "label": "c",
+      "kind": "determination",
+      "text": "real-time malicious code scans of files from external sources as files are downloaded, opened, or executed are performed.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 264,
+      "printedPage": 256
+    },
+    {
+      "id": "SI.L2-3.14.6[a]",
+      "controlId": "SI.L2-3.14.6",
+      "label": "a",
+      "kind": "determination",
+      "text": "the system is monitored to detect attacks and indicators of potential attacks;",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 266,
+      "printedPage": 258
+    },
+    {
+      "id": "SI.L2-3.14.6[b]",
+      "controlId": "SI.L2-3.14.6",
+      "label": "b",
+      "kind": "determination",
+      "text": "inbound communications traffic is monitored to detect attacks and indicators of potential attacks; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 266,
+      "printedPage": 258
+    },
+    {
+      "id": "SI.L2-3.14.6[c]",
+      "controlId": "SI.L2-3.14.6",
+      "label": "c",
+      "kind": "determination",
+      "text": "outbound communications traffic is monitored to detect attacks and indicators of potential attacks.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 266,
+      "printedPage": 258
+    },
+    {
+      "id": "SI.L2-3.14.7[a]",
+      "controlId": "SI.L2-3.14.7",
+      "label": "a",
+      "kind": "determination",
+      "text": "authorized use of the system is defined; and",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 269,
+      "printedPage": 261
+    },
+    {
+      "id": "SI.L2-3.14.7[b]",
+      "controlId": "SI.L2-3.14.7",
+      "label": "b",
+      "kind": "determination",
+      "text": "unauthorized use of the system is identified.",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 269,
+      "printedPage": 261
+    },
+    {
+      "id": "AC.L3-3.1.2e[a]",
+      "controlId": "AC.L3-3.1.2e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Information resources that are owned, provisioned, or issued by the organization are identified; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 19,
+      "printedPage": 15
+    },
+    {
+      "id": "AC.L3-3.1.2e[b]",
+      "controlId": "AC.L3-3.1.2e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Access to systems and system components is restricted to only those information resources that are owned, provisioned, or issued by the organization.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 19,
+      "printedPage": 15
+    },
+    {
+      "id": "AC.L3-3.1.3e[ODP1]",
+      "controlId": "AC.L3-3.1.3e",
+      "label": "ODP1",
+      "kind": "organization-defined-parameter",
+      "text": "Secure information transfer solutions are defined;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 21,
+      "printedPage": 17
+    },
+    {
+      "id": "AC.L3-3.1.3e[a]",
+      "controlId": "AC.L3-3.1.3e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Information flows between security domains on connected systems are identified; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 21,
+      "printedPage": 17
+    },
+    {
+      "id": "AC.L3-3.1.3e[b]",
+      "controlId": "AC.L3-3.1.3e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Secure information transfer solutions are employed to control information flows between security domains on connected systems.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 21,
+      "printedPage": 17
+    },
+    {
+      "id": "AT.L3-3.2.1e[a]",
+      "controlId": "AT.L3-3.2.1e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Threats from social engineering, advanced persistent threat actors, breaches, and suspicious behaviors are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 24,
+      "printedPage": 20
+    },
+    {
+      "id": "AT.L3-3.2.1e[b]",
+      "controlId": "AT.L3-3.2.1e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Awareness training focused on recognizing and responding to threats from social engineering, advanced persistent threat actors, breaches, and suspicious behaviors is provided upon initial hire, following a significant cyber event, and at least annually;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 24,
+      "printedPage": 20
+    },
+    {
+      "id": "AT.L3-3.2.1e[c]",
+      "controlId": "AT.L3-3.2.1e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Significant changes to the threats from social engineering, advanced persistent threat actors, breaches, and suspicious behaviors are identified; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 24,
+      "printedPage": 20
+    },
+    {
+      "id": "AT.L3-3.2.1e[d]",
+      "controlId": "AT.L3-3.2.1e",
+      "label": "d",
+      "kind": "determination",
+      "text": "Awareness training is updated at least annually or when there are significant changes to the threat.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 24,
+      "printedPage": 20
+    },
+    {
+      "id": "AT.L3-3.2.2e[a]",
+      "controlId": "AT.L3-3.2.2e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Practical exercises are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 26,
+      "printedPage": 22
+    },
+    {
+      "id": "AT.L3-3.2.2e[b]",
+      "controlId": "AT.L3-3.2.2e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Current threat scenarios are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 26,
+      "printedPage": 22
+    },
+    {
+      "id": "AT.L3-3.2.2e[c]",
+      "controlId": "AT.L3-3.2.2e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Individuals involved in training and their supervisors are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 26,
+      "printedPage": 22
+    },
+    {
+      "id": "AT.L3-3.2.2e[d]",
+      "controlId": "AT.L3-3.2.2e",
+      "label": "d",
+      "kind": "determination",
+      "text": "Practical exercises that are aligned with current threat scenarios are included in awareness training for all users, tailored by roles, to include general users, users with specialized roles, and privileged users; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 26,
+      "printedPage": 22
+    },
+    {
+      "id": "AT.L3-3.2.2e[e]",
+      "controlId": "AT.L3-3.2.2e",
+      "label": "e",
+      "kind": "determination",
+      "text": "Feedback is provided to individuals involved in the training and their supervisors.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 26,
+      "printedPage": 22
+    },
+    {
+      "id": "CM.L3-3.4.1e[a]",
+      "controlId": "CM.L3-3.4.1e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Approved system components are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 29,
+      "printedPage": 25
+    },
+    {
+      "id": "CM.L3-3.4.1e[b]",
+      "controlId": "CM.L3-3.4.1e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Implemented system components are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 29,
+      "printedPage": 25
+    },
+    {
+      "id": "CM.L3-3.4.1e[c]",
+      "controlId": "CM.L3-3.4.1e",
+      "label": "c",
+      "kind": "determination",
+      "text": "An authoritative source and repository are established to provide a trusted source and accountability for approved and implemented system components; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 29,
+      "printedPage": 25
+    },
+    {
+      "id": "CM.L3-3.4.1e[d]",
+      "controlId": "CM.L3-3.4.1e",
+      "label": "d",
+      "kind": "determination",
+      "text": "An authoritative source and repository are maintained to provide a trusted source and accountability for approved and implemented system components.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 29,
+      "printedPage": 25
+    },
+    {
+      "id": "CM.L3-3.4.2e[a]",
+      "controlId": "CM.L3-3.4.2e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Automated mechanisms to detect misconfigured or unauthorized system components are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 32,
+      "printedPage": 28
+    },
+    {
+      "id": "CM.L3-3.4.2e[b]",
+      "controlId": "CM.L3-3.4.2e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Automated mechanisms are employed to detect misconfigured or unauthorized system components;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 32,
+      "printedPage": 28
+    },
+    {
+      "id": "CM.L3-3.4.2e[c]",
+      "controlId": "CM.L3-3.4.2e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Misconfigured or unauthorized system components are detected; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 32,
+      "printedPage": 28
+    },
+    {
+      "id": "CM.L3-3.4.2e[d]",
+      "controlId": "CM.L3-3.4.2e",
+      "label": "d",
+      "kind": "determination",
+      "text": "After detection, system components are removed or placed in a quarantine or remediation network to facilitate patching, re-configuration, or other mitigations.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 32,
+      "printedPage": 28
+    },
+    {
+      "id": "CM.L3-3.4.3e[a]",
+      "controlId": "CM.L3-3.4.3e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Automated discovery and management tools for the inventory of system components are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 35,
+      "printedPage": 31
+    },
+    {
+      "id": "CM.L3-3.4.3e[b]",
+      "controlId": "CM.L3-3.4.3e",
+      "label": "b",
+      "kind": "determination",
+      "text": "An up-to-date, complete, accurate, and readily available inventory of system components exists; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 35,
+      "printedPage": 31
+    },
+    {
+      "id": "CM.L3-3.4.3e[c]",
+      "controlId": "CM.L3-3.4.3e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Automated discovery and management tools are employed to maintain an up-to-date, complete, accurate, and readily available inventory of system components.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 35,
+      "printedPage": 31
+    },
+    {
+      "id": "IA.L3-3.5.1e[ODP1]",
+      "controlId": "IA.L3-3.5.1e",
+      "label": "ODP1",
+      "kind": "organization-defined-parameter",
+      "text": "Systems and system components to identify and authenticate are defined;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "IA.L3-3.5.1e[a]",
+      "controlId": "IA.L3-3.5.1e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Bidirectional authentication that is cryptographically-based is implemented;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "IA.L3-3.5.1e[b]",
+      "controlId": "IA.L3-3.5.1e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Bidirectional authentication that is replay-resistant is implemented; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "IA.L3-3.5.1e[c]",
+      "controlId": "IA.L3-3.5.1e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Systems and system components, where possible, are identified and authenticated before establishing a network connection using bidirectional authentication that is cryptographically-based and replay-resistant.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 38,
+      "printedPage": 34
+    },
+    {
+      "id": "IA.L3-3.5.3e[a]",
+      "controlId": "IA.L3-3.5.3e",
+      "label": "a",
+      "kind": "determination",
+      "text": "System components that are known, authenticated, in a properly configured state, or in a trust profile are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 41,
+      "printedPage": 37
+    },
+    {
+      "id": "IA.L3-3.5.3e[b]",
+      "controlId": "IA.L3-3.5.3e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Automated or manual/procedural mechanisms to prohibit system components from connecting to organizational systems are identified; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 41,
+      "printedPage": 37
+    },
+    {
+      "id": "IA.L3-3.5.3e[c]",
+      "controlId": "IA.L3-3.5.3e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Automated or manual/procedural mechanisms are employed to prohibit system components from connecting to organizational systems unless the components are known, authenticated, in a properly configured state, or in a trust profile.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 41,
+      "printedPage": 37
+    },
+    {
+      "id": "IR.L3-3.6.1e[a]",
+      "controlId": "IR.L3-3.6.1e",
+      "label": "a",
+      "kind": "determination",
+      "text": "A security operations center capability is established;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 44,
+      "printedPage": 40
+    },
+    {
+      "id": "IR.L3-3.6.1e[b]",
+      "controlId": "IR.L3-3.6.1e",
+      "label": "b",
+      "kind": "determination",
+      "text": "The security operations center capability operates 24/7, with allowance for remote/on-call staff; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 44,
+      "printedPage": 40
+    },
+    {
+      "id": "IR.L3-3.6.1e[c]",
+      "controlId": "IR.L3-3.6.1e",
+      "label": "c",
+      "kind": "determination",
+      "text": "The security operations center capability is maintained.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 44,
+      "printedPage": 40
+    },
+    {
+      "id": "IR.L3-3.6.2e[a]",
+      "controlId": "IR.L3-3.6.2e",
+      "label": "a",
+      "kind": "determination",
+      "text": "A cyber incident response team is established;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 47,
+      "printedPage": 43
+    },
+    {
+      "id": "IR.L3-3.6.2e[b]",
+      "controlId": "IR.L3-3.6.2e",
+      "label": "b",
+      "kind": "determination",
+      "text": "The cyber incident response team can be deployed by the organization within 24 hours; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 47,
+      "printedPage": 43
+    },
+    {
+      "id": "IR.L3-3.6.2e[c]",
+      "controlId": "IR.L3-3.6.2e",
+      "label": "c",
+      "kind": "determination",
+      "text": "The cyber incident response team is maintained.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 47,
+      "printedPage": 43
+    },
+    {
+      "id": "PS.L3-3.9.2e[a]",
+      "controlId": "PS.L3-3.9.2e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Individuals with access to CUI are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 50,
+      "printedPage": 46
+    },
+    {
+      "id": "PS.L3-3.9.2e[b]",
+      "controlId": "PS.L3-3.9.2e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Adverse information about individuals with access to CUI is defined;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 50,
+      "printedPage": 46
+    },
+    {
+      "id": "PS.L3-3.9.2e[c]",
+      "controlId": "PS.L3-3.9.2e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Organizational systems to which individuals have access are identified; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 50,
+      "printedPage": 46
+    },
+    {
+      "id": "PS.L3-3.9.2e[d]",
+      "controlId": "PS.L3-3.9.2e",
+      "label": "d",
+      "kind": "determination",
+      "text": "Mechanisms are in place to protect organizational systems if adverse information develops or is obtained about individuals with access to CUI.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 50,
+      "printedPage": 46
+    },
+    {
+      "id": "RA.L3-3.11.1e[ODP1]",
+      "controlId": "RA.L3-3.11.1e",
+      "label": "ODP1",
+      "kind": "organization-defined-parameter",
+      "text": "Sources of threat intelligence are defined;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 52,
+      "printedPage": 48
+    },
+    {
+      "id": "RA.L3-3.11.1e[a]",
+      "controlId": "RA.L3-3.11.1e",
+      "label": "a",
+      "kind": "determination",
+      "text": "A risk assessment methodology is identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 52,
+      "printedPage": 48
+    },
+    {
+      "id": "RA.L3-3.11.1e[b]",
+      "controlId": "RA.L3-3.11.1e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Threat intelligence, at a minimum from open or commercial sources, and any DoD-provided sources, are employed as part of a risk assessment to guide and inform the development of organizational systems and security architectures;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 52,
+      "printedPage": 48
+    },
+    {
+      "id": "RA.L3-3.11.1e[c]",
+      "controlId": "RA.L3-3.11.1e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Threat intelligence, at a minimum from open or commercial sources, and any DoD-provided sources, are employed as part of a risk assessment to guide and inform the selection of security solutions;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 52,
+      "printedPage": 48
+    },
+    {
+      "id": "RA.L3-3.11.1e[d]",
+      "controlId": "RA.L3-3.11.1e",
+      "label": "d",
+      "kind": "determination",
+      "text": "Threat intelligence, at a minimum from open or commercial sources, and any DoD-provided sources, are employed as part of a risk assessment to guide and inform system monitoring activities;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 52,
+      "printedPage": 48
+    },
+    {
+      "id": "RA.L3-3.11.1e[e]",
+      "controlId": "RA.L3-3.11.1e",
+      "label": "e",
+      "kind": "determination",
+      "text": "Threat intelligence, at a minimum from open or commercial sources, and any DoD-provided sources, are employed as part of a risk assessment to guide and inform threat hunting activities; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 52,
+      "printedPage": 48
+    },
+    {
+      "id": "RA.L3-3.11.1e[f]",
+      "controlId": "RA.L3-3.11.1e",
+      "label": "f",
+      "kind": "determination",
+      "text": "Threat intelligence, at a minimum from open or commercial sources, and any DoD-provided sources, are employed as part of a risk assessment to guide and inform response and recovery activities.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 52,
+      "printedPage": 48
+    },
+    {
+      "id": "RA.L3-3.11.2e[ODP4]",
+      "controlId": "RA.L3-3.11.2e",
+      "label": "ODP4",
+      "kind": "organization-defined-parameter",
+      "text": "Organizational systems to search for indicators of compromise are defined;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 55,
+      "printedPage": 51
+    },
+    {
+      "id": "RA.L3-3.11.2e[a]",
+      "controlId": "RA.L3-3.11.2e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Indicators of compromise are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 55,
+      "printedPage": 51
+    },
+    {
+      "id": "RA.L3-3.11.2e[b]",
+      "controlId": "RA.L3-3.11.2e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Cyber threat hunting activities are conducted on an on-going aperiodic basis or when indications warrant, to search for indicators of compromise in organizational systems; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 55,
+      "printedPage": 51
+    },
+    {
+      "id": "RA.L3-3.11.2e[c]",
+      "controlId": "RA.L3-3.11.2e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Cyber threat hunting activities are conducted on an on-going aperiodic basis or when indications warrant, to detect, track, and disrupt threats that evade existing controls.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 55,
+      "printedPage": 51
+    },
+    {
+      "id": "RA.L3-3.11.3e[a]",
+      "controlId": "RA.L3-3.11.3e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Advanced automation and analytics capabilities to predict and identify risks to organizations, systems, and system components are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 58,
+      "printedPage": 54
+    },
+    {
+      "id": "RA.L3-3.11.3e[b]",
+      "controlId": "RA.L3-3.11.3e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Analysts to predict and identify risks to organizations, systems, and system components are identified; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 58,
+      "printedPage": 54
+    },
+    {
+      "id": "RA.L3-3.11.3e[c]",
+      "controlId": "RA.L3-3.11.3e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Advanced automation and analytics capabilities are employed in support of analysts to predict and identify risks to organizations, systems, and system components.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 58,
+      "printedPage": 54
+    },
+    {
+      "id": "RA.L3-3.11.4e[a]",
+      "controlId": "RA.L3-3.11.4e",
+      "label": "a",
+      "kind": "determination",
+      "text": "The system security plan documents or references the security solution selected;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 61,
+      "printedPage": 57
+    },
+    {
+      "id": "RA.L3-3.11.4e[b]",
+      "controlId": "RA.L3-3.11.4e",
+      "label": "b",
+      "kind": "determination",
+      "text": "The system security plan documents or references the rationale for the security solution; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 61,
+      "printedPage": 57
+    },
+    {
+      "id": "RA.L3-3.11.4e[c]",
+      "controlId": "RA.L3-3.11.4e",
+      "label": "c",
+      "kind": "determination",
+      "text": "The system security plan documents or references the risk determination.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 61,
+      "printedPage": 57
+    },
+    {
+      "id": "RA.L3-3.11.5e[a]",
+      "controlId": "RA.L3-3.11.5e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Security solutions are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 64,
+      "printedPage": 60
+    },
+    {
+      "id": "RA.L3-3.11.5e[b]",
+      "controlId": "RA.L3-3.11.5e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Current and accumulated threat intelligence is identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 64,
+      "printedPage": 60
+    },
+    {
+      "id": "RA.L3-3.11.5e[c]",
+      "controlId": "RA.L3-3.11.5e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Anticipated risk to organizational systems and the organization based on current and accumulated threat intelligence is identified; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 64,
+      "printedPage": 60
+    },
+    {
+      "id": "RA.L3-3.11.5e[d]",
+      "controlId": "RA.L3-3.11.5e",
+      "label": "d",
+      "kind": "determination",
+      "text": "The effectiveness of security solutions is assessed at least annually or upon receipt of relevant cyber threat information, or in response to a relevant cyber incident, to address anticipated risk to organizational systems and the organization based on current and accumulated threat intelligence.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 64,
+      "printedPage": 60
+    },
+    {
+      "id": "RA.L3-3.11.6e[a]",
+      "controlId": "RA.L3-3.11.6e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Supply chain risks associated with organizational systems and system components are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 67,
+      "printedPage": 63
+    },
+    {
+      "id": "RA.L3-3.11.6e[b]",
+      "controlId": "RA.L3-3.11.6e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Supply chain risks associated with organizational systems and system components are assessed;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 67,
+      "printedPage": 63
+    },
+    {
+      "id": "RA.L3-3.11.6e[c]",
+      "controlId": "RA.L3-3.11.6e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Supply chain risks associated with organizational systems and system components are responded to; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 67,
+      "printedPage": 63
+    },
+    {
+      "id": "RA.L3-3.11.6e[d]",
+      "controlId": "RA.L3-3.11.6e",
+      "label": "d",
+      "kind": "determination",
+      "text": "Supply chain risks associated with organizational systems and system components are monitored.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 67,
+      "printedPage": 63
+    },
+    {
+      "id": "RA.L3-3.11.7e[a]",
+      "controlId": "RA.L3-3.11.7e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Supply chain risks associated with organizational systems and system components are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 69,
+      "printedPage": 65
+    },
+    {
+      "id": "RA.L3-3.11.7e[b]",
+      "controlId": "RA.L3-3.11.7e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Organizational systems and system components to include in a supply chain risk management plan are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 69,
+      "printedPage": 65
+    },
+    {
+      "id": "RA.L3-3.11.7e[c]",
+      "controlId": "RA.L3-3.11.7e",
+      "label": "c",
+      "kind": "determination",
+      "text": "A plan for managing supply chain risks associated with organizational systems and system components is developed; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 69,
+      "printedPage": 65
+    },
+    {
+      "id": "RA.L3-3.11.7e[d]",
+      "controlId": "RA.L3-3.11.7e",
+      "label": "d",
+      "kind": "determination",
+      "text": "The plan for managing supply chain risks is updated at least annually, and upon receipt of relevant cyber threat information, or in response to a relevant cyber incident.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 69,
+      "printedPage": 65
+    },
+    {
+      "id": "CA.L3-3.12.1e[a]",
+      "controlId": "CA.L3-3.12.1e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Automated scanning tools are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 71,
+      "printedPage": 67
+    },
+    {
+      "id": "CA.L3-3.12.1e[b]",
+      "controlId": "CA.L3-3.12.1e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Ad hoc tests using subject matter experts are identified; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 71,
+      "printedPage": 67
+    },
+    {
+      "id": "CA.L3-3.12.1e[c]",
+      "controlId": "CA.L3-3.12.1e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Penetration testing is conducted at least annually or when significant security changes are made to the system, leveraging automated scanning tools and ad hoc tests using subject matter experts.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 71,
+      "printedPage": 67
+    },
+    {
+      "id": "SC.L3-3.13.4e[ODP1]",
+      "controlId": "SC.L3-3.13.4e",
+      "label": "ODP1",
+      "kind": "organization-defined-parameter",
+      "text": "One or more of the following is/are selected: physical isolation techniques; logical isolation techniques;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 74,
+      "printedPage": 70
+    },
+    {
+      "id": "SC.L3-3.13.4e[ODP2]",
+      "controlId": "SC.L3-3.13.4e",
+      "label": "ODP2",
+      "kind": "organization-defined-parameter",
+      "text": "Physical isolation techniques are defined (if selected);",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 74,
+      "printedPage": 70
+    },
+    {
+      "id": "SC.L3-3.13.4e[ODP3]",
+      "controlId": "SC.L3-3.13.4e",
+      "label": "ODP3",
+      "kind": "organization-defined-parameter",
+      "text": "Logical isolation techniques are defined (if selected);",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 74,
+      "printedPage": 70
+    },
+    {
+      "id": "SC.L3-3.13.4e[a]",
+      "controlId": "SC.L3-3.13.4e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Physical isolation techniques or logical isolation techniques or both are employed in organizational systems and system components.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 74,
+      "printedPage": 70
+    },
+    {
+      "id": "SI.L3-3.14.1e[ODP1]",
+      "controlId": "SI.L3-3.14.1e",
+      "label": "ODP1",
+      "kind": "organization-defined-parameter",
+      "text": "Security critical or essential software is defined;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 77,
+      "printedPage": 73
+    },
+    {
+      "id": "SI.L3-3.14.1e[a]",
+      "controlId": "SI.L3-3.14.1e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Root of trust mechanisms or cryptographic signatures are identified; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 77,
+      "printedPage": 73
+    },
+    {
+      "id": "SI.L3-3.14.1e[b]",
+      "controlId": "SI.L3-3.14.1e",
+      "label": "b",
+      "kind": "determination",
+      "text": "The integrity of security critical and essential software is verified using root of trust mechanisms or cryptographic signatures.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 77,
+      "printedPage": 73
+    },
+    {
+      "id": "SI.L3-3.14.3e[a]",
+      "controlId": "SI.L3-3.14.3e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Specialized assets including IoT, IIoT, OT, GFE, Restricted Information Systems and test equipment are included in the scope of the specified enhanced security requirements; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 81,
+      "printedPage": 77
+    },
+    {
+      "id": "SI.L3-3.14.3e[b]",
+      "controlId": "SI.L3-3.14.3e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Systems and system components that are not included in specialized assets including IoT, IIoT, OT, GFE, Restricted Information Systems and test equipment are segregated in purpose-specific networks.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 81,
+      "printedPage": 77
+    },
+    {
+      "id": "SI.L3-3.14.6e[ODP1]",
+      "controlId": "SI.L3-3.14.6e",
+      "label": "ODP1",
+      "kind": "organization-defined-parameter",
+      "text": "External organizations from which to obtain threat indicator information and effective mitigations are defined;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 84,
+      "printedPage": 80
+    },
+    {
+      "id": "SI.L3-3.14.6e[a]",
+      "controlId": "SI.L3-3.14.6e",
+      "label": "a",
+      "kind": "determination",
+      "text": "Threat indicator information is identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 84,
+      "printedPage": 80
+    },
+    {
+      "id": "SI.L3-3.14.6e[b]",
+      "controlId": "SI.L3-3.14.6e",
+      "label": "b",
+      "kind": "determination",
+      "text": "Effective mitigations are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 84,
+      "printedPage": 80
+    },
+    {
+      "id": "SI.L3-3.14.6e[c]",
+      "controlId": "SI.L3-3.14.6e",
+      "label": "c",
+      "kind": "determination",
+      "text": "Intrusion detection approaches are identified;",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 84,
+      "printedPage": 80
+    },
+    {
+      "id": "SI.L3-3.14.6e[d]",
+      "controlId": "SI.L3-3.14.6e",
+      "label": "d",
+      "kind": "determination",
+      "text": "Threat hunting activities are identified; and",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 84,
+      "printedPage": 80
+    },
+    {
+      "id": "SI.L3-3.14.6e[e]",
+      "controlId": "SI.L3-3.14.6e",
+      "label": "e",
+      "kind": "determination",
+      "text": "Threat indicator information and effective mitigations obtained from, at a minimum, open or commercial sources and any DoD-provided sources, are used to guide and inform intrusion detection and threat hunting.",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 84,
+      "printedPage": 80
+    }
+  ]
+}

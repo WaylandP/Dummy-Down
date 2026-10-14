@@ -111,7 +111,7 @@ export function sanitizeUsageUrl(value: string, origin: string): string | null {
     const path = url.pathname.replace(/\/$/, '') || '/'
     if (
       url.origin !== origin ||
-      !['/', '/learn', '/glossary', '/about'].includes(path)
+      !['/', '/learn', '/glossary', '/about', '/coverage'].includes(path)
     )
       return null
     return `${origin}${path}`

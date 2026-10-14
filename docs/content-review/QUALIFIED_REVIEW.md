@@ -43,8 +43,11 @@ The owner approving a code PR does not automatically approve its teaching conten
 4. Compare every determination with the explanations. Record which perspective
    explains it, what is absent or ambiguous, and any conditional or partial
    treatment. For unmapped material write “not mapped”; do not invent a coverage
-   percentage. Increment 3 will build the comprehensive objective report. This
-   packet does not claim that work is complete.
+   percentage. Use `/coverage` and the
+   [dated mapping record](objective-mapping-2026-10-14.md) as starting points,
+   then independently inspect every determination and ODP row. Include any
+   supplementary notes and mapping selections in the reviewed commit/hash;
+   AI mapping status does not establish approval.
 5. Fill in the template with source-supported findings, exact passages, severity,
    proposed correction and a reason. Use only fictional examples. Do not include
    CUI, real contracts, system configurations, credentials or organizational evidence.
