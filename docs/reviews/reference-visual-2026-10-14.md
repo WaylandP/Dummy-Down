@@ -2,7 +2,16 @@
 
 October 14, 2026 · `feat/reference-chalkboard` · base main `d4a9ccd`.
 **Draft preview checkpoint. Owner feedback required; do not merge yet.**
-PR and exact successful deployment will be linked here after publication.
+[Draft PR #12](https://github.com/WaylandP/cipher-and-chalk/pull/12) ·
+[Branch preview](https://cipherandchalk-git-feat-reference-chalkboard-waylandp.vercel.app) ·
+[Immutable frontend preview](https://cipherandchalk-elb6z3t63-waylandp.vercel.app).
+
+Vercel deployment `7054931715` succeeded for frontend commit
+`7ee71a011510310528297ed67316ce825e300507` at 02:04:45 UTC. The preview responds
+HTTP 302 to Vercel sign-in (`vercel.com/sso-api`); protection remains enabled.
+Deployment success and local production-browser checks are verified; the hosted
+application behind sign-in was not browser-inspected. Subsequent documentation
+updates do not change this frontend. The branch preview follows the latest push.
 
 The owner supplied the full Decode Board image and then the separate square logo.
 Both were inspected before changing the UI. Their [brief and provenance](../design-references/README.md)
