@@ -14,18 +14,25 @@ describe('Separate blackboard pages', () => {
   it('keeps the homepage calm and does not count an unseen control as viewed', () => {
     render(<App />)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      'Okay, but what does it mean?',
+      'What are you trying to understand?',
     )
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
-    expect(screen.queryByRole('searchbox')).not.toBeInTheDocument()
     expect(
-      screen.getByRole('link', { name: 'Explore the controls' }),
+      screen.getByRole('searchbox', {
+        name: 'Search the control library',
+      }),
+    ).toBeVisible()
+    expect(
+      screen.queryByRole('region', { name: 'Control Explorer' }),
+    ).not.toBeInTheDocument()
+    expect(
+      screen.getByRole('link', { name: /^Explore the controls/ }),
     ).toHaveAttribute('href', '/learn?view=discover&collection=references')
     expect(trackUsage).not.toHaveBeenCalled()
   })
   it('opens discovery without a preselected lesson and renders the shared sample from home', async () => {
     render(<App />)
-    followPageLink(screen.getByRole('link', { name: 'Explore the controls' }))
+    followPageLink(screen.getByRole('link', { name: /^Explore the controls/ }))
     expect(
       screen.getByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('149 references found')

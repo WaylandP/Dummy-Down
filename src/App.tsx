@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from 'react'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import {
   explorerCatalog,
   defaultLesson,
@@ -12,6 +12,7 @@ import { sitePage } from './state/site-page'
 import type { ExplanationMode } from './types/content'
 import { Glossary } from './components/Glossary'
 import { Brand } from './components/Brand'
+import { StudyHome } from './components/StudyHome'
 import { ControlExplorer } from './components/ControlExplorer'
 import { UsageAnalytics } from './analytics/UsageAnalytics'
 import { UsagePreferences } from './analytics/UsagePreferences'
@@ -121,46 +122,7 @@ export default function App() {
         </nav>
       </header>
       <main id="main">
-        {page === 'home' && (
-          <section
-            className="blackboard-home section-shell"
-            aria-labelledby="hero-title"
-          >
-            <p className="home-kicker">Cybersecurity, in plain English.</p>
-            <h1 id="hero-title">
-              Okay, but what
-              <br /> does it mean?
-            </h1>
-            <p className="home-description">
-              Take one security control. Understand the idea.
-              <br className="desktop-break" /> See how it works in real life.
-            </p>
-            <div className="home-actions">
-              <a
-                className="button button-primary"
-                href={browseUrl}
-                onClick={() =>
-                  trackUsage({ name: 'section_open', section: 'explorer' })
-                }
-              >
-                Explore the controls <ArrowRight size={18} aria-hidden="true" />
-              </a>
-              <a className="sample-link" href={sampleUrl('beginner')}>
-                Try a short lesson <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
-            </div>
-            <div className="chalk-margin" aria-label="Our learning approach">
-              <span>the rule</span>
-              <span aria-hidden="true">→</span>
-              <span>the idea</span>
-              <span aria-hidden="true">→</span>
-              <span>real life</span>
-            </div>
-            <p className="home-footnote">
-              Start with CMMC. Free to explore, always open source.
-            </p>
-          </section>
-        )}
+        {page === 'home' && <StudyHome />}
         {page === 'learn' && <LearningPage />}
         {page === 'glossary' && (
           <>

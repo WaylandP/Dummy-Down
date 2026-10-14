@@ -15,18 +15,22 @@ Feature work is reviewed in separate Vercel previews before an approved merge;
 production and a pull request's preview can show different versions. See
 [deployment and preview review](docs/DEPLOYMENT.md).
 
-The current visual checkpoint follows the owner's latest feedback: a matte black
-board, soft chalk headings, comfortable reading text and fewer elements per page.
-Home, Learn, Glossary and About are separate pages. Opening a control folds the
-browsing tools away; “Browse & filter controls” brings them back.
-See the [blackboard checkpoint](docs/reviews/blackboard-comfort-2026-10-14.md)
-for screenshots, validation and the Draft PR. Owner visual acceptance is pending.
+The current visual checkpoint makes the blackboard a practical reference desk:
+search for a control, choose one of three existing draft practice activities, or
+unpack an access-control misunderstanding on the chalkboard. Level and glossary
+links keep reference material close. Matte black, soft chalk, clear typography and
+small warm accents give the pages a shared style.
+Home, Learn, Glossary and About remain separate pages. Opening a control folds the
+browsing tools away; “Browse & filter controls” brings them back. Reference readers
+can jump to the source, explanation and practice where an activity exists.
+See the [study-desk checkpoint](docs/reviews/study-desk-2026-10-14.md)
+for the review record. Owner visual acceptance is pending.
 
 The [design contract](docs/DESIGN.md) retains the supplied four-part mark while
 superseding the earlier green composition. Qualified content approval,
 screen-reader testing and real-learner review remain pending.
 
-![Cipher & Chalk blackboard homepage](docs/screenshots/blackboard/home-desktop.png)
+![Cipher & Chalk reference desk homepage](docs/screenshots/study-desk/home-desktop.png)
 
 ## What you can use today
 

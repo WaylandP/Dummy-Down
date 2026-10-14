@@ -3,10 +3,12 @@
 Read README.md for the mission and roadmap, docs/DEVELOPMENT.md for the project
 commands, and docs/DESIGN.md for the active blackboard design direction.
 Use the exact display name “Cipher & Chalk.” The owner's latest October 14 feedback
-supersedes the green reference canvas and crowded composition: use matte black,
-soft off-white chalk, restrained accents and ample space. Keep the supplied four-part
-mark. Handwritten headings are welcome; long lessons use crisp body text and solid
-reading surfaces. Home, Learn, Glossary and About have separate native pages.
+calls for a useful, distinctive reference desk with clear structure, while retaining
+matte black, soft chalk and comfortable spacing. Home leads with a real control
+search, three existing draft practice paths, a teaching board, and source/glossary
+shortcuts. Use IBM Plex Sans for the interface and reading; reserve handwritten
+Kalam for teaching and margin notes. Keep the supplied four-part mark and use warm
+ochre accents sparingly. Home, Learn, Glossary and About have separate native pages.
 Preserve content identities, legacy links, analytics privacy and source/draft labels.
 Keep existing local practice behavior within a lesson; page navigation/reload does
 not promise saved progress. Follow docs/DESIGN.md and prioritize reading comfort.
@@ -70,11 +72,16 @@ or claim provider data receipt without evidence and the owner's authorization.
 
 ## Current visual checkpoint
 
-The blackboard-comfort task is a bounded visual correction. Use applicable design,
-browse, QA and code review methods; no unrelated 58-skill audit or product-planning
-restart. At most two review/fix rounds, then publish the first validated preview
-on a Draft PR for owner feedback. Do not mark it ready before that feedback and
-final validation. This task-specific rule supersedes broader workflow defaults.
+The study-desk task develops the structure and usefulness of the blackboard site.
+The homepage must lead to real material; its teaching disclosure reuses an existing
+draft explanation. Reference readers link to Source, Explain it, and Practice only
+where an activity exists. No new curriculum or saved-progress feature is implied.
+Use applicable design, browse, QA and code review methods; no unrelated 58-skill
+audit or product-planning restart. At most two review/fix rounds, then publish the
+first validated preview on a Draft PR for owner feedback. Do not mark it ready
+before that feedback and final validation. Record the work in
+[the study-desk checkpoint](docs/reviews/study-desk-2026-10-14.md).
+This task-specific rule supersedes broader workflow defaults.
 
 ## gstack for Codex
 

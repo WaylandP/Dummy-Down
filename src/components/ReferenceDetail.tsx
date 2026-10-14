@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import type {
   ContentEdition,
@@ -17,6 +18,7 @@ import { getLevelOneTermIds } from '../data/level-one-terms'
 import { lessonIdentityKey } from '../state/explorer-state'
 import { LearningPractice } from './LearningPractice'
 import { EditorialReviewContext } from './EditorialReviewContext'
+import { findLearningActivity } from '../data/learning'
 
 interface ReferenceDetailProps {
   control: ReferenceControl
@@ -87,6 +89,12 @@ export function ReferenceDetail({
   mode,
   onModeChange,
 }: ReferenceDetailProps) {
+  const readerId = useId()
+  const sourceId = `${readerId}-source`
+  const explanationId = `${readerId}-explanation`
+  const practiceId = `${readerId}-practice`
+  const lesson = lessonIdentity(control)
+  const hasPractice = Boolean(findLearningActivity(lesson))
   const guideSource = control.sourceDocuments.find(
     (source) => source.id === control.requirement.sourceId,
   )
@@ -144,7 +152,33 @@ export function ReferenceDetail({
           lesson={lessonIdentity(control)}
         />
       </div>
-      <div className="reference-requirement">
+      <nav className="reader-outline" aria-label="On this page">
+        <span className="reader-outline-label">On this page</span>
+        <ol>
+          <li>
+            <a href={`#${sourceId}`}>
+              <span className="reader-outline-number">01</span> Source
+            </a>
+          </li>
+          <li>
+            <a href={`#${explanationId}`}>
+              <span className="reader-outline-number">02</span> Explain it
+            </a>
+          </li>
+          {hasPractice && (
+            <li>
+              <a href={`#${practiceId}`}>
+                <span className="reader-outline-number">03</span> Practice
+              </a>
+            </li>
+          )}
+        </ol>
+      </nav>
+      <div
+        className="reference-requirement reader-jump-target"
+        id={sourceId}
+        tabIndex={-1}
+      >
         <span className="small-label source-label">
           Requirement from the assessment guide
         </span>
@@ -153,17 +187,23 @@ export function ReferenceDetail({
         </blockquote>
         <PageCitation quote={control.requirement} source={guideSource} />
       </div>
-      <ReferencePerspectives
-        control={control}
-        mode={mode}
-        onChange={onModeChange}
-      />
+      <div className="reader-jump-target" id={explanationId} tabIndex={-1}>
+        <ReferencePerspectives
+          control={control}
+          mode={mode}
+          onChange={onModeChange}
+        />
+      </div>
       <ContextTerms
         key={`terms:${lessonIdentityKey(lessonIdentity(control))}`}
         termIds={getLevelOneTermIds(control)}
         terms={glossaryTerms}
       />
-      <LearningPractice lesson={lessonIdentity(control)} />
+      {hasPractice && (
+        <div className="reader-jump-target" id={practiceId} tabIndex={-1}>
+          <LearningPractice lesson={lesson} />
+        </div>
+      )}
       <EditorialReviewContext
         key={`review:${lessonIdentityKey(lessonIdentity(control))}`}
         control={control}

@@ -68,41 +68,46 @@ available from the npm registry during installation.
 
 ## Understand the code
 
-The [design notes](DESIGN.md) describe the authorized Decode Board identity:
-evergreen/slate teaching surfaces, comfortable off-white reading areas and a
-geometric coded-C mark. The [redesign inventory](designs/cipher-and-chalk.md)
-maps every existing UI surface and state to validation. Reuse shared visual tokens
-and semantic components; `public/font-licenses/` retains distributed font licenses.
+The [design notes](DESIGN.md) describe the active reference-desk direction:
+matte black surfaces, soft chalk text, restrained warm ochre accents, a functional
+homepage index and the supplied four-part mark. IBM Plex Sans handles the interface
+and reading; Kalam adds character to teaching and margin notes. The
+[study-desk checkpoint](reviews/study-desk-2026-10-14.md) records this revision;
+the [earlier redesign inventory](designs/cipher-and-chalk.md) maps the existing UI
+surfaces and states. Reuse shared visual tokens and semantic components;
+`public/font-licenses/` retains distributed font licenses.
 GitHub reports the externally renamed repository as `WaylandP/cipher-and-chalk`.
 Package, deployment project, storage keys and stable content identities retain
 their existing values; historical source URLs are preserved.
 
-| Location                         | Purpose                                                                                |
-| -------------------------------- | -------------------------------------------------------------------------------------- |
-| `src/main.tsx`                   | Mounts React into the HTML page.                                                       |
-| `src/App.tsx`                    | Assembles the page and coordinates the interactive experience.                         |
-| `src/components/`                | Reusable interface pieces, including the Control Explorer.                             |
-| `src/types/content.ts`           | TypeScript definitions for frameworks, controls, learning modes, and content metadata. |
-| `src/data/frameworks.ts`         | Framework metadata, including supported versus planned status.                         |
-| `src/data/controls.ts`           | Educational control examples and learning-mode definitions.                            |
-| `src/data/control-search.ts`     | Shared search and filtering behavior.                                                  |
-| `src/data/editions.ts`           | Project editorial editions and the explicit sample identity.                           |
-| `src/data/cmmc-references.ts`    | Attributed CMMC publication quotations with snapshot/page provenance.                  |
-| `src/data/cmmc-perspectives.ts`  | Separately authored, edition-bound teaching drafts, loaded on demand.                  |
-| `src/analytics/`                 | Allowlisted usage events, production gating and visitor privacy preferences.           |
-| `src/data/learning.ts`           | Fictional scenarios and questions tied to an exact teaching identity.                  |
-| `src/data/level-one-learning.ts` | Three Level 1 draft activities, misunderstandings and accessible diagram data.         |
-| `src/data/glossary.ts`           | Draft definitions with source and review context.                                      |
-| `src/data/level-one-glossary.ts` | Fourteen sourced draft vocabulary additions.                                           |
-| `src/data/level-one-terms.ts`    | Contextual term links guarded by framework, edition and requirement identifier.        |
-| `src/types/review.ts`            | Separate source comparison, AI-assisted review and attributable human approval types.  |
-| `src/data/level-one-review.ts`   | Fifteen publication-bound review records and scoped objective quotations.              |
-| `src/state/explorer-state.ts`    | Pure address parsing, exact resolution and navigation transitions.                     |
-| `src/state/useExplorerState.ts`  | One browser-history controller mounted by App.                                         |
-| `src/styles.css`                 | Tailwind integration and shared visual styles.                                         |
-| `src/` test files                | Behavioral checks for the user-facing experience.                                      |
-| `vite.config.ts`                 | Vite development/build settings and Vitest test configuration.                         |
-| `.github/workflows/ci.yml`       | Runs automated checks on pull requests and changes to `main`.                          |
+| Location                             | Purpose                                                                                  |
+| ------------------------------------ | ---------------------------------------------------------------------------------------- |
+| `src/main.tsx`                       | Mounts React into the HTML page.                                                         |
+| `src/App.tsx`                        | Assembles the page and coordinates the interactive experience.                           |
+| `src/components/`                    | Reusable interface pieces, including the Control Explorer.                               |
+| `src/components/StudyHome.tsx`       | Native reference search, three existing practice entry points and a teaching disclosure. |
+| `src/components/ReferenceDetail.tsx` | Source quotation, teaching perspectives and an outline of available lesson sections.     |
+| `src/types/content.ts`               | TypeScript definitions for frameworks, controls, learning modes, and content metadata.   |
+| `src/data/frameworks.ts`             | Framework metadata, including supported versus planned status.                           |
+| `src/data/controls.ts`               | Educational control examples and learning-mode definitions.                              |
+| `src/data/control-search.ts`         | Shared search and filtering behavior.                                                    |
+| `src/data/editions.ts`               | Project editorial editions and the explicit sample identity.                             |
+| `src/data/cmmc-references.ts`        | Attributed CMMC publication quotations with snapshot/page provenance.                    |
+| `src/data/cmmc-perspectives.ts`      | Separately authored, edition-bound teaching drafts, loaded on demand.                    |
+| `src/analytics/`                     | Allowlisted usage events, production gating and visitor privacy preferences.             |
+| `src/data/learning.ts`               | Fictional scenarios and questions tied to an exact teaching identity.                    |
+| `src/data/level-one-learning.ts`     | Three Level 1 draft activities, misunderstandings and accessible diagram data.           |
+| `src/data/glossary.ts`               | Draft definitions with source and review context.                                        |
+| `src/data/level-one-glossary.ts`     | Fourteen sourced draft vocabulary additions.                                             |
+| `src/data/level-one-terms.ts`        | Contextual term links guarded by framework, edition and requirement identifier.          |
+| `src/types/review.ts`                | Separate source comparison, AI-assisted review and attributable human approval types.    |
+| `src/data/level-one-review.ts`       | Fifteen publication-bound review records and scoped objective quotations.                |
+| `src/state/explorer-state.ts`        | Pure address parsing, exact resolution and navigation transitions.                       |
+| `src/state/useExplorerState.ts`      | One browser-history controller mounted by App.                                           |
+| `src/styles.css`                     | Tailwind integration and shared visual styles.                                           |
+| `src/` test files                    | Behavioral checks for the user-facing experience.                                        |
+| `vite.config.ts`                     | Vite development/build settings and Vitest test configuration.                           |
+| `.github/workflows/ci.yml`           | Runs automated checks on pull requests and changes to `main`.                            |
 
 React renders the interface from data and state. TypeScript catches inconsistent
 data and component props before the app runs. Vite handles local development and
@@ -144,15 +149,32 @@ reads the clipboard. If writing is unavailable, it shows a labeled selectable
 link; outdated asynchronous results do not report success for a different lesson.
 
 Discovery state uses `view=discover` with optional `catalog`, `q`, `family`,
-`level`, `mode` and `collection=references`. The homepage starts with the explicit Level 1 source identity
-`cmmc/cmmc-2-13-sep-2024/ac-l1-b-1-i` and the full source collection. The original
-demo remains available through its existing address and the Demo lesson collection.
+`level`, `mode` and `collection=references`. Home does not open or track a selected
+lesson. Its native GET form submits to `/learn` with `view=discover`,
+`collection=references`, `catalog=cmmc` and the encoded query `q`. An empty search
+shows all references. Suggested searches and level shortcuts use
+`serializeExplorerSearch`; they do not add a second history controller.
+
+The homepage's three practice links use exact identities in
+`cmmc/cmmc-2-13-sep-2024`: `ac-l1-b-1-i`, `ac-l1-b-1-iv` and `mp-l1-b-1-vii`.
+The sample lesson and bare `/learn` address still use the explicit default identity
+`cmmc/cmmc-2-13-sep-2024/ac-l1-b-1-i`. These three activities are attached to source
+references; the Demo lesson collection contains the separate original example,
+which remains available through its existing address.
+
 The source collection is inferred only for an exact known source identity on a
-shared link; explicit `collection=lessons` remains authoritative on a mismatch. Search updates the current history entry; deliberate selection,
+shared link; explicit `collection=lessons` remains authoritative on a mismatch.
+Inside the Explorer, search updates the current history entry; deliberate selection,
 filter and mode changes create entries. Back/Forward restores the entire address.
 Search text appears in URLs and browser history: use generic learning topics and
 keep organizational evidence and secrets out of it. No query content controls a
 network destination or becomes rendered HTML.
+
+Reference readers include an “On this page” outline for Source and Explain it.
+Practice appears only when `findLearningActivity` resolves the full lesson identity.
+`useId` supplies document-local fragment targets; these links move within the
+current reader. Copy lesson link remains the stable control-and-mode address.
+Neither the outline nor the homepage adds saved learning progress.
 
 Malformed, duplicate or partial lesson addresses remain explicit errors until
 recovery. A well-formed missing identity never falls back to a different example.
