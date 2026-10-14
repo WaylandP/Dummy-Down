@@ -55,6 +55,10 @@ launch configuration; package integrity and TLS verification remain enabled.
 
 Installation readiness now checks all **57 Codex-supported instructions**, their
 metadata, **28 supporting sections**, both QA templates and required runtime assets.
+Native runtime binaries/helpers must also be executable. Before a broad installer
+repair, existing mapping ownership is checked; foreign links and changed root
+instructions stop the repair. A verified complete QA overlay is reused after the
+official installer relinks generated skills, rather than rejected or overwritten.
 The upstream installer's older “25 checked” output was a selected section count,
 not a complete skill inventory. The bootstrap rejects changed tracked upstream
 source and validates the full mapping before reusing a healthy installation.
@@ -91,6 +95,18 @@ To include source validation directly:
 source scripts/gstack-env.sh
 node scripts/check-gstack.mjs --inventory-only --installed --upstream "$DUMMY_DOWN_GSTACK_SOURCE"
 ```
+
+The checker accepts `--inventory-only` (skip execution-record validation),
+`--installed` (actual local mappings/assets) and `--upstream PATH` (exact source
+revision, template hashes and tracked-source cleanliness). The default also checks
+the registry's dated `coverageRecord`: exactly 58 unique canonical rows, allowed
+statuses, concrete reasons and evidence/revision references for completed rows.
+It checks the format of those claims, not their truth.
+
+`scripts/repair-gstack-qa.mjs PROJECT SOURCE [--preflight]` is an internal bootstrap
+helper. Use it only after source-pin validation: default verifies/reuses the local
+QA overlay; `--preflight` refuses foreign existing mappings before the official
+installer runs. The normal supported entry point remains the bootstrap above.
 
 Missing mappings/assets fail with their name and path. A wrong pin or modified
 upstream fails without overwriting it; inspect the retained checkout. Initial
