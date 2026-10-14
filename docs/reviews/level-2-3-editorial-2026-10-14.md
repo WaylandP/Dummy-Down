@@ -2,7 +2,9 @@
 
 Branch `feat/level-two-three-editorial-audit`, base
 `d7348988afea21f394e7e2ab3e840094261a0c27`. Approved PR #16 was verified merged on
-October 14, 2026. This increment remains unmerged.
+October 14, 2026. This report records the pre-merge review. Subsequently, approved
+PR #17 merged at `81cee95e9e3b5393664a540832deb9c876b047c2` on October 14,
+after CI passed for `32059c6b77e6c5dc1a6fc0dec020c9ee92032896`.
 
 ## Engineering decisions and review scope
 

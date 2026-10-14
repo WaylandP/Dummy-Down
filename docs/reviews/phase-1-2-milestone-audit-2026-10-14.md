@@ -1,5 +1,9 @@
 # Phase 1 and 2: eight open milestones
 
+This is the historical starting audit. All four implementation increments have
+since merged; see the [final handoff](phase-1-2-handoff-2026-10-14.md) and
+[current roadmap](../ROADMAP.md) for the remaining external requirements.
+
 Audited against `main` at `75db00a3bcd2be2e948bd2622e2e4a028c12dc26`
 (PR #13, merged October 14, 2026). There were no open PRs at task start.
 This is an implementation/evidence audit, not new official-source verification

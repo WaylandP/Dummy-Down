@@ -4,7 +4,7 @@ The [detailed roadmap](docs/ROADMAP.md) is the milestone source of truth. This f
 keeps the next actionable priorities; the [changelog](CHANGELOG.md) records work
 already merged into `main`. No completion percentage is implied.
 
-- **Current delivery: Level 2/3 full editorial audit (Increment 4).** Review the
+- **Current handoff: all four Phase 1/2 engineering increments merged.** Review the
   [eight-milestone audit](docs/reviews/phase-1-2-milestone-audit-2026-10-14.md),
   [technical evidence](docs/reviews/phase-1-quality-2026-10-14.md) and
   [acceptance packet](docs/testing/PHASE_1_ACCEPTANCE.md). Focus repairs and browser
@@ -13,12 +13,15 @@ already merged into `main`. No completion percentage is implied.
   remain open. Increment 2 was merged in approved PR #15 at `ef02c29`.
   Increment 3 was merged in approved PR #16 at `d734898`: all 459 determinations,
   nine ODP rows, explicit mappings, unresolved gaps, lazy report and integrity gates.
-  Increment 4 / PR #17 compares all 134 Level 2/3 controls and their 402 perspective
-  drafts in three bounded batches, with 16 clarifications across 13 controls.
+  Increment 4 / PR #17 was merged at `81cee95`: it audited all 134 Level 2/3 controls
+  and their 402 perspective drafts in three bounded batches, with 16 clarifications
+  across 13 controls.
   The [audit record](docs/content-review/level-2-3-audit-2026-10-14.md) distinguishes
-  completed comparison, passed local validation and remaining human review. The
+  completed comparison, passed validation and remaining human review. The
   [applicability register](docs/sources/applicability-2026-10-14.md) records 18 blocked
-  official-host requests. Continue independent snapshot/content work; current
+  official-host requests. The [final handoff](docs/reviews/phase-1-2-handoff-2026-10-14.md)
+  lists the external prerequisites and evidence needed to resume. No further
+  independently actionable repair is identified in this scoped audit. Current
   applicability requires external verification. Do not begin Phase 3/4 work.
 
 - **P1: qualified review across all three levels and current applicability.** The
