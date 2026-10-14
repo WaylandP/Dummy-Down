@@ -29,7 +29,7 @@ content-review milestone.
       usability repairs: repeatable Chromium accessibility, layout, keyboard,
       history and recovery checks passed. Approved PR #14 was verified merged at
       `ebaed5f` on October 14. See the
-      [technical report](reviews/phase-1-quality-2026-10-14.md).
+      [technical report](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-1-quality-2026-10-14.md).
 - [ ] **Blocked by external dependencies** — Validate the interface with actual
       assistive technology, Safari/iOS, native browser zoom, owner acceptance and
       real-reader comfort. Use the [acceptance checklist](testing/PHASE_1_ACCEPTANCE.md)
@@ -94,7 +94,7 @@ finished.
 - [x] **Completed and merged into main** — Objective inventory,
       explicit teaching mappings, gap notes, report and re-review integrity checks
       were merged in approved PR #16 at `d734898` on October 14. See the
-      [coverage record](reviews/objective-coverage-2026-10-14.md).
+      [coverage record](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/objective-coverage-2026-10-14.md).
 - [x] **Completed and merged into main** — Increment 4 / PR #17
       completed the AI-assisted full-field Level 2/3 audit, 16 focused field corrections
       across 13 controls and tested per-control review fingerprints. Final CI passed;
@@ -120,19 +120,19 @@ finished.
 Phase 2 is not complete. Broad draft coverage is a starting point for review, not a
 substitute for it.
 
-The [eight-milestone audit](reviews/phase-1-2-milestone-audit-2026-10-14.md)
+The [eight-milestone audit](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-1-2-milestone-audit-2026-10-14.md)
 records the starting evidence and checkbox gates for every originally unchecked
 Phase 1/2 task. All four engineering increments are now merged: technical quality
 and acceptance preparation (#14), source research/Level 1 audit/review workflow
 (#15), objective coverage (#16), and Level 2/3 audit (#17). The
-[final handoff](reviews/phase-1-2-handoff-2026-10-14.md) identifies the remaining
+[final handoff](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-1-2-handoff-2026-10-14.md) identifies the remaining
 external work and the evidence needed to resume. Neither phase is fully complete.
 That Phase 1/2 assignment is closed to independent implementation. The owner has
 now authorized the five-increment Phase 3 assignment below; Phase 4 remains excluded.
 
 ## Phase 3: Make Learning Interactive
 
-The [Phase 3 execution log](reviews/phase-3-execution-2026-10-14.md) records the
+The [Phase 3 execution log](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-3-execution-2026-10-14.md) records the
 seven-milestone baseline audit, limited merge authorization and validation limits.
 
 - [x] **Completed and merged into main** — Increment 1 improves practice discovery,

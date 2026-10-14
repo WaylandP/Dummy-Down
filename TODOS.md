@@ -6,14 +6,14 @@ already merged into `main`. No completion percentage is implied.
 
 - **Phase 3 engineering is shipped.** All five scoped increments are merged with
   successful exact-head CI and automatic production deployments. The
-  [execution log](docs/reviews/phase-3-execution-2026-10-14.md) records evidence;
+  [execution log](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-3-execution-2026-10-14.md) records evidence;
   use the [walkthrough](docs/testing/PHASE_3_WALKTHROUGH.md) for browser review.
   Next work is qualified content/current-applicability verification and actual
   owner, learner and assistive-technology acceptance. Phase 4 remains outside scope.
 
 - **Previous handoff: all four Phase 1/2 engineering increments merged.** Review the
-  [eight-milestone audit](docs/reviews/phase-1-2-milestone-audit-2026-10-14.md),
-  [technical evidence](docs/reviews/phase-1-quality-2026-10-14.md) and
+  [eight-milestone audit](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-1-2-milestone-audit-2026-10-14.md),
+  [technical evidence](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-1-quality-2026-10-14.md) and
   [acceptance packet](docs/testing/PHASE_1_ACCEPTANCE.md). Focus repairs and browser
   regression coverage were merged in approved PR #14 at `ebaed5f` on October 14.
   Owner/learner, actual screen-reader, Safari/iOS and native browser-zoom checks
@@ -26,7 +26,7 @@ already merged into `main`. No completion percentage is implied.
   The [audit record](docs/content-review/level-2-3-audit-2026-10-14.md) distinguishes
   completed comparison, passed validation and remaining human review. The
   [applicability register](docs/sources/applicability-2026-10-14.md) records 18 blocked
-  official-host requests. The [final handoff](docs/reviews/phase-1-2-handoff-2026-10-14.md)
+  official-host requests. The [final handoff](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-1-2-handoff-2026-10-14.md)
   lists the external prerequisites and evidence needed to resume. No further
   independently actionable repair is identified in this scoped audit. Current
   applicability requires external verification. Phase 3 is now separately authorized;
@@ -45,7 +45,7 @@ already merged into `main`. No completion percentage is implied.
   without silently replacing the September 2024 v2.13 snapshot.
 - **P1: owner and learner feedback on the reference desk.** The implementation was
   merged in [PR #12](https://github.com/WaylandP/cipher-and-chalk/pull/12). Review the
-  [study-desk checkpoint](docs/reviews/study-desk-2026-10-14.md) for the latest
+  [study-desk checkpoint](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/study-desk-2026-10-14.md) for the latest
   structure and style: direct search, three existing draft practice paths, a small
   teaching board, reference links and the lesson outline. Check whether readers can
   find help quickly while the blackboard remains comfortable to read.

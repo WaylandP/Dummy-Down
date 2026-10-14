@@ -97,5 +97,5 @@ cannot judge semantics or authenticate a human. Qualified approval still require
 the actual acknowledged decision and maintained scope in the review workflow.
 
 Command results, independent final review, skill accounting and exact PR/preview
-handoff are recorded in the [Increment 2 delivery report](../reviews/phase-2-level-one-2026-10-14.md).
+handoff are recorded in the [Increment 2 delivery report](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-2-level-one-2026-10-14.md).
 The original Phase 2 completion milestones remain unchecked.

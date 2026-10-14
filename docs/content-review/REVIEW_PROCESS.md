@@ -106,7 +106,7 @@ organization or assessment readiness.
   review records implemented corrections, all three activities and their answer
   feedback, 14 new glossary definitions, 15 review records and inspected-content
   fingerprints. Human approval remains pending.
-- [Complete perspectives audit](../designs/cmmc-perspectives-editorial-audit.md):
+- [Complete perspectives audit](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/designs/cmmc-perspectives-editorial-audit.md):
   prior AI-assisted review of the 149 versioned draft records. Its scope and
   fingerprints describe that earlier content, not automatic approval of later
   learning activities.

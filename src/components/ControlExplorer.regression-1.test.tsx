@@ -13,7 +13,7 @@ beforeEach(() =>
 
 // Regression: ISSUE-001/002/003 — deliberate lesson navigation preserves focus.
 // Found by /review and /qa on 2026-10-13.
-// Report: docs/designs/shareable-lessons-code-review.md
+// Report: archive/ai-review-records branch, docs/designs/shareable-lessons-code-review.md
 async function setup() {
   render(<App />)
   return {

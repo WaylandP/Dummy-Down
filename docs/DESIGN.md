@@ -5,7 +5,7 @@ style and a useful place to return for help. The reference desk gives the blackb
 a practical purpose: find a control, work through an existing situation, or check a
 definition. Matte black, breathing room and comfortable reading remain central.
 The supplied four-part chalk mark remains the identity reference. See
-[reference history](design-references/README.md). Owner visual acceptance is pending.
+[reference history](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/design-references/README.md). Owner visual acceptance is pending.
 
 ## Identity and type
 
@@ -96,7 +96,7 @@ WCAG certification; real-reader comfort and screen-reader/Safari review remain p
 
 Official quotations, fictional examples and pending human review must stay visibly
 distinct. The design direction does not establish content approval.
-See [the study-desk checkpoint](reviews/study-desk-2026-10-14.md).
+See [the study-desk checkpoint](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/study-desk-2026-10-14.md).
 That visual revision was merged in PR #12. The Phase 1 quality increment preserves
 this direction and prepares [human acceptance](testing/PHASE_1_ACCEPTANCE.md);
 it does not initiate a new visual redesign or imply owner acceptance.
