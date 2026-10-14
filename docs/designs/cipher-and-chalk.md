@@ -2,8 +2,10 @@
 
 Planning checkpoint: October 14, 2026, branch `feat/cipher-and-chalk`, starting
 from main `cf5ffd2094650211ae851ac5a73bb80c4318b0ae`.
-Status: implementation and verification in progress. This inventory describes
-the real existing app; planned visual work is not a completed-feature claim.
+Delivery checkpoint: frontend commit `75726def64038e5b061c148bec621ccf48956de4`,
+branch `feat/cipher-and-chalk-polish`. The complete existing UI is implemented and
+validated as documented below. This inventory was recorded before implementation;
+its original planning rationale is retained separately from actual delivery proof.
 The owner authorized the name and selected Decode Board direction, with routine
 implementation decisions delegated. Final rendered sign-off remains with the owner.
 
@@ -38,8 +40,10 @@ Premises challenged under the owner's delegated choices:
 - More control entries imply reviewed curriculum: rejected. Keep 149 snapshot
   references, 447 draft perspectives, four activities, 12 questions and pending
   qualified approval exactly as they are.
-- A new display name requires service renames: rejected. Stable repository,
-  deployment, package, storage and content identities remain unchanged.
+- A new display name requires service renames: rejected. Deployment, package,
+  storage and content identities stay stable. GitHub subsequently reported an
+  external repository rename to `WaylandP/cipher-and-chalk`; no agent renamed it
+  or rewrote historical source identities.
 
 | Approach                        | Reuse and tradeoff                                                                                                                              | Decision                                                           |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
@@ -185,6 +189,64 @@ satisfied by this host's shell/patch tools; implementation remains authorized by
 the owner's complete redesign brief. No paid outside design voice, image service,
 credential/session import or synchronization is substituted.
 
-Final implemented-state mapping, tests, screenshots and exact preview SHA will be
-added after the coordinator supplies actual results. Until then this is a plan and
-inventory, not a claim that every surface or validation gate is complete.
+The [actual delivery and visual report](../reviews/cipher-and-chalk-ui-2026-10-14.md)
+maps every inventory row above to its implemented change and verification. All
+existing shell, homepage, discovery, reader, teaching, practice, disclosure,
+sharing, glossary, privacy and recovery surfaces use the shared system. The
+[desktop homepage](../screenshots/cipher-home-desktop.png),
+[phone reader](../screenshots/cipher-reader-phone.png),
+[question feedback](../screenshots/cipher-question-phone.png),
+[200% CSS zoom](../screenshots/cipher-zoom-200.png) and
+[small-size identity proof](../screenshots/cipher-logo-sizes.png) are representative
+of 18 viewed captures. Some retained captures show unaffected earlier states;
+final reader, question and zoom captures verify the last style repairs.
+
+Actual Chromium checks passed nine journey groups and five synthetic recovery
+groups. Normal journeys cover all three level totals, search/filter/control/mode
+history, practice/retry/completion, diagrams, vocabulary, sources, glossary,
+keyboard/focus, 320–1440px layouts and opt-out. Recovery fixtures explicitly held or
+aborted the local teaching chunk and denied clipboard/history operations. Those
+are local injected failures, not production incidents. CSS zoom was rendered
+at 200%; narrow viewport reflow was checked independently. This is representative
+coverage rather than exhaustive inspection of every reference/mode/browser pair.
+
+Visual review fixed two real defects: perspective tabs clipping under zoom and
+incorrect-answer styling overridden by the selected state. The inline-size reader
+container and wrapping three-column tabs now respond to 440px reader width;
+correct/incorrect checked-choice selectors now outweigh selection. All content,
+source identities, history, analytics/privacy, package/lockfile, LICENSE and font
+notices remain unchanged, except the archived project README display citation.
+Its pinned source URL is retained. Qualified content approval is still pending.
+
+Typecheck, lint, formatting, 280 Vitest tests in 23 files and production build
+passed for the frozen frontend; content and workflow checks plus 6/16 Node
+regressions passed at the implementation checkpoint. Final scoped adversarial
+review reused only matching unchanged source hashes and re-read both polish files:
+CSS `47865b5139cfe90cc4a9500ba56526be0f3f0c7803ecd0e2c4358c4f453eabe7`, lockup
+`081266fe284daa6a03656b47e32f076b755896690b25e970f4abc00e44417f98`.
+That independent voice found no actionable issue; it is not full native security
+assessment or overall gstack review completion.
+
+The owner merged initial PR #10 at `2026-10-14T00:42:22Z`; its tracked tree became
+main `3817f3d62501ff1fc0e8a31191c537f7baccb7fb`. Refinements were preserved on the
+fresh feature branch and pushed as [PR #11](https://github.com/WaylandP/cipher-and-chalk/pull/11),
+open and draft with no auto-merge. GitHub CI and Vercel succeeded for
+`75726def64038e5b061c148bec621ccf48956de4`. The immutable preview is
+[the validated frontend deployment](https://dummy-down-l33cn6g04-waylandp.vercel.app);
+the [branch preview](https://dummy-down-git-feat-cipher-and-chalk-polish-waylandp.vercel.app)
+will follow later pushes. Verified HTTPS returned a 302 to Vercel sign-in;
+protection was not bypassed, so hosted end-to-end inspection remains unverified.
+No agent merged, changed DNS/service IDs or promoted production.
+
+A bounded six-context local production benchmark compared the pre-redesign
+`cf5ffd2` build with the frozen current build under matching Chromium settings.
+Median FCP/LCP changed 244→256ms; stylesheet transfer grew 8,066→9,831 bytes,
+a **21.9% warning (~1.8KB)**. Local TTFB changed 2.3→3.2ms, also a relative warning;
+the 0.9ms difference is sensitive to localhost scheduling. These samples do not
+measure field performance, INP/CLS, slower networks or real mobile hardware.
+See the workflow record for raw/report locations and honest metric limits.
+
+Final owner visual sign-off, comparison with the missing refined image if supplied,
+real-learner feedback, screen-reader/Safari and a complete accessibility audit are
+still separate review work. Native planning, formal QA materialization and trusted
+CSO limitations remain explicit; app delivery does not erase their partial status.

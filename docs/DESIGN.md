@@ -24,15 +24,19 @@ SVG mark and wordmark form the horizontal lockup in `Brand.tsx`; the home link h
 an accessible full-name label and decorative geometry is hidden from assistive
 technology.
 
-The identity assets are `public/brand/coded-c.svg`, `coded-c-mono.svg` and
-`app-icon.svg`, with the small-size favicon at `public/favicon.svg`. Inspect
-16/32px rendering separately from the larger mark; do not infer legibility merely
-from the existence of a scalable SVG. All are original project assets. Preserve
-LICENSE and third-party font notices.
+The identity assets are `public/brand/coded-c.svg`, `coded-c-mono.svg`,
+`lockup.svg` and `app-icon.svg`, with the rendered PNG at
+`public/apple-touch-icon.png` and simplified small-size favicon at
+`public/favicon.svg`. The portable lockup outlines the already bundled,
+licensed IBM Plex Sans Medium glyphs; the live React lockup keeps accessible text.
+The PNG was rendered from the actual SVG in Chromium. The
+[viewed 16/32/40px and icon proof](screenshots/cipher-logo-sizes.png) checks these
+assets separately from the larger mark. Preserve LICENSE and font notices.
 
-Repository `WaylandP/Dummy-Down`, package name, service/project IDs, hostname,
-analytics storage key and framework/edition/control identities remain unchanged.
-The brand change is a display/presentation change, not a migration of those IDs.
+GitHub now reports the externally renamed repository as `WaylandP/cipher-and-chalk`;
+no agent renamed it. Package name, deployment/service IDs, hostname, analytics
+storage key and framework/edition/control identities remain unchanged. Historical
+source URLs retain their pinned identities.
 
 ## Token contract
 
@@ -68,8 +72,10 @@ uses 140ms ease-out; the reduced-motion rule remains authoritative.
 Body/UI uses locally bundled IBM Plex Sans 400/500, with upright Georgia/Times
 New Roman/device serif for display and platform monospace for control IDs. These
 preserve verified local loading instead of introducing a new font service. Body
-text starts at 16px; long teaching uses comfortable line height and roughly 68ch
-measure. Existing IBM Plex Sans and unused Space Grotesk notices remain. The
+text uses `--text-body: 16px`; long teaching retains 17px type, generous line height
+and roughly 68ch measure. The stylesheet also defines matching `--text-reading`
+and `--leading-reading` tokens. `--font-code` centralizes the
+monospace role. Existing IBM Plex Sans and unused Space Grotesk notices remain. The
 bundled font licenses were inspected; platform serif appearance varies by device.
 No paid design provider is required. Font identity is not content approval.
 
@@ -100,7 +106,10 @@ account, compliance score or demonstrated learning outcome.
 Desktop and tablet keep discovery alongside comfortable reading. Phones prioritize
 the selected lesson and its useful actions, with explicit expandable browsing.
 Retain the established breakpoint set unless actual overflow motivates a scoped
-adjustment. Check dense results, long titles, tabs, definitions and questions at
+adjustment. The reader is an inline-size container: its three-column perspective
+grid wraps labels and hides decorative icons/dots below 440px of reader width. This
+handles a narrow reader as well as a narrow viewport. Check dense results, long
+titles, tabs, definitions and questions at
 320px as well as representative tablet/desktop widths and 200% zoom.
 
 Use at least 44px useful touch targets and at least 48px perspective tabs. Preserve
@@ -123,7 +132,11 @@ No official control quotation or content-review status changes for visual reason
 
 The [redesign workflow record](reviews/cipher-and-chalk-gstack-2026-10-14.md)
 separates actual skill execution from scoped/manual planning and blocked native
-contracts. Inspect actual running screens, small logo renders, full learning and
-back-navigation flows, keyboard/focus and zoom before claiming completion. The
-reviewable feature PR and exact Vercel preview provide owner review; merging or
-production promotion still requires explicit approval.
+contracts. The [actual UI verification](reviews/cipher-and-chalk-ui-2026-10-14.md)
+records the complete inventory-to-delivery mapping, 18 viewed captures, nine journey
+and five synthetic recovery groups, tests and sampled contrast. Rendered review
+repaired crowded tabs at 200% CSS zoom and the incorrect-answer border specificity.
+Screen-reader, Safari/iOS, real-learner and complete accessibility checks remain
+pending. The reviewable feature PR and exact successful Vercel preview provide
+owner review; preview sign-in protection was retained. Agent merging or production
+promotion still requires explicit approval.

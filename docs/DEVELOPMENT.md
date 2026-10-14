@@ -58,8 +58,9 @@ evergreen/slate teaching surfaces, comfortable off-white reading areas and a
 geometric coded-C mark. The [redesign inventory](designs/cipher-and-chalk.md)
 maps every existing UI surface and state to validation. Reuse shared visual tokens
 and semantic components; `public/font-licenses/` retains distributed font licenses.
-The repository, package, deployment project and stable content identities retain
-their existing Dummy-Down identifiers.
+GitHub reports the externally renamed repository as `WaylandP/cipher-and-chalk`.
+Package, deployment project, storage keys and stable content identities retain
+their existing values; historical source URLs are preserved.
 
 | Location                         | Purpose                                                                                |
 | -------------------------------- | -------------------------------------------------------------------------------------- |
