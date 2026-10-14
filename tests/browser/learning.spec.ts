@@ -127,7 +127,7 @@ test('malformed links recover explicitly without silently substituting a control
     page.getByRole('heading', { name: 'This lesson link is invalid.' }),
   ).toBeVisible()
   await expect(page.getByRole('tabpanel')).toHaveCount(0)
-  await page.getByRole('button', { name: 'Browse draft examples' }).click()
+  await page.getByRole('button', { name: 'Browse examples' }).click()
   await expect(
     page.getByRole('searchbox', { name: 'Search controls' }),
   ).toBeFocused()

@@ -132,7 +132,7 @@ describe('VisualExplanation playback and alternatives', () => {
     ).toBeEnabled()
     expect(frames.size).toBe(0)
     expect(screen.getByRole('progressbar')).toHaveAttribute('value', '0')
-    expect(screen.getByText('Draft visual explanation')).toBeVisible()
+    expect(screen.getByText('Visual explanation')).toBeVisible()
     const source = screen.getByRole('link', {
       name: new RegExp(first.sourceLabel.split(' · ')[0]!),
     })

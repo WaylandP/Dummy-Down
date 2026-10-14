@@ -71,10 +71,6 @@ export default function PracticePage() {
           <br />
           Short, fictional exercises with the source close at hand.
         </p>
-        <p className="practice-context">
-          Educational drafts awaiting qualified human review. Finishing an
-          activity does not establish compliance or assessment readiness.
-        </p>
       </header>
       <ProgressPreferences />
       <form
@@ -187,7 +183,7 @@ export default function PracticePage() {
                     {control?.contentKind === 'educational-example'
                       ? 'Project example'
                       : control?.level}{' '}
-                    · {activity.questions.length} questions · Draft
+                    · {activity.questions.length} questions
                     {hasVisualExplanation(activity.lesson) &&
                       ' · 40-second visual'}
                   </p>

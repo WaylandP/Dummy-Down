@@ -43,9 +43,7 @@ describe('Explorer navigation regressions', () => {
     const { user, explorer } = await setup()
     const search = explorer.getByRole('searchbox', { name: 'Search controls' })
     expect(search).toBeDisabled()
-    await user.click(
-      explorer.getByRole('button', { name: 'Browse draft examples' }),
-    )
+    await user.click(explorer.getByRole('button', { name: 'Browse examples' }))
     expect(search).toBeEnabled()
     expect(search).toHaveFocus()
     expect(explorer.queryByRole('tabpanel')).not.toBeInTheDocument()

@@ -7,7 +7,7 @@ export const frameworks: readonly Framework[] = [
     name: 'Cybersecurity Maturity Model Certification',
     shortName: 'CMMC',
     description:
-      '149 CMMC v2.13 source references with three draft teaching perspectives each, plus the original demo lesson. Qualified editorial review is pending.',
+      '149 CMMC v2.13 source references with three teaching perspectives each, plus a simplified teaching example.',
     status: 'preview',
     levels: ['Level 1', 'Level 2', 'Level 3'],
     sourceUrl: 'https://dodcio.defense.gov/CMMC/',

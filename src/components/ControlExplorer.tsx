@@ -140,7 +140,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
           </p>
         </div>
         <span className="status-badge">
-          {referenceControls.length} CMMC controls · 3 draft perspectives each
+          {referenceControls.length} CMMC controls · 3 perspectives each
         </span>
       </div>
       {controller.historyStatus === 'failed' && (
@@ -332,7 +332,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
               <p className="sidebar-note">
                 <Info size={15} aria-hidden="true" />
                 {collection === 'references'
-                  ? 'September 2024 CMMC v2.13 snapshot. All controls have draft teaching perspectives; qualified editorial review is pending.'
+                  ? 'September 2024 CMMC v2.13 snapshot. Every control has three teaching perspectives.'
                   : 'Original demo lesson. Choose a level above or Controls & sources to explore all 149 controls.'}
               </p>
             </div>
@@ -358,7 +358,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                     .filter(Boolean)
                     .join(' / ')}
                 </span>
-                <span className="draft-tag">Draft educational example</span>
+                <span className="draft-tag">Simplified teaching example</span>
               </div>
               {resolution.excludedByFilters && (
                 <div className="lesson-mismatch">
@@ -540,23 +540,23 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                       : results.length
                         ? collection === 'references'
                           ? 'Choose a source reference.'
-                          : 'Choose a draft example.'
+                          : 'Choose an example.'
                         : collection === 'references'
                           ? 'No matching references.'
                           : 'No matching examples.'}
               </h3>
               <p>
                 {unavailable
-                  ? 'This address doesn’t identify an available lesson. Browse the draft examples to choose where to begin.'
+                  ? 'This address doesn’t identify an available lesson. Browse the examples to choose where to begin.'
                   : planned
-                    ? 'This framework has no published content here yet. Browse the available draft examples to explore the learning experience.'
+                    ? 'This framework has no published content here yet. Browse the available examples instead.'
                     : results.length
                       ? collection === 'references'
-                        ? 'Select a control to compare its official text with Beginner, IT & Cyber and Compliance teaching drafts.'
+                        ? 'Select a control to compare its official text with the Beginner, IT & Cyber and Compliance perspectives.'
                         : 'Select an example from the results to begin reading. Your learning mode is kept as you browse.'
                       : collection === 'references'
                         ? 'Try a control identifier, topic, family or level in the September 2024 source snapshot.'
-                        : 'Try “access”, “authorized”, or “AC.L2-3.1.1”. This collection contains one draft example.'}
+                        : 'Try “access”, “authorized”, or “AC.L2-3.1.1”. This collection contains one example.'}
               </p>
               {unavailable || planned ? (
                 <button
@@ -564,9 +564,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                   type="button"
                   onClick={recover}
                 >
-                  {planned
-                    ? 'Browse available examples'
-                    : 'Browse draft examples'}
+                  {planned ? 'Browse available examples' : 'Browse examples'}
                 </button>
               ) : (
                 !results.length && (
@@ -583,11 +581,6 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
           )}
         </div>
       </div>
-      <p className="explorer-disclaimer">
-        <Info size={14} aria-hidden="true" />
-        Learning material, not a compliance checklist. Always consult the
-        applicable official requirements and assessment guidance.
-      </p>
     </section>
   )
 }

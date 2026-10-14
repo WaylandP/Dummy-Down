@@ -72,7 +72,7 @@ export function ControlResults({
               <span className="control-item-meta">
                 {control.familyName} <span>·</span>{' '}
                 {control.contentKind === 'educational-example'
-                  ? 'Draft example'
+                  ? 'Teaching example'
                   : 'Source reference'}
               </span>
               {findLearningActivity(lessonIdentity(control)) && (

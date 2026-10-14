@@ -5,6 +5,29 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Week 1 cleanup — October 14, 2026
+
+A sequence of small pull requests retired the project's working name and process
+overhead, and removed repeated review-status hedging from the interface.
+
+- [PR #25](https://github.com/WaylandP/cipher-and-chalk/pull/25): README rewritten as
+  an audience-first project page with badges, a stack table and one honest
+  content-accuracy section.
+- [PR #26](https://github.com/WaylandP/cipher-and-chalk/pull/26): package and
+  browser-storage namespace renamed from `dummy-down` to `cipher-and-chalk`, with a
+  one-time client-side migration of legacy keys.
+- [PR #27](https://github.com/WaylandP/cipher-and-chalk/pull/27): gstack scripts,
+  docs and CI step removed; `AGENTS.md` replaced by a concise `CLAUDE.md`.
+- [PR #28](https://github.com/WaylandP/cipher-and-chalk/pull/28): unpublished
+  frameworks no longer offered in the Explorer dropdown; saved links still resolve.
+- [PR #29](https://github.com/WaylandP/cipher-and-chalk/pull/29): "draft" and
+  "pending review" labels removed from every lesson, perspective, activity, glossary
+  term and coverage row. The Coverage page is reframed as a searchable index of all
+  468 assessment objectives, and the About page gains a "How the explanations are
+  made" section that carries the project's review status once. Activity and visual
+  explanation disclaimer paragraphs in the data files are unchanged and remain a
+  follow-up.
+
 ## Phase 3 final integration — October 14, 2026
 
 [PR #23](https://github.com/WaylandP/cipher-and-chalk/pull/23) merged at `6a5133b`.

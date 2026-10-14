@@ -126,7 +126,7 @@ function ExplanationPlayer({
           <p className="instruction-eyebrow">See the idea unfold</p>
           <h4 id={`${prefix}-heading`}>{explanation.title}</h4>
         </div>
-        <span className="draft-label">Draft visual explanation</span>
+        <span className="draft-label">Visual explanation</span>
       </div>
       <p className="visual-player-intro">
         Four stages · {duration / 1000} seconds. Pause whenever you need, or

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { objectiveCoverage, coverageReview } from '../data/objective-coverage'
+import { objectiveCoverage } from '../data/objective-coverage'
 import { createLessonUrl } from '../state/explorer-state'
 import type { ObjectiveCoverage } from '../types/coverage'
 
@@ -14,8 +14,7 @@ const counts = {
     (row) => row.coverage === 'explained-in-draft',
   ).length,
   missing: objectiveCoverage.filter((row) => row.coverage === 'missing').length,
-  pending: objectiveCoverage.filter((row) => row.humanReview === 'pending')
-    .length,
+  total: objectiveCoverage.length,
 }
 function lessonUrl(
   row: ObjectiveCoverage,
@@ -85,15 +84,16 @@ export default function CoveragePage() {
   return (
     <div className="coverage-page section-shell">
       <header className="coverage-intro">
-        <p className="home-kicker">The source &amp; the explanation</p>
+        <p className="home-kicker">Assessment objectives</p>
         <h1>
-          What’s explained.
+          Every assessment objective.
           <br />
-          What still needs work.
+          Searchable.
         </h1>
         <p>
-          Follow each assessment statement to the draft that explains it. See
-          the gaps, check the source, and return to the lesson.
+          All {counts.total} determination statements from the CMMC Level 1–3
+          assessment guides, quoted with page citations and linked to the
+          explanation that covers each one.
         </p>
         <p className="coverage-context">
           CMMC v2.13 · September 2024 snapshot · Levels 1–3
@@ -104,7 +104,7 @@ export default function CoveragePage() {
         aria-label="Coverage across the full snapshot"
       >
         <div>
-          <dt>Explained in draft</dt>
+          <dt>Explained</dt>
           <dd>{counts.explained}</dd>
         </div>
         <div>
@@ -112,42 +112,36 @@ export default function CoveragePage() {
           <dd>{counts.missing}</dd>
         </div>
         <div>
-          <dt>Human review pending</dt>
-          <dd>{counts.pending}</dd>
+          <dt>Total statements</dt>
+          <dd>{counts.total}</dd>
         </div>
       </dl>
       <p className="coverage-scope">
-        459 determinations + 9 organization-defined parameter statements. All
-        teaching remains draft. Human review overlaps both coverage states;
-        these counts are not a compliance score.
+        459 determinations + 9 organization-defined parameter statements. The
+        counts describe which statements have an explanation here; they are not
+        a compliance score.
       </p>
       <details className="source-details coverage-method">
         <summary>What these counts mean</summary>
         <div className="source-content">
           <p>
-            “Explained in draft” means an AI-assisted comparison identified a
-            specific teaching passage or supplementary note for that statement.
-            It does not mean every perspective or practice activity covers every
-            detail.
+            “Explained” means a specific teaching passage or note addresses that
+            statement. It does not mean every perspective or practice activity
+            covers every detail.
           </p>
           <p>
-            Source statements were compared with the pinned assessment-guide
-            PDFs. Current official-host verification and applicability remain
-            unresolved. A quotation alone does not count as an explanation.
+            Statements were compared with the pinned assessment-guide PDFs. A
+            quotation alone does not count as an explanation. “Missing
+            explanation” means no mapping exists yet.
           </p>
           <p>
-            “Missing explanation” means the mapping remains unresolved.
-            Qualified human review is pending for every row. No reviewer has
-            approved these mappings or their assessment sufficiency.
-          </p>
-          <p>
-            AI comparison: {coverageReview.reviewer} ·{' '}
-            {coverageReview.reviewedAt}. The nine organization-defined parameter
-            (ODP) rows describe choices or definitions and are listed separately
-            from lettered determinations.
+            The nine organization-defined parameter (ODP) rows describe choices
+            or definitions and are listed separately from lettered
+            determinations. How explanations are written and reviewed is
+            described on the <a href="/about">About page</a>.
           </p>
           <a href="https://github.com/WaylandP/cipher-and-chalk/blob/main/docs/sources/cmmc-2-13-sep-2024.md">
-            Source provenance and verification limits
+            Source provenance
           </a>
         </div>
       </details>
@@ -185,7 +179,7 @@ export default function CoveragePage() {
           <span>Explanation coverage</span>
           <select id="coverage-status" name="status" defaultValue={status}>
             <option value="">All statements</option>
-            <option value="explained-in-draft">Explained in draft</option>
+            <option value="explained-in-draft">Explained</option>
             <option value="missing">Missing explanation</option>
           </select>
         </label>
@@ -239,8 +233,7 @@ export default function CoveragePage() {
                 <p>
                   <a className="text-link" href={lessonUrl(first)}>
                     Open this lesson
-                  </a>{' '}
-                  · All teaching is draft; human review pending.
+                  </a>
                 </p>
                 <p className="coverage-citation">
                   <a href={first.sourceUrl}>
@@ -248,8 +241,7 @@ export default function CoveragePage() {
                   </a>
                   <br />
                   PDF page {first.statement.pdfPage} · printed page{' '}
-                  {first.statement.printedPage}. Pinned source comparison, not
-                  current-applicability verification.
+                  {first.statement.printedPage}.
                 </p>
                 <ol className="coverage-statements">
                   {rows.map((row) => (
@@ -264,7 +256,7 @@ export default function CoveragePage() {
                         ·{' '}
                         {row.coverage === 'missing'
                           ? 'Missing explanation'
-                          : 'Explained in draft'}
+                          : 'Explained'}
                       </p>
                       <p className="small-label">
                         Official guide quotation · Determine if:
@@ -274,15 +266,11 @@ export default function CoveragePage() {
                         <div className="coverage-gap" key={question}>
                           <h4>Unresolved source wording</h4>
                           <p>{question}</p>
-                          <p>
-                            AI mapping unresolved · Qualified human review
-                            pending.
-                          </p>
                         </div>
                       ))}
                       {row.coverage === 'explained-in-draft' && (
                         <details className="coverage-teaching">
-                          <summary>Read the mapped draft explanation</summary>
+                          <summary>Read the explanation</summary>
                           <div>
                             {row.explanation && (
                               <section>
@@ -307,10 +295,6 @@ export default function CoveragePage() {
                                 </a>
                               </section>
                             ))}
-                            <p className="coverage-context">
-                              AI mapping compared {row.reviewedAt} · Qualified
-                              human review pending.
-                            </p>
                             <p>
                               {row.practice ? (
                                 <>
@@ -318,9 +302,7 @@ export default function CoveragePage() {
                                   <a href={lessonUrl(row)}>
                                     {row.practice.title}
                                   </a>{' '}
-                                  · {row.practice.step}. This illustrates
-                                  selected ideas; it does not establish
-                                  assessment coverage.
+                                  · {row.practice.step}.
                                 </>
                               ) : (
                                 'No practice example is mapped to this statement.'

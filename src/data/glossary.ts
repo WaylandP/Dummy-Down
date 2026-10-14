@@ -3,7 +3,7 @@ import { projectReadmeSource } from './sources'
 import { levelOneGlossaryTerms } from './level-one-glossary'
 
 const glossaryContext =
-  'Project glossary draft expanding the README’s authorized-access teaching example. These plain-language explanations are not official definitions or complete requirements.'
+  'Project glossary for the authorized-access teaching example. These plain-language explanations are not official definitions or complete requirements.'
 
 /** Preserve the existing teaching vocabulary and its stable identifiers. */
 const projectGlossaryTerms: readonly GlossaryTerm[] = [

@@ -30,9 +30,7 @@ test('coverage filters, ODP labels, missing explanations and native history work
   await expect(
     page.getByRole('heading', { name: 'Unresolved source wording' }),
   ).toHaveCount(2)
-  await expect(page.getByText('Read the mapped draft explanation')).toHaveCount(
-    0,
-  )
+  await expect(page.getByText('Read the explanation')).toHaveCount(0)
   await page.goBack()
   await expect(
     page.getByRole('heading', { name: '89 statements · 24 controls' }),
@@ -62,7 +60,7 @@ test('source details lead to the exact perspective and coverage return link', as
     page.getByRole('heading', { name: '6 statements · 1 control' }),
   ).toBeVisible()
   const objective = page.locator('.coverage-statements > li').first()
-  await objective.getByText('Read the mapped draft explanation').click()
+  await objective.getByText('Read the explanation').click()
   await expect(
     objective.getByText(/Map approved user, process and device identities/),
   ).toBeVisible()

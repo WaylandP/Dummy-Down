@@ -54,16 +54,14 @@ describe('Control-specific teaching perspectives', () => {
         draft.compliance.evidenceExamples[0]!,
       )
       expect(compliance).toHaveTextContent('not official assessment objectives')
-      expect(compliance).toHaveTextContent(
-        'Qualified editorial review is pending',
-      )
+      expect(compliance).toHaveTextContent('Written by Cipher & Chalk')
       expect(quote).toBeVisible()
       if (id === 'AC.L1-b.1.i' || id === 'IA.L2-3.5.3') {
-        expect(explorer.getByText('Draft learning activity')).toBeVisible()
+        expect(explorer.getByText('Practice activity')).toBeVisible()
         expect(explorer.getByText(/^Fictional scenario:/)).toBeVisible()
       } else {
         expect(
-          explorer.queryByText('Draft learning activity'),
+          explorer.queryByText('Practice activity'),
         ).not.toBeInTheDocument()
       }
       expect(new URLSearchParams(window.location.search).get('mode')).toBe(

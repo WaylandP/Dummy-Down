@@ -153,14 +153,30 @@ function Application() {
                 stick.
               </p>
               <p>
-                This independent, open-source project covers{' '}
-                {referenceControls.length} CMMC references from the September
-                2024 v2.13 publications. Explanations are educational drafts;
-                qualified human review is pending.
+                This independent, open-source project covers all{' '}
+                {referenceControls.length} CMMC controls from the September 2024
+                v2.13 publications. Each one carries the official requirement,
+                quoted word for word with its page citation, and three
+                perspectives written to explain it.
+              </p>
+            </section>
+            <section id="how-content-is-made" aria-labelledby="method-title">
+              <h2 id="method-title">How the explanations are made.</h2>
+              <p>
+                Every explanation is written from the pinned assessment guides
+                and checked against them by automated tests and an AI-assisted
+                comparison of all 468 determination statements. Qualified review
+                by CMMC practitioners is the next step and is still open, so
+                treat the explanations as a study companion rather than an
+                official interpretation.
               </p>
               <p>
-                Other frameworks are planned. They are not learning libraries
-                here yet.
+                If you assess or prepare organizations for CMMC and want to
+                review a control, start with the{' '}
+                <a href="https://github.com/WaylandP/cipher-and-chalk/blob/main/docs/content-review/QUALIFIED_REVIEW.md">
+                  review packet on GitHub
+                </a>
+                .
               </p>
             </section>
             <section id="approach" aria-labelledby="approach-title">
@@ -228,7 +244,7 @@ function Application() {
         </div>
         <UsagePreferences />
         <p className="footer-disclaimer">
-          Independent educational drafts. Not legal advice or a guarantee of
+          An independent educational project. Not legal advice or a guarantee of
           compliance.
           <br />
           Not affiliated with or endorsed by DoD, NIST, or any certification

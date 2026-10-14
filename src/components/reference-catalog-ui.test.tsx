@@ -88,14 +88,12 @@ describe('Versioned CMMC reference catalog', () => {
           name: mode === 'compliance' ? 'Compliance' : 'Beginner',
         }),
       ).toBeVisible()
-      expect(explorer.getByText('Draft teaching content')).toBeVisible()
+      expect(explorer.getByText('Choose your perspective')).toBeVisible()
       expect(
         explorer.getByRole('button', { name: 'Copy reference link' }),
       ).toBeVisible()
       expect(explorer.getAllByRole('tab')).toHaveLength(3)
-      expect(
-        explorer.queryByText('Draft learning activity'),
-      ).not.toBeInTheDocument()
+      expect(explorer.queryByText('Practice activity')).not.toBeInTheDocument()
     },
   )
 
@@ -188,7 +186,7 @@ describe('Versioned CMMC reference catalog', () => {
     expect(
       explorer.getByRole('combobox', { name: 'Content collection' }),
     ).toHaveValue('lessons')
-    expect(explorer.getByText('Draft learning activity')).toBeVisible()
+    expect(explorer.getByText('Practice activity')).toBeVisible()
     write.mockRestore()
   })
 })

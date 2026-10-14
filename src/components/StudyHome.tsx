@@ -131,7 +131,7 @@ export function StudyHome() {
         <section className="lesson-index" aria-labelledby="start-title">
           <div className="desk-section-heading">
             <h2 id="start-title">Start with a real situation.</h2>
-            <span>Level 1 · Draft practice</span>
+            <span>Level 1 · Practice</span>
           </div>
           <ol>
             {starts.map((item, index) => {
@@ -210,7 +210,7 @@ export function StudyHome() {
           </a>
           <div className="board-source">
             <code>AC.L1-b.1.i</code>
-            <span>Teaching draft · Read the full source in the lesson</span>
+            <span>Read the full source in the lesson</span>
           </div>
           <div className="chalk-ledge" aria-hidden="true">
             <span />
@@ -223,11 +223,7 @@ export function StudyHome() {
             REF.
           </span>
           <h2 id="shelf-title">Keep the source close.</h2>
-          <p>
-            CMMC v2.13 · September 2024 snapshot.
-            <br />
-            Explanations are drafts; qualified human review is pending.
-          </p>
+          <p>CMMC v2.13 · September 2024 snapshot.</p>
         </div>
         <nav aria-label="Browse CMMC reference levels">
           {['Level 1', 'Level 2', 'Level 3'].map((level) => (

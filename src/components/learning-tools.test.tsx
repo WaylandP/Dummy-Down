@@ -87,7 +87,7 @@ describe('Glossary', () => {
     expect(
       screen.getByRole('status', { name: 'Glossary search results' }),
     ).toHaveTextContent('2 terms')
-    expect(screen.getByText(/not official framework definitions/)).toBeVisible()
+    expect(screen.getByText(/not the official framework wording/)).toBeVisible()
 
     await user.click(screen.getByText('Device', { selector: 'summary' }))
     expect(screen.getByText(deviceTerm.definition)).toBeVisible()

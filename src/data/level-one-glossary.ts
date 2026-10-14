@@ -2,7 +2,7 @@ import type { GlossaryTerm, SourceReference } from '../types/content'
 import { cmmcSourceDocuments } from './cmmc-references'
 
 const snapshotContext =
-  'Original AI-assisted educational interpretation of the September 2024 CMMC 2.13 snapshot, not an official definition. Qualified human review is pending.'
+  'Teaching definition written for the September 2024 CMMC 2.13 snapshot, not an official definition.'
 
 function guideSource(
   level: 1 | 2,
