@@ -4,16 +4,18 @@ The [detailed roadmap](docs/ROADMAP.md) is the milestone source of truth. This f
 keeps the next actionable priorities; the [changelog](CHANGELOG.md) records work
 already merged into `main`. No completion percentage is implied.
 
-- **Current delivery: assessment-objective coverage (Increment 3).** Review the
+- **Current delivery: Level 2/3 full editorial audit (Increment 4).** Review the
   [eight-milestone audit](docs/reviews/phase-1-2-milestone-audit-2026-10-14.md),
   [technical evidence](docs/reviews/phase-1-quality-2026-10-14.md) and
   [acceptance packet](docs/testing/PHASE_1_ACCEPTANCE.md). Focus repairs and browser
   regression coverage were merged in approved PR #14 at `ebaed5f` on October 14.
   Owner/learner, actual screen-reader, Safari/iOS and native browser-zoom checks
   remain open. Increment 2 was merged in approved PR #15 at `ef02c29`.
-  Increment 3 imports all 459 determination statements and nine ODP rows, then
-  maps explicit explanations and identifies unresolved gaps. PR #16 contains the
-  validated lazy report, filters and integrity gates; owner review is pending. The
+  Increment 3 was merged in approved PR #16 at `d734898`: all 459 determinations,
+  nine ODP rows, explicit mappings, unresolved gaps, lazy report and integrity gates.
+  Increment 4 reviews all 134 Level 2/3 controls and their 402 perspective drafts
+  in three bounded batches. The [audit record](docs/content-review/level-2-3-audit-2026-10-14.md)
+  distinguishes completed comparison, corrections and remaining work. The
   [applicability register](docs/sources/applicability-2026-10-14.md) records 18 blocked
   official-host requests. Continue independent snapshot/content work; current
   applicability requires external verification. Do not begin Phase 3/4 work.
