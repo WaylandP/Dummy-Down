@@ -3,6 +3,7 @@ import { learningActivities } from '../data/learning'
 import { controls, referenceControls } from '../data/content'
 import { createLessonUrl } from '../state/explorer-state'
 import './practice-page.css'
+import { hasVisualExplanation } from '../data/visual-lesson-index'
 
 /** An index of actual activities; never mount or track hidden lessons here. */
 export default function PracticePage() {
@@ -108,6 +109,8 @@ export default function PracticePage() {
                     ? 'Project example'
                     : control?.level}{' '}
                   · {activity.questions.length} questions · Draft
+                  {hasVisualExplanation(activity.lesson) &&
+                    ' · 40-second visual'}
                 </p>
                 <h2>
                   <a

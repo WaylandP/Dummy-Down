@@ -61,7 +61,7 @@ test('practice keeps answers across perspectives and supports retry, completion 
   page,
 }) => {
   await page.goto(reader)
-  await page.getByRole('link', { name: '03 Practice' }).click()
+  await page.getByRole('link', { name: '04 Practice' }).click()
   expect(
     await page.evaluate(() =>
       document.activeElement?.classList.contains('reader-jump-target'),

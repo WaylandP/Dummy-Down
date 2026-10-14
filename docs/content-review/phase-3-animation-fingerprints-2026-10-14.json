@@ -1,0 +1,42 @@
+{
+  "algorithm": "SHA256(JSON.stringify(parsed runtime object)); raw files use SHA256(bytes)",
+  "runtimeArrayFingerprint": "35035ec929c77007aa90df68b36bcf3d4f701a6ee4dc91e690c6682b0e433f9f",
+  "files": {
+    "src/data/visual-explanations.ts": "2035aee0c7a56aa81a39f06d973faf81ec7033e1f5bf3914e2f1874fc366de3b",
+    "src/components/TeachingScene.tsx": "f1e8eb803bd3195bb3455b864df01832f394020f7f4a0e0c07bce47e4885f259",
+    "src/components/VisualExplanation.tsx": "6e2a830bce868c9f20518d2b733cac574e1f49e9b6391997964fcc73bb5438ec",
+    "src/types/visual-explanation.ts": "cc66a4c0fa1f187f7bd50aa48af0634998155647ae2929b05025df3ba266b2d5"
+  },
+  "records": [
+    {
+      "id": "visual-ac-l1-b-1-i",
+      "controlId": "AC.L1-b.1.i",
+      "sourcePdfPage": 16,
+      "printedPage": 12,
+      "objectiveLabels": ["a", "b", "c", "d", "e", "f"],
+      "officialRequirementExact": true,
+      "runtimeFingerprint": "78d6e6e08e110ce8a7e028e448d08f5ab7146817894a2f6f98fb0e5a37923eaa",
+      "objectiveFingerprint": "7c5efe2b6b31c27c5a82ea94f8b55e5b80ae0bf5e3ab46a8aa464d383158159c"
+    },
+    {
+      "id": "visual-ia-l2-3-5-3",
+      "controlId": "IA.L2-3.5.3",
+      "sourcePdfPage": 125,
+      "printedPage": 117,
+      "objectiveLabels": ["a", "b", "c", "d"],
+      "officialRequirementExact": true,
+      "runtimeFingerprint": "996d4ce1025b5403f8a611dbfb60dc3a0650f998739bc461dee718526020bd67",
+      "objectiveFingerprint": "6ada330d85be76c72403fe0e2be68c829d22a9109edc636dd1b14d2b8196fee5"
+    },
+    {
+      "id": "visual-ir-l3-3-6-2e",
+      "controlId": "IR.L3-3.6.2e",
+      "sourcePdfPage": 47,
+      "printedPage": 43,
+      "objectiveLabels": ["a", "b", "c"],
+      "officialRequirementExact": true,
+      "runtimeFingerprint": "f8e43703eda180580ecd6fdb86bf338c6a98ace1dce3e831c95579263bc80d8a",
+      "objectiveFingerprint": "c2275c410830976c191618d4066187597602abf9d60aa5568c257e9f7c0820fd"
+    }
+  ]
+}

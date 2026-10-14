@@ -5,6 +5,13 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Phase 3 practice expansion — October 14, 2026
+
+PR #20 merged at `1e934d0` with successful automatic production deployment.
+Nine source-bound draft activities add three concepts per CMMC level, 27 explained
+questions, learning goals and related terms. A searchable practice page links all
+13 activities to their exact lessons. Qualified content approval remains pending.
+
 ## 2026-10-14
 
 - [#19](https://github.com/WaylandP/cipher-and-chalk/pull/19) made practice easier to

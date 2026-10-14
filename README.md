@@ -94,12 +94,14 @@ reviewed.
   the original demo, six Level 1, three Level 2 and three Level 3 activities. Each
   includes a learning goal, fictional situation, retry and completion reasoning review.
   The nine additions have publication-bound sources and contextual terminology.
+- Three 40-second draft visual explanations for authorized access, MFA and
+  response-team deployment, with playback controls, transcripts and still stages
+  for reduced motion. Open “Watch the idea” inside those lessons.
 - Diagrams with text equivalents, loading/error recovery, review-status disclosures,
   source comparison, and optional privacy-preserving usage measurement.
 
 There are currently no user accounts, organizational evidence uploads, compliance
-scores, saved learning progress, or chatbot. Additional frameworks and animated
-lessons are not available yet.
+scores, saved learning progress, or chatbot. Additional frameworks are not available yet.
 
 ## Current CMMC coverage and review status
 
@@ -159,8 +161,8 @@ The project still follows the original four phases:
    checks, and comprehensive assessment-objective explanations are still in progress
    or externally blocked. This phase is not complete.
 3. **Make Learning Interactive** — 13 draft activities, 39 explained questions,
-   three diagrams and a searchable practice index are implemented. Short animated
-   explanations and optional local progress are the next engineering increments.
+   three diagrams, three short visual explanations and a searchable practice index
+   are implemented. Optional local progress is the next engineering increment.
    Qualified content and learner validation remain pending. This phase is not complete.
 4. **Expand the Platform** — the architecture and contribution guidance support
    future growth. NIST SP 800-53, FedRAMP, SOC 2, ISO/IEC 27001, HIPAA Security Rule,
