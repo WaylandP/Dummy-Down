@@ -12,7 +12,7 @@ Base repository commit when fingerprints were captured: `1e934d000fef7d623ec506e
 
 Final reviewed files:
 
-- `src/data/visual-explanations.ts` — SHA-256 `2035aee0c7a56aa81a39f06d973faf81ec7033e1f5bf3914e2f1874fc366de3b`.
+- `src/data/visual-explanations.ts` — SHA-256 `71408e9d6d174007d94f0d66b24a62ebd054d1cfc09d763f03ac9c63e1d843f7`.
 - `src/components/TeachingScene.tsx` — SHA-256 `f1e8eb803bd3195bb3455b864df01832f394020f7f4a0e0c07bce47e4885f259`.
 - `src/components/VisualExplanation.tsx` — SHA-256 `6e2a830bce868c9f20518d2b733cac574e1f49e9b6391997964fcc73bb5438ec`.
 - `src/types/visual-explanation.ts` — SHA-256 `cc66a4c0fa1f187f7bd50aa48af0634998155647ae2929b05025df3ba266b2d5`.

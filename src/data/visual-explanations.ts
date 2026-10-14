@@ -148,7 +148,7 @@ export const visualExplanations: readonly VisualExplanationContent[] =
       source,
       sourceLabel: `${control.id} · September 2024 v2.13 · PDF page ${control.requirement.pdfPage}`,
       disclaimer:
-        'Draft educational interpretation and fictional examples. Qualified human review and current applicability verification are pending. This walkthrough does not demonstrate organizational compliance or replace the full assessment guidance.',
+        'A teaching interpretation with fictional examples. This walkthrough does not demonstrate organizational compliance or replace the full assessment guidance.',
     }
   })
 

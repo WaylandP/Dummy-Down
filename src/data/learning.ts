@@ -131,7 +131,7 @@ export const learningActivities: readonly LearningActivity[] = [
       },
     ],
     disclaimer:
-      'Draft fictional practice, not an assessment checklist. This activity checks understanding of an example; it does not measure compliance. It does not cover the full official requirement, processes acting on users’ behalf, or assessment objectives.',
+      'A fictional practice activity built on a simplified example. It checks understanding, not compliance, and does not cover the full official requirement, processes acting on users’ behalf, or assessment objectives.',
     teachingSource: projectReadmeSource,
   },
   ...levelOneLearningActivities,
