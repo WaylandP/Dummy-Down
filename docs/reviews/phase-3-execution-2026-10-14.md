@@ -142,3 +142,16 @@ and clipping. Native zoom and real assistive-technology/learner acceptance remai
 pending. Main JavaScript is 503.21 kB (134.98 kB gzip), triggering Vite's 500 kB
 advisory; the final integration increment will review route/data loading. No
 threshold or check was disabled. Preview/CI/merge evidence follows after publication.
+
+### Increment 2 publication limits
+
+The first pushed head `acc37f5` received successful Vercel preview deployment
+`7070589859` at https://cipherandchalk-cxh15zmd7-waylandp.vercel.app . A direct
+workspace request to that address was blocked by the network proxy with CONNECT
+403 before an origin response. This is provider deployment evidence, not a claim
+of independently inspecting the hosted rendering. Real browser rendering and
+interactions were checked against the local production build; GitHub CI repeats
+the full suite. The branch-protection configuration endpoint also returns 403 for
+this integration. Merge authorization will therefore rely on GitHub's PR merge
+state, check/review decision and ordinary non-admin merge enforcement; no rule is
+bypassed or changed.
