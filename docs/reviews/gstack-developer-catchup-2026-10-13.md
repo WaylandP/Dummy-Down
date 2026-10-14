@@ -159,3 +159,14 @@ an abort rather than a completed review. A new review will require a clean
 checkpoint and the skill's mandatory independent native design-consistency
 voice; neither screenshots from benchmark nor this static workflow review
 substitutes for that stage.
+
+The later clean-checkpoint quick design audit and independent native consistency
+voice confirmed one medium issue: “Usage & privacy” lacked a visible disclosure
+indicator. The coordinator restored its native marker with a focused CSS change.
+A separate post-fix check viewed closed/open states on all three audit URLs at
+375px and 1280px, verified a 44px target, visible keyboard focus, Enter/Space
+toggling, and no overflow or console errors. The specific fix is verified;
+evidence is under `.gstack/design-postfix-pinned-inventory/`. The original audit
+abort remains recorded, and full design-review stays partial: historical baseline
+discovery and a complete post-fix page audit were not performed. No overall clean
+skill pass, accessibility certification or new design direction is claimed.
