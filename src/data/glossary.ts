@@ -1,6 +1,7 @@
 import type { GlossaryTerm } from '../types/content'
 import { projectReadmeSource } from './sources'
 import { levelOneGlossaryTerms } from './level-one-glossary'
+import { cmmcProgramGlossaryTerms } from './cmmc-program-glossary'
 
 const glossaryContext =
   'Project glossary for the authorized-access teaching example. These plain-language explanations are not official definitions or complete requirements.'
@@ -67,4 +68,5 @@ const projectGlossaryTerms: readonly GlossaryTerm[] = [
 export const glossaryTerms: readonly GlossaryTerm[] = [
   ...projectGlossaryTerms,
   ...levelOneGlossaryTerms,
+  ...cmmcProgramGlossaryTerms,
 ]
