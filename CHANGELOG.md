@@ -7,10 +7,15 @@ validation evidence remains in the linked pull requests and review documents.
 
 ## Unreleased
 
-- Increment 3 (feature branch, in progress): explicit assessment-statement inventory,
-  teaching mappings and a navigable coverage report.
+- Increment 4 / PR #17 (validated feature branch, awaiting review): full-field Level 2/3
+  editorial audit, 16 clarifications across 13 controls and per-control review evidence.
 
 ## 2026-10-14
+
+- [#16](https://github.com/WaylandP/cipher-and-chalk/pull/16) added all 468 pinned
+  assessment statements, explicit teaching mappings, a navigable coverage report
+  and stale-review integrity gates. Two source-wording gaps and all qualified-human
+  approvals remain unresolved. Approved merge verified at `d734898`.
 
 - [#15](https://github.com/WaylandP/cipher-and-chalk/pull/15) recorded source-baseline revalidation,
   current applicability access limits, focused clarifications in ten Level 1

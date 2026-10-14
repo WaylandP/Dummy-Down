@@ -859,7 +859,7 @@
     "technical": {
       "focus": "Apply this requirement together with Level 3 scoping guidance. Inventory specialized assets, document their SSP treatment and network relationships, and evaluate purpose-specific separation or suitable intermediary protections.",
       "example": "The team could use a controlled intermediary for a constrained device and document which protections it supplies, with tests of the device’s permitted network paths.",
-      "watchFor": "The guide and model wording differ; consult the quoted sources and scoping guidance rather than inferring an automatic exemption."
+      "watchFor": "The requirement and further discussion describe inclusion under the specified enhanced protections or purpose-specific segregation, but the guide’s assessment statements [a] and [b] use inconsistent wording. Their interpretation remains unresolved and needs qualified scoping review. The model wording also differs; do not infer an automatic exemption."
     },
     "compliance": {
       "focus": "The guide discusses specialized assets, assessment or purpose-specific segregation, documented mitigations and network diagrams. Device limitations require explicit treatment; examples here do not determine assessment scope.",

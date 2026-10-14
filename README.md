@@ -123,10 +123,11 @@ perspective texts are separately authored educational drafts bound to that editi
 Their existence, automated checks, and AI-assisted editorial review do **not** mean
 they have received qualified human approval or complete assessment-objective review.
 
-The [Level 1 editorial audit](docs/content-review/level-1-audit-2026-10-14.md)
-compared all 45 perspectives with 59 determination statements and clarified
-specific explanations. All human-approval fields remain pending. Thirteen
-statements are quoted as context for three learning activities. The new
+The [Level 1 editorial audit](docs/content-review/level-1-audit-2026-10-14.md) and
+[Level 2/3 audit](docs/content-review/level-2-3-audit-2026-10-14.md) record AI-assisted,
+control-by-control comparisons of all 447 perspectives with the pinned guides,
+focused corrections and unresolved issues. All human-approval fields remain pending.
+Thirteen statements are quoted as context for three learning activities. The
 [assessment inventory](docs/sources/cmmc-objectives-2-13.md) preserves all 459
 lettered determinations and nine organization-defined parameter statements.
 The coverage page distinguishes mapped draft explanations from unresolved gaps;

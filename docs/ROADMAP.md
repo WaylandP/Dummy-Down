@@ -76,21 +76,30 @@ finished.
       engineering subtask does not complete the teaching or human-review milestone.
       See the [dated audit](content-review/level-1-audit-2026-10-14.md).
 - [ ] **Implemented but awaiting validation or review** — Level 2 has 110 source
-      references and 330 draft perspective texts; qualified review, current
-      applicability, and full editorial review remain pending. Selected objective
-      mappings are ready for review in Increment 3.
+      references and 330 draft perspective texts. Increment 4 compared all fields
+      with the complete pinned guide sections in two bounded batches and clarifies
+      12 controls. Qualified review and current applicability remain pending;
+      AI-assisted comparison does not approve the teaching.
 - [ ] **Implemented but awaiting validation or review** — Level 3 has 24 source
-      references and 72 draft perspective texts; the same review gaps remain.
+      references and 72 draft perspective texts. Increment 4 compared all fields
+      with the pinned guide and records one source-conflict clarification;
+      qualified review and current applicability remain pending. See the
+      [Level 2/3 audit](content-review/level-2-3-audit-2026-10-14.md).
 - [ ] **Currently in progress** — Define and track assessment-objective explanation
       coverage separately from references, perspectives, citations, and possible
       evidence. Increment 3 / PR #16 imports all 459 lettered determinations and nine
       ODP statements and maps selected teaching fields with explicit unresolved gaps.
-      The navigable report and integrity gates are validated and await approved merge.
+      The navigable report and integrity gates were merged in approved PR #16.
       Thirteen selected practice links remain illustrations, not a complete curriculum.
-- [ ] **Implemented but awaiting validation or review** — Merge the objective inventory,
+- [x] **Completed and merged into main** — Objective inventory,
       explicit teaching mappings, gap notes, report and re-review integrity checks
-      after owner approval of validated Increment 3. See the
+      were merged in approved PR #16 at `d734898` on October 14. See the
       [coverage record](reviews/objective-coverage-2026-10-14.md).
+- [ ] **Implemented but awaiting validation or review** — Increment 4 / PR #17
+      completed the AI-assisted full-field Level 2/3 audit, 16 focused field corrections
+      across 13 controls and tested per-control review fingerprints. Local validation
+      passed; verify final CI and owner-approved merge before checking this engineering
+      subtask. Qualified-human approval is separate.
 - [ ] **Blocked by external dependencies** — Obtain qualified review of objective
       interpretations, including the `SI.L3-3.14.3e` source wording/scoping conflict.
       All source and teaching fingerprints must match the reviewed content.

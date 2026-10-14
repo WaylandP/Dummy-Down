@@ -494,7 +494,7 @@
       "watchFor": "An employee's permission to publish company content is not authority to publicly release CUI; the guide distinguishes government release authority."
     },
     "compliance": {
-      "focus": "Review authorized publishers, prevention procedures, pre-posting and public-content review, and mechanisms to remove and address improper CUI posting.",
+      "focus": "Review the people authorized to post or process information on publicly accessible systems, procedures that keep CUI out of both activities, pre-posting and existing-content review, and mechanisms to remove and address improper CUI posting.",
       "reviewQuestions": [
         "How is proposed public content reviewed to keep CUI out?",
         "What happens when CUI is discovered on a publicly accessible system?"
@@ -724,7 +724,7 @@
       "watchFor": "A configured source can be unreachable or unused; differing time zones also need clear interpretation even when underlying clocks are synchronized."
     },
     "compliance": {
-      "focus": "Review the specified authoritative source, the clocks used for audit timestamps, and evidence of comparison and synchronization. Avoid inventing a universal drift threshold or required vendor.",
+      "focus": "Review the specified authoritative source, the clocks used for audit timestamps, and evidence of comparison and synchronization. The pinned guide’s assessment considerations ask about timestamps mapping to Coordinated Universal Time (UTC), comparison with authoritative Network Time Protocol (NTP) servers, synchronization when the time difference exceeds one second, and a defined synchronization frequency.",
       "reviewQuestions": [
         "Which authoritative source is specified for the relevant audit-record clocks?",
         "How are those internal clocks compared and synchronized with it?"
@@ -784,7 +784,7 @@
   {
     "id": "CM.L2-3.4.1",
     "beginner": {
-      "meaning": "Keep an approved picture of how systems should be configured and an inventory of what they contain. Include hardware, software, firmware, and documentation, and maintain both as systems change throughout their life cycles. A one-time equipment list quickly becomes unreliable.",
+      "meaning": "Keep an approved picture of how systems should be configured and an inventory of what they contain. Include hardware, software, firmware (the software built into equipment), and documentation, and maintain both as systems change throughout their life cycles. A one-time equipment list quickly becomes unreliable.",
       "example": "CedarPoint records the approved configuration for a project workstation and its installed components. When the machine is replaced or its firmware changes, the team updates the baseline and inventory rather than leaving the original records untouched."
     },
     "technical": {
@@ -1037,7 +1037,7 @@
   {
     "id": "IA.L2-3.5.3",
     "beginner": {
-      "meaning": "Use more than one kind of proof for the specified access: local and network access to privileged accounts, and network access to non-privileged accounts. Two passwords are still the same kind of proof; different factors can involve knowledge, possession, or an inherent characteristic.",
+      "meaning": "Use more than one kind of proof for administrator and other accounts with special permissions (privileged accounts), whether signing in directly without a network (local access) or through a network. Ordinary accounts (non-privileged accounts) also need multiple factors for network access. Two passwords are still the same kind of proof; different factors involve something you know, something you have, or something you are.",
       "example": "CedarPoint protects administrator access and ordinary users' network access with its implemented multifactor approach. The team checks local administrator access too rather than considering only the remote sign-in page."
     },
     "technical": {
@@ -1129,7 +1129,7 @@
   {
     "id": "IA.L2-3.5.7",
     "beginner": {
-      "meaning": "When new passwords are created, enforce the defined minimum complexity and change-of-character requirements. The organization must decide and apply those rules. This requirement does not supply one universal password length or character-change count for every system.",
+      "meaning": "When new passwords are created, enforce the defined minimum complexity (length and character types) and the defined number of character positions that must change from the old password when it is replaced. The organization must decide and apply those rules; this requirement does not supply one universal password length or change count.",
       "example": "Maya changes a password at CedarPoint. The system checks both the defined complexity rules and the required character changes instead of accepting a near-identical password that violates the organization's policy."
     },
     "technical": {
@@ -1202,7 +1202,7 @@
       "example": "CedarPoint's application does not keep readable passwords in its account database, and its password-handling connection is cryptographically protected. The team also checks that diagnostic logs do not accidentally retain submitted passwords."
     },
     "technical": {
-      "focus": "Review password handling across storage and transmission. The guide discusses salted one-way hashes; evaluate appropriate password-verifier storage and protected transport in the actual authentication design. A transmitted hash that acts as a reusable credential is not automatically safe.",
+      "focus": "Review password handling across storage and transmission. The pinned guide describes salted one-way hashes, and its assessment considerations ask whether passwords are stored as one-way hashes rather than reversible encryption. Evaluate password-verifier storage and protected transport in the actual authentication design. A transmitted hash that acts as a reusable credential is not automatically safe.",
       "example": "A design review examines the credential store, authentication transport, and supporting logs using test accounts without printing their passwords or verifier values.",
       "watchFor": "Hashing is not a complete transport-protection design, and masking an input field does not protect database contents, network exchanges, or diagnostic output."
     },

@@ -6,7 +6,7 @@
       "example": "At fictional Cedar Point Design, Maya reports a suspicious login. A responder investigates, isolates the affected laptop, restores safe access, and tells Maya what to do next. The team already knows who coordinates those steps."
     },
     "technical": {
-      "focus": "Connect detection sources, responder responsibilities, containment options, recovery procedures, and user reporting into an operational workflow. Preparation and analysis matter alongside the tools used during an incident.",
+      "focus": "Connect detection sources, responder responsibilities, containment options, recovery procedures, and user reporting into an operational workflow. Include incident-response training appropriate to each role and assistance for users responding to incidents. Preparation and analysis matter alongside the tools used during an incident.",
       "example": "An incident runbook might route an endpoint alert to a responder, preserve relevant logs, define who can isolate the host, and provide a recovery and user-communication path.",
       "watchFor": "A response document that nobody can execute is different from an operational capability; user response must not disappear behind technical tooling."
     },
@@ -255,11 +255,11 @@
   {
     "id": "MP.L2-3.8.3",
     "beginner": {
-      "meaning": "Before media containing CUI is disposed of or released for reuse, sanitize it or destroy it as appropriate. Removing a file from the screen does not necessarily remove the information from the media.",
+      "meaning": "Before disposing of media containing CUI, sanitize it or destroy it. Sanitizing removes the information so it cannot be recovered. Before releasing media for reuse, sanitize it; simply deleting a file does not necessarily remove the information.",
       "example": "Fictional Cedar Point Design retires a storage drive and disposes of printed CUI records. Staff use suitable sanitization or destruction methods for each type of media before either leaves the controlled process."
     },
     "technical": {
-      "focus": "Choose media-appropriate sanitization or destruction methods and verify the result before release. Consider embedded storage in printers and network equipment, as well as familiar drives and paper records.",
+      "focus": "Choose methods suited to the media and its destination: sanitize or destroy before disposal, and sanitize before release for reuse. Verify the result before release. Consider embedded storage in printers and network equipment, as well as familiar drives and paper records.",
       "example": "A disposal workflow could identify the asset and media type, apply the selected method, record the result, and authorize release only after the CUI has been appropriately removed or destroyed.",
       "watchFor": "A quick format, file deletion, or general recycling receipt does not establish that the selected sanitization process was effective."
     },
@@ -267,7 +267,7 @@
       "focus": "Trace CUI-bearing media through disposal and reuse decisions. The guide distinguishes sanitization before release for reuse from sanitization or destruction before disposal.",
       "reviewQuestions": [
         "How are appropriate methods selected for each media type and destination?",
-        "How is sanitization or destruction checked before disposal or reuse?"
+        "How is sanitization or destruction checked before disposal, and sanitization checked before release for reuse?"
       ],
       "evidenceExamples": [
         "Media sanitization and disposal procedures",
@@ -324,7 +324,7 @@
   {
     "id": "MP.L2-3.8.6",
     "beginner": {
-      "meaning": "Protect CUI stored on digital media while it is being transported. Use cryptographic protection unless alternative physical safeguards provide the required confidentiality protection; the physical-safeguard exception must not be lost in the explanation.",
+      "meaning": "Protect CUI stored on digital media while it is being transported. Use cryptographic protection unless alternative physical safeguards protect its confidentiality throughout the trip.",
       "example": "Fictional Cedar Point Design sends a removable drive between offices using an approved encryption approach. Another protected transport arrangement would need its alternative physical safeguards considered, rather than being assumed safe because the trip is short."
     },
     "technical": {
@@ -899,8 +899,8 @@
   {
     "id": "SC.L2-3.13.7",
     "beginner": {
-      "meaning": "Prevent split tunneling: a remote device must not simultaneously connect to organizational systems and communicate through another connection to outside network resources in the prohibited arrangement.",
-      "example": "At fictional Cedar Point Design, a managed remote-work laptop uses its required connection arrangement while connected to company systems. The employee cannot change settings to send unrelated outside traffic through a separate simultaneous path."
+      "meaning": "When a remote device connects to the organization’s systems, prevent it from also reaching outside networks through a separate path. This is called split tunneling: one path reaches work systems while another bypasses that path to reach the internet or other outside resources.",
+      "example": "At fictional Cedar Point Design, a remote-work laptop sends both company-system traffic and internet traffic through the company VPN while connected. The employee cannot change its settings to send internet traffic through a separate simultaneous path."
     },
     "technical": {
       "focus": "Control remote-device routing and connection configuration to prevent split tunneling. The guide discusses disabling split-tunnel settings, preventing users from readily changing them, and detecting or prohibiting connections that permit the prohibited behavior.",
@@ -1060,7 +1060,7 @@
   {
     "id": "SC.L2-3.13.14",
     "beginner": {
-      "meaning": "Control and monitor the use of internet-based voice technologies, commonly called VoIP. A voice call carried through a network is still a system activity that can introduce security risks.",
+      "meaning": "Control and monitor voice calls carried over Internet Protocol (IP) networks, commonly called VoIP. A voice call carried through a network is still a system activity that can introduce security risks.",
       "example": "Fictional Cedar Point Design uses an approved network calling service with defined access and monitoring. Staff do not assume that calling traffic is outside the security process because the interface resembles a telephone."
     },
     "technical": {
@@ -1225,7 +1225,7 @@
       "example": "Fictional Cedar Point Design runs system scans at its defined frequency. Its protection also checks an externally received file when it is handled, rather than leaving that file unchecked until the next scheduled system scan."
     },
     "technical": {
-      "focus": "Define periodic malicious-code scan frequency and enable real-time scanning of externally sourced files at the relevant handling events. Verify coverage and actual execution, including file routes that may bypass a familiar email workflow.",
+      "focus": "Define periodic malicious-code scan frequency and enable real-time scanning of externally sourced files as they are downloaded, opened, or executed. Verify coverage and actual execution for files received through web or email routes and files copied from removable media such as USB drives.",
       "example": "Endpoint protection could record periodic scan execution and monitor real-time file inspection, with a safe verification method for downloaded or opened external files.",
       "watchFor": "A weekly full scan alone does not provide real-time scanning, and enabled real-time protection alone does not demonstrate periodic scans."
     },

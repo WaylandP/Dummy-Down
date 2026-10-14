@@ -1,8 +1,10 @@
 # Assessment-objective coverage — Increment 3
 
 Branch `feat/assessment-objective-coverage`, base `ef02c296337268a47c464d38a305e93570a0a984`.
-PR #15 was merged with explicit owner approval on October 14, 2026. PR #16 contains this new
-increment and remains unmerged. Scope follows the user's four-increment assignment.
+PR #15 was merged with explicit owner approval on October 14, 2026. PR #16 delivered
+this increment and was subsequently verified merged with owner approval at
+`d7348988afea21f394e7e2ab3e840094261a0c27`. The evidence below records its original
+review checkpoint. Scope follows the user's four-increment assignment.
 
 ## Engineering and design decisions
 

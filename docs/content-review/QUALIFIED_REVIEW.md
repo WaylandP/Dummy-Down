@@ -26,13 +26,18 @@ The owner approving a code PR does not automatically approve its teaching conten
 
 1. Choose one control with its exact framework, edition and requirement ID. Use
    the final PR preview and commit, the source citation, all three perspectives,
-   and the relevant row in the [Level 1 audit](level-1-audit-2026-10-14.md).
+   and the relevant record in the [Level 1 audit](level-1-audit-2026-10-14.md)
+   or [Level 2/3 audit](level-2-3-audit-2026-10-14.md).
    A group review is acceptable only with a separate disposition for every control.
 2. Record the inspected content fingerprint. The
-   [Level 1 baseline](level-1-review-baseline.json) binds this increment's comparison
-   to **the 45 perspective texts only**. A source SHA identifies PDF bytes, not
+   [Level 1 baseline](level-1-review-baseline.json) binds its comparison to
+   **the 45 perspective texts only**. The Level 2/3 per-control records linked from
+   their audit bind each control's three perspectives using `reviewedFingerprint`.
+   Use that final fingerprint, not `inputFingerprint` (the original pre-correction
+   text). Their JSON canonicalization differs from the Level 1 baseline; follow
+   the rule recorded with each audit. A source SHA identifies PDF bytes, not
    teaching text. Existing activities, diagrams, questions, glossary definitions
-   and UI are outside this new fingerprint's scope. If reviewing those too, name
+   and UI are outside these fingerprints' scope. If reviewing those too, name
    their files/content IDs and inspected commit or hashes separately. Do not let
    a perspective approval imply practice or glossary approval.
 3. Check the source checklist below. The
@@ -107,13 +112,20 @@ prepares that future decision; it records no approval now.
 
 ## Change history and validation
 
-The October 13 audit remains historical. The October 14 baseline and audit describe
-this increment. `src/data/level-one-review.test.ts` compares every current Level 1
+The October 13 audit remains historical. The October 14 Level 1 baseline and audit
+describe Increment 2. `src/data/level-one-review.test.ts` compares every current Level 1
 perspective record with its recorded SHA-256 and verifies exact identity/source
 binding. A changed sentence causes a failing test until a new substantive review
 is recorded; simply updating the expected hash is not a review. JSON formatting
 and property order do not invalidate the fingerprint. Removed or duplicated
 controls and mismatched editions are rejected separately.
+
+`src/data/editorial-audit.test.ts` checks the Increment 4 Level 2/3 records against
+the exact current perspectives, all source statement rows, complete field inventory,
+guide section boundaries and batch/source identities. These fingerprints preserve
+JSON property order, unlike the Level 1 baseline. A formatting-only whitespace edit
+does not change either fingerprint. A changed interpretation requires a new review;
+an updated hash alone does not record one.
 
 Run the normal type/content/lint/test/build checks and the pinned PDF validator
 after relevant changes. Browser checks verify rendering and draft/source labels,

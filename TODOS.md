@@ -4,26 +4,31 @@ The [detailed roadmap](docs/ROADMAP.md) is the milestone source of truth. This f
 keeps the next actionable priorities; the [changelog](CHANGELOG.md) records work
 already merged into `main`. No completion percentage is implied.
 
-- **Current delivery: assessment-objective coverage (Increment 3).** Review the
+- **Current delivery: Level 2/3 full editorial audit (Increment 4).** Review the
   [eight-milestone audit](docs/reviews/phase-1-2-milestone-audit-2026-10-14.md),
   [technical evidence](docs/reviews/phase-1-quality-2026-10-14.md) and
   [acceptance packet](docs/testing/PHASE_1_ACCEPTANCE.md). Focus repairs and browser
   regression coverage were merged in approved PR #14 at `ebaed5f` on October 14.
   Owner/learner, actual screen-reader, Safari/iOS and native browser-zoom checks
   remain open. Increment 2 was merged in approved PR #15 at `ef02c29`.
-  Increment 3 imports all 459 determination statements and nine ODP rows, then
-  maps explicit explanations and identifies unresolved gaps. PR #16 contains the
-  validated lazy report, filters and integrity gates; owner review is pending. The
+  Increment 3 was merged in approved PR #16 at `d734898`: all 459 determinations,
+  nine ODP rows, explicit mappings, unresolved gaps, lazy report and integrity gates.
+  Increment 4 / PR #17 compares all 134 Level 2/3 controls and their 402 perspective
+  drafts in three bounded batches, with 16 clarifications across 13 controls.
+  The [audit record](docs/content-review/level-2-3-audit-2026-10-14.md) distinguishes
+  completed comparison, passed local validation and remaining human review. The
   [applicability register](docs/sources/applicability-2026-10-14.md) records 18 blocked
   official-host requests. Continue independent snapshot/content work; current
   applicability requires external verification. Do not begin Phase 3/4 work.
 
-- **P1: qualified Level 1 review and current applicability.** The
+- **P1: qualified review across all three levels and current applicability.** The
   [October 14 audit](docs/content-review/level-1-audit-2026-10-14.md) compared all
   15 controls' perspectives with 59 determination statements and clarified ten
   controls while retaining the four earlier corrections. Per-control fingerprints
-  and the [qualified-review packet](docs/content-review/QUALIFIED_REVIEW.md) prepare
-  actual human review; all human approvals are pending.
+  and the [Level 2/3 audit](docs/content-review/level-2-3-audit-2026-10-14.md) now
+  prepare all 149 controls for actual human comparison through the
+  [qualified-review packet](docs/content-review/QUALIFIED_REVIEW.md). Every human
+  approval remains pending.
   Obtain real qualified review before approval claims. Resolve the recorded
   official-host access failures and verify current DoD/FAR/NIST applicability
   without silently replacing the September 2024 v2.13 snapshot.

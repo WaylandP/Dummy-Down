@@ -385,7 +385,7 @@ The resolver rejects missing/duplicate/cross-control mappings, invalid field nam
 wrong source pages and cross-edition practice links. Inventory tests prevent a
 statement and its mapping being deleted together without detection. Hashes establish
 unchanged bytes, not correct interpretations. Mapping review is narrower than the
-full three-perspective editorial audit scheduled for Increment 4.
+full three-perspective editorial audit recorded in Increment 4.
 
 The lazy `/coverage` route loads the report dataset separately from Home and Learn.
 Native GET forms preserve filters in browser history; exact known control IDs take
@@ -393,3 +393,25 @@ precedence over substring search. Pagination shows 15 controls and focuses the
 results heading after navigation. Unknown controls/searches get a recovery action;
 a failed report chunk can reload or return to lessons. No new dependencies, backend,
 saved progress, analytics events or data collection permissions are introduced.
+
+## Full-field editorial review maintenance
+
+The [Level 2/3 audit](content-review/level-2-3-audit-2026-10-14.md) links each bounded
+batch's per-control evidence. Every `reviewedFingerprint` binds the complete current
+perspective object; `inputFingerprint` preserves the original reviewed version.
+The accompanying objective fingerprint binds all attributed statement rows for
+that control. These use SHA-256 of UTF-8 `JSON.stringify(parsedObject)`, retaining
+object insertion order and array order; source formatting whitespace is excluded.
+This differs from the older recursively sorted Level 1 fingerprint convention.
+
+When editing teaching, compare every affected audience field, its complete guide
+section and the existing objective mappings. Record source-supported findings,
+actual reviewer/date, final disposition and unresolved questions, then update
+both review bindings. Run `npm test` and the source validator when source inputs
+change. A stale-review failure calls for semantic comparison, not automatic hash
+regeneration. Exact field/statement/control inventories and guide section boundaries
+are checked by `src/data/editorial-audit.test.ts`. The audit JSON is imported only
+by tests, so detailed review history does not enlarge the browser bundle.
+
+Keep qualified human status pending until the [review workflow](content-review/QUALIFIED_REVIEW.md)
+records a real scoped decision. Neither CI nor an AI reviewer can grant that approval.
