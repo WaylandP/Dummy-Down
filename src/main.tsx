@@ -4,6 +4,9 @@ import App from './App'
 import '@fontsource/ibm-plex-sans/latin-400.css'
 import '@fontsource/ibm-plex-sans/latin-500.css'
 import './styles.css'
+import { migrateBrowserStorage } from './storage/migrate-legacy'
+
+migrateBrowserStorage()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

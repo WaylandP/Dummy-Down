@@ -60,7 +60,7 @@ afterEach(() => vi.restoreAllMocks())
 describe('optional learning settings', () => {
   it('explains the storage scope, saves only on opt-in, and resets the visible practice on deletion', async () => {
     const user = userEvent.setup()
-    window.localStorage.setItem('dummy-down:usage-preference', 'off')
+    window.localStorage.setItem('cipher-and-chalk:usage-preference', 'off')
     render(<Fixture />)
     await user.click(screen.getByText('Learning progress on this browser'))
     expect(screen.getByRole('status')).toHaveTextContent('Saving is off.')
@@ -93,9 +93,9 @@ describe('optional learning settings', () => {
     expect(screen.getByText('Marked to revisit: false')).toBeVisible()
     expect(window.localStorage.getItem(PROGRESS_DATA_KEY)).toBeNull()
     expect(window.localStorage.getItem(PROGRESS_CONSENT_KEY)).toBeNull()
-    expect(window.localStorage.getItem('dummy-down:usage-preference')).toBe(
-      'off',
-    )
+    expect(
+      window.localStorage.getItem('cipher-and-chalk:usage-preference'),
+    ).toBe('off')
   })
 
   it.each([
@@ -107,7 +107,7 @@ describe('optional learning settings', () => {
     async (name, value) => {
       const user = userEvent.setup()
       Object.defineProperty(navigator, name, { configurable: true, value })
-      window.localStorage.setItem('dummy-down:usage-preference', 'on')
+      window.localStorage.setItem('cipher-and-chalk:usage-preference', 'on')
       expect(browserProgressPort().privacyBlocked()).toBe(true)
       render(<Fixture />)
       await user.click(screen.getByText('Learning progress on this browser'))
@@ -122,9 +122,9 @@ describe('optional learning settings', () => {
       )
       expect(screen.getByText('Checked here: true')).toBeVisible()
       expect(window.localStorage.getItem(PROGRESS_DATA_KEY)).toBeNull()
-      expect(window.localStorage.getItem('dummy-down:usage-preference')).toBe(
-        'on',
-      )
+      expect(
+        window.localStorage.getItem('cipher-and-chalk:usage-preference'),
+      ).toBe('on')
     },
   )
 

@@ -16,8 +16,8 @@ latest answer; this is not a history of attempts.
 
 Two localStorage keys use the existing project namespace:
 
-- `dummy-down:learning-saving:v1`: the explicit `on` permission marker.
-- `dummy-down:learning-progress:v1`: a schema-1 document containing public activity,
+- `cipher-and-chalk:learning-saving:v1`: the explicit `on` permission marker.
+- `cipher-and-chalk:learning-progress:v1`: a schema-1 document containing public activity,
   framework, edition, control, question and choice identifiers; an authored content
   version; current question; and visited/completed/revisit flags.
 
