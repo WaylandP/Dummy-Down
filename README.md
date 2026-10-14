@@ -121,10 +121,12 @@ perspective texts are separately authored educational drafts bound to that editi
 Their existence, automated checks, and AI-assisted editorial review do **not** mean
 they have received qualified human approval or complete assessment-objective review.
 
-The focused Level 1 audit compared all 15 Level 1 drafts with 59 determination
-statements and recorded four source-supported clarifications. All human-approval
-fields remain pending. Thirteen statements are quoted as context for three learning
-activities; that does not establish complete curriculum coverage.
+The [Level 1 editorial audit](docs/content-review/level-1-audit-2026-10-14.md)
+compared all 45 perspectives with 59 determination statements and clarified
+specific explanations. All human-approval fields remain pending. Thirteen
+statements are quoted as context for three learning activities; that does not
+establish complete curriculum coverage. Qualified contributors can use the
+[review packet](docs/content-review/QUALIFIED_REVIEW.md) to review individual controls.
 
 The checked-in source snapshot came from pinned public mirrors with document
 identity, page citations, and SHA-256 records. Direct access to the official DoD,

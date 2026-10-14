@@ -94,6 +94,12 @@ organization or assessment readiness.
 
 ## Current records
 
+- [Qualified-review instructions](QUALIFIED_REVIEW.md) and [feedback template](REVIEW_TEMPLATE.md):
+  qualifications, source/objective checks, approval and rejection decisions, exact
+  scope, change history and re-review. No real human decisions have been recorded.
+- [Level 1 audit, 2026-10-14](level-1-audit-2026-10-14.md): Increment 2 comparison
+  of all 45 perspectives with all 59 determinations, source-supported clarifications
+  and per-control fingerprints. Current applicability and human approval remain open.
 - [Level 1 audit, 2026-10-13](level-1-audit-2026-10-13.md): all 15 existing
   perspectives records; pinned September 2024 CMMC 2.13 source context and the
   objective citations for the focused three-lesson milestone. The final scoped

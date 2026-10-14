@@ -114,6 +114,13 @@ data and component props before the app runs. Vite handles local development and
 the production build. Tailwind supplies styling utilities while shared components
 keep repeated interface patterns consistent.
 
+Level 1 perspective edits also require substantive editorial re-review. The
+[dated baseline](content-review/level-1-review-baseline.json) records a SHA-256 per
+control, checked by `src/data/level-one-review.test.ts` during `npm test`. Follow
+the [review workflow](content-review/QUALIFIED_REVIEW.md); do not simply refresh
+hashes to bypass a stale-review failure. These fingerprints cover the three
+perspectives, not activities or glossary definitions, and do not confer human approval.
+
 The content model separates a framework's identity, edition, families, and control
 identifiers from how the interface displays them. Learning modes are part of the
 educational content, not a CMMC-specific UI rule. This allows future frameworks to

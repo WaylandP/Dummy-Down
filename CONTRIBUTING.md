@@ -60,8 +60,8 @@ When proposing a control explanation:
   establish that regulatory content is accurate or complete.
 
 The initial CMMC lesson and its fictional activity are draft educational content.
-The separate149-entry [source snapshot](docs/sources/cmmc-2-13-sep-2024.md) contains
-attributed publication quotations with page/version provenance. It is not149
+The separate 149-entry [source snapshot](docs/sources/cmmc-2-13-sep-2024.md) contains
+attributed publication quotations with page/version provenance. It is not 149
 reviewed lessons. Preserve guide/model wording differences and the pinned source
 manifest; run the optional source verifier against matching local PDFs when
 changing imported records. Do not replace the Rev.2/February2021 baselines with a
@@ -75,6 +75,12 @@ source checks and content fingerprints; it does not replace qualified review.
 Substantive changes need an affected-content review, new citations where needed,
 and updated coverage/semantic regression checks. Keep the official source text
 unchanged when improving a teaching explanation.
+
+For Level 1, use the [qualified-review instructions](docs/content-review/QUALIFIED_REVIEW.md)
+and [feedback template](docs/content-review/REVIEW_TEMPLATE.md). The dated per-control
+fingerprints are checked during `npm test`; changed text requires substantive
+re-review, not just a refreshed hash. Approval, rejection and requests for changes
+must come from a real qualified reviewer and identify the exact inspected scope.
 
 Additional activities and future frameworks require their own content work and review; adding a name to
 the framework model does not constitute support for that framework.

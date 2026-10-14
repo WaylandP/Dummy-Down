@@ -25,10 +25,10 @@ content-review milestone.
       Learn, Glossary, and About pages with the Cipher & Chalk identity, keyboard
       support, and native direct-link handling (through PR #12). Implementation
       availability is separate from the following validation tasks.
-- [ ] **Implemented but awaiting validation or review** — Increment 1 technical validation and focused
+- [x] **Completed and merged into main** — Increment 1 technical validation and focused
       usability repairs: repeatable Chromium accessibility, layout, keyboard,
-      history and recovery checks passed. Implementation is on the feature branch;
-      validated merge is required before checking this subtask. See the
+      history and recovery checks passed. Approved PR #14 was verified merged at
+      `ebaed5f` on October 14. See the
       [technical report](reviews/phase-1-quality-2026-10-14.md).
 - [ ] **Blocked by external dependencies** — Validate the interface with actual
       assistive technology, Safari/iOS, native browser zoom, owner acceptance and
@@ -48,9 +48,9 @@ content-review milestone.
 - [ ] **Currently in progress** — Refine usability from owner and learner feedback
       without weakening source, draft, privacy, or accessibility boundaries.
       The current cycle has two explicit acceptance tasks below.
-- [ ] **Implemented but awaiting validation or review** — Repair reproduced
+- [x] **Completed and merged into main** — Repair reproduced
       implementation issues and prepare a repeatable owner/learner acceptance packet
-      in Increment 1; check only after validation and approved merge.
+      in Increment 1 (PR #14). This does not record a completed human acceptance cycle.
 - [ ] **Blocked by external dependencies** — Run that acceptance cycle with the
       owner and real learners, disposition findings and record scoped acceptance.
       Continue collecting feedback after this cycle.
@@ -70,6 +70,11 @@ finished.
 - [ ] **Implemented but awaiting validation or review** — All 15 Level 1 entries have
       three source-bound teaching drafts. An AI-assisted audit compared the 45 views
       with 59 determination statements, but every qualified-human approval is pending.
+- [ ] **Implemented but awaiting validation or review** — Increment 2 repeats the
+      Level 1 comparison, clarifies ten controls and binds each perspective record
+      to a tested review fingerprint. Check this engineering subtask after approved
+      merge; it does not complete the Level 1 teaching or human-review milestone.
+      See the [dated audit](content-review/level-1-audit-2026-10-14.md).
 - [ ] **Implemented but awaiting validation or review** — Level 2 has 110 source
       references and 330 draft perspective texts; qualified review, current
       applicability, and objective coverage remain pending.
@@ -82,9 +87,16 @@ finished.
 - [ ] **Blocked by external dependencies** — Obtain qualified cybersecurity/CMMC
       reviewers and verify current applicability before calling content approved or
       definitive.
-- [ ] **Blocked by external dependencies** — Recheck official DoD, FAR/CFR, and NIST
-      hosts when the source-check environment can reach them; 11 recorded requests were
-      blocked before an origin response. Do not silently replace the pinned baseline.
+- [ ] **Implemented but awaiting validation or review** — Prepare qualified-review
+      instructions and a per-control feedback template, with qualifications,
+      source/objective checks, approval/rejection states and change/re-review rules.
+      The [review packet](content-review/QUALIFIED_REVIEW.md) awaits Increment 2's
+      approved merge; real reviewer recruitment and decisions remain separate.
+- [ ] **Blocked by external dependencies** — Verify current official DoD, FAR/DFARS,
+      CFR and NIST applicability. Increment 2 rechecked the pinned source files;
+      all 18 new official-host requests were blocked before an origin response.
+      See the [dated applicability register](sources/applicability-2026-10-14.md).
+      Do not silently replace the pinned baseline.
 
 Phase 2 is not complete. Broad draft coverage is a starting point for review, not a
 substitute for it.
