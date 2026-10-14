@@ -340,8 +340,13 @@ e09b2dc were preserved and cherry-picked onto `chore/gstack-workflow-repair` fro
 new main `b3f5fb2`; `65505ae` has the exact same tracked tree
 `040065be6465c1f4a0e263f4b3687120403594dc`. Application baseline stayed8b061a6
 until the source/render-confirmed privacy marker correction at `e1dcf90`.
-Delivery now uses [open PR8](https://github.com/WaylandP/Dummy-Down/pull/8).
-The latest pushed correction is e1dcf90; final evidence-only checkpoint follows.
+Delivery continued in [PR8](https://github.com/WaylandP/Dummy-Down/pull/8),
+merged by WaylandP at23:58:56UTC. The agent performed no merge. Final evidence
+continues on `docs/gstack-final-accounting` from current main `f87fd56`; the
+prior evidence commit7d75bd9 was preserved by cherry-pick. The active draft PR
+is supplied in the final delivery and GitHub branch history.
+The CSS correction was published as e1dcf90. This record is the final
+evidence-only checkpoint; its committing revision identifies the current artifact.
 
 Design quick phases and a direct independent source voice found one medium issue:
 footer privacy summary suppressed its native disclosure marker. Restored native
