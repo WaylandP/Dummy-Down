@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 60" role="img" aria-labelledby="title">
+  <title id="title">Cipher &amp; Chalk</title>
+  <g transform="translate(5 10)" fill="none">
+    <path d="M29 7H13L6 14v12l7 7h16" stroke="#142e2c" stroke-width="4"/>
+    <path d="M28 14H16l-3 3v6l3 3h12" stroke="#28796e" stroke-width="2"/>
+    <path d="M32 17h5v6h-5z" fill="#28796e"/>
+  </g>
+  <text x="56" y="40" fill="#142e2c" font-family="IBM Plex Sans, sans-serif" font-size="32" font-weight="500">Cipher</text>
+  <text x="157" y="40" fill="#28796e" font-family="Georgia, serif" font-size="32" font-style="italic">&amp;</text>
+  <text x="191" y="40" fill="#142e2c" font-family="IBM Plex Sans, sans-serif" font-size="32" font-weight="500">Chalk</text>
+</svg>

@@ -1,6 +1,6 @@
-# Developing Dummy-Down
+# Developing Cipher & Chalk
 
-Dummy-Down is an early educational application. Start by reading the project's
+Cipher & Chalk is an early educational application. Start by reading the project's
 [mission and roadmap](../README.md). This frontend foundation provides a responsive
 homepage, an initial Control Explorer, and Beginner, IT & Cybersecurity, and
 Compliance & Assessment explanation modes for all 149 versioned CMMC references
@@ -53,10 +53,13 @@ available from the npm registry during installation.
 
 ## Understand the code
 
-The [design notes](DESIGN.md) describe the proposed neutral editorial direction, palette,
-wordmark, fonts and interaction principles. The old topographic component and
-background have been removed; `public/font-licenses/` contains licenses
-distributed with the fonts.
+The [design notes](DESIGN.md) describe the authorized Decode Board identity:
+evergreen/slate teaching surfaces, comfortable off-white reading areas and a
+geometric coded-C mark. The [redesign inventory](designs/cipher-and-chalk.md)
+maps every existing UI surface and state to validation. Reuse shared visual tokens
+and semantic components; `public/font-licenses/` retains distributed font licenses.
+The repository, package, deployment project and stable content identities retain
+their existing Dummy-Down identifiers.
 
 | Location                         | Purpose                                                                                |
 | -------------------------------- | -------------------------------------------------------------------------------------- |

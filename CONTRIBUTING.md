@@ -1,9 +1,9 @@
-# Contributing to Dummy-Down
+# Contributing to Cipher & Chalk
 
-Dummy-Down welcomes developers, educators, cybersecurity practitioners, and people
+Cipher & Chalk welcomes developers, educators, cybersecurity practitioners, and people
 learning these subjects for the first time. Read the [README](README.md) for the
 mission, planned features, project status, and MIT license. Practical installation
-and validation instructions are in [Developing Dummy-Down](docs/DEVELOPMENT.md).
+and validation instructions are in [Developing Cipher & Chalk](docs/DEVELOPMENT.md).
 
 ## Propose a change
 

@@ -1,117 +1,129 @@
-# Dummy-Down visual direction
+# Cipher & Chalk: Decode Board design system
 
-**Working identity: Dummy-Down. Compliance, translated.**
+The owner authorized the **Cipher & Chalk** display name and selected Decode Board
+direction for a complete redesign of the existing application. It supersedes the
+previous Dummy-Down editorial identity. Historical design/review documents retain
+their original context; they do not govern the active brand.
 
-This is a proposed editorial learning identity for owner review, implemented in
-the running application. It supersedes the rejected dark/topographic direction.
-Historical field-guide notes document earlier work; they are not instructions to
-restore the old appearance.
+This is an adult teaching workspace: precise enough to trust, approachable enough
+to learn from, with a little character. Deep evergreen/slate board surfaces frame
+cream/off-white reading areas. Restrained teal identifies useful interactions.
+Texture and annotations belong to the margins, never behind long body text.
 
-## Purpose and first impression
+The refined reference image mentioned in the brief is unavailable in this session;
+only the complete text brief is accessible. The implementation follows its stated
+direction, with no pixel-match or inspected-image claim. The [UI inventory and plan](designs/cipher-and-chalk.md)
+defines the actual product surfaces. Final owner visual sign-off remains pending.
 
-Help someone read an unfamiliar requirement, understand its meaning and explore
-a practical example. The first impression should be clear reference material with
-personality. The working search belongs directly beneath a compact introduction;
-the Explorer and its reading panel are the product.
+## Identity and assets
 
-The homepage question is **“What does this requirement actually mean?”** The copy
-states the actual offer: plain-English explanations, practical examples and
-different learning perspectives for cybersecurity requirements, starting with
-CMMC. Draft status and edition context remain visible.
+Use the exact name **Cipher & Chalk**, including the ampersand. The coded-C mark
+uses crisp geometric strokes, an open counter and a small detached code segment;
+it is a teaching/decoding identity, not a security shield or padlock. The inline
+SVG mark and wordmark form the horizontal lockup in `Brand.tsx`; the home link has
+an accessible full-name label and decorative geometry is hidden from assistive
+technology.
 
-## Identity and typography
+The identity assets are `public/brand/coded-c.svg`, `coded-c-mono.svg` and
+`app-icon.svg`, with the small-size favicon at `public/favicon.svg`. Inspect
+16/32px rendering separately from the larger mark; do not infer legibility merely
+from the existence of a scalable SVG. All are original project assets. Preserve
+LICENSE and third-party font notices.
 
-The wordmark changes typographic register at its designed hyphen: an upright serif
-“Dummy” meets a plain sans-serif “Down.” The transition reflects translating
-formal language into something approachable. It is text with an accessible home
-link label, not a stock symbol. The mark works in a single color; teal is reserved
-for interactions. The favicon is a deliberately simple, open-counter letter D,
-drawn as original SVG paths on the neutral canvas.
+Repository `WaylandP/Dummy-Down`, package name, service/project IDs, hostname,
+analytics storage key and framework/edition/control identities remain unchanged.
+The brand change is a display/presentation change, not a migration of those IDs.
 
-Upright Georgia / Times New Roman / the device's generic serif carries the
-wordmark's first word and major headings. These are platform fonts, not downloaded
-or redistributed assets; their appearance varies by device. The Linux QA machine
-resolves the serif fallback to locally installed Noto Serif. IBM Plex Sans
-400/500 carries reading, controls and the wordmark's second word. It is bundled
-locally through Fontsource with `font-display: swap`. Its SIL Open Font License
-is retained in `public/font-licenses/ibm-plex-sans.txt`. Existing Space Grotesk
-license notices are preserved, although it is no longer the design voice.
+## Token contract
 
-The display choice is an intentional upright reading convention rather than an
-italic magazine flourish. Paragraphs use at least 16px; principal teaching text
-uses 17px with a 1.75 line height and a maximum of 68 characters. Control IDs alone
-use the platform monospace fallback. No font service or new dependency is needed.
+`src/styles.css` is the canonical implementation. These values were read from the
+actual implementation; they are agent-selected defaults within the authorized
+direction, not an extraction from the unavailable reference image. Reuse the
+tokens instead of creating unrelated component palettes or magic states.
 
-## Palette
+| Palette role                                 | Token/value                                                                      |
+| -------------------------------------------- | -------------------------------------------------------------------------------- |
+| Canvas / reading / selected surface          | `--color-canvas: #f0eee5`, `--color-surface: #fcfaf3`, `--color-raised: #e7eee5` |
+| Reading foreground / muted / accent          | `#1c3431`, `#53615a`, `#226d61`                                                  |
+| Reading separator / field boundary           | `#d5d9ce`, `#7a887e`                                                             |
+| Board / raised board / chalk                 | `#142e2c`, `#1c3c38`, `#f6f2e7`                                                  |
+| Board muted / separator / interaction accent | `#b9cbc1`, `#405b50`, `#8ad4c3`                                                  |
+| Success / error / warning                    | `#205f49`, `#8b3b2f`, `#705326`; always accompanied by meaningful wording/state  |
 
-Tokens live in `src/styles.css` and are exposed through Tailwind's theme.
+Spacing tokens are 4/8/12/16/24/32/48px with a 64px section default; corner
+tokens are 4/8/12px. Panel elevation is `0 8px 24px #142e2c0a`. Focus is a 3px
+accent outline, using the lighter board accent in the masthead. Functional motion
+uses 140ms ease-out; the reduced-motion rule remains authoritative.
 
-| Role             | Color     | Use                                                |
-| ---------------- | --------- | -------------------------------------------------- |
-| Canvas           | `#f6f7f7` | Neutral off-white margins; no cream or yellow cast |
-| Reading surface  | `#ffffff` | The explanation area and native input surfaces     |
-| Foreground       | `#20292b` | Charcoal headings and reading text                 |
-| Muted            | `#526164` | Secondary text and explicit draft labels           |
-| Accent           | `#126a68` | Links, selected perspectives and visible focus     |
-| Selected surface | `#e8efee` | A quiet tint for the chosen result                 |
-| Separator        | `#d6dddd` | Structure between distinct reading sections        |
-| Field border     | `#738285` | Visible native input boundaries                    |
+| Group         | Roles and use                                                                                                                                                                       |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Color         | Evergreen/slate board, off-white reading surface, foreground/muted text for each surface, separators, teal accent and interaction states; visible selection/success/error feedback. |
+| Typography    | Sharp locally available display, readable locally bundled body/UI, and restrained monospace for control IDs/data; clear hierarchy without handwritten paragraphs.                   |
+| Spacing       | Reusable internal gaps and section rhythm; comfortable reading measure and predictable control padding.                                                                             |
+| Borders/radii | Quiet reading/workspace boundaries, consistent field/selection outlines and restrained corner treatment.                                                                            |
+| Elevation     | Limited real surface depth where it separates board and reader; no glow or repeated floating-card effects.                                                                          |
+| Focus         | Visible focus that contrasts on both board and reader; preserve logical keyboard order and offset.                                                                                  |
+| Motion        | Brief functional state transitions, with reduced-motion support and no decorative looping animation.                                                                                |
 
-Draft labels use words and typography, not a decorative trust badge or warning
-color. Selected tabs use both an underline and `aria-selected`. Selected results
-use a tint and `aria-pressed`; color is not their only state signal.
+Body/UI uses locally bundled IBM Plex Sans 400/500, with upright Georgia/Times
+New Roman/device serif for display and platform monospace for control IDs. These
+preserve verified local loading instead of introducing a new font service. Body
+text starts at 16px; long teaching uses comfortable line height and roughly 68ch
+measure. Existing IBM Plex Sans and unused Space Grotesk notices remain. The
+bundled font licenses were inspected; platform serif appearance varies by device.
+No paid design provider is required. Font identity is not content approval.
 
-## Composition
+## Composition and teaching grammar
 
-- A compact header and left-aligned question lead directly to usable controls.
-  There is no decorative hero background or large empty presentation area.
-- A stronger rule introduces the tool. Search gets the widest toolbar column;
-  collection and framework remain familiar native selects.
-- Level choices are short inline navigation, not feature cards. The left column
-  supports scanning and filtering; the white reading panel supports concentration.
-- Result rows have square edges and a calm selection tint. Sections use whitespace
-  and occasional separators, with no layered cards, glow, shadows or floating pills.
-- Explanation perspectives are visible tabs. Official quotations, teaching drafts
-  and source context remain separately labeled; practical examples do not become
-  implied requirements or compliance scores.
-- The approach links, glossary and factual project context follow the Explorer.
-  Other frameworks remain explicitly planned rather than implied libraries.
+The product is the Explorer and reading workspace. Keep the introduction concise
+and place a real search or default-lesson action close to it. Avoid mockup-only
+navigation, dashboards, statistics, testimonials or account flows.
 
-## Mobile and interaction
+The surrounding board supplies orientation and personality. The reading area
+supplies calm concentration. Use an actual desktop discovery/reader layout, not
+a stack of unrelated feature cards. The official quotation, draft explanation,
+possible approach and source/review context keep separate labels.
 
-At 760px and below, search becomes a full-width first row, controls remain readable,
-and the reading panel fills the viewport width. A real button opens/closes the
-results and filters; its collapse applies only on phones, so desktop discovery is
-never hidden by stale mobile state. Selecting a control gives reading priority.
-Perspective labels fit three equal columns with at least 48px touch areas.
+Supported lessons move from meaning to fictional situation, common misunderstanding,
+diagram and explained knowledge check. Do not fabricate those sections for controls
+without that content. Instructional diagrams share step/branch and annotation
+styles, but retain native ordered text and visible equivalents. An annotation
+clarifies a real detail; it is not decoration that competes with the lesson.
 
-Links, native disclosures and controls have clear hover and active states. Keyboard
-focus uses a 3px teal outline with an offset. Keep existing arrow/Home/End tab
-navigation, search recovery, sharing fallback and browser history behavior.
-Reduced-motion preferences remove smooth scrolling; no decorative animation runs.
+Question states show selection and correct/incorrect wording beyond color. Preserve
+radio/fieldset semantics, explanatory feedback, retry/reset/next gates and focus
+on the next prompt or completion. Progress is local session activity, not a saved
+account, compliance score or demonstrated learning outcome.
 
-## Design process and review
+## Responsive and accessibility rules
 
-The installed experimental gstack `design-consultation` instructions informed the
-product-context, typography, three-look calibration and coherence checks. The
-owner's implementation brief supplies the direction and delegates routine
-decisions; it does not constitute final brand approval. The existing documentation
-format is retained. No paid outside voices, image-generation service or competitor
-session access was used. Live competitive research was not performed.
+Desktop and tablet keep discovery alongside comfortable reading. Phones prioritize
+the selected lesson and its useful actions, with explicit expandable browsing.
+Retain the established breakpoint set unless actual overflow motivates a scoped
+adjustment. Check dense results, long titles, tabs, definitions and questions at
+320px as well as representative tablet/desktop widths and 200% zoom.
 
-Three materially different wordmark treatments and the selected proposal are
-recorded in [the identity review](designs/editorial-identity-review.md). Review the
-actual rendered application at desktop, tablet and phone sizes, in monochrome,
-at favicon size, with keyboard navigation and enlarged text. Build success alone
-does not establish visual quality or complete accessibility.
+Use at least 44px useful touch targets and at least 48px perspective tabs. Preserve
+the skip link, native control labels, tab arrows/Home/End, heading/search recovery
+focus, glossary Escape/focus return and native disclosure indicators. Do not remove
+visible focus to simplify the brand. Keep reduced-motion scrolling and avoid
+horizontal overflow. Source checks alone do not establish WCAG conformance.
 
-## Do and do not
+Loading, empty, unavailable, planned, filter-mismatch, clipboard-fallback and privacy
+states are first-class design surfaces. Give each a readable status and its real
+existing recovery action. Keep browser privacy preferences, production analytics
+gating and fail-closed behavior intact; never add raw search/answer collection.
 
-Do use readable type, familiar controls, precise language and content that teaches.
-Do make draft/source distinctions easy to see at the moment they matter. Do verify
-new content and actual browser interactions before updating claims.
+## Decisions and verification
 
-Do not restore topography, shields, hacker imagery or the prior contour identity.
-Do not substitute a pale skin over the former layout. Do not add elaborate
-backgrounds, repeated feature-card grids, invented statistics or review badges.
-Do not describe this working proposal as owner-approved branding.
+The new name, selected material palette and complete existing-UI scope come from
+the owner's October 14 implementation brief. Exact layout/token choices use
+delegated routine judgment; they are not inferred owner approval of unseen pixels.
+No official control quotation or content-review status changes for visual reasons.
+
+The [redesign workflow record](reviews/cipher-and-chalk-gstack-2026-10-14.md)
+separates actual skill execution from scoped/manual planning and blocked native
+contracts. Inspect actual running screens, small logo renders, full learning and
+back-navigation flows, keyboard/focus and zoom before claiming completion. The
+reviewable feature PR and exact Vercel preview provide owner review; merging or
+production promotion still requires explicit approval.

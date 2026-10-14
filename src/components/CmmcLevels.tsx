@@ -12,7 +12,7 @@ const levels = [
 
 export function CmmcLevels({ mode }: { mode: ExplanationMode }) {
   return (
-    <div className="cmmc-levels">
+    <div id="explorer-levels" className="cmmc-levels">
       <nav aria-label="CMMC levels" className="level-paths">
         {levels.map((level) => (
           <a

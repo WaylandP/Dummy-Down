@@ -1,4 +1,4 @@
-# Dummy-Down follow-up work
+# Cipher & Chalk follow-up work
 
 The [README roadmap](README.md#roadmap) distinguishes implemented interfaces,
 available teaching drafts and pending review. No completion percentage is implied.
@@ -11,12 +11,15 @@ available teaching drafts and pending review. No completion percentage is implie
   Obtain real qualified review before approval claims. Resolve the recorded
   official-host access failures and verify current DoD/FAR/NIST applicability
   without silently replacing the September 2024 v2.13 snapshot.
-- **P1: owner and learner review of the proposed editorial identity.** The
-  rejected dark/topographic treatment has been replaced by a neutral light,
-  charcoal and teal proposal, with actual before/after captures. Keep reviewing
-  reading, keyboard/focus, contrast, zoom, touch and recovery through validated
-  previews. Retain source/draft notices and working interactions; implementation
-  does not constitute owner brand approval or a complete accessibility audit.
+- **P1: validate the Cipher & Chalk Decode Board redesign.** The owner authorized
+  a complete evergreen/slate and off-white teaching identity. Apply it to every
+  surface in the [UI inventory](docs/designs/cipher-and-chalk.md), preserving
+  source/draft notices, routes, privacy and working learning interactions. The
+  referenced image is unavailable in this environment; the text brief is the
+  current design basis. Review actual desktop/phone, keyboard, zoom, feedback and
+  recovery captures through the feature preview. Implementation is not final
+  owner visual sign-off or a complete accessibility audit; historical editorial
+  review documents remain records of their original design.
 - **P2: review the focused learning milestone.** Three Level 1 activities now
   cover authorized access, public information and media disposal with fictional
   scenarios, common misunderstandings, nine explained questions and three

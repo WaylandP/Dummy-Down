@@ -28,7 +28,7 @@ export function Glossary({ terms }: GlossaryProps) {
     >
       <div className="section-heading">
         <div>
-          <span className="eyebrow">The vocabulary</span>
+          <span className="eyebrow">The wordbook</span>
           <h2 id={`${prefix}-heading`}>A little less jargon.</h2>
         </div>
         <p>

@@ -31,7 +31,7 @@ function isHttps(url: string): boolean {
 export function TermDefinition({ term }: { term: GlossaryTerm }) {
   return (
     <div className="term-definition">
-      <p>{term.definition}</p>
+      <p className="term-definition-meaning">{term.definition}</p>
       <p className="term-context">
         <span className="draft-label">Draft educational definition.</span>{' '}
         {term.versionContext}
@@ -103,7 +103,10 @@ export function ContextTerms({
         }
       }}
     >
-      <h4 id={`${prefix}-heading`}>Terms in this lesson</h4>
+      <div className="context-terms-heading">
+        <span className="instruction-eyebrow">A little less jargon</span>
+        <h4 id={`${prefix}-heading`}>Terms in this lesson</h4>
+      </div>
       <div className="term-triggers">
         {referenced.map(({ id, term }) =>
           term ? (
@@ -123,7 +126,7 @@ export function ContextTerms({
                 }
               }}
             >
-              {term.title}
+              <span>{term.title}</span>
             </button>
           ) : null,
         )}
@@ -144,7 +147,10 @@ export function ContextTerms({
         {selected && (
           <>
             <div className="context-definition-heading">
-              <h4>{selected.title}</h4>
+              <div>
+                <p className="instruction-eyebrow">In plain language</p>
+                <h4>{selected.title}</h4>
+              </div>
               <button
                 className="term-close"
                 type="button"

@@ -26,10 +26,10 @@ export function UsagePreferences() {
       <summary>Usage & privacy</summary>
       <p>
         On the production site, Vercel Web Analytics measures visits and
-        learning interactions so we can improve Dummy-Down. Interaction events
-        use catalog identifiers and categories; search text, answer choices, and
-        copied links are excluded. Page URLs have their query and fragment
-        removed.
+        learning interactions so we can improve Cipher &amp; Chalk. Interaction
+        events use catalog identifiers and categories; search text, answer
+        choices, and copied links are excluded. Page URLs have their query and
+        fragment removed.
       </p>
       <p>
         We respect Do Not Track and Global Privacy Control. Your preference

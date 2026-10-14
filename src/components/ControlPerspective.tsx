@@ -69,7 +69,10 @@ export function ControlPerspective({
       aria-label="Control teaching perspectives"
     >
       <div className="perspective-heading">
-        <p className="mode-label">Choose your perspective</p>
+        <div>
+          <p className="instruction-eyebrow">Decode the control</p>
+          <p className="mode-label">Choose your perspective</p>
+        </div>
         <span className="draft-label">Draft teaching content</span>
       </div>
       <LearningModes value={mode} onChange={onChange} idPrefix="reference" />
@@ -84,8 +87,8 @@ export function ControlPerspective({
         {mode === 'beginner' ? (
           <>
             <h4>The idea in everyday terms.</h4>
-            <p>{draft.beginner.meaning}</p>
-            <div className="perspective-example">
+            <p className="perspective-meaning">{draft.beginner.meaning}</p>
+            <div className="perspective-example teaching-note">
               <h5>Imagine this at work</h5>
               <p>{draft.beginner.example}</p>
             </div>
@@ -93,12 +96,12 @@ export function ControlPerspective({
         ) : mode === 'it-cyber' ? (
           <>
             <h4>Make it work in a real system.</h4>
-            <p>{draft.technical.focus}</p>
-            <div className="perspective-example">
+            <p className="perspective-meaning">{draft.technical.focus}</p>
+            <div className="perspective-example teaching-note">
               <h5>One possible approach</h5>
               <p>{draft.technical.example}</p>
             </div>
-            <div className="perspective-watch">
+            <div className="perspective-watch teaching-note">
               <h5>Watch for</h5>
               <p>{draft.technical.watchFor}</p>
             </div>
@@ -106,7 +109,7 @@ export function ControlPerspective({
         ) : (
           <>
             <h4>Read it with assessment in mind.</h4>
-            <p>{draft.compliance.focus}</p>
+            <p className="perspective-meaning">{draft.compliance.focus}</p>
             <div className="perspective-questions">
               <h5>Questions to bring to the guide</h5>
               <ul>

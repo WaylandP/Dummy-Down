@@ -1,5 +1,5 @@
 import type { MouseEvent } from 'react'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, CornerDownRight } from 'lucide-react'
 import type { ExplanationMode } from './types/content'
 import {
   explorerCatalog,
@@ -77,71 +77,126 @@ export default function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="site-header section-shell">
-        <Brand />
-        <nav aria-label="Main navigation">
-          <a
-            href="#explorer"
-            onClick={() =>
-              trackUsage({ name: 'section_open', section: 'explorer' })
-            }
-          >
-            Control Explorer
-          </a>
-          <a
-            href="#approach"
-            onClick={() =>
-              trackUsage({ name: 'section_open', section: 'approach' })
-            }
-          >
-            Learning modes
-          </a>
-          <a
-            href="#glossary"
-            onClick={() =>
-              trackUsage({ name: 'section_open', section: 'glossary' })
-            }
-          >
-            Glossary
-          </a>
-          <a
-            className="github-link"
-            aria-label="Dummy-Down on GitHub (opens in a new tab)"
-            href={repositoryUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub <ArrowUpRight size={14} aria-hidden="true" />
-          </a>
-        </nav>
-      </header>
-      <main id="main">
-        <section
-          className="editorial-intro section-shell"
-          aria-labelledby="hero-title"
-        >
-          <div className="intro-copy">
-            <p className="intro-kicker">Compliance, translated.</p>
-            <h1 id="hero-title">What does this requirement actually mean?</h1>
-            <p className="intro-description">
-              Plain-English explanations, practical examples, and different
-              learning perspectives for cybersecurity requirements. Starting
-              with CMMC.
-            </p>
-          </div>
-          <div className="intro-meta">
-            <p>Not sure where to start?</p>
+      <div className="board-masthead">
+        <header className="site-header section-shell">
+          <Brand />
+          <nav aria-label="Main navigation">
             <a
-              className="text-link"
-              href={sampleUrl('beginner')}
-              onClick={(event) => openSample(event, 'beginner')}
+              href="#explorer"
+              onClick={() =>
+                trackUsage({ name: 'section_open', section: 'explorer' })
+              }
             >
-              Who can access a system?{' '}
-              <ArrowUpRight size={16} aria-hidden="true" />
+              Control Explorer
             </a>
-            <p>Start with one Level 1 requirement, explained three ways.</p>
-          </div>
-        </section>
+            <a
+              href="#approach"
+              onClick={() =>
+                trackUsage({ name: 'section_open', section: 'approach' })
+              }
+            >
+              Learning modes
+            </a>
+            <a
+              href="#glossary"
+              onClick={() =>
+                trackUsage({ name: 'section_open', section: 'glossary' })
+              }
+            >
+              Glossary
+            </a>
+            <a
+              className="github-link"
+              aria-label="Cipher & Chalk on GitHub (opens in a new tab)"
+              href={repositoryUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub <ArrowUpRight size={14} aria-hidden="true" />
+            </a>
+          </nav>
+        </header>
+      </div>
+      <main id="main">
+        <div className="board-masthead">
+          <section
+            className="editorial-intro section-shell"
+            aria-labelledby="hero-title"
+          >
+            <div className="intro-copy">
+              <p className="intro-kicker">
+                <CornerDownRight size={20} aria-hidden="true" /> Cybersecurity,
+                decoded.
+              </p>
+              <h1 id="hero-title">
+                What does this requirement <em>actually mean?</em>
+              </h1>
+              <p className="intro-description">
+                Plain-English explanations, practical examples, and different
+                learning perspectives for cybersecurity requirements. Starting
+                with CMMC.
+              </p>
+              <div className="hero-actions">
+                <a
+                  className="button button-chalk"
+                  href={sampleUrl('beginner')}
+                  onClick={(event) => openSample(event, 'beginner')}
+                >
+                  Start decoding <ArrowDown size={17} aria-hidden="true" />
+                </a>
+                <span>Free to explore. Open source.</span>
+              </div>
+            </div>
+            <div className="decode-board">
+              <div className="board-label">
+                <span>ON THE BOARD</span>
+                <span>01 / ACCESS</span>
+              </div>
+              <p className="board-question">Who gets access?</p>
+              <div className="decode-step decode-source">
+                <span className="decode-number">01</span>
+                <div>
+                  <span className="decode-caption">Read the requirement</span>
+                  <p>AC.L1-b.1.i</p>
+                  <span>CMMC Level 1 · September 2024 snapshot</span>
+                </div>
+              </div>
+              <div className="decode-connector" aria-hidden="true">
+                ↓
+              </div>
+              <div className="decode-step decode-meaning">
+                <span className="decode-number">02</span>
+                <div>
+                  <span className="decode-caption">Find your way in</span>
+                  <p>Beginner → IT &amp; Cyber → Compliance</p>
+                  <span>Three perspectives. One source reference.</span>
+                </div>
+              </div>
+              <div className="decode-connector" aria-hidden="true">
+                ↓
+              </div>
+              <div className="decode-step decode-practice">
+                <span className="decode-number">03</span>
+                <div>
+                  <span className="decode-caption">Put the idea to work</span>
+                  <p>A scenario. A question. A clearer picture.</p>
+                  <span>Try the draft authorized-access activity.</span>
+                </div>
+              </div>
+              <a
+                className="board-lesson-link"
+                href={sampleUrl('beginner')}
+                onClick={(event) => openSample(event, 'beginner')}
+              >
+                Who can access a system?{' '}
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+              <p className="board-footnote">
+                Teaching drafts · qualified human review pending
+              </p>
+            </div>
+          </section>
+        </div>
         <ControlExplorer controller={controller} />
         <section
           id="approach"
@@ -206,7 +261,7 @@ export default function App() {
       <footer className="site-footer section-shell">
         <div className="footer-top">
           <Brand />
-          <p>Compliance, translated.</p>
+          <p>Cybersecurity, decoded.</p>
           <a
             href={`${repositoryUrl}/blob/main/LICENSE`}
             target="_blank"

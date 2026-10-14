@@ -1,0 +1,190 @@
+# Cipher & Chalk: Decode Board redesign
+
+Planning checkpoint: October 14, 2026, branch `feat/cipher-and-chalk`, starting
+from main `cf5ffd2094650211ae851ac5a73bb80c4318b0ae`.
+Status: implementation and verification in progress. This inventory describes
+the real existing app; planned visual work is not a completed-feature claim.
+The owner authorized the name and selected Decode Board direction, with routine
+implementation decisions delegated. Final rendered sign-off remains with the owner.
+
+## Design basis and reference limitation
+
+The complete implementation brief is the uploaded `Pasted text.txt`. It calls for
+an adult teaching board: deep evergreen/slate surfaces, cream/off-white reading
+areas, restrained teal, crisp typography, subtle annotations and clean diagrams.
+The exact display name is **Cipher & Chalk**. A geometric coded-C mark replaces
+the old typographic identity; body copy stays sharp rather than imitating chalk.
+
+The attachment directory contains the text brief only. The referenced refined
+Decode Board image is not accessible in this session, so no image inspection,
+exact logo tracing or pixel match is claimed. Implement the explicitly selected
+text direction now; a supplied image can support a later comparison without
+blocking this authorized work. Historical identity notes remain historical.
+
+## Problem, premises and approaches
+
+The existing app has meaningful teaching and source distinctions, but its previous
+editorial presentation does not express the newly selected identity. The problem
+is coherence across actual learning and recovery states, rather than adding mockup
+features. A darker homepage alone would leave quizzes, glossary, navigation and
+loading states feeling unrelated.
+
+Premises challenged under the owner's delegated choices:
+
+- A rebrand needs a router or new learning engine: rejected. The existing root
+  SPA, shared components and edition-bound data already support the experience.
+- A teaching board requires handwritten body text or decorative classroom props:
+  rejected. Shape, restrained annotations and surface hierarchy carry the idea.
+- More control entries imply reviewed curriculum: rejected. Keep 149 snapshot
+  references, 447 draft perspectives, four activities, 12 questions and pending
+  qualified approval exactly as they are.
+- A new display name requires service renames: rejected. Stable repository,
+  deployment, package, storage and content identities remain unchanged.
+
+| Approach                        | Reuse and tradeoff                                                                                                                              | Decision                                                           |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Minimal visual replacement      | Rename visible labels and change a few colors. Fastest diff, but fails the requested full-state design and feedback work.                       | Rejected as insufficient scope.                                    |
+| Shared Decode Board system      | Keep React/state/data behavior; apply reusable tokens and shared component styling, a real SVG identity and deliberate reading/feedback states. | Selected; meets the full UI brief with the lowest behavioral risk. |
+| New page/router/lesson platform | Rebuild navigation and learning around a new framework or dashboard. Creates migration and privacy risks without solving a missing capability.  | Outside this redesign.                                             |
+
+The long-term opportunity is a recognizable place to decode unfamiliar frameworks
+through source-bound teaching. A workshop leader could project one requirement,
+switch perspectives, then discuss a fictional answer without collecting an
+organization's evidence. This is a possible use, not observed learner research or
+a new classroom feature. Start by improving the existing reading workspace.
+
+## Actual addresses and state ownership
+
+There is one browser page at `/`, mounted by `src/main.tsx` and `src/App.tsx`.
+There is no React Router, account area, separate lesson route, dashboard, modal
+manager, authentication screen or backend. Navigation anchors include `#top`,
+`#main`, `#explorer`, `#approach`, `#glossary` and `#usage`.
+
+`src/state/explorer-state.ts` owns strict query parsing and transitions;
+`useExplorerState.ts` owns the single history listener and push/replace behavior.
+Existing recognized keys are `view`, `framework`, `edition`, `control`, `mode`,
+`catalog`, `q`, `family`, `level` and `collection`. Views are `lesson` and
+`discover`; modes are `beginner`, `it-cyber` and `compliance`. A lesson's identity
+is the exact framework/edition/control-key triple, not its display title.
+
+| Address/state                                          | Real meaning and invariant                                                                                            |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| `/` with no query                                      | Explicit default Level 1 authorized-access reference, Beginner mode. Do not replace it with the first result.         |
+| `view=discover`                                        | Search/filter/paginated discovery without an implied selected lesson. Preserve collection and mode.                   |
+| `view=lesson&framework=…&edition=…&control=…&mode=…`   | Exact shareable reference or demo teaching identity. Shared lesson URLs omit discovery text.                          |
+| `collection=references` / `collection=lessons`         | Official snapshot collection versus the original README teaching demo. The demo is not an extra official requirement. |
+| Planned catalog                                        | Explicit roadmap empty state with recovery; no invented available controls.                                           |
+| Unknown lesson identity or malformed/conflicting query | Retain the address and visible explanation until deliberate recovery. Do not substitute an available control.         |
+| Bad mode/family/level                                  | Existing normalization notices remain visible; preserve fragment and canonical replace semantics.                     |
+| History denied                                         | Keep the usable session state and warn that refresh/Back may not preserve it.                                         |
+
+## Complete existing UI inventory
+
+Every row is a redesign target and verification surface. Completion is recorded
+separately in the delivery evidence; source inventory alone does not establish QA.
+
+| Surface                         | Actual owner / shared components                               | States and interactions to retain                                                                                                                                          |
+| ------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Global shell and navigation     | `App`, `Brand`                                                 | Home link, skip link, section anchors, GitHub/new-tab labels, header/footer variants and visible keyboard focus.                                                           |
+| Homepage introduction           | `App`                                                          | Requirement-focused introduction and real default lesson action; no fake dashboard, testimonial, statistics or mockup navigation.                                          |
+| Level navigation                | `CmmcLevels`                                                   | Real 15/110/24 reference totals, level-specific discovery links, snapshot label and Level 3 relationship context.                                                          |
+| Search and top-level choices    | `ControlExplorer`                                              | Labeled native search, collection/framework selects, planned framework state, submission/blur analytics, invalid-address disabled controls.                                |
+| Family and level filtering      | `ControlExplorer`                                              | Available choices only, result count announcement, combined filtering, cleared constraints and recovery focus.                                                             |
+| Result list and pagination      | `ControlResults`                                               | Eight results per page, selected row/pressed state, long codes/titles, previous/next disabled boundaries, page replay for selected identity.                               |
+| Desktop/tablet discovery        | Shared Explorer layout                                         | Browsing alongside the reader; no stale phone collapse hiding desktop discovery.                                                                                           |
+| Phone discovery and reading     | `ControlExplorer`                                              | Real expand/return-to-reading button; selection collapses discovery and focuses the reading heading, including same-control reselection.                                   |
+| Official control detail         | `ReferenceDetail`                                              | Title, identity/edition, attributed requirement quotation, back/show-in-results actions, guide/model wording differences and source citations.                             |
+| Original demo detail            | `ControlExplorer`                                              | Separate educational concept, examples and takeaway; explicit draft/README provenance and no official-requirement claim.                                                   |
+| Three perspectives              | `LearningModes`, `ControlPerspective`, `ReferencePerspectives` | Selected tabs/panel labels, arrow/Home/End focus, distinct Beginner/IT & Cyber/Compliance teaching, draft/source context.                                                  |
+| Perspective feedback            | `ControlPerspective`                                           | Helpful/unclear pressed states, useful text feedback and allowlisted analytics; no learner score or identity.                                                              |
+| Lazy perspective content        | `ReferencePerspectives`                                        | Loading status, load-failure explanation/reload action and missing exact-edition draft state; official text stays readable.                                                |
+| Contextual vocabulary           | `ContextTerms`, `TermDefinition`                               | One inline definition, unavailable term message, source disclosure, Close/Escape and focus return; no invented glossary modal.                                             |
+| Searchable glossary             | `Glossary`, `TermDefinition`                                   | Alphabetic native disclosures, local independent search/count, empty state and clear-search focus recovery.                                                                |
+| Learning introduction           | `LearningPractice`                                             | Exact supported activity identity, draft label, plain-English concept/common misunderstanding where content exists; no practice invented for Level 2/3.                    |
+| Instructional diagram           | `LessonDiagram`                                                | Ordered steps, optional branch destinations, visible text equivalent, meaningful labels and a consistent visual grammar.                                                   |
+| Fictional scenario              | `LearningPractice`                                             | Native scenario disclosure and ordered narrative steps; preserve fictional/source context.                                                                                 |
+| Questions and progress          | `LearningPractice` / `KnowledgeCheck`                          | Native labeled radio choices, unanswered/selected/checked states, disabled gates, wrong/correct prose feedback, retry/next/finish/reset/completion and focused new prompt. |
+| Session learning state          | Keyed learning components                                      | Progress retained for the same lesson through perspective changes; reset only under existing identity/lifetime rules. No persistent account progress.                      |
+| Editorial review and objectives | `EditorialReviewContext`                                       | Source checking versus AI comparison versus pending human approval, quoted objective disclosures, unresolved notes and contextual assessment terms.                        |
+| Source/model disclosures        | `ReferenceDetail`, demo/term components                        | Native disclosure marker/open states; HTTPS publication/mirror/index links with new-tab labels and page/version attribution.                                               |
+| Sharing                         | `ShareLesson`                                                  | Idle/pending/copied/manual fallback, read-only selectable URL, no false success, stale async result invalidation and preserved reader focus.                               |
+| Empty/recovery states           | `ControlExplorer`, `Glossary`                                  | Zero results, no selection, planned/unknown framework, invalid/unavailable lesson and clear/browse recovery actions.                                                       |
+| Footer privacy                  | `UsagePreferences`, `UsageAnalytics`                           | Visible native disclosure indicator, production/development/browser-preference/unavailable/opted-out status, pause/allow and existing fail-closed safeguards.              |
+
+## Responsive and visual hierarchy
+
+```text
+Global coded-C identity + familiar navigation
+  → concise requirement-focused introduction
+  → useful search/collection/framework choices
+  → desktop: discovery | off-white reading workspace
+     phone: reading + close actions; discovery expands on request
+  → official quotation → perspective → supported teaching/practice
+  → contextual vocabulary/source/review disclosures
+  → searchable glossary and factual project/privacy context
+```
+
+Use the established 1100px/tablet, 760px/phone and 380px/narrow adjustments unless
+an observed layout issue justifies a scoped change. Test 1440/1024/768/390/320px,
+long titles and dense results, keyboard focus, 200% zoom and reduced motion.
+Reading text should be at least 16px with comfortable line height and about 68ch
+measure. Dark surrounding surfaces must not reduce contrast inside the reading
+area. Body copy and requirement quotations do not get texture overlays.
+
+Keep three perspective targets at least 48px high, selected state visible beyond
+color, native radio/fieldset semantics and explicit correctness wording. Keep
+logical headings, marked decorative SVGs, text equivalents and visible focus on
+both dark and off-white surfaces. No browser accessibility certification is implied.
+
+## Interaction-state design contract
+
+| Feature         | Normal/success                                      | Loading/partial                                     | Empty/error                                                 | Recovery                                                                  |
+| --------------- | --------------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Explorer        | Readable results, selected row and exact control    | Snapshot/draft labels and filter mismatch           | Zero results, invalid/unavailable identity, planned library | Named clear/browse/show-in-results actions; search or heading focus.      |
+| Perspectives    | One clear selected tab and labeled reading panel    | Visible loading status                              | Failed import or missing exact draft                        | Preserve official text; existing reload action where supported.           |
+| Sharing         | Text confirms completed copy only                   | Pending action disabled                             | Clipboard unavailable/denied                                | Read-only manual link; deliberate focus handling.                         |
+| Knowledge check | Distinct selected choice and correctness wording    | Checking is deliberate; next disabled until checked | Incorrect answer has readable explanation                   | Retry, next, finish and reset; focus follows new prompt/completion.       |
+| Vocabulary      | One contextual definition/native open glossary item | Unavailable referenced term is acknowledged         | Search has no matches                                       | Close/Escape returns focus; own clear-search action.                      |
+| Privacy         | Explicit actual measurement status                  | Provider entitlement/data receipt unconfirmed       | Storage unavailable or browser preference pauses            | Existing pause/allow UI; browser privacy preference still takes priority. |
+
+## Implementation and validation sequence
+
+1. Record this inventory and selected identity, update active instructions and
+   preserve historical docs. Keep the source-content summary unchanged.
+2. Implement coded-C SVG assets, visible name/title/metadata and a shared token
+   system; restyle every inventory row through existing components.
+3. Strengthen quiz selection/feedback and diagrams with semantic state styling;
+   keep progress, allowlisted analytics, native controls and shared links intact.
+4. Run typechecking, lint, content/gstack checks, formatting, behavioral tests and
+   build; fix demonstrated regressions. Hash unchanged content data as appropriate.
+5. Inspect actual desktop/phone screens and the full browse → control → practice →
+   feedback → term → navigation/Back flow. Check empty/error/loading variants,
+   copy fallback, long content, keyboard/zoom, focus and small logo sizes.
+6. Publish validated increments to one feature PR and verify each exact GitHub CI
+   and Vercel preview. Include actual screenshots and this inventory-to-delivery
+   mapping. Do not merge, change DNS, rename services or promote production.
+
+Behavioral coverage already exists in `App.test.tsx`, the explorer-state/history
+tests, `editorial-home`, `reference-catalog-ui`, `learning-tools`, `LearningPractice`,
+`LevelOneLearning`, perspective/loading tests and analytics/privacy suites.
+Change brand assertions deliberately; a visually plausible screenshot does not
+replace those behavior checks. No tests are removed just to simplify the rebrand.
+
+Failure risks are style-induced overflow/hidden controls, unreadable state contrast,
+lost focus and accidentally changing an identity or analytics gate. Existing tests
+exercise behavior; actual browser measurements cover the layout-specific risks.
+The missing image limits reference fidelity, not source-content preservation.
+
+## Workflow evidence and delivery mapping
+
+See [the task-specific 58-skill accounting](../reviews/cipher-and-chalk-gstack-2026-10-14.md)
+for actual runs, inspected instruction ranges and exact blocked gates. The planning
+methodology is scoped/manual and does not constitute completed native CEO/Design/Eng
+phases. The previously observed native Read/Write reviewer contract cannot be
+satisfied by this host's shell/patch tools; implementation remains authorized by
+the owner's complete redesign brief. No paid outside design voice, image service,
+credential/session import or synchronization is substituted.
+
+Final implemented-state mapping, tests, screenshots and exact preview SHA will be
+added after the coordinator supplies actual results. Until then this is a plan and
+inventory, not a claim that every surface or validation gate is complete.

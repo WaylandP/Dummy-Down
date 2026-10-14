@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react'
+import { CheckCircle2, Lightbulb } from 'lucide-react'
 import { findLearningActivity } from '../data/learning'
 import type { LessonIdentity } from '../types/content'
 import type { LearningActivity } from '../types/learning'
@@ -68,8 +69,20 @@ function KnowledgeCheck({
 
   return (
     <div className="knowledge-check">
+      <progress
+        className="practice-progress-meter"
+        aria-label="Question position"
+        aria-valuetext={
+          complete
+            ? 'Practice complete'
+            : `Question ${questionIndex + 1} of ${activity.questions.length}`
+        }
+        value={complete ? activity.questions.length : questionIndex + 1}
+        max={activity.questions.length}
+      />
       {complete ? (
         <div className="practice-complete">
+          <CheckCircle2 className="practice-complete-icon" aria-hidden="true" />
           <h5 ref={completion} tabIndex={-1}>
             Practice complete. Keep asking why.
           </h5>
@@ -94,8 +107,19 @@ function KnowledgeCheck({
               </span>
             </legend>
             <div className="practice-choices">
-              {question.choices.map((choice) => (
-                <label className="practice-choice" key={choice.id}>
+              {question.choices.map((choice, index) => (
+                <label
+                  className="practice-choice"
+                  key={choice.id}
+                  data-selected={selectedId === choice.id}
+                  data-answer-state={
+                    checked && selectedId === choice.id
+                      ? correct
+                        ? 'correct'
+                        : 'incorrect'
+                      : undefined
+                  }
+                >
                   <input
                     type="radio"
                     name={`${prefix}-${question.id}`}
@@ -103,11 +127,49 @@ function KnowledgeCheck({
                     checked={selectedId === choice.id}
                     onChange={() => setSelectedId(choice.id)}
                   />
-                  <span>{choice.label}</span>
+                  <span className="practice-choice-letter" aria-hidden="true">
+                    {String.fromCharCode(65 + index)}
+                  </span>
+                  <span className="practice-choice-text">{choice.label}</span>
+                  {selectedId === choice.id && (
+                    <span
+                      className="practice-choice-selected"
+                      aria-hidden="true"
+                    >
+                      Selected
+                    </span>
+                  )}
                 </label>
               ))}
             </div>
           </fieldset>
+          <div
+            className="practice-feedback"
+            data-outcome={
+              checked ? (correct ? 'correct' : 'incorrect') : undefined
+            }
+            role="status"
+            aria-label="Answer feedback"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {checked && selected && (
+              <>
+                <div className="practice-feedback-heading">
+                  {correct ? (
+                    <CheckCircle2 size={22} aria-hidden="true" />
+                  ) : (
+                    <Lightbulb size={22} aria-hidden="true" />
+                  )}
+                  <strong>{correct ? 'That’s right.' : 'Not quite.'}</strong>
+                </div>
+                <p className="practice-answer-recap">
+                  <strong>Your answer:</strong> {selected.label}
+                </p>
+                <p>{selected.feedback}</p>
+              </>
+            )}
+          </div>
           <div className="practice-actions">
             <button
               className="practice-action"
@@ -164,20 +226,6 @@ function KnowledgeCheck({
               </button>
             )}
           </div>
-          <div
-            className="practice-feedback"
-            role="status"
-            aria-label="Answer feedback"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            {checked && selected && (
-              <p>
-                <strong>{correct ? 'That’s right.' : 'Not quite.'}</strong>{' '}
-                {selected.feedback}
-              </p>
-            )}
-          </div>
         </>
       )}
     </div>
@@ -196,20 +244,23 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
       aria-labelledby={`${prefix}-heading`}
     >
       <div className="practice-heading">
-        <h4 id={`${prefix}-heading`}>{activity.title}</h4>
+        <div className="practice-heading-copy">
+          <p className="instruction-eyebrow">Put it into practice</p>
+          <h4 id={`${prefix}-heading`}>{activity.title}</h4>
+        </div>
         <span className="draft-label">Draft learning activity</span>
       </div>
-      <p>{activity.introduction}</p>
+      <p className="practice-introduction">{activity.introduction}</p>
       {activity.plainEnglish && (
-        <div className="learning-meaning">
+        <div className="learning-meaning teaching-note">
           <h5>The idea in plain English</h5>
           <p>{activity.plainEnglish}</p>
         </div>
       )}
       {activity.commonMisunderstanding && (
-        <div className="learning-misunderstanding">
+        <div className="learning-misunderstanding teaching-note">
           <h5>A common misunderstanding</h5>
-          <p>
+          <p className="misconception-claim">
             <strong>{activity.commonMisunderstanding.claim}</strong>
           </p>
           <p>{activity.commonMisunderstanding.correction}</p>
@@ -217,7 +268,7 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
       )}
       {activity.diagram && <LessonDiagram diagram={activity.diagram} />}
       <details
-        className="practice-disclosure"
+        className="practice-disclosure practice-scenario"
         onToggle={(event) => {
           if (event.currentTarget.open)
             trackUsage({ name: 'practice_action', lesson, action: 'open' })
@@ -234,7 +285,7 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
         </ol>
       </details>
       <details
-        className="practice-disclosure"
+        className="practice-disclosure practice-questions"
         onToggle={(event) => {
           if (event.currentTarget.open)
             trackUsage({ name: 'practice_action', lesson, action: 'open' })

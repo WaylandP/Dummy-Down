@@ -13,9 +13,9 @@ export function EditorialReviewContext({
   return (
     <details className="source-details editorial-review">
       <summary>Review record &amp; assessment objectives</summary>
-      <div className="source-content">
+      <div className="source-content review-context">
         <dl className="review-stages">
-          <div>
+          <div className="review-stage">
             <dt>Source verification</dt>
             <dd>
               Compared with the pinned {review.source.version} publication on{' '}
@@ -23,7 +23,7 @@ export function EditorialReviewContext({
               current applicability.
             </dd>
           </div>
-          <div>
+          <div className="review-stage">
             <dt>AI-assisted editorial review</dt>
             <dd>
               {review.aiReview.objectiveComparisonCount} determination
@@ -32,7 +32,10 @@ export function EditorialReviewContext({
               human approval.
             </dd>
           </div>
-          <div>
+          <div
+            className="review-stage"
+            data-review-status={review.humanApproval.status}
+          >
             <dt>Qualified human approval</dt>
             <dd>
               {review.humanApproval.status === 'pending'

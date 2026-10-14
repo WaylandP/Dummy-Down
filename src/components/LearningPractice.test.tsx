@@ -145,6 +145,36 @@ describe('LearningPractice', () => {
     expect(next).toBeEnabled()
   })
 
+  it.each(['correct', 'incorrect'] as const)(
+    'identifies the selected answer and explains %s feedback without relying on color',
+    async (outcome) => {
+      const user = userEvent.setup()
+      const question = activity.questions[0]!
+      const choice = question.choices.find((item) =>
+        outcome === 'correct'
+          ? item.id === question.correctChoiceId
+          : item.id !== question.correctChoiceId,
+      )!
+      render(<LearningPractice lesson={lesson} />)
+      await openCheck(user)
+      const radio = screen.getByRole('radio', { name: choice.label })
+      await user.click(radio)
+      expect(radio).toBeChecked()
+      expect(screen.getByText('Selected')).toBeVisible()
+      await user.click(screen.getByRole('button', { name: 'Check answer' }))
+      const feedback = screen.getByRole('status', { name: 'Answer feedback' })
+      expect(feedback).toHaveTextContent(
+        outcome === 'correct' ? 'That’s right.' : 'Not quite.',
+      )
+      expect(feedback).toHaveTextContent(`Your answer: ${choice.label}`)
+      expect(feedback).toHaveTextContent(choice.feedback)
+      await user.click(screen.getByRole('button', { name: 'Try again' }))
+      expect(screen.queryByText('Selected')).not.toBeInTheDocument()
+      expect(feedback).toBeEmptyDOMElement()
+      expect(screen.getByText(question.prompt)).toHaveFocus()
+    },
+  )
+
   it('explains a wrong answer and allows another attempt without skipping ahead', async () => {
     const user = userEvent.setup()
     render(<LearningPractice lesson={lesson} />)
@@ -189,6 +219,9 @@ describe('LearningPractice', () => {
     expect(screen.getByText(activity.questions[1]!.prompt)).toHaveFocus()
     expect(screen.getByText('Question 2 of 3')).toBeVisible()
     expect(
+      screen.getByRole('progressbar', { name: 'Question position' }),
+    ).toHaveAttribute('aria-valuetext', 'Question 2 of 3')
+    expect(
       screen.queryByText(activity.questions[0]!.prompt),
     ).not.toBeInTheDocument()
     expect(
@@ -225,6 +258,9 @@ describe('LearningPractice', () => {
       name: 'Practice complete. Keep asking why.',
     })
     expect(completion).toHaveFocus()
+    expect(
+      screen.getByRole('progressbar', { name: 'Question position' }),
+    ).toHaveAttribute('aria-valuetext', 'Practice complete')
     expect(
       screen.getByText(
         /Finishing it does not measure compliance or assessment readiness/,

@@ -2,6 +2,8 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import {
   ArrowUpRight,
   Check,
+  ChevronDown,
+  ChevronUp,
   Info,
   Search,
   SlidersHorizontal,
@@ -112,6 +114,10 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
     focusRecoveredSearch.current = true
     dispatch({ type: 'recover-discovery' })
   }
+  function backToDiscovery() {
+    focusRecoveredSearch.current = true
+    dispatch({ type: 'back-to-discovery' })
+  }
 
   return (
     <section
@@ -148,8 +154,10 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
             'That level filter is unavailable and was cleared.'}
         </p>
       )}
-      <div className="explorer-shell">
-        <div className="explorer-toolbar">
+      <div
+        className={`explorer-shell ${selected ? 'is-reading' : ''} ${mobileResultsOpen ? 'is-browsing' : ''}`}
+      >
+        <div id="explorer-toolbar" className="explorer-toolbar">
           <label className="search-field">
             <span className="field-caption">Search controls</span>
             <span className="search-input-wrap">
@@ -223,12 +231,17 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                 type="button"
                 className="mobile-results-toggle"
                 aria-expanded={mobileResultsOpen}
-                aria-controls="control-results-body"
+                aria-controls="explorer-toolbar explorer-levels control-results-body"
                 onClick={() => setMobileResultsOpen(!mobileResultsOpen)}
               >
                 {mobileResultsOpen
                   ? 'Return to reading'
                   : `Browse & filter controls (${results.length})`}
+                {mobileResultsOpen ? (
+                  <ChevronUp size={18} aria-hidden="true" />
+                ) : (
+                  <ChevronDown size={18} aria-hidden="true" />
+                )}
               </button>
             )}
             <div id="control-results-body" className="results-body">
@@ -322,10 +335,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
               <button
                 type="button"
                 className="back-to-results inline-action"
-                onClick={() => {
-                  dispatch({ type: 'back-to-discovery' })
-                  searchInput.current?.focus()
-                }}
+                onClick={backToDiscovery}
               >
                 Back to results
               </button>
@@ -494,10 +504,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                 new URL(window.location.href),
               )}
               excludedByFilters={resolution.excludedByFilters}
-              onBack={() => {
-                dispatch({ type: 'back-to-discovery' })
-                searchInput.current?.focus()
-              }}
+              onBack={backToDiscovery}
               onShowInResults={() =>
                 dispatch({ type: 'show-lesson-in-results' })
               }

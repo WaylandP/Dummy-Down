@@ -1,6 +1,6 @@
 # Usage measurement
 
-Dummy-Down uses the official `@vercel/analytics` React SDK. The website does not
+Cipher & Chalk uses the official `@vercel/analytics` React SDK. The website does not
 display fabricated visitor counts or expose an owner-only dashboard publicly.
 The owner reviews actual traffic in Vercel, through a browser.
 
@@ -88,7 +88,7 @@ under its own policy. The public SDK's `beforeSend` interface exposes the event
 URL, not a separate referrer field; the app therefore does not claim to sanitize
 provider-managed referrers or all network metadata. Review
 [Vercel's Web Analytics privacy information](https://vercel.com/docs/analytics/privacy-policy)
-and the applicable account settings before using the collected data. Dummy-Down
+and the applicable account settings before using the collected data. Cipher & Chalk
 does not add session replay, fingerprinting code, or personalized profiles.
 
 ## Reading the results
