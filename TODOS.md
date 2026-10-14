@@ -4,11 +4,12 @@ The [detailed roadmap](docs/ROADMAP.md) is the milestone source of truth. This f
 keeps the next actionable priorities; the [changelog](CHANGELOG.md) records work
 already merged into `main`. No completion percentage is implied.
 
-- **Current delivery: Phase 3 interactive learning.** Follow the five-increment
-  [execution log](docs/reviews/phase-3-execution-2026-10-14.md): existing practice UX,
-  nine new source-bound activities, three animations, optional local progress, then
-  integrated QA and documentation. The owner authorized validated Phase 3 merges
-  only; human/content review claims still require real evidence.
+- **Phase 3 engineering is shipped.** All five scoped increments are merged with
+  successful exact-head CI and automatic production deployments. The
+  [execution log](docs/reviews/phase-3-execution-2026-10-14.md) records evidence;
+  use the [walkthrough](docs/testing/PHASE_3_WALKTHROUGH.md) for browser review.
+  Next work is qualified content/current-applicability verification and actual
+  owner, learner and assistive-technology acceptance. Phase 4 remains outside scope.
 
 - **Previous handoff: all four Phase 1/2 engineering increments merged.** Review the
   [eight-milestone audit](docs/reviews/phase-1-2-milestone-audit-2026-10-14.md),
@@ -49,11 +50,11 @@ already merged into `main`. No completion percentage is implied.
   teaching board, reference links and the lesson outline. Check whether readers can
   find help quickly while the blackboard remains comfortable to read.
   Screen-reader, Safari/iOS and real-learner checks remain pending.
-- **Phase 3:** Increment 1 is merged in PR #19 with verified production deployment.
-  Increment 2 is merged in PR #20 with nine drafts and a practice index. Three
-  visual explanations merged in PR #21 with verified production deployment. Optional
-  local progress merged in PR #22 with verified production deployment. The final
-  integration pass is being validated for publication. Review the [new source packet](docs/content-review/phase-3-activities-2026-10-14.md).
+- **Phase 3 review packet:** PRs #19–23 delivered practice UX, nine source-bound
+  additions, three controlled visuals, optional local progress and final integration.
+  Review the [activity packet](docs/content-review/phase-3-activities-2026-10-14.md)
+  and [visual packet](docs/content-review/phase-3-animations-2026-10-14.md) with
+  qualified contributors; no human approval is inferred from their AI-assisted audits.
 - **P2: review the earlier focused learning milestone.** Three Level 1 activities now
   cover authorized access, public information and media disposal with fictional
   scenarios, common misunderstandings, nine explained questions and three

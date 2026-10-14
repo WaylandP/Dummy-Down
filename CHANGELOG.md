@@ -5,6 +5,16 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Phase 3 final integration — October 14, 2026
+
+[PR #23](https://github.com/WaylandP/cipher-and-chalk/pull/23) merged at `6a5133b`.
+The full source-to-practice journey is tested on phones and desktop. Deferred
+Explorer loading reduces measured initial Home JavaScript by 10.8%, including
+shared chunks; failed downloads preserve the requested address and offer recovery.
+The walkthrough, screenshots, authoring/privacy guidance and roadmap distinguish
+finished engineering from pending human review. Local gates passed 565 unit and
+113 browser tests; exact-head CI and automatic production deployment succeeded.
+
 ## Phase 3 optional local progress — October 14, 2026
 
 [PR #22](https://github.com/WaylandP/cipher-and-chalk/pull/22) merged at `dd8595d`.

@@ -163,7 +163,8 @@ seven-milestone baseline audit, limited merge authorization and validation limit
 - [x] **Completed and merged into main** — Increment 3
       adds three 40-second visual explanations with play/pause/restart, synchronized
       text, complete transcripts, manual still stages and deferred loading. PR #21
-      merged at `40d0754`; 509 unit / 97 browser CI checks and production deployment passed.
+      merged at `40d0754`; 509 local unit / 97 local browser tests passed, as did
+      exact-head CI and production deployment.
 - [ ] **Awaiting qualified human review** — Review animated explanations for
       educational accuracy and actual visual-learner comprehension.
 - [x] **Completed and merged into main** — Increment 4
@@ -174,12 +175,16 @@ seven-milestone baseline audit, limited merge authorization and validation limit
 - [ ] **Awaiting learner and accessibility review** — Validate whether optional
       progress and review controls help real learners and assistive-technology users.
 
-- [ ] **Implemented; final publication validation in progress** — Increment 5
-      exercises the ten-step learner journey, defers Explorer UI from Home, verifies
-      failure recovery and reconciles documentation with a human-review packet.
+- [x] **Completed and merged into main** — Increment 5 exercises the ten-step
+      learner journey, defers Explorer UI from Home, verifies failure recovery and
+      reconciles documentation with a human-review packet. PR #23 merged at `6a5133b`;
+      exact-head CI and automatic production deployment passed.
 
-Phase 3 is not complete. Thirteen activities and 39 questions are a focused learning
-sample, not interactive coverage of the full catalog.
+All five independently completable Phase 3 engineering increments are merged and
+validated. The phase itself remains open for the qualified content, learner and
+accessibility review milestones above. Thirteen activities and 39 questions are a
+focused learning sample, not interactive coverage of the full catalog. See the
+[walkthrough and review packet](testing/PHASE_3_WALKTHROUGH.md).
 
 ## Phase 4: Expand the Platform
 
