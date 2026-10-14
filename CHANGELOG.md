@@ -5,6 +5,24 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Week 2 content and trust — October 14, 2026
+
+- [PR #31](https://github.com/WaylandP/cipher-and-chalk/pull/31): a dedicated
+  Disclaimer & terms of use page at `/disclaimer`, linked from every footer.
+- [PR #33](https://github.com/WaylandP/cipher-and-chalk/pull/33): About now
+  explains CMMC in one paragraph and says who makes the site and why.
+- [PR #34](https://github.com/WaylandP/cipher-and-chalk/pull/34): 113 AI review,
+  design-iteration and screenshot records moved to the `archive/ai-review-records`
+  branch; links updated.
+- [PR #32](https://github.com/WaylandP/cipher-and-chalk/pull/32): 34 CMMC Program
+  terms added to the glossary (statuses, roles, scoping categories, clauses),
+  each written from and linked to 32 CFR part 170, the Level 2 Scoping Guide,
+  FAR 52.204-21, 32 CFR 2002.4 or the DFARS clauses. Source record in
+  `docs/sources/cmmc-program-definitions-2026-10-14.md`.
+- [PR #35](https://github.com/WaylandP/cipher-and-chalk/pull/35): activity and
+  visual-explanation disclaimer paragraphs rewritten in the site's current voice,
+  with review fingerprints recomputed for the disclaimer-only change.
+
 ## Week 1 cleanup — October 14, 2026
 
 A sequence of small pull requests retired the project's working name and process
