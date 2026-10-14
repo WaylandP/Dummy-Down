@@ -160,6 +160,9 @@ See the [detailed roadmap](docs/ROADMAP.md) for milestone-level status,
 [changelog](CHANGELOG.md) for verified changes merged into `main`. No completion
 percentages are used: a phase is not finished merely because its interface exists.
 
+Help validate the foundation with the [owner and learner acceptance checklist](docs/testing/PHASE_1_ACCEPTANCE.md).
+Human acceptance and actual assistive-technology testing remain pending.
+
 ## Getting started and contributing
 
 Cipher & Chalk uses React, TypeScript, Vite, and Tailwind CSS. You need Node.js

@@ -745,11 +745,11 @@
     border: 1px solid var(--color-line);
     border-radius: var(--radius-sm);
   }
-  .share-button:hover:not(:disabled),
+  .share-button:hover:not([aria-disabled='true']),
   .term-trigger:hover {
     background: var(--color-raised);
   }
-  .share-button:disabled {
+  .share-button[aria-disabled='true'] {
     cursor: progress;
   }
   .share-feedback {

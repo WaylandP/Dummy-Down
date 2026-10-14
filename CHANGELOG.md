@@ -7,12 +7,16 @@ validation evidence remains in the linked pull requests and review documents.
 
 ## Unreleased
 
-- Restore the original mission, audience, teaching model, and long-term vision in
-  the Cipher & Chalk README; add a status-based detailed roadmap and documentation
-  maintenance rules.
+- Increment 1 (feature branch, not merged): improve page/lesson titles and
+  keyboard focus through skip links, result pages, quiz feedback, copy fallback
+  and reopened search; add browser accessibility regressions and an owner/learner
+  acceptance packet. Human validation remains pending.
 
 ## 2026-10-14
 
+- [#13](https://github.com/WaylandP/cipher-and-chalk/pull/13) restored the original
+  mission, audience, teaching model, and long-term vision in the Cipher & Chalk
+  README; added a status-based detailed roadmap and documentation maintenance rules.
 - [#12](https://github.com/WaylandP/cipher-and-chalk/pull/12) turned the blackboard
   homepage into a practical reference desk with native control search, three
   existing draft activity entry points, a teaching-board example, and in-lesson

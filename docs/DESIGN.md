@@ -88,5 +88,6 @@ WCAG certification; real-reader comfort and screen-reader/Safari review remain p
 Official quotations, fictional examples and pending human review must stay visibly
 distinct. The design change does not approve content or expand practice coverage.
 See [the study-desk checkpoint](reviews/study-desk-2026-10-14.md).
-This is a bounded two-round visual revision; publish a validated Draft PR preview
-for owner feedback, without merging, production promotion or a new planning cycle.
+That visual revision was merged in PR #12. The Phase 1 quality increment preserves
+this direction and prepares [human acceptance](testing/PHASE_1_ACCEPTANCE.md);
+it does not initiate a new visual redesign or imply owner acceptance.

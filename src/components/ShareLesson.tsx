@@ -96,7 +96,7 @@ function ShareLessonSession({
         className="share-button"
         type="button"
         onClick={copyLesson}
-        disabled={feedback.phase === 'pending'}
+        aria-disabled={feedback.phase === 'pending'}
       >
         {feedback.phase === 'copied' ? (
           <Check size={16} aria-hidden="true" />

@@ -301,6 +301,46 @@ reach the explorer, search and filter controls, change learning modes, and follo
 source links. Check visible focus, readable text, and useful empty-search results.
 Automated checks do not prove complete accessibility or compliance accuracy.
 
+### Browser regressions
+
+`tests/browser/` uses Playwright and axe against the production build. It covers
+rendered accessibility rules, responsive reflow and keyboard learning journeys
+that jsdom cannot validate. The app and Vitest suite remain unchanged in scope.
+
+```sh
+npx playwright install chromium
+npm run build
+npm run test:browser
+```
+
+Linux machines missing browser libraries can use Playwright's documented
+`npx playwright install --with-deps chromium` setup, as CI does. In this managed
+cloud environment, use the existing Chromium without downloading another browser:
+
+```sh
+PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run test:browser
+```
+
+The runner starts and stops its own loopback preview on port 4178 and refuses to
+reuse an unknown server. Build first; it tests `dist/`, not live source. Two workers
+bound resource use, retries are disabled, and failures retain traces/screenshots
+under ignored `test-results/` and an HTML report under `playwright-report/`.
+No personal browser sessions or hosted accounts are used. Typechecking includes
+the browser tests; CI runs them after the build. Test-only dependencies are not
+imported by the application.
+
+Page titles identify the page or selected control without including raw searches.
+Legacy skip links focus the mounted main landmark; explicit result pagination
+focuses the new first result, and opening browsing focuses its search. Checking
+an answer focuses its explanation. Copy remains focusable while pending, with
+`aria-disabled` plus an activation guard, so a rejected clipboard operation can
+focus/select the fallback without taking focus from a reader who moved elsewhere.
+
+Automated axe checks and Chromium media/viewport emulation cannot certify WCAG,
+screen-reader usability, Safari/iOS or learner comprehension. Follow the
+[acceptance checklist](testing/PHASE_1_ACCEPTANCE.md) for those sessions and the
+[Phase 1 evidence report](reviews/phase-1-quality-2026-10-14.md) for exact limits.
+
 ## Dependencies and troubleshooting
 
 Use `npm ci` when setting up an existing checkout. It uses the lockfile and fails

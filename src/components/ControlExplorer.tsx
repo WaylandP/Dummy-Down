@@ -233,7 +233,10 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
                 className="mobile-results-toggle"
                 aria-expanded={mobileResultsOpen}
                 aria-controls="explorer-toolbar explorer-levels control-results-body"
-                onClick={() => setMobileResultsOpen(!mobileResultsOpen)}
+                onClick={() => {
+                  if (!mobileResultsOpen) focusRecoveredSearch.current = true
+                  setMobileResultsOpen(!mobileResultsOpen)
+                }}
               >
                 {mobileResultsOpen
                   ? 'Return to reading'

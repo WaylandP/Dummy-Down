@@ -13,6 +13,8 @@ export default tseslint.config(
       '.agents/skills',
       '.claude/skills',
       '.gstack',
+      'playwright-report',
+      'test-results',
     ],
   },
   js.configs.recommended,

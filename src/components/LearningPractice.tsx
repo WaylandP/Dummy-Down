@@ -24,6 +24,7 @@ function KnowledgeCheck({
   const [complete, setComplete] = useState(false)
   const prompt = useRef<HTMLSpanElement | null>(null)
   const completion = useRef<HTMLHeadingElement | null>(null)
+  const feedback = useRef<HTMLDivElement | null>(null)
   const focusRequested = useRef(false)
   const question = activity.questions[questionIndex]
   const selected = question?.choices.find((choice) => choice.id === selectedId)
@@ -32,6 +33,7 @@ function KnowledgeCheck({
   useEffect(() => {
     if (focusRequested.current) {
       if (complete) completion.current?.focus()
+      else if (checked) feedback.current?.focus()
       else prompt.current?.focus()
       focusRequested.current = false
     }
@@ -149,6 +151,8 @@ function KnowledgeCheck({
               checked ? (correct ? 'correct' : 'incorrect') : undefined
             }
             role="status"
+            ref={feedback}
+            tabIndex={-1}
             aria-label="Answer feedback"
             aria-live="polite"
             aria-atomic="true"
@@ -182,6 +186,7 @@ function KnowledgeCheck({
                     lesson,
                     action: 'check',
                   })
+                  focusRequested.current = true
                   setChecked(true)
                 }
               }}

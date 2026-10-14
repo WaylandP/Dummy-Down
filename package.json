@@ -17,6 +17,7 @@
     "check:gstack:installed": "node scripts/check-gstack.mjs --inventory-only --installed",
     "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
+    "test:browser": "playwright test",
     "test:watch": "vitest",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
@@ -30,7 +31,9 @@
     "react-dom": "^19.3.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.1",
     "@tailwindcss/vite": "^4.3.3",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",

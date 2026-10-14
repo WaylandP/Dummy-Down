@@ -43,3 +43,7 @@ jobs:
         run: npm test
       - name: Build
         run: npm run build
+      - name: Install Chromium for browser checks
+        run: npx playwright install --with-deps chromium
+      - name: Browser accessibility and learning journeys
+        run: npm run test:browser
