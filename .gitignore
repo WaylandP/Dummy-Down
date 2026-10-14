@@ -148,9 +148,6 @@ vite.config.ts.timestamp-*
 # Turbo Repo
 .turbo
 
-# Local agent tooling and private browser/session outputs
-.agents/skills/
-.claude/skills/
-.gstack/
+# Private browser/session outputs
 playwright-report/
 test-results/
