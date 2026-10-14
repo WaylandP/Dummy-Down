@@ -7,7 +7,7 @@ cybersecurity requirements through plain-English explanations, practical example
 and different learning perspectives. Starting with CMMC.
 
 [Visit the public website](https://dummy-down.vercel.app) ·
-[Report a problem](https://github.com/WaylandP/Dummy-Down/issues) ·
+[Report a problem](https://github.com/WaylandP/cipher-and-chalk/issues) ·
 [Contribute](CONTRIBUTING.md)
 
 The public website returned the application successfully on October 13, 2026.
@@ -15,10 +15,23 @@ Feature work is reviewed in separate Vercel previews before an approved merge;
 production and a pull request's preview can show different versions. See
 [deployment and preview review](docs/DEPLOYMENT.md).
 
-The Cipher & Chalk Decode Board redesign is being implemented on a feature
-branch. Review its latest pull-request preview; the existing public address and
-repository identifiers are retained. The [redesign inventory and plan](docs/designs/cipher-and-chalk.md)
-records the complete interface scope and the unavailable reference-image limitation.
+The complete existing interface now uses the **Cipher & Chalk Decode Board**
+identity. Review the latest refinements in [PR #11](https://github.com/WaylandP/cipher-and-chalk/pull/11)
+and its [verified Vercel preview](https://dummy-down-l33cn6g04-waylandp.vercel.app).
+The preview requires Vercel sign-in; deployment succeeded for frontend commit
+`75726def64038e5b061c148bec621ccf48956de4`. The owner merged the first implementation
+in PR #10; agents have not merged or promoted production. GitHub's repository name
+changed externally to `WaylandP/cipher-and-chalk`; deployment, package, storage and
+content identities retain their existing values.
+
+[Actual screens and validation](docs/reviews/cipher-and-chalk-ui-2026-10-14.md)
+cover the Explorer, teaching, feedback and recovery states. The
+[redesign inventory and delivery plan](docs/designs/cipher-and-chalk.md) records the
+complete scope and missing reference-image limitation. Owner visual review and
+real-learner feedback remain welcome; implementation is not qualified content
+approval or a complete accessibility assessment.
+
+![Cipher & Chalk desktop homepage](docs/screenshots/cipher-home-desktop.png)
 
 ## What you can use today
 
@@ -94,12 +107,12 @@ See [source provenance and verification](docs/sources/cmmc-2-13-sep-2024.md).
 
 ## Roadmap
 
-| Phase                            | Implemented or available drafts                                                                                                                   | Remaining work                                                                                                                                                                |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1. Build the foundation**      | React/TypeScript frontend, responsive Explorer, framework-independent identities, search, filters, sharing, glossary, tests and preview workflow. | Complete and validate the authorized Cipher & Chalk Decode Board redesign; continue usability and accessibility checks with real learners.                                    |
-| **2. Make CMMC understandable**  | Versioned Level 1–3 source inventory, three draft perspectives per entry, a focused Level 1 AI-assisted audit and separate review records.        | Qualified human approval, current applicability checks and explicit assessment-objective teaching coverage before broader curriculum claims. This phase is not complete.      |
-| **3. Make learning interactive** | Three Level 1 draft activities plus the original demo: four scenarios, 12 explained questions, three new diagrams and 20 glossary terms.          | Qualified review and learner feedback on these activities; broader reviewed practice coverage and short animated explanations remain planned.                                 |
-| **4. Expand the platform**       | Framework-independent architecture and published contribution guidelines.                                                                         | Additional frameworks, reviewed relationships between controls and a sustainable community editorial process. No automatic equivalence claims or new framework libraries yet. |
+| Phase                            | Implemented or available drafts                                                                                                                                           | Remaining work                                                                                                                                                                |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1. Build the foundation**      | React/TypeScript frontend, complete Decode Board identity, responsive Explorer, framework-independent identities, search, filters, sharing, glossary, tests and previews. | Owner visual review; continue usability, assistive-technology and accessibility checks with real learners.                                                                    |
+| **2. Make CMMC understandable**  | Versioned Level 1–3 source inventory, three draft perspectives per entry, a focused Level 1 AI-assisted audit and separate review records.                                | Qualified human approval, current applicability checks and explicit assessment-objective teaching coverage before broader curriculum claims. This phase is not complete.      |
+| **3. Make learning interactive** | Three Level 1 draft activities plus the original demo: four scenarios, 12 explained questions, three new diagrams and 20 glossary terms.                                  | Qualified review and learner feedback on these activities; broader reviewed practice coverage and short animated explanations remain planned.                                 |
+| **4. Expand the platform**       | Framework-independent architecture and published contribution guidelines.                                                                                                 | Additional frameworks, reviewed relationships between controls and a sustainable community editorial process. No automatic equivalence claims or new framework libraries yet. |
 
 [TODOS.md](TODOS.md) keeps the next priorities aligned with this roadmap.
 
@@ -140,9 +153,11 @@ frontend locally.
 - [Editorial review process](docs/content-review/REVIEW_PROCESS.md): source checks,
   AI-assisted review, qualified approval and unresolved questions.
 - [Deployment guide](docs/DEPLOYMENT.md): GitHub CI, Vercel previews and production.
-- [Design notes](docs/DESIGN.md): the proposed identity and interaction direction.
+- [Design notes](docs/DESIGN.md): the implemented identity and interaction system.
 - [Cipher & Chalk redesign](docs/designs/cipher-and-chalk.md): UI inventory,
   implementation decisions and acceptance checks.
+- [Actual UI verification](docs/reviews/cipher-and-chalk-ui-2026-10-14.md): delivery
+  mapping, 18 viewed captures, checks, recovery fixtures and remaining limits.
 - [Redesign workflow evidence](docs/reviews/cipher-and-chalk-gstack-2026-10-14.md):
   task-specific gstack applicability, actual execution and exact blockers.
 - [Pinned gstack inventory](docs/GSTACK-SKILLS.md): complete skill routing,

@@ -9,10 +9,13 @@ tokens across every existing screen and state, with selective chalk texture and
 clear instructional diagrams. Preserve routes, content identities, analytics,
 privacy, progress and source/draft labels. Keep adult, readable teaching at the
 center; avoid noisy decorations, security shields and childish classroom motifs.
-Repository/service identifiers remain Dummy-Down; do not rename infrastructure.
+GitHub now reports the externally renamed repository as WaylandP/cipher-and-chalk.
+Keep existing deployment/project, package, storage and content IDs; do not rename
+infrastructure or rewrite historical source URLs for a display-name change.
 See docs/designs/cipher-and-chalk.md for the inventory and missing-image limitation.
 Update documentation to match implemented behavior and honest content status.
-Preserve LICENSE and third-party notices; do not claim approval of a proposed brand.
+Preserve LICENSE and third-party notices; distinguish the approved direction from
+final owner visual sign-off and qualified content approval.
 
 ## Branches, review, and previews
 
