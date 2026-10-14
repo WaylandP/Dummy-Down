@@ -20,6 +20,8 @@ import { lessonIdentityKey } from '../state/explorer-state'
 import { LearningPractice } from './LearningPractice'
 import { EditorialReviewContext } from './EditorialReviewContext'
 import { findLearningActivity } from '../data/learning'
+import { hasVisualExplanation } from '../data/visual-lesson-index'
+import { VisualLesson } from './VisualLesson'
 
 interface ReferenceDetailProps {
   control: ReferenceControl
@@ -94,8 +96,10 @@ export function ReferenceDetail({
   const sourceId = `${readerId}-source`
   const explanationId = `${readerId}-explanation`
   const practiceId = `${readerId}-practice`
+  const visualId = `${readerId}-visual`
   const lesson = lessonIdentity(control)
   const hasPractice = Boolean(findLearningActivity(lesson))
+  const hasVisual = hasVisualExplanation(lesson)
   const guideSource = control.sourceDocuments.find(
     (source) => source.id === control.requirement.sourceId,
   )
@@ -166,10 +170,20 @@ export function ReferenceDetail({
               <span className="reader-outline-number">02</span> Explain it
             </a>
           </li>
+          {hasVisual && (
+            <li>
+              <a href={`#${visualId}`}>
+                <span className="reader-outline-number">03</span> Watch the idea
+              </a>
+            </li>
+          )}
           {hasPractice && (
             <li>
               <a href={`#${practiceId}`}>
-                <span className="reader-outline-number">03</span> Practice
+                <span className="reader-outline-number">
+                  {hasVisual ? '04' : '03'}
+                </span>{' '}
+                Practice
               </a>
             </li>
           )}
@@ -195,6 +209,14 @@ export function ReferenceDetail({
           onChange={onModeChange}
         />
       </div>
+      {hasVisual && (
+        <div className="reader-jump-target" id={visualId} tabIndex={-1}>
+          <VisualLesson
+            key={`visual:${lessonIdentityKey(lesson)}`}
+            lesson={lesson}
+          />
+        </div>
+      )}
       <ContextTerms
         key={`terms:${lessonIdentityKey(lessonIdentity(control))}`}
         termIds={getLevelOneTermIds(control)}

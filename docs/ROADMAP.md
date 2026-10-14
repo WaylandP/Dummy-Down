@@ -152,16 +152,20 @@ seven-milestone baseline audit, limited merge authorization and validation limit
       learning styles, and test whether beginners understand the activities and the
       three modes. Semantic, keyboard, reduced-motion, forced-color, responsive, and
       Chromium checks exist; real learner and assistive-technology review remains.
-- [ ] **Implemented; merge and deployment validation in progress** — Increment 2
+- [x] **Completed and merged into main** — Increment 2
       adds nine source-bound draft activities (three per level), 27 questions,
       learning goals, contextual terms and a searchable practice index. AI-assisted
       source comparisons are recorded; qualified human approval remains pending.
+      PR #20 merged at `1e934d0`; exact-head CI and automatic production deployment passed.
 - [ ] **Awaiting qualified human review** — Expand reviewed exercises and realistic
       scenarios across more Level 1, Level 2, and Level 3 concepts. Draft authorship
       does not complete this review milestone.
-- [ ] **Planned for future development** — Create short animated explanations for
-      visual learners, with transcripts, reduced-motion alternatives, and editorial
-      review. No animated lesson is available today.
+- [ ] **Implemented; merge and deployment validation in progress** — Increment 3
+      adds three 40-second visual explanations with play/pause/restart, synchronized
+      text, complete transcripts, manual still stages and deferred loading. Automated
+      and browser validation are in progress.
+- [ ] **Awaiting qualified human review** — Review animated explanations for
+      educational accuracy and actual visual-learner comprehension.
 - [ ] **Planned for future development** — Explore progress and practice features
       only after privacy, accessibility, retention, and learner-value questions are
       defined. Saved progress is not currently implemented.

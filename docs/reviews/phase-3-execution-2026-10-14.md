@@ -155,3 +155,57 @@ the full suite. The branch-protection configuration endpoint also returns 403 fo
 this integration. Merge authorization will therefore rely on GitHub's PR merge
 state, check/review decision and ordinary non-admin merge enforcement; no rule is
 bypassed or changed.
+
+## Verified Increment 2 merge
+
+PR [#20](https://github.com/WaylandP/cipher-and-chalk/pull/20), final head
+`369ca3c235f517a50b16885c7ebc56297badfef9`, passed CI `38595378605`
+(497 unit tests, 77 browser checks). Preview deployment `7070636328` succeeded:
+https://cipherandchalk-li6oz9hxj-waylandp.vercel.app . Independent review confirmed
+the search correction and found no further blocking issue in its bounded scope.
+GitHub reported CLEAN/MERGEABLE, no required review decision and all checks green.
+The ordinary authorized squash merge produced `1e934d000fef7d623ec506efc0adbf5dc686a38e`
+at 16:11:02 UTC. Production deployment `7070718955` succeeded for that exact merge:
+https://cipherandchalk-816y0708w-waylandp.vercel.app . Hosted rendering remains
+unverified from this proxy-restricted workspace; source-build browser evidence is
+separate from provider deployment evidence.
+
+## Increment 3: teaching through motion
+
+Three source-bound visual explanations cover AC.L1-b.1.i, IA.L2-3.5.3 and
+IR.L3-3.6.2e. Requirement text is derived from the pinned catalog. The next three
+stages are separately authored drafts. Play/pause/restart, a 40-second timeline,
+synchronized text, all-stage transcript, native manual stage buttons and reduced-
+motion still diagrams support different reading approaches. Opening a disclosure
+loads the player/CSS; closing it stops playback. Hidden documents pause without
+automatic resume. No media dependency, provider, telemetry or storage was added.
+
+Independent source review identified three useful visual clarifications: use
+“Process” instead of a generic “Task”; show privileged accounts more broadly than
+administrators; and avoid implying an official clock-start event in the deployment
+window. All three were corrected before browser validation. Diagram-in-words
+explanations are available in native disclosures and in the full transcript, keeping
+the mobile player readable without removing its text equivalent.
+
+### Increment 3 local validation and review
+
+The [animation source review](../content-review/phase-3-animations-2026-10-14.md)
+records full guide-section comparison, the three clarifications and final source/
+SVG-label fingerprints. No further correction was identified in the bounded delta.
+Root additionally reviewed player state, cancellation, failure handling, full
+identity matching and lazy loading. The source check is AI-assisted; qualified
+human approval remains pending.
+
+All seven project checks passed with 509 unit tests. Twenty focused browser checks
+passed, including actual 40-second playback of every animation, pause/replay/close,
+five-width stages/transcripts, reduced motion with forced colors, and chunk-error
+recovery. The existing suite passed 76 checks and found one stale numbered-outline
+selector; the new visual section makes Practice item 04 for that lesson. That
+selector now follows the actual fourth link, retaining its target-focus and quiz
+assertions. Its four-test browser journey rerun passed before publication. Mobile/desktop screenshots
+of all three visual explanations were inspected. Full CI repeats the combined
+suite. Native zoom, actual assistive technology and learner acceptance remain open.
+
+Player JavaScript is 17.20 kB (5.73 kB gzip) plus 5.02 kB CSS (1.42 kB gzip), loaded
+only on request. No external media is fetched. Main JavaScript is 504.94 kB
+(135.39 kB gzip); the existing advisory remains a final integration review item.

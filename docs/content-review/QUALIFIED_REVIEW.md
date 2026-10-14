@@ -135,3 +135,20 @@ decisions in Git; never rewrite an old audit to pretend it covered later content
 External next steps: obtain a qualified reviewer, resolve authoritative-host access,
 record real decisions and test comprehension with actual learners. Phase 2 remains
 unchecked until its applicable acceptance criteria are satisfied.
+
+## Phase 3 practice and visual review packet
+
+Review the nine added activities against the [Phase 3 activity record](phase-3-activities-2026-10-14.md)
+and their final fingerprints. Read every question, every incorrect-choice explanation,
+learning goal, misunderstanding and glossary connection. Check the real source
+labels and interpretation notes; a selected teaching link is not full objective coverage.
+Keep the original demo and three earlier Level 1 activities in their own review scope.
+
+The [three animation review records](phase-3-animations-2026-10-14.md) identify the
+source pages and final teaching/diagram files. In each lesson, open “Watch the idea,”
+play all four stages, compare every SVG label, read the full transcript and repeat
+using manual stages. Specifically examine authorization of users/processes/devices,
+privileged versus non-privileged MFA access paths, and deployment capability versus
+incident resolution and unspecified clock-start events. Record actual content and
+learner findings separately from source transcription and automation. No Phase 3
+activity, animation or glossary definition has qualified human approval today.

@@ -260,7 +260,7 @@ clipboard, storage or server state. A completed activity is not a compliance gra
 The original three Level 1 activities add plain-English explanations, common misunderstandings
 and `LearningDiagram` data. `LessonDiagram` renders ordered HTML steps and an
 optional disposal/reuse branch, with a text equivalent. These structures can
-support future animation, but no animation system is implemented. All activities
+coexist with the separate visual-explanation player. All activities
 and diagrams remain drafts, with source context and explicit review limits.
 
 The nine Phase 3 additions extend the same framework-independent model with explicit
@@ -423,3 +423,20 @@ by tests, so detailed review history does not enlarge the browser bundle.
 
 Keep qualified human status pending until the [review workflow](content-review/QUALIFIED_REVIEW.md)
 records a real scoped decision. Neither CI nor an AI reviewer can grant that approval.
+
+## Animated visual explanations
+
+Three draft explanations use source-derived requirement quotations followed by
+plain meaning, a fictional example and a takeaway. A small exact-identity index
+supports discovery; `VisualLesson` loads the player and its CSS only after the
+reader opens its disclosure. Closing it unmounts the player. `VisualExplanation`
+uses requestAnimationFrame for a 40-second timeline, cancels frames on unmount,
+pauses when the document is hidden and never autoplays. SVG paths teach a boundary,
+factor distinctions and deployment routes; they add no external media request.
+
+The four native stage buttons are a complete manual walkthrough. Reduced motion
+disables playback and presents finished still diagrams; every stage's text and
+diagram description is also in the transcript. Actual assistive-technology testing
+and qualified content approval remain pending. The player sends no usage events
+and does not store playback position. A failed chunk preserves the source and
+perspectives and offers a full lesson reload.

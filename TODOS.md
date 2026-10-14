@@ -50,8 +50,8 @@ already merged into `main`. No completion percentage is implied.
   find help quickly while the blackboard remains comfortable to read.
   Screen-reader, Safari/iOS and real-learner checks remain pending.
 - **Phase 3:** Increment 1 is merged in PR #19 with verified production deployment.
-  Increment 2 adds nine drafts and a practice index; animation and optional local
-  progress increments follow. Review the [new source packet](docs/content-review/phase-3-activities-2026-10-14.md).
+  Increment 2 is merged in PR #20 with nine drafts and a practice index. Three
+  visual explanations are in Increment 3 validation; optional local progress follows. Review the [new source packet](docs/content-review/phase-3-activities-2026-10-14.md).
 - **P2: review the earlier focused learning milestone.** Three Level 1 activities now
   cover authorized access, public information and media disposal with fictional
   scenarios, common misunderstandings, nine explained questions and three

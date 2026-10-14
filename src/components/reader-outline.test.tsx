@@ -5,6 +5,7 @@ import App from '../App'
 import { referenceControls } from '../data/content'
 import { levelOneLearningActivities } from '../data/level-one-learning'
 import { expandedLearningActivities } from '../data/expanded-learning'
+import { hasVisualExplanation } from '../data/visual-lesson-index'
 
 function openReference(key: string) {
   window.history.replaceState(
@@ -39,7 +40,9 @@ describe('Reference reading outline', () => {
       expect(links.map((link) => link.textContent)).toEqual([
         '01 Source',
         '02 Explain it',
-        '03 Practice',
+        ...(hasVisualExplanation(activity.lesson)
+          ? ['03 Watch the idea', '04 Practice']
+          : ['03 Practice']),
       ])
       const source = destination(links[0]!)
       const control = referenceControls.find(
@@ -47,7 +50,7 @@ describe('Reference reading outline', () => {
       )!
       expect(source).toHaveTextContent(control.requirement.text)
       expect(destination(links[1]!)).toContainElement(panel)
-      expect(destination(links[2]!)).toHaveTextContent(activity.title)
+      expect(destination(links.at(-1)!)).toHaveTextContent(activity.title)
       const ids = [...document.querySelectorAll('[id]')].map(
         (element) => element.id,
       )
