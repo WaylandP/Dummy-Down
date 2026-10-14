@@ -95,11 +95,11 @@ finished.
       explicit teaching mappings, gap notes, report and re-review integrity checks
       were merged in approved PR #16 at `d734898` on October 14. See the
       [coverage record](reviews/objective-coverage-2026-10-14.md).
-- [ ] **Implemented but awaiting validation or review** — Increment 4 / PR #17
+- [x] **Completed and merged into main** — Increment 4 / PR #17
       completed the AI-assisted full-field Level 2/3 audit, 16 focused field corrections
-      across 13 controls and tested per-control review fingerprints. Local validation
-      passed; verify final CI and owner-approved merge before checking this engineering
-      subtask. Qualified-human approval is separate.
+      across 13 controls and tested per-control review fingerprints. Final CI passed;
+      the owner-approved merge was verified at `81cee95` on October 14.
+      Qualified-human approval is separate.
 - [ ] **Blocked by external dependencies** — Obtain qualified review of objective
       interpretations, including the `SI.L3-3.14.3e` source wording/scoping conflict.
       All source and teaching fingerprints must match the reviewed content.
@@ -121,13 +121,13 @@ Phase 2 is not complete. Broad draft coverage is a starting point for review, no
 substitute for it.
 
 The [eight-milestone audit](reviews/phase-1-2-milestone-audit-2026-10-14.md)
-records existing evidence, independent work, external blockers and checkbox gates
-for every originally unchecked Phase 1/2 task. Deliver sequentially: Increment 1
-technical quality and acceptance preparation; Increment 2 source applicability,
-Level 1 audit and review workflow; Increment 3 objective tracking and explanation
-coverage; Increment 4 bounded Level 2/3 audits. Pause at each completed PR for owner
-review, verify its approved merge, then begin the next increment. Phase 3/4 work
-is preserved below and is outside this assignment.
+records the starting evidence and checkbox gates for every originally unchecked
+Phase 1/2 task. All four engineering increments are now merged: technical quality
+and acceptance preparation (#14), source research/Level 1 audit/review workflow
+(#15), objective coverage (#16), and Level 2/3 audit (#17). The
+[final handoff](reviews/phase-1-2-handoff-2026-10-14.md) identifies the remaining
+external work and the evidence needed to resume. Neither phase is fully complete.
+Phase 3/4 work is preserved below and is outside this assignment.
 
 ## Phase 3: Make Learning Interactive
 

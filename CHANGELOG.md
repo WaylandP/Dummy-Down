@@ -5,12 +5,12 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
-## Unreleased
-
-- Increment 4 / PR #17 (validated feature branch, awaiting review): full-field Level 2/3
-  editorial audit, 16 clarifications across 13 controls and per-control review evidence.
-
 ## 2026-10-14
+
+- [#17](https://github.com/WaylandP/cipher-and-chalk/pull/17) completed the full-field
+  Level 2/3 editorial audit, with 16 clarifications across 13 controls and per-control
+  review evidence. Approved merge verified at `81cee95`; qualified human review
+  and current applicability remain pending.
 
 - [#16](https://github.com/WaylandP/cipher-and-chalk/pull/16) added all 468 pinned
   assessment statements, explicit teaching mappings, a navigable coverage report
