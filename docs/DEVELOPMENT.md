@@ -26,7 +26,7 @@ section hashes still resolve. The skip link canonicalizes legacy section paths.
 so direct links and refreshes work on Vercel without rewriting asset URLs.
 
 The Explorer continues to own query/history state. Native page changes reload the
-document; practice is local session UI, not saved progress. Back restores the lesson
+document; practice is in memory by default, with optional version-bound local saving. Back restores the lesson
 address, but do not promise that a browser preserves its quiz state across pages.
 Inline definitions remain available without leaving a lesson. Analytics allowlists
 only the six public paths and strips queries/fragments before submission.
@@ -183,7 +183,8 @@ Reference readers include an “On this page” outline for Source and Explain i
 Practice appears only when `findLearningActivity` resolves the full lesson identity.
 `useId` supplies document-local fragment targets; these links move within the
 current reader. Copy lesson link remains the stable control-and-mode address.
-Neither the outline nor the homepage adds saved learning progress.
+The outline and homepage do not themselves record progress. Optional local saving
+is described in [LOCAL_PROGRESS.md](LOCAL_PROGRESS.md).
 
 Malformed, duplicate or partial lesson addresses remain explicit errors until
 recovery. A well-formed missing identity never falls back to a different example.
@@ -246,8 +247,8 @@ and source links remain usable; the UI offers a page reload that preserves the
 current lesson address. Retrying the same failed module import alone is unreliable
 because browser module-load failures can be cached. Unknown
 framework/edition coverage remains explicitly pending. Interactive practice is
-available for three exact Level 1 identities and the original demo; the remaining
-146 source entries do not claim it.
+available for twelve exact source identities and the original demo; the remaining
+137 source entries do not claim it.
 
 Discovery uses eight results per page
 and follows a restored selection. Pagination stays local to the result list;
@@ -255,8 +256,9 @@ collection/query/family/level and selected identity remain in browser history.
 
 `LearningPractice` matches the complete teaching identity. Its fictional scenario
 and questions stay consistent across modes, explain both correct and incorrect
-choices, and preserve reader progress during mode changes. They never write URL,
-clipboard, storage or server state. A completed activity is not a compliance grade.
+choices, and preserve reader progress during mode changes. Optional local saving
+stores checked-choice identifiers only after opt-in; see [LOCAL_PROGRESS.md](LOCAL_PROGRESS.md).
+Practice answers never enter URLs, the clipboard, analytics or server state. A completed activity is not a compliance grade.
 The original three Level 1 activities add plain-English explanations, common misunderstandings
 and `LearningDiagram` data. `LessonDiagram` renders ordered HTML steps and an
 optional disposal/reuse branch, with a text equivalent. These structures can

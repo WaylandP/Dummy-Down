@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react'
+import { renderWithProgress as render } from '../test/renderWithProgress'
+import { screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import PracticePage from './PracticePage'
 import { learningActivities } from '../data/learning'
@@ -26,9 +27,9 @@ describe('practice index', () => {
     window.history.replaceState(null, '', '/practice')
     render(<PracticePage />)
     expect(sitePage(new URL(window.location.href))).toBe('practice')
-    expect(screen.getByRole('status')).toHaveTextContent(
-      `${learningActivities.length} activities available`,
-    )
+    expect(
+      screen.getByRole('status', { name: 'Activity results' }),
+    ).toHaveTextContent(`${learningActivities.length} activities available`)
     for (const activity of learningActivities) {
       const url = new URL(
         screen
@@ -46,6 +47,15 @@ describe('practice index', () => {
     expect(screen.getByText(/Project example/)).toBeVisible()
   })
 
+  it('keeps the project example out of a source level filter', () => {
+    window.history.replaceState(null, '', '/practice?level=Level+2')
+    render(<PracticePage />)
+    expect(
+      screen.getByRole('status', { name: 'Activity results' }),
+    ).toHaveTextContent('3 activities available')
+    expect(screen.queryByText(/Project example/)).not.toBeInTheDocument()
+  })
+
   it('makes unmatched search and unavailable levels recoverable without substituting an activity', () => {
     window.history.replaceState(
       null,
@@ -53,9 +63,9 @@ describe('practice index', () => {
       '/practice?q=no-such-topic&level=unavailable',
     )
     render(<PracticePage />)
-    expect(screen.getByRole('status')).toHaveTextContent(
-      '0 activities available',
-    )
+    expect(
+      screen.getByRole('status', { name: 'Activity results' }),
+    ).toHaveTextContent('0 activities available')
     expect(
       screen.getByRole('heading', { name: 'No matching activities.' }),
     ).toBeVisible()

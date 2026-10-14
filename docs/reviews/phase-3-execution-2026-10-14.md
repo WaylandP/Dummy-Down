@@ -209,3 +209,55 @@ suite. Native zoom, actual assistive technology and learner acceptance remain op
 Player JavaScript is 17.20 kB (5.73 kB gzip) plus 5.02 kB CSS (1.42 kB gzip), loaded
 only on request. No external media is fetched. Main JavaScript is 504.94 kB
 (135.39 kB gzip); the existing advisory remains a final integration review item.
+
+### Increment 3 publication
+
+[PR #21](https://github.com/WaylandP/cipher-and-chalk/pull/21) head
+`275229fb40ec3bbbd67c667a4a5d5b1d603a47ef` passed CI run `38597268769`
+(509 unit / 97 browser checks) and Vercel preview deployment `7070936882`:
+https://cipherandchalk-en35dmy2b-waylandp.vercel.app . Ordinary squash merge,
+without bypass, produced `40d075489731c0dee916db27d68b5fba073009c2` at 16:25:17 UTC.
+Production deployment `7071046114` reported success for that exact merge:
+https://cipherandchalk-7mpge72x9-waylandp.vercel.app . Hosted rendering remains
+unverified from this restricted environment; provider deployment evidence and
+local production-browser results are distinct.
+
+## Increment 4: optional local progress
+
+The existing question player now reads a single app-level local store. Saving is
+off by default. Explicit opt-in enables resume, visited/completed distinctions,
+revisit marks and latest-answer reasoning review. The practice room offers native
+filters and exact-identity links; a project example is excluded from CMMC level
+filters. The local-data contract, failure boundaries and versioning obligations
+are documented in [LOCAL_PROGRESS.md](../LOCAL_PROGRESS.md).
+
+Independent review found two cross-tab loss paths in the initial store: refreshing
+a previously unsaved tab discarded its distinct work, and a second enable could
+overwrite the first tab's saved activities. The store now merges distinct local
+work with live consent-authorized storage while existing same-activity saved state
+and explicit deletion take precedence. Regression tests cover those cases and
+revocation races. Enabling also moves focus to the stable settings status instead
+of leaving it on a removed button. Review of earlier answers is available before
+completion; the latest checked choice is retained without storing answer text.
+
+No analytics schema/permission change, backend, account, identifier, free-text
+storage or official content edit is included. GPC/DNT and browser restrictions
+retain usable unsaved practice. No human approval or native gstack full pass is
+claimed. Publication and final validation evidence will be added after checks.
+
+### Increment 4 local validation
+
+All seven project checks passed, including 562 unit tests and the full 110-test
+Chromium suite. Thirteen new browser cases cover all five requested widths, actual
+reload/resume, completion and answer review, content-version reset, two unsaved tabs
+joining saving, cross-tab deletion, GPC/DNT/storage restrictions and keyboard focus
+when the last filtered mark is removed. No horizontal overflow or normal-palette
+axe violation was found in the checked states. Forced-color semantic checks omit
+axe's known authored-color calculation; the actual system-color screenshot was
+inspected separately. Native zoom/AT/Safari and human acceptance remain pending.
+
+Actual desktop/mobile progress and answer-review screenshots were inspected. The
+existing index captures were refreshed after adding filters. A final independent
+integration read found no remaining blocking defect after the two store fixes,
+enable focus, filtered-row focus and unsaved-filter clarity repairs. The full
+browser regression also retains all three real 40-second playback checks.

@@ -1,4 +1,5 @@
-import { render, screen, within } from '@testing-library/react'
+import { renderWithProgress as render } from '../test/renderWithProgress'
+import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 import { referenceControls } from '../data/cmmc-references'

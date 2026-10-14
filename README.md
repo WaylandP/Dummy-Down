@@ -97,11 +97,14 @@ reviewed.
 - Three 40-second draft visual explanations for authorized access, MFA and
   response-team deployment, with playback controls, transcripts and still stages
   for reduced motion. Open “Watch the idea” inside those lessons.
+- Optional progress saved in this browser: resume checked questions, mark topics to
+  revisit, distinguish visited and completed activities, and review answer reasoning.
+  Saving starts off and includes a delete/reset control. See [what is stored](docs/LOCAL_PROGRESS.md).
 - Diagrams with text equivalents, loading/error recovery, review-status disclosures,
   source comparison, and optional privacy-preserving usage measurement.
 
 There are currently no user accounts, organizational evidence uploads, compliance
-scores, saved learning progress, or chatbot. Additional frameworks are not available yet.
+scores, cloud-synchronized learning records, or chatbot. Additional frameworks are not available yet.
 
 ## Current CMMC coverage and review status
 
@@ -162,7 +165,7 @@ The project still follows the original four phases:
    or externally blocked. This phase is not complete.
 3. **Make Learning Interactive** — 13 draft activities, 39 explained questions,
    three diagrams, three short visual explanations and a searchable practice index
-   are implemented. Optional local progress is the next engineering increment.
+   and optional local progress are implemented. Final integration validation follows.
    Qualified content and learner validation remain pending. This phase is not complete.
 4. **Expand the Platform** — the architecture and contribution guidance support
    future growth. NIST SP 800-53, FedRAMP, SOC 2, ISO/IEC 27001, HIPAA Security Rule,

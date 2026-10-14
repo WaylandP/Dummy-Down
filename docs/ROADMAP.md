@@ -160,15 +160,18 @@ seven-milestone baseline audit, limited merge authorization and validation limit
 - [ ] **Awaiting qualified human review** — Expand reviewed exercises and realistic
       scenarios across more Level 1, Level 2, and Level 3 concepts. Draft authorship
       does not complete this review milestone.
-- [ ] **Implemented; merge and deployment validation in progress** — Increment 3
+- [x] **Completed and merged into main** — Increment 3
       adds three 40-second visual explanations with play/pause/restart, synchronized
-      text, complete transcripts, manual still stages and deferred loading. Automated
-      and browser validation are in progress.
+      text, complete transcripts, manual still stages and deferred loading. PR #21
+      merged at `40d0754`; 509 unit / 97 browser CI checks and production deployment passed.
 - [ ] **Awaiting qualified human review** — Review animated explanations for
       educational accuracy and actual visual-learner comprehension.
-- [ ] **Planned for future development** — Explore progress and practice features
-      only after privacy, accessibility, retention, and learner-value questions are
-      defined. Saved progress is not currently implemented.
+- [ ] **Implemented; merge and deployment validation in progress** — Increment 4
+      adds optional local progress, resume, visited/completed/revisit filters, answer
+      review and deletion. No accounts, cloud sync or compliance score. Privacy,
+      storage failure, version changes and multi-tab behavior have dedicated checks.
+- [ ] **Awaiting learner and accessibility review** — Validate whether optional
+      progress and review controls help real learners and assistive-technology users.
 
 Phase 3 is not complete. Thirteen activities and 39 questions are a focused learning
 sample, not interactive coverage of the full catalog.
