@@ -346,3 +346,36 @@ those captured states. These are bounded engineering observations, not evidence
 that real beginners find it comfortable. Mobile lesson/completion captures are
 viewport crops, not entire-page screenshots. Owner/learner/native-zoom/AT/Safari
 acceptance and qualified content review remain explicitly open.
+
+### Increment 5 publication and engineering completion
+
+[PR #23](https://github.com/WaylandP/cipher-and-chalk/pull/23) head
+`bd5e13c185102a2d36c04225864405cb552ae1bf` passed GitHub CI run `38607136923`
+and Vercel preview `7072501066`:
+https://cipherandchalk-i2rju8wps-waylandp.vercel.app . Ordinary squash merge,
+with exact-head/gate checks and no bypass, produced `6a5133bc9b53c05cb942c366d57cea4223809b1f` at 2026-10-14T17:34:41Z.
+Production deployment `7072612682` reported success for that exact merge at 2026-10-14T17:35:02Z:
+https://cipherandchalk-iz7qh9iq7-waylandp.vercel.app . All five scoped feature increments are now merged and automatically
+deployed; this documentation receipt records those observed facts afterward.
+
+The final runtime-dependency check, `npm audit --omit=dev --json`, exited 0 and
+reported zero known advisories (info/low/moderate/high/critical all zero). No lockfile
+or dependency changed. This is an advisory-database check, not a security guarantee.
+The earlier main-branch CI runs for increments 2–4 also reported success; final
+publication uses exact feature-head CI plus observed automatic deployment status.
+
+### What remains outside independent engineering
+
+Qualified review of draft activities, visual scripts, glossary and perspectives;
+current official-host source bytes/applicability; two pre-existing specialized-asset
+objective-mapping gaps; owner visual acceptance; real-learner comprehension; actual
+screen-reader, native 200%/400% zoom and Safari/iOS validation remain open. The
+[review packet](../testing/PHASE_3_WALKTHROUGH.md) gives concrete next steps and keeps
+those checkboxes unchecked. No new framework, organization evidence collection,
+account, paid provider, manual promotion or production infrastructure change was
+introduced. The general manual-merge rule remains in AGENTS.md for future tasks.
+
+Live Vercel rendering from this cloud environment remains unverified because the
+network policy rejects those hosts before an origin response. Exact deployment
+SHA/status is confirmed through GitHub; actual screenshots and interaction evidence
+come from the local production build, not from a claimed hosted-browser session.
