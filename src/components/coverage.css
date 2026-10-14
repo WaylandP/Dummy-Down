@@ -73,6 +73,10 @@
   }
   .coverage-filters .filter-field {
     min-width: 0;
+    margin-bottom: 0;
+  }
+  .coverage-filters .filter-field select {
+    min-height: 48px;
   }
   .coverage-filters .filter-field > span {
     font-size: 13px;
