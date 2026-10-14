@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { setPageMeta } from '../seo/page-meta'
 
 type LearningModule = typeof import('./LearningPage')
 const loadLearningPage = () => import('./LearningPage')
@@ -13,7 +14,7 @@ export function LearningRoute({
   const [failed, setFailed] = useState(false)
   useEffect(() => {
     let active = true
-    document.title = 'Learning workspace | Cipher & Chalk'
+    setPageMeta({ title: 'Learning workspace' })
     load()
       .then((loaded) => {
         if (active) setModule(loaded)

@@ -151,3 +151,6 @@ vite.config.ts.timestamp-*
 # Private browser/session outputs
 playwright-report/
 test-results/
+
+# Generated at build time by scripts/build-sitemap.mjs
+public/sitemap.xml

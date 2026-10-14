@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { setPageMeta } from '../seo/page-meta'
 import { explorerCatalog } from '../data/content'
 import { useExplorerState } from '../state/useExplorerState'
 import { useControlView } from '../analytics/useControlView'
@@ -17,8 +18,16 @@ export default function LearningPage() {
       ? 'Unavailable lesson'
       : 'Control Explorer'
   useEffect(() => {
-    document.title = `${title} | Cipher & Chalk`
-  }, [title])
+    setPageMeta({
+      title,
+      description: lesson
+        ? `${lesson.id} ${lesson.title}: the official CMMC requirement with Beginner, IT & Cyber and Compliance explanations.`
+        : undefined,
+      canonicalPath: lesson
+        ? `/learn?view=lesson&framework=${lesson.frameworkId}&edition=${lesson.editionId}&control=${lesson.key}`
+        : '/learn?view=discover&collection=references',
+    })
+  }, [title, lesson])
   const mode =
     controller.parsed.kind === 'ready'
       ? controller.parsed.state.mode
