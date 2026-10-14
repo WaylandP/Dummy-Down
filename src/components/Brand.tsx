@@ -13,7 +13,7 @@ export function ChalkMark() {
 
 export function Brand() {
   return (
-    <a href="#top" className="brand" aria-label="Cipher & Chalk home">
+    <a href="/" className="brand" aria-label="Cipher & Chalk home">
       <ChalkMark />
       <span className="brand-wordmark" aria-hidden="true">
         Cipher <span className="brand-ampersand">&amp;</span> Chalk

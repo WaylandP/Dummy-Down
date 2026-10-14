@@ -15,19 +15,18 @@ Feature work is reviewed in separate Vercel previews before an approved merge;
 production and a pull request's preview can show different versions. See
 [deployment and preview review](docs/DEPLOYMENT.md).
 
-The existing interface is being corrected to match the owner's supplied **Decode
-Board** reference: a four-part chalk mark, bold wordmark, deep green learning
-surfaces and a handwritten Requirement → Meaning → Real life illustration.
-See the [reference visual checkpoint](docs/reviews/reference-visual-2026-10-14.md)
-for before/after screenshots, validation and the current Draft PR/preview.
-Owner visual feedback is required before marking this correction ready for review.
+The current visual checkpoint follows the owner's latest feedback: a matte black
+board, soft chalk headings, comfortable reading text and fewer elements per page.
+Home, Learn, Glossary and About are separate pages. Opening a control folds the
+browsing tools away; “Browse & filter controls” brings them back.
+See the [blackboard checkpoint](docs/reviews/blackboard-comfort-2026-10-14.md)
+for screenshots, validation and the Draft PR. Owner visual acceptance is pending.
 
-The [design contract](docs/DESIGN.md) now follows both supplied images. The earlier
-[full UI inventory](docs/designs/cipher-and-chalk.md) remains useful for behavior
-coverage; its text-only visual interpretation is superseded. Qualified content
-approval, screen-reader testing and real-learner review remain pending.
+The [design contract](docs/DESIGN.md) retains the supplied four-part mark while
+superseding the earlier green composition. Qualified content approval,
+screen-reader testing and real-learner review remain pending.
 
-![Cipher & Chalk reference implementation](docs/screenshots/reference/after-desktop.png)
+![Cipher & Chalk blackboard homepage](docs/screenshots/blackboard/home-desktop.png)
 
 ## What you can use today
 

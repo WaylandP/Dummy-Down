@@ -79,6 +79,7 @@ describe('Usage interaction wiring', () => {
   })
 
   it('ignores an untouched search field and measures another edit separately', async () => {
+    window.history.replaceState(null, '', '/glossary')
     const user = userEvent.setup()
     render(<App />)
     vi.mocked(trackUsage).mockClear()

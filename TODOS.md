@@ -11,13 +11,11 @@ available teaching drafts and pending review. No completion percentage is implie
   Obtain real qualified review before approval claims. Resolve the recorded
   official-host access failures and verify current DoD/FAR/NIST applicability
   without silently replacing the September 2024 v2.13 snapshot.
-- **P1: owner feedback on the reference correction.** Both design images are now
-  available visually and govern the dark chalkboard implementation. Review the
-  [Draft visual checkpoint](docs/reviews/reference-visual-2026-10-14.md), its preview,
-  before/after screenshots and remaining type/texture differences. Keep the PR
-  Draft until feedback and final validation. Preserve source/draft notices,
-  routes, privacy and working learning interactions. Screen-reader/Safari and
-  real-learner checks remain pending; no complete accessibility audit is claimed.
+- **P1: owner feedback on the calmer blackboard.** Review the
+  [Draft blackboard checkpoint](docs/reviews/blackboard-comfort-2026-10-14.md),
+  its preview and desktop/phone screenshots. The latest feedback overrides the
+  green composition. Keep the PR Draft until feedback and final validation.
+  Screen-reader/Safari and real-learner checks remain pending.
 - **P2: review the focused learning milestone.** Three Level 1 activities now
   cover authorized access, public information and media disposal with fictional
   scenarios, common misunderstandings, nine explained questions and three

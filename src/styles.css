@@ -20,16 +20,16 @@
 }
 
 @theme {
-  --color-canvas: #052b23;
-  --color-surface: #072f27;
-  --color-raised: #12372f;
-  --color-foreground: #f1f4ef;
-  --color-muted: #b4c9bf;
-  --color-accent: #53e6d4;
-  --color-line: #365c50;
-  --color-draft: #b4c9bf;
+  --color-canvas: #111111;
+  --color-surface: #171717;
+  --color-raised: #202020;
+  --color-foreground: #deded7;
+  --color-muted: #a9aaa4;
+  --color-accent: #becfc5;
+  --color-line: #343534;
+  --color-draft: #a9aaa4;
   --font-sans: 'IBM Plex Sans', 'Segoe UI', sans-serif;
-  --font-display: 'Barlow', 'IBM Plex Sans', sans-serif;
+  --font-display: 'IBM Plex Sans', 'Segoe UI', sans-serif;
   --font-brand: 'Changa One', Impact, sans-serif;
   --font-chalk: 'Kalam', cursive;
   --font-code: ui-monospace, monospace;
@@ -37,16 +37,16 @@
 
 :root {
   color-scheme: dark;
-  --color-field-border: #739e8c;
-  --color-board: #052b23;
-  --color-board-raised: #12372f;
-  --color-chalk: #f1f4ef;
-  --color-board-muted: #b4c9bf;
-  --color-board-line: #365c50;
-  --color-board-accent: #53e6d4;
-  --color-success: #8fddaa;
-  --color-error: #ffb1a2;
-  --color-warning: #ecc981;
+  --color-field-border: #777a74;
+  --color-board: #111111;
+  --color-board-raised: #202020;
+  --color-chalk: #deded7;
+  --color-board-muted: #a9aaa4;
+  --color-board-line: #343534;
+  --color-board-accent: #becfc5;
+  --color-success: #b8ceb5;
+  --color-error: #e9b5a8;
+  --color-warning: #d1c49d;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -58,7 +58,7 @@
   --radius-sm: 3px;
   --radius-md: 4px;
   --radius-lg: 8px;
-  --shadow-panel: 0 8px 24px #052b230a;
+  --shadow-panel: 0 8px 24px #1111110a;
   --focus-ring: 3px solid var(--color-accent);
   --motion-fast: 140ms;
   --motion-ease: ease-out;
@@ -74,7 +74,6 @@
   }
   body {
     @apply m-0 bg-canvas font-sans text-foreground antialiased;
-    background-image: url('/brand/board-grain.svg');
     font-size: var(--text-body);
     line-height: 1.65;
   }
@@ -108,7 +107,7 @@
     outline-offset: 4px;
   }
   ::selection {
-    background: #bce3d6;
+    background: #c8d2ca;
     color: var(--color-board);
   }
   h1,
@@ -128,7 +127,7 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 500;
   }
   h4,
   h5 {
@@ -153,33 +152,6 @@
     --color-accent: var(--color-board-accent);
     --color-line: var(--color-board-line);
     --focus-ring: 3px solid var(--color-board-accent);
-  }
-  .intro-copy h1 em {
-    color: var(--color-board-accent);
-    font-weight: inherit;
-    font-style: normal;
-  }
-  .intro-description {
-    color: var(--color-muted);
-  }
-  .hero-actions {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: 28px;
-  }
-  .hero-actions > span {
-    font-size: 13px;
-    color: var(--color-muted);
-  }
-  .button-chalk {
-    background: var(--color-accent);
-    color: var(--color-board);
-    padding-inline: 20px;
-  }
-  .button-chalk:hover {
-    background: #bce3d6;
   }
   .learning-meaning,
   .learning-misunderstanding {
@@ -435,72 +407,6 @@
     padding-left: 20px;
     border-left: 1px solid var(--color-line);
   }
-  .editorial-intro {
-    display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-    gap: 40px;
-    align-items: center;
-    padding-block: 64px 72px;
-    min-height: 560px;
-  }
-  .intro-copy h1 {
-    max-width: none;
-    font-size: clamp(44px, 5vw, 72px);
-    line-height: 1.06;
-    letter-spacing: -1.7px;
-    text-wrap: initial;
-  }
-  .intro-kicker {
-    font-family: var(--font-code);
-    color: var(--color-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    font-size: 13px;
-    line-height: 1.9;
-    margin-bottom: 30px;
-  }
-  .intro-kicker::after {
-    content: '';
-    display: block;
-    width: 80px;
-    border-bottom: 2px solid var(--color-accent);
-    margin-top: 18px;
-    transform: rotate(-1deg);
-  }
-  .intro-copy h1::after {
-    content: '';
-    display: block;
-    width: 115px;
-    height: 7px;
-    background: var(--color-accent);
-    border-radius: 70% 35% 45% 20%;
-    margin-top: 17px;
-    transform: rotate(-2deg);
-  }
-  .intro-copy .intro-description {
-    margin-top: 26px;
-    color: var(--color-chalk);
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(21px, 2.05vw, 29px);
-    line-height: 1.5;
-  }
-  .intro-meta {
-    color: var(--color-muted);
-    font-size: 15px;
-    max-width: 40ch;
-  }
-  .intro-meta p + p {
-    margin-top: var(--space-3);
-  }
-  .intro-meta a {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    min-height: 44px;
-    color: var(--color-accent);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
   h2 {
     font-size: 32px;
     line-height: 1.25;
@@ -664,7 +570,7 @@
     --focus-ring: 3px solid var(--color-board-accent);
     --color-raised: var(--color-board-raised);
     --color-surface: var(--color-board-raised);
-    --color-field-border: #728e80;
+    --color-field-border: #777a74;
     color-scheme: dark;
     border-bottom-left-radius: var(--radius-lg);
   }
@@ -945,7 +851,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-1);
     padding: var(--space-1);
-    background: #03251e;
+    background: #141414;
     border: 1px solid var(--color-line);
     border-radius: var(--radius-md);
   }
@@ -1006,13 +912,13 @@
   .perspective-example,
   .example-box {
     padding: 20px;
-    background: #12372f;
+    background: #202020;
     border: 1px solid var(--color-line);
     border-radius: var(--radius-md);
   }
   .perspective-watch {
     padding-left: 20px;
-    border-left: 3px solid #ecc981;
+    border-left: 3px solid #d1c49d;
   }
   .control-perspective h5 {
     font-size: 17px;
@@ -1169,10 +1075,10 @@
     color: var(--color-surface);
   }
   .button-primary:hover {
-    background: #8beee1;
+    background: #d9e0d9;
   }
   .button-primary:active {
-    background: #b7f4e8;
+    background: #c8d2ca;
   }
   .explorer-disclaimer {
     display: flex;
@@ -1360,7 +1266,7 @@
     padding: var(--space-6);
     border: 1px solid var(--color-line);
     border-radius: var(--radius-md);
-    background: #03251e;
+    background: #141414;
     font-size: 16px;
   }
   .practice-heading {
@@ -1551,7 +1457,7 @@
     border-color: var(--color-field-border);
   }
   .practice-action:hover:not(:disabled) {
-    background: #8beee1;
+    background: #d9e0d9;
     color: var(--color-surface);
   }
   .practice-action:disabled {
@@ -2036,340 +1942,382 @@
 }
 
 @layer components {
-  .site-header .nav-browse {
-    color: var(--color-board);
-    background: var(--color-accent);
-    padding-inline: 24px;
-    min-height: 52px;
-    border-radius: 8px;
-    font-weight: 500;
+  .site-page {
+    min-height: 100vh;
   }
-  .site-header .nav-browse:hover {
-    color: var(--color-board);
-    background: #8beee1;
+  .site-header {
+    min-height: 92px;
   }
-  .nav-search {
-    justify-content: center;
-    min-width: 44px;
+  .site-header nav {
+    gap: 32px;
   }
-  .decode-diagram {
-    margin: 0;
-    min-width: 0;
-  }
-  .chalk-flow {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 40px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .chalk-step {
-    position: relative;
-    min-width: 0;
-    text-align: center;
-  }
-  .chalk-note,
-  .chalk-example {
-    font-family: var(--font-chalk);
-    font-size: 23px;
-    line-height: 1.3;
-    color: var(--color-chalk);
-  }
-  .chalk-note {
-    transform: rotate(-5deg);
-  }
-  .chalk-step:nth-child(2) .chalk-note {
-    transform: rotate(-7deg);
-  }
-  .chalk-step:nth-child(3) .chalk-note {
-    transform: rotate(-6deg);
-  }
-  .chalk-note-arrow {
-    display: block;
-    width: 40px;
-    height: 45px;
-    margin: 3px auto 6px;
-  }
-  .decode-diagram svg {
-    stroke: currentColor;
-    stroke-width: 2.3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .chalk-frame {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 146px;
-    padding: 12px 6px;
-  }
-  .chalk-frame-line {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.9;
-    pointer-events: none;
-  }
-  .chalk-icon {
-    width: 80px;
-    height: 78px;
-  }
-  .chalk-frame > span {
-    font-family: var(--font-chalk);
-    font-size: 21px;
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
-  .chalk-flow-arrow {
-    position: absolute;
-    top: 181px;
-    right: -38px;
-    width: 36px;
-    height: 28px;
-  }
-  .chalk-example {
-    margin-top: 20px;
-    font-size: 20px;
-  }
-  .chalk-circle {
-    position: relative;
-    padding: 10px 0;
-    margin-inline: -10px;
-  }
-  .chalk-circle::before {
-    content: '';
-    position: absolute;
-    inset: -1px -8px;
-    border: 2px solid var(--color-chalk);
-    border-radius: 50%;
-    transform: rotate(-7deg);
-    opacity: 0.85;
-  }
-  .chalk-circle::after {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: -8px;
-    width: 16px;
-    border-top: 3px solid var(--color-accent);
-    transform: rotate(35deg);
-  }
-  .chalk-underline::after {
-    content: '';
-    display: block;
-    width: 65%;
-    margin: 9px auto 0;
-    border-bottom: 3px solid var(--color-accent);
-    transform: rotate(-7deg);
-  }
-  .decode-diagram figcaption {
+  .site-header nav a {
     color: var(--color-muted);
-    font-size: 12px;
-    line-height: 1.6;
-    margin-top: 32px;
-    text-align: center;
   }
-  .lesson-diagram {
-    border: 1px solid var(--color-field-border);
+  .site-header nav a[aria-current='page'] {
+    color: var(--color-foreground);
+    text-decoration: underline;
+    text-underline-offset: 8px;
+  }
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+  .brand-wordmark {
+    font-size: 28px;
+  }
+  .blackboard-home {
+    max-width: 1040px;
+    padding-block: 88px 80px;
+    background-image: url('/brand/board-grain.svg');
+  }
+  .home-kicker {
+    color: var(--color-muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  .blackboard-home h1,
+  .about-page h1,
+  .page-title {
+    font-family: var(--font-chalk);
+    font-weight: 400;
+    color: #e2e1d9;
+    letter-spacing: -1px;
+    text-wrap: initial;
+  }
+  .blackboard-home h1 {
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1.2;
+  }
+  .home-description {
+    color: #b4b6af;
+    font-size: 19px;
+    line-height: 1.8;
+    margin-top: 24px;
+    max-width: 52ch;
+  }
+  .home-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 32px;
+    margin-top: 36px;
+  }
+  .home-actions .button {
+    padding-inline: 22px;
+    background: #d2d8d1;
+    color: #171717;
+  }
+  .home-actions .button:hover {
+    background: #e0e4dd;
+  }
+  .sample-link {
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+    min-height: 48px;
+    font-size: 15px;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+  .chalk-margin {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    color: #acb0a6;
+    font-family: var(--font-chalk);
+    font-size: 24px;
+    margin-top: 56px;
+  }
+  .chalk-margin span:last-child {
+    text-decoration: underline;
+    text-decoration-color: #777c70;
+    text-underline-offset: 7px;
+    text-decoration-thickness: 2px;
+  }
+  .home-footnote {
+    color: var(--color-muted);
+    font-size: 13px;
+    margin-top: 22px;
+  }
+  .page-title {
+    font-size: 48px;
+    margin-top: 56px;
+  }
+  .page-glossary .glossary {
+    padding-top: 24px;
+    max-width: 1040px;
+  }
+  .page-glossary .page-title {
+    max-width: 1040px;
+  }
+  .page-glossary .glossary .eyebrow {
+    display: none;
+  }
+  .page-glossary .glossary-list {
+    column-gap: 64px;
+  }
+  .about-page {
+    max-width: 760px;
+    padding-block: 64px 80px;
+  }
+  .about-page h1 {
+    font-size: clamp(42px, 5vw, 64px);
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+  .about-page section > p:not(.home-kicker),
+  .about-page > p {
+    font-size: 18px;
+    line-height: 1.85;
+    color: #b4b6af;
+    margin-block: 20px;
+    max-width: 65ch;
+  }
+  .about-page #approach {
+    margin-top: 64px;
+    padding-top: 36px;
+    border-top: 1px solid var(--color-line);
+  }
+  .about-page h2 {
+    font-size: 26px;
+  }
+  .about-page .perspective-list {
+    display: block;
+  }
+  .about-page .perspective-link {
+    display: block;
+    padding-block: 20px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .about-page .perspective-description {
+    font-size: 16px;
+  }
+  .explorer-section {
+    max-width: 1160px;
+    padding-block: 48px 72px;
+  }
+  .explorer-section .section-caption {
+    display: none;
+  }
+  .explorer-section .section-heading {
+    margin-bottom: 28px;
+  }
+  .explorer-section h2 {
+    font-size: 30px;
+  }
+  .explorer-shell {
+    border-radius: 4px;
+    box-shadow: none;
+  }
+  .explorer-shell.is-reading:not(.is-browsing) .explorer-toolbar,
+  .explorer-shell.is-reading:not(.is-browsing) .cmmc-levels,
+  .explorer-shell.is-reading:not(.is-browsing) .results-body {
+    display: none;
+  }
+  .explorer-shell.is-reading:not(.is-browsing) .explorer-body {
+    grid-template-columns: 1fr;
+  }
+  .explorer-shell.is-reading:not(.is-browsing) .control-sidebar {
+    padding: 8px 32px;
+    border-bottom: 1px solid var(--color-line);
+    border-radius: 0;
+    background: transparent;
+  }
+  .mobile-results-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 48px;
+    color: var(--color-accent);
+    font-size: 14px;
+  }
+  .control-sidebar.is-collapsed .results-body {
+    display: none;
+  }
+  .control-detail {
+    padding: 40px 48px 56px;
+  }
+  .explorer-shell.is-reading:not(.is-browsing) .control-detail {
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+    border: 0;
+  }
+  .control-detail h3 {
+    font-size: clamp(26px, 2.5vw, 32px);
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .reference-requirement {
+    margin-top: 28px;
+    padding: 22px 24px;
+    border-left-width: 2px;
+  }
+  .perspective-heading {
+    margin-top: 36px;
+  }
+  .mode-tabs {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    border-bottom: 1px solid var(--color-field-border);
+    border-radius: 0;
+    gap: 12px;
+  }
+  .mode-tabs button {
+    border-radius: 0;
+    font-size: 15px;
+  }
+  .mode-tabs button[aria-selected='true'] {
+    background: #262926;
+    color: var(--color-foreground);
+    border-color: transparent;
+    box-shadow: inset 0 -3px #b4c1b7;
+  }
+  .explanation-panel {
+    padding-top: 32px;
   }
   .instruction-eyebrow {
     font-family: var(--font-chalk);
     font-size: 19px;
   }
-  .control-detail h3 {
-    font-size: clamp(29px, 2.75vw, 38px);
+  .perspective-example,
+  .example-box {
+    margin-top: 32px;
+    padding: 24px;
+    border: 0;
+    border-radius: 2px;
   }
-}
-@media (min-width: 761px) and (max-width: 1100px) {
-  .site-header nav {
-    gap: 14px;
+  .learning-practice {
+    margin-top: 40px;
+    padding: 28px;
   }
-  .brand-wordmark {
-    font-size: 29px;
+  .lesson-diagram {
+    border: 1px solid var(--color-field-border);
   }
-  .site-header .nav-browse {
-    padding-inline: 14px;
+  .footer-disclaimer {
+    color: var(--color-muted);
+    font-size: 12px;
+    line-height: 1.8;
+    max-width: 78ch;
   }
-  .editorial-intro {
-    gap: 32px;
+  .site-footer {
+    padding-block: 24px 32px;
   }
-  .intro-copy h1 {
-    font-size: clamp(38px, 4.9vw, 52px);
-  }
-  .chalk-flow {
-    gap: 24px;
-  }
-  .chalk-flow-arrow {
-    width: 24px;
-    right: -24px;
-  }
-  .chalk-frame > span {
-    font-size: 17px;
-  }
-  .chalk-note {
-    font-size: 20px;
-  }
-  .chalk-example {
-    font-size: 18px;
+  .usage-preferences {
+    padding-block: 8px;
+    margin-bottom: 16px;
   }
 }
 @media (max-width: 760px) {
-  .editorial-intro {
-    min-height: 0;
+  .site-header {
+    min-height: 112px;
+    padding-block: 16px 8px;
+    row-gap: 8px;
   }
-  .intro-kicker {
-    font-size: 11px;
-    margin-bottom: 25px;
+  .site-header nav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 28px;
+    font-size: 14px;
   }
-  .intro-copy .intro-description {
-    font-size: 22px;
-    margin-top: 22px;
+  .brand-wordmark {
+    font-size: 27px;
   }
-  .hero-actions {
-    margin-top: 22px;
+  .blackboard-home {
+    padding-block: 48px 56px;
   }
-  .decode-diagram {
-    margin-top: 52px;
+  .home-kicker {
+    font-size: 13px;
+    margin-bottom: 24px;
   }
-  .chalk-flow {
-    grid-template-columns: 1fr;
-    gap: 44px;
+  .blackboard-home h1 {
+    font-size: clamp(42px, 10vw, 64px);
   }
-  .chalk-step {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: 22px;
-    align-items: center;
-  }
-  .chalk-note {
-    grid-column: 1 / -1;
-    text-align: left;
-    font-size: 21px;
-    transform: none !important;
-    margin-bottom: 12px;
-  }
-  .chalk-note br {
-    display: none;
-  }
-  .chalk-note-arrow {
-    display: none;
-  }
-  .chalk-frame {
-    min-height: 130px;
-  }
-  .chalk-frame > span {
-    font-size: 18px;
-  }
-  .chalk-icon {
-    width: 66px;
-    height: 65px;
-  }
-  .chalk-example {
-    font-size: 20px;
-    margin-top: 0;
-  }
-  .chalk-example br {
-    display: none;
-  }
-  .chalk-flow-arrow {
-    top: auto;
-    right: auto;
-    left: calc(25% - 20px);
-    bottom: -36px;
-    transform: rotate(90deg);
-    width: 28px;
-    height: 22px;
-  }
-  .chalk-circle {
-    margin: 0;
-    padding: 10px 3px;
-  }
-  .decode-diagram figcaption {
-    font-size: 12px;
+  .home-description {
+    font-size: 17px;
     margin-top: 24px;
   }
-  .site-header .nav-browse {
-    min-height: 44px;
-    font-size: 13px;
-    padding-inline: 12px;
-    margin-left: auto;
+  .desktop-break {
+    display: none;
   }
-  .nav-search {
-    min-width: 44px;
+  .home-actions {
+    gap: 12px 24px;
+    margin-top: 28px;
   }
-  .footer-top .brand-wordmark {
-    font-size: 27px;
-  }
-}
-/* Give the drawing its own row before its annotations become cramped. */
-@media (min-width: 761px) and (max-width: 1000px) {
-  .editorial-intro {
-    grid-template-columns: 1fr;
-    gap: 48px;
-    padding-block: 48px;
-  }
-  .intro-copy h1 {
-    font-size: 64px;
-  }
-  .intro-copy .intro-description {
-    font-size: 27px;
-  }
-  .chalk-flow {
-    gap: 40px;
-  }
-  .chalk-flow-arrow {
-    width: 36px;
-    right: -38px;
-  }
-  .chalk-note {
-    font-size: 23px;
-  }
-  .chalk-frame > span {
+  .chalk-margin {
     font-size: 21px;
+    gap: 12px;
+    margin-top: 36px;
   }
-  .chalk-example {
-    font-size: 20px;
+  .home-footnote {
+    max-width: 32ch;
+    line-height: 1.8;
+  }
+  .page-title {
+    font-size: 40px;
+    margin-top: 36px;
+  }
+  .about-page {
+    padding-block: 40px 56px;
+  }
+  .about-page section > p:not(.home-kicker) {
+    font-size: 16px;
+  }
+  .explorer-section {
+    padding-top: 32px;
+  }
+  .explorer-section h2 {
+    font-size: 26px;
+  }
+  .explorer-shell.is-reading:not(.is-browsing) .control-sidebar {
+    padding-inline: 16px;
+  }
+  .control-detail {
+    padding: 24px 20px 32px;
+  }
+  .mode-tabs {
+    gap: 2px;
+  }
+  .mode-tabs button {
+    font-size: 14px;
+  }
+  .reference-requirement {
+    padding: 18px 16px;
+  }
+  .perspective-example,
+  .example-box,
+  .learning-practice {
+    padding: 18px;
+  }
+  .practice-choice {
+    padding: 12px;
+    gap: 8px;
   }
 }
 @media (max-width: 380px) {
-  .site-header nav {
-    gap: 3px 6px;
-    font-size: 12px;
+  .mode-tabs button {
+    font-size: 13px;
   }
-  .site-header .nav-browse {
-    padding-inline: 8px;
-    font-size: 12px;
+  .control-detail {
+    padding-inline: 16px;
   }
-  .nav-search {
-    min-width: 44px;
-  }
-  .chalk-frame > span {
-    font-size: 16px;
-  }
-  .chalk-example {
-    font-size: 18px;
-  }
-  .chalk-step {
-    column-gap: 18px;
-  }
-  .intro-copy .intro-description {
-    font-size: 20px;
+  .chalk-margin {
+    font-size: 19px;
+    gap: 10px;
   }
 }
 @media (forced-colors: active) {
-  body {
+  .blackboard-home {
     background-image: none;
   }
   .mode-tabs button[aria-selected='true'] {
     outline: 2px solid Highlight;
     outline-offset: -3px;
-  }
-  .chalk-frame-line,
-  .chalk-circle::before {
-    color: CanvasText;
   }
 }

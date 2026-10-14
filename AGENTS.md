@@ -1,15 +1,15 @@
 # Cipher & Chalk development
 
 Read README.md for the mission and roadmap, docs/DEVELOPMENT.md for the project
-commands, and docs/DESIGN.md for the active Decode Board design direction.
-Use the exact display name “Cipher & Chalk.” The supplied October 14 full design
-image and square logo are the authoritative visual direction, as recorded in
-`docs/design-references/README.md`. Match the four curved chalk-textured quadrants,
-heavy off-white/turquoise wordmark, dark green canvas, turquoise headline and
-handwritten teaching flow. This supersedes cream readers, serif display headings
-and the previous coded-C. Use crisp body text and solid dark reading surfaces.
-Preserve routes, content identities, analytics, privacy, quiz progress and source/
-draft labels. Follow docs/DESIGN.md; ask before departing from the supplied identity.
+commands, and docs/DESIGN.md for the active blackboard design direction.
+Use the exact display name “Cipher & Chalk.” The owner's latest October 14 feedback
+supersedes the green reference canvas and crowded composition: use matte black,
+soft off-white chalk, restrained accents and ample space. Keep the supplied four-part
+mark. Handwritten headings are welcome; long lessons use crisp body text and solid
+reading surfaces. Home, Learn, Glossary and About have separate native pages.
+Preserve content identities, legacy links, analytics privacy and source/draft labels.
+Keep existing local practice behavior within a lesson; page navigation/reload does
+not promise saved progress. Follow docs/DESIGN.md and prioritize reading comfort.
 GitHub now reports the externally renamed repository as WaylandP/cipher-and-chalk.
 Keep existing deployment/project, package, storage and content IDs; do not rename
 infrastructure or rewrite historical source URLs for a display-name change.
@@ -70,7 +70,7 @@ or claim provider data receipt without evidence and the owner's authorization.
 
 ## Current visual checkpoint
 
-The exact-reference task is a bounded visual correction. Use applicable design,
+The blackboard-comfort task is a bounded visual correction. Use applicable design,
 browse, QA and code review methods; no unrelated 58-skill audit or product-planning
 restart. At most two review/fix rounds, then publish the first validated preview
 on a Draft PR for owner feedback. Do not mark it ready before that feedback and

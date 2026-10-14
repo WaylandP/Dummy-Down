@@ -1,5 +1,10 @@
 # Authoritative Cipher & Chalk references
 
+The owner's later October 14 feedback explicitly supersedes the green canvas and
+busy composition: black background, softer chalk, less crowding and separate pages.
+See [the current design contract](../DESIGN.md). The images below remain the logo
+reference and historical context, not a requirement to restore green surfaces.
+
 The owner supplied and authorized two images in the October 14, 2026 conversation:
 
 1. A 1354 × 926 presentation headed “2 THE DECODE BOARD”: the upper portion is a
@@ -8,7 +13,7 @@ The owner supplied and authorized two images in the October 14, 2026 conversatio
    central circular negative space, interrupted cross, chalk abrasion and a green board.
 
 Both images were readable and visually inspected before implementation. The
-[exact implementation brief](exact-reference-brief.md) governs future visual work.
+[exact implementation brief](exact-reference-brief.md) records the earlier visual request.
 These images supersede the earlier text-only interpretation with cream readers
 and a coded-C icon. The presentation heading is not website content.
 

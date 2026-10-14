@@ -6,7 +6,7 @@ import { referenceControls } from '../data/content'
 import { findCmmcPerspective } from '../data/cmmc-perspectives'
 import { ReferencePerspectives } from './ReferencePerspectives'
 
-beforeEach(() => window.history.replaceState(null, '', '/'))
+beforeEach(() => window.history.replaceState(null, '', '/learn'))
 
 function fixture(id: string) {
   const control = referenceControls.find((item) => item.id === id)

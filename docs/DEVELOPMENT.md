@@ -16,6 +16,21 @@ disposal; together with the original demo, there are four activities and 12
 explained questions. Qualified human review and current applicability verification
 remain pending. Accounts and a backend are outside this iteration.
 
+## Page navigation
+
+Home (`/`), Learn (`/learn`), Glossary (`/glossary`) and About (`/about`) use native
+links. `src/state/site-page.ts` resolves the page; only Learn mounts the Explorer
+controller and control-view tracking. Existing root query links and historical
+section hashes still resolve. The skip link canonicalizes legacy section paths.
+`vercel.json` explicitly rewrites the three new paths to the Vite entry document,
+so direct links and refreshes work on Vercel without rewriting asset URLs.
+
+The Explorer continues to own query/history state. Native page changes reload the
+document; practice is local session UI, not saved progress. Back restores the lesson
+address, but do not promise that a browser preserves its quiz state across pages.
+Inline definitions remain available without leaving a lesson. Analytics allowlists
+only the four public paths and strips queries/fragments before submission.
+
 ## Start locally
 
 Install [Node.js](https://nodejs.org/) version **22.12 or newer**; Node 24 is the

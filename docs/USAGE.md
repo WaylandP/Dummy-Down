@@ -25,10 +25,10 @@ this change does not merge a pull request or deploy production manually.
 
 ## What the app measures
 
-The app sends a single sanitized root pageview on a full production-page load.
+The app sends a sanitized public-page path on a full production-page load.
 It disables automatic pageviews for the query-driven Explorer's history updates,
 so typing a search does not create a series of artificial visits. Deliberate
-actions explain where readers go inside the single-page application:
+actions explain how readers use the learning workspace:
 
 | Event                  | Purpose                                                         | Allowed metadata                                              |
 | ---------------------- | --------------------------------------------------------------- | ------------------------------------------------------------- |
@@ -76,8 +76,9 @@ collection fails closed. The SDK's `beforeSend` hook checks the current preferen
 for each pageview and custom event, including after a previously allowed SDK was
 loaded. Pausing cannot undo an event already sent or an in-flight request.
 
-Every pageview and custom-event URL is restricted to the current origin's `/`
-path, with all query parameters and fragments removed. Known control metadata
+Every pageview and custom-event URL is restricted to the current origin's `/`,
+`/learn`, `/glossary` or `/about` path (trailing slash normalized), with all query
+parameters and fragments removed. Known control metadata
 comes from the local catalog, never by forwarding the address bar. Unknown paths
 and external URLs are discarded. If new app routes are added, explicitly review
 and extend the pathname allowlist.

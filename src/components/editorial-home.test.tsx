@@ -3,9 +3,9 @@ import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it } from 'vitest'
 import App from '../App'
 
-beforeEach(() => window.history.replaceState(null, '', '/'))
+beforeEach(() => window.history.replaceState(null, '', '/learn'))
 
-describe('Editorial homepage and reading navigation', () => {
+describe('Learning page and reading navigation', () => {
   it('closes discovery when the reader selects the already displayed control', async () => {
     const user = userEvent.setup()
     render(<App />)
@@ -29,7 +29,7 @@ describe('Editorial homepage and reading navigation', () => {
   it('opens the full reference collection and a real Level 1 control immediately', async () => {
     render(<App />)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      'Okay, but what does it mean?',
+      'Learning workspace',
     )
     expect(
       screen.getByRole('combobox', { name: 'Content collection' }),
