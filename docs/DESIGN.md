@@ -12,8 +12,8 @@ The supplied four-part chalk mark remains the identity reference. See
 Use **Cipher & Chalk**. Keep the four alternating curved white/turquoise quadrants
 around circular negative space; no generic shield, monogram or replacement logo.
 `public/brand/chalk-mark.svg` is an approximate scalable recreation, not the original
-uploaded PNG. Changa One remains the compact wordmark. Turquoise is limited to the
-small mark; large surfaces and headlines stay muted.
+uploaded PNG. Changa One remains the compact wordmark. Turquoise appears in the
+small mark and purposeful instructional SVG paths; large surfaces and headlines stay muted.
 
 IBM Plex Sans supplies the question-led homepage heading, lesson titles, paragraphs,
 navigation and controls. Kalam gives the teaching board and margin note their chalk
@@ -50,13 +50,14 @@ still be assessed with real people; a palette alone does not establish it.
   chalkboard teaches the distinction between working access and authorized access;
   its disclosure uses the existing activity's explanation. A reference shelf links
   to all three CMMC levels and the glossary. On smaller screens these areas stack
-  in reading order. Every link leads to implemented material; no saved-progress,
-  personalized-recommendation or expanded-curriculum claim is implied.
+  in reading order. Every link leads to implemented material. Optional saved progress lives with
+  actual activities; Home does not infer personalized recommendations.
 - **Learn `/learn`:** existing control discovery, exact source quotations,
   three perspectives and available draft practice. A selected control folds search,
   filters and results away at every width. “Browse & filter controls” reopens them.
   Discovery keeps them visible. An “On this page” outline in source references
-  links to Source and Explain it, plus Practice only for a matching activity.
+  links to Source and Explain it, plus Watch the idea and Practice only when
+  those exact lesson identities have matching content.
   Sources, review limits and recovery remain present.
 - **Glossary `/glossary`:** searchable definitions on their own page. Inline
   definitions still open inside lessons without a page change.
@@ -65,16 +66,19 @@ still be assessed with real people; a palette alone does not establish it.
   status. Native search/filters, paginated control disclosures and exact lesson
   links keep detailed review work out of the primary reading workspace. Source
   quotations and teaching notes stay visibly separate; no compliance scores.
+- **Practice `/practice`:** a searchable index of actual activities, optional local
+  progress, revisit marks and clear source/draft context.
 - **About `/about`:** mission, honest content limits and perspective shortcuts.
 
 Native links support direct loads and normal browser navigation; Vercel rewrites
 serve the five non-root paths. Legacy root query links and section hashes still
 work. Explorer state stays in its existing controller. Native navigation/reloads
-can reset local practice; there is no saved-progress feature or account.
+reset unsaved practice. Explicit optional saving restores version-bound checked
+answers on this origin; there are no accounts or cloud synchronization.
 
 Do not render a hidden learning workspace on Home: that creates false control-view
 signals and unnecessary complexity. Production-only usage retains opt-out, DNT,
-GPC and property restrictions. Only five public pathnames are allowed; queries,
+GPC and property restrictions. Only six public pathnames are allowed; queries,
 fragments, answers and raw searches are never forwarded.
 
 Home search submits to `/learn` with explicit discovery state and the reference
@@ -91,7 +95,7 @@ wide screens, reduced motion, forced colors and zoom. These checks are not a ful
 WCAG certification; real-reader comfort and screen-reader/Safari review remain pending.
 
 Official quotations, fictional examples and pending human review must stay visibly
-distinct. The design change does not approve content or expand practice coverage.
+distinct. The design direction does not establish content approval.
 See [the study-desk checkpoint](reviews/study-desk-2026-10-14.md).
 That visual revision was merged in PR #12. The Phase 1 quality increment preserves
 this direction and prepares [human acceptance](testing/PHASE_1_ACCEPTANCE.md);
@@ -100,6 +104,11 @@ it does not initiate a new visual redesign or imply owner acceptance.
 ### Practice index
 
 `/practice` provides a quiet, numbered list of actual draft activities, with a
-search and level filter, learning goals and exact edition-bound lesson links. It
-uses the existing blackboard tokens and native navigation. Question answers stay
-in the current lesson; completing a practice activity is not a compliance score.
+search and level filter, learning goals and exact edition-bound lesson links.
+Levels follow the source catalog order; the project demo is not a level-filter result. It
+uses the existing blackboard tokens and native navigation. Saving is off by
+default. A closed disclosure explains it; saved-state filters require opt-in. A
+small row action marks topics to revisit, and removing a filtered row restores
+focus to the result summary. Earlier answers stay in a disclosure above the current
+question. No scores, streaks or congratulatory overlays compete with the teaching.
+Completing a practice activity is not a compliance score.

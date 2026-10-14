@@ -43,6 +43,12 @@ describe('practice index', () => {
       expect(url.searchParams.get('edition')).toBe(activity.lesson.editionId)
       expect(url.searchParams.get('control')).toBe(activity.lesson.controlKey)
     }
+    expect(
+      Array.from(
+        (screen.getByRole('combobox', { name: 'Level' }) as HTMLSelectElement)
+          .options,
+      ).map((option) => option.textContent),
+    ).toEqual(['All levels', 'Level 1', 'Level 2', 'Level 3'])
     expect(screen.queryByRole('radio')).not.toBeInTheDocument()
     expect(screen.getByText(/Project example/)).toBeVisible()
   })

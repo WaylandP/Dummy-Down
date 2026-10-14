@@ -52,7 +52,8 @@ already merged into `main`. No completion percentage is implied.
 - **Phase 3:** Increment 1 is merged in PR #19 with verified production deployment.
   Increment 2 is merged in PR #20 with nine drafts and a practice index. Three
   visual explanations merged in PR #21 with verified production deployment. Optional
-  local progress is in Increment 4 validation; the final integration pass follows. Review the [new source packet](docs/content-review/phase-3-activities-2026-10-14.md).
+  local progress merged in PR #22 with verified production deployment. The final
+  integration pass is being validated for publication. Review the [new source packet](docs/content-review/phase-3-activities-2026-10-14.md).
 - **P2: review the earlier focused learning milestone.** Three Level 1 activities now
   cover authorized access, public information and media disposal with fictional
   scenarios, common misunderstandings, nine explained questions and three

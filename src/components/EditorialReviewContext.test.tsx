@@ -82,7 +82,7 @@ describe('Visible editorial provenance', () => {
     const user = userEvent.setup()
     render(<App />)
     const explorer = within(
-      screen.getByRole('region', { name: 'Control Explorer' }),
+      await screen.findByRole('region', { name: 'Control Explorer' }),
     )
     await explorer.findByRole('tabpanel', { name: 'Beginner' })
     const opener = explorer.getByRole('button', {

@@ -14,17 +14,19 @@ beforeEach(() =>
 // Regression: ISSUE-001/002/003 — deliberate lesson navigation preserves focus.
 // Found by /review and /qa on 2026-10-13.
 // Report: docs/designs/shareable-lessons-code-review.md
-function setup() {
+async function setup() {
   render(<App />)
   return {
     user: userEvent.setup(),
-    explorer: within(screen.getByRole('region', { name: 'Control Explorer' })),
+    explorer: within(
+      await screen.findByRole('region', { name: 'Control Explorer' }),
+    ),
   }
 }
 
 describe('Explorer navigation regressions', () => {
   it('does not let reselection steal focus from a subsequent learning tab', async () => {
-    const { user, explorer } = setup()
+    const { user, explorer } = await setup()
     await user.click(
       explorer.getByRole('button', {
         name: /AC\.L2-3\.1\.1.*Authorized access/,
@@ -38,7 +40,7 @@ describe('Explorer navigation regressions', () => {
 
   it('focuses enabled search after recovering an invalid address', async () => {
     window.history.replaceState(null, '', '?view=lesson&framework=cmmc')
-    const { user, explorer } = setup()
+    const { user, explorer } = await setup()
     const search = explorer.getByRole('searchbox', { name: 'Search controls' })
     expect(search).toBeDisabled()
     await user.click(
@@ -55,7 +57,7 @@ describe('Explorer navigation regressions', () => {
       '',
       '?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access&mode=compliance&q=access&family=AC&level=Level+2',
     )
-    const { user, explorer } = setup()
+    const { user, explorer } = await setup()
     await user.click(explorer.getByRole('button', { name: 'Back to results' }))
     const params = new URLSearchParams(window.location.search)
     expect(params.get('view')).toBe('discover')

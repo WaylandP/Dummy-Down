@@ -33,7 +33,7 @@ function boundedId(value: unknown): value is string {
   return typeof value === 'string' && value.length > 0 && value.length <= 128
 }
 
-/** Ambiguous/oversize activities remain usable by the existing unsaved player. */
+/** Reject ambiguous/oversize definitions; publication tests require the full catalog to be supported. */
 export function createProgressCatalog(
   activities: readonly LearningActivity[],
 ): ProgressCatalog {

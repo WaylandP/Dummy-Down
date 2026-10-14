@@ -27,8 +27,9 @@ describe('Control-specific teaching perspectives', () => {
       window.history.replaceState(null, '', address(control.key))
       const user = userEvent.setup()
       render(<App />)
+      await screen.findByRole('region', { name: 'Control Explorer' })
       const explorer = within(
-        screen.getByRole('region', { name: 'Control Explorer' }),
+        await screen.findByRole('region', { name: 'Control Explorer' }),
       )
       const quote = explorer.getByText(control.requirement.text)
       const beginner = await explorer.findByRole('tabpanel', {
@@ -77,6 +78,7 @@ describe('Control-specific teaching perspectives', () => {
     window.history.replaceState(null, '', address(first.control.key))
     const user = userEvent.setup()
     render(<App />)
+    await screen.findByRole('region', { name: 'Control Explorer' })
     await screen.findByRole('tabpanel', { name: 'Beginner' })
     await user.click(screen.getByRole('button', { name: 'Still unclear' }))
     expect(screen.getByText(/Try another perspective above/)).toBeVisible()
@@ -117,8 +119,9 @@ describe('Control-specific teaching perspectives', () => {
     expect(screen.queryByRole('tab')).not.toBeInTheDocument()
   })
 
-  it('makes every level directly discoverable through canonical shareable addresses', () => {
+  it('makes every level directly discoverable through canonical shareable addresses', async () => {
     render(<App />)
+    await screen.findByRole('region', { name: 'Control Explorer' })
     const navigation = within(
       screen.getByRole('navigation', { name: 'CMMC levels' }),
     )

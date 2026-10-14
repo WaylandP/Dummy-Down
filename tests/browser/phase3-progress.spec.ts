@@ -103,6 +103,7 @@ for (const width of [320, 390, 768, 1024, 1440]) {
     if (process.env.CAPTURE_PHASE3 && [390, 1440].includes(width)) {
       await page.screenshot({
         path: `docs/screenshots/phase3/progress-index-${width}.png`,
+        fullPage: true,
       })
     }
     await page.getByRole('link', { name: /^Review reasoning\s*:/ }).click()

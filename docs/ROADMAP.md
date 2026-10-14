@@ -166,12 +166,17 @@ seven-milestone baseline audit, limited merge authorization and validation limit
       merged at `40d0754`; 509 unit / 97 browser CI checks and production deployment passed.
 - [ ] **Awaiting qualified human review** — Review animated explanations for
       educational accuracy and actual visual-learner comprehension.
-- [ ] **Implemented; merge and deployment validation in progress** — Increment 4
+- [x] **Completed and merged into main** — Increment 4
       adds optional local progress, resume, visited/completed/revisit filters, answer
       review and deletion. No accounts, cloud sync or compliance score. Privacy,
       storage failure, version changes and multi-tab behavior have dedicated checks.
+      PR #22 merged at `dd8595d`; exact-head CI and automatic production deployment passed.
 - [ ] **Awaiting learner and accessibility review** — Validate whether optional
       progress and review controls help real learners and assistive-technology users.
+
+- [ ] **Implemented; final publication validation in progress** — Increment 5
+      exercises the ten-step learner journey, defers Explorer UI from Home, verifies
+      failure recovery and reconciles documentation with a human-review packet.
 
 Phase 3 is not complete. Thirteen activities and 39 questions are a focused learning
 sample, not interactive coverage of the full catalog.

@@ -240,10 +240,10 @@ revocation races. Enabling also moves focus to the stable settings status instea
 of leaving it on a removed button. Review of earlier answers is available before
 completion; the latest checked choice is retained without storing answer text.
 
-No analytics schema/permission change, backend, account, identifier, free-text
+No analytics schema/permission change, backend, account, visitor identifier, free-text
 storage or official content edit is included. GPC/DNT and browser restrictions
 retain usable unsaved practice. No human approval or native gstack full pass is
-claimed. Publication and final validation evidence will be added after checks.
+claimed. Publication and final validation evidence are recorded below.
 
 ### Increment 4 local validation
 
@@ -261,3 +261,88 @@ existing index captures were refreshed after adding filters. A final independent
 integration read found no remaining blocking defect after the two store fixes,
 enable focus, filtered-row focus and unsaved-filter clarity repairs. The full
 browser regression also retains all three real 40-second playback checks.
+
+### Increment 4 publication
+
+[PR #22](https://github.com/WaylandP/cipher-and-chalk/pull/22) head
+`a56a985149b8bc033de0eb126dbf39c8e3a357a7` passed GitHub CI run `38605512492`.
+The successful local suite contained 562 unit / 110 browser tests; GitHub reports
+all workflow steps successful. Downloading the remote log archive was denied by
+the environment, so its test-count lines were not independently retrieved.
+Preview `7072237629` succeeded at
+https://cipherandchalk-7sf496lu7-waylandp.vercel.app . Ordinary squash merge at
+17:22:54 UTC produced `dd8595d30c56918edc2e398d47288bb3a5ac35db`.
+Production `7072348882` succeeded for that merge at 17:23:14 UTC:
+https://cipherandchalk-214myfrkz-waylandp.vercel.app . No bypass was used.
+
+## Increment 5: integrated experience and final review
+
+The Explorer interface/controller now loads on its own route. Existing source,
+mode, URL, title, telemetry and history behavior is preserved; import failure gives
+an exact-address reload and Home link. App integration tests await real rendered
+readiness rather than assuming synchronous mount; their behavioral assertions are
+retained. The level selector follows source order (1, 2, 3), keeping the demo out
+of level-specific results. A ten-step 390/1440 browser journey connects all major
+features, plus a failed-route-chunk regression. The linked
+[walkthrough and review packet](../testing/PHASE_3_WALKTHROUGH.md) prepares real
+learner, editorial and assistive-technology review without claiming it occurred.
+
+### Measured loading change
+
+A matching build comparison used merged Increment 4 (`dd8595d`) as the eager-route
+baseline and the final lazy-route implementation with the same progress/catalog
+payload. Vite manifests and fresh Chromium script-response bodies agreed:
+Home initial JavaScript fell from 518,133 to 462,410 bytes (55,723 bytes / 10.8%).
+That includes the 104,134-byte shared runtime; it is not a main-filename comparison.
+Gzip calculated by the same Node method across the full closure fell from 138,421
+to 124,738 bytes. Learn discovery fetched 519,646 bytes, about 1.5 KB more than the
+baseline: an explicit small request/payload tradeoff. No warning threshold was
+raised. The 500 KB chunk advisory is gone without a new dependency.
+
+The [measurement artifact](phase-3-performance-2026-10-14.json) records actual
+files and response sizes. These are decoded resource/build bytes, not hosted
+transfer, Core Web Vitals, a latency guarantee or a user-perceived speed score.
+Builds used `vite build --manifest`, then a fresh isolated Chromium context for
+Home and discovery on local production previews. No player chunk loads on Home;
+the real browser failure test verifies both deferral and same-address recovery.
+
+### Bounded final code/security review
+
+An independent read compared the extracted LearningPage with its prior App body,
+checked loading cancellation/recovery and every changed App-test assertion, and
+reviewed the new journey. No blocking issue was found. A scoped Phase 3 security
+read found no dynamic HTML, executable input, new network submission, answer
+analytics or infrastructure change. Local-data schema/identity validation, consent
+revocation and clear precedence were reviewed and regression-tested in Increment 4.
+Source quotation and activity/visual fingerprint gates remain intact. This is
+AI-assisted code/content review, not professional content approval or a native
+CSO audit. localStorage retains its documented nontransactional last-writer limit.
+
+The pinned gstack installation was rechecked: 57 supported instructions, 28 sections;
+its actual browser readiness probe rendered with Chromium 154.0.8037.57. The
+coordinator used the compiled browser on an owned loopback tab for practice and
+L1/L2 visual smoke checks. L1 playback progress advanced; the final L2 manual
+stage and [mobile screenshot](../screenshots/phase3/gstack-mfa-390.png) were inspected,
+with no console errors. Broader testing remains the explicitly named project
+Playwright suite. [All 58 skill dispositions](phase-3-skills-2026-10-14.md) now
+record actual adapted execution and omissions; no full native skill pass is claimed.
+
+### Increment 5 local validation and UX assessment
+
+All seven required project checks passed with 565 unit tests. The complete
+Chromium suite passed 113 tests, including three actual 40-second playbacks,
+five-width reflow/semantics, keyboard/reduced-motion/forced-color cases, shared
+addresses/history, all nine added activities, real two-tab progress races and the
+two full 390/1440 ten-step journeys. Route failure retains the exact lesson/mode/hash
+and a working reload. No failing gate or blocking code-review finding remains.
+
+The dedicated UX read found direct Home search and practice entry obvious in the
+observed flows; source/modes/visual/practice remain separated; feedback explains
+misconceptions; mobile controls and reading columns fit; the animation's meaning
+is available in manual diagrams/transcripts. Screenshots of Home, teaching and
+completion at 390/1440 were inspected independently and by the coordinator in
+selected views. No visible overlap/crowding or horizontal clipping was found in
+those captured states. These are bounded engineering observations, not evidence
+that real beginners find it comfortable. Mobile lesson/completion captures are
+viewport crops, not entire-page screenshots. Owner/learner/native-zoom/AT/Safari
+acceptance and qualified content review remain explicitly open.

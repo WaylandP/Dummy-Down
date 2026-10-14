@@ -132,3 +132,10 @@ preview deployment success does not establish provider receipt of analytics.
 
 The Phase 3 practice index adds only `/practice` to that same allowlist. Search
 and level queries are removed; question choices and feedback are not collected.
+
+Optional learning progress is a separate local feature. Its opt-in stores public
+catalog and checked-choice identifiers on this origin; it never sends those
+records to usage measurement. Progress permission and analytics permission do not
+change each other. Search, level and learning-status queries are all removed from
+analytics URLs. See [LOCAL_PROGRESS.md](LOCAL_PROGRESS.md) for fields, deletion,
+GPC/DNT and browser-storage restrictions.
