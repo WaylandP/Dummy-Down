@@ -3,19 +3,16 @@
 Cipher & Chalk is a static React/TypeScript frontend built with Vite. The existing
 Vercel Git integration builds review deployments from GitHub; normal development
 does not require a manual production deployment or an owner terminal session.
-GitHub now reports the externally renamed repository as `WaylandP/cipher-and-chalk`;
-no agent renamed it. The display redesign retains the existing Dummy-Down deployment
-project, public hostname, package/storage IDs and service settings. Production
-changes require approval.
+The repository is `WaylandP/cipher-and-chalk` and the Vercel project is
+`cipherandchalk`. The project's former working name, Dummy-Down, survives only in
+historical source citations; package and browser-storage identifiers now use the
+`cipher-and-chalk` namespace, with a one-time client-side migration of legacy keys.
 
 ## Public website versus a review preview
 
-The repository's configured public website is
-[dummy-down.vercel.app](https://dummy-down.vercel.app). On October 13, 2026, the
-public address returned HTTP 200 and the application's real HTML, JavaScript and
-stylesheet references. GitHub recorded a successful **Production** deployment for
-main commit `a7ccb99411641c3d31d7e0d6e33cfbbe147013c2`. This verifies an available
-production site, not every feature or analytics delivery.
+The public website is
+[cipherandchalk.vercel.app](https://cipherandchalk.vercel.app). Vercel's Git
+integration deploys `main` to production and every pull request to a preview.
 
 The corresponding deployment-specific Production URL required Vercel sign-in;
 deployment protection and an application failure are different conditions. Do not

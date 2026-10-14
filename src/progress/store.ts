@@ -8,9 +8,10 @@ import {
   type ProgressEntries,
 } from './model'
 
-// Stable project namespace; do not rename it as part of a branding change.
-export const PROGRESS_CONSENT_KEY = 'dummy-down:learning-saving:v1'
-export const PROGRESS_DATA_KEY = 'dummy-down:learning-progress:v1'
+// Storage namespace. Legacy `dummy-down:` keys are migrated once at startup
+// by src/storage/migrate-legacy.ts.
+export const PROGRESS_CONSENT_KEY = 'cipher-and-chalk:learning-saving:v1'
+export const PROGRESS_DATA_KEY = 'cipher-and-chalk:learning-progress:v1'
 
 export interface ProgressPort {
   readonly get: (key: string) => string | null

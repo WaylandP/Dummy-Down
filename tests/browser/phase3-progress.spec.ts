@@ -3,8 +3,8 @@ import AxeBuilder from '@axe-core/playwright'
 
 const lesson =
   '/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l1-b-1-i&mode=beginner'
-const consent = 'dummy-down:learning-saving:v1'
-const data = 'dummy-down:learning-progress:v1'
+const consent = 'cipher-and-chalk:learning-saving:v1'
+const data = 'cipher-and-chalk:learning-progress:v1'
 async function settings(page: Page) {
   const panel = page.locator('.progress-preferences')
   if (!(await panel.evaluate((node) => (node as HTMLDetailsElement).open)))

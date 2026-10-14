@@ -1,6 +1,6 @@
 # Phase 3: learn, practice and return
 
-Start at [Cipher & Chalk](https://dummy-down.vercel.app). This walkthrough covers
+Start at [Cipher & Chalk](https://cipherandchalk.vercel.app). This walkthrough covers
 implemented engineering, not qualified content approval or a compliance assessment.
 Everything taught remains a visibly marked educational draft.
 
@@ -34,9 +34,9 @@ Everything taught remains a visibly marked educational draft.
 
 | Level | Lesson                                                                                                                                                    | What the diagram teaches                                                           |
 | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| 1     | [Authorized access](https://dummy-down.vercel.app/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l1-b-1-i&mode=beginner)          | Users, user-acting processes and devices need authorization that matches access.   |
-| 2     | [Multifactor authentication](https://dummy-down.vercel.app/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ia-l2-3-5-3&mode=beginner) | Distinct factors and the requirement's account/access-path scope.                  |
-| 3     | [Response-team deployment](https://dummy-down.vercel.app/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ir-l3-3-6-2e&mode=beginner)  | A deployable team within 24 hours is different from promising incident resolution. |
+| 1     | [Authorized access](https://cipherandchalk.vercel.app/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l1-b-1-i&mode=beginner)          | Users, user-acting processes and devices need authorization that matches access.   |
+| 2     | [Multifactor authentication](https://cipherandchalk.vercel.app/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ia-l2-3-5-3&mode=beginner) | Distinct factors and the requirement's account/access-path scope.                  |
+| 3     | [Response-team deployment](https://cipherandchalk.vercel.app/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ir-l3-3-6-2e&mode=beginner)  | A deployable team within 24 hours is different from promising incident resolution. |
 
 All three are 40-second React/SVG explanations with synchronized text, transcripts,
 keyboard controls, pause/restart, manual stages and draft/source labels. Closing the

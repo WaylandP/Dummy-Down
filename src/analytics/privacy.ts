@@ -1,8 +1,8 @@
 import { useSyncExternalStore } from 'react'
 import type { BeforeSend, BeforeSendEvent } from '@vercel/analytics/react'
 
-const preferenceKey = 'dummy-down:usage-preference'
-const preferenceEvent = 'dummy-down:usage-preference-change'
+const preferenceKey = 'cipher-and-chalk:usage-preference'
+const preferenceEvent = 'cipher-and-chalk:usage-preference-change'
 let storageFailure = false
 
 export type UsageStatus =

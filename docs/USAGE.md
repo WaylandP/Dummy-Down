@@ -7,7 +7,7 @@ The owner reviews actual traffic in Vercel, through a browser.
 ## Open the owner dashboard
 
 1. Sign in at [Vercel](https://vercel.com/dashboard), select the team that owns
-   Dummy-Down, and open the Dummy-Down project.
+   the project, and open the `cipherandchalk` project.
 2. Open **Analytics**. If Web Analytics is disabled, select **Enable** and follow
    Vercel's account instructions. This repository change does not activate the
    service or approve charges on the owner's behalf.
@@ -69,7 +69,7 @@ custom events. A local `vite preview` of a production artifact still contains th
 artifact's build category; avoid using production artifacts for synthetic traffic.
 
 The visible **Usage & privacy** section lets a reader pause measurement. It stores
-only `on` or `off` in `localStorage` under `dummy-down:usage-preference`; it does not
+only `on` or `off` in `localStorage` under `cipher-and-chalk:usage-preference`; it does not
 store a visitor ID. Do Not Track (`1` or `yes`) and Global Privacy Control take
 precedence over allowing measurement. If preference storage cannot be accessed,
 collection fails closed. The SDK's `beforeSend` hook checks the current preference
