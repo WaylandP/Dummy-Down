@@ -5,6 +5,21 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## The Board — October 14, 2026
+
+The visual direction approved on October 14 ([specification](docs/design/THE_BOARD.md),
+[mockups](docs/design/mockups/)) is being built in five pull requests, each
+green in CI before the next. Routes, content identities, legacy links and the
+analytics allowlist do not change.
+
+- [PR #39](https://github.com/WaylandP/cipher-and-chalk/pull/39): tokens and
+  the app shell. The slate ground with chalk dust, the chalk filter, the Morse-C
+  ring and lockup, a four-item nav with a find line, a one-line footer and the
+  wooden tray; Walter Turncoat, Atkinson Hyperlegible Next and Martian Mono
+  self-hosted; the favicon, app icon and social card regenerated from the mark;
+  Changa One, Barlow, Kalam, IBM Plex Sans and Space Grotesk retired. Page
+  layouts keep their previous structure inside the shell until their own PRs.
+
 ## Week 2 content and trust — October 14, 2026
 
 - [PR #31](https://github.com/WaylandP/cipher-and-chalk/pull/31): a dedicated
