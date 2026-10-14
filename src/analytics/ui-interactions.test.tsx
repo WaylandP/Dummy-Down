@@ -101,7 +101,7 @@ describe('Usage interaction wiring', () => {
       name: 'search_used',
       scope: 'glossary',
       active: true,
-      resultCount: 3,
+      resultCount: 5,
     })
   })
 
