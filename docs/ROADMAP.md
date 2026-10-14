@@ -127,9 +127,18 @@ and acceptance preparation (#14), source research/Level 1 audit/review workflow
 (#15), objective coverage (#16), and Level 2/3 audit (#17). The
 [final handoff](reviews/phase-1-2-handoff-2026-10-14.md) identifies the remaining
 external work and the evidence needed to resume. Neither phase is fully complete.
-Phase 3/4 work is preserved below and is outside this assignment.
+That Phase 1/2 assignment is closed to independent implementation. The owner has
+now authorized the five-increment Phase 3 assignment below; Phase 4 remains excluded.
 
 ## Phase 3: Make Learning Interactive
+
+The [Phase 3 execution log](reviews/phase-3-execution-2026-10-14.md) records the
+seven-milestone baseline audit, limited merge authorization and validation limits.
+
+- [ ] **Implemented but awaiting validation or review** — Increment 1 improves
+      practice discovery, direct question entry, honest checked-question progress
+      and completion reasoning review. Check this engineering subtask after its
+      verified merge; qualified content and real-learner acceptance remain separate.
 
 - [x] **Completed and merged into main** — Add the original fictional demo activity
       with an explained three-question knowledge check.

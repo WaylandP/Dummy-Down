@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type { CatalogControl } from '../types/content'
 import { lessonIdentity, lessonIdentityKey } from '../state/explorer-state'
 import { trackUsage } from '../analytics/usage'
+import { findLearningActivity } from '../data/learning'
 
 interface ControlResultsProps {
   results: readonly CatalogControl[]
@@ -74,6 +75,12 @@ export function ControlResults({
                   ? 'Draft example'
                   : 'Source reference'}
               </span>
+              {findLearningActivity(lessonIdentity(control)) && (
+                <span className="control-item-practice">
+                  {' '}
+                  Practice available
+                </span>
+              )}
             </button>
           )
         })}

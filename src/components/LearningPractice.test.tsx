@@ -219,8 +219,8 @@ describe('LearningPractice', () => {
     expect(screen.getByText(activity.questions[1]!.prompt)).toHaveFocus()
     expect(screen.getByText('Question 2 of 3')).toBeVisible()
     expect(
-      screen.getByRole('progressbar', { name: 'Question position' }),
-    ).toHaveAttribute('aria-valuetext', 'Question 2 of 3')
+      screen.getByRole('progressbar', { name: 'Questions reviewed' }),
+    ).toHaveAttribute('aria-valuetext', '1 of 3 questions reviewed')
     expect(
       screen.queryByText(activity.questions[0]!.prompt),
     ).not.toBeInTheDocument()
@@ -259,7 +259,7 @@ describe('LearningPractice', () => {
     })
     expect(completion).toHaveFocus()
     expect(
-      screen.getByRole('progressbar', { name: 'Question position' }),
+      screen.getByRole('progressbar', { name: 'Questions reviewed' }),
     ).toHaveAttribute('aria-valuetext', 'Practice complete')
     expect(
       screen.getByText(
@@ -336,6 +336,62 @@ describe('LearningPractice', () => {
         .getAllByRole('radio')
         .every((radio) => !(radio as HTMLInputElement).checked),
     ).toBe(true)
+  })
+
+  it('starts at zero, opens questions directly and reviews reasoning without a score', async () => {
+    const user = userEvent.setup()
+    render(<LearningPractice lesson={lesson} />)
+    await user.click(
+      screen.getByRole('button', { name: 'Start or return to questions' }),
+    )
+    expect(screen.getByText(activity.questions[0]!.prompt)).toHaveFocus()
+    expect(
+      screen.getByRole('progressbar', { name: 'Questions reviewed' }),
+    ).toHaveAttribute('value', '0')
+    for (const [index, question] of activity.questions.entries()) {
+      await user.click(
+        screen.getByRole('radio', { name: question.choices[0]!.label }),
+      )
+      await user.click(screen.getByRole('button', { name: 'Check answer' }))
+      expect(
+        screen.getByRole('progressbar', { name: 'Questions reviewed' }),
+      ).toHaveAttribute('value', String(index + 1))
+      await user.click(
+        screen.getByRole('button', {
+          name: index === 2 ? 'Finish practice' : 'Next question',
+        }),
+      )
+    }
+    await user.click(
+      screen.getByText('Review the reasoning', { selector: 'summary' }),
+    )
+    expect(screen.getAllByText('Worth another look').length).toBeGreaterThan(0)
+    expect(
+      screen.getByText(activity.questions[0]!.choices[0]!.feedback),
+    ).toBeVisible()
+    for (const question of activity.questions) {
+      expect(screen.getByText(question.prompt)).toBeVisible()
+      expect(
+        screen.getByText(
+          question.choices.find(
+            (choice) => choice.id === question.correctChoiceId,
+          )!.feedback,
+        ),
+      ).toBeVisible()
+    }
+    await user.click(
+      screen.getByRole('button', { name: 'Start or return to questions' }),
+    )
+    expect(
+      screen.getByRole('heading', {
+        name: 'Practice complete. Keep asking why.',
+      }),
+    ).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Practice again' }))
+    expect(
+      screen.getByRole('progressbar', { name: 'Questions reviewed' }),
+    ).toHaveAttribute('value', '0')
+    expect(screen.queryByText('Review the reasoning')).not.toBeInTheDocument()
   })
 
   it('supports native radio keyboard selection', async () => {
