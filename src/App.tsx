@@ -20,6 +20,8 @@ import { UsageAnalytics } from './analytics/UsageAnalytics'
 import { UsagePreferences } from './analytics/UsagePreferences'
 import { trackUsage } from './analytics/usage'
 import { useControlView } from './analytics/useControlView'
+import { LocalProgressProvider } from './progress/LocalProgressProvider'
+import { learningActivities } from './data/learning'
 
 const repositoryUrl = 'https://github.com/WaylandP/cipher-and-chalk'
 const browseUrl = '/learn?view=discover&collection=references'
@@ -93,7 +95,7 @@ function LearningPage() {
   )
 }
 
-export default function App() {
+function Application() {
   const page = useSyncExternalStore(subscribePage, currentPage)
   useEffect(() => {
     if (page !== 'learn') {
@@ -275,5 +277,13 @@ export default function App() {
       </footer>
       <UsageAnalytics />
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <LocalProgressProvider activities={learningActivities}>
+      <Application />
+    </LocalProgressProvider>
   )
 }

@@ -1,10 +1,12 @@
-import { render, screen, within } from '@testing-library/react'
+import { renderWithProgress as render } from '../test/renderWithProgress'
+import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { controls } from '../data/controls'
 import { referenceControls } from '../data/cmmc-references'
 import { findLearningActivity, learningActivities } from '../data/learning'
 import type { LessonIdentity } from '../types/content'
+import { createProgressCatalog } from '../progress/model'
 import { LearningPractice } from './LearningPractice'
 
 const lesson: LessonIdentity = {
@@ -24,6 +26,9 @@ afterEach(() => vi.restoreAllMocks())
 
 describe('learning activity integrity', () => {
   it('binds unique draft activities to exact lessons and a safe teaching source', () => {
+    expect(createProgressCatalog(learningActivities).size).toBe(
+      learningActivities.length,
+    )
     const ids = new Set<string>()
     const identities = new Set<string>()
     for (const item of learningActivities) {
@@ -221,9 +226,7 @@ describe('LearningPractice', () => {
     expect(
       screen.getByRole('progressbar', { name: 'Questions reviewed' }),
     ).toHaveAttribute('aria-valuetext', '1 of 3 questions reviewed')
-    expect(
-      screen.queryByText(activity.questions[0]!.prompt),
-    ).not.toBeInTheDocument()
+    expect(screen.getByText(activity.questions[0]!.prompt)).not.toBeVisible()
     expect(
       screen.getByRole('status', { name: 'Answer feedback' }),
     ).toBeEmptyDOMElement()

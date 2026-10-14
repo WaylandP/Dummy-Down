@@ -7,9 +7,47 @@ import { trackUsage } from '../analytics/usage'
 import { LessonDiagram } from './LessonDiagram'
 import { ContextTerms } from './ContextTerms'
 import { glossaryTerms } from '../data/glossary'
+import { useActivityProgress } from '../progress/useLocalProgress'
+import { ActivityProgressTools } from '../progress/ActivityProgressTools'
 
 interface LearningPracticeProps {
   lesson: LessonIdentity
+}
+
+function AnswerReview({
+  questions,
+  answers,
+}: {
+  questions: LearningActivity['questions']
+  answers: Readonly<Record<string, string>>
+}) {
+  return (
+    <ol>
+      {questions.map((item) => {
+        const answer = item.choices.find(
+          (choice) => choice.id === answers[item.id],
+        )
+        const best = item.choices.find(
+          (choice) => choice.id === item.correctChoiceId,
+        )!
+        return (
+          <li key={item.id}>
+            <h6>{item.prompt}</h6>
+            <p className="small-label">
+              {answer?.id === best.id ? 'Correct choice' : 'Worth another look'}
+            </p>
+            <p>
+              <strong>Your last checked answer:</strong> {answer?.label}
+            </p>
+            {answer?.id !== best.id && <p>{answer?.feedback}</p>}
+            <p>
+              <strong>What to take away:</strong> {best.feedback}
+            </p>
+          </li>
+        )
+      })}
+    </ol>
+  )
 }
 
 function KnowledgeCheck({
@@ -20,11 +58,21 @@ function KnowledgeCheck({
   lesson: LessonIdentity
 }) {
   const prefix = useId()
-  const [questionIndex, setQuestionIndex] = useState(0)
-  const [selectedId, setSelectedId] = useState<string | null>(null)
-  const [checked, setChecked] = useState(false)
-  const [complete, setComplete] = useState(false)
-  const [answers, setAnswers] = useState<Record<string, string>>({})
+  const progress = useActivityProgress(activity)
+  const { entry, store, resetEpoch, questionIndex, checked } = progress
+  const complete = entry.completed
+  const answers = entry.checkedAnswers
+  const [selection, setSelection] = useState<{
+    questionId: string
+    choiceId: string
+    epoch: number
+  } | null>(null)
+  const selectedId = checked
+    ? (answers[entry.currentQuestionId] ?? null)
+    : selection?.questionId === entry.currentQuestionId &&
+        selection.epoch === resetEpoch
+      ? selection.choiceId
+      : null
   const prompt = useRef<HTMLSpanElement | null>(null)
   const completion = useRef<HTMLHeadingElement | null>(null)
   const feedback = useRef<HTMLDivElement | null>(null)
@@ -43,14 +91,14 @@ function KnowledgeCheck({
   }, [questionIndex, complete, checked])
 
   function reset() {
-    trackUsage({ name: 'practice_action', lesson, action: 'reset' })
     focusRequested.current = true
-    setSelectedId(null)
-    setChecked(false)
-    setQuestionIndex(0)
-    setComplete(false)
-    setAnswers({})
-    // Resetting an unanswered first question does not change the effect inputs.
+    if (!store.restart(activity.id)) {
+      focusRequested.current = false
+      return
+    }
+    trackUsage({ name: 'practice_action', lesson, action: 'reset' })
+    setSelection(null)
+    // An unanswered first question may not change the effect's inputs.
     if (questionIndex === 0 && !checked && !complete) {
       prompt.current?.focus()
       focusRequested.current = false
@@ -60,16 +108,21 @@ function KnowledgeCheck({
   function nextQuestion() {
     if (!checked) return
     focusRequested.current = true
-    if (questionIndex === activity.questions.length - 1) {
-      trackUsage({ name: 'practice_action', lesson, action: 'complete' })
-      setComplete(true)
-    } else {
-      trackUsage({ name: 'practice_action', lesson, action: 'next' })
-      setQuestionIndex(questionIndex + 1)
-      setSelectedId(null)
-      setChecked(false)
+    if (!store.next(activity.id)) {
+      focusRequested.current = false
+      return
     }
+    trackUsage({
+      name: 'practice_action',
+      lesson,
+      action:
+        questionIndex === activity.questions.length - 1 ? 'complete' : 'next',
+    })
+    setSelection(null)
   }
+
+  if (progress.mode === 'loading')
+    return <p role="status">Restoring this browser’s practice setting…</p>
 
   if (!question) return null
 
@@ -99,33 +152,7 @@ function KnowledgeCheck({
           </p>
           <details className="practice-disclosure practice-recap">
             <summary>Review the reasoning</summary>
-            <ol>
-              {activity.questions.map((item) => {
-                const answer = item.choices.find(
-                  (choice) => choice.id === answers[item.id],
-                )
-                const best = item.choices.find(
-                  (choice) => choice.id === item.correctChoiceId,
-                )!
-                return (
-                  <li key={item.id}>
-                    <h6>{item.prompt}</h6>
-                    <p className="small-label">
-                      {answer?.id === best.id
-                        ? 'Correct choice'
-                        : 'Worth another look'}
-                    </p>
-                    <p>
-                      <strong>Your last checked answer:</strong> {answer?.label}
-                    </p>
-                    {answer?.id !== best.id && <p>{answer?.feedback}</p>}
-                    <p>
-                      <strong>What to take away:</strong> {best.feedback}
-                    </p>
-                  </li>
-                )
-              })}
-            </ol>
+            <AnswerReview questions={activity.questions} answers={answers} />
           </details>
           <button className="practice-action" type="button" onClick={reset}>
             Practice again
@@ -138,6 +165,15 @@ function KnowledgeCheck({
         </div>
       ) : (
         <>
+          {questionIndex > 0 && (
+            <details className="practice-disclosure practice-recap">
+              <summary>Review earlier answers</summary>
+              <AnswerReview
+                questions={activity.questions.slice(0, questionIndex)}
+                answers={answers}
+              />
+            </details>
+          )}
           <fieldset className="practice-question" disabled={checked}>
             <legend>
               <span className="practice-progress">
@@ -166,7 +202,13 @@ function KnowledgeCheck({
                     name={`${prefix}-${question.id}`}
                     value={choice.id}
                     checked={selectedId === choice.id}
-                    onChange={() => setSelectedId(choice.id)}
+                    onChange={() =>
+                      setSelection({
+                        questionId: question.id,
+                        choiceId: choice.id,
+                        epoch: resetEpoch,
+                      })
+                    }
                   />
                   <span className="practice-choice-letter" aria-hidden="true">
                     {String.fromCharCode(65 + index)}
@@ -220,17 +262,16 @@ function KnowledgeCheck({
               disabled={!selected || checked}
               onClick={() => {
                 if (selected) {
-                  trackUsage({
-                    name: 'practice_action',
-                    lesson,
-                    action: 'check',
-                  })
                   focusRequested.current = true
-                  setAnswers((previous) => ({
-                    ...previous,
-                    [question.id]: selected.id,
-                  }))
-                  setChecked(true)
+                  if (
+                    store.checkAnswer(activity.id, question.id, selected.id)
+                  ) {
+                    trackUsage({
+                      name: 'practice_action',
+                      lesson,
+                      action: 'check',
+                    })
+                  } else focusRequested.current = false
                 }
               }}
             >
@@ -241,19 +282,15 @@ function KnowledgeCheck({
                 className="practice-action practice-secondary"
                 type="button"
                 onClick={() => {
-                  trackUsage({
-                    name: 'practice_action',
-                    lesson,
-                    action: 'retry',
-                  })
                   focusRequested.current = true
-                  setSelectedId(null)
-                  setChecked(false)
-                  setAnswers((previous) => {
-                    const next = { ...previous }
-                    delete next[question.id]
-                    return next
-                  })
+                  if (store.retry(activity.id)) {
+                    trackUsage({
+                      name: 'practice_action',
+                      lesson,
+                      action: 'retry',
+                    })
+                    setSelection(null)
+                  } else focusRequested.current = false
                 }}
               >
                 Try again
@@ -285,7 +322,7 @@ function KnowledgeCheck({
   )
 }
 
-/** Learning state stays local and resets when its complete lesson identity changes. */
+/** Exact-identity practice; optional version-bound saving is owned by the local provider. */
 export function LearningPractice({ lesson }: LearningPracticeProps) {
   const prefix = useId()
   const questions = useRef<HTMLDetailsElement | null>(null)
@@ -325,7 +362,7 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
             questions.current.open = true
             questions.current
               .querySelector<HTMLElement>(
-                '.practice-prompt, .practice-complete h5',
+                '.practice-complete h5, .practice-feedback[data-outcome], .practice-prompt',
               )
               ?.focus()
           }}
@@ -333,6 +370,7 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
           Start or return to questions
         </button>
       </div>
+      <ActivityProgressTools activity={activity} />
       {activity.plainEnglish && (
         <div className="learning-meaning teaching-note">
           <h5>The idea in plain English</h5>

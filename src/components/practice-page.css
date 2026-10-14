@@ -111,3 +111,20 @@
     font-size: 21px;
   }
 }
+
+.practice-row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: 16px;
+}
+.practice-row-status {
+  font-size: 14px;
+  color: var(--color-muted);
+  margin-bottom: 0;
+}
+.practice-page > .progress-preferences {
+  margin-bottom: 24px;
+  max-width: 72ch;
+}

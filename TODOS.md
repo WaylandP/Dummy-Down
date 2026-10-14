@@ -51,7 +51,8 @@ already merged into `main`. No completion percentage is implied.
   Screen-reader, Safari/iOS and real-learner checks remain pending.
 - **Phase 3:** Increment 1 is merged in PR #19 with verified production deployment.
   Increment 2 is merged in PR #20 with nine drafts and a practice index. Three
-  visual explanations are in Increment 3 validation; optional local progress follows. Review the [new source packet](docs/content-review/phase-3-activities-2026-10-14.md).
+  visual explanations merged in PR #21 with verified production deployment. Optional
+  local progress is in Increment 4 validation; the final integration pass follows. Review the [new source packet](docs/content-review/phase-3-activities-2026-10-14.md).
 - **P2: review the earlier focused learning milestone.** Three Level 1 activities now
   cover authorized access, public information and media disposal with fictional
   scenarios, common misunderstandings, nine explained questions and three
@@ -65,7 +66,7 @@ already merged into `main`. No completion percentage is implied.
   drafts and 13 selected practice links do not establish human approval or
   existence of a complete curriculum. Test beginner comprehension and distinct
   mode usefulness with real readers. Broader
-  Level 2/3 curriculum and short animations remain future work.
+  curriculum remains future work; the three delivered animations need human review.
 - **P2: maintain the public project story.** Update
   [the roadmap](docs/ROADMAP.md) whenever a milestone is materially advanced,
   blocked, re-scoped, or completed. Add meaningful merged changes to

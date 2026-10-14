@@ -10,8 +10,8 @@ shortcuts. Use IBM Plex Sans for the interface and reading; reserve handwritten
 Kalam for teaching and margin notes. Keep the supplied four-part mark and use warm
 ochre accents sparingly. Home, Learn, Glossary and About have separate native pages.
 Preserve content identities, legacy links, analytics privacy and source/draft labels.
-Keep existing local practice behavior within a lesson; page navigation/reload does
-not promise saved progress. Follow docs/DESIGN.md and prioritize reading comfort.
+Keep normal practice usable without storage. Optional, explicit local saving can
+restore version-matched checked answers; preserve its privacy and deletion guards. Follow docs/DESIGN.md and prioritize reading comfort.
 GitHub now reports the externally renamed repository as WaylandP/cipher-and-chalk.
 Keep existing deployment/project, package, storage and content IDs; do not rename
 infrastructure or rewrite historical source URLs for a display-name change.
@@ -82,8 +82,8 @@ or claim provider data receipt without evidence and the owner's authorization.
 
 The reference-desk implementation was merged in PR #12. Preserve its useful entry
 points: direct search, three existing draft practice paths, a teaching board, and
-lesson links to Source, Explain it, and Practice only where an activity exists. No
-new curriculum or saved-progress feature is implied. The owner, screen-reader,
+lesson links to Source, Explain it, and Practice only where an activity exists. Phase 3 adds source-bound draft activities, controlled visual explanations and
+optional local progress; its engineering and external-review status lives in the roadmap. The owner, screen-reader,
 Safari/iOS, and real-learner reviews remain pending; do not describe the design as
 finally accepted or accessibility-certified. Its evidence and limits are recorded
 in [the study-desk checkpoint](docs/reviews/study-desk-2026-10-14.md).

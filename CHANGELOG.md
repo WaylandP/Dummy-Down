@@ -5,6 +5,14 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Phase 3 visual explanations — October 14, 2026
+
+[PR #21](https://github.com/WaylandP/cipher-and-chalk/pull/21) merged at `40d0754`.
+Three controlled 40-second SVG explanations teach authorized access, MFA and
+response-team deployment. Transcripts, manual stages, reduced motion and deferred
+loading are included. CI passed 509 unit and 97 browser checks; the automatic
+production deployment succeeded. Draft content still awaits qualified human review.
+
 ## Phase 3 practice expansion — October 14, 2026
 
 PR #20 merged at `1e934d0` with successful automatic production deployment.
