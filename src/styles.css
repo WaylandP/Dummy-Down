@@ -2058,6 +2058,18 @@
   .about-page h2 {
     font-size: 26px;
   }
+  .legal-page section + section {
+    margin-top: 40px;
+  }
+  .legal-page h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .footer-disclaimer a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
   .about-page .perspective-list {
     display: block;
   }

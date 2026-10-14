@@ -71,14 +71,14 @@ still be assessed with real people; a palette alone does not establish it.
 - **About `/about`:** mission, honest content limits and perspective shortcuts.
 
 Native links support direct loads and normal browser navigation; Vercel rewrites
-serve the five non-root paths. Legacy root query links and section hashes still
+serve the six non-root paths. Legacy root query links and section hashes still
 work. Explorer state stays in its existing controller. Native navigation/reloads
 reset unsaved practice. Explicit optional saving restores version-bound checked
 answers on this origin; there are no accounts or cloud synchronization.
 
 Do not render a hidden learning workspace on Home: that creates false control-view
 signals and unnecessary complexity. Production-only usage retains opt-out, DNT,
-GPC and property restrictions. Only six public pathnames are allowed; queries,
+GPC and property restrictions. Only the seven public pathnames are allowed; queries,
 fragments, answers and raw searches are never forwarded.
 
 Home search submits to `/learn` with explicit discovery state and the reference

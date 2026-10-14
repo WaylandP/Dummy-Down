@@ -6,6 +6,7 @@ export type SitePage =
   | 'glossary'
   | 'about'
   | 'coverage'
+  | 'disclaimer'
   | 'not-found'
 
 export function sitePage(url: URL): SitePage {
@@ -15,6 +16,7 @@ export function sitePage(url: URL): SitePage {
   if (path === '/glossary') return 'glossary'
   if (path === '/about') return 'about'
   if (path === '/coverage') return 'coverage'
+  if (path === '/disclaimer') return 'disclaimer'
   if (path !== '/') return 'not-found'
   // Retain historical section links as well as exact shared lesson addresses.
   if (url.hash === '#glossary') return 'glossary'

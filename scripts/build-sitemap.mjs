@@ -21,6 +21,7 @@ const pages = [
   ['/glossary', '0.7'],
   ['/coverage', '0.7'],
   ['/about', '0.5'],
+  ['/disclaimer', '0.3'],
 ]
 for (const control of catalog.controls) {
   pages.push([
