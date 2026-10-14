@@ -2,12 +2,12 @@
   {
     "id": "AC.L1-b.1.i",
     "beginner": {
-      "meaning": "Keep a clear list of the people, software acting for them, and devices allowed into a system. Being connected to the office network does not automatically mean something has permission to use it.",
+      "meaning": "Identify the people, software acting for them, and devices allowed into a system, then limit access to those approved users, processes and devices. A list of approved names helps, but the system must also keep unapproved access out.",
       "example": "At fictional Cedar Point Design, an employee requests a new network printer. IT records the approved printer before allowing it to connect, just as it records an approved employee account."
     },
     "technical": {
       "focus": "Map approved user, process and device identities to enforced access decisions. Directory accounts cover people; service identities and device admission controls address other paths into the system.",
-      "example": "The team could pair an approved-account register with managed service accounts and a network device allowlist, then test that an unapproved device cannot connect.",
+      "example": "The team could pair an approved-account register with managed service accounts for automated work and a device allowlist—a list of devices permitted to connect—then test that an unapproved device cannot connect.",
       "watchFor": "A list alone does not enforce access, and human accounts do not describe every automated process."
     },
     "compliance": {
@@ -30,7 +30,7 @@
     },
     "technical": {
       "focus": "Define permitted transactions and functions, then enforce them at the application or data layer. Role-based access can group permissions, but the mapping must reflect actual responsibilities.",
-      "example": "A document application could assign separate read, edit and delete permissions to named roles, with tests showing that a reviewer cannot perform a deletion through its API.",
+      "example": "A document application could assign separate read, edit and delete permissions to named roles, with tests showing that a reviewer cannot perform a deletion through its API, the interface other software uses to send requests.",
       "watchFor": "Hiding a button is insufficient if the server still accepts the forbidden action."
     },
     "compliance": {
@@ -48,7 +48,7 @@
   {
     "id": "AC.L1-b.1.iii",
     "beginner": {
-      "meaning": "Know which outside systems your organization connects to or uses, and set conditions for those connections. Outside can mean a personal laptop, a cloud service, or another network beyond the system’s defined scope.",
+      "meaning": "Know which outside systems your organization connects to or uses, verify those connections and uses, and set limits on them. Outside can mean a personal laptop, a cloud service, or even another company-owned network beyond this system’s defined scope.",
       "example": "Cedar Point Design approves one collaboration service for contract work. A teammate’s personal file-sharing account is not automatically approved just because it is convenient."
     },
     "technical": {
@@ -95,7 +95,7 @@
     "id": "IA.L1-b.1.v",
     "beginner": {
       "meaning": "Give users, software acting for users, and devices recognizable identities. Identification answers “which one is this?” It supplies the names that access decisions and identity checks can work with.",
-      "example": "Cedar Point Design assigns a named employee account, a distinct backup-service identity and an inventory identifier for its network printer instead of treating every connection as an unknown visitor."
+      "example": "Cedar Point Design gives its employee and backup software recognizable account names. It also links the printer’s identifier used during connection to its equipment record, so the team can tell which device is accessing the system."
     },
     "technical": {
       "focus": "Keep identities distinguishable across people, delegated processes and devices. Directory entries, service identities and device identifiers should map back to the entity they represent.",
@@ -123,7 +123,7 @@
     "technical": {
       "focus": "Identify the authentication mechanism for each access path, including service and device connections. Passwords, certificates and other mechanisms serve different contexts; verify that checks occur before access.",
       "example": "The team could use individual credentials for users and certificates for a managed service connection, then test rejection when the credential is missing or invalid.",
-      "watchFor": "This control does not itself prescribe MFA; do not substitute a product label for testing identity verification."
+      "watchFor": "Replace factory-default passwords during initial setup, before putting equipment into service; well-known defaults undermine identity checks. This control does not itself prescribe multi-factor authentication (MFA), and a product label does not demonstrate verification."
     },
     "compliance": {
       "focus": "The guide separately considers authentication of users, processes acting for users and devices. Examine the prerequisite identity check for each relevant type of system access.",
@@ -140,7 +140,7 @@
   {
     "id": "MP.L1-b.1.vii",
     "beginner": {
-      "meaning": "Before disposing of media containing Federal Contract Information, sanitize it or destroy it so the information cannot be recovered. Before releasing media for reuse, sanitize it. Media includes paper and digital storage, not only laptop drives.",
+      "meaning": "Before disposing of media containing Federal Contract Information, sanitize it or destroy it. Sanitizing means removing the information so it cannot be retrieved or reconstructed. Before releasing media for reuse, sanitize it. Media includes paper and digital storage, not only laptop drives.",
       "example": "Cedar Point Design retires a USB drive used for Federal Contract Information. It follows its selected sanitization process and checks the result before considering the drive available for reuse."
     },
     "technical": {
@@ -195,7 +195,7 @@
       "watchFor": "A visitor log alone does not demonstrate escorting, and an issued badge must still be managed."
     },
     "compliance": {
-      "focus": "The assessment objectives cover escorting, monitoring, access logs, and identifying, controlling and managing access devices. Trace each activity rather than relying on one facilities policy.",
+      "focus": "The assessment objectives cover escorting, monitoring, access logs, and identifying, controlling and managing access devices. The guide distinguishes visitors from people with permanent physical-access credentials. Retain access records for the organization’s defined period; its one-year example is not a universal deadline.",
       "reviewQuestions": [
         "How are visitors escorted and their activity monitored in practice?",
         "How are access records retained and keys or badges controlled as personnel change?"
@@ -236,7 +236,7 @@
       "example": "Cedar Point Design hosts its public site in a separate network segment. A compromise of that site should not automatically grant a connection to the internal contract file server."
     },
     "technical": {
-      "focus": "Identify public components and separate their subnetworks physically or logically from internal networks. A DMZ is one possible design; separated cloud infrastructure can also support this architecture.",
+      "focus": "Identify public components and separate their subnetworks physically or logically from internal networks. A demilitarized zone (DMZ) is a separated network area for public-facing services; separated cloud infrastructure can also support this architecture.",
       "example": "The team could place a web server in a dedicated subnet and narrowly control any necessary connections to internal services rather than permitting broad network access.",
       "watchFor": "A different subnet name does not demonstrate separation if unrestricted routes still connect the environments."
     },
@@ -255,7 +255,7 @@
   {
     "id": "SI.L1-b.1.xii",
     "beginner": {
-      "meaning": "Find software, firmware and system flaws, report them to the responsible people, and correct them promptly. The organization needs defined time frames rather than relying on someone eventually noticing an update.",
+      "meaning": "Find system flaws, report them to the responsible people, and correct them within defined time frames for each step. This includes ordinary software and firmware, the software built into equipment such as a router. Finding a problem is not the same as fixing it.",
       "example": "Cedar Point Design learns that its router has a security flaw. The team records it, reports it to the owner and schedules a tested fix within its defined correction time frame."
     },
     "technical": {
@@ -324,7 +324,7 @@
   {
     "id": "SI.L1-b.1.xv",
     "beginner": {
-      "meaning": "Scan systems periodically for malicious software, and check files arriving from outside as they are downloaded, opened or executed. A scheduled scan and an immediate file check serve different purposes.",
+      "meaning": "Scan systems periodically for malicious software, and check files arriving from outside as they are downloaded, opened or run. Outside sources include USB drives as well as internet downloads. A scheduled scan and an immediate file check serve different purposes.",
       "example": "Cedar Point Design schedules regular workstation scans. When an employee downloads an external file, real-time protection checks it at the point of use instead of waiting for the next scheduled scan."
     },
     "technical": {

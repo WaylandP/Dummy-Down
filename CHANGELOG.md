@@ -8,7 +8,8 @@ validation evidence remains in the linked pull requests and review documents.
 ## Unreleased
 
 - Increment 2 (feature branch, not merged): record source-baseline revalidation,
-  current applicability access limits and Level 1 editorial-review preparation.
+  current applicability access limits, focused clarifications in ten Level 1
+  controls, stale-review fingerprint checks and a qualified-human review packet.
 
 ## 2026-10-14
 

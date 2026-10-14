@@ -8,7 +8,7 @@ import { referenceControls } from './cmmc-references'
 const frameworkId = 'cmmc'
 const editionId = 'cmmc-2-13-sep-2024'
 const sourceId = 'cmmc-assessment-l1-213'
-const checkedAt = '2026-10-13'
+const checkedAt = '2026-10-14'
 
 /** Counts refer to statements read in the pinned guide, not curriculum completion. */
 const comparedObjectives: Readonly<Record<string, number>> = {
@@ -136,7 +136,7 @@ export const levelOneReviews: readonly ControlEditorialReview[] =
             ? 'draft-three-lesson-scope'
             : 'not-mapped',
         unresolvedQuestions: [
-          'Current official DoD, FAR/CFR and NIST source access failed with proxy CONNECT 403 before an origin response on 2026-10-13. Latest-edition and present applicability checks remain unresolved.',
+          'All 18 current official DoD, FAR/DFARS, CFR and NIST source requests failed with proxy CONNECT 403 before an origin response on 2026-10-14. Latest-edition and present applicability checks remain unresolved.',
           'Qualified human review is pending; these educational drafts do not establish organizational compliance or assessment readiness.',
         ],
       }

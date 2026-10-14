@@ -1,0 +1,71 @@
+{
+  "frameworkId": "cmmc",
+  "editionId": "cmmc-2-13-sep-2024",
+  "reviewedAt": "2026-10-14",
+  "scope": "All three educational perspectives only; excludes activities, glossary and current applicability. AI-assisted comparison, not qualified human approval.",
+  "sourceId": "cmmc-assessment-l1-213",
+  "sourceSha256": "88116fa807b3685703f08c1992580ad0cfbc22ad2bcf76f99378fadf964f7368",
+  "canonicalization": "SHA-256 of UTF-8 JSON: recursive lexicographic object keys, original array order, no extra whitespace, Unicode unescaped.",
+  "controls": [
+    {
+      "requirementId": "AC.L1-b.1.i",
+      "sha256": "a129a4794edcdcc4d6fc86c97024085c81d65e824bd87ac43a3eab460cf3536c"
+    },
+    {
+      "requirementId": "AC.L1-b.1.ii",
+      "sha256": "4fcbe2b4ec632d507af28b09e864bc7c854a8d43e793bb1f170fc0bf2a1c3afa"
+    },
+    {
+      "requirementId": "AC.L1-b.1.iii",
+      "sha256": "273352c9f62e3432ea9c44df9bf224e1430bb47e5f03a943a0737856eda31172"
+    },
+    {
+      "requirementId": "AC.L1-b.1.iv",
+      "sha256": "30bbb757c247b14e623bea9ecb2d49da80955cd061c05e3fc39147b770e43860"
+    },
+    {
+      "requirementId": "IA.L1-b.1.v",
+      "sha256": "f1f7b9ec6f59ccb42351e0ad086b10bdd242843e95ad3060071a78807dce446e"
+    },
+    {
+      "requirementId": "IA.L1-b.1.vi",
+      "sha256": "aeb003dfff44372722d7dff90dceb10816234050d93e9405d3415a310a5714d6"
+    },
+    {
+      "requirementId": "MP.L1-b.1.vii",
+      "sha256": "a8411209c83f8ce9e1b10a54d0c317c46f2e7dea5d138c3358ca0cedec83521d"
+    },
+    {
+      "requirementId": "PE.L1-b.1.viii",
+      "sha256": "87d340e65b726b43ca7d9749c8d64a0323cded051080089115db2a681811868b"
+    },
+    {
+      "requirementId": "PE.L1-b.1.ix",
+      "sha256": "aef4603811ff2e1d790d488994efc2bc516d6a5ac4140fea99063350f9d65366"
+    },
+    {
+      "requirementId": "SC.L1-b.1.x",
+      "sha256": "f483de81c9d4d05c62df45e6a46a49ccc5f079047906c6665a62345886c0fbaf"
+    },
+    {
+      "requirementId": "SC.L1-b.1.xi",
+      "sha256": "66ba570d958cde4ef1ec79b5d484ca55f5b0754bfd7d3af6ec28732ab36fd2ee"
+    },
+    {
+      "requirementId": "SI.L1-b.1.xii",
+      "sha256": "13146fae472352e58ca070a16281440e0361a6e6345e0dde5230bbbb257a2a70"
+    },
+    {
+      "requirementId": "SI.L1-b.1.xiii",
+      "sha256": "a91583d269016e1608c63a18900ab4aca6a198a0b982efbfe6308161efcad1e3"
+    },
+    {
+      "requirementId": "SI.L1-b.1.xiv",
+      "sha256": "c487c40c892439eb995a7c949d04fb7c50adf5648f6f0008099969c897a2ce80"
+    },
+    {
+      "requirementId": "SI.L1-b.1.xv",
+      "sha256": "8daf37bfe720fe66a7abd1314856a490f5496a63e8fada9b773d0a7120d8633d"
+    }
+  ]
+}
