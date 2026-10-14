@@ -35,7 +35,12 @@ export function ReferencePerspectives({
 
   if (!content)
     return (
-      <div className="reference-pending" role="status">
+      <div
+        className="reference-pending teaching-state"
+        role="status"
+        aria-busy={!failed}
+      >
+        <span className="instruction-eyebrow">Teaching perspectives</span>
         <p>
           {failed
             ? 'The teaching perspectives could not load. You can still read the requirement and sources.'
@@ -55,7 +60,8 @@ export function ReferencePerspectives({
   const draft = content.findCmmcPerspective(control)
   if (!draft)
     return (
-      <div className="reference-pending">
+      <div className="reference-pending teaching-state">
+        <span className="instruction-eyebrow">Teaching perspectives</span>
         <h4>Teaching explanations are pending.</h4>
         <p>
           This publication entry has no teaching draft for this exact framework

@@ -2,7 +2,7 @@ import type { SourceReference } from '../types/content'
 
 export const projectReadmeSource: SourceReference = {
   id: 'project-readme',
-  title: 'Dummy-Down README — simplified example',
+  title: 'Project README — archived simplified example',
   url: 'https://github.com/WaylandP/Dummy-Down/blob/5cc78c255224d3a8cbaa9ab3dd52ee19be28f076/README.md#example-making-a-control-understandable',
   kind: 'project-readme',
   versionContext:

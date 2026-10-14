@@ -1,4 +1,4 @@
-# gstack in Dummy-Down
+# gstack in Cipher & Chalk
 
 [Garry Tan's gstack](https://github.com/garrytan/gstack) is a suite of specialist
 engineering skills, including product planning, design consultation, visual
@@ -139,7 +139,7 @@ the highlighted examples below are not the full inventory.
 These are Codex filesystem skills. This chat may not advertise them as plugin
 tools; request a skill by name and the agent can read its installed instructions.
 
-For example: “Use gstack office-hours to plan the next Dummy-Down feature.” The
+For example: “Use gstack office-hours to plan the next Cipher & Chalk feature.” The
 [field-guide design draft](designs/field-guide.md) records the first autonomous
 session, proposed desktop/mobile sketches, assumptions and implementation slices.
 It is a plan for review, not a claim that those features have shipped.

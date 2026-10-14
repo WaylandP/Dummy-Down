@@ -1,12 +1,16 @@
-# Dummy-Down development
+# Cipher & Chalk development
 
 Read README.md for the mission and roadmap, docs/DEVELOPMENT.md for the project
-commands, and docs/DESIGN.md for the active proposed editorial design direction.
-Keep the name Dummy-Down and the working tagline “Compliance, translated.” The
-owner explicitly superseded the dark/topographic direction: start with neutral
-light/off-white, charcoal type and restrained teal. Improve composition, reading
-and interactions rather than restoring the rejected contours, background, logo,
-or cybersecurity-vendor styling. This direction remains a proposal for review.
+commands, and docs/DESIGN.md for the active Decode Board design direction.
+Use the exact display name “Cipher & Chalk.” The owner authorized a complete
+rebrand: deep evergreen/slate teaching surfaces, cream/off-white reading areas,
+restrained teal, crisp type and a geometric coded-C SVG identity. Apply the shared
+tokens across every existing screen and state, with selective chalk texture and
+clear instructional diagrams. Preserve routes, content identities, analytics,
+privacy, progress and source/draft labels. Keep adult, readable teaching at the
+center; avoid noisy decorations, security shields and childish classroom motifs.
+Repository/service identifiers remain Dummy-Down; do not rename infrastructure.
+See docs/designs/cipher-and-chalk.md for the inventory and missing-image limitation.
 Update documentation to match implemented behavior and honest content status.
 Preserve LICENSE and third-party notices; do not claim approval of a proposed brand.
 

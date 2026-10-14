@@ -1,8 +1,10 @@
 # Deployment and browser review
 
-Dummy-Down is a static React/TypeScript frontend built with Vite. The existing
+Cipher & Chalk is a static React/TypeScript frontend built with Vite. The existing
 Vercel Git integration builds review deployments from GitHub; normal development
 does not require a manual production deployment or an owner terminal session.
+The display-name redesign does not rename the Dummy-Down repository, deployment
+project, public hostname or service settings. Production changes require approval.
 
 ## Public website versus a review preview
 

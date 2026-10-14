@@ -64,7 +64,8 @@ export function LearningModes({
             }}
           >
             <Icon size={16} aria-hidden="true" />
-            {mode.shortLabel}
+            <span className="mode-tab-label">{mode.shortLabel}</span>
+            <span className="mode-tab-indicator" aria-hidden="true" />
           </button>
         )
       })}

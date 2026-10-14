@@ -1,12 +1,12 @@
-# Dummy-Down
+# Cipher & Chalk
 
-**Compliance, translated.**
+**Cybersecurity, decoded.**
 
-**What does this requirement actually mean?** Dummy-Down helps people understand
+**What does this requirement actually mean?** Cipher & Chalk helps people understand
 cybersecurity requirements through plain-English explanations, practical examples,
 and different learning perspectives. Starting with CMMC.
 
-[Visit Dummy-Down](https://dummy-down.vercel.app) ·
+[Visit the public website](https://dummy-down.vercel.app) ·
 [Report a problem](https://github.com/WaylandP/Dummy-Down/issues) ·
 [Contribute](CONTRIBUTING.md)
 
@@ -15,7 +15,10 @@ Feature work is reviewed in separate Vercel previews before an approved merge;
 production and a pull request's preview can show different versions. See
 [deployment and preview review](docs/DEPLOYMENT.md).
 
-![Proposed editorial homepage with working Control Explorer](docs/screenshots/redesign-after-home-desktop.png)
+The Cipher & Chalk Decode Board redesign is being implemented on a feature
+branch. Review its latest pull-request preview; the existing public address and
+repository identifiers are retained. The [redesign inventory and plan](docs/designs/cipher-and-chalk.md)
+records the complete interface scope and the unavailable reference-image limitation.
 
 ## What you can use today
 
@@ -93,7 +96,7 @@ See [source provenance and verification](docs/sources/cmmc-2-13-sep-2024.md).
 
 | Phase                            | Implemented or available drafts                                                                                                                   | Remaining work                                                                                                                                                                |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1. Build the foundation**      | React/TypeScript frontend, responsive Explorer, framework-independent identities, search, filters, sharing, glossary, tests and preview workflow. | Continue usability and accessibility checks with real learners; refine the proposed editorial identity through review.                                                        |
+| **1. Build the foundation**      | React/TypeScript frontend, responsive Explorer, framework-independent identities, search, filters, sharing, glossary, tests and preview workflow. | Complete and validate the authorized Cipher & Chalk Decode Board redesign; continue usability and accessibility checks with real learners.                                    |
 | **2. Make CMMC understandable**  | Versioned Level 1–3 source inventory, three draft perspectives per entry, a focused Level 1 AI-assisted audit and separate review records.        | Qualified human approval, current applicability checks and explicit assessment-objective teaching coverage before broader curriculum claims. This phase is not complete.      |
 | **3. Make learning interactive** | Three Level 1 draft activities plus the original demo: four scenarios, 12 explained questions, three new diagrams and 20 glossary terms.          | Qualified review and learner feedback on these activities; broader reviewed practice coverage and short animated explanations remain planned.                                 |
 | **4. Expand the platform**       | Framework-independent architecture and published contribution guidelines.                                                                         | Additional frameworks, reviewed relationships between controls and a sustainable community editorial process. No automatic equivalence claims or new framework libraries yet. |
@@ -138,6 +141,10 @@ frontend locally.
   AI-assisted review, qualified approval and unresolved questions.
 - [Deployment guide](docs/DEPLOYMENT.md): GitHub CI, Vercel previews and production.
 - [Design notes](docs/DESIGN.md): the proposed identity and interaction direction.
+- [Cipher & Chalk redesign](docs/designs/cipher-and-chalk.md): UI inventory,
+  implementation decisions and acceptance checks.
+- [Redesign workflow evidence](docs/reviews/cipher-and-chalk-gstack-2026-10-14.md):
+  task-specific gstack applicability, actual execution and exact blockers.
 - [Pinned gstack inventory](docs/GSTACK-SKILLS.md): complete skill routing,
   installation checks and coverage evidence.
 
@@ -154,7 +161,7 @@ See [Usage measurement](docs/USAGE.md) for owner setup and measurement limits.
 
 ## Educational disclaimer and license
 
-Dummy-Down's mission is to make cybersecurity compliance accessible,
+Cipher & Chalk's mission is to make cybersecurity compliance accessible,
 understandable, and less intimidating without changing a requirement's intent.
 It is an independent educational project, not affiliated with, endorsed by, or
 certified by DoD, NIST, or any certification body. Draft explanations, fictional

@@ -145,7 +145,7 @@ export function ReferenceDetail({
         />
       </div>
       <div className="reference-requirement">
-        <span className="small-label">
+        <span className="small-label source-label">
           Requirement from the assessment guide
         </span>
         <blockquote className="reference-quote">
