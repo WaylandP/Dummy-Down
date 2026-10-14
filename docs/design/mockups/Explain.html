@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AC.L2-3.1.1 — Explain, yellow chalk</title>
+
+</head>
+<body>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Walter+Turncoat&amp;family=Atkinson+Hyperlegible+Next:wght@400;500;700&amp;family=Martian+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#1B2522;color:#EDE9DD;font-family:'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#EDE9DD}a:hover{color:#F2D16B}
+.hand{font-family:'Walter Turncoat',cursive}
+.mono{font-family:'Martian Mono',monospace}
+.chalk{filter:url(#chalk)}
+.tab{font:500 16px 'Atkinson Hyperlegible Next',sans-serif;padding:12px 0;color:#9AA39B;text-decoration:none;display:inline-flex;flex-direction:column;gap:6px;min-height:48px;box-sizing:border-box}
+.tab.on{color:#EDE9DD}
+.stick{display:flex;align-items:center;gap:12px;background:none;border:0;padding:8px 0;cursor:pointer;font:500 15px 'Atkinson Hyperlegible Next',sans-serif;color:#9AA39B;min-height:44px}
+.stick .bar{width:54px;height:11px;border-radius:5px;box-shadow:0 2px 2px rgba(0,0,0,.4);transition:transform .15s}
+.stick.on{color:#EDE9DD}
+.stick.on .bar{transform:translateY(-6px) rotate(-6deg)}
+</style>
+
+<div style="width:1280px;height:800px;box-sizing:border-box;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 20%,#243330 0%,#1B2522 60%,#161F1C 100%);display:flex;flex-direction:column">
+
+  <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.16">
+    <defs>
+      <filter id="chalk" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d"/><feColorMatrix in="n" type="luminanceToAlpha" result="a"/><feComponentTransfer in="a" result="m"><feFuncA type="table" tableValues="0 0.55 1 1 1 1"/></feComponentTransfer><feComposite in="d" in2="m" operator="in"/></filter>
+      <filter id="dust"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" seed="3"/><feColorMatrix type="saturate" values="0"/></filter>
+    </defs>
+    <rect width="100%" height="100%" filter="url(#dust)"/>
+  </svg>
+
+  <header style="position:relative;display:flex;align-items:center;justify-content:space-between;padding:24px 48px 0">
+    <a href="Main.dc.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#EDE9DD">
+      <svg width="34" height="34" viewBox="0 0 100 100" role="img" aria-label="Cipher and Chalk" class="chalk"><circle cx="50" cy="50" r="38" fill="none" stroke="#EDE9DD" stroke-width="9" stroke-linecap="round" stroke-dasharray="72 17 14 17 72 17 14 16" transform="rotate(-100 50 50)"/></svg>
+      <span class="hand" style="font-size:24px;line-height:1">Cipher &amp; Chalk</span>
+    </a>
+    <nav aria-label="Main" style="display:flex;gap:28px;align-items:center;font:500 15px 'Atkinson Hyperlegible Next',sans-serif">
+      <a href="Decode.dc.html" style="text-decoration:none;color:#F2D16B">Controls</a>
+      <a href="Glossary.dc.html" style="text-decoration:none">Glossary</a>
+      <a href="#" style="text-decoration:none">Practice</a>
+      <a href="#" style="text-decoration:none">About</a>
+      <button type="button" aria-label="Find a control" style="border:0;background:none;padding:6px;cursor:pointer;color:#EDE9DD;min-height:36px;min-width:36px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    </nav>
+  </header>
+
+  <div style="position:relative;flex:1;display:flex;flex-direction:column;padding:26px 48px 0;min-height:0">
+    <div style="display:flex;align-items:baseline;gap:24px;font:400 15px 'Atkinson Hyperlegible Next',sans-serif;color:#9AA39B">
+      <span class="mono" style="font-size:20px;color:#8FB7D6">AC.L2-3.1.1</span><span>Access Control, Level 2</span>
+      <span style="margin-left:auto;display:flex;gap:20px;font-size:14px"><a href="#" style="color:#9AA39B;text-decoration:none">Bookmark</a><a href="#" style="color:#9AA39B;text-decoration:none">Print</a><a href="#" style="color:#9AA39B;text-decoration:none">Copy link</a></span>
+    </div>
+    <h1 class="hand chalk" style="margin:18px 0 0;font-size:46px;line-height:1;font-weight:400">Authorized Access Control</h1>
+
+    <nav aria-label="Views of this control" style="display:flex;gap:36px;margin-top:14px;border-bottom:1px solid rgba(237,233,221,.18)">
+      <a class="tab" href="Decode.dc.html">Decode</a>
+      <a class="tab on" href="Explain.dc.html" aria-current="page">Explain<svg aria-hidden="true" width="64" height="6" viewBox="0 0 64 6" class="chalk"><path d="M1 3c20-2 40 0 62-1" fill="none" stroke="#F2D16B" stroke-width="3" stroke-linecap="round"/></svg></a>
+      <a class="tab" href="#">Evidence</a>
+      <a class="tab" href="#">Practice</a>
+      <a class="tab" href="#">Related</a>
+    </nav>
+
+    <div style="flex:1;display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:center;min-height:0">
+      <div role="group" aria-label="Pick a chalk" style="display:flex;flex-direction:column;gap:2px">
+        <p class="hand" style="margin:0 0 6px;font-size:20px;color:#9AA39B">Pick a chalk</p>
+        <button type="button" class="stick" aria-pressed="false"><span class="bar" style="background:#EDE9DD"></span>I’m new to this</button>
+        <button type="button" class="stick on" aria-pressed="true"><span class="bar" style="background:#F2D16B"></span>I run the systems</button>
+        <button type="button" class="stick" aria-pressed="false"><span class="bar" style="background:#8FB7D6"></span>I’m preparing for assessment</button>
+      </div>
+
+      <section aria-label="Explained for people who run the systems" style="display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:start;max-width:960px;color:#F2D16B">
+        <p style="margin:0;font:400 28px/1.45 'Atkinson Hyperlegible Next',sans-serif;letter-spacing:-.01em">Map user identities, delegated processes, and device identities to access enforcement at each service. Provisioning, service identities and device admission are three parts of one requirement, not substitutes for each other.</p>
+        <div style="display:flex;flex-direction:column;gap:18px;position:relative;padding-left:26px">
+          <svg aria-hidden="true" class="chalk" style="position:absolute;left:0;top:4px;width:10px;height:calc(100% - 8px)" viewBox="0 0 10 300" preserveAspectRatio="none"><path d="M5 2c2 60-2 120 1 180s-2 90 0 116" fill="none" stroke="#F2D16B" stroke-width="2.5" stroke-linecap="round"/></svg>
+          <p class="hand" style="margin:0;font-size:24px;line-height:1.3">One way to do it</p>
+          <p style="margin:0;font:400 16px/1.55 'Atkinson Hyperlegible Next',sans-serif;color:#EDE9DD">A directory group permits approved staff. A scoped service identity runs their export job. Device controls reject an endpoint that isn’t enrolled.</p>
+          <p class="hand" style="margin:6px 0 0;font-size:24px;line-height:1.3">Watch for</p>
+          <p style="margin:0;font:400 16px/1.55 'Atkinson Hyperlegible Next',sans-serif;color:#EDE9DD">A clean employee list can still leave service accounts and connected devices outside the authorization process.</p>
+        </div>
+      </section>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:0 0 16px;font:400 14px 'Atkinson Hyperlegible Next',sans-serif;color:#9AA39B">
+      <span>Written by Cipher &amp; Chalk from the cited guide. One approach, not the only one.</span>
+      <span style="display:flex;gap:28px"><a href="#" style="color:#9AA39B;text-decoration:none">Previous</a><a href="#" style="color:#EDE9DD;text-decoration:none">Next: 3.1.2</a></span>
+    </div>
+  </div>
+
+  <div aria-hidden="true" style="position:relative;height:34px;background:linear-gradient(#5E4A36,#4A3A2B 55%,#3B2E22);box-shadow:0 -1px 0 #7A6349,0 -10px 24px rgba(0,0,0,.35);display:flex;align-items:center;gap:14px;padding:0 48px">
+    <span style="width:64px;height:11px;border-radius:5px;background:#EDE9DD;box-shadow:0 2px 2px rgba(0,0,0,.4)"></span>
+    <span style="width:48px;height:11px;border-radius:5px;background:#F2D16B;opacity:.25"></span>
+    <span style="width:56px;height:11px;border-radius:5px;background:#8FB7D6;box-shadow:0 2px 2px rgba(0,0,0,.4)"></span>
+    <span style="margin-left:auto;font:400 12px 'Atkinson Hyperlegible Next',sans-serif;color:#C9B795">yellow chalk is in your hand</span>
+  </div>
+</div>
+
+</body>
+</html>

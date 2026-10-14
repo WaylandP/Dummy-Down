@@ -1,4 +1,13 @@
-# Cipher & Chalk: a reference desk
+# Cipher & Chalk design
+
+**Current direction: [The Board](design/THE_BOARD.md)**, approved October 14, 2026,
+with the eight approved screens in [design/mockups](design/mockups/). Build
+work follows that specification.
+
+The notes below describe the previous "reference desk" implementation that is
+live until the Board ships. They remain accurate for the current code.
+
+---
 
 The owner's latest October 14 feedback asks for stronger structure, a distinctive
 style and a useful place to return for help. The reference desk gives the blackboard

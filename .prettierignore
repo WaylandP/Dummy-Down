@@ -4,3 +4,4 @@ coverage
 .npm
 LICENSE
 package-lock.json
+docs/design/mockups

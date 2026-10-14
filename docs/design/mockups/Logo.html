@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cipher &amp; Chalk — the mark</title>
+
+</head>
+<body>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Walter+Turncoat&amp;family=Atkinson+Hyperlegible+Next:wght@400;500;700&amp;family=Martian+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#1B2522;color:#EDE9DD;font-family:'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;-webkit-font-smoothing:antialiased}
+.hand{font-family:'Walter Turncoat',cursive}
+.mono{font-family:'Martian Mono',monospace}
+.chalk{filter:url(#chalk)}
+</style>
+
+<div style="width:1280px;height:800px;box-sizing:border-box;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 20%,#243330 0%,#1B2522 60%,#161F1C 100%);display:grid;grid-template-columns:1fr 1fr">
+
+  <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.16">
+    <defs>
+      <filter id="chalk" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d"/><feColorMatrix in="n" type="luminanceToAlpha" result="a"/><feComponentTransfer in="a" result="m"><feFuncA type="table" tableValues="0 0.55 1 1 1 1"/></feComponentTransfer><feComposite in="d" in2="m" operator="in"/></filter>
+      <filter id="dust"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" seed="3"/><feColorMatrix type="saturate" values="0"/></filter>
+    </defs>
+    <rect width="100%" height="100%" filter="url(#dust)"/>
+  </svg>
+
+  <section aria-label="The mark" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;border-right:1px solid rgba(237,233,221,.14)">
+    <svg width="300" height="300" viewBox="0 0 100 100" role="img" aria-label="Cipher and Chalk mark: a chalk ring whose strokes spell C in Morse code" class="chalk"><circle cx="50" cy="50" r="38" fill="none" stroke="#EDE9DD" stroke-width="9" stroke-linecap="round" stroke-dasharray="72 17 14 17 72 17 14 16" transform="rotate(-100 50 50)"/></svg>
+    <p class="hand chalk" style="margin:0;font-size:54px;line-height:1;font-weight:400">Cipher &amp; Chalk</p>
+    <p style="margin:0;font:400 15px 'Atkinson Hyperlegible Next',sans-serif;color:#9AA39B">the lockup</p>
+  </section>
+
+  <section aria-label="How the mark works" style="position:relative;display:flex;flex-direction:column;justify-content:center;gap:34px;padding:0 72px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <p class="hand" style="margin:0;font-size:30px;color:#F2D16B">The ring is the letter C, in Morse.</p>
+      <p class="mono" style="margin:0;font-size:30px;color:#EDE9DD;letter-spacing:.3em">— · — ·</p>
+      <p style="margin:0;font:400 16px/1.5 'Atkinson Hyperlegible Next',sans-serif;color:#C9CFC6;max-width:46ch">A cipher you can read once you know the key. Drawn as a chalk ring, it is also a circle on a board, a wheel, a lens. Two Cs, one mark.</p>
+    </div>
+
+    <div style="display:flex;align-items:flex-end;gap:36px">
+      <svg width="96" height="96" viewBox="0 0 100 100" aria-hidden="true" class="chalk"><circle cx="50" cy="50" r="38" fill="none" stroke="#EDE9DD" stroke-width="9" stroke-linecap="round" stroke-dasharray="72 17 14 17 72 17 14 16" transform="rotate(-100 50 50)"/></svg>
+      <svg width="48" height="48" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="38" fill="none" stroke="#EDE9DD" stroke-width="11" stroke-linecap="round" stroke-dasharray="72 17 14 17 72 17 14 16" transform="rotate(-100 50 50)"/></svg>
+      <svg width="24" height="24" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="38" fill="none" stroke="#EDE9DD" stroke-width="14" stroke-linecap="round" stroke-dasharray="72 17 14 17 72 17 14 16" transform="rotate(-100 50 50)"/></svg>
+      <svg width="48" height="48" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#EDE9DD"/><circle cx="50" cy="50" r="30" fill="none" stroke="#1B2522" stroke-width="10" stroke-linecap="round" stroke-dasharray="57 13 11 13 57 13 11 13" transform="rotate(-100 50 50)"/></svg>
+      <svg width="48" height="48" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#F2D16B"/><circle cx="50" cy="50" r="30" fill="none" stroke="#1B2522" stroke-width="10" stroke-linecap="round" stroke-dasharray="57 13 11 13 57 13 11 13" transform="rotate(-100 50 50)"/></svg>
+      <p style="margin:0 0 4px;font:400 13px 'Atkinson Hyperlegible Next',sans-serif;color:#9AA39B">96, 48, 24 and the app icon in both chalks</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:8px;font:400 14px/1.5 'Atkinson Hyperlegible Next',sans-serif;color:#C9CFC6;max-width:46ch">
+      <p style="margin:0"><span style="color:#EDE9DD;font-weight:500">Chalk white</span> #EDE9DD is the voice. <span style="color:#F2D16B;font-weight:500">Yellow</span> #F2D16B underlines and explains. <span style="color:#8FB7D6;font-weight:500">Blue</span> #8FB7D6 is code: IDs, objectives, the cipher.</p>
+      <p style="margin:0">Board #1B2522. Tray wood #4A3A2B. No other colors.</p>
+      <p style="margin:0">Hand: Walter Turncoat. Reading: Atkinson Hyperlegible. Code: Martian Mono.</p>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>

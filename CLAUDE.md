@@ -3,7 +3,9 @@
 Open-source reference desk for cybersecurity compliance. React 19 + TypeScript
 (strict) + Vite + Tailwind v4, deployed to Vercel from `main`. Read `README.md`
 for what the site is, `docs/DEVELOPMENT.md` for commands and architecture, and
-`docs/DESIGN.md` for the current visual direction.
+`docs/design/THE_BOARD.md` for the approved visual direction (the mockups in
+`docs/design/mockups/` are the source of truth; `docs/DESIGN.md` describes the
+implementation that is live until the Board ships).
 
 ## Non-negotiables
 
