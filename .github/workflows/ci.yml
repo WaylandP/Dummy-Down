@@ -33,8 +33,6 @@ jobs:
         run: npm run typecheck
       - name: Lint
         run: npm run lint
-      - name: Check pinned gstack inventory and coverage structure
-        run: npm run check:gstack
       - name: Check published content summary
         run: npm run check:content
       - name: Check formatting

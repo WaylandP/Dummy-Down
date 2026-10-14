@@ -211,28 +211,10 @@ Treat this as a faithful translation of a visual concept into a working responsi
 
 Do not claim a perfect match unless the evidence supports it.
 
-## 7. Use the relevant gstack design workflow
+## 7. Review the result
 
-Use the project's pinned gstack installation and applicable skills.
-
-Prioritize:
-
-- design-consultation
-- plan-design-review where applicable
-- design-review
-- browse
-- qa
-- review
-
-Read the actual applicable skill instructions.
-
-Use real browser screenshots and design reviews.
-
-Do not launch an unrelated full 58-skill review cycle or unnecessarily repeat product planning.
-
-Use at most two review/fix iterations for this visual task before presenting results and remaining mismatches.
-
-I want a reviewable design quickly, not another multi-hour autonomous loop.
+Run a design critique against the brief above before opening the pull request,
+then a code review of the implementation.
 
 ## 8. Preserve application integrity
 
@@ -261,7 +243,7 @@ Also verify actual browser behavior on desktop and mobile.
 
 ## 9. Update design instructions
 
-Once the new visual direction is implemented, update the relevant AGENTS.md and design documentation to establish the supplied reference as the authoritative direction for future visual work.
+Once the new visual direction is implemented, update CLAUDE.md and the design documentation to establish the supplied reference as the authoritative direction for future visual work.
 
 Remove or supersede conflicting older directions.
 

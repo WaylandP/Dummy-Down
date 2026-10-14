@@ -13,8 +13,6 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "check:content": "node scripts/check-content-summary.mjs && node --test scripts/check-content-summary.test.mjs",
-    "check:gstack": "node scripts/check-gstack.mjs && node --test scripts/check-gstack.test.mjs",
-    "check:gstack:installed": "node scripts/check-gstack.mjs --inventory-only --installed",
     "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
     "test:browser": "playwright test",

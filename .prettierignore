@@ -4,6 +4,3 @@ coverage
 .npm
 LICENSE
 package-lock.json
-.agents/skills
-.claude/skills
-.gstack

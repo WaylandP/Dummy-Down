@@ -274,16 +274,14 @@ searches. No quiz answers are sent to analytics.
 
 ## Validate a change
 
-Follow [AGENTS.md](../AGENTS.md) for feature branches, incremental validated pushes,
-and GitHub/Vercel browser review. The [gstack guide](GSTACK.md) covers the optional
-project-local Codex skills and their current compatibility limits.
+Follow [CLAUDE.md](../CLAUDE.md) for feature branches, incremental validated pushes,
+and GitHub/Vercel browser review.
 
 Run these checks from the repository directory before opening a pull request:
 
 ```sh
 npm run typecheck
 npm run check:content
-npm run check:gstack
 npm run lint
 npm run format:check
 npm test
@@ -297,9 +295,6 @@ npm run build
   regression tests. It does not prove interpretation accuracy or human approval.
 - **Formatting** checks consistent layout with Prettier. Run `npm run format` to
   apply it; LICENSE and dependency lockfiles are deliberately excluded.
-- **gstack check** validates the pinned inventory, dated accounting record and Node
-  regression fixtures. It needs no gstack installation or paid provider in CI;
-  it does not prove that the recorded reviews occurred or were good reviews.
 - **Tests** exercise meaningful behavior, such as selecting a learning mode or
   finding a control. They are not a substitute for cybersecurity content review.
 - **Build** runs typechecking, then creates the production frontend in the
