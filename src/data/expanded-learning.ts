@@ -134,7 +134,7 @@ export const expandedLearningActivities = [
       'information-system',
     ],
     disclaimer:
-      'Draft fictional learning activity, not an assessment checklist, compliance score, or proof of assessment readiness. It illustrates selected concepts in the September 2024 CMMC v2.13 snapshot, not a complete organizational assessment. Qualified human review and verification of current applicability remain pending. No real organizational information, evidence, credentials, or CUI is needed.',
+      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l1-213-page-19',
       title: 'CMMC Assessment Guide – Level 1',
@@ -274,7 +274,7 @@ export const expandedLearningActivities = [
     ],
     glossaryTermIds: ['fci', 'device', 'offboarding', 'assessment-objective'],
     disclaimer:
-      'Draft fictional learning activity, not an assessment checklist, compliance score, or proof of assessment readiness. It illustrates selected concepts in the September 2024 CMMC v2.13 snapshot, not a complete organizational assessment. Qualified human review and verification of current applicability remain pending. No real organizational information, evidence, credentials, or CUI is needed.',
+      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l1-213-page-35',
       title: 'CMMC Assessment Guide – Level 1',
@@ -420,7 +420,7 @@ export const expandedLearningActivities = [
       'information-system',
     ],
     disclaimer:
-      'Draft fictional learning activity, not an assessment checklist, compliance score, or proof of assessment readiness. It illustrates selected concepts in the September 2024 CMMC v2.13 snapshot, not a complete organizational assessment. Qualified human review and verification of current applicability remain pending. No real organizational information, evidence, credentials, or CUI is needed.',
+      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l1-213-page-41',
       title: 'CMMC Assessment Guide – Level 1',
@@ -560,7 +560,7 @@ export const expandedLearningActivities = [
     ],
     glossaryTermIds: ['authentication', 'account', 'cui', 'information-system'],
     disclaimer:
-      'Draft fictional learning activity, not an assessment checklist, compliance score, or proof of assessment readiness. It illustrates selected concepts in the September 2024 CMMC v2.13 snapshot, not a complete organizational assessment. Qualified human review and verification of current applicability remain pending. No real organizational information, evidence, credentials, or CUI is needed.',
+      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l2-213-page-125',
       title: 'CMMC Assessment Guide – Level 2',
@@ -706,7 +706,7 @@ export const expandedLearningActivities = [
       'assessment-objective',
     ],
     disclaimer:
-      'Draft fictional learning activity, not an assessment checklist, compliance score, or proof of assessment readiness. It illustrates selected concepts in the September 2024 CMMC v2.13 snapshot, not a complete organizational assessment. Qualified human review and verification of current applicability remain pending. No real organizational information, evidence, credentials, or CUI is needed.',
+      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l2-213-page-116',
       title: 'CMMC Assessment Guide – Level 2',
@@ -853,7 +853,7 @@ export const expandedLearningActivities = [
       'system-boundary',
     ],
     disclaimer:
-      'Draft fictional learning activity, not an assessment checklist, compliance score, or proof of assessment readiness. It illustrates selected concepts in the September 2024 CMMC v2.13 snapshot, not a complete organizational assessment. Qualified human review and verification of current applicability remain pending. No real organizational information, evidence, credentials, or CUI is needed.',
+      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l2-213-page-87',
       title: 'CMMC Assessment Guide – Level 2',
@@ -998,7 +998,7 @@ export const expandedLearningActivities = [
       'assessment-objective',
     ],
     disclaimer:
-      'Draft fictional learning activity, not an assessment checklist, compliance score, or proof of assessment readiness. It illustrates selected concepts in the September 2024 CMMC v2.13 snapshot, not a complete organizational assessment. Qualified human review and verification of current applicability remain pending. No real organizational information, evidence, credentials, or CUI is needed.',
+      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l3-213-page-26',
       title: 'CMMC Assessment Guide – Level 3',
@@ -1146,7 +1146,7 @@ export const expandedLearningActivities = [
       'assessment-scope',
     ],
     disclaimer:
-      'Draft fictional learning activity, not an assessment checklist, compliance score, or proof of assessment readiness. It illustrates selected concepts in the September 2024 CMMC v2.13 snapshot, not a complete organizational assessment. Qualified human review and verification of current applicability remain pending. No real organizational information, evidence, credentials, or CUI is needed.',
+      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l3-213-page-47',
       title: 'CMMC Assessment Guide – Level 3',
@@ -1295,7 +1295,7 @@ export const expandedLearningActivities = [
       'assessment-objective',
     ],
     disclaimer:
-      'Draft fictional learning activity, not an assessment checklist, compliance score, or proof of assessment readiness. It illustrates selected concepts in the September 2024 CMMC v2.13 snapshot, not a complete organizational assessment. Qualified human review and verification of current applicability remain pending. No real organizational information, evidence, credentials, or CUI is needed.',
+      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l3-213-page-77',
       title: 'CMMC Assessment Guide – Level 3',

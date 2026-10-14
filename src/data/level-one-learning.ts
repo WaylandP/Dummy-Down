@@ -15,10 +15,9 @@ function guideSource(controlId: string): SourceReference {
 
 const editionId = 'cmmc-2-13-sep-2024'
 const disclaimer =
-  'Draft fictional learning activity, not an assessment checklist or compliance score. ' +
-  'Examples illustrate selected assessment objectives in the September 2024 v2.13 snapshot; ' +
-  'they do not prescribe a product, prove evidence sufficiency, or cover an entire assessment. ' +
-  'Qualified human review and verification of current applicability remain pending.'
+  'A fictional practice activity written from the September 2024 v2.13 snapshot. ' +
+  'Its examples illustrate selected assessment objectives; they do not prescribe a ' +
+  'product, prove evidence sufficiency, or cover an entire assessment.'
 
 /** Three publication-bound teaching drafts; the same ID in another edition cannot borrow them. */
 export const levelOneLearningActivities: readonly LearningActivity[] = [

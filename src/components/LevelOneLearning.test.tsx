@@ -33,7 +33,7 @@ describe('Level 1 learning coverage', () => {
       )
       expect(activity.teachingSource.versionContext).toContain('September 2024')
       expect(activity.reviewStatus).toBe('draft')
-      expect(activity.disclaimer).toContain('Qualified human review')
+      expect(activity.disclaimer).toContain('fictional practice activity')
       expect(activity.plainEnglish).toBeTruthy()
       expect(activity.commonMisunderstanding?.claim).toBeTruthy()
       expect(activity.commonMisunderstanding?.correction).toBeTruthy()
