@@ -1,0 +1,142 @@
+# Cipher & Chalk roadmap
+
+This roadmap describes the project direction and the evidence-backed state of each
+milestone. It preserves the original four phases. A working interface, a passing
+test, or the existence of draft text does not by itself complete an educational or
+content-review milestone.
+
+## Status labels
+
+- **Completed and merged into main** — implemented, validated for its stated scope,
+  and present on the default branch.
+- **Implemented but awaiting validation or review** — present in the application,
+  but owner, learner, accessibility, editorial, or professional review remains.
+- **Currently in progress** — active work or the next maintained priority has begun.
+- **Planned for future development** — part of the long-term direction, without a
+  delivery commitment or claim of availability.
+- **Blocked by external dependencies** — requires access, expertise, licensing,
+  policy decisions, or another dependency outside the current implementation.
+
+## Phase 1: Build the Foundation
+
+- [x] **Completed and merged into main** — Initialize the React, TypeScript, Vite,
+      and Tailwind CSS application with documented local development and CI checks.
+- [ ] **Implemented but awaiting validation or review** — Build responsive Home,
+      Learn, Glossary, and About pages with the Cipher & Chalk identity, keyboard
+      support, and native direct-link handling. Automated and Chromium checks exist;
+      owner acceptance, screen-reader testing, Safari/iOS checks, and real-user comfort
+      testing remain.
+- [x] **Completed and merged into main** — Create framework-independent framework,
+      edition, control, source, and lesson identities; CMMC-specific levels stay outside
+      the shared model assumptions.
+- [x] **Completed and merged into main** — Deliver the Control Explorer with search,
+      framework/family/level filters, pagination, recovery states, and source-aware
+      control detail.
+- [x] **Completed and merged into main** — Add searchable controls, shareable lesson
+      addresses, browser Back/Forward behavior, contextual definitions, and a searchable
+      20-term draft glossary. Feature availability does not approve glossary content.
+- [x] **Completed and merged into main** — Publish contribution, development,
+      deployment, source-provenance, content-review, privacy, and security guidance.
+- [ ] **Currently in progress** — Refine usability from owner and learner feedback
+      without weakening source, draft, privacy, or accessibility boundaries.
+
+Phase 1 has substantial merged implementation, but its human validation work is not
+finished.
+
+## Phase 2: Make CMMC Understandable
+
+- [x] **Completed and merged into main** — Import a versioned September 2024 CMMC
+      v2.13 source snapshot with 149 identifiers: 15 Level 1, 110 Level 2, and 24 Level 3.
+- [x] **Completed and merged into main** — Preserve assessment-guide and model
+      quotations, page/version citations, document identities, fingerprints, and known
+      wording differences.
+- [x] **Completed and merged into main** — Provide Beginner, IT & Cyber, and
+      Compliance modes as working product functionality across all 149 entries.
+- [ ] **Implemented but awaiting validation or review** — All 15 Level 1 entries have
+      three source-bound teaching drafts. An AI-assisted audit compared the 45 views
+      with 59 determination statements, but every qualified-human approval is pending.
+- [ ] **Implemented but awaiting validation or review** — Level 2 has 110 source
+      references and 330 draft perspective texts; qualified review, current
+      applicability, and objective coverage remain pending.
+- [ ] **Implemented but awaiting validation or review** — Level 3 has 24 source
+      references and 72 draft perspective texts; the same review gaps remain.
+- [ ] **Currently in progress** — Define and track assessment-objective explanation
+      coverage separately from references, perspectives, citations, and possible
+      evidence. Thirteen statements are currently mapped to three focused activities;
+      reading all 59 Level 1 statements did not establish complete teaching coverage.
+- [ ] **Blocked by external dependencies** — Obtain qualified cybersecurity/CMMC
+      reviewers and verify current applicability before calling content approved or
+      definitive.
+- [ ] **Blocked by external dependencies** — Recheck official DoD, FAR/CFR, and NIST
+      hosts when the source-check environment can reach them; 11 recorded requests were
+      blocked before an origin response. Do not silently replace the pinned baseline.
+
+Phase 2 is not complete. Broad draft coverage is a starting point for review, not a
+substitute for it.
+
+## Phase 3: Make Learning Interactive
+
+- [x] **Completed and merged into main** — Add the original fictional demo activity
+      with an explained three-question knowledge check.
+- [ ] **Implemented but awaiting validation or review** — Three edition-bound Level 1
+      activities cover authorized access, public information, and media disposal with
+      scenarios, common misunderstandings, accessible diagrams, and nine explained
+      questions.
+- [ ] **Implemented but awaiting validation or review** — The 20-term draft glossary,
+      including 14 source-cited Level 1 additions, supports contextual learning.
+- [ ] **Currently in progress** — Improve navigation and accessibility for different
+      learning styles, and test whether beginners understand the activities and the
+      three modes. Semantic, keyboard, reduced-motion, forced-color, responsive, and
+      Chromium checks exist; real learner and assistive-technology review remains.
+- [ ] **Planned for future development** — Expand reviewed exercises and realistic
+      scenarios across more Level 1, Level 2, and Level 3 concepts.
+- [ ] **Planned for future development** — Create short animated explanations for
+      visual learners, with transcripts, reduced-motion alternatives, and editorial
+      review. No animated lesson is available today.
+- [ ] **Planned for future development** — Explore progress and practice features
+      only after privacy, accessibility, retention, and learner-value questions are
+      defined. Saved progress is not currently implemented.
+
+Phase 3 is not complete. Four activities and 12 questions are a focused learning
+sample, not interactive coverage of the full catalog.
+
+## Phase 4: Expand the Platform
+
+- [x] **Completed and merged into main** — Keep the content architecture independent
+      of CMMC-specific levels and publish a contribution process for code and education.
+- [ ] **Planned for future development** — Research source licensing, editions,
+      taxonomies, and review needs for NIST SP 800-53, FedRAMP, SOC 2, ISO/IEC 27001,
+      and the HIPAA Security Rule. These names do not represent available libraries.
+- [ ] **Planned for future development** — Add another framework only after its
+      authoritative-source, licensing, identity, maintenance, and qualified-review plan
+      is approved.
+- [ ] **Planned for future development** — Model reviewed relationships between
+      controls without claiming automatic equivalence across frameworks.
+- [ ] **Currently in progress** — AI-assisted, source-bound educational drafting and
+      review processes exist. Outputs remain visibly draft and require qualified human
+      review; there is no user-facing generative chatbot.
+- [ ] **Currently in progress** — Contribution and editorial-review guidance exists.
+      A sustainable community content workflow, governance, and professional reviewer
+      network still need to be established.
+- [ ] **Planned for future development** — Investigate source access, licensing, and
+      reuse rights before selecting or importing content for any future framework.
+
+Phase 4 is not complete and has no committed delivery schedule.
+
+## Other external confirmations
+
+- **Blocked by external dependencies** — Vercel Analytics account activation,
+  custom-event entitlement, and actual dashboard receipt require owner/account
+  confirmation. The privacy-preserving integration exists, but provider receipt is
+  not verified.
+
+## Maintaining this roadmap
+
+The [README](../README.md) gives visitors the concise project story and current
+state. [TODOS.md](../TODOS.md) lists the next actionable priorities. The
+[changelog](../CHANGELOG.md) records meaningful changes already merged into `main`.
+
+Update this file when a milestone is completed, materially advanced, blocked,
+re-scoped, or removed. Preserve future milestones unless a documented project
+decision changes them. Never use fabricated completion percentages or treat
+automated/AI-assisted validation as qualified human approval.

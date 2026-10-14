@@ -21,6 +21,14 @@ Update documentation to match implemented behavior and honest content status.
 Preserve LICENSE and third-party notices; distinguish the approved direction from
 final owner visual sign-off and qualified content approval.
 
+Keep the public progress documents aligned. Update `docs/ROADMAP.md` whenever a
+milestone is completed, materially advanced, blocked, re-scoped, or removed, and
+preserve planned milestones unless a documented project decision changes them.
+Update `TODOS.md` for next actionable priorities and `CHANGELOG.md` for meaningful
+changes merged into `main`. Keep the README concise and audience-facing. Never use
+fabricated completion percentages or equate automated/AI review with qualified
+human approval.
+
 ## Branches, review, and previews
 
 - Work on a feature branch. Never implement directly on main.
@@ -70,18 +78,15 @@ answers, shared links, organizational evidence or visitor identifiers. Do not
 enable paid services, activate analytics accounts, change collection permissions,
 or claim provider data receipt without evidence and the owner's authorization.
 
-## Current visual checkpoint
+## Current visual direction
 
-The study-desk task develops the structure and usefulness of the blackboard site.
-The homepage must lead to real material; its teaching disclosure reuses an existing
-draft explanation. Reference readers link to Source, Explain it, and Practice only
-where an activity exists. No new curriculum or saved-progress feature is implied.
-Use applicable design, browse, QA and code review methods; no unrelated 58-skill
-audit or product-planning restart. At most two review/fix rounds, then publish the
-first validated preview on a Draft PR for owner feedback. Do not mark it ready
-before that feedback and final validation. Record the work in
-[the study-desk checkpoint](docs/reviews/study-desk-2026-10-14.md).
-This task-specific rule supersedes broader workflow defaults.
+The reference-desk implementation was merged in PR #12. Preserve its useful entry
+points: direct search, three existing draft practice paths, a teaching board, and
+lesson links to Source, Explain it, and Practice only where an activity exists. No
+new curriculum or saved-progress feature is implied. The owner, screen-reader,
+Safari/iOS, and real-learner reviews remain pending; do not describe the design as
+finally accepted or accessibility-certified. Its evidence and limits are recorded
+in [the study-desk checkpoint](docs/reviews/study-desk-2026-10-14.md).
 
 ## gstack for Codex
 
