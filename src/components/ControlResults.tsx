@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type { CatalogControl } from '../types/content'
 import { lessonIdentity, lessonIdentityKey } from '../state/explorer-state'
@@ -18,6 +18,8 @@ export function ControlResults({
   selectedKey,
   onSelect,
 }: ControlResultsProps) {
+  const resultList = useRef<HTMLDivElement>(null)
+  const focusNewPage = useRef(false)
   const [navigation, setNavigation] = useState(() => {
     const selectedIndex = results.findIndex(
       (control) => lessonIdentityKey(lessonIdentity(control)) === selectedKey,
@@ -41,9 +43,16 @@ export function ControlResults({
   const start = currentPage * pageSize
   const visibleResults = results.slice(start, start + pageSize)
 
+  useLayoutEffect(() => {
+    if (focusNewPage.current) {
+      focusNewPage.current = false
+      resultList.current?.querySelector('button')?.focus()
+    }
+  }, [currentPage])
+
   return (
     <>
-      <div className="control-list">
+      <div className="control-list" ref={resultList}>
         {visibleResults.map((control) => {
           const key = lessonIdentityKey(lessonIdentity(control))
           return (
@@ -93,6 +102,7 @@ export function ControlResults({
                       ? 'references'
                       : 'lessons',
                 })
+                focusNewPage.current = true
                 setNavigation({ selectedKey, page: currentPage - 1 })
               }}
             >
@@ -111,6 +121,7 @@ export function ControlResults({
                       ? 'references'
                       : 'lessons',
                 })
+                focusNewPage.current = true
                 setNavigation({ selectedKey, page: currentPage + 1 })
               }}
             >

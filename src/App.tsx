@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react'
+import { useEffect, useSyncExternalStore } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import {
   explorerCatalog,
@@ -60,6 +60,19 @@ function currentPage() {
 
 function LearningPage() {
   const controller = useExplorerState(explorerCatalog)
+  const lesson =
+    controller.resolution?.kind === 'lesson'
+      ? controller.resolution.control
+      : null
+  const title = lesson
+    ? `${lesson.id}: ${lesson.title}`
+    : controller.parsed.kind === 'invalid' ||
+        controller.resolution?.kind === 'not-found'
+      ? 'Unavailable lesson'
+      : 'Control Explorer'
+  useEffect(() => {
+    document.title = `${title} | Cipher & Chalk`
+  }, [title])
   const mode =
     controller.parsed.kind === 'ready'
       ? controller.parsed.state.mode
@@ -80,6 +93,22 @@ function LearningPage() {
 
 export default function App() {
   const page = useSyncExternalStore(subscribePage, currentPage)
+  useEffect(() => {
+    if (page !== 'learn') {
+      const title = {
+        home: 'Home',
+        glossary: 'Glossary',
+        about: 'About',
+        'not-found': 'Page not found',
+      }[page]
+      document.title = `${title} | Cipher & Chalk`
+    }
+    // On a native page load, the browser can resolve the fragment before React
+    // mounts its target. Honor an explicit skip link once the main exists.
+    if (window.location.hash === '#main') {
+      document.getElementById('main')?.focus()
+    }
+  }, [page])
   return (
     <div id="top" className={`site-page page-${page}`}>
       <a
@@ -121,7 +150,7 @@ export default function App() {
           </a>
         </nav>
       </header>
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         {page === 'home' && <StudyHome />}
         {page === 'learn' && <LearningPage />}
         {page === 'glossary' && (

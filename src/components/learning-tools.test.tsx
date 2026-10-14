@@ -253,7 +253,11 @@ describe('ShareLesson', () => {
     await user.dblClick(
       screen.getByRole('button', { name: 'Copy lesson link' }),
     )
-    expect(screen.getByRole('button', { name: 'Copying…' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Copying…' })).toHaveAttribute(
+      'aria-disabled',
+      'true',
+    )
+    expect(screen.getByRole('button', { name: 'Copying…' })).toHaveFocus()
     expect(screen.getByRole('status')).toBeEmptyDOMElement()
     expect(writeText).toHaveBeenCalledExactlyOnceWith(lessonUrl)
     await act(async () => write.resolve())

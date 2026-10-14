@@ -21,11 +21,19 @@ content-review milestone.
 
 - [x] **Completed and merged into main** — Initialize the React, TypeScript, Vite,
       and Tailwind CSS application with documented local development and CI checks.
-- [ ] **Implemented but awaiting validation or review** — Build responsive Home,
+- [x] **Completed and merged into main** — Build responsive Home,
       Learn, Glossary, and About pages with the Cipher & Chalk identity, keyboard
-      support, and native direct-link handling. Automated and Chromium checks exist;
-      owner acceptance, screen-reader testing, Safari/iOS checks, and real-user comfort
-      testing remain.
+      support, and native direct-link handling (through PR #12). Implementation
+      availability is separate from the following validation tasks.
+- [ ] **Implemented but awaiting validation or review** — Increment 1 technical validation and focused
+      usability repairs: repeatable Chromium accessibility, layout, keyboard,
+      history and recovery checks passed. Implementation is on the feature branch;
+      validated merge is required before checking this subtask. See the
+      [technical report](reviews/phase-1-quality-2026-10-14.md).
+- [ ] **Blocked by external dependencies** — Validate the interface with actual
+      assistive technology, Safari/iOS, native browser zoom, owner acceptance and
+      real-reader comfort. Use the [acceptance checklist](testing/PHASE_1_ACCEPTANCE.md)
+      and record actual environments/results; automation does not close this task.
 - [x] **Completed and merged into main** — Create framework-independent framework,
       edition, control, source, and lesson identities; CMMC-specific levels stay outside
       the shared model assumptions.
@@ -39,6 +47,13 @@ content-review milestone.
       deployment, source-provenance, content-review, privacy, and security guidance.
 - [ ] **Currently in progress** — Refine usability from owner and learner feedback
       without weakening source, draft, privacy, or accessibility boundaries.
+      The current cycle has two explicit acceptance tasks below.
+- [ ] **Implemented but awaiting validation or review** — Repair reproduced
+      implementation issues and prepare a repeatable owner/learner acceptance packet
+      in Increment 1; check only after validation and approved merge.
+- [ ] **Blocked by external dependencies** — Run that acceptance cycle with the
+      owner and real learners, disposition findings and record scoped acceptance.
+      Continue collecting feedback after this cycle.
 
 Phase 1 has substantial merged implementation, but its human validation work is not
 finished.
@@ -73,6 +88,15 @@ finished.
 
 Phase 2 is not complete. Broad draft coverage is a starting point for review, not a
 substitute for it.
+
+The [eight-milestone audit](reviews/phase-1-2-milestone-audit-2026-10-14.md)
+records existing evidence, independent work, external blockers and checkbox gates
+for every originally unchecked Phase 1/2 task. Deliver sequentially: Increment 1
+technical quality and acceptance preparation; Increment 2 source applicability,
+Level 1 audit and review workflow; Increment 3 objective tracking and explanation
+coverage; Increment 4 bounded Level 2/3 audits. Pause at each completed PR for owner
+review, verify its approved merge, then begin the next increment. Phase 3/4 work
+is preserved below and is outside this assignment.
 
 ## Phase 3: Make Learning Interactive
 
