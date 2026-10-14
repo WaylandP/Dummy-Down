@@ -7,12 +7,15 @@ validation evidence remains in the linked pull requests and review documents.
 
 ## Unreleased
 
-- Increment 1 (feature branch, not merged): improve page/lesson titles and
-  keyboard focus through skip links, result pages, quiz feedback, copy fallback
-  and reopened search; add browser accessibility regressions and an owner/learner
-  acceptance packet. Human validation remains pending.
+- Increment 2 (feature branch, not merged): record source-baseline revalidation,
+  current applicability access limits and Level 1 editorial-review preparation.
 
 ## 2026-10-14
+
+- [#14](https://github.com/WaylandP/cipher-and-chalk/pull/14) improved page/lesson titles and
+  keyboard focus through skip links, result pages, quiz feedback, copy fallback
+  and reopened search; added browser accessibility regressions and an owner/learner
+  acceptance packet. Human validation remains pending.
 
 - [#13](https://github.com/WaylandP/cipher-and-chalk/pull/13) restored the original
   mission, audience, teaching model, and long-term vision in the Cipher & Chalk

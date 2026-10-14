@@ -1,0 +1,146 @@
+[
+  {
+    "id": "dod-program",
+    "url": "https://dodcio.defense.gov/CMMC/",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "dod-resources",
+    "url": "https://dodcio.defense.gov/CMMC/Resources-Documentation/",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "far-52-204-21",
+    "url": "https://www.acquisition.gov/far/52.204-21",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "dfars-252-204-7012",
+    "url": "https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting.",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "dfars-252-204-7021",
+    "url": "https://www.acquisition.gov/dfars/252.204-7021-cybersecurity-maturity-model-certification-requirements.",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "cfr-32-170",
+    "url": "https://www.ecfr.gov/current/title-32/subtitle-A/chapter-I/subchapter-D/part-170",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "cfr-32-170-14",
+    "url": "https://www.ecfr.gov/current/title-32/subtitle-A/chapter-I/subchapter-D/part-170/section-170.14",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "fr-program-rule",
+    "url": "https://www.federalregister.gov/documents/2024/10/15/2024-22905/cybersecurity-maturity-model-certification-cmmc-program",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "govinfo-program-rule",
+    "url": "https://www.govinfo.gov/content/pkg/FR-2024-10-15/pdf/2024-22905.pdf",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "model",
+    "url": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/ModelOverviewv2.pdf",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "l1",
+    "url": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL1v2.pdf",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "l2",
+    "url": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL2v2.pdf",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "l3",
+    "url": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL3.pdf",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "nist-171r2",
+    "url": "https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "nist-171r3",
+    "url": "https://csrc.nist.gov/pubs/sp/800/171/r3/final",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "nist-171a-2018",
+    "url": "https://csrc.nist.gov/pubs/sp/800/171/a/final",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "nist-172",
+    "url": "https://csrc.nist.gov/pubs/sp/800/172/final",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+    "id": "nist-172a",
+    "url": "https://csrc.nist.gov/pubs/sp/800/172/a/final",
+    "attemptedAt": "2026-10-14T13:34:26+00:00",
+    "curlExitCode": 56,
+    "httpStatus": "000",
+    "error": "curl: (56) CONNECT tunnel failed, response 403"
+  }
+]
