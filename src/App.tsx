@@ -182,9 +182,9 @@ function Application() {
                 <br /> goes a long way.
               </h1>
               <p>
-                Cybersecurity requirements can be hard to read. We unpack the
-                language, explain the idea, and use everyday examples to help it
-                stick.
+                Cybersecurity requirements can be hard to read. Cipher &amp;
+                Chalk keeps the official sentence on the page and then says, in
+                plain words, what it is asking for.
               </p>
               <p>
                 This independent, open-source project covers all{' '}
@@ -192,6 +192,40 @@ function Application() {
                 v2.13 publications. Each one carries the official requirement,
                 quoted word for word with its page citation, and three
                 perspectives written to explain it.
+              </p>
+            </section>
+            <section id="what-cmmc-is" aria-labelledby="cmmc-title">
+              <h2 id="cmmc-title">CMMC in one paragraph.</h2>
+              <p>
+                The Cybersecurity Maturity Model Certification is how the
+                Department of Defense checks that its contractors protect the
+                information it shares with them. Level 1 covers 15 basic
+                safeguards for Federal Contract Information and is
+                self-assessed. Level 2 covers the 110 requirements of NIST SP
+                800-171 for Controlled Unclassified Information and is either
+                self-assessed or assessed by a certified third party. Level 3
+                adds 24 enhanced requirements and is assessed by the Government.
+                The requirements come from existing standards; what CMMC adds is
+                the assessment, the status recorded in SPRS, and the contract
+                clause that requires it. The <a href="/glossary">glossary</a>{' '}
+                defines every term in that paragraph.
+              </p>
+            </section>
+            <section id="who-makes-this" aria-labelledby="author-title">
+              <h2 id="author-title">Who makes this.</h2>
+              <p>
+                I’m Wayland. I work in IT and compliance, and CMMC Level 2 is
+                part of my day job: the system security plan, the policies, the
+                evidence, and the meetings where a technical person and an
+                assessor use the same word to mean different things. I started
+                Cipher &amp; Chalk because the explanation I kept wishing
+                existed didn’t: one that respects the source, speaks to the
+                person reading it, and doesn’t require a consultant to decode.
+              </p>
+              <p>
+                It is a side project, built in the open. If a control is
+                explained badly, or you know a clearer way to say it, the
+                repository is the place to fix it.
               </p>
             </section>
             <section id="how-content-is-made" aria-labelledby="method-title">
