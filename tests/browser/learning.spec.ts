@@ -54,7 +54,7 @@ test('filters, history, glossary and empty-result recovery keep a reader oriente
   await expect(glossary).toBeFocused()
   await expect(
     page.getByRole('status', { name: 'Glossary search results' }),
-  ).toContainText('20 terms')
+  ).toContainText('54 terms')
 })
 
 test('practice keeps answers across perspectives and supports retry, completion and restart', async ({

@@ -32,8 +32,9 @@ export function Glossary({ terms }: GlossaryProps) {
           <h2 id={`${prefix}-heading`}>A little less jargon.</h2>
         </div>
         <p>
-          Plain-language definitions of the terms used in the lessons. They are
-          teaching definitions, not the official framework wording.
+          Plain-language definitions of the terms you meet in CMMC and in these
+          lessons, each with its source. They are teaching definitions, not the
+          official wording.
         </p>
       </div>
       <div className="glossary-search">
