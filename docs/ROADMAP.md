@@ -70,10 +70,10 @@ finished.
 - [ ] **Implemented but awaiting validation or review** — All 15 Level 1 entries have
       three source-bound teaching drafts. An AI-assisted audit compared the 45 views
       with 59 determination statements, but every qualified-human approval is pending.
-- [ ] **Implemented but awaiting validation or review** — Increment 2 repeats the
+- [x] **Completed and merged into main** — Increment 2 repeats the
       Level 1 comparison, clarifies ten controls and binds each perspective record
-      to a tested review fingerprint. Check this engineering subtask after approved
-      merge; it does not complete the Level 1 teaching or human-review milestone.
+      to a tested review fingerprint (approved PR #15, merge `ef02c29`). This
+      engineering subtask does not complete the teaching or human-review milestone.
       See the [dated audit](content-review/level-1-audit-2026-10-14.md).
 - [ ] **Implemented but awaiting validation or review** — Level 2 has 110 source
       references and 330 draft perspective texts; qualified review, current
@@ -87,11 +87,11 @@ finished.
 - [ ] **Blocked by external dependencies** — Obtain qualified cybersecurity/CMMC
       reviewers and verify current applicability before calling content approved or
       definitive.
-- [ ] **Implemented but awaiting validation or review** — Prepare qualified-review
+- [x] **Completed and merged into main** — Prepare qualified-review
       instructions and a per-control feedback template, with qualifications,
       source/objective checks, approval/rejection states and change/re-review rules.
-      The [review packet](content-review/QUALIFIED_REVIEW.md) awaits Increment 2's
-      approved merge; real reviewer recruitment and decisions remain separate.
+      The [review packet](content-review/QUALIFIED_REVIEW.md) was merged in approved
+      PR #15; real reviewer recruitment and decisions remain separate.
 - [ ] **Blocked by external dependencies** — Verify current official DoD, FAR/DFARS,
       CFR and NIST applicability. Increment 2 rechecked the pinned source files;
       all 18 new official-host requests were blocked before an origin response.

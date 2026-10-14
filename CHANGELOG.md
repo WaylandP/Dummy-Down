@@ -7,11 +7,14 @@ validation evidence remains in the linked pull requests and review documents.
 
 ## Unreleased
 
-- Increment 2 (feature branch, not merged): record source-baseline revalidation,
-  current applicability access limits, focused clarifications in ten Level 1
-  controls, stale-review fingerprint checks and a qualified-human review packet.
+- Increment 3 (feature branch, in progress): explicit assessment-statement inventory,
+  teaching mappings and a navigable coverage report.
 
 ## 2026-10-14
+
+- [#15](https://github.com/WaylandP/cipher-and-chalk/pull/15) recorded source-baseline revalidation,
+  current applicability access limits, focused clarifications in ten Level 1
+  controls, stale-review fingerprint checks and a qualified-human review packet.
 
 - [#14](https://github.com/WaylandP/cipher-and-chalk/pull/14) improved page/lesson titles and
   keyboard focus through skip links, result pages, quiz feedback, copy fallback
