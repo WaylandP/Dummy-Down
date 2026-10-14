@@ -467,7 +467,7 @@
     },
     {
       "controlId": "AC.L2-3.1.22",
-      "perspectiveSha256": "45bded65701b86d23087bacbd6c7ec2616cb5bae693eb87d5329c6859d9050a6",
+      "perspectiveSha256": "fbe41d65be685c2343fd46ca99e3c3b84013476e9028855dc994fac1cea5ec50",
       "mappings": [
         {
           "labels": ["c", "d", "e"],
@@ -572,7 +572,7 @@
     },
     {
       "controlId": "AU.L2-3.3.7",
-      "perspectiveSha256": "74862a1167075f8b2b4636067722729eb64ace2230144e6f63a94566488a25ac",
+      "perspectiveSha256": "b4fc73c3ea1c13330488bd33238bac2befd09282062758e4c6b09781f42f9a48",
       "mappings": [
         {
           "labels": ["a", "b", "c"],
@@ -602,7 +602,7 @@
     },
     {
       "controlId": "CM.L2-3.4.1",
-      "perspectiveSha256": "1c6f257379f458ee42bfee360478a8b802fbd90386ec7cc009db71443ad7d489",
+      "perspectiveSha256": "18a4075ad0a1276023ee242d7983275e61966d538db932b3fd282b1e155b1645",
       "mappings": [
         {
           "labels": ["a", "b", "c", "d", "e", "f"],
@@ -728,7 +728,7 @@
     },
     {
       "controlId": "IA.L2-3.5.3",
-      "perspectiveSha256": "40a00ba97f66ca0f7423d3ec73c0c32fcb7f2434fe8d78abc2208377c030de94",
+      "perspectiveSha256": "0b56e0a6498ea99957f91aa9436f3c69d976404d30ac34e5408828cda1321b73",
       "mappings": [
         {
           "labels": ["a", "b", "c", "d"],
@@ -768,7 +768,7 @@
     },
     {
       "controlId": "IA.L2-3.5.7",
-      "perspectiveSha256": "753f3cbfa43cf0fe9841bc4c1e5fa7fe7d3aa4e6c63dff7b212f14cf6989a2c5",
+      "perspectiveSha256": "01d21614b8cb5b0b064c22ad162a055220ec6600fea2810e984c3f3fd72d8e51",
       "mappings": [
         {
           "labels": ["a", "b", "c", "d"],
@@ -798,7 +798,7 @@
     },
     {
       "controlId": "IA.L2-3.5.10",
-      "perspectiveSha256": "2ecb50cb434b24dc26d883c9c0cdf3cfeda2313a3efa18358cb384aea53c75fc",
+      "perspectiveSha256": "97ed5ae835b576cd37f568d2c447474651752c57924768b8cae4383e98f9d54b",
       "mappings": [
         {
           "labels": ["a", "b"],
@@ -818,7 +818,7 @@
     },
     {
       "controlId": "IR.L2-3.6.1",
-      "perspectiveSha256": "91503c9120bb7e493bcf68c709d89547ff49aff838711eccd3dec34aaf493ea4",
+      "perspectiveSha256": "cd0523b0b06f264bf15705f6f5ffb5073e45379d0f51d44c6bb27847e014aebd",
       "mappings": [
         {
           "labels": ["a", "b", "c", "d", "e", "f", "g"],
@@ -928,7 +928,7 @@
     },
     {
       "controlId": "MP.L2-3.8.3",
-      "perspectiveSha256": "3e4a7deb01bf2bfd3a552c55cbc0352aa73803b8d39ea6909ac12c2cfa8c6418",
+      "perspectiveSha256": "4f6d6bc7a428af62d45af645047dce51ca682781b04a8c0bc9b0bfbeac115514",
       "mappings": [
         {
           "labels": ["a", "b"],
@@ -958,7 +958,7 @@
     },
     {
       "controlId": "MP.L2-3.8.6",
-      "perspectiveSha256": "bc46ae0d9dcdab76b8d8fba2526e73a3507594a3e73eab57944f0d39fd3242d3",
+      "perspectiveSha256": "01d392444852596cc188038ff14c6e491054d3d7988c8bec061e8db2f566662a",
       "mappings": [
         {
           "labels": ["a"],
@@ -1223,7 +1223,7 @@
     },
     {
       "controlId": "SC.L2-3.13.7",
-      "perspectiveSha256": "3b8a8f4cd9a18c489d29d0358fa4ebc2b9f2558cc06f6d8fea0f2fc75ea84000",
+      "perspectiveSha256": "bd0865101a43ce3e8e0019090696559664b285cfc733207bed47fb547c98aba4",
       "mappings": [
         {
           "labels": ["a"],
@@ -1293,7 +1293,7 @@
     },
     {
       "controlId": "SC.L2-3.13.14",
-      "perspectiveSha256": "b9162d335a9569c0a76b03a037ce1e54f311aa6bc2d9179df420623922fcd377",
+      "perspectiveSha256": "bd0dae1fbdc60fd5bbe2e551ac850113e7cdc339d772fcbbc1f103a38bd0d357",
       "mappings": [
         {
           "labels": ["a", "b"],
@@ -1363,7 +1363,7 @@
     },
     {
       "controlId": "SI.L2-3.14.5",
-      "perspectiveSha256": "94fca4adb1ff30565d579af2c15f350bd88c870df9610845eca702eca70e8eb4",
+      "perspectiveSha256": "dbcc3edb200af1737dc2966dae4122b9fa539aa10edacabab473c377e18e990d",
       "mappings": [
         {
           "labels": ["a", "b", "c"],

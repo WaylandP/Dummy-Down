@@ -76,10 +76,10 @@ finished.
       engineering subtask does not complete the teaching or human-review milestone.
       See the [dated audit](content-review/level-1-audit-2026-10-14.md).
 - [ ] **Implemented but awaiting validation or review** — Level 2 has 110 source
-      references and 330 draft perspective texts; qualified review, current
-      applicability, and full editorial review remain pending. Increment 4 is
-      reviewing all fields in two bounded batches; objective mappings were merged
-      in approved PR #16.
+      references and 330 draft perspective texts. Increment 4 compared all fields
+      with the complete pinned guide sections in two bounded batches and clarifies
+      12 controls. Qualified review and current applicability remain pending;
+      AI-assisted comparison does not approve the teaching.
 - [ ] **Implemented but awaiting validation or review** — Level 3 has 24 source
       references and 72 draft perspective texts. Increment 4 compared all fields
       with the pinned guide and records one source-conflict clarification;
@@ -95,11 +95,11 @@ finished.
       explicit teaching mappings, gap notes, report and re-review integrity checks
       were merged in approved PR #16 at `d734898` on October 14. See the
       [coverage record](reviews/objective-coverage-2026-10-14.md).
-- [ ] **Currently in progress** — Increment 4 full-field Level 2/3 editorial audit,
-      focused corrections and tested per-control review fingerprints. Level 3's
-      first reviewable batch is implemented; Level 2 comparison continues.
-      Complete validation and owner-approved merge before checking this engineering
-      subtask. Qualified-human approval is a separate requirement.
+- [ ] **Implemented but awaiting validation or review** — Increment 4 / PR #17
+      completed the AI-assisted full-field Level 2/3 audit, 16 focused field corrections
+      across 13 controls and tested per-control review fingerprints. Local validation
+      passed; verify final CI and owner-approved merge before checking this engineering
+      subtask. Qualified-human approval is separate.
 - [ ] **Blocked by external dependencies** — Obtain qualified review of objective
       interpretations, including the `SI.L3-3.14.3e` source wording/scoping conflict.
       All source and teaching fingerprints must match the reviewed content.

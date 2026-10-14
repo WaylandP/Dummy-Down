@@ -7,8 +7,8 @@ validation evidence remains in the linked pull requests and review documents.
 
 ## Unreleased
 
-- Increment 4 (feature branch, in progress): full-field Level 2/3 editorial audit,
-  focused teaching corrections and per-control review evidence.
+- Increment 4 / PR #17 (validated feature branch, awaiting review): full-field Level 2/3
+  editorial audit, 16 clarifications across 13 controls and per-control review evidence.
 
 ## 2026-10-14
 

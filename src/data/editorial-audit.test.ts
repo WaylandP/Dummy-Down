@@ -1,6 +1,8 @@
 import { createHash } from 'node:crypto'
 import { describe, expect, it } from 'vitest'
 import levelThree from '../../docs/content-review/level-3-editorial-audit-2026-10-14.json'
+import levelTwoA from '../../docs/content-review/level-2-a-editorial-audit-2026-10-14.json'
+import levelTwoB from '../../docs/content-review/level-2-b-editorial-audit-2026-10-14.json'
 import catalog from './cmmc-213-catalog.json'
 import inventory from './cmmc-objectives.json'
 import { cmmcPerspectiveDrafts } from './cmmc-perspectives'
@@ -24,12 +26,14 @@ function textFields(value: unknown, prefix = ''): string[] {
 }
 
 describe('full-field editorial audit bindings', () => {
-  const batches = [levelThree]
+  const batches = [levelTwoA, levelTwoB, levelThree]
   const records = batches.flatMap((batch) => batch.records)
 
   it('accounts for each control in the completed review scope exactly once', () => {
-    const expected = catalog.controls.filter((control) => control.level === 3)
-    expect(records).toHaveLength(24)
+    const expected = catalog.controls.filter(
+      (control) => control.level === 2 || control.level === 3,
+    )
+    expect(records).toHaveLength(134)
     expect(records.map((record) => record.id).sort()).toEqual(
       expected.map((control) => control.id).sort(),
     )
@@ -58,10 +62,16 @@ describe('full-field editorial audit bindings', () => {
       expect(record.sourceId).toBe(control.sourceId)
       expect(record.sourcePdfPage).toBe(control.sourcePdfPage)
       expect(record.printedPage).toBe(control.sourcePrintedPage)
-      expect(record.reviewedGuidePdfPages[0]).toBe(control.sourcePdfPage)
-      expect(record.reviewedGuidePdfPages[1]).toBeGreaterThanOrEqual(
-        control.sourcePdfPage,
+      const guideControls = catalog.controls.filter(
+        (item) => item.sourceId === control.sourceId,
       )
+      const nextControl = guideControls[guideControls.indexOf(control) + 1]
+      // Last requirement sections end before each guide's appendix.
+      const finalBodyPage = control.level === 2 ? 271 : 86
+      expect(record.reviewedGuidePdfPages).toEqual([
+        control.sourcePdfPage,
+        nextControl ? nextControl.sourcePdfPage - 1 : finalBodyPage,
+      ])
       expect(record.inputFingerprint).toMatch(/^[a-f0-9]{64}$/)
       expect(record.humanReview).toBe('pending')
       expect(record.reviewNote.length).toBeGreaterThan(0)
@@ -74,6 +84,7 @@ describe('full-field editorial audit bindings', () => {
           expect(finding.sourceSupport.length).toBeGreaterThan(0)
           expect(finding.resolution.length).toBeGreaterThan(0)
           const actual = finding.field
+            .replace(/\[(\d+)\]/g, '.$1')
             .split('.')
             .reduce<unknown>(
               (value, key) => (value as Record<string, unknown>)[key],
@@ -91,10 +102,17 @@ describe('full-field editorial audit bindings', () => {
       expect(batch.editionId).toBe(inventory.editionId)
       expect(batch.reviewedAt).toBe('2026-10-14')
       expect(batch.reviewer).toContain('AI-assisted')
+      expect(batch.finalDeltaReview.reviewer).toContain('AI-assisted')
+      expect(batch.finalDeltaReview.reviewedAt).toBe(batch.reviewedAt)
+      expect(batch.finalDeltaReview.result).toBe('no-content-issues-identified')
+      expect(batch.finalDeltaReview.humanReview).toBe('pending')
       expect(batch.sourcePdfSha256).toBe(
         catalog.sources.find((source) => source.id === batch.sourceId)?.sha256,
       )
       expect(batch.scope.controls).toBe(batch.records.length)
+      for (const record of batch.records) {
+        expect(record.sourceId).toBe(batch.sourceId)
+      }
       expect(batch.scope.perspectives).toBe(batch.records.length * 3)
       const labels = batch.records.flatMap((record) => record.objectiveLabels)
       expect(batch.scope.determinations).toBe(

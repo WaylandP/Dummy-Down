@@ -11,8 +11,9 @@ determinations and nine separately classified organization-defined parameter row
 Each statement was compared with explicitly selected fields in the existing draft
 perspectives, not inferred from a keyword match or the existence of a control page.
 The independent reviewer checked all 468 selected relationships across 149 controls.
-This is narrower than a full audit of all 447 perspective texts; Increment 4 retains
-that Level 2/3 editorial assignment.
+This is narrower than a full audit of all 447 perspective texts. The subsequent
+[Increment 4 audit](level-2-3-audit-2026-10-14.md) records the complete Level 2/3
+field comparison and rechecks mappings affected by its corrections.
 
 The authoritative per-control mapping record is
 [`src/data/cmmc-objective-mappings.json`](../../src/data/cmmc-objective-mappings.json).
