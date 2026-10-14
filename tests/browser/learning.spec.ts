@@ -45,7 +45,7 @@ test('filters, history, glossary and empty-result recovery keep a reader oriente
     page.getByRole('status', { name: 'Control search results' }),
   ).toContainText('149 references')
   await page
-    .getByRole('navigation', { name: 'Main navigation' })
+    .getByRole('navigation', { name: 'Main' })
     .getByRole('link', { name: 'Glossary' })
     .click()
   const glossary = page.getByRole('searchbox', { name: 'Search glossary' })

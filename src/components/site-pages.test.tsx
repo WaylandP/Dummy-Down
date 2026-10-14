@@ -32,7 +32,7 @@ describe('Separate blackboard pages', () => {
   })
   it('opens discovery without a preselected lesson and renders the shared sample from home', async () => {
     render(<App />)
-    followPageLink(screen.getByRole('link', { name: 'Learn' }))
+    followPageLink(screen.getByRole('link', { name: 'Controls' }))
     expect(
       await screen.findByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('149 references found')

@@ -156,7 +156,7 @@ test('page titles follow native navigation and history without including search 
   await page.goBack()
   await expect(page).toHaveTitle('Control Explorer | Cipher & Chalk')
   await page
-    .getByRole('navigation', { name: 'Main navigation' })
+    .getByRole('navigation', { name: 'Main' })
     .getByRole('link', { name: 'Glossary' })
     .click()
   await expect(page).toHaveTitle('Glossary | Cipher & Chalk')

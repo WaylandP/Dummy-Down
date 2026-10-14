@@ -225,7 +225,7 @@ for (const width of [390, 1440]) {
 
     await test.step('10. Continue to another level and retain a usable reading surface', async () => {
       await page
-        .getByRole('navigation', { name: 'Main navigation' })
+        .getByRole('navigation', { name: 'Main' })
         .getByRole('link', { name: 'Practice', exact: true })
         .click()
       await page

@@ -48,6 +48,12 @@ content-review milestone.
 - [ ] **Currently in progress** — Refine usability from owner and learner feedback
       without weakening source, draft, privacy, or accessibility boundaries.
       The current cycle has two explicit acceptance tasks below.
+- [ ] **Currently in progress** — Build the Board, the visual direction approved on
+      October 14 ([specification](design/THE_BOARD.md), [mockups](design/mockups/)),
+      in five pull requests: tokens and app shell; Home; the control page with its
+      five tabs; Glossary, Practice, Assessment objectives, About and Disclaimer;
+      then the phone layout, print stylesheet and keyboard keys. Routes, content
+      identities, legacy links and the analytics allowlist do not change.
 - [x] **Completed and merged into main** — Repair reproduced
       implementation issues and prepare a repeatable owner/learner acceptance packet
       in Increment 1 (PR #14). This does not record a completed human acceptance cycle.

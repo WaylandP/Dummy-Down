@@ -143,15 +143,15 @@
     stroke-dasharray: 4 5;
   }
   .teaching-scene .visual-path-traced {
-    stroke: #9ce9d8;
+    stroke: var(--color-blue);
     stroke-width: 3;
   }
   .teaching-scene .visual-arrow {
-    stroke: #9ce9d8;
+    stroke: var(--color-blue);
     stroke-width: 2;
   }
   .teaching-scene .visual-signal {
-    fill: #9ce9d8;
+    fill: var(--color-blue);
     stroke: var(--color-canvas);
     stroke-width: 2;
   }

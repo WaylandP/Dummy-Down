@@ -1,55 +1,73 @@
 @import 'tailwindcss';
+@import './components/board/board.css';
 @import './components/study-home.css';
 @import './components/reader-outline.css';
 @import './components/coverage.css';
 
+/* Three self-hosted faces. Sources: public/fonts/sources.json; licenses: public/font-licenses. */
 @font-face {
-  font-family: 'Changa One';
-  src: url('/fonts/changa-one-latin-400-normal.woff2') format('woff2');
+  font-family: 'Walter Turncoat';
+  src: url('/fonts/walter-turncoat-latin-400.woff') format('woff');
   font-weight: 400;
+  font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Barlow';
-  src: url('/fonts/barlow-latin-800-normal.woff2') format('woff2');
-  font-weight: 800;
+  font-family: 'Atkinson Hyperlegible Next';
+  src: url('/fonts/atkinson-hyperlegible-next-latin-wght.woff') format('woff');
+  font-weight: 200 800;
+  font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Kalam';
-  src: url('/fonts/kalam-latin-400-normal.woff2') format('woff2');
-  font-weight: 400;
+  font-family: 'Atkinson Hyperlegible Next';
+  src: url('/fonts/atkinson-hyperlegible-next-latin-wght-italic.woff')
+    format('woff');
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Martian Mono';
+  src: url('/fonts/martian-mono-latin-wght.woff') format('woff');
+  font-weight: 100 800;
+  /* The face's default width; a single value pins the wdth axis there. */
+  font-stretch: 112.5%;
+  font-style: normal;
   font-display: swap;
 }
 
+/* The Board tokens (docs/design/THE_BOARD.md). No other hues. */
 @theme {
-  --color-canvas: #111111;
-  --color-surface: #171717;
-  --color-raised: #202020;
-  --color-foreground: #deded7;
-  --color-muted: #a9aaa4;
-  --color-accent: #d1c59f;
-  --color-line: #343534;
-  --color-draft: #a9aaa4;
-  --font-sans: 'IBM Plex Sans', 'Segoe UI', sans-serif;
-  --font-display: 'IBM Plex Sans', 'Segoe UI', sans-serif;
-  --font-brand: 'Changa One', Impact, sans-serif;
-  --font-chalk: 'Kalam', cursive;
-  --font-code: ui-monospace, monospace;
+  --color-board: #1b2522;
+  --color-board-lift: #243330;
+  --color-board-edge: #161f1c;
+  --color-chalk: #ede9dd;
+  --color-chalk-muted: #c9cfc6;
+  --color-chalk-dim: #9aa39b;
+  --color-chalk-faint: #8f9a93;
+  --color-chalk-ghost: #6f7a74;
+  --color-yellow: #f2d16b;
+  --color-yellow-deep: #d8b44a;
+  --color-blue: #8fb7d6;
+  --color-tray-top: #5e4a36;
+  --color-tray: #4a3a2b;
+  --color-tray-bottom: #3b2e22;
+  --color-tray-edge: #7a6349;
+  --color-tray-label: #c9b795;
+  --color-rule: rgba(237, 233, 221, 0.18);
+  --color-rule-soft: rgba(237, 233, 221, 0.12);
+  --color-wash: rgba(237, 233, 221, 0.08);
+  --font-hand: 'Walter Turncoat', 'Comic Sans MS', cursive;
+  --font-sans:
+    'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --font-mono: 'Martian Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 }
 
 :root {
   color-scheme: dark;
-  --color-field-border: #777a74;
-  --color-board: #111111;
-  --color-board-raised: #202020;
-  --color-chalk: #deded7;
-  --color-board-muted: #a9aaa4;
-  --color-board-line: #343534;
-  --color-board-accent: #d1c59f;
-  --color-success: #b8ceb5;
-  --color-error: #e9b5a8;
-  --color-warning: #d1c49d;
+  --gutter: 48px;
+  --focus-ring: 3px solid var(--color-yellow);
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -61,24 +79,63 @@
   --radius-sm: 3px;
   --radius-md: 4px;
   --radius-lg: 8px;
-  --shadow-panel: 0 8px 24px #1111110a;
-  --focus-ring: 3px solid var(--color-accent);
+  --shadow-panel: none;
   --motion-fast: 140ms;
   --motion-ease: ease-out;
   --text-body: 16px;
   --text-reading: 17px;
-  --leading-reading: 1.8;
+  --leading-reading: 1.7;
+  /* Names the pages still awaiting their Board layout use. They map onto the
+     Board tokens here; study-home.css keeps its own values until Home is
+     redrawn, and these aliases go with the last of those stylesheets. */
+  --color-canvas: var(--color-board);
+  --color-surface: var(--color-board);
+  --color-raised: var(--color-board-lift);
+  --color-foreground: var(--color-chalk);
+  --color-muted: var(--color-chalk-dim);
+  --color-accent: var(--color-yellow);
+  --color-line: var(--color-rule);
+  --color-draft: var(--color-chalk-dim);
+  --color-field-border: rgba(237, 233, 221, 0.35);
+  --color-board-raised: var(--color-board-lift);
+  --color-board-muted: var(--color-chalk-dim);
+  --color-board-line: var(--color-rule);
+  --color-board-accent: var(--color-yellow);
+  --color-success: var(--color-chalk);
+  --color-error: var(--color-yellow-deep);
+  --color-warning: var(--color-yellow);
+  --font-display: var(--font-hand);
+  --font-brand: var(--font-hand);
+  --font-chalk: var(--font-hand);
+  --font-code: var(--font-mono);
+}
+/* The gutter narrows with the screen: 48px desktop, 32px tablet, 20px phone. */
+@media (max-width: 1024px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+@media (max-width: 640px) {
+  :root {
+    --gutter: 20px;
+  }
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 24px;
+    background: var(--color-board);
   }
   body {
-    @apply m-0 bg-canvas font-sans text-foreground antialiased;
+    margin: 0;
+    background: var(--color-board);
+    color: var(--color-chalk);
+    font-family: var(--font-sans);
     font-size: var(--text-body);
-    line-height: 1.65;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   button,
   input,
@@ -98,6 +155,9 @@
     color: inherit;
     text-decoration: none;
   }
+  a:hover {
+    color: var(--color-yellow);
+  }
   a,
   button,
   select,
@@ -110,8 +170,12 @@
     outline-offset: 4px;
   }
   ::selection {
-    background: #c8d2ca;
+    background: var(--color-yellow);
     color: var(--color-board);
+  }
+  ::placeholder {
+    color: var(--color-chalk-dim);
+    opacity: 1;
   }
   h1,
   h2,
@@ -126,16 +190,28 @@
   h4 {
     text-wrap: balance;
   }
+  /* The chalk hand writes headings; reading text never uses it. */
   h1,
   h2,
   h3 {
-    font-family: var(--font-display);
-    font-weight: 500;
+    font-family: var(--font-hand);
+    font-weight: 400;
+    font-synthesis: none;
+    letter-spacing: 0;
+  }
+  h1 {
+    filter: url('#chalk');
   }
   h4,
   h5 {
     font-family: var(--font-sans);
     font-weight: 500;
+  }
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--font-mono);
   }
   svg {
     flex-shrink: 0;
@@ -343,73 +419,6 @@
       gap: var(--space-4);
     }
   }
-  .section-shell {
-    width: min(1160px, calc(100% - 80px));
-    margin-inline: auto;
-  }
-  .skip-link {
-    @apply fixed left-4 top-4 z-50 bg-accent px-5 py-3;
-    color: var(--color-board);
-    transform: translateY(-160%);
-  }
-  .skip-link:focus {
-    transform: translateY(0);
-  }
-  .site-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 84px;
-    gap: var(--space-6);
-    border-bottom: 1px solid var(--color-line);
-  }
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    color: var(--color-foreground);
-    white-space: nowrap;
-    gap: 10px;
-  }
-  .brand-wordmark {
-    display: inline-flex;
-    align-items: baseline;
-    font-family: var(--font-brand);
-    font-size: 33px;
-    line-height: 1;
-    letter-spacing: -0.5px;
-    font-weight: 400;
-    gap: 5px;
-  }
-  .brand-mark {
-    width: 48px;
-    height: 48px;
-  }
-  .brand-ampersand {
-    color: var(--color-accent);
-  }
-  .site-header nav {
-    display: flex;
-    align-items: center;
-    gap: 36px;
-    font-size: 16px;
-  }
-  .site-header nav a,
-  .github-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    min-height: 44px;
-  }
-  .site-header nav a:hover {
-    color: var(--color-accent);
-    text-decoration: underline;
-    text-underline-offset: 5px;
-  }
-  .github-link {
-    padding-left: 20px;
-    border-left: 1px solid var(--color-line);
-  }
   h2 {
     font-size: 32px;
     line-height: 1.25;
@@ -573,7 +582,6 @@
     --focus-ring: 3px solid var(--color-board-accent);
     --color-raised: var(--color-board-raised);
     --color-surface: var(--color-board-raised);
-    --color-field-border: #777a74;
     color-scheme: dark;
     border-bottom-left-radius: var(--radius-lg);
   }
@@ -854,7 +862,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-1);
     padding: var(--space-1);
-    background: #141414;
+    background: var(--color-board);
     border: 1px solid var(--color-line);
     border-radius: var(--radius-md);
   }
@@ -915,13 +923,13 @@
   .perspective-example,
   .example-box {
     padding: 20px;
-    background: #202020;
+    background: var(--color-board-lift);
     border: 1px solid var(--color-line);
     border-radius: var(--radius-md);
   }
   .perspective-watch {
     padding-left: 20px;
-    border-left: 3px solid #d1c49d;
+    border-left: 3px solid var(--color-yellow);
   }
   .control-perspective h5 {
     font-size: 17px;
@@ -1015,8 +1023,7 @@
     margin-block: 14px;
   }
   .source-content a,
-  .practice-source a,
-  .usage-preferences a {
+  .practice-source a {
     color: var(--color-accent);
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -1078,10 +1085,10 @@
     color: var(--color-surface);
   }
   .button-primary:hover {
-    background: #d9e0d9;
+    background: var(--color-chalk);
   }
   .button-primary:active {
-    background: #c8d2ca;
+    background: var(--color-chalk-muted);
   }
   .explorer-disclaimer {
     display: flex;
@@ -1269,7 +1276,7 @@
     padding: var(--space-6);
     border: 1px solid var(--color-line);
     border-radius: var(--radius-md);
-    background: #141414;
+    background: var(--color-board);
     font-size: 16px;
   }
   .practice-heading {
@@ -1494,7 +1501,7 @@
     border-color: var(--color-field-border);
   }
   .practice-action:hover:not(:disabled) {
-    background: #d9e0d9;
+    background: var(--color-chalk);
     color: var(--color-surface);
   }
   .practice-action:disabled {
@@ -1571,63 +1578,6 @@
     text-decoration: underline;
     text-underline-offset: 4px;
   }
-  .site-footer {
-    padding-block: var(--space-6) var(--space-8);
-    border-top: 1px solid var(--color-line);
-    padding-bottom: var(--space-12);
-  }
-  .footer-top {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-3) var(--space-6);
-  }
-  .footer-top .brand-wordmark {
-    font-size: 23px;
-  }
-  .footer-top p {
-    color: var(--color-muted);
-    font-size: 14px;
-    margin-right: auto;
-  }
-  .footer-top > a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    color: var(--color-muted);
-    font-size: 14px;
-  }
-  .footer-bottom {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: var(--space-6);
-    padding-top: var(--space-4);
-    color: var(--color-muted);
-    font-size: 13px;
-    line-height: 1.65;
-  }
-  .footer-bottom > span {
-    white-space: nowrap;
-  }
-  .usage-preferences {
-    padding-block: var(--space-4);
-    margin-bottom: 18px;
-    border-bottom: 1px solid var(--color-line);
-    color: var(--color-muted);
-    font-size: 14px;
-    line-height: 1.75;
-  }
-  .usage-preferences summary {
-    display: list-item;
-    padding-block: var(--space-2);
-    min-height: 44px;
-    color: var(--color-foreground);
-  }
-  .usage-preferences p {
-    max-width: 76ch;
-    margin-block: 10px;
-  }
 }
 
 /* Container width also protects embedded readers and CSS zoom independent of viewport. */
@@ -1639,9 +1589,6 @@
 }
 
 @media (max-width: 1100px) {
-  .section-shell {
-    width: calc(100% - 48px);
-  }
   .editorial-intro {
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: var(--space-8);
@@ -1683,33 +1630,6 @@
 @media (max-width: 760px) {
   :root {
     --space-section: 40px;
-  }
-  .section-shell {
-    width: calc(100% - 32px);
-  }
-  .site-header {
-    min-height: 96px;
-    padding-block: var(--space-3);
-    flex-wrap: wrap;
-    gap: 0 20px;
-  }
-  .brand-wordmark {
-    font-size: 30px;
-  }
-  .site-header nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 8px;
-    width: 100%;
-    font-size: 14px;
-  }
-  .github-link {
-    padding-left: 0;
-    border-left: 0;
-    margin-left: 0;
-  }
-  .github-link > svg:last-of-type {
-    display: none;
   }
   .editorial-intro {
     display: block;
@@ -1931,30 +1851,9 @@
   .mission-copy {
     margin-top: var(--space-4);
   }
-  .footer-top {
-    gap: var(--space-2) 20px;
-  }
-  .footer-top p {
-    width: 100%;
-    margin-top: -4px;
-  }
-  .footer-bottom {
-    display: block;
-    padding-top: var(--space-4);
-  }
-  .footer-bottom > span {
-    display: block;
-    margin-top: var(--space-3);
-  }
 }
 
 @media (max-width: 380px) {
-  .site-header nav {
-    gap: var(--space-1) 14px;
-  }
-  .github-link > span {
-    display: none;
-  }
   .intro-copy h1 {
     font-size: 36px;
   }
@@ -1979,30 +1878,6 @@
 }
 
 @layer components {
-  .site-page {
-    min-height: 100vh;
-  }
-  .site-header {
-    min-height: 84px;
-  }
-  .site-header nav {
-    gap: 32px;
-  }
-  .site-header nav a {
-    color: var(--color-muted);
-  }
-  .site-header nav a[aria-current='page'] {
-    color: var(--color-foreground);
-    text-decoration: underline;
-    text-underline-offset: 8px;
-  }
-  .brand-mark {
-    width: 38px;
-    height: 38px;
-  }
-  .brand-wordmark {
-    font-size: 28px;
-  }
   .home-kicker {
     color: var(--color-muted);
     font-size: 15px;
@@ -2010,10 +1885,8 @@
   }
   .about-page h1,
   .page-title {
-    font-family: var(--font-sans);
     font-weight: 400;
-    color: #e2e1d9;
-    letter-spacing: -1px;
+    color: var(--color-chalk);
     text-wrap: initial;
   }
   .page-title {
@@ -2046,7 +1919,7 @@
   .about-page > p {
     font-size: 18px;
     line-height: 1.85;
-    color: #b4b6af;
+    color: var(--color-chalk-muted);
     margin-block: 20px;
     max-width: 65ch;
   }
@@ -2072,11 +1945,6 @@
   .legal-page h2 {
     font-size: 22px;
     margin-bottom: 8px;
-  }
-  .footer-disclaimer a {
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 3px;
   }
   .about-page .perspective-list {
     display: block;
@@ -2168,10 +2036,10 @@
     font-size: 15px;
   }
   .mode-tabs button[aria-selected='true'] {
-    background: #292922;
+    background: var(--color-board-lift);
     color: var(--color-foreground);
     border-color: transparent;
-    box-shadow: inset 0 -3px #c9bf9e;
+    box-shadow: inset 0 -3px var(--color-yellow);
   }
   .explanation-panel {
     padding-top: 32px;
@@ -2194,42 +2062,11 @@
   .lesson-diagram {
     border: 1px solid var(--color-field-border);
   }
-  .footer-disclaimer {
-    color: var(--color-muted);
-    font-size: 12px;
-    line-height: 1.8;
-    max-width: 78ch;
-  }
-  .site-footer {
-    padding-block: 24px 32px;
-  }
-  .usage-preferences {
-    padding-block: 8px;
-    margin-bottom: 16px;
-  }
 }
 @media (max-width: 760px) {
-  .site-header {
-    min-height: 112px;
-    padding-block: 16px 8px;
-    row-gap: 8px;
-  }
-  .site-header nav {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 28px;
-    font-size: 14px;
-  }
-  .brand-wordmark {
-    font-size: 27px;
-  }
   .home-kicker {
     font-size: 13px;
     margin-bottom: 24px;
-  }
-  .desktop-break {
-    display: none;
   }
   .page-title {
     font-size: 40px;
@@ -2288,19 +2125,9 @@
 }
 
 @layer components {
-  .site-header nav a[aria-current='page'] {
-    text-decoration-color: #c9bf9e;
-  }
-  .site-header nav a:hover {
-    color: #e2d6b0;
-  }
-  .site-footer {
-    margin-top: 0;
-  }
   .page-glossary .page-title {
     max-width: 1160px;
     font-size: 48px;
-    font-weight: 500;
   }
   .page-glossary .glossary {
     max-width: 1160px;
@@ -2319,9 +2146,6 @@
     font-size: 20px;
     padding-block: 20px;
   }
-  .about-page h1 {
-    font-weight: 500;
-  }
   .about-page .perspective-link {
     padding-block: 28px;
   }
@@ -2335,8 +2159,8 @@
     text-transform: uppercase;
   }
   .reference-requirement {
-    background: #1b1b18;
-    border-color: #918970;
+    background: var(--color-board-lift);
+    border-color: var(--color-yellow);
   }
   .explorer-section .section-heading {
     padding-bottom: 24px;
@@ -2361,7 +2185,7 @@
     padding-inline: 0;
   }
   .control-reference {
-    color: #c9bf9e;
+    color: var(--color-yellow);
   }
 }
 @media (max-width: 760px) {

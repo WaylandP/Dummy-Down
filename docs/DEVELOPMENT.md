@@ -68,10 +68,11 @@ available from the npm registry during installation.
 
 ## Understand the code
 
-The [design notes](DESIGN.md) describe the active reference-desk direction:
-matte black surfaces, soft chalk text, restrained warm ochre accents, a functional
-homepage index and the supplied four-part mark. IBM Plex Sans handles the interface
-and reading; Kalam adds character to teaching and margin notes. The
+The [Board specification](design/THE_BOARD.md) is the visual direction; the
+[design notes](DESIGN.md) say which parts of it are live. The app shell, tokens
+and fonts follow the Board: Walter Turncoat for headings, Atkinson Hyperlegible
+Next for reading and interface text, Martian Mono for code, all self-hosted from
+`public/fonts/` without font packages. The
 [study-desk checkpoint](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/study-desk-2026-10-14.md) records this revision;
 the [earlier redesign inventory](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/designs/cipher-and-chalk.md) maps the existing UI
 surfaces and states. Reuse shared visual tokens and semantic components;
@@ -80,36 +81,37 @@ GitHub reports the externally renamed repository as `WaylandP/cipher-and-chalk`.
 Package, deployment project, storage keys and stable content identities retain
 their existing values; historical source URLs are preserved.
 
-| Location                             | Purpose                                                                                  |
-| ------------------------------------ | ---------------------------------------------------------------------------------------- |
-| `src/main.tsx`                       | Mounts React into the HTML page.                                                         |
-| `src/App.tsx`                        | Assembles the page and coordinates the interactive experience.                           |
-| `src/components/`                    | Reusable interface pieces, including the Control Explorer.                               |
-| `src/components/StudyHome.tsx`       | Native reference search, three existing practice entry points and a teaching disclosure. |
-| `src/components/ReferenceDetail.tsx` | Source quotation, teaching perspectives and an outline of available lesson sections.     |
-| `src/types/content.ts`               | TypeScript definitions for frameworks, controls, learning modes, and content metadata.   |
-| `src/data/frameworks.ts`             | Framework metadata, including supported versus planned status.                           |
-| `src/data/controls.ts`               | Educational control examples and learning-mode definitions.                              |
-| `src/data/control-search.ts`         | Shared search and filtering behavior.                                                    |
-| `src/data/editions.ts`               | Project editorial editions and the explicit sample identity.                             |
-| `src/data/cmmc-references.ts`        | Attributed CMMC publication quotations with snapshot/page provenance.                    |
-| `src/data/cmmc-perspectives.ts`      | Separately authored, edition-bound teaching drafts, loaded on demand.                    |
-| `src/analytics/`                     | Allowlisted usage events, production gating and visitor privacy preferences.             |
-| `src/data/learning.ts`               | Fictional scenarios and questions tied to an exact teaching identity.                    |
-| `src/data/level-one-learning.ts`     | Three Level 1 draft activities, misunderstandings and accessible diagram data.           |
-| `src/data/expanded-learning.ts`      | Nine additional source-bound draft activities across three CMMC levels.                  |
-| `src/components/PracticePage.tsx`    | Searchable native-link practice index; derives levels from matched catalog entries.      |
-| `src/data/glossary.ts`               | Draft definitions with source and review context.                                        |
-| `src/data/level-one-glossary.ts`     | Fourteen sourced draft vocabulary additions.                                             |
-| `src/data/level-one-terms.ts`        | Contextual term links guarded by framework, edition and requirement identifier.          |
-| `src/types/review.ts`                | Separate source comparison, AI-assisted review and attributable human approval types.    |
-| `src/data/level-one-review.ts`       | Fifteen publication-bound review records and scoped objective quotations.                |
-| `src/state/explorer-state.ts`        | Pure address parsing, exact resolution and navigation transitions.                       |
-| `src/state/useExplorerState.ts`      | One browser-history controller mounted by App.                                           |
-| `src/styles.css`                     | Tailwind integration and shared visual styles.                                           |
-| `src/` test files                    | Behavioral checks for the user-facing experience.                                        |
-| `vite.config.ts`                     | Vite development/build settings and Vitest test configuration.                           |
-| `.github/workflows/ci.yml`           | Runs automated checks on pull requests and changes to `main`.                            |
+| Location                             | Purpose                                                                                         |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `src/main.tsx`                       | Mounts React into the HTML page.                                                                |
+| `src/App.tsx`                        | Assembles the page and coordinates the interactive experience.                                  |
+| `src/components/`                    | Reusable interface pieces, including the Control Explorer.                                      |
+| `src/components/board/`              | The Board shell: chalk filter and dust, the lockup, header with its find line, footer and tray. |
+| `src/components/StudyHome.tsx`       | Native reference search, three existing practice entry points and a teaching disclosure.        |
+| `src/components/ReferenceDetail.tsx` | Source quotation, teaching perspectives and an outline of available lesson sections.            |
+| `src/types/content.ts`               | TypeScript definitions for frameworks, controls, learning modes, and content metadata.          |
+| `src/data/frameworks.ts`             | Framework metadata, including supported versus planned status.                                  |
+| `src/data/controls.ts`               | Educational control examples and learning-mode definitions.                                     |
+| `src/data/control-search.ts`         | Shared search and filtering behavior.                                                           |
+| `src/data/editions.ts`               | Project editorial editions and the explicit sample identity.                                    |
+| `src/data/cmmc-references.ts`        | Attributed CMMC publication quotations with snapshot/page provenance.                           |
+| `src/data/cmmc-perspectives.ts`      | Separately authored, edition-bound teaching drafts, loaded on demand.                           |
+| `src/analytics/`                     | Allowlisted usage events, production gating and visitor privacy preferences.                    |
+| `src/data/learning.ts`               | Fictional scenarios and questions tied to an exact teaching identity.                           |
+| `src/data/level-one-learning.ts`     | Three Level 1 draft activities, misunderstandings and accessible diagram data.                  |
+| `src/data/expanded-learning.ts`      | Nine additional source-bound draft activities across three CMMC levels.                         |
+| `src/components/PracticePage.tsx`    | Searchable native-link practice index; derives levels from matched catalog entries.             |
+| `src/data/glossary.ts`               | Draft definitions with source and review context.                                               |
+| `src/data/level-one-glossary.ts`     | Fourteen sourced draft vocabulary additions.                                                    |
+| `src/data/level-one-terms.ts`        | Contextual term links guarded by framework, edition and requirement identifier.                 |
+| `src/types/review.ts`                | Separate source comparison, AI-assisted review and attributable human approval types.           |
+| `src/data/level-one-review.ts`       | Fifteen publication-bound review records and scoped objective quotations.                       |
+| `src/state/explorer-state.ts`        | Pure address parsing, exact resolution and navigation transitions.                              |
+| `src/state/useExplorerState.ts`      | One browser-history controller mounted by App.                                                  |
+| `src/styles.css`                     | Tailwind integration and shared visual styles.                                                  |
+| `src/` test files                    | Behavioral checks for the user-facing experience.                                               |
+| `vite.config.ts`                     | Vite development/build settings and Vitest test configuration.                                  |
+| `.github/workflows/ci.yml`           | Runs automated checks on pull requests and changes to `main`.                                   |
 
 React renders the interface from data and state. TypeScript catches inconsistent
 data and component props before the app runs. Vite handles local development and
