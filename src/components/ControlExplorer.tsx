@@ -105,6 +105,11 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
       : framework?.status === 'planned'
         ? framework
         : null
+  // Planned frameworks keep resolving from saved links, but a visitor is only
+  // offered frameworks that have published content.
+  const selectableFrameworks = frameworks.filter(
+    (item) => item.status !== 'planned' || item.id === filters.catalog,
+  )
 
   function clearFilters() {
     dispatch({ type: 'clear-filters' })
@@ -212,7 +217,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
               {!frameworks.some((item) => item.id === filters.catalog) && (
                 <option value={filters.catalog}>Unavailable framework</option>
               )}
-              {frameworks.map((item) => (
+              {selectableFrameworks.map((item) => (
                 <option value={item.id} key={item.id}>
                   {item.shortName}
                   {item.status === 'planned' ? ' · planned' : ''}
