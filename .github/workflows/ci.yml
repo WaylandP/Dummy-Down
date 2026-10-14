@@ -36,7 +36,11 @@ jobs:
       - name: Check published content summary
         run: npm run check:content
       - name: Check formatting
-        run: npm run format:check
+        run: |
+          npm run format:check || {
+            npx prettier --list-different . | sed 's/^/::error file=/;s/$/::Not formatted with Prettier (run npm run format)/'
+            exit 1
+          }
       - name: Test
         run: npm test
       - name: Build

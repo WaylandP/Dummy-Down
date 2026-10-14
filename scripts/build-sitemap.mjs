@@ -29,15 +29,18 @@ for (const control of catalog.controls) {
   ])
 }
 
-const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages
-  .map(
-    ([path, priority]) =>
-      `  <url><loc>${xmlEscape(origin + path)}</loc><priority>${priority}</priority></url>`,
-  )
-  .join('\n')}
-</urlset>
-`
+const entries = pages
+  .map(([path, priority]) => {
+    const loc = xmlEscape(origin + path)
+    return `  <url><loc>${loc}</loc><priority>${priority}</priority></url>`
+  })
+  .join('\n')
+const xml = [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  entries,
+  '</urlset>',
+  '',
+].join('\n')
 await writeFile(new URL('public/sitemap.xml', projectRoot), xml)
 console.log(`sitemap: ${pages.length} URLs`)
