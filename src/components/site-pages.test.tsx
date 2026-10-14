@@ -46,7 +46,7 @@ describe('Separate blackboard pages', () => {
       'ac-l1-b-1-i',
     )
   })
-  it.each(['/glossary', '/about', '/glossary/', '/about/'])(
+  it.each(['/glossary', '/about', '/disclaimer', '/glossary/', '/about/'])(
     'opens %s on direct load without rendering a hidden lesson',
     (path) => {
       window.history.replaceState(null, '', path)

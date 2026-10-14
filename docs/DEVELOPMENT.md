@@ -22,14 +22,14 @@ About (`/about`) use native
 links. `src/state/site-page.ts` resolves the page; only Learn mounts the Explorer
 controller and control-view tracking. Existing root query links and historical
 section hashes still resolve. The skip link canonicalizes legacy section paths.
-`vercel.json` explicitly rewrites the five non-root paths to the Vite entry document,
+`vercel.json` explicitly rewrites the six non-root paths to the Vite entry document,
 so direct links and refreshes work on Vercel without rewriting asset URLs.
 
 The Explorer continues to own query/history state. Native page changes reload the
 document; practice is in memory by default, with optional version-bound local saving. Back restores the lesson
 address, but do not promise that a browser preserves its quiz state across pages.
 Inline definitions remain available without leaving a lesson. Analytics allowlists
-only the six public paths and strips queries/fragments before submission.
+only the seven public paths and strips queries/fragments before submission.
 
 ## Start locally
 

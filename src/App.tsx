@@ -9,6 +9,7 @@ import { Brand } from './components/Brand'
 import { CoverageRoute } from './components/CoverageRoute'
 import { PracticeRoute } from './components/PracticeRoute'
 import { StudyHome } from './components/StudyHome'
+import { DisclaimerPage } from './components/DisclaimerPage'
 import { LearningRoute } from './components/LearningRoute'
 import { UsageAnalytics } from './analytics/UsageAnalytics'
 import { UsagePreferences } from './analytics/UsagePreferences'
@@ -91,6 +92,12 @@ function Application() {
             'Short fictional situations that check your understanding of specific CMMC controls, with explained answers.',
           canonicalPath: '/practice',
         },
+        disclaimer: {
+          title: 'Disclaimer & terms of use',
+          description:
+            'What Cipher & Chalk is and is not: an independent educational project, not official guidance or professional advice.',
+          canonicalPath: '/disclaimer',
+        },
         'not-found': { title: 'Page not found' },
       }[page]
       setPageMeta(meta)
@@ -157,6 +164,7 @@ function Application() {
       <main id="main" tabIndex={-1}>
         {page === 'home' && <StudyHome />}
         {page === 'coverage' && <CoverageRoute />}
+        {page === 'disclaimer' && <DisclaimerPage />}
         {page === 'practice' && <PracticeRoute />}
         {page === 'learn' && <LearningRoute />}
         {page === 'glossary' && (
@@ -271,10 +279,10 @@ function Application() {
         <UsagePreferences />
         <p className="footer-disclaimer">
           An independent educational project. Not legal advice or a guarantee of
-          compliance.
+          compliance. Not affiliated with or endorsed by DoD, NIST, or any
+          certification body.
           <br />
-          Not affiliated with or endorsed by DoD, NIST, or any certification
-          body.
+          <a href="/disclaimer">Disclaimer &amp; terms of use</a>
         </p>
       </footer>
       <UsageAnalytics />
