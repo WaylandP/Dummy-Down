@@ -72,8 +72,8 @@ The [design notes](DESIGN.md) describe the active reference-desk direction:
 matte black surfaces, soft chalk text, restrained warm ochre accents, a functional
 homepage index and the supplied four-part mark. IBM Plex Sans handles the interface
 and reading; Kalam adds character to teaching and margin notes. The
-[study-desk checkpoint](reviews/study-desk-2026-10-14.md) records this revision;
-the [earlier redesign inventory](designs/cipher-and-chalk.md) maps the existing UI
+[study-desk checkpoint](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/study-desk-2026-10-14.md) records this revision;
+the [earlier redesign inventory](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/designs/cipher-and-chalk.md) maps the existing UI
 surfaces and states. Reuse shared visual tokens and semantic components;
 `public/font-licenses/` retains distributed font licenses.
 GitHub reports the externally renamed repository as `WaylandP/cipher-and-chalk`.
@@ -216,7 +216,7 @@ references. Teaching drafts are stored separately and bound to framework,
 publication edition and control ID; the same ID in another edition does not
 borrow this content. All 149 entries have Beginner, IT & Cyber and Compliance
 perspectives with a visible draft label. The
-[earlier catalog-wide AI-assisted audit](designs/cmmc-perspectives-editorial-audit.md)
+[earlier catalog-wide AI-assisted audit](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/designs/cmmc-perspectives-editorial-audit.md)
 records source-supported corrections and content fingerprints; it is not
 qualified human approval. Examples, discussion prompts and possible evidence do
 not replace official assessment objectives.
@@ -352,7 +352,7 @@ focus/select the fallback without taking focus from a reader who moved elsewhere
 Automated axe checks and Chromium media/viewport emulation cannot certify WCAG,
 screen-reader usability, Safari/iOS or learner comprehension. Follow the
 [acceptance checklist](testing/PHASE_1_ACCEPTANCE.md) for those sessions and the
-[Phase 1 evidence report](reviews/phase-1-quality-2026-10-14.md) for exact limits.
+[Phase 1 evidence report](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-1-quality-2026-10-14.md) for exact limits.
 
 ## Dependencies and troubleshooting
 

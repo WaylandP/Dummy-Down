@@ -53,7 +53,7 @@ These are captured production-build Chromium states, not design mockups:
 | Completion and review | [1440px](../screenshots/phase3/journey-complete-1440.png) | [390px](../screenshots/phase3/journey-complete-390.png) |
 | Resumed answer review | [1440px](../screenshots/phase3/progress-resume-1440.png)  | [390px](../screenshots/phase3/progress-resume-390.png)  |
 
-The [execution record](../reviews/phase-3-execution-2026-10-14.md) distinguishes
+The [execution record](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-3-execution-2026-10-14.md) distinguishes
 local rendering from GitHub CI and Vercel deployment evidence. The
 [local-progress guide](../LOCAL_PROGRESS.md) explains storage, privacy and failure
 limits. Preview and production addresses have separate browser storage.

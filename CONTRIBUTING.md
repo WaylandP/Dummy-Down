@@ -69,7 +69,7 @@ qualified review of explanations and applicability.
 
 The 149 references have separately authored teaching drafts under
 `src/data/perspectives/`, bound to the exact publication edition. The
-[agent editorial audit](docs/designs/cmmc-perspectives-editorial-audit.md) records
+[agent editorial audit](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/designs/cmmc-perspectives-editorial-audit.md) records
 source checks and content fingerprints; it does not replace qualified review.
 Substantive changes need an affected-content review, new citations where needed,
 and updated coverage/semantic regression checks. Keep the official source text
