@@ -87,6 +87,8 @@ reviewed.
 - Beginner, IT & Cyber, and Compliance teaching drafts for every catalog entry,
   displayed beside attributed source text and publication context.
 - Shareable control-and-perspective links with browser Back/Forward support.
+- An assessment coverage report with source statements, mapped draft explanations,
+  level/gap filters, and explicit pending human review.
 - A searchable 20-term draft glossary and contextual definitions in Level 1 lessons.
 - Four draft learning activities with 12 explained questions: the original demo and
   three source-bound Level 1 activities covering authorized access, public
@@ -124,8 +126,11 @@ they have received qualified human approval or complete assessment-objective rev
 The [Level 1 editorial audit](docs/content-review/level-1-audit-2026-10-14.md)
 compared all 45 perspectives with 59 determination statements and clarified
 specific explanations. All human-approval fields remain pending. Thirteen
-statements are quoted as context for three learning activities; that does not
-establish complete curriculum coverage. Qualified contributors can use the
+statements are quoted as context for three learning activities. The new
+[assessment inventory](docs/sources/cmmc-objectives-2-13.md) preserves all 459
+lettered determinations and nine organization-defined parameter statements.
+The coverage page distinguishes mapped draft explanations from unresolved gaps;
+it does not establish complete curriculum or assessment coverage. Qualified contributors can use the
 [review packet](docs/content-review/QUALIFIED_REVIEW.md) to review individual controls.
 
 The checked-in source snapshot came from pinned public mirrors with document

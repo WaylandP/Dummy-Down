@@ -183,18 +183,23 @@ describe('usage deployment and privacy gates', () => {
 })
 
 describe('analytics URL sanitization', () => {
-  it.each(['/learn', '/glossary', '/about', '/learn/', '/glossary/'])(
-    'allows only the public page path for %s',
-    (path) => {
-      const origin = window.location.origin
-      expect(
-        beforeUsageSend({
-          type: 'event',
-          url: `${origin}${path}?q=private-customer&answer=secret#private`,
-        }),
-      ).toEqual({ type: 'event', url: `${origin}${path.replace(/\/$/, '')}` })
-    },
-  )
+  it.each([
+    '/learn',
+    '/glossary',
+    '/about',
+    '/coverage',
+    '/coverage/',
+    '/learn/',
+    '/glossary/',
+  ])('allows only the public page path for %s', (path) => {
+    const origin = window.location.origin
+    expect(
+      beforeUsageSend({
+        type: 'event',
+        url: `${origin}${path}?q=private-customer&answer=secret#private`,
+      }),
+    ).toEqual({ type: 'event', url: `${origin}${path.replace(/\/$/, '')}` })
+  })
 
   it.each(['pageview', 'event'] as const)(
     'strips all query and fragment data from a %s',

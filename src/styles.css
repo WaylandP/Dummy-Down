@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import './components/study-home.css';
 @import './components/reader-outline.css';
+@import './components/coverage.css';
 
 @font-face {
   font-family: 'Changa One';

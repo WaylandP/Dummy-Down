@@ -1,0 +1,260 @@
+@layer components {
+  .coverage-page {
+    padding-block: 56px 64px;
+  }
+  .coverage-intro {
+    max-width: 720px;
+  }
+  .coverage-intro h1 {
+    font-size: clamp(32px, 4.4vw, 56px);
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    font-weight: 500;
+    margin-block: 16px 24px;
+  }
+  .coverage-intro > p:not(.home-kicker) {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .coverage-intro .coverage-context,
+  .coverage-context,
+  .coverage-scope,
+  .coverage-citation,
+  .coverage-row-status {
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .coverage-totals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 56px;
+    margin-top: 36px;
+    padding-block: 24px;
+    border-block: 1px solid var(--color-line);
+  }
+  .coverage-totals > div {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 4px;
+  }
+  .coverage-totals dt {
+    font-size: 14px;
+    color: var(--color-muted);
+  }
+  .coverage-totals dd {
+    margin: 0;
+    font-size: 30px;
+    font-variant-numeric: tabular-nums;
+  }
+  .coverage-scope {
+    margin-block: 16px;
+    max-width: 86ch;
+  }
+  .coverage-method {
+    margin-bottom: 40px;
+  }
+  .coverage-method .source-content {
+    max-width: 80ch;
+  }
+  .coverage-page a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .coverage-filters {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) 140px 210px auto;
+    gap: 16px;
+    align-items: end;
+    padding-bottom: 32px;
+  }
+  .coverage-filters .search-input-wrap {
+    min-height: 48px;
+  }
+  .coverage-filters .filter-field {
+    min-width: 0;
+  }
+  .coverage-filters .filter-field > span {
+    font-size: 13px;
+  }
+  .coverage-filters .button {
+    min-height: 48px;
+  }
+  .coverage-results-heading {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .coverage-results-heading h2 {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .coverage-results-heading a,
+  .coverage-lesson-link a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .coverage-control {
+    border-top: 1px solid var(--color-line);
+  }
+  .coverage-control:last-child {
+    border-bottom: 1px solid var(--color-line);
+  }
+  .coverage-control > summary {
+    cursor: pointer;
+    padding: 24px 8px;
+  }
+  .coverage-control > summary > span {
+    display: inline-grid;
+    gap: 6px;
+    vertical-align: top;
+    width: calc(100% - 28px);
+    padding-left: 8px;
+  }
+  .coverage-control-id,
+  .coverage-control-count {
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+  .coverage-control-id {
+    letter-spacing: 0.02em;
+  }
+  .coverage-control strong {
+    font-weight: 500;
+    font-size: 20px;
+  }
+  .coverage-control[open] > summary {
+    color: var(--color-accent);
+  }
+  .coverage-control-body {
+    max-width: 85ch;
+    padding: 0 32px 32px;
+  }
+  .coverage-control-body > p {
+    margin-block: 0 20px;
+    line-height: 1.7;
+  }
+  .coverage-statements {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0;
+  }
+  .coverage-statements > li {
+    border-top: 1px dashed var(--color-line);
+    padding-block: 28px;
+    overflow-wrap: anywhere;
+  }
+  .coverage-statements > li:last-child {
+    padding-bottom: 0;
+  }
+  .coverage-statements h3 {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .coverage-row-status {
+    margin-block: 8px 24px;
+  }
+  .coverage-statements blockquote {
+    margin: 12px 0 20px;
+    padding-left: 20px;
+    border-left: 2px solid var(--color-line);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+  .coverage-teaching > summary {
+    min-height: 44px;
+    cursor: pointer;
+    padding-block: 12px;
+    color: var(--color-accent);
+  }
+  .coverage-teaching > div {
+    padding-block: 12px;
+  }
+  .coverage-teaching section {
+    margin-bottom: 28px;
+  }
+  .coverage-teaching h4,
+  .coverage-gap h4 {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .coverage-teaching p,
+  .coverage-gap p {
+    line-height: 1.8;
+    margin-block: 12px;
+  }
+  .coverage-field {
+    font-weight: 400;
+    color: var(--color-muted);
+  }
+  .coverage-teaching a {
+    display: inline-block;
+    padding-block: 8px;
+  }
+  .coverage-gap {
+    border-left: 2px solid var(--color-accent);
+    padding: 8px 20px;
+  }
+  .coverage-empty {
+    padding-block: 40px;
+    border-top: 1px solid var(--color-line);
+  }
+  .coverage-empty h3 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .coverage-empty p {
+    margin-block: 16px 24px;
+  }
+  .coverage-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin-top: 32px;
+  }
+  @media (max-width: 1000px) {
+    .coverage-filters {
+      grid-template-columns: 1fr 1fr;
+    }
+    .coverage-filters .search-field {
+      grid-column: 1 / -1;
+    }
+    .coverage-filters .button {
+      justify-self: start;
+    }
+  }
+  @media (max-width: 600px) {
+    .coverage-page {
+      padding-block: 32px;
+    }
+    .coverage-intro h1 {
+      letter-spacing: -0.8px;
+    }
+    .coverage-totals {
+      gap: 20px 28px;
+    }
+    .coverage-filters {
+      grid-template-columns: 1fr;
+    }
+    .coverage-filters .filter-field select {
+      width: 100%;
+    }
+    .coverage-control-body {
+      padding-inline: 8px;
+    }
+    .coverage-control strong {
+      font-size: 18px;
+    }
+    .coverage-statements blockquote {
+      padding-left: 12px;
+    }
+    .coverage-gap {
+      padding-inline: 12px;
+    }
+  }
+}

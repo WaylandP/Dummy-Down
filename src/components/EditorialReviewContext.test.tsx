@@ -61,7 +61,7 @@ describe('Visible editorial provenance', () => {
     render(<EditorialReviewContext control={fixture('AC.L1-b.1.ii')} />)
     await user.click(screen.getByText('Review record & assessment objectives'))
     expect(
-      screen.getByText(/teaching coverage has not been mapped/),
+      screen.getByText(/No practice-specific statement quotations/),
     ).toBeVisible()
     expect(
       screen.queryByText(/Official determination statements/),
@@ -114,7 +114,10 @@ describe('Visible editorial provenance', () => {
       explorer.getByText('Review record & assessment objectives'),
     )
     expect(
-      explorer.getByText(/teaching coverage has not been mapped/),
+      explorer.getByText(/No practice-specific statement quotations/),
     ).toBeVisible()
+    expect(
+      explorer.getByRole('link', { name: /See assessment statements/ }),
+    ).toHaveAttribute('href', '/coverage?control=AC.L1-b.1.ii')
   })
 })

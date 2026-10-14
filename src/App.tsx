@@ -12,6 +12,7 @@ import { sitePage } from './state/site-page'
 import type { ExplanationMode } from './types/content'
 import { Glossary } from './components/Glossary'
 import { Brand } from './components/Brand'
+import { CoverageRoute } from './components/CoverageRoute'
 import { StudyHome } from './components/StudyHome'
 import { ControlExplorer } from './components/ControlExplorer'
 import { UsageAnalytics } from './analytics/UsageAnalytics'
@@ -99,6 +100,7 @@ export default function App() {
         home: 'Home',
         glossary: 'Glossary',
         about: 'About',
+        coverage: 'Assessment coverage',
         'not-found': 'Page not found',
       }[page]
       document.title = `${title} | Cipher & Chalk`
@@ -145,6 +147,12 @@ export default function App() {
           >
             Glossary
           </a>
+          <a
+            href="/coverage"
+            aria-current={page === 'coverage' ? 'page' : undefined}
+          >
+            Coverage
+          </a>
           <a href="/about" aria-current={page === 'about' ? 'page' : undefined}>
             About
           </a>
@@ -152,6 +160,7 @@ export default function App() {
       </header>
       <main id="main" tabIndex={-1}>
         {page === 'home' && <StudyHome />}
+        {page === 'coverage' && <CoverageRoute />}
         {page === 'learn' && <LearningPage />}
         {page === 'glossary' && (
           <>

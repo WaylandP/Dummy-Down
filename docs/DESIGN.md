@@ -60,16 +60,21 @@ still be assessed with real people; a palette alone does not establish it.
   Sources, review limits and recovery remain present.
 - **Glossary `/glossary`:** searchable definitions on their own page. Inline
   definitions still open inside lessons without a page change.
+- **Coverage `/coverage`:** a separate source-to-explanation index. Summary counts
+  distinguish draft explanations, unresolved gaps and overlapping human-review
+  status. Native search/filters, paginated control disclosures and exact lesson
+  links keep detailed review work out of the primary reading workspace. Source
+  quotations and teaching notes stay visibly separate; no compliance scores.
 - **About `/about`:** mission, honest content limits and perspective shortcuts.
 
 Native links support direct loads and normal browser navigation; Vercel rewrites
-serve the three implemented paths. Legacy root query links and section hashes still
+serve the four non-root paths. Legacy root query links and section hashes still
 work. Explorer state stays in its existing controller. Native navigation/reloads
 can reset local practice; there is no saved-progress feature or account.
 
 Do not render a hidden learning workspace on Home: that creates false control-view
 signals and unnecessary complexity. Production-only usage retains opt-out, DNT,
-GPC and property restrictions. Only four public pathnames are allowed; queries,
+GPC and property restrictions. Only five public pathnames are allowed; queries,
 fragments, answers and raw searches are never forwarded.
 
 Home search submits to `/learn` with explicit discovery state and the reference

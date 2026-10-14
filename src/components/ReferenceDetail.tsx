@@ -1,3 +1,4 @@
+import { coverageUrl } from '../state/coverage-url'
 import { useId } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import type {
@@ -203,6 +204,13 @@ export function ReferenceDetail({
         <div className="reader-jump-target" id={practiceId} tabIndex={-1}>
           <LearningPractice lesson={lesson} />
         </div>
+      )}
+      {coverageUrl(control) && (
+        <p className="coverage-lesson-link">
+          <a className="text-link" href={coverageUrl(control)}>
+            See assessment statements &amp; explanation coverage
+          </a>
+        </p>
       )}
       <EditorialReviewContext
         key={`review:${lessonIdentityKey(lessonIdentity(control))}`}

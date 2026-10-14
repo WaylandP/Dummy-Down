@@ -12,7 +12,8 @@ already merged into `main`. No completion percentage is implied.
   Owner/learner, actual screen-reader, Safari/iOS and native browser-zoom checks
   remain open. Increment 2 was merged in approved PR #15 at `ef02c29`.
   Increment 3 imports all 459 determination statements and nine ODP rows, then
-  maps explicit explanations and identifies unresolved gaps. The
+  maps explicit explanations and identifies unresolved gaps. PR #16 contains the
+  validated lazy report, filters and integrity gates; owner review is pending. The
   [applicability register](docs/sources/applicability-2026-10-14.md) records 18 blocked
   official-host requests. Continue independent snapshot/content work; current
   applicability requires external verification. Do not begin Phase 3/4 work.
@@ -40,9 +41,11 @@ already merged into `main`. No completion percentage is implied.
   vocabulary additions bring the glossary to 20 draft terms. Seek qualified review
   and real learner feedback before expanding. These drafts do not establish
   catalog-wide practice coverage; do not introduce compliance scores or real evidence.
-- **P2: assessment-objective coverage and learner feedback.** Track coverage
-  separately from source links, the 13 quoted statements for three activities and
-  existence of 447 perspective drafts. Test beginner comprehension and distinct
+- **P2: assessment-objective review and learner feedback.** Review the
+  [explicit mappings](docs/content-review/objective-mapping-2026-10-14.md) and resolve
+  the two specialized-asset gaps with qualified scoping expertise. The 466 mapped
+  drafts and 13 selected practice links do not establish human approval or
+  existence of a complete curriculum. Test beginner comprehension and distinct
   mode usefulness with real readers. Broader
   Level 2/3 curriculum and short animations remain future work.
 - **P2: maintain the public project story.** Update

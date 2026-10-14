@@ -9,6 +9,8 @@ Use one decision per control. Do not put private organizational evidence here.
 - PR and exact inspected commit / preview:
 - Content reviewed (perspectives, or explicitly listed additional items):
 - Perspective SHA-256 from the dated review baseline:
+- Objective inventory / mapping payload digest or exact inspected commit:
+- Supplementary notes and ODP statements included/excluded:
 - Other included content IDs/files and hashes or inspected commit:
 - Excluded content (activities, glossary, diagrams, questions, etc.):
 - Source title / issuing body / version / publication date / document number:
@@ -29,9 +31,9 @@ Use one decision per control. Do not put private organizational evidence here.
 
 ## Objective and audience findings
 
-| Guide determination label             | Exact explanation location or “not mapped” | Accurate / missing / unclear | Source citation and correction needed |
-| ------------------------------------- | ------------------------------------------ | ---------------------------- | ------------------------------------- |
-| Fill one row per actual determination |                                            |                              |                                       |
+| Guide determination / ODP label              | Exact explanation location or “not mapped” | Accurate / missing / unclear | Source citation and correction needed |
+| -------------------------------------------- | ------------------------------------------ | ---------------------------- | ------------------------------------- |
+| Fill one row per actual determination or ODP |                                            |                              |                                       |
 
 - Beginner: meaning, why it matters, jargon, potential misunderstanding:
 - IT & Cyber: implementation options, limits, mandatory versus illustrative choices:

@@ -77,13 +77,23 @@ finished.
       See the [dated audit](content-review/level-1-audit-2026-10-14.md).
 - [ ] **Implemented but awaiting validation or review** — Level 2 has 110 source
       references and 330 draft perspective texts; qualified review, current
-      applicability, and objective coverage remain pending.
+      applicability, and full editorial review remain pending. Selected objective
+      mappings are ready for review in Increment 3.
 - [ ] **Implemented but awaiting validation or review** — Level 3 has 24 source
       references and 72 draft perspective texts; the same review gaps remain.
 - [ ] **Currently in progress** — Define and track assessment-objective explanation
       coverage separately from references, perspectives, citations, and possible
-      evidence. Thirteen statements are currently mapped to three focused activities;
-      reading all 59 Level 1 statements did not establish complete teaching coverage.
+      evidence. Increment 3 / PR #16 imports all 459 lettered determinations and nine
+      ODP statements and maps selected teaching fields with explicit unresolved gaps.
+      The navigable report and integrity gates are validated and await approved merge.
+      Thirteen selected practice links remain illustrations, not a complete curriculum.
+- [ ] **Implemented but awaiting validation or review** — Merge the objective inventory,
+      explicit teaching mappings, gap notes, report and re-review integrity checks
+      after owner approval of validated Increment 3. See the
+      [coverage record](reviews/objective-coverage-2026-10-14.md).
+- [ ] **Blocked by external dependencies** — Obtain qualified review of objective
+      interpretations, including the `SI.L3-3.14.3e` source wording/scoping conflict.
+      All source and teaching fingerprints must match the reviewed content.
 - [ ] **Blocked by external dependencies** — Obtain qualified cybersecurity/CMMC
       reviewers and verify current applicability before calling content approved or
       definitive.

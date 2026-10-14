@@ -77,7 +77,7 @@ for each pageview and custom event, including after a previously allowed SDK was
 loaded. Pausing cannot undo an event already sent or an in-flight request.
 
 Every pageview and custom-event URL is restricted to the current origin's `/`,
-`/learn`, `/glossary` or `/about` path (trailing slash normalized), with all query
+`/learn`, `/glossary`, `/coverage` or `/about` path (trailing slash normalized), with all query
 parameters and fragments removed. Known control metadata
 comes from the local catalog, never by forwarding the address bar. Unknown paths
 and external URLs are discarded. If new app routes are added, explicitly review
@@ -123,3 +123,9 @@ independently verified here. The SDK itself links the
 [package documentation](https://vercel.com/docs/analytics/package),
 [custom-event documentation](https://vercel.com/docs/analytics/custom-events), and
 [quickstart](https://vercel.com/docs/analytics/quickstart).
+
+The coverage report adds only `/coverage` to the public pathname allowlist.
+Control, search, level, coverage status and pagination query values are stripped
+before any SDK submission. No coverage-search or objective-level custom event is
+added. Existing production gating, opt-out, DNT and GPC protections still apply;
+preview deployment success does not establish provider receipt of analytics.

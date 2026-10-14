@@ -18,18 +18,19 @@ remain pending. Accounts and a backend are outside this iteration.
 
 ## Page navigation
 
-Home (`/`), Learn (`/learn`), Glossary (`/glossary`) and About (`/about`) use native
+Home (`/`), Learn (`/learn`), Glossary (`/glossary`), Coverage (`/coverage`) and
+About (`/about`) use native
 links. `src/state/site-page.ts` resolves the page; only Learn mounts the Explorer
 controller and control-view tracking. Existing root query links and historical
 section hashes still resolve. The skip link canonicalizes legacy section paths.
-`vercel.json` explicitly rewrites the three new paths to the Vite entry document,
+`vercel.json` explicitly rewrites the four non-root paths to the Vite entry document,
 so direct links and refreshes work on Vercel without rewriting asset URLs.
 
 The Explorer continues to own query/history state. Native page changes reload the
 document; practice is local session UI, not saved progress. Back restores the lesson
 address, but do not promise that a browser preserves its quiz state across pages.
 Inline definitions remain available without leaving a lesson. Analytics allowlists
-only the four public paths and strips queries/fragments before submission.
+only the five public paths and strips queries/fragments before submission.
 
 ## Start locally
 
@@ -363,3 +364,32 @@ and reproduce the behavior before changing the expectation.
 Never fix an installation problem by disabling TLS verification or bypassing
 package integrity checks. Resolve the tool version, network, or certificate issue
 instead.
+
+## Assessment coverage maintenance
+
+`src/data/cmmc-objectives.json` contains the complete pinned determination/ODP
+inventory. `scripts/verify-cmmc-objectives.py` compares every row with the exact
+PDFs after the existing source validator passes. See the
+[inventory and normalization rules](sources/cmmc-objectives-2-13.md).
+
+`src/data/cmmc-objective-mappings.json` selects exact teaching fields or original
+supplementary notes for each statement. It records the edition, AI comparison
+date/reviewer, source digest and each control's perspective digest. The coverage
+test also binds the entire mapping payload: notes, selected fields, labels,
+unresolved wording and practice links. Never update fingerprints merely to pass
+CI. Compare the changed source/teaching/mapping semantics, record the findings and
+review date, then update the reviewed bindings. Qualified human review stays pending
+until a real reviewer follows the existing editorial workflow.
+
+The resolver rejects missing/duplicate/cross-control mappings, invalid field names,
+wrong source pages and cross-edition practice links. Inventory tests prevent a
+statement and its mapping being deleted together without detection. Hashes establish
+unchanged bytes, not correct interpretations. Mapping review is narrower than the
+full three-perspective editorial audit scheduled for Increment 4.
+
+The lazy `/coverage` route loads the report dataset separately from Home and Learn.
+Native GET forms preserve filters in browser history; exact known control IDs take
+precedence over substring search. Pagination shows 15 controls and focuses the
+results heading after navigation. Unknown controls/searches get a recovery action;
+a failed report chunk can reload or return to lessons. No new dependencies, backend,
+saved progress, analytics events or data collection permissions are introduced.
