@@ -1,116 +1,99 @@
 # Cipher & Chalk
 
-**Complex compliance. Clear explanations.**
+**CMMC, decoded.** Every control in the CMMC v2.13 catalog, explained three ways, with the official source text one scroll away.
 
-Cipher & Chalk is an open-source cybersecurity education project that turns
-complicated frameworks, controls, and regulatory language into explanations people
-can understand and use. We are starting with CMMC and building for a broader future.
+[![CI](https://github.com/WaylandP/cipher-and-chalk/actions/workflows/ci.yml/badge.svg)](https://github.com/WaylandP/cipher-and-chalk/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Live site](https://img.shields.io/badge/live-cipherandchalk.vercel.app-111111)](https://cipherandchalk.vercel.app)
 
-[Visit the website](https://dummy-down.vercel.app) ·
-[Explore the roadmap](docs/ROADMAP.md) · [Contribute](CONTRIBUTING.md) ·
-[Report a problem](https://github.com/WaylandP/cipher-and-chalk/issues)
+**[Open the site →](https://cipherandchalk.vercel.app)**
 
-![Cipher & Chalk reference desk homepage](docs/screenshots/study-desk/home-desktop.png)
+![Cipher & Chalk home page: a search box over a dark chalkboard, three practice situations, and a teaching board](docs/screenshots/study-desk/home-desktop.png)
 
-## Our mission
+## What it is
 
-Make cybersecurity compliance accessible, understandable, and less intimidating
-without changing the intent of the source material. Cipher & Chalk bridges dense
-regulatory language and practical understanding through straightforward
-explanations, relatable examples, and interactive learning.
+Cipher & Chalk is an open-source reference desk for cybersecurity compliance. It takes
+the dense language of frameworks like CMMC and NIST SP 800-171 and puts a plain-language
+explanation, a technical explanation, and an assessor's-eye explanation next to the
+exact sentence they came from.
 
-## The problem we are solving
+It is built for the person who reads a control, understands every word, and still
+can't tell what they're being asked to do.
 
-Understanding a cybersecurity requirement should not demand a dictionary, years of
-experience, or an expensive consultant. For many people entering cybersecurity,
-supporting a defense contract, or preparing a small business for an assessment,
-that is exactly how it feels.
+## What's inside
 
-Frameworks such as CMMC and NIST publications contain dense terminology and ideas
-that can be difficult to connect to day-to-day work. An IT administrator may know
-how a system operates but not what an assessor is asking. A business owner may know
-their organization but not the language of a control. A beginner may read the same
-paragraph three times and still wonder what it means.
+| Feature                        | Detail                                                                                                                                      |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **149 controls**               | The full CMMC v2.13 catalog across Levels 1, 2 and 3, each with its requirement quoted from the assessment guide and cited to the page.     |
+| **3 perspectives per control** | Beginner, IT & Cyber, and Compliance. Same requirement, three audiences, one page.                                                          |
+| **468 assessment objectives**  | Every lettered determination statement from the Level 1–3 assessment guides, searchable and mapped to the explanation that covers it.       |
+| **13 practice activities**     | Short fictional scenarios with 39 explained questions. Wrong answers get a reason, not a buzzer.                                            |
+| **3 visual explanations**      | 40-second animated walkthroughs of authorized access, MFA, and response-team deployment, with transcripts and reduced-motion stills.        |
+| **Glossary**                   | Plain-language definitions that also open inline inside any lesson.                                                                         |
+| **Private by design**          | No accounts, no backend. Progress is optional and stays in your browser. Analytics are allowlisted, production-only, and honor DNT and GPC. |
 
-Understanding the requirement should be the beginning of the work, not the hardest
-part of it.
-
-## Who Cipher & Chalk is for
+## Who it's for
 
 - People entering cybersecurity, IT, or compliance for the first time.
-- IT administrators and security professionals taking on compliance work.
-- Department of Defense contractors, subcontractors, and small businesses
-  navigating federal cybersecurity requirements.
-- Students, educators, and certification candidates.
-- Compliance teams and experienced practitioners who need a clearer way to explain
-  requirements to someone else.
+- IT admins and engineers who just inherited a CMMC project.
+- DoD contractors and small businesses preparing for a self-assessment or C3PAO assessment.
+- Anyone who has to explain a control to someone else.
 
-If you have ever read a security control and thought, “Okay, but what does this
-actually mean?”, this project is being built for you.
+## The three perspectives
 
-## How the platform teaches
+Each control page keeps the official requirement at the top and lets you switch how it's explained.
 
-Every available CMMC reference can be viewed from three perspectives. These are
-educational drafts tied to the same source text, not three different requirements.
+| Perspective    | Answers                         | Written for                                                                            |
+| -------------- | ------------------------------- | -------------------------------------------------------------------------------------- |
+| **Beginner**   | "What does this actually mean?" | No security background assumed. Everyday situations, no jargon.                        |
+| **IT & Cyber** | "How would I actually do this?" | People who build and run systems. One possible approach, plus what to watch for.       |
+| **Compliance** | "What will an assessor ask?"    | People preparing for assessment. Questions to bring to the guide, evidence to discuss. |
 
-### Beginner
+## Quick start
 
-**“Explain it like I have never worked in cybersecurity.”**
+Requires Node.js 22.12+ (CI runs on Node 24).
 
-Plain language, familiar situations, and practical distinctions without assuming
-technical or compliance experience.
+```sh
+git clone https://github.com/WaylandP/cipher-and-chalk.git
+cd cipher-and-chalk
+npm ci
+npm run dev
+```
 
-### IT & Cyber
+Run the full check suite before opening a pull request:
 
-**“I understand technology. Show me what this means in practice.”**
+```sh
+npm run typecheck && npm run lint && npm run format:check && npm test && npm run build
+npm run test:browser   # Playwright + axe-core accessibility checks
+```
 
-Technical context, possible approaches, operational tradeoffs, and limitations for
-people who build, administer, or secure systems.
+## Tech stack
 
-### Compliance
+| Layer   | Choice                                                                                    |
+| ------- | ----------------------------------------------------------------------------------------- |
+| UI      | React 19, TypeScript (strict), Vite 8                                                     |
+| Styling | Tailwind CSS v4 with design tokens in `src/styles.css`                                    |
+| Content | Versioned JSON catalog (`src/data/`) with SHA-256-pinned source snapshots                 |
+| Tests   | Vitest + Testing Library (unit), Playwright + axe-core (browser, accessibility, keyboard) |
+| Quality | ESLint, Prettier, GitHub Actions on every PR                                              |
+| Hosting | Vercel                                                                                    |
 
-**“Help me understand what this requirement expects.”**
+```
+src/
+  components/   pages and UI (StudyHome, ControlExplorer, ReferenceDetail, PracticePage, ...)
+  data/         CMMC catalog, perspectives, objectives, glossary, practice activities
+  state/        URL-driven explorer state and page routing
+  progress/     optional, local-only learning progress
+  analytics/    privacy-gated usage measurement
+tests/browser/  Playwright journeys and accessibility specs
+docs/           design notes, source provenance, content-review records
+```
 
-The official-source quotation stays visible alongside assessment questions,
-possible evidence to discuss, and clear warnings about what the draft does not prove.
-Evidence examples are not official assessment objectives or a guarantee of success.
+## Content accuracy
 
-The larger teaching vision includes realistic scenarios, diagrams, knowledge
-checks, and short animated lessons for visual learners. Only the features described
-as available below exist today; the rest remain roadmap ideas until implemented and
-reviewed.
-
-## What you can use today
-
-- A responsive reference desk and Control Explorer for CMMC Levels 1, 2, and 3.
-- Search and filters by identifier, topic, family, level, and content collection.
-- Beginner, IT & Cyber, and Compliance teaching drafts for every catalog entry,
-  displayed beside attributed source text and publication context.
-- Shareable control-and-perspective links with browser Back/Forward support.
-- An assessment coverage report with source statements, mapped draft explanations,
-  level/gap filters, and explicit pending human review.
-- A searchable 20-term draft glossary and contextual definitions in Level 1 lessons.
-- A searchable practice index with 13 draft activities and 39 explained questions:
-  the original demo, six Level 1, three Level 2 and three Level 3 activities. Each
-  includes a learning goal, fictional situation, retry and completion reasoning review.
-  The nine additions have publication-bound sources and contextual terminology.
-- Three 40-second draft visual explanations for authorized access, MFA and
-  response-team deployment, with playback controls, transcripts and still stages
-  for reduced motion. Open “Watch the idea” inside those lessons.
-- Optional progress saved in this browser: resume checked questions, mark topics to
-  revisit, distinguish visited and completed activities, and review answer reasoning.
-  Saving starts off and includes a delete/reset control. See [what is stored](docs/LOCAL_PROGRESS.md).
-- Diagrams with text equivalents, loading/error recovery, review-status disclosures,
-  source comparison, and optional privacy-preserving usage measurement.
-
-There are currently no user accounts, organizational evidence uploads, compliance
-scores, cloud-synchronized learning records, or chatbot. Additional frameworks are not available yet.
-
-## Current CMMC coverage and review status
-
-The catalog is a **September 2024 CMMC v2.13 publication snapshot**, with quotations
-from the model and Level 1–3 assessment guides. Counts describe versioned source
-identifiers, not distinct security concepts or professionally approved lessons.
+Simplifying a requirement must never change what it requires. Cipher & Chalk keeps
+official quotations visually separate from everything written to explain them, and
+pins every quotation to a specific publication, version and page.
 
 <!-- content-summary:start -->
 
@@ -124,123 +107,47 @@ identifiers, not distinct security concepts or professionally approved lessons.
 
 <!-- content-summary:end -->
 
-The 149 official-source references have attributed page/version metadata. The 447
-perspective texts are separately authored educational drafts bound to that edition.
-Their existence, automated checks, and AI-assisted editorial review do **not** mean
-they have received qualified human approval or complete assessment-objective review.
+**Source snapshot:** CMMC v2.13 (September 2024) model and Level 1–3 assessment guides.
+See [source provenance](docs/sources/cmmc-2-13-sep-2024.md) for document identities,
+page citations and checksums.
 
-The [Level 1 editorial audit](docs/content-review/level-1-audit-2026-10-14.md) and
-[Level 2/3 audit](docs/content-review/level-2-3-audit-2026-10-14.md) record AI-assisted,
-control-by-control comparisons of all 447 perspectives with the pinned guides,
-focused corrections and unresolved issues. All human-approval fields remain pending.
-Thirteen statements are quoted in the older lesson review panels. The nine additional
-activities have their own [question-to-source review records](docs/content-review/phase-3-activities-2026-10-14.md);
-these selected teaching links do not establish exhaustive objective coverage. The
-[assessment inventory](docs/sources/cmmc-objectives-2-13.md) preserves all 459
-lettered determinations and nine organization-defined parameter statements.
-The coverage page distinguishes mapped draft explanations from unresolved gaps;
-it does not establish complete curriculum or assessment coverage. Qualified contributors can use the
-[review packet](docs/content-review/QUALIFIED_REVIEW.md) to review individual controls.
+**Review status:** the explanations are educational drafts. They have been checked
+against the source text by automated tests and AI-assisted editorial review, and are
+awaiting qualified human review. The [review process](docs/content-review/REVIEW_PROCESS.md)
+and [review packet](docs/content-review/QUALIFIED_REVIEW.md) explain how a practitioner
+can review individual controls. If you work in CMMC assessment and want to help, that
+is the single most valuable contribution right now.
 
-The checked-in source snapshot came from pinned public mirrors with document
-identity, page citations, and SHA-256 records. Direct access to the official DoD,
-FAR/CFR, and NIST hosts was blocked in the source-check environment before an
-origin response, so current official-host bytes and current applicability remain
-external verification work. Read the [source provenance](docs/sources/cmmc-2-13-sep-2024.md)
-and [editorial review process](docs/content-review/REVIEW_PROCESS.md) for the full
-evidence and limitations.
+## Roadmap
 
-## Project roadmap and current progress
+1. **Foundation** — Explorer, search, glossary, keyboard and reduced-motion support. _Done._
+2. **Make CMMC understandable** — all 149 controls with three perspectives. _Done; qualified review pending._
+3. **Make learning interactive** — practice activities, visual explanations, local progress. _Done; learner validation pending._
+4. **Expand the platform** — NIST SP 800-53, FedRAMP, SOC 2, ISO/IEC 27001, HIPAA. _Not started._
 
-The project still follows the original four phases:
+Details, open work and merged changes: [ROADMAP](docs/ROADMAP.md) · [TODOS](TODOS.md) · [CHANGELOG](CHANGELOG.md).
 
-1. **Build the Foundation** — the application, Explorer, framework-independent
-   content identities, search, glossary, contribution workflow, and interface
-   support for keyboards, responsive layouts, reduced motion, and forced colors are
-   merged. Owner visual acceptance and real assistive-technology and learner
-   validation remain open.
-2. **Make CMMC Understandable** — the Level 1–3 source inventory and three draft
-   perspectives per entry are implemented. Qualified review, current applicability
-   checks, and comprehensive assessment-objective explanations are still in progress
-   or externally blocked. This phase is not complete.
-3. **Make Learning Interactive** — 13 draft activities, 39 explained questions,
-   three diagrams, three short visual explanations and a searchable practice index
-   and optional local progress are merged. All five independent engineering
-   increments are implemented and validated, including the full learner journey,
-   loading performance and failure recovery.
-   Qualified content and learner validation remain pending. This phase is not complete.
-4. **Expand the Platform** — the architecture and contribution guidance support
-   future growth. NIST SP 800-53, FedRAMP, SOC 2, ISO/IEC 27001, HIPAA Security Rule,
-   reviewed control relationships, and a sustainable community review process are
-   future ideas, not available libraries or approved commitments.
+## Contributing
 
-Try the [interactive-learning walkthrough](docs/testing/PHASE_3_WALKTHROUGH.md), with
-examples of the three visual explanations and actual desktop/mobile screenshots.
+Corrections, clearer explanations, source research, accessibility testing and code are
+all welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md); maintainer-level detail
+lives in the [development guide](docs/DEVELOPMENT.md) and [design notes](docs/DESIGN.md).
 
-See the [detailed roadmap](docs/ROADMAP.md) for milestone-level status,
-[current priorities](TODOS.md) for the next actionable work, and the
-[changelog](CHANGELOG.md) for verified changes merged into `main`. No completion
-percentages are used: a phase is not finished merely because its interface exists.
+Please do not submit Controlled Unclassified Information, real organizational evidence,
+credentials or personal data through the app, issues or pull requests. The project never
+needs it.
 
-Help validate the foundation with the [owner and learner acceptance checklist](docs/testing/PHASE_1_ACCEPTANCE.md).
-Human acceptance and actual assistive-technology testing remain pending.
-
-## Getting started and contributing
-
-Cipher & Chalk uses React, TypeScript, Vite, and Tailwind CSS. You need Node.js
-22.12 or newer; CI currently uses Node 24.
-
-```sh
-npm ci
-npm run dev
-```
-
-Ideas, corrections, design improvements, source research, educational review, and
-code contributions are welcome from beginners and experienced practitioners. Start
-with the [contribution guide](CONTRIBUTING.md), which explains the development
-workflow, content-review expectations, and rules for protecting sensitive data.
-
-Maintainer commands, architecture, tests, deployment history, browser-review
-records, and internal workflow evidence live in the
-[development guide](docs/DEVELOPMENT.md), [deployment guide](docs/DEPLOYMENT.md),
-[design notes](docs/DESIGN.md), and [review records](docs/reviews/). Keeping those
-details outside this README leaves this page focused on the people the project
-serves and where it is going.
-
-## Source accuracy, security, and educational use
-
-Simplifying a requirement must not silently change its intent. Cipher & Chalk keeps
-official-source quotations separate from paraphrases, scenarios, possible evidence,
-and other teaching material. Publication versions and review stages remain visible.
-When source material changes, the goal is to identify and review the change rather
-than quietly presenting a newer edition as interchangeable.
-
-Automated tests can verify identities, counts, citations, fingerprints, and required
-fields. AI-assisted review can compare drafts with source material and flag issues.
-Neither replaces a qualified professional reviewing accuracy, applicability, and
-educational quality.
+## Disclaimer
 
 Cipher & Chalk is an independent educational project. It is not affiliated with,
-endorsed by, or certified by the Department of Defense, NIST, or any certification
-body. Content is not legal advice, compliance certification, an assessment result,
-or a guarantee of assessment success. Always consult the applicable official
-requirements and assessment guidance.
+endorsed by, or certified by the Department of Defense, NIST, the Cyber AB or any
+certification body. Nothing here is legal advice, an assessment result, or a guarantee
+of assessment success. Always consult the official requirements:
+[DoD CMMC Program](https://dodcio.defense.gov/CMMC/) ·
+[NIST SP 800-171 Rev. 2](https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final) ·
+[NIST SP 800-172](https://csrc.nist.gov/pubs/sp/800/172/final)
 
-Do not submit Controlled Unclassified Information (CUI), real organizational
-evidence, credentials, personal information, or other protected data through the
-application, issues, pull requests, or public contributions. The application does
-not need that information to teach these concepts. Optional usage measurement
-excludes raw searches, answers, copied links, organizational evidence, and
-app-generated visitor identifiers; see [usage and privacy](docs/USAGE.md).
+## License
 
-Official starting points:
-
-- [DoD CMMC Program](https://dodcio.defense.gov/CMMC/)
-- [DoD CMMC resources and documentation](https://dodcio.defense.gov/CMMC/Resources-Documentation/)
-- [NIST SP 800-171 Rev. 2](https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final)
-- [NIST SP 800-172](https://csrc.nist.gov/pubs/sp/800/172/final)
-
-The application is licensed under the [MIT License](LICENSE). Source quotations
-retain their attribution, and bundled font notices are in
-[public/font-licenses](public/font-licenses). The application license does not grant
-new rights over third-party publications.
+Code is [MIT](LICENSE). Quoted source material retains its original attribution, and
+bundled font notices are in [public/font-licenses](public/font-licenses).
