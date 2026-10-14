@@ -22,5 +22,37 @@
     "file": "kalam-latin-400-normal.woff2",
     "sha256": "954410601a823f37e219f7930b7446f86afa15621326a7078d56fb9c910135cb",
     "license": "SIL Open Font License 1.1"
+  },
+  {
+    "font": "atkinson-hyperlegible-next",
+    "source": "github.com/google/fonts ofl/atkinsonhyperlegiblenext @ 67bc647ce1910e92f461bcc82aae30f21d21a9cc",
+    "file": "atkinson-hyperlegible-next-latin-wght.woff",
+    "sha256": "8b6e96920f4df65746497e7dc13b4ed727dc4266b49deacd8a9796c175f55502",
+    "license": "SIL Open Font License 1.1",
+    "note": "Variable weight, latin subset, converted TTF to WOFF with fontTools 4.65"
+  },
+  {
+    "font": "atkinson-hyperlegible-next",
+    "source": "github.com/google/fonts ofl/atkinsonhyperlegiblenext @ 67bc647ce1910e92f461bcc82aae30f21d21a9cc",
+    "file": "atkinson-hyperlegible-next-latin-wght-italic.woff",
+    "sha256": "1b73309e7b5d20a55dbe49cbaa5bb04719ff01adc25100a58b12f88ac699166a",
+    "license": "SIL Open Font License 1.1",
+    "note": "Variable weight italic, latin subset, converted TTF to WOFF with fontTools 4.65"
+  },
+  {
+    "font": "martian-mono",
+    "source": "github.com/google/fonts ofl/martianmono @ 67bc647ce1910e92f461bcc82aae30f21d21a9cc",
+    "file": "martian-mono-latin-wght.woff",
+    "sha256": "0de2f43c36cdc76edbaf5fd7203f9b624a3ce81050a3d786de8ee05fd34ee96a",
+    "license": "SIL Open Font License 1.1",
+    "note": "Variable weight and width, latin subset, converted TTF to WOFF with fontTools 4.65"
+  },
+  {
+    "font": "walter-turncoat",
+    "source": "github.com/google/fonts apache/walterturncoat @ 67bc647ce1910e92f461bcc82aae30f21d21a9cc",
+    "file": "walter-turncoat-latin-400.woff",
+    "sha256": "21fde43a4a6323749659d08c2e9c9e5db37f8e47bf4e796e755ff98d2d05d773",
+    "license": "Apache License 2.0",
+    "note": "Regular, latin subset, converted TTF to WOFF with fontTools 4.65"
   }
 ]
