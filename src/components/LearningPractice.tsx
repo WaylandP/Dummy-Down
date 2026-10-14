@@ -22,6 +22,7 @@ function KnowledgeCheck({
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [checked, setChecked] = useState(false)
   const [complete, setComplete] = useState(false)
+  const [answers, setAnswers] = useState<Record<string, string>>({})
   const prompt = useRef<HTMLSpanElement | null>(null)
   const completion = useRef<HTMLHeadingElement | null>(null)
   const feedback = useRef<HTMLDivElement | null>(null)
@@ -46,6 +47,7 @@ function KnowledgeCheck({
     setChecked(false)
     setQuestionIndex(0)
     setComplete(false)
+    setAnswers({})
     // Resetting an unanswered first question does not change the effect inputs.
     if (questionIndex === 0 && !checked && !complete) {
       prompt.current?.focus()
@@ -73,13 +75,13 @@ function KnowledgeCheck({
     <div className="knowledge-check">
       <progress
         className="practice-progress-meter"
-        aria-label="Question position"
+        aria-label="Questions reviewed"
         aria-valuetext={
           complete
             ? 'Practice complete'
-            : `Question ${questionIndex + 1} of ${activity.questions.length}`
+            : `${Object.keys(answers).length} of ${activity.questions.length} questions reviewed`
         }
-        value={complete ? activity.questions.length : questionIndex + 1}
+        value={Object.keys(answers).length}
         max={activity.questions.length}
       />
       {complete ? (
@@ -93,6 +95,36 @@ function KnowledgeCheck({
             often as you need. Finishing it does not measure compliance or
             assessment readiness.
           </p>
+          <details className="practice-disclosure practice-recap">
+            <summary>Review the reasoning</summary>
+            <ol>
+              {activity.questions.map((item) => {
+                const answer = item.choices.find(
+                  (choice) => choice.id === answers[item.id],
+                )
+                const best = item.choices.find(
+                  (choice) => choice.id === item.correctChoiceId,
+                )!
+                return (
+                  <li key={item.id}>
+                    <h6>{item.prompt}</h6>
+                    <p className="small-label">
+                      {answer?.id === best.id
+                        ? 'Correct choice'
+                        : 'Worth another look'}
+                    </p>
+                    <p>
+                      <strong>Your last checked answer:</strong> {answer?.label}
+                    </p>
+                    {answer?.id !== best.id && <p>{answer?.feedback}</p>}
+                    <p>
+                      <strong>What to take away:</strong> {best.feedback}
+                    </p>
+                  </li>
+                )
+              })}
+            </ol>
+          </details>
           <button className="practice-action" type="button" onClick={reset}>
             Practice again
           </button>
@@ -187,6 +219,10 @@ function KnowledgeCheck({
                     action: 'check',
                   })
                   focusRequested.current = true
+                  setAnswers((previous) => ({
+                    ...previous,
+                    [question.id]: selected.id,
+                  }))
                   setChecked(true)
                 }
               }}
@@ -206,6 +242,11 @@ function KnowledgeCheck({
                   focusRequested.current = true
                   setSelectedId(null)
                   setChecked(false)
+                  setAnswers((previous) => {
+                    const next = { ...previous }
+                    delete next[question.id]
+                    return next
+                  })
                 }}
               >
                 Try again
@@ -240,6 +281,7 @@ function KnowledgeCheck({
 /** Learning state stays local and resets when its complete lesson identity changes. */
 export function LearningPractice({ lesson }: LearningPracticeProps) {
   const prefix = useId()
+  const questions = useRef<HTMLDetailsElement | null>(null)
   const activity = findLearningActivity(lesson)
   if (!activity) return null
 
@@ -256,6 +298,29 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
         <span className="draft-label">Draft learning activity</span>
       </div>
       <p className="practice-introduction">{activity.introduction}</p>
+      <div className="practice-start">
+        <p>
+          {activity.questions.length} questions · Go at your own pace.
+          <br />
+          Read the situation, choose an answer, then explore why. You can retry
+          any question.
+        </p>
+        <button
+          type="button"
+          className="practice-action"
+          onClick={() => {
+            if (!questions.current) return
+            questions.current.open = true
+            questions.current
+              .querySelector<HTMLElement>(
+                '.practice-prompt, .practice-complete h5',
+              )
+              ?.focus()
+          }}
+        >
+          Start or return to questions
+        </button>
+      </div>
       {activity.plainEnglish && (
         <div className="learning-meaning teaching-note">
           <h5>The idea in plain English</h5>
@@ -291,6 +356,7 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
       </details>
       <details
         className="practice-disclosure practice-questions"
+        ref={questions}
         onToggle={(event) => {
           if (event.currentTarget.open)
             trackUsage({ name: 'practice_action', lesson, action: 'open' })

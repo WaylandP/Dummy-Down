@@ -41,8 +41,11 @@ describe('Versioned CMMC reference catalog', () => {
       explorer.getByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('149 references found')
     expect(
-      explorer.getAllByRole('button', { name: /Source reference$/ }),
+      explorer.getAllByRole('button', {
+        name: /Source reference/,
+      }),
     ).toHaveLength(8)
+    expect(explorer.getAllByText('Practice available')).toHaveLength(3)
     expect(
       explorer.getByRole('status', { name: 'Control result page' }),
     ).toHaveTextContent('1–8 of 149')
@@ -210,7 +213,9 @@ describe('Reference result pagination', () => {
     expect(
       screen.getByRole('status', { name: 'Control result page' }),
     ).toHaveTextContent('9–16 of 149')
-    const visible = screen.getAllByRole('button', { name: /Source reference$/ })
+    const visible = screen.getAllByRole('button', {
+      name: /Source reference/,
+    })
     const result = visible[0]
     if (!result) throw new Error('Expected a visible source result')
     await user.click(result)

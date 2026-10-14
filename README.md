@@ -90,7 +90,8 @@ reviewed.
 - An assessment coverage report with source statements, mapped draft explanations,
   level/gap filters, and explicit pending human review.
 - A searchable 20-term draft glossary and contextual definitions in Level 1 lessons.
-- Four draft learning activities with 12 explained questions: the original demo and
+- Four draft learning activities with 12 explained questions, retry and completion
+  reasoning review: the original demo and
   three source-bound Level 1 activities covering authorized access, public
   information, and media disposal.
 - Diagrams with text equivalents, loading/error recovery, review-status disclosures,

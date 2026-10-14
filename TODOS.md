@@ -4,7 +4,13 @@ The [detailed roadmap](docs/ROADMAP.md) is the milestone source of truth. This f
 keeps the next actionable priorities; the [changelog](CHANGELOG.md) records work
 already merged into `main`. No completion percentage is implied.
 
-- **Current handoff: all four Phase 1/2 engineering increments merged.** Review the
+- **Current delivery: Phase 3 interactive learning.** Follow the five-increment
+  [execution log](docs/reviews/phase-3-execution-2026-10-14.md): existing practice UX,
+  nine new source-bound activities, three animations, optional local progress, then
+  integrated QA and documentation. The owner authorized validated Phase 3 merges
+  only; human/content review claims still require real evidence.
+
+- **Previous handoff: all four Phase 1/2 engineering increments merged.** Review the
   [eight-milestone audit](docs/reviews/phase-1-2-milestone-audit-2026-10-14.md),
   [technical evidence](docs/reviews/phase-1-quality-2026-10-14.md) and
   [acceptance packet](docs/testing/PHASE_1_ACCEPTANCE.md). Focus repairs and browser
@@ -22,7 +28,8 @@ already merged into `main`. No completion percentage is implied.
   official-host requests. The [final handoff](docs/reviews/phase-1-2-handoff-2026-10-14.md)
   lists the external prerequisites and evidence needed to resume. No further
   independently actionable repair is identified in this scoped audit. Current
-  applicability requires external verification. Do not begin Phase 3/4 work.
+  applicability requires external verification. Phase 3 is now separately authorized;
+  Phase 4 remains outside scope.
 
 - **P1: qualified review across all three levels and current applicability.** The
   [October 14 audit](docs/content-review/level-1-audit-2026-10-14.md) compared all
