@@ -91,7 +91,7 @@ describe('LearningPractice', () => {
     const user = userEvent.setup()
     const { container } = render(<LearningPractice lesson={lesson} />)
     expect(screen.getByRole('heading', { name: 'Try the idea' })).toBeVisible()
-    expect(screen.getByText('Draft learning activity')).toBeVisible()
+    expect(screen.getByText('Practice activity')).toBeVisible()
     expect(screen.getByText(activity.disclaimer)).toBeVisible()
     const source = screen.getByRole('link', {
       name: /README simplified example/,
@@ -265,9 +265,7 @@ describe('LearningPractice', () => {
       screen.getByRole('progressbar', { name: 'Questions reviewed' }),
     ).toHaveAttribute('aria-valuetext', 'Practice complete')
     expect(
-      screen.getByText(
-        /Finishing it does not measure compliance or assessment readiness/,
-      ),
+      screen.getByText(/Revisit the activity as often as you need/),
     ).toBeVisible()
     expect(screen.queryByRole('radio')).not.toBeInTheDocument()
     expect(window.location.href).toBe(originalUrl)

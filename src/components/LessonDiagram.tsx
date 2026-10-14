@@ -9,7 +9,7 @@ export function LessonDiagram({ diagram }: { diagram: LearningDiagram }) {
     <figure className="lesson-diagram" aria-labelledby={`${prefix}-title`}>
       <div className="lesson-diagram-heading">
         <h5 id={`${prefix}-title`}>{diagram.title}</h5>
-        <p className="small-label">Draft illustrative diagram</p>
+        <p className="small-label">Diagram</p>
       </div>
       <ol className="lesson-diagram-flow" role="list">
         {diagram.steps.map((step, index) => (

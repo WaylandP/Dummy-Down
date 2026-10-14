@@ -147,8 +147,7 @@ function KnowledgeCheck({
           </h5>
           <p>
             You’ve explored this activity’s situations. Revisit the activity as
-            often as you need. Finishing it does not measure compliance or
-            assessment readiness.
+            often as you need.
           </p>
           <details className="practice-disclosure practice-recap">
             <summary>Review the reasoning</summary>
@@ -339,7 +338,7 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
           <p className="instruction-eyebrow">Put it into practice</p>
           <h4 id={`${prefix}-heading`}>{activity.title}</h4>
         </div>
-        <span className="draft-label">Draft learning activity</span>
+        <span className="draft-label">Practice activity</span>
       </div>
       <p className="practice-introduction">{activity.introduction}</p>
       {activity.learningObjective && (

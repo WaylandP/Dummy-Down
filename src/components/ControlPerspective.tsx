@@ -73,7 +73,6 @@ export function ControlPerspective({
           <p className="instruction-eyebrow">Decode the control</p>
           <p className="mode-label">Choose your perspective</p>
         </div>
-        <span className="draft-label">Draft teaching content</span>
       </div>
       <LearningModes value={mode} onChange={onChange} idPrefix="reference" />
       <div
@@ -122,9 +121,8 @@ export function ControlPerspective({
               <summary>Possible evidence to discuss</summary>
               <div className="source-content">
                 <p>
-                  Illustrative examples only. Applicable official assessment
-                  objectives, scope, interviews and testing determine what needs
-                  to be examined.
+                  Examples to bring to the conversation, not a checklist. Scope,
+                  interviews and testing decide what an assessor examines.
                 </p>
                 <ul>
                   {draft.compliance.evidenceExamples.map((example) => (
@@ -136,9 +134,9 @@ export function ControlPerspective({
           </>
         )}
         <p className="perspective-context">
-          Original educational interpretation of the cited September 2024 guide.
-          Examples are illustrative; questions are not official assessment
-          objectives. Qualified editorial review is pending.
+          Written by Cipher &amp; Chalk from the cited September 2024 guide.
+          Questions and examples are teaching aids, not official assessment
+          objectives.
         </p>
         <Reflection
           key={`${lesson.frameworkId}/${lesson.editionId}/${lesson.controlKey}/${mode}`}

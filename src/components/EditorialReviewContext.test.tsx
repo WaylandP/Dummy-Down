@@ -107,7 +107,7 @@ describe('Visible editorial provenance', () => {
     expect(
       explorer.queryByRole('button', { name: 'Close definition' }),
     ).not.toBeInTheDocument()
-    expect(explorer.getByText('Draft learning activity')).toBeVisible()
+    expect(explorer.getByText('Practice activity')).toBeVisible()
     await user.click(
       explorer.getByText('Review record & assessment objectives'),
     )

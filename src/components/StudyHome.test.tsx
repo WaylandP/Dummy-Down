@@ -118,7 +118,7 @@ describe('Study desk entry points', () => {
       const activity = findLearningActivity(identity)
       expect(activity?.reviewStatus).toBe('draft')
       expect(activity?.questions).toHaveLength(3)
-      expect(screen.getByText('Level 1 · Draft practice')).toBeVisible()
+      expect(screen.getByText('Level 1 · Practice')).toBeVisible()
       expect(trackUsage).not.toHaveBeenCalled()
     },
   )

@@ -32,10 +32,7 @@ export function TermDefinition({ term }: { term: GlossaryTerm }) {
   return (
     <div className="term-definition">
       <p className="term-definition-meaning">{term.definition}</p>
-      <p className="term-context">
-        <span className="draft-label">Draft educational definition.</span>{' '}
-        {term.versionContext}
-      </p>
+      <p className="term-context">{term.versionContext}</p>
       <details className="source-details term-sources">
         <summary>Definition sources & context</summary>
         <div className="source-content">

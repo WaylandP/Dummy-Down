@@ -40,7 +40,7 @@ describe('Control Explorer learning experience', () => {
         name: /AC\.L2-3\.1\.1.*Authorized access/,
       }),
     ).toHaveAttribute('aria-pressed', 'true')
-    expect(explorer.getByText('Draft educational example')).toBeVisible()
+    expect(explorer.getByText('Simplified teaching example')).toBeVisible()
     expect(
       explorer.getByText(
         'Paraphrase from our README; not the official requirement.',
@@ -53,9 +53,6 @@ describe('Control Explorer learning experience', () => {
     expect(
       explorer.getByRole('tabpanel', { name: 'Beginner' }),
     ).toHaveTextContent('Give the right people the keys.')
-    expect(
-      explorer.getByText(/Learning material, not a compliance checklist/),
-    ).toBeVisible()
   })
 
   it('changes the explanation when a reader chooses a different mode', async () => {
@@ -172,7 +169,7 @@ describe('Control Explorer learning experience', () => {
       explorer.getByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('1 example found')
     expect(
-      explorer.getByRole('heading', { name: 'Choose a draft example.' }),
+      explorer.getByRole('heading', { name: 'Choose an example.' }),
     ).toBeVisible()
     expect(explorer.queryByRole('tabpanel')).not.toBeInTheDocument()
     await user.click(
@@ -248,7 +245,7 @@ describe('Control Explorer learning experience', () => {
       explorer.getByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('1 example found')
     expect(
-      explorer.getByRole('heading', { name: 'Choose a draft example.' }),
+      explorer.getByRole('heading', { name: 'Choose an example.' }),
     ).toBeVisible()
     await user.click(
       explorer.getByRole('button', {
@@ -327,7 +324,7 @@ describe('Shareable lessons and reading tools', () => {
       'This lesson isn’t available here.',
     ],
     ['?view=discover&catalog=nist-sp-800-53', 'NIST 800-53 is on the roadmap.'],
-    ['?view=discover', 'Choose a draft example.'],
+    ['?view=discover', 'Choose an example.'],
   ])(
     'opens a sample through About from %s without substituting an unavailable lesson',
     async (address, title) => {
@@ -378,7 +375,7 @@ describe('Shareable lessons and reading tools', () => {
     renderView(<App />)
     await screen.findByRole('region', { name: 'Control Explorer' })
     expect(
-      screen.getByRole('heading', { name: 'Choose a draft example.' }),
+      screen.getByRole('heading', { name: 'Choose an example.' }),
     ).toBeVisible()
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
   })

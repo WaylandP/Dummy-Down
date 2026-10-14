@@ -84,9 +84,7 @@ describe('Level 1 learning coverage', () => {
       const diagram = screen.getByRole('figure', {
         name: activity.diagram!.title,
       })
-      expect(
-        within(diagram).getByText('Draft illustrative diagram'),
-      ).toBeVisible()
+      expect(within(diagram).getByText('Diagram')).toBeVisible()
       expect(diagram).toHaveTextContent(activity.diagram!.textEquivalent)
       expect(within(diagram).getAllByRole('listitem')).toHaveLength(
         activity.diagram!.steps.length +
@@ -154,9 +152,7 @@ describe('Level 1 learning coverage', () => {
         }),
       ).toHaveFocus()
       expect(
-        screen.getByText(
-          /Finishing it does not measure compliance or assessment readiness/,
-        ),
+        screen.getByText(/Revisit the activity as often as you need/),
       ).toBeVisible()
       expect(screen.queryByRole('radio')).not.toBeInTheDocument()
       await user.click(screen.getByRole('button', { name: 'Practice again' }))

@@ -32,8 +32,8 @@ export function Glossary({ terms }: GlossaryProps) {
           <h2 id={`${prefix}-heading`}>A little less jargon.</h2>
         </div>
         <p>
-          Plain-language definitions for the demo and Level 1 learning material.
-          These are educational drafts, not official framework definitions.
+          Plain-language definitions of the terms used in the lessons. They are
+          teaching definitions, not the official framework wording.
         </p>
       </div>
       <div className="glossary-search">
@@ -84,7 +84,7 @@ export function Glossary({ terms }: GlossaryProps) {
       ) : (
         <div className="glossary-empty">
           <h3>No matching terms.</h3>
-          <p>Try a different word or return to the small draft vocabulary.</p>
+          <p>Try a different word or return to the full list.</p>
           <button
             className="text-action"
             type="button"

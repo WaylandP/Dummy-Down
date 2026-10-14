@@ -71,9 +71,7 @@ describe('Reference reading outline', () => {
       expect(
         outline.queryByRole('link', { name: '03 Practice' }),
       ).not.toBeInTheDocument()
-      expect(
-        screen.queryByText('Draft learning activity'),
-      ).not.toBeInTheDocument()
+      expect(screen.queryByText('Practice activity')).not.toBeInTheDocument()
     },
   )
 

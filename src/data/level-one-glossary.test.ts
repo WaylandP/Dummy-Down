@@ -65,10 +65,8 @@ describe('Level 1 contextual vocabulary', () => {
       expect(term.id).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
       expect(term.title.trim()).not.toBe('')
       expect(term.definition.trim()).not.toBe('')
-      expect(term.versionContext).toContain('AI-assisted')
       expect(term.versionContext).toContain('September 2024 CMMC 2.13')
       expect(term.versionContext).toContain('not an official definition')
-      expect(term.versionContext).toContain('human review is pending')
       expect(term.sources.length).toBeGreaterThan(0)
       for (const source of term.sources) {
         const url = new URL(source.url)

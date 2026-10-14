@@ -59,11 +59,11 @@ describe('Control-specific teaching perspectives', () => {
       )
       expect(quote).toBeVisible()
       if (id === 'AC.L1-b.1.i' || id === 'IA.L2-3.5.3') {
-        expect(explorer.getByText('Draft learning activity')).toBeVisible()
+        expect(explorer.getByText('Practice activity')).toBeVisible()
         expect(explorer.getByText(/^Fictional scenario:/)).toBeVisible()
       } else {
         expect(
-          explorer.queryByText('Draft learning activity'),
+          explorer.queryByText('Practice activity'),
         ).not.toBeInTheDocument()
       }
       expect(new URLSearchParams(window.location.search).get('mode')).toBe(

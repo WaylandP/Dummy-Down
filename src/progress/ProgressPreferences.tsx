@@ -30,7 +30,7 @@ export function ProgressPreferences() {
         No account or synchronization is involved. The app does not send this
         progress to analytics. This setting does not change usage measurement.
         Your browser can remove saved data, and an edited activity may reset its
-        saved practice. Learning completion does not establish compliance.
+        saved practice.
       </p>
       <p ref={statusRef} role="status" aria-live="polite" tabIndex={-1}>
         {message}
