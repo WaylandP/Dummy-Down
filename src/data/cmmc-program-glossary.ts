@@ -226,7 +226,7 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
     [definitions],
   ),
   term(
-    'assessment-scope',
+    'cmmc-assessment-scope',
     'CMMC Assessment Scope',
     'The complete set of assets in an organization’s environment that will be assessed against the CMMC requirements. Scoping is done before an assessment and places every asset into a category that decides how it is treated: CUI assets, Security Protection Assets, Contractor Risk Managed Assets, Specialized Assets, or Out-of-Scope Assets.',
     [definitions, scoping],
