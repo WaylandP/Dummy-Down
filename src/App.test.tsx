@@ -13,18 +13,18 @@ beforeEach(() =>
   ),
 )
 
-function renderApp() {
+async function renderApp() {
   const user = userEvent.setup()
   render(<App />)
   const explorer = within(
-    screen.getByRole('region', { name: 'Control Explorer' }),
+    await screen.findByRole('region', { name: 'Control Explorer' }),
   )
   return { user, explorer }
 }
 
 describe('Control Explorer learning experience', () => {
-  it('renders the original demo with a clearly marked draft and beginner explanation', () => {
-    const { explorer } = renderApp()
+  it('renders the original demo with a clearly marked draft and beginner explanation', async () => {
+    const { explorer } = await renderApp()
 
     expect(
       screen.getByRole('heading', {
@@ -59,7 +59,7 @@ describe('Control Explorer learning experience', () => {
   })
 
   it('changes the explanation when a reader chooses a different mode', async () => {
-    const { user, explorer } = renderApp()
+    const { user, explorer } = await renderApp()
 
     await user.click(explorer.getByRole('tab', { name: 'IT & Cyber' }))
     expect(explorer.getByRole('tab', { name: 'IT & Cyber' })).toHaveAttribute(
@@ -90,7 +90,7 @@ describe('Control Explorer learning experience', () => {
   })
 
   it('supports arrow navigation, wrapping, Home, and End with focus following selection', async () => {
-    const { user, explorer } = renderApp()
+    const { user, explorer } = await renderApp()
     const beginner = explorer.getByRole('tab', { name: 'Beginner' })
     const technical = explorer.getByRole('tab', { name: 'IT & Cyber' })
     const compliance = explorer.getByRole('tab', { name: 'Compliance' })
@@ -120,7 +120,7 @@ describe('Control Explorer learning experience', () => {
   it.each(['Beginner', 'IT & Cyber', 'Compliance'])(
     'opens the %s perspective from its About page link',
     async (mode) => {
-      const { user, explorer } = renderApp()
+      const { user, explorer } = await renderApp()
       await user.click(
         explorer.getByRole('tab', {
           name: mode === 'Compliance' ? 'Beginner' : 'Compliance',
@@ -144,7 +144,7 @@ describe('Control Explorer learning experience', () => {
   )
 
   it('finds a control by its identifier and recovers from a search with no matches', async () => {
-    const { user, explorer } = renderApp()
+    const { user, explorer } = await renderApp()
     const search = explorer.getByRole('searchbox', { name: 'Search controls' })
 
     await user.type(search, 'AC.L2-3.1.1')
@@ -186,7 +186,7 @@ describe('Control Explorer learning experience', () => {
   })
 
   it('supports family and level filters and clears them together with search', async () => {
-    const { user, explorer } = renderApp()
+    const { user, explorer } = await renderApp()
     const family = explorer.getByRole('combobox', { name: 'Control family' })
     const level = explorer.getByRole('combobox', { name: 'Level' })
     const search = explorer.getByRole('searchbox', { name: 'Search controls' })
@@ -210,7 +210,7 @@ describe('Control Explorer learning experience', () => {
   })
 
   it('labels future frameworks as planned and restores the CMMC example without claiming coverage', async () => {
-    const { user, explorer } = renderApp()
+    const { user, explorer } = await renderApp()
     const framework = explorer.getByRole('combobox', { name: 'Framework' })
     const family = explorer.getByRole('combobox', { name: 'Control family' })
     const level = explorer.getByRole('combobox', { name: 'Level' })
@@ -261,7 +261,7 @@ describe('Control Explorer learning experience', () => {
   })
 
   it('shows source versions and official links when the reader opens content context', async () => {
-    const { user, explorer } = renderApp()
+    const { user, explorer } = await renderApp()
 
     await user.click(explorer.getByText('Sources & content context'))
     expect(
@@ -300,7 +300,7 @@ describe('Shareable lessons and reading tools', () => {
       '',
       `${lessonAddress}&mode=compliance&q=unavailable`,
     )
-    const { user, explorer } = renderApp()
+    const { user, explorer } = await renderApp()
     expect(explorer.getByRole('tabpanel', { name: 'Compliance' })).toBeVisible()
     expect(
       explorer.getByRole('status', { name: 'Control search results' }),
@@ -332,7 +332,7 @@ describe('Shareable lessons and reading tools', () => {
     'opens a sample through About from %s without substituting an unavailable lesson',
     async (address, title) => {
       window.history.replaceState(null, '', address)
-      const { explorer } = renderApp()
+      const { explorer } = await renderApp()
       expect(explorer.getByRole('heading', { name: title })).toBeVisible()
       expect(explorer.queryByRole('tabpanel')).not.toBeInTheDocument()
       followPageLink(screen.getByRole('link', { name: 'About' }))
@@ -351,13 +351,14 @@ describe('Shareable lessons and reading tools', () => {
     },
   )
 
-  it('replays navigation addresses without reopening a lesson on discovery reload', () => {
+  it('replays navigation addresses without reopening a lesson on discovery reload', async () => {
     window.history.replaceState(
       null,
       '',
       '?view=discover&q=access&mode=it-cyber',
     )
     const view = renderView(<App />)
+    await screen.findByRole('region', { name: 'Control Explorer' })
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     act(() => {
       window.history.replaceState(null, '', `${lessonAddress}&mode=compliance`)
@@ -375,6 +376,7 @@ describe('Shareable lessons and reading tools', () => {
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     view.unmount()
     renderView(<App />)
+    await screen.findByRole('region', { name: 'Control Explorer' })
     expect(
       screen.getByRole('heading', { name: 'Choose a draft example.' }),
     ).toBeVisible()
@@ -382,7 +384,7 @@ describe('Shareable lessons and reading tools', () => {
   })
 
   it('keeps definitions and glossary search independent of lesson navigation', async () => {
-    const { user, explorer } = renderApp()
+    const { user, explorer } = await renderApp()
     await user.click(explorer.getByRole('tab', { name: 'IT & Cyber' }))
     const address = window.location.href
     const term = explorer.getByRole('button', { name: 'Account' })
@@ -406,7 +408,9 @@ describe('Shareable lessons and reading tools', () => {
       window.history.replaceState(null, '', address)
       window.dispatchEvent(new PopStateEvent('popstate'))
     })
-    expect(screen.getByRole('tabpanel', { name: 'IT & Cyber' })).toBeVisible()
+    expect(
+      await screen.findByRole('tabpanel', { name: 'IT & Cyber' }),
+    ).toBeVisible()
     expect(window.location.href).toBe(address)
   })
 })

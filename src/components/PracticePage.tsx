@@ -44,7 +44,12 @@ export default function PracticePage() {
     ),
   }))
   const levels = [
-    ...new Set(entries.map(({ control }) => control?.level).filter(Boolean)),
+    ...new Set(
+      entries
+        .filter(({ control }) => control?.contentKind !== 'educational-example')
+        .map(({ control }) => control?.level)
+        .filter(Boolean),
+    ),
   ]
   const filtered = entries.filter(
     ({ activity, control }) =>

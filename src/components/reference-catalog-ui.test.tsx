@@ -17,11 +17,13 @@ function address(id: string) {
   const control = reference(id)
   return `?view=lesson&framework=cmmc&edition=${control.editionId}&control=${control.key}&mode=compliance`
 }
-function setup() {
+async function setup() {
   render(<App />)
   return {
     user: userEvent.setup(),
-    explorer: within(screen.getByRole('region', { name: 'Control Explorer' })),
+    explorer: within(
+      await screen.findByRole('region', { name: 'Control Explorer' }),
+    ),
   }
 }
 
@@ -32,7 +34,7 @@ describe('Versioned CMMC reference catalog', () => {
       '',
       '/?view=discover&collection=references&catalog=cmmc',
     )
-    const { user, explorer } = setup()
+    const { user, explorer } = await setup()
     await user.selectOptions(
       explorer.getByRole('combobox', { name: 'Content collection' }),
       'references',
@@ -74,7 +76,7 @@ describe('Versioned CMMC reference catalog', () => {
         '',
         address('AC.L2-3.1.1').replace('mode=compliance', `mode=${mode}`),
       )
-      const { explorer } = setup()
+      const { explorer } = await setup()
       expect(
         explorer.getByRole('combobox', { name: 'Content collection' }),
       ).toHaveValue('references')
@@ -99,7 +101,7 @@ describe('Versioned CMMC reference catalog', () => {
 
   it('preserves model/guide differences and safe original and pinned page references', async () => {
     window.history.replaceState(null, '', address('AT.L2-3.2.1'))
-    const { user, explorer } = setup()
+    const { user, explorer } = await setup()
     const control = reference('AT.L2-3.2.1')
     await user.click(explorer.getByText('Compare model wording'))
     expect(explorer.getByText(control.modelRequirement.text)).toBeVisible()
@@ -123,7 +125,7 @@ describe('Versioned CMMC reference catalog', () => {
       '',
       `${address('AC.L2-3.1.1')}&collection=lessons`,
     )
-    const { user, explorer } = setup()
+    const { user, explorer } = await setup()
     expect(
       explorer.getByText('This lesson is outside the current results.'),
     ).toBeVisible()
@@ -158,7 +160,7 @@ describe('Versioned CMMC reference catalog', () => {
       '',
       `${address('AC.L2-3.1.1')}&q=access&family=AC`,
     )
-    const { user, explorer } = setup()
+    const { user, explorer } = await setup()
     const write = vi.spyOn(navigator.clipboard, 'writeText').mockResolvedValue()
     await user.click(
       explorer.getByRole('button', { name: 'Copy reference link' }),

@@ -442,3 +442,17 @@ diagram description is also in the transcript. Actual assistive-technology testi
 and qualified content approval remain pending. The player sends no usage events
 and does not store playback position. A failed chunk preserves the source and
 perspectives and offers a full lesson reload.
+
+## Deferred learning interface
+
+`LearningRoute` loads the Explorer controller and UI when `/learn` or a legacy
+learning address is opened. It preserves the exact query/hash, ignores an async
+resolution after unmount, and offers a full-page reload when a module request fails.
+Home does not mount a hidden Explorer or create a false control-view event.
+
+The source/activity catalog still loads with Home, analytics allowlisting and local
+progress validation. The route split reduces initial UI code; it does not make the
+catalog lazy. A fresh-browser/static-import comparison is recorded in the Phase 3
+execution log. Count every initial shared chunk when comparing payloads. Lesson
+perspectives, coverage, Practice and the visual player retain their own loading
+boundaries. The full walkthrough is in [PHASE_3_WALKTHROUGH.md](testing/PHASE_3_WALKTHROUGH.md).

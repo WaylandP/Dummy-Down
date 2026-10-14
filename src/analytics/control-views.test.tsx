@@ -40,13 +40,14 @@ describe('Known control render measurement', () => {
     expect(JSON.stringify(calls)).not.toContain('http')
   })
 
-  it('does not report unknown lessons and counts re-entry through browser history separately from intent', () => {
+  it('does not report unknown lessons and counts re-entry through browser history separately from intent', async () => {
     window.history.replaceState(
       null,
       '',
       '/?view=lesson&framework=cmmc&edition=readme-example&control=missing',
     )
     render(<App />)
+    await screen.findByRole('region', { name: 'Control Explorer' })
     expect(trackUsage).not.toHaveBeenCalled()
     const replay = (address: string) =>
       act(() => {

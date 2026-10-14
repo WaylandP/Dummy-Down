@@ -165,12 +165,16 @@ The project still follows the original four phases:
    or externally blocked. This phase is not complete.
 3. **Make Learning Interactive** — 13 draft activities, 39 explained questions,
    three diagrams, three short visual explanations and a searchable practice index
-   and optional local progress are implemented. Final integration validation follows.
+   and optional local progress are implemented. The final integration pass covers
+   the complete learner journey, loading performance and failure recovery.
    Qualified content and learner validation remain pending. This phase is not complete.
 4. **Expand the Platform** — the architecture and contribution guidance support
    future growth. NIST SP 800-53, FedRAMP, SOC 2, ISO/IEC 27001, HIPAA Security Rule,
    reviewed control relationships, and a sustainable community review process are
    future ideas, not available libraries or approved commitments.
+
+Try the [interactive-learning walkthrough](docs/testing/PHASE_3_WALKTHROUGH.md), with
+examples of the three visual explanations and actual desktop/mobile screenshots.
 
 See the [detailed roadmap](docs/ROADMAP.md) for milestone-level status,
 [current priorities](TODOS.md) for the next actionable work, and the

@@ -34,7 +34,7 @@ describe('Separate blackboard pages', () => {
     render(<App />)
     followPageLink(screen.getByRole('link', { name: 'Learn' }))
     expect(
-      screen.getByRole('status', { name: 'Control search results' }),
+      await screen.findByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('149 references found')
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     followPageLink(screen.getByRole('link', { name: 'Cipher & Chalk home' }))
@@ -71,9 +71,11 @@ describe('Separate blackboard pages', () => {
   })
   it.each(['glossary', 'about', 'approach', 'explorer'])(
     'keeps the legacy #%s page when skipping to its content',
-    (hash) => {
+    async (hash) => {
       window.history.replaceState(null, '', `/#${hash}`)
       render(<App />)
+      if (hash === 'explorer')
+        await screen.findByRole('region', { name: 'Control Explorer' })
       const before = screen.getByRole('heading', { level: 1 }).textContent
       followPageLink(screen.getByRole('link', { name: 'Skip to content' }))
       expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
@@ -83,11 +85,13 @@ describe('Separate blackboard pages', () => {
       expect(window.location.pathname).not.toBe('/')
     },
   )
-  it('keeps broken root lesson links visibly invalid instead of substituting the homepage', () => {
+  it('keeps broken root lesson links visibly invalid instead of substituting the homepage', async () => {
     window.history.replaceState(null, '', '/?view=lesson&framework=cmmc')
     render(<App />)
     expect(
-      screen.getByRole('heading', { name: 'This lesson link is invalid.' }),
+      await screen.findByRole('heading', {
+        name: 'This lesson link is invalid.',
+      }),
     ).toBeVisible()
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
   })

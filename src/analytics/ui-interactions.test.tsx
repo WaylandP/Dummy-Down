@@ -19,6 +19,7 @@ describe('Usage interaction wiring', () => {
   it('keeps rendered controls separate from intent and ignores unchanged selection', async () => {
     const user = userEvent.setup()
     render(<App />)
+    await screen.findByRole('region', { name: 'Control Explorer' })
     expect(trackUsage).toHaveBeenCalledWith({
       name: 'control_view',
       lesson: {
@@ -60,6 +61,7 @@ describe('Usage interaction wiring', () => {
   it('records search outcomes only when submitted or left, without recording the text', async () => {
     const user = userEvent.setup()
     render(<App />)
+    await screen.findByRole('region', { name: 'Control Explorer' })
     vi.mocked(trackUsage).mockClear()
     const search = screen.getByRole('searchbox', { name: 'Search controls' })
     await user.type(search, 'private-example-search')
@@ -107,7 +109,7 @@ describe('Usage interaction wiring', () => {
     const user = userEvent.setup()
     render(<App />)
     const explorer = within(
-      screen.getByRole('region', { name: 'Control Explorer' }),
+      await screen.findByRole('region', { name: 'Control Explorer' }),
     )
     await user.click(explorer.getByText('Check your understanding'))
     await user.click(explorer.getAllByRole('radio')[0]!)

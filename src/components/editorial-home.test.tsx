@@ -9,6 +9,7 @@ describe('Learning page and reading navigation', () => {
   it('closes discovery when the reader selects the already displayed control', async () => {
     const user = userEvent.setup()
     render(<App />)
+    await screen.findByRole('region', { name: 'Control Explorer' })
     await screen.findByRole('tabpanel', { name: 'Beginner' })
     await user.click(
       screen.getByRole('button', { name: 'Browse & filter controls (149)' }),
@@ -28,6 +29,7 @@ describe('Learning page and reading navigation', () => {
   })
   it('opens the full reference collection and a real Level 1 control immediately', async () => {
     render(<App />)
+    await screen.findByRole('region', { name: 'Control Explorer' })
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
       'Learning workspace',
     )
@@ -50,8 +52,9 @@ describe('Learning page and reading navigation', () => {
   it('lets readers expand discovery and returns to reading after choosing another result', async () => {
     const user = userEvent.setup()
     render(<App />)
+    await screen.findByRole('region', { name: 'Control Explorer' })
     const explorer = within(
-      screen.getByRole('region', { name: 'Control Explorer' }),
+      await screen.findByRole('region', { name: 'Control Explorer' }),
     )
     await explorer.findByRole('tabpanel', { name: 'Beginner' })
     const toggle = explorer.getByRole('button', {

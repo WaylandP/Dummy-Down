@@ -8,7 +8,7 @@ matte black, soft chalk and comfortable spacing. Home leads with a real control
 search, three existing draft practice paths, a teaching board, and source/glossary
 shortcuts. Use IBM Plex Sans for the interface and reading; reserve handwritten
 Kalam for teaching and margin notes. Keep the supplied four-part mark and use warm
-ochre accents sparingly. Home, Learn, Glossary and About have separate native pages.
+ochre accents sparingly. Home, Learn, Practice, Glossary, Coverage and About have separate native pages.
 Preserve content identities, legacy links, analytics privacy and source/draft labels.
 Keep normal practice usable without storage. Optional, explicit local saving can
 restore version-matched checked answers; preserve its privacy and deletion guards. Follow docs/DESIGN.md and prioritize reading comfort.

@@ -5,6 +5,15 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Phase 3 optional local progress — October 14, 2026
+
+[PR #22](https://github.com/WaylandP/cipher-and-chalk/pull/22) merged at `dd8595d`.
+Learners can opt into browser-local resume, visited/completed distinctions, revisit
+marks and earlier-answer reasoning review. Saving starts off; deletion, content
+version checks, browser privacy signals and storage failures are handled explicitly.
+CI and automatic production deployment passed; local validation covered 562 unit
+and 110 browser tests. No accounts, cloud sync or answer analytics were added.
+
 ## Phase 3 visual explanations — October 14, 2026
 
 [PR #21](https://github.com/WaylandP/cipher-and-chalk/pull/21) merged at `40d0754`.
