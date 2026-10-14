@@ -15,23 +15,19 @@ Feature work is reviewed in separate Vercel previews before an approved merge;
 production and a pull request's preview can show different versions. See
 [deployment and preview review](docs/DEPLOYMENT.md).
 
-The complete existing interface now uses the **Cipher & Chalk Decode Board**
-identity. Review the latest refinements in [PR #11](https://github.com/WaylandP/cipher-and-chalk/pull/11)
-and its [verified Vercel preview](https://dummy-down-l33cn6g04-waylandp.vercel.app).
-The preview requires Vercel sign-in; deployment succeeded for frontend commit
-`75726def64038e5b061c148bec621ccf48956de4`. The owner merged the first implementation
-in PR #10; agents have not merged or promoted production. GitHub's repository name
-changed externally to `WaylandP/cipher-and-chalk`; deployment, package, storage and
-content identities retain their existing values.
+The existing interface is being corrected to match the owner's supplied **Decode
+Board** reference: a four-part chalk mark, bold wordmark, deep green learning
+surfaces and a handwritten Requirement → Meaning → Real life illustration.
+See the [reference visual checkpoint](docs/reviews/reference-visual-2026-10-14.md)
+for before/after screenshots, validation and the current Draft PR/preview.
+Owner visual feedback is required before marking this correction ready for review.
 
-[Actual screens and validation](docs/reviews/cipher-and-chalk-ui-2026-10-14.md)
-cover the Explorer, teaching, feedback and recovery states. The
-[redesign inventory and delivery plan](docs/designs/cipher-and-chalk.md) records the
-complete scope and missing reference-image limitation. Owner visual review and
-real-learner feedback remain welcome; implementation is not qualified content
-approval or a complete accessibility assessment.
+The [design contract](docs/DESIGN.md) now follows both supplied images. The earlier
+[full UI inventory](docs/designs/cipher-and-chalk.md) remains useful for behavior
+coverage; its text-only visual interpretation is superseded. Qualified content
+approval, screen-reader testing and real-learner review remain pending.
 
-![Cipher & Chalk desktop homepage](docs/screenshots/cipher-home-desktop.png)
+![Cipher & Chalk reference implementation](docs/screenshots/reference/after-desktop.png)
 
 ## What you can use today
 

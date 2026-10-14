@@ -1,5 +1,10 @@
 # Cipher & Chalk: Decode Board redesign
 
+> Historical initial implementation. The subsequently supplied full reference and
+> square logo supersede its visual choices and missing-image limitation. Use
+> [the current design contract](../DESIGN.md) and
+> [reference correction checkpoint](../reviews/reference-visual-2026-10-14.md).
+
 Planning checkpoint: October 14, 2026, branch `feat/cipher-and-chalk`, starting
 from main `cf5ffd2094650211ae851ac5a73bb80c4318b0ae`.
 Delivery checkpoint: frontend commit `75726def64038e5b061c148bec621ccf48956de4`,

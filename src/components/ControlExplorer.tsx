@@ -164,6 +164,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
               <Search size={18} aria-hidden="true" />
               <input
                 type="search"
+                id="control-search"
                 ref={searchInput}
                 placeholder="Search a topic or control ID…"
                 value={filters.query}

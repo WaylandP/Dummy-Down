@@ -29,7 +29,7 @@ describe('Editorial homepage and reading navigation', () => {
   it('opens the full reference collection and a real Level 1 control immediately', async () => {
     render(<App />)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      'What does this requirement actually mean?',
+      'Okay, but what does it mean?',
     )
     expect(
       screen.getByRole('combobox', { name: 'Content collection' }),

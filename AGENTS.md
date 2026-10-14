@@ -2,17 +2,19 @@
 
 Read README.md for the mission and roadmap, docs/DEVELOPMENT.md for the project
 commands, and docs/DESIGN.md for the active Decode Board design direction.
-Use the exact display name “Cipher & Chalk.” The owner authorized a complete
-rebrand: deep evergreen/slate teaching surfaces, cream/off-white reading areas,
-restrained teal, crisp type and a geometric coded-C SVG identity. Apply the shared
-tokens across every existing screen and state, with selective chalk texture and
-clear instructional diagrams. Preserve routes, content identities, analytics,
-privacy, progress and source/draft labels. Keep adult, readable teaching at the
-center; avoid noisy decorations, security shields and childish classroom motifs.
+Use the exact display name “Cipher & Chalk.” The supplied October 14 full design
+image and square logo are the authoritative visual direction, as recorded in
+`docs/design-references/README.md`. Match the four curved chalk-textured quadrants,
+heavy off-white/turquoise wordmark, dark green canvas, turquoise headline and
+handwritten teaching flow. This supersedes cream readers, serif display headings
+and the previous coded-C. Use crisp body text and solid dark reading surfaces.
+Preserve routes, content identities, analytics, privacy, quiz progress and source/
+draft labels. Follow docs/DESIGN.md; ask before departing from the supplied identity.
 GitHub now reports the externally renamed repository as WaylandP/cipher-and-chalk.
 Keep existing deployment/project, package, storage and content IDs; do not rename
 infrastructure or rewrite historical source URLs for a display-name change.
-See docs/designs/cipher-and-chalk.md for the inventory and missing-image limitation.
+See docs/designs/cipher-and-chalk.md for the existing UI inventory; its earlier
+missing-image limitation is historical. Both reference images have now been seen.
 Update documentation to match implemented behavior and honest content status.
 Preserve LICENSE and third-party notices; distinguish the approved direction from
 final owner visual sign-off and qualified content approval.
@@ -65,6 +67,14 @@ and Global Privacy Control protections intact. Never collect raw search text,
 answers, shared links, organizational evidence or visitor identifiers. Do not
 enable paid services, activate analytics accounts, change collection permissions,
 or claim provider data receipt without evidence and the owner's authorization.
+
+## Current visual checkpoint
+
+The exact-reference task is a bounded visual correction. Use applicable design,
+browse, QA and code review methods; no unrelated 58-skill audit or product-planning
+restart. At most two review/fix rounds, then publish the first validated preview
+on a Draft PR for owner feedback. Do not mark it ready before that feedback and
+final validation. This task-specific rule supersedes broader workflow defaults.
 
 ## gstack for Codex
 

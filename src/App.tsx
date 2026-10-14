@@ -1,5 +1,5 @@
 import type { MouseEvent } from 'react'
-import { ArrowDown, ArrowUpRight, CornerDownRight } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Search } from 'lucide-react'
 import type { ExplanationMode } from './types/content'
 import {
   explorerCatalog,
@@ -11,6 +11,7 @@ import { createLessonUrl } from './state/explorer-state'
 import { useExplorerState } from './state/useExplorerState'
 import { Glossary } from './components/Glossary'
 import { Brand } from './components/Brand'
+import { DecodeDiagram } from './components/DecodeDiagram'
 import { ControlExplorer } from './components/ControlExplorer'
 import { UsageAnalytics } from './analytics/UsageAnalytics'
 import { UsagePreferences } from './analytics/UsagePreferences'
@@ -82,20 +83,12 @@ export default function App() {
           <Brand />
           <nav aria-label="Main navigation">
             <a
-              href="#explorer"
+              href="?view=discover&collection=references#explorer"
               onClick={() =>
                 trackUsage({ name: 'section_open', section: 'explorer' })
               }
             >
-              Control Explorer
-            </a>
-            <a
-              href="#approach"
-              onClick={() =>
-                trackUsage({ name: 'section_open', section: 'approach' })
-              }
-            >
-              Learning modes
+              Lessons
             </a>
             <a
               href="#glossary"
@@ -103,16 +96,27 @@ export default function App() {
                 trackUsage({ name: 'section_open', section: 'glossary' })
               }
             >
-              Glossary
+              Topics
+            </a>
+            <a href="#about">About</a>
+            <a
+              className="nav-search"
+              href="?view=discover&collection=references#control-search"
+              onClick={() =>
+                trackUsage({ name: 'section_open', section: 'explorer' })
+              }
+              aria-label="Search lessons"
+            >
+              <Search size={24} aria-hidden="true" />
             </a>
             <a
-              className="github-link"
-              aria-label="Cipher & Chalk on GitHub (opens in a new tab)"
-              href={repositoryUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              className="button nav-browse"
+              href="?view=discover&collection=references#explorer"
+              onClick={() =>
+                trackUsage({ name: 'section_open', section: 'explorer' })
+              }
             >
-              GitHub <ArrowUpRight size={14} aria-hidden="true" />
+              Browse Lessons
             </a>
           </nav>
         </header>
@@ -125,16 +129,16 @@ export default function App() {
           >
             <div className="intro-copy">
               <p className="intro-kicker">
-                <CornerDownRight size={20} aria-hidden="true" /> Cybersecurity,
-                decoded.
+                Security controls. <br />
+                Translated for real life.
               </p>
               <h1 id="hero-title">
-                What does this requirement <em>actually mean?</em>
+                Okay, but what <br />
+                <em>does it mean?</em>
               </h1>
               <p className="intro-description">
-                Plain-English explanations, practical examples, and different
-                learning perspectives for cybersecurity requirements. Starting
-                with CMMC.
+                Decode the terms. See what they do. <br />
+                Apply them with confidence.
               </p>
               <div className="hero-actions">
                 <a
@@ -147,54 +151,7 @@ export default function App() {
                 <span>Free to explore. Open source.</span>
               </div>
             </div>
-            <div className="decode-board">
-              <div className="board-label">
-                <span>ON THE BOARD</span>
-                <span>01 / ACCESS</span>
-              </div>
-              <p className="board-question">Who gets access?</p>
-              <div className="decode-step decode-source">
-                <span className="decode-number">01</span>
-                <div>
-                  <span className="decode-caption">Read the requirement</span>
-                  <p>AC.L1-b.1.i</p>
-                  <span>CMMC Level 1 · September 2024 snapshot</span>
-                </div>
-              </div>
-              <div className="decode-connector" aria-hidden="true">
-                ↓
-              </div>
-              <div className="decode-step decode-meaning">
-                <span className="decode-number">02</span>
-                <div>
-                  <span className="decode-caption">Find your way in</span>
-                  <p>Beginner → IT &amp; Cyber → Compliance</p>
-                  <span>Three perspectives. One source reference.</span>
-                </div>
-              </div>
-              <div className="decode-connector" aria-hidden="true">
-                ↓
-              </div>
-              <div className="decode-step decode-practice">
-                <span className="decode-number">03</span>
-                <div>
-                  <span className="decode-caption">Put the idea to work</span>
-                  <p>A scenario. A question. A clearer picture.</p>
-                  <span>Try the draft authorized-access activity.</span>
-                </div>
-              </div>
-              <a
-                className="board-lesson-link"
-                href={sampleUrl('beginner')}
-                onClick={(event) => openSample(event, 'beginner')}
-              >
-                Who can access a system?{' '}
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
-              <p className="board-footnote">
-                Teaching drafts · qualified human review pending
-              </p>
-            </div>
+            <DecodeDiagram />
           </section>
         </div>
         <ControlExplorer controller={controller} />
@@ -230,6 +187,7 @@ export default function App() {
         </section>
         <Glossary terms={glossaryTerms} />
         <section
+          id="about"
           className="mission-section section-shell"
           aria-labelledby="mission-title"
         >

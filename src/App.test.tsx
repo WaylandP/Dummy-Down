@@ -28,7 +28,7 @@ describe('Control Explorer learning experience', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: 'What does this requirement actually mean?',
+        name: 'Okay, but what does it mean?',
       }),
     ).toBeVisible()
     expect(
