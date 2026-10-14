@@ -6,7 +6,7 @@ import { referenceControls } from '../data/content'
 import { lessonIdentity, lessonIdentityKey } from '../state/explorer-state'
 import { ControlResults } from './ControlResults'
 
-beforeEach(() => window.history.replaceState(null, '', '/'))
+beforeEach(() => window.history.replaceState(null, '', '/learn'))
 
 function reference(id: string) {
   const control = referenceControls.find((item) => item.id === id)
@@ -167,9 +167,7 @@ describe('Versioned CMMC reference catalog', () => {
     expect(url.searchParams.has('q')).toBe(false)
     expect(url.searchParams.has('collection')).toBe(false)
     expect(explorer.getByText('Reference link copied.')).toBeVisible()
-    await user.click(
-      screen.getByRole('link', { name: /^Beginner .*Try this perspective/ }),
-    )
+    await user.click(explorer.getByRole('tab', { name: 'Beginner' }))
     expect(
       await explorer.findByRole('tabpanel', { name: 'Beginner' }),
     ).toBeVisible()

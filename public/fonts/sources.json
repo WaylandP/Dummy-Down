@@ -1,0 +1,26 @@
+[
+  {
+    "font": "changa-one",
+    "version": "5.3.0",
+    "source": "@fontsource/changa-one",
+    "file": "changa-one-latin-400-normal.woff2",
+    "sha256": "fbd0536d5b92c0dbe6ad2637800ae8da10c20755b564a3575bd12bba57f73b18",
+    "license": "SIL Open Font License 1.1"
+  },
+  {
+    "font": "barlow",
+    "version": "5.3.0",
+    "source": "@fontsource/barlow",
+    "file": "barlow-latin-800-normal.woff2",
+    "sha256": "231d487a993e28bc5567c2be8da48acd8e0a209891c11448491eab45db0f8d7c",
+    "license": "SIL Open Font License 1.1"
+  },
+  {
+    "font": "kalam",
+    "version": "5.3.0",
+    "source": "@fontsource/kalam",
+    "file": "kalam-latin-400-normal.woff2",
+    "sha256": "954410601a823f37e219f7930b7446f86afa15621326a7078d56fb9c910135cb",
+    "license": "SIL Open Font License 1.1"
+  }
+]

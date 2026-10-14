@@ -12,7 +12,7 @@ function fixture(id: string) {
   return control
 }
 
-beforeEach(() => window.history.replaceState(null, '', '/'))
+beforeEach(() => window.history.replaceState(null, '', '/learn'))
 
 describe('Visible editorial provenance', () => {
   it.each(['AC.L1-b.1.i', 'AC.L1-b.1.iv', 'MP.L1-b.1.vii'])(

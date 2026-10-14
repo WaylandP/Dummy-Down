@@ -11,17 +11,13 @@ available teaching drafts and pending review. No completion percentage is implie
   Obtain real qualified review before approval claims. Resolve the recorded
   official-host access failures and verify current DoD/FAR/NIST applicability
   without silently replacing the September 2024 v2.13 snapshot.
-- **P1: owner and learner review of the implemented Decode Board.** The complete
-  existing interface is implemented and validated with behavioral tests, actual
-  desktop/phone, keyboard, CSS zoom, feedback and recovery checks. Review
-  [PR #11](https://github.com/WaylandP/cipher-and-chalk/pull/11), its
-  [Vercel preview](https://dummy-down-l33cn6g04-waylandp.vercel.app) while signed in,
-  and the [18 actual captures and delivery mapping](docs/reviews/cipher-and-chalk-ui-2026-10-14.md).
-  Preserve source/draft notices, routes, privacy and working learning interactions.
-  The refined reference image was unavailable; compare it later if supplied.
-  Owner visual sign-off, screen-reader/Safari testing and real-learner feedback
-  remain pending. Validation is not a complete accessibility audit; historical
-  editorial reviews retain their original scope.
+- **P1: owner feedback on the reference desk.** Review the
+  [study-desk checkpoint](docs/reviews/study-desk-2026-10-14.md) for the latest
+  structure and style: direct search, three existing draft practice paths, a small
+  teaching board, reference links and the lesson outline. Check whether readers can
+  find help quickly while the blackboard remains comfortable to read. Keep the PR
+  Draft until feedback and final validation. Screen-reader/Safari and real-learner
+  checks remain pending.
 - **P2: review the focused learning milestone.** Three Level 1 activities now
   cover authorized access, public information and media disposal with fictional
   scenarios, common misunderstandings, nine explained questions and three

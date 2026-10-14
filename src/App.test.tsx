@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { act, render as renderView } from '@testing-library/react'
 import { beforeEach, describe, expect, it } from 'vitest'
 import App from './App'
+import { followPageLink } from './test/page-navigation'
 
 beforeEach(() =>
   window.history.replaceState(
@@ -28,7 +29,7 @@ describe('Control Explorer learning experience', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: 'What does this requirement actually mean?',
+        name: 'Learning workspace',
       }),
     ).toBeVisible()
     expect(
@@ -117,30 +118,28 @@ describe('Control Explorer learning experience', () => {
   })
 
   it.each(['Beginner', 'IT & Cyber', 'Compliance'])(
-    'opens the %s perspective from its homepage link',
+    'opens the %s perspective from its About page link',
     async (mode) => {
       const { user, explorer } = renderApp()
-      // Start from another perspective so the beginner entry also proves a change.
       await user.click(
         explorer.getByRole('tab', {
           name: mode === 'Compliance' ? 'Beginner' : 'Compliance',
         }),
       )
-      await user.click(
+      followPageLink(screen.getByRole('link', { name: 'About' }))
+      followPageLink(
         screen.getByRole('link', {
           name: new RegExp(
             `^${mode} .*Try this perspective in the Control Explorer$`,
           ),
         }),
       )
-
-      expect(await explorer.findByRole('tab', { name: mode })).toHaveAttribute(
+      expect(await screen.findByRole('tab', { name: mode })).toHaveAttribute(
         'aria-selected',
         'true',
       )
-      expect(
-        await explorer.findByRole('tabpanel', { name: mode }),
-      ).toBeVisible()
+      expect(await screen.findByRole('tabpanel', { name: mode })).toBeVisible()
+      expect(window.location.pathname).toBe('/learn')
     },
   )
 
@@ -330,19 +329,20 @@ describe('Shareable lessons and reading tools', () => {
     ['?view=discover&catalog=nist-sp-800-53', 'NIST 800-53 is on the roadmap.'],
     ['?view=discover', 'Choose a draft example.'],
   ])(
-    'opens a homepage sample from %s without substituting an unavailable lesson',
+    'opens a sample through About from %s without substituting an unavailable lesson',
     async (address, title) => {
       window.history.replaceState(null, '', address)
-      const { user, explorer } = renderApp()
+      const { explorer } = renderApp()
       expect(explorer.getByRole('heading', { name: title })).toBeVisible()
       expect(explorer.queryByRole('tabpanel')).not.toBeInTheDocument()
-      await user.click(
+      followPageLink(screen.getByRole('link', { name: 'About' }))
+      followPageLink(
         screen.getByRole('link', {
           name: /^Compliance .*Try this perspective in the Control Explorer$/,
         }),
       )
       expect(
-        await explorer.findByRole('tabpanel', { name: 'Compliance' }),
+        await screen.findByRole('tabpanel', { name: 'Compliance' }),
       ).toBeVisible()
       expect(window.location.hash).toBe('#explorer')
       expect(new URLSearchParams(window.location.search).get('control')).toBe(
@@ -392,6 +392,8 @@ describe('Shareable lessons and reading tools', () => {
     await user.keyboard('{Escape}')
     expect(term).toHaveFocus()
     expect(term).toHaveAttribute('aria-expanded', 'false')
+    followPageLink(screen.getByRole('link', { name: 'Glossary' }))
+    const glossaryAddress = window.location.href
     await user.type(
       screen.getByRole('searchbox', { name: 'Search glossary' }),
       'offboarding',
@@ -399,7 +401,12 @@ describe('Shareable lessons and reading tools', () => {
     expect(
       screen.getByRole('status', { name: 'Glossary search results' }),
     ).toHaveTextContent('1 term')
-    expect(explorer.getByRole('tabpanel', { name: 'IT & Cyber' })).toBeVisible()
+    expect(window.location.href).toBe(glossaryAddress)
+    act(() => {
+      window.history.replaceState(null, '', address)
+      window.dispatchEvent(new PopStateEvent('popstate'))
+    })
+    expect(screen.getByRole('tabpanel', { name: 'IT & Cyber' })).toBeVisible()
     expect(window.location.href).toBe(address)
   })
 })

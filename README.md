@@ -15,23 +15,22 @@ Feature work is reviewed in separate Vercel previews before an approved merge;
 production and a pull request's preview can show different versions. See
 [deployment and preview review](docs/DEPLOYMENT.md).
 
-The complete existing interface now uses the **Cipher & Chalk Decode Board**
-identity. Review the latest refinements in [PR #11](https://github.com/WaylandP/cipher-and-chalk/pull/11)
-and its [verified Vercel preview](https://dummy-down-l33cn6g04-waylandp.vercel.app).
-The preview requires Vercel sign-in; deployment succeeded for frontend commit
-`75726def64038e5b061c148bec621ccf48956de4`. The owner merged the first implementation
-in PR #10; agents have not merged or promoted production. GitHub's repository name
-changed externally to `WaylandP/cipher-and-chalk`; deployment, package, storage and
-content identities retain their existing values.
+The current visual checkpoint makes the blackboard a practical reference desk:
+search for a control, choose one of three existing draft practice activities, or
+unpack an access-control misunderstanding on the chalkboard. Level and glossary
+links keep reference material close. Matte black, soft chalk, clear typography and
+small warm accents give the pages a shared style.
+Home, Learn, Glossary and About remain separate pages. Opening a control folds the
+browsing tools away; “Browse & filter controls” brings them back. Reference readers
+can jump to the source, explanation and practice where an activity exists.
+See the [study-desk checkpoint](docs/reviews/study-desk-2026-10-14.md)
+for the review record. Owner visual acceptance is pending.
 
-[Actual screens and validation](docs/reviews/cipher-and-chalk-ui-2026-10-14.md)
-cover the Explorer, teaching, feedback and recovery states. The
-[redesign inventory and delivery plan](docs/designs/cipher-and-chalk.md) records the
-complete scope and missing reference-image limitation. Owner visual review and
-real-learner feedback remain welcome; implementation is not qualified content
-approval or a complete accessibility assessment.
+The [design contract](docs/DESIGN.md) retains the supplied four-part mark while
+superseding the earlier green composition. Qualified content approval,
+screen-reader testing and real-learner review remain pending.
 
-![Cipher & Chalk desktop homepage](docs/screenshots/cipher-home-desktop.png)
+![Cipher & Chalk reference desk homepage](docs/screenshots/study-desk/home-desktop.png)
 
 ## What you can use today
 

@@ -104,12 +104,17 @@ export function useUsagePreference() {
   }
 }
 
-/** All current application views share '/'; never retain query or fragment data. */
+/** Only public page names may leave the app; never retain queries or fragments. */
 export function sanitizeUsageUrl(value: string, origin: string): string | null {
   try {
     const url = new URL(value, origin)
-    if (url.origin !== origin || url.pathname !== '/') return null
-    return `${origin}/`
+    const path = url.pathname.replace(/\/$/, '') || '/'
+    if (
+      url.origin !== origin ||
+      !['/', '/learn', '/glossary', '/about'].includes(path)
+    )
+      return null
+    return `${origin}${path}`
   } catch {
     return null
   }

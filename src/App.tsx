@@ -1,6 +1,5 @@
-import type { MouseEvent } from 'react'
-import { ArrowDown, ArrowUpRight, CornerDownRight } from 'lucide-react'
-import type { ExplanationMode } from './types/content'
+import { useSyncExternalStore } from 'react'
+import { ArrowUpRight } from 'lucide-react'
 import {
   explorerCatalog,
   defaultLesson,
@@ -9,15 +8,19 @@ import {
 } from './data/content'
 import { createLessonUrl } from './state/explorer-state'
 import { useExplorerState } from './state/useExplorerState'
+import { sitePage } from './state/site-page'
+import type { ExplanationMode } from './types/content'
 import { Glossary } from './components/Glossary'
 import { Brand } from './components/Brand'
+import { StudyHome } from './components/StudyHome'
 import { ControlExplorer } from './components/ControlExplorer'
 import { UsageAnalytics } from './analytics/UsageAnalytics'
 import { UsagePreferences } from './analytics/UsagePreferences'
 import { trackUsage } from './analytics/usage'
 import { useControlView } from './analytics/useControlView'
 
-const repositoryUrl = 'https://github.com/WaylandP/Dummy-Down'
+const repositoryUrl = 'https://github.com/WaylandP/cipher-and-chalk'
+const browseUrl = '/learn?view=discover&collection=references'
 const perspectives = [
   {
     mode: 'beginner',
@@ -36,7 +39,26 @@ const perspectives = [
   },
 ] satisfies { mode: ExplanationMode; title: string; description: string }[]
 
-export default function App() {
+function sampleUrl(mode: ExplanationMode) {
+  return createLessonUrl(
+    defaultLesson,
+    mode,
+    new URL('/learn', window.location.origin),
+  )
+}
+function subscribePage(listener: () => void) {
+  window.addEventListener('popstate', listener)
+  window.addEventListener('hashchange', listener)
+  return () => {
+    window.removeEventListener('popstate', listener)
+    window.removeEventListener('hashchange', listener)
+  }
+}
+function currentPage() {
+  return sitePage(new URL(window.location.href))
+}
+
+function LearningPage() {
   const controller = useExplorerState(explorerCatalog)
   const mode =
     controller.parsed.kind === 'ready'
@@ -48,203 +70,116 @@ export default function App() {
       : null,
     mode,
   )
-  function sampleUrl(perspective: ExplanationMode) {
-    return createLessonUrl(
-      defaultLesson,
-      perspective,
-      new URL(window.location.href),
-    )
-  }
-  function openSample(
-    event: MouseEvent<HTMLAnchorElement>,
-    perspective: ExplanationMode,
-  ) {
-    if (
-      event.button !== 0 ||
-      event.metaKey ||
-      event.ctrlKey ||
-      event.shiftKey ||
-      event.altKey
-    )
-      return
-    event.preventDefault()
-    trackUsage({ name: 'section_open', section: 'explorer' })
-    controller.dispatch({ type: 'open-example', mode: perspective })
-    document.getElementById('explorer')?.scrollIntoView?.({ block: 'start' })
-  }
   return (
-    <div id="top">
-      <a className="skip-link" href="#main">
+    <>
+      <h1 className="sr-only">Learning workspace</h1>
+      <ControlExplorer controller={controller} />
+    </>
+  )
+}
+
+export default function App() {
+  const page = useSyncExternalStore(subscribePage, currentPage)
+  return (
+    <div id="top" className={`site-page page-${page}`}>
+      <a
+        className="skip-link"
+        href={
+          window.location.pathname === '/' &&
+          window.location.hash !== '#main' &&
+          page !== 'home' &&
+          page !== 'not-found'
+            ? `/${page}${page === 'learn' ? window.location.search : ''}#main`
+            : '#main'
+        }
+      >
         Skip to content
       </a>
-      <div className="board-masthead">
-        <header className="site-header section-shell">
-          <Brand />
-          <nav aria-label="Main navigation">
-            <a
-              href="#explorer"
-              onClick={() =>
-                trackUsage({ name: 'section_open', section: 'explorer' })
-              }
-            >
-              Control Explorer
-            </a>
-            <a
-              href="#approach"
-              onClick={() =>
-                trackUsage({ name: 'section_open', section: 'approach' })
-              }
-            >
-              Learning modes
-            </a>
-            <a
-              href="#glossary"
-              onClick={() =>
-                trackUsage({ name: 'section_open', section: 'glossary' })
-              }
-            >
-              Glossary
-            </a>
-            <a
-              className="github-link"
-              aria-label="Cipher & Chalk on GitHub (opens in a new tab)"
-              href={repositoryUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub <ArrowUpRight size={14} aria-hidden="true" />
-            </a>
-          </nav>
-        </header>
-      </div>
-      <main id="main">
-        <div className="board-masthead">
-          <section
-            className="editorial-intro section-shell"
-            aria-labelledby="hero-title"
+      <header className="site-header section-shell">
+        <Brand />
+        <nav aria-label="Main navigation">
+          <a
+            href={browseUrl}
+            aria-current={page === 'learn' ? 'page' : undefined}
+            onClick={() =>
+              trackUsage({ name: 'section_open', section: 'explorer' })
+            }
           >
-            <div className="intro-copy">
-              <p className="intro-kicker">
-                <CornerDownRight size={20} aria-hidden="true" /> Cybersecurity,
-                decoded.
-              </p>
-              <h1 id="hero-title">
-                What does this requirement <em>actually mean?</em>
+            Learn
+          </a>
+          <a
+            href="/glossary"
+            aria-current={page === 'glossary' ? 'page' : undefined}
+            onClick={() =>
+              trackUsage({ name: 'section_open', section: 'glossary' })
+            }
+          >
+            Glossary
+          </a>
+          <a href="/about" aria-current={page === 'about' ? 'page' : undefined}>
+            About
+          </a>
+        </nav>
+      </header>
+      <main id="main">
+        {page === 'home' && <StudyHome />}
+        {page === 'learn' && <LearningPage />}
+        {page === 'glossary' && (
+          <>
+            <h1 className="page-title section-shell">The wordbook.</h1>
+            <Glossary terms={glossaryTerms} />
+          </>
+        )}
+        {page === 'about' && (
+          <div className="about-page section-shell">
+            <section id="about" aria-labelledby="mission-title">
+              <p className="home-kicker">About Cipher &amp; Chalk</p>
+              <h1 id="mission-title">
+                A little clarity
+                <br /> goes a long way.
               </h1>
-              <p className="intro-description">
-                Plain-English explanations, practical examples, and different
-                learning perspectives for cybersecurity requirements. Starting
-                with CMMC.
+              <p>
+                Cybersecurity requirements can be hard to read. We unpack the
+                language, explain the idea, and use everyday examples to help it
+                stick.
               </p>
-              <div className="hero-actions">
-                <a
-                  className="button button-chalk"
-                  href={sampleUrl('beginner')}
-                  onClick={(event) => openSample(event, 'beginner')}
-                >
-                  Start decoding <ArrowDown size={17} aria-hidden="true" />
-                </a>
-                <span>Free to explore. Open source.</span>
-              </div>
-            </div>
-            <div className="decode-board">
-              <div className="board-label">
-                <span>ON THE BOARD</span>
-                <span>01 / ACCESS</span>
-              </div>
-              <p className="board-question">Who gets access?</p>
-              <div className="decode-step decode-source">
-                <span className="decode-number">01</span>
-                <div>
-                  <span className="decode-caption">Read the requirement</span>
-                  <p>AC.L1-b.1.i</p>
-                  <span>CMMC Level 1 · September 2024 snapshot</span>
-                </div>
-              </div>
-              <div className="decode-connector" aria-hidden="true">
-                ↓
-              </div>
-              <div className="decode-step decode-meaning">
-                <span className="decode-number">02</span>
-                <div>
-                  <span className="decode-caption">Find your way in</span>
-                  <p>Beginner → IT &amp; Cyber → Compliance</p>
-                  <span>Three perspectives. One source reference.</span>
-                </div>
-              </div>
-              <div className="decode-connector" aria-hidden="true">
-                ↓
-              </div>
-              <div className="decode-step decode-practice">
-                <span className="decode-number">03</span>
-                <div>
-                  <span className="decode-caption">Put the idea to work</span>
-                  <p>A scenario. A question. A clearer picture.</p>
-                  <span>Try the draft authorized-access activity.</span>
-                </div>
-              </div>
-              <a
-                className="board-lesson-link"
-                href={sampleUrl('beginner')}
-                onClick={(event) => openSample(event, 'beginner')}
-              >
-                Who can access a system?{' '}
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
-              <p className="board-footnote">
-                Teaching drafts · qualified human review pending
+              <p>
+                This independent, open-source project covers{' '}
+                {referenceControls.length} CMMC references from the September
+                2024 v2.13 publications. Explanations are educational drafts;
+                qualified human review is pending.
               </p>
-            </div>
-          </section>
-        </div>
-        <ControlExplorer controller={controller} />
-        <section
-          id="approach"
-          className="approach-section section-shell"
-          aria-labelledby="approach-title"
-        >
-          <div className="approach-intro">
-            <h2 id="approach-title">One requirement. Three ways in.</h2>
-            <p>You can change perspective as you read.</p>
-          </div>
-          <div className="perspective-list">
-            {perspectives.map((item) => (
-              <a
-                key={item.mode}
-                className="perspective-link"
-                href={sampleUrl(item.mode)}
-                onClick={(event) => openSample(event, item.mode)}
-              >
-                <span className="perspective-title">
-                  {item.title} <ArrowUpRight size={16} aria-hidden="true" />
-                </span>{' '}
-                <span className="perspective-description">
-                  {item.description}
-                </span>{' '}
-                <span className="sr-only">
-                  — Try this perspective in the Control Explorer
-                </span>
-              </a>
-            ))}
-          </div>
-        </section>
-        <Glossary terms={glossaryTerms} />
-        <section
-          className="mission-section section-shell"
-          aria-labelledby="mission-title"
-        >
-          <h2 id="mission-title">Useful explanations. Honest limits.</h2>
-          <div className="mission-copy">
-            <p>
-              This independent, open-source project currently covers{' '}
-              {referenceControls.length} CMMC references from the September 2024
-              v2.13 publications. Explanations are educational drafts; qualified
-              human review is pending.
-            </p>
-            <p>
-              Other frameworks are planned. They are not learning libraries here
-              yet.
-            </p>
+              <p>
+                Other frameworks are planned. They are not learning libraries
+                here yet.
+              </p>
+            </section>
+            <section id="approach" aria-labelledby="approach-title">
+              <h2 id="approach-title">Choose your starting point.</h2>
+              <p>
+                Switch perspective inside any control. The source stays
+                alongside the explanation.
+              </p>
+              <div className="perspective-list">
+                {perspectives.map((item) => (
+                  <a
+                    className="perspective-link"
+                    key={item.mode}
+                    href={sampleUrl(item.mode)}
+                  >
+                    <span className="perspective-title">
+                      {item.title} <ArrowUpRight size={16} aria-hidden="true" />
+                    </span>{' '}
+                    <span className="perspective-description">
+                      {item.description}
+                    </span>{' '}
+                    <span className="sr-only">
+                      — Try this perspective in the Control Explorer
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </section>
             <a
               className="text-link"
               href={repositoryUrl}
@@ -256,30 +191,40 @@ export default function App() {
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </div>
-        </section>
+        )}
+        {page === 'not-found' && (
+          <section className="about-page section-shell">
+            <h1>This board is blank.</h1>
+            <p>
+              That page isn’t available. You can still browse the learning
+              material.
+            </p>
+            <a className="button button-primary" href={browseUrl}>
+              Explore the controls
+            </a>
+          </section>
+        )}
       </main>
       <footer className="site-footer section-shell">
         <div className="footer-top">
-          <Brand />
-          <p>Cybersecurity, decoded.</p>
+          <p>Understand the idea. Keep asking questions.</p>
           <a
             href={`${repositoryUrl}/blob/main/LICENSE`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            MIT licensed<span className="sr-only"> (opens in a new tab)</span>
+            Open source · MIT
+            <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </div>
         <UsagePreferences />
-        <div className="footer-bottom">
-          <p>
-            Educational material only. No certification, legal advice, or
-            guarantee of assessment success.
-            <br />
-            Independent project. Not affiliated with or endorsed by DoD, NIST,
-            or any certification body.
-          </p>
-        </div>
+        <p className="footer-disclaimer">
+          Independent educational drafts. Not legal advice or a guarantee of
+          compliance.
+          <br />
+          Not affiliated with or endorsed by DoD, NIST, or any certification
+          body.
+        </p>
       </footer>
       <UsageAnalytics />
     </div>

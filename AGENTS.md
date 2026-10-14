@@ -1,18 +1,22 @@
 # Cipher & Chalk development
 
 Read README.md for the mission and roadmap, docs/DEVELOPMENT.md for the project
-commands, and docs/DESIGN.md for the active Decode Board design direction.
-Use the exact display name “Cipher & Chalk.” The owner authorized a complete
-rebrand: deep evergreen/slate teaching surfaces, cream/off-white reading areas,
-restrained teal, crisp type and a geometric coded-C SVG identity. Apply the shared
-tokens across every existing screen and state, with selective chalk texture and
-clear instructional diagrams. Preserve routes, content identities, analytics,
-privacy, progress and source/draft labels. Keep adult, readable teaching at the
-center; avoid noisy decorations, security shields and childish classroom motifs.
+commands, and docs/DESIGN.md for the active blackboard design direction.
+Use the exact display name “Cipher & Chalk.” The owner's latest October 14 feedback
+calls for a useful, distinctive reference desk with clear structure, while retaining
+matte black, soft chalk and comfortable spacing. Home leads with a real control
+search, three existing draft practice paths, a teaching board, and source/glossary
+shortcuts. Use IBM Plex Sans for the interface and reading; reserve handwritten
+Kalam for teaching and margin notes. Keep the supplied four-part mark and use warm
+ochre accents sparingly. Home, Learn, Glossary and About have separate native pages.
+Preserve content identities, legacy links, analytics privacy and source/draft labels.
+Keep existing local practice behavior within a lesson; page navigation/reload does
+not promise saved progress. Follow docs/DESIGN.md and prioritize reading comfort.
 GitHub now reports the externally renamed repository as WaylandP/cipher-and-chalk.
 Keep existing deployment/project, package, storage and content IDs; do not rename
 infrastructure or rewrite historical source URLs for a display-name change.
-See docs/designs/cipher-and-chalk.md for the inventory and missing-image limitation.
+See docs/designs/cipher-and-chalk.md for the existing UI inventory; its earlier
+missing-image limitation is historical. Both reference images have now been seen.
 Update documentation to match implemented behavior and honest content status.
 Preserve LICENSE and third-party notices; distinguish the approved direction from
 final owner visual sign-off and qualified content approval.
@@ -65,6 +69,19 @@ and Global Privacy Control protections intact. Never collect raw search text,
 answers, shared links, organizational evidence or visitor identifiers. Do not
 enable paid services, activate analytics accounts, change collection permissions,
 or claim provider data receipt without evidence and the owner's authorization.
+
+## Current visual checkpoint
+
+The study-desk task develops the structure and usefulness of the blackboard site.
+The homepage must lead to real material; its teaching disclosure reuses an existing
+draft explanation. Reference readers link to Source, Explain it, and Practice only
+where an activity exists. No new curriculum or saved-progress feature is implied.
+Use applicable design, browse, QA and code review methods; no unrelated 58-skill
+audit or product-planning restart. At most two review/fix rounds, then publish the
+first validated preview on a Draft PR for owner feedback. Do not mark it ready
+before that feedback and final validation. Record the work in
+[the study-desk checkpoint](docs/reviews/study-desk-2026-10-14.md).
+This task-specific rule supersedes broader workflow defaults.
 
 ## gstack for Codex
 
