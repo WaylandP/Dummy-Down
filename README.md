@@ -8,7 +8,7 @@
 
 **[Open the site →](https://cipherandchalk.vercel.app)**
 
-![Cipher & Chalk home page: a search box over a dark chalkboard, three practice situations, and a teaching board](docs/screenshots/study-desk/home-desktop.png)
+![Cipher & Chalk home page: a chalkboard asking "What are you trying to understand?", a search line, and the fourteen CMMC control families with their counts](docs/screenshots/board/home-1280.jpg)
 
 ## What it is
 
@@ -80,7 +80,7 @@ npm run test:browser   # Playwright + axe-core accessibility checks
 
 ```
 src/
-  components/   pages and UI (StudyHome, ControlExplorer, ReferenceDetail, PracticePage, ...)
+  components/   pages and UI (Home, ControlExplorer, ReferenceDetail, PracticePage, ...)
   data/         CMMC catalog, perspectives, objectives, glossary, practice activities
   state/        URL-driven explorer state and page routing
   progress/     optional, local-only learning progress

@@ -15,10 +15,11 @@ are self-hosted from `public/fonts/` with licenses in `public/font-licenses/`.
 The mark is `public/brand/mark.svg`; the app icon and favicon are the ring on a
 yellow tile.
 
-The page layouts below are the previous "reference desk" implementation. They
-stay live inside the Board shell, with its colors and type, until each screen
-is redrawn in the Board's build order. Their notes remain accurate for layout;
-their palette and type notes no longer apply.
+Home is the Board's too. The other page layouts below are the previous
+"reference desk" implementation. They stay live inside the Board shell, with
+its colors and type, until each screen is redrawn in the Board's build order.
+Their notes remain accurate for layout; their palette and type notes no longer
+apply.
 
 ---
 
@@ -52,8 +53,7 @@ chalk `#EDE9DD`, chalk-muted `#C9CFC6` / `#9AA39B`, yellow `#F2D16B`, blue
 other hues; states use lightness. The legacy names the older page stylesheets
 still reference (`--color-canvas`, `--color-accent`, `--font-code` and the
 rest) alias these tokens until those stylesheets are retired. The shared
-`src/styles.css` carries no retired values; `src/components/study-home.css`
-keeps its own until Home is redrawn.
+`src/styles.css` carries no retired values.
 
 Structure is lines, chalk strokes and space: no cards, chips, pills, hero
 blocks, icon rows, gradient washes or numbered markers. Desktop gutters are
@@ -63,13 +63,13 @@ not establish it.
 
 ## One main task per page
 
-- **Home `/`:** a direct question and a native control-search form, followed by
-  three numbered paths to existing Level 1 draft activities. Beside the list, a
-  chalkboard teaches the distinction between working access and authorized access;
-  its disclosure uses the existing activity's explanation. A reference shelf links
-  to all three CMMC levels and the glossary. On smaller screens these areas stack
-  in reading order. Every link leads to implemented material. Optional saved progress lives with
-  actual activities; Home does not infer personalized recommendations.
+- **Home `/`:** the Board's `mockups/Main.html`. Left: the question in chalk,
+  a search line (an input on a chalk underline, no box) that submits the same
+  discovery address as the header's find line, and one sentence of what the
+  site holds. Right: the fourteen families with their catalog counts, each a
+  link to filtered discovery. Bottom row: "Start here" with the default lesson,
+  or "Last time" with the control opened last when optional saving is on, and
+  the publication version. Home mounts no lesson and records nothing.
 - **Learn `/learn`:** existing control discovery, exact source quotations,
   three perspectives and available draft practice. A selected control folds search,
   filters and results away at every width. “Browse & filter controls” reopens them.

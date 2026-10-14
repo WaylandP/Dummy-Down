@@ -144,12 +144,8 @@ test('page titles follow native navigation and history without including search 
   page,
 }) => {
   await page.goto('/')
-  await page
-    .getByRole('searchbox', { name: 'Search the control library' })
-    .fill('access')
-  await page
-    .getByRole('searchbox', { name: 'Search the control library' })
-    .press('Enter')
+  await page.getByRole('searchbox', { name: 'Find a control' }).fill('access')
+  await page.getByRole('searchbox', { name: 'Find a control' }).press('Enter')
   await expect(page).toHaveTitle('Control Explorer | Cipher & Chalk')
   await page.locator('.control-item').first().click()
   await expect(page).toHaveTitle(/AC\.L1-b\.1\.i/)

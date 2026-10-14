@@ -11,6 +11,7 @@ import {
 } from './model'
 import {
   createLocalProgressStore,
+  LAST_CONTROL_KEY,
   PROGRESS_CONSENT_KEY,
   PROGRESS_DATA_KEY,
   type ProgressPort,
@@ -558,6 +559,41 @@ describe('optional progress store', () => {
       entries: {},
       deletionUnconfirmed: false,
     })
+  })
+
+  it('remembers the control opened last only while saving is on, and forgets it on delete', () => {
+    const env = harness()
+    const store = createLocalProgressStore(learningActivities, env.port)
+    store.connect()
+    const lesson = activity.lesson
+    expect(store.rememberControl(lesson)).toBe(false)
+    expect(env.shared.has(LAST_CONTROL_KEY)).toBe(false)
+    expect(store.getSnapshot().lastControl).toBeNull()
+
+    // Enabling later writes the control that is on screen.
+    expect(store.enable()).toBe(true)
+    expect(JSON.parse(env.shared.get(LAST_CONTROL_KEY)!)).toEqual(lesson)
+    expect(store.getSnapshot().lastControl).toEqual(lesson)
+
+    expect(store.rememberControl(other.lesson)).toBe(true)
+    expect(JSON.parse(env.shared.get(LAST_CONTROL_KEY)!)).toEqual(other.lesson)
+
+    // Another tab reads it back; a stranger or a malformed value is ignored.
+    const second = createLocalProgressStore(learningActivities, env.port)
+    second.connect()
+    expect(second.getSnapshot().lastControl).toEqual(other.lesson)
+    env.shared.set(LAST_CONTROL_KEY, '{"controlKey":"x","extra":1}')
+    env.emit()
+    expect(second.getSnapshot().lastControl).toBeNull()
+
+    expect(store.deleteAndDisable()).toBe(true)
+    expect(env.shared.has(LAST_CONTROL_KEY)).toBe(false)
+    expect(store.getSnapshot().lastControl).toBeNull()
+    // Without the consent marker the key is never read, even if it reappears.
+    env.shared.set(LAST_CONTROL_KEY, JSON.stringify(lesson))
+    env.emit()
+    expect(store.getSnapshot().lastControl).toBeNull()
+    expect(store.rememberControl(lesson)).toBe(false)
   })
 
   it('discloses failed deletion, clears memory, and refuses to reload stale data on focus', () => {

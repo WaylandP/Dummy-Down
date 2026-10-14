@@ -1,4 +1,5 @@
 import type { LearningActivity } from '../types/learning'
+import type { LessonIdentity } from '../types/content'
 
 export const PROGRESS_SCHEMA = 1
 export const MAX_PROGRESS_LENGTH = 64_000
@@ -65,6 +66,29 @@ export function createProgressCatalog(
     result.set(activity.id, activity)
   }
   return result
+}
+
+/** The control opened last: three bounded public identifiers, nothing else. */
+export function decodeLastControl(raw: string | null): LessonIdentity | null {
+  if (!raw) return null
+  try {
+    const value: unknown = JSON.parse(raw)
+    if (
+      !record(value) ||
+      !exactKeys(value, ['frameworkId', 'editionId', 'controlKey']) ||
+      !boundedId(value.frameworkId) ||
+      !boundedId(value.editionId) ||
+      !boundedId(value.controlKey)
+    )
+      return null
+    return {
+      frameworkId: value.frameworkId,
+      editionId: value.editionId,
+      controlKey: value.controlKey,
+    }
+  } catch {
+    return null
+  }
 }
 
 export function emptyProgress(activity: LearningActivity): ActivityProgress {

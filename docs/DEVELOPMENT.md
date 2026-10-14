@@ -87,7 +87,7 @@ their existing values; historical source URLs are preserved.
 | `src/App.tsx`                        | Assembles the page and coordinates the interactive experience.                                  |
 | `src/components/`                    | Reusable interface pieces, including the Control Explorer.                                      |
 | `src/components/board/`              | The Board shell: chalk filter and dust, the lockup, header with its find line, footer and tray. |
-| `src/components/StudyHome.tsx`       | Native reference search, three existing practice entry points and a teaching disclosure.        |
+| `src/components/Home.tsx`            | The question, the find line, the fourteen families and where the visitor left off.              |
 | `src/components/ReferenceDetail.tsx` | Source quotation, teaching perspectives and an outline of available lesson sections.            |
 | `src/types/content.ts`               | TypeScript definitions for frameworks, controls, learning modes, and content metadata.          |
 | `src/data/frameworks.ts`             | Framework metadata, including supported versus planned status.                                  |
@@ -163,15 +163,17 @@ Discovery state uses `view=discover` with optional `catalog`, `q`, `family`,
 `level`, `mode` and `collection=references`. Home does not open or track a selected
 lesson. Its native GET form submits to `/learn` with `view=discover`,
 `collection=references`, `catalog=cmmc` and the encoded query `q`. An empty search
-shows all references. Suggested searches and level shortcuts use
-`serializeExplorerSearch`; they do not add a second history controller.
+shows all references. The family links use `serializeExplorerSearch`; they
+do not add a second history controller.
 
-The homepage's three practice links use exact identities in
-`cmmc/cmmc-2-13-sep-2024`: `ac-l1-b-1-i`, `ac-l1-b-1-iv` and `mp-l1-b-1-vii`.
-The sample lesson and bare `/learn` address still use the explicit default identity
-`cmmc/cmmc-2-13-sep-2024/ac-l1-b-1-i`. These three activities are attached to source
-references; the Demo lesson collection contains the separate original example,
-which remains available through its existing address.
+Home lists the fourteen control families from the catalog, each linking to
+reference discovery filtered by `family`, and a bottom row that links to the
+default lesson (`cmmc/cmmc-2-13-sep-2024/ac-l1-b-1-i`) as "Start here". When
+optional saving is on, the control page records the control on screen under a
+third key (`cipher-and-chalk:last-control:v1`, three bounded identifiers) and
+Home shows it as "Last time" instead; the row never reads that key without the
+consent marker, and deleting progress removes it. The bare `/learn` address
+still uses the explicit default identity.
 
 The source collection is inferred only for an exact known source identity on a
 shared link; explicit `collection=lessons` remains authoritative on a mismatch.
@@ -185,7 +187,7 @@ Reference readers include an “On this page” outline for Source and Explain i
 Practice appears only when `findLearningActivity` resolves the full lesson identity.
 `useId` supplies document-local fragment targets; these links move within the
 current reader. Copy lesson link remains the stable control-and-mode address.
-The outline and homepage do not themselves record progress. Optional local saving
+The outline does not record progress, and Home only reads it. Optional local saving
 is described in [LOCAL_PROGRESS.md](LOCAL_PROGRESS.md).
 
 Malformed, duplicate or partial lesson addresses remain explicit errors until

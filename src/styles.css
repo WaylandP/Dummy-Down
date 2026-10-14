@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 @import './components/board/board.css';
-@import './components/study-home.css';
+@import './components/home.css';
 @import './components/reader-outline.css';
 @import './components/coverage.css';
 
@@ -46,7 +46,6 @@
   --color-chalk-muted: #c9cfc6;
   --color-chalk-dim: #9aa39b;
   --color-chalk-faint: #8f9a93;
-  --color-chalk-ghost: #6f7a74;
   --color-yellow: #f2d16b;
   --color-yellow-deep: #d8b44a;
   --color-blue: #8fb7d6;
@@ -85,9 +84,9 @@
   --text-body: 16px;
   --text-reading: 17px;
   --leading-reading: 1.7;
-  /* Names the pages still awaiting their Board layout use. They map onto the
-     Board tokens here; study-home.css keeps its own values until Home is
-     redrawn, and these aliases go with the last of those stylesheets. */
+  /* Names the pages still awaiting their Board layout use (the control page,
+     glossary, practice, coverage and about stylesheets). They map onto the
+     Board tokens here and go with the last of those stylesheets. */
   --color-canvas: var(--color-board);
   --color-surface: var(--color-board);
   --color-raised: var(--color-board-lift);

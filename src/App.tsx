@@ -11,7 +11,7 @@ import { SiteFooter } from './components/board/SiteFooter'
 import { ChalkTray, TrayLegend } from './components/board/ChalkTray'
 import { CoverageRoute } from './components/CoverageRoute'
 import { PracticeRoute } from './components/PracticeRoute'
-import { StudyHome } from './components/StudyHome'
+import { Home } from './components/Home'
 import { DisclaimerPage } from './components/DisclaimerPage'
 import { LearningRoute } from './components/LearningRoute'
 import { UsageAnalytics } from './analytics/UsageAnalytics'
@@ -128,7 +128,7 @@ function Application() {
       </a>
       <SiteHeader page={page} />
       <main id="main" className="board-main" tabIndex={-1}>
-        {page === 'home' && <StudyHome />}
+        {page === 'home' && <Home />}
         {page === 'coverage' && <CoverageRoute />}
         {page === 'disclaimer' && <DisclaimerPage />}
         {page === 'practice' && <PracticeRoute />}
