@@ -1,7 +1,8 @@
 # Cipher & Chalk follow-up work
 
-The [README roadmap](README.md#roadmap) distinguishes implemented interfaces,
-available teaching drafts and pending review. No completion percentage is implied.
+The [detailed roadmap](docs/ROADMAP.md) is the milestone source of truth. This file
+keeps the next actionable priorities; the [changelog](CHANGELOG.md) records work
+already merged into `main`. No completion percentage is implied.
 
 - **P1: qualified Level 1 review and current applicability.** The
   [AI-assisted audit](docs/content-review/level-1-audit-2026-10-13.md) compared all
@@ -11,13 +12,13 @@ available teaching drafts and pending review. No completion percentage is implie
   Obtain real qualified review before approval claims. Resolve the recorded
   official-host access failures and verify current DoD/FAR/NIST applicability
   without silently replacing the September 2024 v2.13 snapshot.
-- **P1: owner feedback on the reference desk.** Review the
+- **P1: owner and learner feedback on the reference desk.** The implementation was
+  merged in [PR #12](https://github.com/WaylandP/cipher-and-chalk/pull/12). Review the
   [study-desk checkpoint](docs/reviews/study-desk-2026-10-14.md) for the latest
   structure and style: direct search, three existing draft practice paths, a small
   teaching board, reference links and the lesson outline. Check whether readers can
-  find help quickly while the blackboard remains comfortable to read. Keep the PR
-  Draft until feedback and final validation. Screen-reader/Safari and real-learner
-  checks remain pending.
+  find help quickly while the blackboard remains comfortable to read.
+  Screen-reader, Safari/iOS and real-learner checks remain pending.
 - **P2: review the focused learning milestone.** Three Level 1 activities now
   cover authorized access, public information and media disposal with fictional
   scenarios, common misunderstandings, nine explained questions and three
@@ -30,6 +31,11 @@ available teaching drafts and pending review. No completion percentage is implie
   existence of 447 perspective drafts. Test beginner comprehension and distinct
   mode usefulness with real readers. Broader
   Level 2/3 curriculum and short animations remain future work.
+- **P2: maintain the public project story.** Update
+  [the roadmap](docs/ROADMAP.md) whenever a milestone is materially advanced,
+  blocked, re-scoped, or completed. Add meaningful merged changes to
+  [the changelog](CHANGELOG.md); keep implementation and test detail in technical
+  documents rather than allowing the README to become an internal release report.
 - **P2: confirm analytics account status through owner review.** The privacy-
   preserving Vercel SDK integration exists; activation, custom-event entitlement
   and data receipt are not confirmed. Use actual aggregate signals and voluntary
