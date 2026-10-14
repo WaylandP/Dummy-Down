@@ -45,7 +45,7 @@ describe('Versioned CMMC reference catalog', () => {
         name: /Source reference/,
       }),
     ).toHaveLength(8)
-    expect(explorer.getAllByText('Practice available')).toHaveLength(3)
+    expect(explorer.getAllByText('Practice available')).toHaveLength(4)
     expect(
       explorer.getByRole('status', { name: 'Control result page' }),
     ).toHaveTextContent('1–8 of 149')

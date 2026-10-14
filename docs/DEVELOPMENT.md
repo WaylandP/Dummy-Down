@@ -10,27 +10,26 @@ The example is an educational interpretation, not a complete official requiremen
 or reviewed assessment guide. The Explorer restores exact lessons and modes from
 shareable addresses; a searchable glossary supplies 20 draft definitions. The
 source collection contains all 149 identifiers in the September 2024 v2.13
-snapshot, each with three original control-specific teaching perspectives. Three
-Level 1 draft activities cover authorized access, public information and media
-disposal; together with the original demo, there are four activities and 12
-explained questions. Qualified human review and current applicability verification
+snapshot, each with three original control-specific teaching perspectives. The
+practice index contains 13 draft activities and 39 explained questions: the original
+demo, six Level 1, three Level 2 and three Level 3 activities. Qualified human review and current applicability verification
 remain pending. Accounts and a backend are outside this iteration.
 
 ## Page navigation
 
-Home (`/`), Learn (`/learn`), Glossary (`/glossary`), Coverage (`/coverage`) and
+Home (`/`), Learn (`/learn`), Glossary (`/glossary`), Coverage (`/coverage`), Practice (`/practice`) and
 About (`/about`) use native
 links. `src/state/site-page.ts` resolves the page; only Learn mounts the Explorer
 controller and control-view tracking. Existing root query links and historical
 section hashes still resolve. The skip link canonicalizes legacy section paths.
-`vercel.json` explicitly rewrites the four non-root paths to the Vite entry document,
+`vercel.json` explicitly rewrites the five non-root paths to the Vite entry document,
 so direct links and refreshes work on Vercel without rewriting asset URLs.
 
 The Explorer continues to own query/history state. Native page changes reload the
 document; practice is local session UI, not saved progress. Back restores the lesson
 address, but do not promise that a browser preserves its quiz state across pages.
 Inline definitions remain available without leaving a lesson. Analytics allowlists
-only the five public paths and strips queries/fragments before submission.
+only the six public paths and strips queries/fragments before submission.
 
 ## Start locally
 
@@ -98,6 +97,8 @@ their existing values; historical source URLs are preserved.
 | `src/analytics/`                     | Allowlisted usage events, production gating and visitor privacy preferences.             |
 | `src/data/learning.ts`               | Fictional scenarios and questions tied to an exact teaching identity.                    |
 | `src/data/level-one-learning.ts`     | Three Level 1 draft activities, misunderstandings and accessible diagram data.           |
+| `src/data/expanded-learning.ts`      | Nine additional source-bound draft activities across three CMMC levels.                  |
+| `src/components/PracticePage.tsx`    | Searchable native-link practice index; derives levels from matched catalog entries.      |
 | `src/data/glossary.ts`               | Draft definitions with source and review context.                                        |
 | `src/data/level-one-glossary.ts`     | Fourteen sourced draft vocabulary additions.                                             |
 | `src/data/level-one-terms.ts`        | Contextual term links guarded by framework, edition and requirement identifier.          |
@@ -256,11 +257,18 @@ collection/query/family/level and selected identity remain in browser history.
 and questions stay consistent across modes, explain both correct and incorrect
 choices, and preserve reader progress during mode changes. They never write URL,
 clipboard, storage or server state. A completed activity is not a compliance grade.
-The three new activities add plain-English explanations, common misunderstandings
+The original three Level 1 activities add plain-English explanations, common misunderstandings
 and `LearningDiagram` data. `LessonDiagram` renders ordered HTML steps and an
 optional disposal/reuse branch, with a text equivalent. These structures can
 support future animation, but no animation system is implemented. All activities
 and diagrams remain drafts, with source context and explicit review limits.
+
+The nine Phase 3 additions extend the same framework-independent model with explicit
+content versions, learning goals and existing glossary IDs. Source-review fingerprints
+in `docs/content-review/phase-3-activities-2026-10-14.json` bind each final draft and
+its real source statements. Renew editorial comparison before updating those hashes.
+The index uses native GET filters; analytics strips all queries, including practice
+searches. No quiz answers are sent to analytics.
 
 ## Validate a change
 

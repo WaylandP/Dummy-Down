@@ -90,10 +90,10 @@ reviewed.
 - An assessment coverage report with source statements, mapped draft explanations,
   level/gap filters, and explicit pending human review.
 - A searchable 20-term draft glossary and contextual definitions in Level 1 lessons.
-- Four draft learning activities with 12 explained questions, retry and completion
-  reasoning review: the original demo and
-  three source-bound Level 1 activities covering authorized access, public
-  information, and media disposal.
+- A searchable practice index with 13 draft activities and 39 explained questions:
+  the original demo, six Level 1, three Level 2 and three Level 3 activities. Each
+  includes a learning goal, fictional situation, retry and completion reasoning review.
+  The nine additions have publication-bound sources and contextual terminology.
 - Diagrams with text equivalents, loading/error recovery, review-status disclosures,
   source comparison, and optional privacy-preserving usage measurement.
 
@@ -128,7 +128,9 @@ The [Level 1 editorial audit](docs/content-review/level-1-audit-2026-10-14.md) a
 [Level 2/3 audit](docs/content-review/level-2-3-audit-2026-10-14.md) record AI-assisted,
 control-by-control comparisons of all 447 perspectives with the pinned guides,
 focused corrections and unresolved issues. All human-approval fields remain pending.
-Thirteen statements are quoted as context for three learning activities. The
+Thirteen statements are quoted in the older lesson review panels. The nine additional
+activities have their own [question-to-source review records](docs/content-review/phase-3-activities-2026-10-14.md);
+these selected teaching links do not establish exhaustive objective coverage. The
 [assessment inventory](docs/sources/cmmc-objectives-2-13.md) preserves all 459
 lettered determinations and nine organization-defined parameter statements.
 The coverage page distinguishes mapped draft explanations from unresolved gaps;
@@ -156,9 +158,10 @@ The project still follows the original four phases:
    perspectives per entry are implemented. Qualified review, current applicability
    checks, and comprehensive assessment-objective explanations are still in progress
    or externally blocked. This phase is not complete.
-3. **Make Learning Interactive** — a small set of scenarios, diagrams, and quizzes
-   is implemented as draft content. Broader exercises, learner validation, and short
-   animated explanations remain planned. This phase is not complete.
+3. **Make Learning Interactive** — 13 draft activities, 39 explained questions,
+   three diagrams and a searchable practice index are implemented. Short animated
+   explanations and optional local progress are the next engineering increments.
+   Qualified content and learner validation remain pending. This phase is not complete.
 4. **Expand the Platform** — the architecture and contribution guidance support
    future growth. NIST SP 800-53, FedRAMP, SOC 2, ISO/IEC 27001, HIPAA Security Rule,
    reviewed control relationships, and a sustainable community review process are

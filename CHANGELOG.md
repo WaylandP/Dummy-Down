@@ -7,6 +7,11 @@ validation evidence remains in the linked pull requests and review documents.
 
 ## 2026-10-14
 
+- [#19](https://github.com/WaylandP/cipher-and-chalk/pull/19) made practice easier to
+  discover, added direct question entry, counted reviewed questions from zero and
+  preserved answer reasoning at completion. Merge `82db49c` and automatic production
+  deployment were verified; this does not establish human acceptance.
+
 - [#17](https://github.com/WaylandP/cipher-and-chalk/pull/17) completed the full-field
   Level 2/3 editorial audit, with 16 clarifications across 13 controls and per-control
   review evidence. Approved merge verified at `81cee95`; qualified human review

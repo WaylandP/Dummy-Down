@@ -16,6 +16,10 @@
     {
       "source": "/coverage",
       "destination": "/index.html"
+    },
+    {
+      "source": "/practice",
+      "destination": "/index.html"
     }
   ]
 }

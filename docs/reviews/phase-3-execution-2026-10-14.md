@@ -65,6 +65,9 @@ reflow evidence, not actual native browser zoom or screen-reader testing.
 Validation and exact-commit publication evidence are recorded in each PR and the
 next verified-merge checkpoint below. Screenshots live under `docs/screenshots/phase3/`.
 
+[All 58 canonical trigger dispositions](phase-3-skills-2026-10-14.md) distinguish
+completed adapted work from future applicable work and blocked native tooling.
+
 ## Workflow limits
 
 Pinned gstack `945ac301a91dff5db9fc1ddaea5b77828eeca2ed` / 1.91.97.0 remains
@@ -90,3 +93,52 @@ clarification, followed by the five-width browser regression on the final view;
 typecheck, lint, formatting, content/gstack checks and build. Actual mobile/desktop
 screenshots were inspected. No native zoom, real learner or actual assistive-technology
 acceptance is claimed. CI must pass on the final pushed commit before merge.
+
+## Verified Increment 1 merge
+
+PR [#19](https://github.com/WaylandP/cipher-and-chalk/pull/19), head
+`e14da15dd4cb52e08947db998d928d16ff14c655`, passed CI run `38592412874`
+(479 unit tests, 55 browser checks). Preview: https://cipherandchalk-1yvjvvjg1-waylandp.vercel.app .
+GitHub reported CLEAN/MERGEABLE with no required review decision; squash merged
+under the limited authorization at `82db49c90750ae5361b5e1d86eae61f425ba274d`
+on October 14 at 15:50:07 UTC. Automatic production deployment `7070221551`
+reported success for that merge. Human acceptance remains pending.
+
+## Increment 2 scope
+
+Nine new source-bound activities (three per level), explicit teaching goals and
+related terms extend the existing framework-independent activity structure. A
+separate lazy practice index provides native search/level filters and exact lesson
+links. Existing scenario-decision, misunderstanding and technical-interpretation
+questions use native radio choices with authored feedback; familiar controls
+keep attention on reasoning and remain keyboard accessible. No drag-and-drop,
+accounts, evidence uploads or compliance scores are introduced.
+
+Only the public `/practice` pathname joins the existing analytics URL allowlist.
+Query/fragment removal, production gating, DNT/GPC and opt-out remain enforced;
+no new event/property or answer collection is introduced.
+
+### Increment 2 review and local validation
+
+The [source packet](../content-review/phase-3-activities-2026-10-14.md) records
+complete guide-section reading, the nine final draft fingerprints, 27 questions,
+81 choice explanations and actual source determinations. The pinned-PDF verifier
+again passed all 149 quotations and 468 statements. Human approval remains pending.
+
+Independent review found that practice search omitted visible learning goals and
+control titles, making MFA and hash-related practice difficult to find. Search now
+includes those fields and the plain-English explanation, with regression tests.
+Older absence tests now exercise controls that still have no practice; all twelve
+source-bound activities receive positive outline checks. No assertions about source
+identity, unavailable content, privacy or feedback were removed.
+
+Local checks passed: 497 unit tests, typecheck, lint, formatting, content and gstack
+checks, and build. The full browser suite passed 77 checks across six widths,
+including the requested 320/390/768/1024/1440 widths; all nine new activities completed
+with wrong-answer reasoning, mode preservation, glossary focus and exact lesson
+links. A focused browser rerun covers the final search adjustment. Desktop/mobile
+practice-index screenshots were inspected for reading width, navigation, controls
+and clipping. Native zoom and real assistive-technology/learner acceptance remain
+pending. Main JavaScript is 503.21 kB (134.98 kB gzip), triggering Vite's 500 kB
+advisory; the final integration increment will review route/data loading. No
+threshold or check was disabled. Preview/CI/merge evidence follows after publication.

@@ -63,7 +63,7 @@ export function EditorialReviewContext({
                 <p>
                   Determine if the following statements are satisfied, using the
                   applicable guide’s assessment methods and scope. These are
-                  attributed guide quotations; the three draft activities are
+                  attributed guide quotations; these draft activities are
                   illustrative learning, not a complete assessment or evidence
                   checklist.
                 </p>

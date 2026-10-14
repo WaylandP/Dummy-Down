@@ -5,6 +5,8 @@ import type { LessonIdentity } from '../types/content'
 import type { LearningActivity } from '../types/learning'
 import { trackUsage } from '../analytics/usage'
 import { LessonDiagram } from './LessonDiagram'
+import { ContextTerms } from './ContextTerms'
+import { glossaryTerms } from '../data/glossary'
 
 interface LearningPracticeProps {
   lesson: LessonIdentity
@@ -128,6 +130,11 @@ function KnowledgeCheck({
           <button className="practice-action" type="button" onClick={reset}>
             Practice again
           </button>
+          <p className="practice-context">
+            <a href="/practice" className="text-link">
+              Choose another situation
+            </a>
+          </p>
         </div>
       ) : (
         <>
@@ -298,6 +305,11 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
         <span className="draft-label">Draft learning activity</span>
       </div>
       <p className="practice-introduction">{activity.introduction}</p>
+      {activity.learningObjective && (
+        <p className="practice-goal">
+          <strong>Your aim:</strong> {activity.learningObjective}
+        </p>
+      )}
       <div className="practice-start">
         <p>
           {activity.questions.length} questions · Go at your own pace.
@@ -337,6 +349,12 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
         </div>
       )}
       {activity.diagram && <LessonDiagram diagram={activity.diagram} />}
+      {activity.glossaryTermIds && (
+        <ContextTerms
+          termIds={activity.glossaryTermIds}
+          terms={glossaryTerms}
+        />
+      )}
       <details
         className="practice-disclosure practice-scenario"
         onToggle={(event) => {

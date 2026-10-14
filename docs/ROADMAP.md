@@ -135,10 +135,10 @@ now authorized the five-increment Phase 3 assignment below; Phase 4 remains excl
 The [Phase 3 execution log](reviews/phase-3-execution-2026-10-14.md) records the
 seven-milestone baseline audit, limited merge authorization and validation limits.
 
-- [ ] **Implemented but awaiting validation or review** — Increment 1 improves
-      practice discovery, direct question entry, honest checked-question progress
-      and completion reasoning review. Check this engineering subtask after its
-      verified merge; qualified content and real-learner acceptance remain separate.
+- [x] **Completed and merged into main** — Increment 1 improves practice discovery,
+      direct question entry, honest checked-question progress and completion reasoning
+      review. PR #19 merged at `82db49c`; CI and automatic production deployment passed.
+      Qualified content and real-learner acceptance remain separate.
 
 - [x] **Completed and merged into main** — Add the original fictional demo activity
       with an explained three-question knowledge check.
@@ -152,8 +152,13 @@ seven-milestone baseline audit, limited merge authorization and validation limit
       learning styles, and test whether beginners understand the activities and the
       three modes. Semantic, keyboard, reduced-motion, forced-color, responsive, and
       Chromium checks exist; real learner and assistive-technology review remains.
-- [ ] **Planned for future development** — Expand reviewed exercises and realistic
-      scenarios across more Level 1, Level 2, and Level 3 concepts.
+- [ ] **Implemented; merge and deployment validation in progress** — Increment 2
+      adds nine source-bound draft activities (three per level), 27 questions,
+      learning goals, contextual terms and a searchable practice index. AI-assisted
+      source comparisons are recorded; qualified human approval remains pending.
+- [ ] **Awaiting qualified human review** — Expand reviewed exercises and realistic
+      scenarios across more Level 1, Level 2, and Level 3 concepts. Draft authorship
+      does not complete this review milestone.
 - [ ] **Planned for future development** — Create short animated explanations for
       visual learners, with transcripts, reduced-motion alternatives, and editorial
       review. No animated lesson is available today.
@@ -161,7 +166,7 @@ seven-milestone baseline audit, limited merge authorization and validation limit
       only after privacy, accessibility, retention, and learner-value questions are
       defined. Saved progress is not currently implemented.
 
-Phase 3 is not complete. Four activities and 12 questions are a focused learning
+Phase 3 is not complete. Thirteen activities and 39 questions are a focused learning
 sample, not interactive coverage of the full catalog.
 
 ## Phase 4: Expand the Platform

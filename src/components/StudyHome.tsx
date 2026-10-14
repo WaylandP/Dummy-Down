@@ -170,12 +170,9 @@ export function StudyHome() {
               )
             })}
           </ol>
-          <a
-            className="desk-library-link"
-            href="/learn?view=discover&collection=references"
-          >
-            Explore the controls{' '}
-            <span>{referenceControls.length} source references</span>
+          <a className="desk-library-link" href="/practice">
+            Browse practice activities{' '}
+            <span>Fictional situations, explained answers</span>
             <ArrowRight size={18} aria-hidden="true" />
           </a>
         </section>

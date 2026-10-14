@@ -24,6 +24,9 @@ const disclaimer =
 export const levelOneLearningActivities: readonly LearningActivity[] = [
   {
     id: 'level-one-authorized-access',
+    contentVersion: '2026-10-14.1',
+    learningObjective:
+      'Distinguish working access from authorization for people, automated processes and devices.',
     lesson: {
       frameworkId: 'cmmc',
       editionId,
@@ -184,6 +187,9 @@ export const levelOneLearningActivities: readonly LearningActivity[] = [
   },
   {
     id: 'level-one-public-information',
+    contentVersion: '2026-10-14.1',
+    learningObjective:
+      'Recognize authorized public posting and processing, pre-release checks and inappropriate-content removal.',
     lesson: {
       frameworkId: 'cmmc',
       editionId,
@@ -349,6 +355,9 @@ export const levelOneLearningActivities: readonly LearningActivity[] = [
   },
   {
     id: 'level-one-media-disposal',
+    contentVersion: '2026-10-14.1',
+    learningObjective:
+      'Distinguish sanitizing for reuse from sanitizing or destroying media for disposal.',
     lesson: {
       frameworkId: 'cmmc',
       editionId,
