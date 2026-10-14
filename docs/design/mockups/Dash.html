@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dash — the mascot</title>
+
+</head>
+<body>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Walter+Turncoat&amp;family=Atkinson+Hyperlegible+Next:wght@400;500;700&amp;family=Martian+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#1B2522;color:#EDE9DD;font-family:'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;-webkit-font-smoothing:antialiased}
+.hand{font-family:'Walter Turncoat',cursive}
+.mono{font-family:'Martian Mono',monospace}
+.chalk{filter:url(#chalk)}
+.pose{display:flex;flex-direction:column;align-items:center;gap:14px}
+.pose p{margin:0;font:400 14px/1.4 'Atkinson Hyperlegible Next',sans-serif;color:#C9CFC6;text-align:center;max-width:22ch}
+.pose b{display:block;font:500 15px 'Atkinson Hyperlegible Next',sans-serif;color:#EDE9DD;margin-bottom:2px}
+</style>
+
+<div style="width:1280px;height:800px;box-sizing:border-box;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 20%,#243330 0%,#1B2522 60%,#161F1C 100%);display:flex;flex-direction:column">
+
+  <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.16">
+    <defs>
+      <filter id="chalk" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d"/><feColorMatrix in="n" type="luminanceToAlpha" result="a"/><feComponentTransfer in="a" result="m"><feFuncA type="table" tableValues="0 0.55 1 1 1 1"/></feComponentTransfer><feComposite in="d" in2="m" operator="in"/></filter>
+      <filter id="dust"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" seed="3"/><feColorMatrix type="saturate" values="0"/></filter>
+    </defs>
+    <rect width="100%" height="100%" filter="url(#dust)"/>
+  </svg>
+
+  <div style="position:relative;flex:1;display:grid;grid-template-columns:420px 1fr;gap:48px;padding:48px 48px 0;min-height:0">
+
+    <section aria-label="Where Dash comes from" style="display:flex;flex-direction:column;justify-content:center;gap:26px">
+      <h1 class="hand chalk" style="margin:0;font-size:50px;line-height:1;font-weight:400">Meet Dash.</h1>
+      <div style="display:flex;align-items:center;gap:22px">
+        <svg width="150" height="150" viewBox="0 0 100 100" role="img" aria-label="The mark, with one dash lifted out of the ring" class="chalk">
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#EDE9DD" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 89 14 17 72 17 14 16" transform="rotate(-100 50 50)"/>
+          <path d="M22 22a38 38 0 0 1 56-8" fill="none" stroke="#EDE9DD" stroke-width="9" stroke-linecap="round" stroke-dasharray="4 8" opacity=".35"/>
+        </svg>
+        <svg width="54" height="40" viewBox="0 0 54 40" aria-hidden="true" class="chalk"><path d="M4 20c14-3 28-3 46 0M40 10l10 10-10 10" fill="none" stroke="#F2D16B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="150" height="90" viewBox="0 0 150 90" role="img" aria-label="Dash: a short chalk stroke with two eyes" class="chalk">
+          <path d="M18 46c30-7 70-7 114 0" fill="none" stroke="#EDE9DD" stroke-width="26" stroke-linecap="round"/>
+          <circle cx="52" cy="44" r="4.2" fill="#1B2522"/><circle cx="76" cy="42" r="4.2" fill="#1B2522"/>
+        </svg>
+      </div>
+      <p style="margin:0;font:400 17px/1.5 'Atkinson Hyperlegible Next',sans-serif;color:#C9CFC6;max-width:36ch">The ring in the logo is the letter C in Morse: dash, dot, dash, dot. One dash climbed out. It is a piece of chalk, a Morse signal, and the thing it does when you change controls.</p>
+      <ul style="margin:0;padding-left:18px;font:400 15px/1.6 'Atkinson Hyperlegible Next',sans-serif;color:#C9CFC6">
+        <li>Lives in the tray, not in a corner</li>
+        <li>Never speaks. One gesture per interaction, then still</li>
+        <li>Off switch in the footer; hidden in print and under reduced motion</li>
+      </ul>
+    </section>
+
+    <section aria-label="Poses" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:28px 24px;align-content:center">
+
+      <div class="pose">
+        <svg width="140" height="90" viewBox="0 0 150 90" aria-hidden="true" class="chalk"><path d="M18 50c30-7 70-7 114 0" fill="none" stroke="#EDE9DD" stroke-width="26" stroke-linecap="round"/><circle cx="52" cy="48" r="4.2" fill="#1B2522"/><circle cx="76" cy="46" r="4.2" fill="#1B2522"/></svg>
+        <p><b>Idle</b>Sits in the tray. Blinks every few seconds, slowly. That is all.</p>
+      </div>
+
+      <div class="pose">
+        <svg width="140" height="90" viewBox="0 0 150 90" aria-hidden="true" class="chalk"><path d="M18 56c30-10 70-14 114-8" fill="none" stroke="#EDE9DD" stroke-width="26" stroke-linecap="round"/><circle cx="52" cy="50" r="4.2" fill="#1B2522"/><circle cx="76" cy="46" r="4.2" fill="#1B2522"/><path d="M118 36l22-20" stroke="#F2D16B" stroke-width="9" stroke-linecap="round"/></svg>
+        <p><b>Hands you a chalk</b>When you pick a perspective, Dash lifts that chalk out of the tray and tips it toward you.</p>
+      </div>
+
+      <div class="pose">
+        <svg width="140" height="90" viewBox="0 0 150 90" aria-hidden="true" class="chalk"><path d="M22 48c30-7 70-7 110 0" fill="none" stroke="#EDE9DD" stroke-width="26" stroke-linecap="round"/><path d="M40 44h6M70 42h6" stroke="#1B2522" stroke-width="4" stroke-linecap="round"/><path d="M8 20c20-6 40-4 60 2" fill="none" stroke="#EDE9DD" stroke-width="4" stroke-linecap="round" opacity=".5"/><path d="M12 30c14-4 30-2 48 2" fill="none" stroke="#EDE9DD" stroke-width="3" stroke-linecap="round" opacity=".25"/></svg>
+        <p><b>Erases</b>On a control change, Dash sweeps once across the board, eyes closed, and the old text goes to dust.</p>
+      </div>
+
+      <div class="pose">
+        <svg width="140" height="90" viewBox="0 0 150 90" aria-hidden="true" class="chalk"><path d="M18 50c30-7 70-7 114 0" fill="none" stroke="#EDE9DD" stroke-width="26" stroke-linecap="round"/><circle cx="52" cy="46" r="4.2" fill="#1B2522"/><circle cx="76" cy="44" r="4.2" fill="#1B2522"/><path d="M134 40c8-10 6-22-2-30" fill="none" stroke="#F2D16B" stroke-width="2.5" stroke-linecap="round"/><path d="M126 18l8-10 6 10" fill="none" stroke="#F2D16B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p><b>Points</b>Open a glossary popover and Dash nods toward it. One nod.</p>
+      </div>
+
+      <div class="pose">
+        <svg width="140" height="90" viewBox="0 0 150 90" aria-hidden="true" class="chalk"><path d="M18 50c30-7 70-7 114 0" fill="none" stroke="#EDE9DD" stroke-width="26" stroke-linecap="round"/><circle cx="52" cy="48" r="4.2" fill="#1B2522"/><circle cx="76" cy="46" r="4.2" fill="#1B2522"/><circle cx="116" cy="22" r="7" fill="#EDE9DD"/><circle cx="114" cy="21" r="1.8" fill="#1B2522"/><circle cx="119" cy="21" r="1.8" fill="#1B2522"/></svg>
+        <p><b>Dot</b>A friend. Appears only when you finish a practice activity, and leaves. Twice a year, maybe.</p>
+      </div>
+
+      <div class="pose">
+        <svg width="140" height="90" viewBox="0 0 150 90" aria-hidden="true"><path d="M18 50c30-7 70-7 114 0" fill="none" stroke="#EDE9DD" stroke-width="26" stroke-linecap="round" opacity=".35"/></svg>
+        <p><b>Off</b>Reduced motion, print, or the footer switch: Dash becomes a plain stub of chalk in the tray.</p>
+      </div>
+    </section>
+  </div>
+
+  <div style="position:relative;display:flex;justify-content:space-between;align-items:baseline;padding:0 48px 14px;font:400 14px 'Atkinson Hyperlegible Next',sans-serif;color:#9AA39B">
+    <span>Drawn as one SVG path with the chalk filter. Eyes are holes: the board shows through.</span>
+    <span class="hand" style="font-size:20px;color:#F2D16B">— · — ·</span>
+  </div>
+
+  <div aria-hidden="true" style="position:relative;height:34px;background:linear-gradient(#5E4A36,#4A3A2B 55%,#3B2E22);box-shadow:0 -1px 0 #7A6349,0 -10px 24px rgba(0,0,0,.35);display:flex;align-items:center;gap:14px;padding:0 48px">
+    <svg width="64" height="20" viewBox="0 0 150 46" aria-hidden="true" style="margin-top:-4px"><path d="M18 28c30-7 70-7 114 0" fill="none" stroke="#EDE9DD" stroke-width="26" stroke-linecap="round"/><circle cx="52" cy="26" r="4.2" fill="#3B2E22"/><circle cx="76" cy="24" r="4.2" fill="#3B2E22"/></svg>
+    <span style="width:48px;height:11px;border-radius:5px;background:#F2D16B;box-shadow:0 2px 2px rgba(0,0,0,.4)"></span>
+    <span style="width:56px;height:11px;border-radius:5px;background:#8FB7D6;box-shadow:0 2px 2px rgba(0,0,0,.4)"></span>
+    <span style="margin-left:auto;font:400 12px 'Atkinson Hyperlegible Next',sans-serif;color:#C9B795">Dash is the white chalk. It was there all along.</span>
+  </div>
+</div>
+
+</body>
+</html>

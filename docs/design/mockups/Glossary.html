@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Glossary — the board</title>
+
+</head>
+<body>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Walter+Turncoat&amp;family=Atkinson+Hyperlegible+Next:wght@400;500;700&amp;family=Martian+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#1B2522;color:#EDE9DD;font-family:'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#EDE9DD}a:hover{color:#F2D16B}
+.hand{font-family:'Walter Turncoat',cursive}
+.mono{font-family:'Martian Mono',monospace}
+.chalk{filter:url(#chalk)}
+.az{display:flex;flex-wrap:wrap;gap:2px}
+.az a{font:500 15px 'Atkinson Hyperlegible Next',sans-serif;color:#9AA39B;text-decoration:none;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:4px}
+.az a:hover{background:rgba(237,233,221,.08);color:#EDE9DD}
+.az a.on{color:#1B2522;background:#F2D16B}
+.term{display:flex;flex-direction:column;gap:4px;padding:12px 0;border-top:1px solid rgba(237,233,221,.12);text-decoration:none;color:#EDE9DD}
+.term b{font:500 17px 'Atkinson Hyperlegible Next',sans-serif}
+.term span{font:400 14px/1.45 'Atkinson Hyperlegible Next',sans-serif;color:#C9CFC6}
+.term i{font:400 12px 'Martian Mono',monospace;color:#8FB7D6;font-style:normal}
+</style>
+
+<div style="width:1280px;height:800px;box-sizing:border-box;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 20%,#243330 0%,#1B2522 60%,#161F1C 100%);display:flex;flex-direction:column">
+
+  <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.16">
+    <defs>
+      <filter id="chalk" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d"/><feColorMatrix in="n" type="luminanceToAlpha" result="a"/><feComponentTransfer in="a" result="m"><feFuncA type="table" tableValues="0 0.55 1 1 1 1"/></feComponentTransfer><feComposite in="d" in2="m" operator="in"/></filter>
+      <filter id="dust"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" seed="3"/><feColorMatrix type="saturate" values="0"/></filter>
+    </defs>
+    <rect width="100%" height="100%" filter="url(#dust)"/>
+  </svg>
+
+  <header style="position:relative;display:flex;align-items:center;justify-content:space-between;padding:24px 48px 0">
+    <a href="Main.dc.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#EDE9DD">
+      <svg width="34" height="34" viewBox="0 0 100 100" role="img" aria-label="Cipher and Chalk" class="chalk"><circle cx="50" cy="50" r="38" fill="none" stroke="#EDE9DD" stroke-width="9" stroke-linecap="round" stroke-dasharray="72 17 14 17 72 17 14 16" transform="rotate(-100 50 50)"/></svg>
+      <span class="hand" style="font-size:24px;line-height:1">Cipher &amp; Chalk</span>
+    </a>
+    <nav aria-label="Main" style="display:flex;gap:28px;align-items:center;font:500 15px 'Atkinson Hyperlegible Next',sans-serif">
+      <a href="Decode.dc.html" style="text-decoration:none">Controls</a>
+      <a href="Glossary.dc.html" style="text-decoration:none;color:#F2D16B">Glossary</a>
+      <a href="#" style="text-decoration:none">Practice</a>
+      <a href="#" style="text-decoration:none">About</a>
+    </nav>
+  </header>
+
+  <div style="position:relative;flex:1;display:grid;grid-template-columns:300px 1fr;gap:56px;padding:30px 48px 0;min-height:0">
+    <aside style="display:flex;flex-direction:column;gap:22px">
+      <h1 class="hand chalk" style="margin:0;font-size:46px;line-height:1;font-weight:400">Words</h1>
+      <form role="search" style="display:flex;flex-direction:column;gap:6px">
+        <label for="g" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search words</label>
+        <input id="g" type="search" placeholder="CUI, POA&amp;M, enclave…" style="font:400 18px 'Atkinson Hyperlegible Next',sans-serif;padding:8px 2px;border:0;background:transparent;color:#EDE9DD;outline:none">
+        <svg aria-hidden="true" width="300" height="8" viewBox="0 0 300 8" class="chalk"><path d="M1 5c60-3 120-1 180 0s90-2 118-1" fill="none" stroke="#EDE9DD" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </form>
+      <nav class="az" aria-label="Jump to a letter">
+        <a href="#">A</a><a href="#">B</a><a class="on" href="#">C</a><a href="#">D</a><a href="#">E</a><a href="#">F</a><a href="#">G</a><a href="#">I</a><a href="#">M</a><a href="#">N</a><a href="#">O</a><a href="#">P</a><a href="#">R</a><a href="#">S</a><a href="#">T</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:8px;font:400 14px 'Atkinson Hyperlegible Next',sans-serif;color:#9AA39B;margin-top:8px">
+        <a href="#" style="color:#9AA39B;text-decoration:none">The program: statuses, roles, SPRS</a>
+        <a href="#" style="color:#9AA39B;text-decoration:none">Scoping: what’s in, what’s out</a>
+        <a href="#" style="color:#9AA39B;text-decoration:none">Clauses: 7012, 7019, 7020, 7021</a>
+        <a href="#" style="color:#9AA39B;text-decoration:none">From the lessons</a>
+      </div>
+    </aside>
+
+    <section aria-label="C" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;align-content:start;overflow:hidden">
+      <a class="term" href="#" style="border-top:0"><b>C3PAO</b><span>A company accredited to run Level 2 certification assessments. Independent of the organizations it assesses.</span><i>32 CFR 170.4</i></a>
+      <a class="term" href="#" style="border-top:0"><b>CMMC</b><span>How DoD checks that contractors protect the information it shares with them. Three levels.</span><i>32 CFR 170, DFARS 252.204-7021</i></a>
+      <a class="term" href="#"><b>CMMC Assessment Scope</b><span>Every asset that will be assessed, each placed in a category that decides how it is treated.</span><i>32 CFR 170.19</i></a>
+      <a class="term" href="#"><b>CMMC Status</b><span>Final: every requirement met. Conditional: passed with a POA&amp;M, 180 days to close it.</span><i>32 CFR 170.4</i></a>
+      <a class="term" href="#"><b>Certification assessment</b><span>Done by a C3PAO (Level 2) or DIBCAC (Level 3), not by you.</span><i>32 CFR 170.17, 170.18</i></a>
+      <a class="term" href="#"><b>Cloud Service Provider</b><span>If it holds covered defense information, it must meet FedRAMP Moderate equivalency.</span><i>DFARS 252.204-7012</i></a>
+      <a class="term" href="#"><b>Contractor Risk Managed Assets</b><span>Could handle CUI but aren’t meant to. Documented, not fully assessed.</span><i>32 CFR 170.19</i></a>
+      <a class="term" href="#"><b>CUI</b><span>Information the Government requires or permits to be safeguarded. Never classified information.</span><i>32 CFR 2002.4</i></a>
+      <a class="term" href="#"><b>CUI Assets</b><span>Process, store or transmit CUI. Fully in scope.</span><i>32 CFR 170.19</i></a>
+    </section>
+  </div>
+
+  <div style="position:relative;display:flex;justify-content:space-between;padding:12px 48px 16px;font:400 14px 'Atkinson Hyperlegible Next',sans-serif;color:#9AA39B">
+    <span>54 words. Teaching definitions, each linked to the text that defines it.</span>
+    <span><a href="#" style="color:#9AA39B;text-decoration:none">Previous: B</a> &nbsp;&nbsp;&nbsp; <a href="#" style="color:#EDE9DD;text-decoration:none">Next: D</a></span>
+  </div>
+
+  <div aria-hidden="true" style="position:relative;height:34px;background:linear-gradient(#5E4A36,#4A3A2B 55%,#3B2E22);box-shadow:0 -1px 0 #7A6349,0 -10px 24px rgba(0,0,0,.35);display:flex;align-items:center;gap:14px;padding:0 48px">
+    <span style="width:64px;height:11px;border-radius:5px;background:#EDE9DD;box-shadow:0 2px 2px rgba(0,0,0,.4)"></span>
+    <span style="width:48px;height:11px;border-radius:5px;background:#F2D16B;box-shadow:0 2px 2px rgba(0,0,0,.4)"></span>
+    <span style="width:56px;height:11px;border-radius:5px;background:#8FB7D6;box-shadow:0 2px 2px rgba(0,0,0,.4)"></span>
+  </div>
+</div>
+
+</body>
+</html>
