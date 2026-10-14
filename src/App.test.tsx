@@ -209,18 +209,29 @@ describe('Control Explorer learning experience', () => {
     ).toHaveTextContent('1 example found')
   })
 
-  it('labels future frameworks as planned and restores the CMMC example without claiming coverage', async () => {
+  it('offers only frameworks with published content in the dropdown', async () => {
+    const { explorer } = await renderApp()
+    const framework = explorer.getByRole('combobox', { name: 'Framework' })
+    expect(
+      within(framework)
+        .getAllByRole('option')
+        .map((option) => option.textContent),
+    ).toEqual(['CMMC'])
+  })
+
+  it('still resolves a saved planned-framework link and restores the CMMC example without claiming coverage', async () => {
+    window.history.replaceState(
+      null,
+      '',
+      '?view=discover&catalog=nist-sp-800-53',
+    )
     const { user, explorer } = await renderApp()
     const framework = explorer.getByRole('combobox', { name: 'Framework' })
     const family = explorer.getByRole('combobox', { name: 'Control family' })
-    const level = explorer.getByRole('combobox', { name: 'Level' })
-
-    await user.selectOptions(family, 'AC')
-    await user.selectOptions(level, 'Level 2')
+    expect(framework).toHaveValue('nist-sp-800-53')
     expect(
       within(framework).getByRole('option', { name: 'NIST 800-53 · planned' }),
     ).toBeInTheDocument()
-    await user.selectOptions(framework, 'nist-sp-800-53')
 
     expect(family).toHaveValue('')
     expect(
