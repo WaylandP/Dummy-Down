@@ -1,10 +1,17 @@
 /** Native page links keep routing small; legacy root lesson URLs still resolve. */
 export type SitePage =
-  'home' | 'learn' | 'glossary' | 'about' | 'coverage' | 'not-found'
+  | 'home'
+  | 'learn'
+  | 'practice'
+  | 'glossary'
+  | 'about'
+  | 'coverage'
+  | 'not-found'
 
 export function sitePage(url: URL): SitePage {
   const path = url.pathname.replace(/\/$/, '') || '/'
   if (path === '/learn') return 'learn'
+  if (path === '/practice') return 'practice'
   if (path === '/glossary') return 'glossary'
   if (path === '/about') return 'about'
   if (path === '/coverage') return 'coverage'

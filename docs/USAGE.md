@@ -77,7 +77,7 @@ for each pageview and custom event, including after a previously allowed SDK was
 loaded. Pausing cannot undo an event already sent or an in-flight request.
 
 Every pageview and custom-event URL is restricted to the current origin's `/`,
-`/learn`, `/glossary`, `/coverage` or `/about` path (trailing slash normalized), with all query
+`/learn`, `/glossary`, `/practice`, `/coverage` or `/about` path (trailing slash normalized), with all query
 parameters and fragments removed. Known control metadata
 comes from the local catalog, never by forwarding the address bar. Unknown paths
 and external URLs are discarded. If new app routes are added, explicitly review
@@ -129,3 +129,6 @@ Control, search, level, coverage status and pagination query values are stripped
 before any SDK submission. No coverage-search or objective-level custom event is
 added. Existing production gating, opt-out, DNT and GPC protections still apply;
 preview deployment success does not establish provider receipt of analytics.
+
+The Phase 3 practice index adds only `/practice` to that same allowlist. Search
+and level queries are removed; question choices and feedback are not collected.

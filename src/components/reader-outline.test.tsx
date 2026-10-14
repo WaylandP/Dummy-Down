@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import App from '../App'
 import { referenceControls } from '../data/content'
 import { levelOneLearningActivities } from '../data/level-one-learning'
+import { expandedLearningActivities } from '../data/expanded-learning'
 
 function openReference(key: string) {
   window.history.replaceState(
@@ -26,7 +27,7 @@ function destination(link: HTMLElement) {
 beforeEach(() => window.history.replaceState(null, '', '/learn'))
 
 describe('Reference reading outline', () => {
-  it.each(levelOneLearningActivities)(
+  it.each([...levelOneLearningActivities, ...expandedLearningActivities])(
     'links to the source, explanation and existing practice for $id',
     async (activity) => {
       openReference(activity.lesson.controlKey)
@@ -54,7 +55,7 @@ describe('Reference reading outline', () => {
     },
   )
 
-  it.each(['AC.L1-b.1.ii', 'IR.L3-3.6.1e'])(
+  it.each(['AC.L1-b.1.iii', 'IR.L3-3.6.1e'])(
     'does not offer unavailable practice for %s',
     async (id) => {
       const control = referenceControls.find((item) => item.id === id)!

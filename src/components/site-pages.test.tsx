@@ -26,13 +26,13 @@ describe('Separate blackboard pages', () => {
       screen.queryByRole('region', { name: 'Control Explorer' }),
     ).not.toBeInTheDocument()
     expect(
-      screen.getByRole('link', { name: /^Explore the controls/ }),
-    ).toHaveAttribute('href', '/learn?view=discover&collection=references')
+      screen.getByRole('link', { name: /^Browse practice activities/ }),
+    ).toHaveAttribute('href', '/practice')
     expect(trackUsage).not.toHaveBeenCalled()
   })
   it('opens discovery without a preselected lesson and renders the shared sample from home', async () => {
     render(<App />)
-    followPageLink(screen.getByRole('link', { name: /^Explore the controls/ }))
+    followPageLink(screen.getByRole('link', { name: 'Learn' }))
     expect(
       screen.getByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('149 references found')

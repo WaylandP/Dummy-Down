@@ -2,10 +2,14 @@ import type { LessonIdentity } from '../types/content'
 import type { LearningActivity } from '../types/learning'
 import { projectReadmeSource } from './sources'
 import { levelOneLearningActivities } from './level-one-learning'
+import { expandedLearningActivities } from './expanded-learning'
 
 export const learningActivities: readonly LearningActivity[] = [
   {
     id: 'authorized-access-practice',
+    contentVersion: '2026-10-14.1',
+    learningObjective:
+      'Distinguish working credentials from approved access in a fictional team.',
     lesson: {
       frameworkId: 'cmmc',
       editionId: 'readme-example',
@@ -131,6 +135,7 @@ export const learningActivities: readonly LearningActivity[] = [
     teachingSource: projectReadmeSource,
   },
   ...levelOneLearningActivities,
+  ...expandedLearningActivities,
 ]
 
 /** Resolve the complete editorial address; never attach a neighboring activity. */

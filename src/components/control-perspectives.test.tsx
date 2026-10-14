@@ -57,7 +57,7 @@ describe('Control-specific teaching perspectives', () => {
         'Qualified editorial review is pending',
       )
       expect(quote).toBeVisible()
-      if (id === 'AC.L1-b.1.i') {
+      if (id === 'AC.L1-b.1.i' || id === 'IA.L2-3.5.3') {
         expect(explorer.getByText('Draft learning activity')).toBeVisible()
         expect(explorer.getByText(/^Fictional scenario:/)).toBeVisible()
       } else {

@@ -1,0 +1,1033 @@
+{
+  "schemaVersion": 1,
+  "preparedAt": "2026-10-14",
+  "preparedBy": "Codex /root/accuracy_audit — source-grounded draft authorship",
+  "purpose": "Phase 3 Increment 2 source preparation for coordinator review and integration after Increment 1; not shipped features or qualified approval",
+  "frameworkId": "cmmc",
+  "editionId": "cmmc-2-13-sep-2024",
+  "contentVersion": "2026-10-14.1",
+  "humanApproval": "pending",
+  "counts": {
+    "activities": 9,
+    "perLevel": {
+      "1": 3,
+      "2": 3,
+      "3": 3
+    },
+    "questions": 27,
+    "choicesWithExplicitFeedback": 81
+  },
+  "sourceAcquisition": {
+    "date": "2026-10-14",
+    "directory": "/tmp/dummy-down-cmmc-sources",
+    "method": "Restored all four repository-manifest pinned public GitHub PDF mirrors; byte lengths and SHA-256 matched before reading. No official-host/current applicability claim.",
+    "manifest": "docs/sources/cmmc-2-13-manifest.json",
+    "manifestSha256": "2e43dde1ee8dfc3107018d444d6b93477e11389e44f46174edef276ad9c25cbd"
+  },
+  "validation": {
+    "sourceVerifierCommand": "python3 scripts/verify-cmmc-objectives.py --source-dir /tmp/dummy-down-cmmc-sources",
+    "sourceVerifierResult": "passed: four PDFs; 149 complete model/guide quotations and identities; 468 determinations/ODPs; pinned transcription only",
+    "appTests": "not run; this task writes temporary proposals only, without application changes",
+    "browserAndLearnerAcceptance": "not performed; parent owns browser validation after implementation, human acceptance remains pending",
+    "proposalStructure": {
+      "status": "passed",
+      "activities": 9,
+      "questions": 27,
+      "choiceExplanations": 81,
+      "correctAnswerPositions": [9, 9, 9],
+      "sourceStatements": 31,
+      "determinations": 30,
+      "organizationDefinedParameters": 1,
+      "checks": [
+        "unique non-conflicting IDs",
+        "complete framework/edition/control identities",
+        "three questions and three unique choices per question",
+        "one valid correctChoiceId per question",
+        "explicit feedback for every choice",
+        "only existing glossary IDs",
+        "real inventory labels/text/citations",
+        "complete next-control-page-minus-one source ranges",
+        "all drafts and human approval pending"
+      ]
+    }
+  },
+  "architectureNotes": [
+    "Activity.lesson retains the complete framework/edition/control identity; no assumption that every framework has CMMC levels.",
+    "Activity payload follows LearningActivity plus coordinator-requested learningObjective, contentVersion and existing glossaryTermIds. Source-review records and task classifications remain separate from runtime question objects.",
+    "All questions use the existing accessible native single-choice interaction. Task intent varies: scenario decisions, interpretation, classification, sequence selection and misconception checks.",
+    "No diagram is required for these drafts; existing accessible diagrams/animation work can be attached later after source and text-equivalence review.",
+    "Local progress/version behavior and answer analytics are outside these content proposals; no real answer/evidence/user data collection is proposed."
+  ],
+  "proposals": [
+    {
+      "controlId": "AC.L1-b.1.ii",
+      "controlTitle": "Transaction & Function Control [FCI Data]",
+      "level": 1,
+      "sourceReview": {
+        "reviewer": "Codex /root/accuracy_audit — AI-assisted source preparation and authorship, not qualified human approval",
+        "reviewedAt": "2026-10-14",
+        "reviewStatus": "draft",
+        "humanApproval": "pending",
+        "sourceVerification": "pinned-snapshot-verified",
+        "currentApplicability": "unresolved; not rechecked in this preparation; retain repository official-host access limitations",
+        "sourceId": "cmmc-assessment-l1-213",
+        "documentTitle": "CMMC Assessment Guide – Level 1",
+        "version": "2.13",
+        "publicationDate": "2024-09",
+        "documentId": "DoD-CIO-00002",
+        "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL1v2.pdf",
+        "acquisitionUrl": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l1/2.13/cmmc-guide/AssessmentGuideL1v2.pdf",
+        "sourceSha256": "88116fa807b3685703f08c1992580ad0cfbc22ad2bcf76f99378fadf964f7368",
+        "reviewedGuidePdfPages": [19, 20],
+        "reviewedGuidePrintedPages": [15, 16],
+        "reviewedSections": [
+          "requirement",
+          "all assessment determinations/ODPs",
+          "potential assessment methods and objects",
+          "Discussion",
+          "Further Discussion",
+          "all examples",
+          "Potential Assessment Considerations",
+          "Key References"
+        ],
+        "officialRequirement": "Limit information system access to the types of transactions and functions that authorized users are permitted to execute.",
+        "reviewedObjectiveLabels": ["a", "b"],
+        "sourceStatements": [
+          {
+            "id": "AC.L1-b.1.ii[a]",
+            "controlId": "AC.L1-b.1.ii",
+            "label": "a",
+            "kind": "determination",
+            "text": "the types of transactions and functions that authorized users are permitted to execute are defined; and",
+            "sourceId": "cmmc-assessment-l1-213",
+            "pdfPage": 19,
+            "printedPage": 15
+          },
+          {
+            "id": "AC.L1-b.1.ii[b]",
+            "controlId": "AC.L1-b.1.ii",
+            "label": "b",
+            "kind": "determination",
+            "text": "system access is limited to the defined types of transactions and functions for authorized users.",
+            "sourceId": "cmmc-assessment-l1-213",
+            "pdfPage": 19,
+            "printedPage": 15
+          }
+        ],
+        "questionSourceLinks": [
+          {
+            "questionId": "reader-edit-blocked",
+            "taskType": "scenario-decision",
+            "objectiveLabels": ["a", "b"],
+            "sourcePdfPages": [19, 20],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "hidden-button-not-enforcement",
+            "taskType": "technical-interpretation",
+            "objectiveLabels": ["b"],
+            "sourcePdfPages": [19, 20],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "define-then-limit-actions",
+            "taskType": "concept-matching",
+            "objectiveLabels": ["a", "b"],
+            "sourcePdfPages": [19],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          }
+        ],
+        "reviewNote": "The activity follows definitions plus enforcement, using the guide’s create/read/update/delete example without requiring a particular role model, product, or account type.",
+        "uncertainInterpretations": [],
+        "remainingReviews": [
+          "Independent final-draft editorial comparison before publication",
+          "Qualified human content approval",
+          "Real learner comprehension and assistive-technology acceptance"
+        ],
+        "activityFingerprint": "34254cf68405d248ae406c5d1d2a8d227de0eb8209117a2ae18135b4e1e4bc0c",
+        "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
+        "objectiveFingerprint": "d75193a76f4e489fc849e6bc6ebe4c1a0bc87902864b36733fa140d90619fbf5",
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+      }
+    },
+    {
+      "controlId": "PE.L1-b.1.ix",
+      "controlTitle": "Manage Visitors & Physical Access [FCI Data]",
+      "level": 1,
+      "sourceReview": {
+        "reviewer": "Codex /root/accuracy_audit — AI-assisted source preparation and authorship, not qualified human approval",
+        "reviewedAt": "2026-10-14",
+        "reviewStatus": "draft",
+        "humanApproval": "pending",
+        "sourceVerification": "pinned-snapshot-verified",
+        "currentApplicability": "unresolved; not rechecked in this preparation; retain repository official-host access limitations",
+        "sourceId": "cmmc-assessment-l1-213",
+        "documentTitle": "CMMC Assessment Guide – Level 1",
+        "version": "2.13",
+        "publicationDate": "2024-09",
+        "documentId": "DoD-CIO-00002",
+        "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL1v2.pdf",
+        "acquisitionUrl": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l1/2.13/cmmc-guide/AssessmentGuideL1v2.pdf",
+        "sourceSha256": "88116fa807b3685703f08c1992580ad0cfbc22ad2bcf76f99378fadf964f7368",
+        "reviewedGuidePdfPages": [35, 37],
+        "reviewedGuidePrintedPages": [31, 33],
+        "reviewedSections": [
+          "requirement",
+          "all assessment determinations/ODPs",
+          "potential assessment methods and objects",
+          "Discussion",
+          "Further Discussion",
+          "all examples",
+          "Potential Assessment Considerations",
+          "Key References"
+        ],
+        "officialRequirement": "Escort visitors and monitor visitor activity; maintain audit logs of physical access; and control and manage physical access devices.",
+        "reviewedObjectiveLabels": ["a", "b", "c", "d", "e", "f"],
+        "sourceStatements": [
+          {
+            "id": "PE.L1-b.1.ix[a]",
+            "controlId": "PE.L1-b.1.ix",
+            "label": "a",
+            "kind": "determination",
+            "text": "visitors are escorted;",
+            "sourceId": "cmmc-assessment-l1-213",
+            "pdfPage": 35,
+            "printedPage": 31
+          },
+          {
+            "id": "PE.L1-b.1.ix[b]",
+            "controlId": "PE.L1-b.1.ix",
+            "label": "b",
+            "kind": "determination",
+            "text": "visitor activity is monitored;",
+            "sourceId": "cmmc-assessment-l1-213",
+            "pdfPage": 35,
+            "printedPage": 31
+          },
+          {
+            "id": "PE.L1-b.1.ix[c]",
+            "controlId": "PE.L1-b.1.ix",
+            "label": "c",
+            "kind": "determination",
+            "text": "audit logs of physical access are maintained;",
+            "sourceId": "cmmc-assessment-l1-213",
+            "pdfPage": 35,
+            "printedPage": 31
+          },
+          {
+            "id": "PE.L1-b.1.ix[d]",
+            "controlId": "PE.L1-b.1.ix",
+            "label": "d",
+            "kind": "determination",
+            "text": "physical access devices are identified;",
+            "sourceId": "cmmc-assessment-l1-213",
+            "pdfPage": 35,
+            "printedPage": 31
+          },
+          {
+            "id": "PE.L1-b.1.ix[e]",
+            "controlId": "PE.L1-b.1.ix",
+            "label": "e",
+            "kind": "determination",
+            "text": "physical access devices are controlled; and",
+            "sourceId": "cmmc-assessment-l1-213",
+            "pdfPage": 35,
+            "printedPage": 31
+          },
+          {
+            "id": "PE.L1-b.1.ix[f]",
+            "controlId": "PE.L1-b.1.ix",
+            "label": "f",
+            "kind": "determination",
+            "text": "physical access devices are managed.",
+            "sourceId": "cmmc-assessment-l1-213",
+            "pdfPage": 35,
+            "printedPage": 31
+          }
+        ],
+        "questionSourceLinks": [
+          {
+            "questionId": "badge-does-not-replace-escort",
+            "taskType": "scenario-decision",
+            "objectiveLabels": ["a", "b"],
+            "sourcePdfPages": [35, 36, 37],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "written-access-record",
+            "taskType": "source-interpretation",
+            "objectiveLabels": ["c"],
+            "sourcePdfPages": [35, 36, 37],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "returned-key-record",
+            "taskType": "misunderstanding-check",
+            "objectiveLabels": ["d", "e", "f"],
+            "sourcePdfPages": [35, 36, 37],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          }
+        ],
+        "reviewNote": "Formal escort and monitoring requirements are retained; procedural/electronic log alternatives and company-defined retention are distinguished from examples. Permanent-credential holders are not automatically classified as visitors.",
+        "uncertainInterpretations": [
+          "Further Discussion includes visitor badges “and/or” escorting for non-employees, while the requirement/determinations separately require escorting and monitoring visitors. This draft follows the explicit visitor determinations and gives the guest no permanent authorization; it does not generalize visitor status to every non-employee. Qualified review should retain this distinction."
+        ],
+        "remainingReviews": [
+          "Independent final-draft editorial comparison before publication",
+          "Qualified human content approval",
+          "Real learner comprehension and assistive-technology acceptance"
+        ],
+        "activityFingerprint": "bef1ed1e546b2df59b7879a544fcbe4ffafe1534ca5029cc28e582b9a289dffb",
+        "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
+        "objectiveFingerprint": "edc369ddd36a56e90e439906ecdae268b97763b08814ab9dd98fd7907eaa11aa",
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+      }
+    },
+    {
+      "controlId": "SC.L1-b.1.xi",
+      "controlTitle": "Public-Access System Separation [FCI Data]",
+      "level": 1,
+      "sourceReview": {
+        "reviewer": "Codex /root/accuracy_audit — AI-assisted source preparation and authorship, not qualified human approval",
+        "reviewedAt": "2026-10-14",
+        "reviewStatus": "draft",
+        "humanApproval": "pending",
+        "sourceVerification": "pinned-snapshot-verified",
+        "currentApplicability": "unresolved; not rechecked in this preparation; retain repository official-host access limitations",
+        "sourceId": "cmmc-assessment-l1-213",
+        "documentTitle": "CMMC Assessment Guide – Level 1",
+        "version": "2.13",
+        "publicationDate": "2024-09",
+        "documentId": "DoD-CIO-00002",
+        "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL1v2.pdf",
+        "acquisitionUrl": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l1/2.13/cmmc-guide/AssessmentGuideL1v2.pdf",
+        "sourceSha256": "88116fa807b3685703f08c1992580ad0cfbc22ad2bcf76f99378fadf964f7368",
+        "reviewedGuidePdfPages": [41, 42],
+        "reviewedGuidePrintedPages": [37, 38],
+        "reviewedSections": [
+          "requirement",
+          "all assessment determinations/ODPs",
+          "potential assessment methods and objects",
+          "Discussion",
+          "Further Discussion",
+          "all examples",
+          "Potential Assessment Considerations",
+          "Key References"
+        ],
+        "officialRequirement": "Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks.",
+        "reviewedObjectiveLabels": ["a", "b"],
+        "sourceStatements": [
+          {
+            "id": "SC.L1-b.1.xi[a]",
+            "controlId": "SC.L1-b.1.xi",
+            "label": "a",
+            "kind": "determination",
+            "text": "publicly accessible system components are identified; and",
+            "sourceId": "cmmc-assessment-l1-213",
+            "pdfPage": 41,
+            "printedPage": 37
+          },
+          {
+            "id": "SC.L1-b.1.xi[b]",
+            "controlId": "SC.L1-b.1.xi",
+            "label": "b",
+            "kind": "determination",
+            "text": "subnetworks for publicly accessible system components are physically or logically separated from internal networks.",
+            "sourceId": "cmmc-assessment-l1-213",
+            "pdfPage": 41,
+            "printedPage": 37
+          }
+        ],
+        "questionSourceLinks": [
+          {
+            "questionId": "identify-public-component",
+            "taskType": "classification",
+            "objectiveLabels": ["a"],
+            "sourcePdfPages": [41, 42],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "logical-separation-option",
+            "taskType": "technical-interpretation",
+            "objectiveLabels": ["b"],
+            "sourcePdfPages": [41, 42],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "https-is-not-network-separation",
+            "taskType": "misunderstanding-check",
+            "objectiveLabels": ["b"],
+            "sourcePdfPages": [41, 42],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          }
+        ],
+        "reviewNote": "Physical/logical alternatives are retained. Default blocking from the public zone is attributed to the guide’s Further Discussion and described as the fictional configuration; no required firewall product or separate hardware purchase is invented.",
+        "uncertainInterpretations": [],
+        "remainingReviews": [
+          "Independent final-draft editorial comparison before publication",
+          "Qualified human content approval",
+          "Real learner comprehension and assistive-technology acceptance"
+        ],
+        "activityFingerprint": "5e4b8ca798f97b2af7433fa319b8e0e5411f18bfa43fdec3b3d2f67a34d21126",
+        "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
+        "objectiveFingerprint": "c9b523591790d23cb74d93d765a03d60fbc23f0ca8e68d43a7b602c417d819ee",
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+      }
+    },
+    {
+      "controlId": "IA.L2-3.5.3",
+      "controlTitle": "Multifactor Authentication",
+      "level": 2,
+      "sourceReview": {
+        "reviewer": "Codex /root/accuracy_audit — AI-assisted source preparation and authorship, not qualified human approval",
+        "reviewedAt": "2026-10-14",
+        "reviewStatus": "draft",
+        "humanApproval": "pending",
+        "sourceVerification": "pinned-snapshot-verified",
+        "currentApplicability": "unresolved; not rechecked in this preparation; retain repository official-host access limitations",
+        "sourceId": "cmmc-assessment-l2-213",
+        "documentTitle": "CMMC Assessment Guide – Level 2",
+        "version": "2.13",
+        "publicationDate": "2024-09",
+        "documentId": "DoD-CIO-00003",
+        "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL2v2.pdf",
+        "acquisitionUrl": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l2/2.13/cmmc-guide/AssessmentGuideL2v2.pdf",
+        "sourceSha256": "0dcaba1626a0d23893981d74dd3f0f2338fff54cece67d81bc811ce76392d867",
+        "reviewedGuidePdfPages": [125, 127],
+        "reviewedGuidePrintedPages": [117, 119],
+        "reviewedSections": [
+          "requirement",
+          "all assessment determinations/ODPs",
+          "potential assessment methods and objects",
+          "Discussion",
+          "Further Discussion",
+          "all examples",
+          "Potential Assessment Considerations",
+          "Key References"
+        ],
+        "officialRequirement": "Use multifactor authentication for local and network access to privileged accounts and for network access to non-privileged accounts.",
+        "reviewedObjectiveLabels": ["a", "b", "c", "d"],
+        "sourceStatements": [
+          {
+            "id": "IA.L2-3.5.3[a]",
+            "controlId": "IA.L2-3.5.3",
+            "label": "a",
+            "kind": "determination",
+            "text": "privileged accounts are identified;",
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 125,
+            "printedPage": 117
+          },
+          {
+            "id": "IA.L2-3.5.3[b]",
+            "controlId": "IA.L2-3.5.3",
+            "label": "b",
+            "kind": "determination",
+            "text": "multifactor authentication is implemented for local access to privileged accounts;",
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 125,
+            "printedPage": 117
+          },
+          {
+            "id": "IA.L2-3.5.3[c]",
+            "controlId": "IA.L2-3.5.3",
+            "label": "c",
+            "kind": "determination",
+            "text": "multifactor authentication is implemented for network access to privileged accounts; and",
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 125,
+            "printedPage": 117
+          },
+          {
+            "id": "IA.L2-3.5.3[d]",
+            "controlId": "IA.L2-3.5.3",
+            "label": "d",
+            "kind": "determination",
+            "text": "multifactor authentication is implemented for network access to non-privileged accounts.",
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 125,
+            "printedPage": 117
+          }
+        ],
+        "questionSourceLinks": [
+          {
+            "questionId": "office-network-still-network",
+            "taskType": "technical-interpretation",
+            "objectiveLabels": ["d"],
+            "sourcePdfPages": [125, 126],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "two-passwords-one-factor",
+            "taskType": "concept-interpretation",
+            "objectiveLabels": ["b", "c", "d"],
+            "sourcePdfPages": [125],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "local-admin-gap",
+            "taskType": "coverage-decision",
+            "objectiveLabels": ["b"],
+            "sourcePdfPages": [125, 126, 127],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          }
+        ],
+        "reviewNote": "All three scope categories and different factor types are retained. The draft distinguishes local/network from onsite/remote, avoids universal local ordinary-account MFA, and mandates no particular authenticator product.",
+        "uncertainInterpretations": [],
+        "remainingReviews": [
+          "Independent final-draft editorial comparison before publication",
+          "Qualified human content approval",
+          "Real learner comprehension and assistive-technology acceptance"
+        ],
+        "activityFingerprint": "884053fea1822c91e403f001d3ee08be4777e891cb166bd5f9969bc78d8a5774",
+        "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
+        "objectiveFingerprint": "6ada330d85be76c72403fe0e2be68c829d22a9109edc636dd1b14d2b8196fee5",
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+      }
+    },
+    {
+      "controlId": "CM.L2-3.4.8",
+      "controlTitle": "Application Execution Policy",
+      "level": 2,
+      "sourceReview": {
+        "reviewer": "Codex /root/accuracy_audit — AI-assisted source preparation and authorship, not qualified human approval",
+        "reviewedAt": "2026-10-14",
+        "reviewStatus": "draft",
+        "humanApproval": "pending",
+        "sourceVerification": "pinned-snapshot-verified",
+        "currentApplicability": "unresolved; not rechecked in this preparation; retain repository official-host access limitations",
+        "sourceId": "cmmc-assessment-l2-213",
+        "documentTitle": "CMMC Assessment Guide – Level 2",
+        "version": "2.13",
+        "publicationDate": "2024-09",
+        "documentId": "DoD-CIO-00003",
+        "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL2v2.pdf",
+        "acquisitionUrl": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l2/2.13/cmmc-guide/AssessmentGuideL2v2.pdf",
+        "sourceSha256": "0dcaba1626a0d23893981d74dd3f0f2338fff54cece67d81bc811ce76392d867",
+        "reviewedGuidePdfPages": [116, 117],
+        "reviewedGuidePrintedPages": [108, 109],
+        "reviewedSections": [
+          "requirement",
+          "all assessment determinations/ODPs",
+          "potential assessment methods and objects",
+          "Discussion",
+          "Further Discussion",
+          "all examples",
+          "Potential Assessment Considerations",
+          "Key References"
+        ],
+        "officialRequirement": "Apply deny-by-exception (blacklisting) policy to prevent the use of unauthorized software or deny-all, permit-by-exception (whitelisting) policy to allow the execution of authorized software.",
+        "reviewedObjectiveLabels": ["a", "b", "c"],
+        "sourceStatements": [
+          {
+            "id": "CM.L2-3.4.8[a]",
+            "controlId": "CM.L2-3.4.8",
+            "label": "a",
+            "kind": "determination",
+            "text": "a policy specifying whether whitelisting or blacklisting is to be implemented is specified;",
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 116,
+            "printedPage": 108
+          },
+          {
+            "id": "CM.L2-3.4.8[b]",
+            "controlId": "CM.L2-3.4.8",
+            "label": "b",
+            "kind": "determination",
+            "text": "the software allowed to execute under whitelisting or denied use under blacklisting is specified; and",
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 116,
+            "printedPage": 108
+          },
+          {
+            "id": "CM.L2-3.4.8[c]",
+            "controlId": "CM.L2-3.4.8",
+            "label": "c",
+            "kind": "determination",
+            "text": "whitelisting to allow the execution of authorized software or blacklisting to prevent the use of unauthorized software is implemented as specified.",
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 116,
+            "printedPage": 108
+          }
+        ],
+        "questionSourceLinks": [
+          {
+            "questionId": "allow-policy-unlisted-program",
+            "taskType": "policy-decision",
+            "objectiveLabels": ["a", "b", "c"],
+            "sourcePdfPages": [116, 117],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "inventory-versus-execution",
+            "taskType": "technical-interpretation",
+            "objectiveLabels": ["b", "c"],
+            "sourcePdfPages": [116, 117],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "stronger-does-not-mean-only-option",
+            "taskType": "misunderstanding-check",
+            "objectiveLabels": ["a", "b", "c"],
+            "sourcePdfPages": [116, 117],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          }
+        ],
+        "reviewNote": "The formal requirement/objectives permit either named policy. The stronger-policy Discussion and allow-list-focused example/assessment questions do not become a universal whitelist-only mandate; execution remains distinct from inventory and installation control.",
+        "uncertainInterpretations": [
+          "Further Discussion uses “allow-lists and deny-lists,” and the Potential Assessment Considerations focus on allow-listing, while the exact requirement and determination [a] specify a choice. Draft answers follow the unambiguous formal alternatives; qualified review should retain the section distinction."
+        ],
+        "remainingReviews": [
+          "Independent final-draft editorial comparison before publication",
+          "Qualified human content approval",
+          "Real learner comprehension and assistive-technology acceptance"
+        ],
+        "activityFingerprint": "fd1bdeb4564bf2867a1a23f8e7a726fb9de97009eae35ce13d143d26eff611e0",
+        "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
+        "objectiveFingerprint": "3c343b3a57f3b2817fbdee21fe39839869e6c06f5b0521c6cae000dc051a6a0f",
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+      }
+    },
+    {
+      "controlId": "AU.L2-3.3.4",
+      "controlTitle": "Audit Failure Alerting",
+      "level": 2,
+      "sourceReview": {
+        "reviewer": "Codex /root/accuracy_audit — AI-assisted source preparation and authorship, not qualified human approval",
+        "reviewedAt": "2026-10-14",
+        "reviewStatus": "draft",
+        "humanApproval": "pending",
+        "sourceVerification": "pinned-snapshot-verified",
+        "currentApplicability": "unresolved; not rechecked in this preparation; retain repository official-host access limitations",
+        "sourceId": "cmmc-assessment-l2-213",
+        "documentTitle": "CMMC Assessment Guide – Level 2",
+        "version": "2.13",
+        "publicationDate": "2024-09",
+        "documentId": "DoD-CIO-00003",
+        "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL2v2.pdf",
+        "acquisitionUrl": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l2/2.13/cmmc-guide/AssessmentGuideL2v2.pdf",
+        "sourceSha256": "0dcaba1626a0d23893981d74dd3f0f2338fff54cece67d81bc811ce76392d867",
+        "reviewedGuidePdfPages": [87, 88],
+        "reviewedGuidePrintedPages": [79, 80],
+        "reviewedSections": [
+          "requirement",
+          "all assessment determinations/ODPs",
+          "potential assessment methods and objects",
+          "Discussion",
+          "Further Discussion",
+          "all examples",
+          "Potential Assessment Considerations",
+          "Key References"
+        ],
+        "officialRequirement": "Alert in the event of an audit logging process failure.",
+        "reviewedObjectiveLabels": ["a", "b", "c"],
+        "sourceStatements": [
+          {
+            "id": "AU.L2-3.3.4[a]",
+            "controlId": "AU.L2-3.3.4",
+            "label": "a",
+            "kind": "determination",
+            "text": "personnel or roles to be alerted in the event of an audit logging process failure are identified;",
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 87,
+            "printedPage": 79
+          },
+          {
+            "id": "AU.L2-3.3.4[b]",
+            "controlId": "AU.L2-3.3.4",
+            "label": "b",
+            "kind": "determination",
+            "text": "types of audit logging process failures for which alert will be generated are defined; and",
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 87,
+            "printedPage": 79
+          },
+          {
+            "id": "AU.L2-3.3.4[c]",
+            "controlId": "AU.L2-3.3.4",
+            "label": "c",
+            "kind": "determination",
+            "text": "identified personnel or roles are alerted in the event of an audit logging process failure.",
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 87,
+            "printedPage": 79
+          }
+        ],
+        "questionSourceLinks": [
+          {
+            "questionId": "service-up-logging-down",
+            "taskType": "technical-interpretation",
+            "objectiveLabels": ["b"],
+            "sourcePdfPages": [87, 88],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "alert-needs-recipient",
+            "taskType": "scenario-decision",
+            "objectiveLabels": ["a", "c"],
+            "sourcePdfPages": [87, 88],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "alert-rollout-order",
+            "taskType": "sequence-selection",
+            "objectiveLabels": ["a", "b", "c"],
+            "sourcePdfPages": [87, 88],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          }
+        ],
+        "reviewNote": "The failure examples and role/delivery definitions follow the complete section. No central logging product, SMS/email channel, numeric response deadline, or Level 3 round-the-clock SOC obligation is invented.",
+        "uncertainInterpretations": [],
+        "remainingReviews": [
+          "Independent final-draft editorial comparison before publication",
+          "Qualified human content approval",
+          "Real learner comprehension and assistive-technology acceptance"
+        ],
+        "activityFingerprint": "43b043dc6f4869f651909547eb800d21ec0d4a04a0b51b8bd2ea422e1d239351",
+        "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
+        "objectiveFingerprint": "bec395922d28e3c5f991caf2f50f595bc30a859131a25c9d4e33a431c24930a9",
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+      }
+    },
+    {
+      "controlId": "AT.L3-3.2.2e",
+      "controlTitle": "Practical Training Exercises",
+      "level": 3,
+      "sourceReview": {
+        "reviewer": "Codex /root/accuracy_audit — AI-assisted source preparation and authorship, not qualified human approval",
+        "reviewedAt": "2026-10-14",
+        "reviewStatus": "draft",
+        "humanApproval": "pending",
+        "sourceVerification": "pinned-snapshot-verified",
+        "currentApplicability": "unresolved; not rechecked in this preparation; retain repository official-host access limitations",
+        "sourceId": "cmmc-assessment-l3-213",
+        "documentTitle": "CMMC Assessment Guide – Level 3",
+        "version": "2.13",
+        "publicationDate": "2024-09",
+        "documentId": "DoD-CIO-00004",
+        "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL3.pdf",
+        "acquisitionUrl": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l3/2.13/cmmc-guide/AssessmentGuideL3.pdf",
+        "sourceSha256": "6601eb20e8f1490b49c4addd83505eb269062abb3c2bae9b5256449187048ef3",
+        "reviewedGuidePdfPages": [26, 28],
+        "reviewedGuidePrintedPages": [22, 24],
+        "reviewedSections": [
+          "requirement",
+          "all assessment determinations/ODPs",
+          "potential assessment methods and objects",
+          "Discussion",
+          "Further Discussion",
+          "all examples",
+          "Potential Assessment Considerations",
+          "Key References"
+        ],
+        "officialRequirement": "Include practical exercises in awareness training for all users, tailored by roles, to include general users, users with specialized roles, and privileged users, that are aligned with current threat scenarios and provide feedback to individuals involved in the training and their supervisors.",
+        "reviewedObjectiveLabels": ["a", "b", "c", "d", "e"],
+        "sourceStatements": [
+          {
+            "id": "AT.L3-3.2.2e[a]",
+            "controlId": "AT.L3-3.2.2e",
+            "label": "a",
+            "kind": "determination",
+            "text": "Practical exercises are identified;",
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 26,
+            "printedPage": 22
+          },
+          {
+            "id": "AT.L3-3.2.2e[b]",
+            "controlId": "AT.L3-3.2.2e",
+            "label": "b",
+            "kind": "determination",
+            "text": "Current threat scenarios are identified;",
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 26,
+            "printedPage": 22
+          },
+          {
+            "id": "AT.L3-3.2.2e[c]",
+            "controlId": "AT.L3-3.2.2e",
+            "label": "c",
+            "kind": "determination",
+            "text": "Individuals involved in training and their supervisors are identified;",
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 26,
+            "printedPage": 22
+          },
+          {
+            "id": "AT.L3-3.2.2e[d]",
+            "controlId": "AT.L3-3.2.2e",
+            "label": "d",
+            "kind": "determination",
+            "text": "Practical exercises that are aligned with current threat scenarios are included in awareness training for all users, tailored by roles, to include general users, users with specialized roles, and privileged users; and",
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 26,
+            "printedPage": 22
+          },
+          {
+            "id": "AT.L3-3.2.2e[e]",
+            "controlId": "AT.L3-3.2.2e",
+            "label": "e",
+            "kind": "determination",
+            "text": "Feedback is provided to individuals involved in the training and their supervisors.",
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 26,
+            "printedPage": 22
+          }
+        ],
+        "questionSourceLinks": [
+          {
+            "questionId": "practical-versus-passive-training",
+            "taskType": "gap-interpretation",
+            "objectiveLabels": ["a", "b", "d"],
+            "sourcePdfPages": [26, 27, 28],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "current-threat-role-fit",
+            "taskType": "design-decision",
+            "objectiveLabels": ["a", "b", "d"],
+            "sourcePdfPages": [26, 27],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "training-feedback-recipients",
+            "taskType": "misunderstanding-check",
+            "objectiveLabels": ["c", "e"],
+            "sourcePdfPages": [26, 27, 28],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          }
+        ],
+        "reviewNote": "All-user coverage includes general/specialized/privileged roles; practical exercises/current threats and both feedback audiences remain explicit. No required paid phishing service, fixed universal exercise frequency, or punitive/public feedback is added.",
+        "uncertainInterpretations": [],
+        "remainingReviews": [
+          "Independent final-draft editorial comparison before publication",
+          "Qualified human content approval",
+          "Real learner comprehension and assistive-technology acceptance"
+        ],
+        "activityFingerprint": "6f22364d0c20aceb876a7d898a8aed18891609745520f8bc8a3d9173215e6fdd",
+        "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
+        "objectiveFingerprint": "fc7834ffebcb98e043a1df8c3d89b3ee761dc5266eb0dd99b26418945adf4172",
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+      }
+    },
+    {
+      "controlId": "IR.L3-3.6.2e",
+      "controlTitle": "Cyber Incident Response Team",
+      "level": 3,
+      "sourceReview": {
+        "reviewer": "Codex /root/accuracy_audit — AI-assisted source preparation and authorship, not qualified human approval",
+        "reviewedAt": "2026-10-14",
+        "reviewStatus": "draft",
+        "humanApproval": "pending",
+        "sourceVerification": "pinned-snapshot-verified",
+        "currentApplicability": "unresolved; not rechecked in this preparation; retain repository official-host access limitations",
+        "sourceId": "cmmc-assessment-l3-213",
+        "documentTitle": "CMMC Assessment Guide – Level 3",
+        "version": "2.13",
+        "publicationDate": "2024-09",
+        "documentId": "DoD-CIO-00004",
+        "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL3.pdf",
+        "acquisitionUrl": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l3/2.13/cmmc-guide/AssessmentGuideL3.pdf",
+        "sourceSha256": "6601eb20e8f1490b49c4addd83505eb269062abb3c2bae9b5256449187048ef3",
+        "reviewedGuidePdfPages": [47, 49],
+        "reviewedGuidePrintedPages": [43, 45],
+        "reviewedSections": [
+          "requirement",
+          "all assessment determinations/ODPs",
+          "potential assessment methods and objects",
+          "Discussion",
+          "Further Discussion",
+          "all examples",
+          "Potential Assessment Considerations",
+          "Key References"
+        ],
+        "officialRequirement": "Establish and maintain a cyber incident response team that can be deployed by the organization within 24 hours.",
+        "reviewedObjectiveLabels": ["a", "b", "c"],
+        "sourceStatements": [
+          {
+            "id": "IR.L3-3.6.2e[a]",
+            "controlId": "IR.L3-3.6.2e",
+            "label": "a",
+            "kind": "determination",
+            "text": "A cyber incident response team is established;",
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 47,
+            "printedPage": 43
+          },
+          {
+            "id": "IR.L3-3.6.2e[b]",
+            "controlId": "IR.L3-3.6.2e",
+            "label": "b",
+            "kind": "determination",
+            "text": "The cyber incident response team can be deployed by the organization within 24 hours; and",
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 47,
+            "printedPage": 43
+          },
+          {
+            "id": "IR.L3-3.6.2e[c]",
+            "controlId": "IR.L3-3.6.2e",
+            "label": "c",
+            "kind": "determination",
+            "text": "The cyber incident response team is maintained.",
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 47,
+            "printedPage": 43
+          }
+        ],
+        "questionSourceLinks": [
+          {
+            "questionId": "remote-response-deployment",
+            "taskType": "source-interpretation",
+            "objectiveLabels": ["b"],
+            "sourcePdfPages": [47, 48, 49],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "isolated-site-response",
+            "taskType": "scenario-decision",
+            "objectiveLabels": ["b"],
+            "sourcePdfPages": [47, 48],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "deployment-not-resolution-deadline",
+            "taskType": "misunderstanding-check",
+            "objectiveLabels": ["b"],
+            "sourcePdfPages": [47, 48, 49],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          }
+        ],
+        "reviewNote": "The 24-hour parameter is preserved as part of the source statement. Remote-versus-physical limitations and team maintenance remain visible; no full-resolution guarantee, legal-reporting deadline, or interpretation of an unstated contractual clock trigger is invented.",
+        "uncertainInterpretations": [],
+        "remainingReviews": [
+          "Independent final-draft editorial comparison before publication",
+          "Qualified human content approval",
+          "Real learner comprehension and assistive-technology acceptance"
+        ],
+        "activityFingerprint": "ed7f11ff9e4b7793fbe9017f5cb2683650255292681b09fb424c8d2b0b0ea0db",
+        "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
+        "objectiveFingerprint": "c2275c410830976c191618d4066187597602abf9d60aa5568c257e9f7c0820fd",
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+      }
+    },
+    {
+      "controlId": "SI.L3-3.14.1e",
+      "controlTitle": "Integrity Verification",
+      "level": 3,
+      "sourceReview": {
+        "reviewer": "Codex /root/accuracy_audit — AI-assisted source preparation and authorship, not qualified human approval",
+        "reviewedAt": "2026-10-14",
+        "reviewStatus": "draft",
+        "humanApproval": "pending",
+        "sourceVerification": "pinned-snapshot-verified",
+        "currentApplicability": "unresolved; not rechecked in this preparation; retain repository official-host access limitations",
+        "sourceId": "cmmc-assessment-l3-213",
+        "documentTitle": "CMMC Assessment Guide – Level 3",
+        "version": "2.13",
+        "publicationDate": "2024-09",
+        "documentId": "DoD-CIO-00004",
+        "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL3.pdf",
+        "acquisitionUrl": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/0ab5953a68d5bf7383b9b021839274aed42209f3/raw/public/dod-cio/cmmc-assessment-guide-l3/2.13/cmmc-guide/AssessmentGuideL3.pdf",
+        "sourceSha256": "6601eb20e8f1490b49c4addd83505eb269062abb3c2bae9b5256449187048ef3",
+        "reviewedGuidePdfPages": [77, 80],
+        "reviewedGuidePrintedPages": [73, 76],
+        "reviewedSections": [
+          "requirement",
+          "all assessment determinations/ODPs",
+          "potential assessment methods and objects",
+          "Discussion",
+          "Further Discussion",
+          "all examples",
+          "Potential Assessment Considerations",
+          "Key References"
+        ],
+        "officialRequirement": "Verify the integrity of security critical and essential software using root of trust mechanisms or cryptographic signatures.",
+        "reviewedObjectiveLabels": ["ODP1", "a", "b"],
+        "sourceStatements": [
+          {
+            "id": "SI.L3-3.14.1e[ODP1]",
+            "controlId": "SI.L3-3.14.1e",
+            "label": "ODP1",
+            "kind": "organization-defined-parameter",
+            "text": "Security critical or essential software is defined;",
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 77,
+            "printedPage": 73
+          },
+          {
+            "id": "SI.L3-3.14.1e[a]",
+            "controlId": "SI.L3-3.14.1e",
+            "label": "a",
+            "kind": "determination",
+            "text": "Root of trust mechanisms or cryptographic signatures are identified; and",
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 77,
+            "printedPage": 73
+          },
+          {
+            "id": "SI.L3-3.14.1e[b]",
+            "controlId": "SI.L3-3.14.1e",
+            "label": "b",
+            "kind": "determination",
+            "text": "The integrity of security critical and essential software is verified using root of trust mechanisms or cryptographic signatures.",
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 77,
+            "printedPage": 73
+          }
+        ],
+        "questionSourceLinks": [
+          {
+            "questionId": "define-essential-software",
+            "taskType": "scope-interpretation",
+            "objectiveLabels": ["ODP1"],
+            "sourcePdfPages": [77],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "untrusted-file-and-hash",
+            "taskType": "technical-interpretation",
+            "objectiveLabels": ["b"],
+            "sourcePdfPages": [77, 78, 79],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          },
+          {
+            "questionId": "new-version-needs-check",
+            "taskType": "update-decision",
+            "objectiveLabels": ["b"],
+            "sourcePdfPages": [78, 79],
+            "coverageClaim": "Selected fictional illustration; not exhaustive objective coverage or evidence sufficiency."
+          }
+        ],
+        "reviewNote": "ODP1 is preserved separately from a/b. The draft does not declare that ordinary hashes are always invalid, require TPM hardware everywhere, or treat verified authenticity as malware/defect freedom. Each-execution teaching is explicitly attributed to Further Discussion.",
+        "uncertainInterpretations": [
+          "Example 2 discusses unsigned essential software checked against an approved controlled hash repository, while the formal requirement names roots of trust or signatures. The activity contrasts an explicitly untrusted file/hash pair and does not generalize that example into permission for arbitrary hashes. Qualified review should assess the interpretation of that example.",
+          "Potential Assessment Considerations on PDF79/printed75 twice refer to [b,c], although the source objective inventory contains only ODP1,a,b. This draft invents no [c] statement and uses only the real inventory labels."
+        ],
+        "remainingReviews": [
+          "Independent final-draft editorial comparison before publication",
+          "Qualified human content approval",
+          "Real learner comprehension and assistive-technology acceptance"
+        ],
+        "activityFingerprint": "5c73a7c3c4801f672a7986a7bdf29ce35aee51b3609ae348e4d200b5f782e5f4",
+        "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
+        "objectiveFingerprint": "8e355d15993d5dee937cb86ae74ef06cf8f29f9e4bab27a1bda7d44e93380f41",
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+      }
+    }
+  ],
+  "sourceInputs": {
+    "repositoryCommit": "82db49c90750ae5361b5e1d86eae61f425ba274d",
+    "catalogSha256": "a0a0d58906e203d8b62103c7830e72cc6c146783898db11cbfe016fdb94d7938",
+    "objectiveInventorySha256": "a5aef6f45a385d16650de05f89b83b1e9fe7048e46b9cac5ea46fc51e0f19ba4",
+    "manifestSha256": "2e43dde1ee8dfc3107018d444d6b93477e11389e44f46174edef276ad9c25cbd",
+    "currentActivityTypesSha256": "409c94d04c19f64c0c2637985e4a66c35f203fb3971663d9a69254ccb714c69f"
+  },
+  "integrationReview": {
+    "reviewer": "Codex /root",
+    "reviewedAt": "2026-10-14",
+    "status": "AI-assisted draft comparison; qualified human approval pending",
+    "inputs": "All nine final activity texts, 27 questions and 81 feedback explanations; exact official requirements and inventory statements. Direct complete PDF reading also checked IR.L3-3.6.2e pages 47–49 and SI.L3-3.14.1e pages 77–80. Other complete sections were read by the source author, not independently re-read in full by this reviewer.",
+    "findings": "No correction identified in this comparison. Preserve all author interpretation notes and external review limits."
+  }
+}

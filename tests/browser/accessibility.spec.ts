@@ -7,6 +7,7 @@ const routes = [
   ['Home', '/'],
   ['Control Explorer', '/learn?view=discover&collection=references'],
   ['Glossary', '/glossary'],
+  ['Practice', '/practice'],
   ['About', '/about'],
   ['Assessment coverage', '/coverage?control=SC.L3-3.13.4e'],
   ['AC.L1-b.1.i', reader],
@@ -14,7 +15,7 @@ const routes = [
 
 // Real layout and semantics are not exercised by the existing jsdom suite.
 // Automated scans do not prove screen-reader usability or WCAG conformance.
-for (const width of [1440, 768, 640, 390, 320]) {
+for (const width of [1440, 1024, 768, 640, 390, 320]) {
   for (const [name, path] of routes) {
     test(`${name}: accessible structure and reflow at ${width}px`, async ({
       page,
@@ -26,6 +27,10 @@ for (const width of [1440, 768, 640, 390, 320]) {
       if (path.startsWith('/coverage'))
         await expect(
           page.getByRole('heading', { name: '4 statements · 1 control' }),
+        ).toBeVisible()
+      if (path === '/practice')
+        await expect(
+          page.getByRole('heading', { name: 'Work through a situation.' }),
         ).toBeVisible()
       if (path === reader)
         await expect(page.getByRole('tabpanel')).toBeVisible()
@@ -46,6 +51,15 @@ for (const width of [1440, 768, 640, 390, 320]) {
         .analyze()
       expect(scan.violations).toEqual([])
       expect(errors).toEqual([])
+      if (
+        process.env.CAPTURE_PHASE3 &&
+        path === '/practice' &&
+        [390, 1440].includes(width)
+      ) {
+        await page.screenshot({
+          path: `docs/screenshots/phase3/index-${width}.png`,
+        })
+      }
     })
   }
 }

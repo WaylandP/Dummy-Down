@@ -68,7 +68,7 @@ still be assessed with real people; a palette alone does not establish it.
 - **About `/about`:** mission, honest content limits and perspective shortcuts.
 
 Native links support direct loads and normal browser navigation; Vercel rewrites
-serve the four non-root paths. Legacy root query links and section hashes still
+serve the five non-root paths. Legacy root query links and section hashes still
 work. Explorer state stays in its existing controller. Native navigation/reloads
 can reset local practice; there is no saved-progress feature or account.
 
@@ -96,3 +96,10 @@ See [the study-desk checkpoint](reviews/study-desk-2026-10-14.md).
 That visual revision was merged in PR #12. The Phase 1 quality increment preserves
 this direction and prepares [human acceptance](testing/PHASE_1_ACCEPTANCE.md);
 it does not initiate a new visual redesign or imply owner acceptance.
+
+### Practice index
+
+`/practice` provides a quiet, numbered list of actual draft activities, with a
+search and level filter, learning goals and exact edition-bound lesson links. It
+uses the existing blackboard tokens and native navigation. Question answers stay
+in the current lesson; completing a practice activity is not a compliance score.

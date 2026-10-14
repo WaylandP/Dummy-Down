@@ -1,0 +1,113 @@
+.practice-page {
+  max-width: 1100px;
+  padding-block: 48px 80px;
+}
+.practice-page-intro {
+  max-width: 68ch;
+  margin-bottom: 36px;
+}
+.practice-page h1 {
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.15;
+  margin: 12px 0 20px;
+}
+.practice-page-intro > p {
+  line-height: 1.7;
+}
+.practice-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 16px;
+  padding: 24px 0;
+  border-block: 1px solid var(--color-line);
+}
+.practice-filters label {
+  display: grid;
+  gap: 8px;
+  flex: 1 1 180px;
+}
+.practice-filters label:first-child {
+  flex-grow: 2;
+}
+.practice-filters input,
+.practice-filters select {
+  min-height: 48px;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--color-field-border);
+  background: var(--color-surface);
+  color: var(--color-foreground);
+  padding: 10px 12px;
+  border-radius: 4px;
+}
+.practice-result-count {
+  color: var(--color-muted);
+  margin-block: 24px;
+}
+.practice-index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.practice-index > li {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-line);
+}
+.practice-index-number {
+  font-family: var(--font-code);
+  color: var(--color-muted);
+  padding-top: 4px;
+}
+.practice-index h2 {
+  font-size: 24px;
+  line-height: 1.35;
+  margin-block: 8px 12px;
+}
+.practice-index h2 a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.practice-index h2 svg {
+  flex: 0 0 20px;
+}
+.practice-index h2 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.practice-index li p {
+  max-width: 64ch;
+}
+.practice-index code {
+  display: block;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+.practice-empty {
+  padding-block: 28px;
+}
+.practice-library-note {
+  margin-top: 32px;
+  color: var(--color-muted);
+}
+.practice-library-note a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 480px) {
+  .practice-page {
+    padding-top: 28px;
+  }
+  .practice-index > li {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 10px;
+  }
+  .practice-index h2 {
+    font-size: 21px;
+  }
+}

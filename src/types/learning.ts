@@ -34,6 +34,9 @@ export interface LearningActivity {
   readonly reviewStatus: 'draft'
   readonly title: string
   readonly introduction: string
+  readonly learningObjective?: string
+  readonly contentVersion?: string
+  readonly glossaryTermIds?: readonly string[]
   readonly plainEnglish?: string
   readonly commonMisunderstanding?: {
     readonly claim: string
