@@ -18,12 +18,13 @@ function openReference(key: string, tab = 'decode') {
 }
 
 const viewNames = ['Decode', 'Explain', 'Evidence', 'Practice', 'Related']
+const levelTwoViews = [...viewNames, 'Rev 3']
 
 beforeEach(() => window.history.replaceState(null, '', '/learn'))
 
 describe('Control views', () => {
   it.each([...levelOneLearningActivities, ...expandedLearningActivities])(
-    'offers five views and keeps the practice on its own view for $id',
+    'offers its views and keeps the practice on its own view for $id',
     async (activity) => {
       const user = userEvent.setup()
       openReference(activity.lesson.controlKey, 'practice')
@@ -37,12 +38,14 @@ describe('Control views', () => {
         screen.getByRole('navigation', { name: 'Views of this control' }),
       )
       const links = views.getAllByRole('link')
-      expect(links.map((link) => link.textContent)).toEqual(viewNames)
+      expect(links.map((link) => link.textContent)).toEqual(
+        control.level === 'Level 2' ? levelTwoViews : viewNames,
+      )
       for (const link of links) {
         const url = new URL(link.getAttribute('href')!, window.location.origin)
         expect(url.searchParams.get('control')).toBe(activity.lesson.controlKey)
         expect(url.searchParams.get('tab') ?? 'decode').toBe(
-          link.textContent!.toLowerCase(),
+          link.textContent!.toLowerCase().replace(/\s/g, ''),
         )
       }
       expect(links[3]).toHaveAttribute('aria-current', 'page')

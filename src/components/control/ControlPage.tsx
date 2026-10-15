@@ -20,6 +20,8 @@ import { ExplainTab } from './ExplainTab'
 import { EvidenceTab } from './EvidenceTab'
 import { PracticeTab } from './PracticeTab'
 import { RelatedTab } from './RelatedTab'
+import { Rev3Tab } from './Rev3Tab'
+import { rev3For, rev3Source } from '../../data/cmmc-rev3'
 
 const tabLabels: Readonly<Record<ControlTab, string>> = {
   decode: 'Decode',
@@ -27,6 +29,7 @@ const tabLabels: Readonly<Record<ControlTab, string>> = {
   evidence: 'Evidence',
   practice: 'Practice',
   related: 'Related',
+  rev3: 'Rev 3',
 }
 
 export interface ControlPageProps {
@@ -58,7 +61,7 @@ function isHttps(url: string): boolean {
   }
 }
 
-/** The Board's control screen: the ID decoded, the title, five views, one footer line. */
+/** The Board's control screen: the ID decoded, the title, its views, one footer line. */
 export function ControlPage(props: ControlPageProps) {
   const {
     control,
@@ -88,6 +91,14 @@ export function ControlPage(props: ControlPageProps) {
   }, [control])
   const decoded = decodeControlId(control)
   const draft = usePerspectiveDraft(control)
+  // Rev 3 reads a Level 2 requirement beside NIST SP 800-171 Rev. 3; the other
+  // levels have no counterpart there, so the view is not offered and an address
+  // that asks for it shows Decode with a line saying why.
+  const rev3 = rev3For(control)
+  const views = rev3
+    ? controlTabs
+    : controlTabs.filter((item) => item !== 'rev3')
+  const shown: ControlTab = views.includes(tab) ? tab : 'decode'
   const guide = control.sourceDocuments.find(
     (source) => source.id === control.requirement.sourceId,
   )
@@ -125,6 +136,21 @@ export function ControlPage(props: ControlPageProps) {
       'Teaching aids from the cited guide, not an evidence list or assessment objectives.',
     practice: 'Fictional situations. Written from the cited guide.',
     related: `${edition.title}. Relations follow identifiers and titles in this snapshot.`,
+    rev3: (
+      <>
+        Both texts verbatim; the change note is written by Cipher &amp; Chalk.{' '}
+        {rev3 && (
+          <a
+            href={`${rev3Source.officialUrl}#page=${rev3.pdfPage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open the page
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        )}
+      </>
+    ),
   }
 
   return (
@@ -133,7 +159,7 @@ export function ControlPage(props: ControlPageProps) {
         {announcement}
       </p>
       <div
-        className={`control-id-line ${tab === 'decode' ? 'is-full' : 'is-compact'}`}
+        className={`control-id-line ${shown === 'decode' ? 'is-full' : 'is-compact'}`}
         role="group"
         aria-label="The control ID, decoded"
       >
@@ -200,13 +226,13 @@ export function ControlPage(props: ControlPageProps) {
         {control.title}
       </h1>
       <nav className="control-tabs" aria-label="Views of this control">
-        {controlTabs.map((item) => (
+        {views.map((item) => (
           <a
             key={item}
             id={`${prefix}-view-${item}`}
             className="control-tab"
             href={tabUrl(item)}
-            aria-current={tab === item ? 'page' : undefined}
+            aria-current={shown === item ? 'page' : undefined}
             onClick={(event) => {
               if (
                 event.defaultPrevented ||
@@ -222,7 +248,7 @@ export function ControlPage(props: ControlPageProps) {
             }}
           >
             {tabLabels[item]}
-            {tab === item && (
+            {shown === item && (
               <svg
                 className="control-tab-stroke chalk"
                 viewBox="0 0 64 6"
@@ -239,14 +265,19 @@ export function ControlPage(props: ControlPageProps) {
         <section
           className="control-panel control-panel-decode"
           aria-labelledby={`${prefix}-view-decode`}
-          hidden={tab !== 'decode'}
+          hidden={shown !== 'decode'}
         >
+          {tab !== shown && (
+            <p className="decode-note">
+              Rev 3 is read beside the Level 2 requirements; showing Decode.
+            </p>
+          )}
           <DecodeTab control={control} />
         </section>
         <section
           className="control-panel control-panel-explain"
           aria-labelledby={`${prefix}-view-explain`}
-          hidden={tab !== 'explain'}
+          hidden={shown !== 'explain'}
         >
           <ExplainTab
             control={control}
@@ -259,33 +290,45 @@ export function ControlPage(props: ControlPageProps) {
         <section
           className="control-panel control-panel-evidence"
           aria-labelledby={`${prefix}-view-evidence`}
-          hidden={tab !== 'evidence'}
+          hidden={shown !== 'evidence'}
         >
           <EvidenceTab draft={draft} />
         </section>
         <section
           className="control-panel control-panel-practice"
           aria-labelledby={`${prefix}-view-practice`}
-          hidden={tab !== 'practice'}
+          hidden={shown !== 'practice'}
         >
           <PracticeTab control={control} />
         </section>
         <section
           className="control-panel control-panel-related"
           aria-labelledby={`${prefix}-view-related`}
-          hidden={tab !== 'related'}
+          hidden={shown !== 'related'}
         >
           <RelatedTab control={control} edition={edition} mode={mode} />
         </section>
+        {rev3 && (
+          <section
+            className="control-panel control-panel-rev3"
+            aria-labelledby={`${prefix}-view-rev3`}
+            hidden={shown !== 'rev3'}
+          >
+            {/* Nothing here keeps state, and the Rev 2 quotation is already on Decode. */}
+            {shown === 'rev3' && (
+              <Rev3Tab control={control} row={rev3} mode={mode} />
+            )}
+          </section>
+        )}
       </div>
-      {tab !== 'decode' && guide && (
+      {shown !== 'decode' && guide && (
         <p className="print-only control-print-citation">
           Verbatim. {guide.title}, v{guide.version}, page {guide.printedPage}.{' '}
           {isHttps(guideUrl) && <span className="mono">{guideUrl}</span>}
         </p>
       )}
       <div className="control-foot">
-        <p className="control-foot-note">{footers[tab]}</p>
+        <p className="control-foot-note">{footers[shown]}</p>
         <div className="control-prevnext">
           {previous && (
             <button

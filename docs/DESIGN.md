@@ -73,7 +73,7 @@ not establish it.
 - **Learn `/learn`:** a selected control is the Board's control page
   (`mockups/Decode.html`, `Explain.html` and the phone variants). The identifier
   is decoded on the first line from the catalog and the publication it names,
-  the title is the heading, and five views follow as links in the address
+  the title is the heading, and the views follow as links in the address
   (`tab=`; Decode is the default and never serialized): Decode shows the
   requirement sentence verbatim with each mapped clause underlined in yellow
   chalk and the letters of the objectives it produces beside it (the map is
@@ -82,8 +82,12 @@ not establish it.
   chalk picker, the explanation in the chalk's colour and the example in the
   margin; Evidence has the compliance questions and evidence examples; Practice
   holds the existing activity and visual lesson; Related lists neighbours by
-  identifier and title, the words, the objectives index and the sources. A
-  footer line carries the citation or one sentence of provenance and
+  identifier and title, the words, the objectives index and the sources; Rev
+  3, on Level 2 controls only, reads the pinned Rev 2 requirement beside its
+  NIST SP 800-171 Revision 3 counterpart, both verbatim, with one sentence on
+  what changed (`src/data/cmmc-rev3-map.json`) and says once that CMMC is
+  pinned to Rev 2. A footer line carries the citation or one sentence of
+  provenance and
   Previous/Next within the current results. “Browse & filter controls” sits
   under the page and reopens search, filters and results. Discovery and the
   project's demo lesson keep their earlier layout until their own pass.
@@ -99,7 +103,7 @@ not establish it.
   (the search line on Home), `?` shows the keys in a dialog that Escape
   closes, returning focus. Print gives a one-page control sheet: the lockup,
   the ID decoded, the title, the requirement sentence and its objectives with
-  the verbatim citation, plus the open Explain or Evidence view; black on
+  the verbatim citation, plus the open Explain, Evidence or Rev 3 view; black on
   white, no tray, nav, footer, tabs or actions.
 - **Glossary `/glossary`:** the Board's Words page (`mockups/Glossary.html`).
   Left: "Words", a search line, an A–Z row with the active letter on a yellow

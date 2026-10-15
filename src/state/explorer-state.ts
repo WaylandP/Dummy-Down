@@ -16,15 +16,16 @@ export interface ExplorerCatalog {
 
 export type ExplorerCollection = 'lessons' | 'references'
 
-/** The five views of a control; Decode is the one a bare address opens. */
+/** The views of a control; Decode is the one a bare address opens. Rev 3 exists for Level 2 controls. */
 export type ControlTab =
-  'decode' | 'explain' | 'evidence' | 'practice' | 'related'
+  'decode' | 'explain' | 'evidence' | 'practice' | 'related' | 'rev3'
 export const controlTabs: readonly ControlTab[] = [
   'decode',
   'explain',
   'evidence',
   'practice',
   'related',
+  'rev3',
 ]
 
 export interface ExplorerFilters {

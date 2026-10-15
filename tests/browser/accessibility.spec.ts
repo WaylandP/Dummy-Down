@@ -21,6 +21,11 @@ const routes = [
   ['AC.L1-b.1.i Evidence', `${reader}&tab=evidence`, /AC\.L1-b\.1\.i/],
   ['AC.L1-b.1.i Practice', `${reader}&tab=practice`, /AC\.L1-b\.1\.i/],
   ['AC.L1-b.1.i Related', `${reader}&tab=related`, /AC\.L1-b\.1\.i/],
+  [
+    'AC.L2-3.1.1 Rev 3',
+    `${reader.replace('ac-l1-b-1-i', 'ac-l2-3-1-1')}&tab=rev3`,
+    /AC\.L2-3\.1\.1/,
+  ],
 ] as const
 
 // Real layout and semantics are not exercised by the existing jsdom suite.
@@ -53,6 +58,10 @@ for (const width of [1440, 1024, 768, 640, 390, 320]) {
       if (path.endsWith('tab=practice'))
         await expect(
           page.getByText('Watch the idea · 40 seconds', { exact: true }),
+        ).toBeVisible()
+      if (path.endsWith('tab=rev3'))
+        await expect(
+          page.getByRole('region', { name: /^Rev 3 03\.01\.01/ }),
         ).toBeVisible()
       if (path.endsWith('tab=related'))
         await expect(

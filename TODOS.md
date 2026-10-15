@@ -7,9 +7,9 @@ already merged into `main`. No completion percentage is implied.
 - **The Board's remaining features follow in build order.** The shell, every
   page, the phone bar, the print sheet and the keys ship in five pull
   requests. [THE_BOARD.md](docs/design/THE_BOARD.md) lists what comes next,
-  one pull request each: the Rev 3 tab, chalk popovers, Send this chalk, the
-  CedarPoint story, Erase, the timeline, the assessor's three words and Dash;
-  the Decode clause map deferred from the control page comes first. Discovery
+  one pull request each; the Decode clause map and the Rev 3 tab are in, and
+  chalk popovers, Send this chalk, the CedarPoint story, Erase, the timeline,
+  the assessor's three words and Dash follow. Discovery
   and the project's demo lesson keep their earlier layout until their own
   pass. Anything that adds a fact lives in `src/data/` with a source record
   under `docs/sources/`.
