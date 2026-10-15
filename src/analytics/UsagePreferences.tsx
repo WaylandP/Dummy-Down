@@ -23,39 +23,44 @@ export function UsagePreferences() {
           trackUsage({ name: 'section_open', section: 'usage' })
       }}
     >
-      <summary>Usage & privacy</summary>
-      <p>
-        On the production site, Vercel Web Analytics measures visits and
-        learning interactions so we can improve Cipher &amp; Chalk. Interaction
-        events use catalog identifiers and categories; search text, answer
-        choices, and copied links are excluded. Page URLs have their query and
-        fragment removed.
-      </p>
-      <p>
-        We respect Do Not Track and Global Privacy Control. Your preference
-        below is stored in this browser. Vercel processes traffic information
-        under its{' '}
-        <a
-          href="https://vercel.com/docs/analytics/privacy-policy"
-          target="_blank"
-          rel="noopener noreferrer"
+      <summary>Usage &amp; privacy</summary>
+      <div className="usage-panel">
+        <svg className="usage-panel-dust" aria-hidden="true" focusable="false">
+          <rect width="100%" height="100%" filter="url(#dust)" />
+        </svg>
+        <p>
+          On the production site, Vercel Web Analytics measures visits and
+          learning interactions so we can improve Cipher &amp; Chalk.
+          Interaction events use catalog identifiers and categories; search
+          text, answer choices, and copied links are excluded. Page URLs have
+          their query and fragment removed.
+        </p>
+        <p>
+          We respect Do Not Track and Global Privacy Control. Your preference
+          below is stored in this browser. Vercel processes traffic information
+          under its{' '}
+          <a
+            href="https://vercel.com/docs/analytics/privacy-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Web Analytics privacy information
+          </a>
+          .
+        </p>
+        <p role="status" aria-live="polite">
+          {message}
+        </p>
+        <button
+          type="button"
+          className="inline-action"
+          onClick={() => setEnabled(!preferenceEnabled)}
         >
-          Web Analytics privacy information
-        </a>
-        .
-      </p>
-      <p role="status" aria-live="polite">
-        {message}
-      </p>
-      <button
-        type="button"
-        className="inline-action"
-        onClick={() => setEnabled(!preferenceEnabled)}
-      >
-        {preferenceEnabled
-          ? 'Pause usage measurement'
-          : 'Allow usage measurement'}
-      </button>
+          {preferenceEnabled
+            ? 'Pause usage measurement'
+            : 'Allow usage measurement'}
+        </button>
+      </div>
     </details>
   )
 }

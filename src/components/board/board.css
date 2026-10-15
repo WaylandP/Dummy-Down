@@ -1,0 +1,460 @@
+/* The Board shell: ground, dust, lockup, header, footer and tray. Tokens live in
+   src/styles.css; the approved screens are docs/design/mockups. */
+@layer components {
+  .hand {
+    font-family: var(--font-hand);
+    font-weight: 400;
+    font-synthesis: none;
+  }
+  .mono {
+    font-family: var(--font-mono);
+  }
+  .chalk {
+    filter: url('#chalk');
+  }
+
+  /* Frame: header, page, footer line, tray. One screen at 1280×800. */
+  .board-page {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  .board-ground {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(
+      120% 90% at 30% 20%,
+      var(--color-board-lift) 0%,
+      var(--color-board) 60%,
+      var(--color-board-edge) 100%
+    );
+    pointer-events: none;
+  }
+  .board-dust {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+    opacity: 0.16;
+    pointer-events: none;
+  }
+  .board-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  .site-header,
+  .board-main,
+  .site-footer,
+  .chalk-tray {
+    position: relative;
+    z-index: 1;
+  }
+  .board-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .section-shell {
+    width: min(1344px, 100% - 2 * var(--gutter));
+    margin-inline: auto;
+  }
+  .skip-link {
+    position: fixed;
+    left: 16px;
+    top: 16px;
+    z-index: 50;
+    padding: 12px 20px;
+    background: var(--color-yellow);
+    color: var(--color-board);
+    font-weight: 500;
+    transform: translateY(-160%);
+  }
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  /* Header: the lockup and the main nav. */
+  .site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
+    padding: 24px var(--gutter) 0;
+  }
+  .page-home .site-header {
+    padding-top: 28px;
+  }
+  .lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 44px;
+    color: var(--color-chalk);
+    white-space: nowrap;
+  }
+  .lockup-mark {
+    width: 34px;
+    height: 34px;
+  }
+  .lockup-name {
+    font-family: var(--font-hand);
+    font-size: 24px;
+    line-height: 1;
+    font-synthesis: none;
+  }
+  .page-home .lockup-mark {
+    width: 40px;
+    height: 40px;
+  }
+  .page-home .lockup-name {
+    font-size: 28px;
+  }
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 28px;
+    margin-left: auto;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .site-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-chalk);
+  }
+  .site-nav a[aria-current='page'] {
+    color: var(--color-yellow);
+  }
+  .site-nav a:hover,
+  .find-toggle:hover {
+    color: var(--color-yellow);
+  }
+  .find-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: 0 -12px 0 4px;
+    border: 0;
+    padding: 0;
+    background: none;
+    color: var(--color-chalk);
+  }
+  .find-toggle[aria-expanded='true'] {
+    color: var(--color-yellow);
+  }
+
+  /* The find line: an input on a chalk underline, no box. */
+  .find-line {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    padding-top: 4px;
+  }
+  .find-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: min(480px, 100%);
+  }
+  .find-field input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 4px;
+    border: 0;
+    background: transparent;
+    color: var(--color-chalk);
+    font-size: 20px;
+  }
+  /* Focus is the underline turning to yellow chalk; the field has no box to ring. */
+  .find-field input:focus-visible {
+    outline: none;
+  }
+  .find-line:has(input:focus-visible) .find-underline path {
+    stroke: var(--color-yellow);
+    stroke-width: 5;
+  }
+  .find-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    padding: 0;
+    background: none;
+    color: var(--color-yellow);
+  }
+  .find-underline {
+    display: block;
+    width: min(480px, 100%);
+    height: 8px;
+  }
+  .find-underline path {
+    fill: none;
+    stroke: var(--color-chalk);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+  }
+
+  /* Footer: one line above the tray. */
+  .site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 32px;
+    padding: 12px var(--gutter) 14px;
+    color: var(--color-chalk-dim);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .footer-note {
+    flex: 1 1 36ch;
+    text-wrap: pretty;
+  }
+  .footer-note a,
+  .footer-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-chalk-muted);
+    text-decoration: underline;
+    text-decoration-color: var(--color-rule);
+    text-underline-offset: 4px;
+  }
+  .footer-note a:hover,
+  .footer-links a:hover,
+  .usage-preferences summary:hover {
+    color: var(--color-yellow);
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 24px;
+  }
+  .footer-links a[aria-current='page'] {
+    color: var(--color-yellow);
+  }
+  .usage-preferences summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    list-style: none;
+    color: var(--color-chalk-muted);
+    text-decoration: underline;
+    text-decoration-color: var(--color-rule);
+    text-underline-offset: 4px;
+  }
+  .usage-preferences summary::-webkit-details-marker {
+    display: none;
+  }
+  .usage-preferences[open] summary {
+    color: var(--color-yellow);
+  }
+  /* The preference panel opens upward on a hairline so the footer stays one line. */
+  .usage-panel {
+    position: absolute;
+    right: var(--gutter);
+    bottom: calc(100% - 6px);
+    z-index: 2;
+    width: min(64ch, 100% - 2 * var(--gutter));
+    padding: 14px 0 6px;
+    border-top: 1px solid var(--color-rule);
+    background: var(--color-board);
+    color: var(--color-chalk-muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  /* The panel covers page text, so it carries its own patch of dust. */
+  .usage-panel-dust {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+    opacity: 0.16;
+    pointer-events: none;
+  }
+  .usage-panel p + p,
+  .usage-panel p + button {
+    margin-top: 10px;
+  }
+  .usage-panel a {
+    color: var(--color-chalk);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .usage-panel .inline-action {
+    color: var(--color-yellow);
+  }
+
+  /* The tray: wood, three chalks and a stub. */
+  .chalk-tray {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 34px;
+    padding: 0 var(--gutter);
+    background: linear-gradient(
+      var(--color-tray-top),
+      var(--color-tray) 55%,
+      var(--color-tray-bottom)
+    );
+    box-shadow:
+      0 -1px 0 var(--color-tray-edge),
+      0 -10px 24px rgba(0, 0, 0, 0.35);
+  }
+  .tray-stick {
+    flex: none;
+    height: 11px;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  }
+  .tray-stick-white {
+    width: 64px;
+    background: var(--color-chalk);
+  }
+  .tray-stick-yellow {
+    width: 48px;
+    background: var(--color-yellow);
+  }
+  .tray-stick-blue {
+    width: 56px;
+    background: var(--color-blue);
+  }
+  .tray-stick[data-lifted='true'] {
+    opacity: 0.25;
+    box-shadow: none;
+  }
+  .tray-stub {
+    flex: none;
+    width: 14px;
+    height: 11px;
+    border-radius: 5px;
+    background: var(--color-chalk);
+    opacity: 0.6;
+  }
+  .tray-legend {
+    display: flex;
+    gap: 18px;
+    margin-left: auto;
+    overflow: hidden;
+    color: var(--color-tray-label);
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Below this the legend would clip mid-word; the Explain tab names the chalks. */
+  .tray-legend {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .site-header {
+    padding-top: 18px;
+    gap: 0 16px;
+  }
+  .lockup {
+    gap: 10px;
+  }
+  .lockup-mark,
+  .page-home .lockup-mark {
+    width: 28px;
+    height: 28px;
+  }
+  .lockup-name,
+  .page-home .lockup-name {
+    font-size: 20px;
+  }
+  /* Phone: lockup and find on the first row, the places to go on the second. */
+  .site-nav {
+    order: 1;
+    flex-basis: 100%;
+    gap: 0 18px;
+    margin-left: 0;
+    font-size: 14px;
+  }
+  .find-toggle {
+    margin-left: auto;
+  }
+  .find-line {
+    order: 2;
+    align-items: stretch;
+  }
+  .find-field,
+  .find-underline {
+    width: 100%;
+  }
+  .site-footer {
+    gap: 0 20px;
+    padding-top: 8px;
+  }
+  .footer-links {
+    gap: 0 18px;
+  }
+  .usage-panel {
+    left: var(--gutter);
+    right: var(--gutter);
+    width: auto;
+  }
+}
+@media (max-width: 380px) {
+  .site-nav {
+    gap: 0 14px;
+  }
+}
+
+@media (forced-colors: active) {
+  .board-ground,
+  .board-dust,
+  .usage-panel-dust {
+    display: none;
+  }
+  .find-field input:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+  .chalk,
+  h1 {
+    filter: none;
+  }
+  .chalk-tray {
+    border-top: 1px solid CanvasText;
+    box-shadow: none;
+  }
+  .site-nav a[aria-current='page'],
+  .footer-links a[aria-current='page'] {
+    text-decoration: underline;
+  }
+}
+
+@media print {
+  .board-ground,
+  .board-dust,
+  .usage-panel-dust {
+    display: none;
+  }
+  .chalk,
+  h1 {
+    filter: none;
+  }
+}

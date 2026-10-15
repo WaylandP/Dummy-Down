@@ -5,21 +5,21 @@ import { createLessonUrl } from './state/explorer-state'
 import { sitePage } from './state/site-page'
 import type { ExplanationMode } from './types/content'
 import { Glossary } from './components/Glossary'
-import { Brand } from './components/Brand'
+import { BoardDefs, BoardDust, BoardGround } from './components/board/BoardDefs'
+import { SiteHeader, browseUrl } from './components/board/SiteHeader'
+import { SiteFooter } from './components/board/SiteFooter'
+import { ChalkTray, TrayLegend } from './components/board/ChalkTray'
 import { CoverageRoute } from './components/CoverageRoute'
 import { PracticeRoute } from './components/PracticeRoute'
 import { StudyHome } from './components/StudyHome'
 import { DisclaimerPage } from './components/DisclaimerPage'
 import { LearningRoute } from './components/LearningRoute'
 import { UsageAnalytics } from './analytics/UsageAnalytics'
-import { UsagePreferences } from './analytics/UsagePreferences'
-import { trackUsage } from './analytics/usage'
 import { LocalProgressProvider } from './progress/LocalProgressProvider'
 import { learningActivities } from './data/learning'
 import { setPageMeta } from './seo/page-meta'
 
 const repositoryUrl = 'https://github.com/WaylandP/cipher-and-chalk'
-const browseUrl = '/learn?view=discover&collection=references'
 const perspectives = [
   {
     mode: 'beginner',
@@ -109,7 +109,10 @@ function Application() {
     }
   }, [page])
   return (
-    <div id="top" className={`site-page page-${page}`}>
+    <div id="top" className={`board-page site-page page-${page}`}>
+      <BoardDefs />
+      <BoardGround />
+      <BoardDust />
       <a
         className="skip-link"
         href={
@@ -123,45 +126,8 @@ function Application() {
       >
         Skip to content
       </a>
-      <header className="site-header section-shell">
-        <Brand />
-        <nav aria-label="Main navigation">
-          <a
-            href={browseUrl}
-            aria-current={page === 'learn' ? 'page' : undefined}
-            onClick={() =>
-              trackUsage({ name: 'section_open', section: 'explorer' })
-            }
-          >
-            Learn
-          </a>
-          <a
-            href="/glossary"
-            aria-current={page === 'glossary' ? 'page' : undefined}
-            onClick={() =>
-              trackUsage({ name: 'section_open', section: 'glossary' })
-            }
-          >
-            Glossary
-          </a>
-          <a
-            href="/practice"
-            aria-current={page === 'practice' ? 'page' : undefined}
-          >
-            Practice
-          </a>
-          <a
-            href="/coverage"
-            aria-current={page === 'coverage' ? 'page' : undefined}
-          >
-            Coverage
-          </a>
-          <a href="/about" aria-current={page === 'about' ? 'page' : undefined}>
-            About
-          </a>
-        </nav>
-      </header>
-      <main id="main" tabIndex={-1}>
+      <SiteHeader page={page} />
+      <main id="main" className="board-main" tabIndex={-1}>
         {page === 'home' && <StudyHome />}
         {page === 'coverage' && <CoverageRoute />}
         {page === 'disclaimer' && <DisclaimerPage />}
@@ -298,27 +264,8 @@ function Application() {
           </section>
         )}
       </main>
-      <footer className="site-footer section-shell">
-        <div className="footer-top">
-          <p>Understand the idea. Keep asking questions.</p>
-          <a
-            href={`${repositoryUrl}/blob/main/LICENSE`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open source · MIT
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
-        </div>
-        <UsagePreferences />
-        <p className="footer-disclaimer">
-          An independent educational project. Not legal advice or a guarantee of
-          compliance. Not affiliated with or endorsed by DoD, NIST, or any
-          certification body.
-          <br />
-          <a href="/disclaimer">Disclaimer &amp; terms of use</a>
-        </p>
-      </footer>
+      <SiteFooter page={page} />
+      <ChalkTray label={page === 'home' ? undefined : <TrayLegend />} />
       <UsageAnalytics />
     </div>
   )

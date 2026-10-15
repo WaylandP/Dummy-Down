@@ -4,6 +4,12 @@ The [detailed roadmap](docs/ROADMAP.md) is the milestone source of truth. This f
 keeps the next actionable priorities; the [changelog](CHANGELOG.md) records work
 already merged into `main`. No completion percentage is implied.
 
+- **The Board is being built in order.** The app shell, tokens, fonts and mark
+  are first; then Home, the control page's five tabs, the remaining pages, and
+  the phone bar, print stylesheet and keyboard keys, one pull request each,
+  following [THE_BOARD.md](docs/design/THE_BOARD.md). Each screen is compared
+  with its mockup at 1280×800 and 390×844 before its pull request opens. The
+  `docs/DESIGN.md` page notes describe the layouts still waiting their turn.
 - **Phase 3 engineering is shipped.** All five scoped increments are merged with
   successful exact-head CI and automatic production deployments. The
   [execution log](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-3-execution-2026-10-14.md) records evidence;

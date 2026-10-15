@@ -1,13 +1,17 @@
 import { ArrowRight, ArrowUpRight, Search } from 'lucide-react'
 import { referenceControls, defaultLesson } from '../data/content'
 import { findLearningActivity } from '../data/learning'
-import { filterControls } from '../data/control-search'
 import {
   createLessonUrl,
   serializeExplorerSearch,
 } from '../state/explorer-state'
 import { trackUsage } from '../analytics/usage'
 import type { LessonIdentity } from '../types/content'
+import {
+  findControlAction,
+  findControlFields,
+  reportFindControl,
+} from './board/find-control'
 
 const starts = [
   {
@@ -83,26 +87,19 @@ export function StudyHome() {
       </section>
       <form
         className="desk-search"
-        action="/learn"
+        action={findControlAction}
         method="get"
         role="search"
         aria-label="Find a security control"
-        onSubmit={(event) => {
-          const query = String(new FormData(event.currentTarget).get('q') ?? '')
-          trackUsage({
-            name: 'search_used',
-            scope: 'explorer',
-            active: Boolean(query.trim()),
-            resultCount: filterControls(referenceControls, {
-              frameworkId: 'cmmc',
-              query,
-            }).length,
-          })
-        }}
+        onSubmit={(event) =>
+          reportFindControl(
+            String(new FormData(event.currentTarget).get('q') ?? ''),
+          )
+        }
       >
-        <input type="hidden" name="view" value="discover" />
-        <input type="hidden" name="collection" value="references" />
-        <input type="hidden" name="catalog" value="cmmc" />
+        {Object.entries(findControlFields).map(([name, value]) => (
+          <input key={name} type="hidden" name={name} value={value} />
+        ))}
         <label htmlFor="desk-search">Search the control library</label>
         <div className="desk-search-field">
           <Search size={22} aria-hidden="true" />

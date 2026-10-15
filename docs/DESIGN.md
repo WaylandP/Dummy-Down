@@ -4,53 +4,62 @@
 with the eight approved screens in [design/mockups](design/mockups/). Build
 work follows that specification.
 
-The notes below describe the previous "reference desk" implementation that is
-live until the Board ships. They remain accurate for the current code.
+## What is live
+
+The app shell is the Board's: the slate ground with chalk dust, the Morse-C ring
+and lockup, the four-item nav with a find line, the one-line footer and the
+wooden tray, drawn from the tokens and fonts in `src/styles.css` and the
+components in `src/components/board/`. Walter Turncoat writes headings, Atkinson
+Hyperlegible Next the reading text, Martian Mono anything that is code; all three
+are self-hosted from `public/fonts/` with licenses in `public/font-licenses/`.
+The mark is `public/brand/mark.svg`; the app icon and favicon are the ring on a
+yellow tile.
+
+The page layouts below are the previous "reference desk" implementation. They
+stay live inside the Board shell, with its colors and type, until each screen
+is redrawn in the Board's build order. Their notes remain accurate for layout;
+their palette and type notes no longer apply.
 
 ---
 
-The owner's latest October 14 feedback asks for stronger structure, a distinctive
-style and a useful place to return for help. The reference desk gives the blackboard
-a practical purpose: find a control, work through an existing situation, or check a
-definition. Matte black, breathing room and comfortable reading remain central.
-The supplied four-part chalk mark remains the identity reference. See
-[reference history](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/design-references/README.md). Owner visual acceptance is pending.
+The reference desk gave the blackboard a practical purpose: find a control, work
+through an existing situation, or check a definition. Its page structure is
+described below and is what the Board redraws, screen by screen. The earlier
+identity work is kept in the
+[reference history](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/design-references/README.md).
 
 ## Identity and type
 
-Use **Cipher & Chalk**. Keep the four alternating curved white/turquoise quadrants
-around circular negative space; no generic shield, monogram or replacement logo.
-`public/brand/chalk-mark.svg` is an approximate scalable recreation, not the original
-uploaded PNG. Changa One remains the compact wordmark. Turquoise appears in the
-small mark and purposeful instructional SVG paths; large surfaces and headlines stay muted.
+The mark is a chalk ring whose strokes spell C in Morse (dash dot dash dot):
+`public/brand/mark.svg`, drawn inline by `src/components/board/Mark.tsx` with
+the chalk filter. The app icon and favicon put the same ring on a yellow tile.
+The lockup is the ring beside "Cipher & Chalk" in Walter Turncoat. No other
+logo, monogram or wordmark.
 
-IBM Plex Sans supplies the question-led homepage heading, lesson titles, paragraphs,
-navigation and controls. Kalam gives the teaching board and margin note their chalk
-character. Body text is never distressed or handwritten. Fonts are local; retain
-source checksums and SIL OFL notices. Preserve LICENSE, infrastructure/content IDs
-and source URLs.
+Walter Turncoat is the chalk hand: headings, annotations and the lockup, never
+body text. Atkinson Hyperlegible Next is for reading and interface text; Martian
+Mono for anything that is code. All three are self-hosted from `public/fonts/`
+with checksums in `public/fonts/sources.json` and licenses in
+`public/font-licenses/`; the site loads no font packages and nothing from
+Google Fonts. Preserve LICENSE, infrastructure/content IDs and source URLs.
 
 ## Palette and spacing
 
-Shared tokens live in `src/styles.css`; `src/components/study-home.css` defines the
-reference desk and `src/components/reader-outline.css` defines lesson navigation.
+The tokens are the Board's, defined once in `src/styles.css` and listed in
+[THE_BOARD.md](design/THE_BOARD.md): board `#1B2522` with its radial lift,
+chalk `#EDE9DD`, chalk-muted `#C9CFC6` / `#9AA39B`, yellow `#F2D16B`, blue
+`#8FB7D6`, the tray woods and the `rgba(237,233,221,.18)` rule. There are no
+other hues; states use lightness. The legacy names the older page stylesheets
+still reference (`--color-canvas`, `--color-accent`, `--font-code` and the
+rest) alias these tokens until those stylesheets are retired. The shared
+`src/styles.css` carries no retired values; `src/components/study-home.css`
+keeps its own until Home is redrawn.
 
-| Role                          | Value                             |
-| ----------------------------- | --------------------------------- |
-| Blackboard canvas             | `#111111`                         |
-| Reading / raised surfaces     | `#171717` / `#202020`             |
-| Chalk / muted text            | `#deded7` / `#a9aaa4`             |
-| Warm ochre interaction accent | `#d1c59f`                         |
-| Divider / field boundary      | `#343534` / `#777a74`             |
-| Success / error / warning     | `#b8ceb5` / `#e9b5a8` / `#d1c49d` |
-
-Warm grey chalk and subdued backgrounds aim for comfortable reading. Grain belongs
-on the small teaching board; long reading surfaces stay solid. Use thin rules,
-numbered entries and a single framed chalkboard to organize the homepage. Avoid
-green canvases, glow, glass, decorative animation and an oversized promotional hero.
-Keep generous gaps, short reading lines, 16–19px body text and relaxed line height.
-Selection uses an underline and text change as well as color. Reading comfort must
-still be assessed with real people; a palette alone does not establish it.
+Structure is lines, chalk strokes and space: no cards, chips, pills, hero
+blocks, icon rows, gradient washes or numbered markers. Desktop gutters are
+48px, tablet 32px, phone 20px (`--gutter`); one screen per view at 1280×800.
+Reading comfort must still be assessed with real people; a palette alone does
+not establish it.
 
 ## One main task per page
 
