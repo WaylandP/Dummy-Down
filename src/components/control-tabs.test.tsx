@@ -6,6 +6,7 @@ import { referenceControls } from '../data/content'
 import { levelOneLearningActivities } from '../data/level-one-learning'
 import { expandedLearningActivities } from '../data/expanded-learning'
 import { hasVisualExplanation } from '../data/visual-lesson-index'
+import { quotation } from '../test/quotation'
 
 function openReference(key: string, tab = 'decode') {
   window.history.replaceState(
@@ -51,7 +52,9 @@ describe('Control views', () => {
           screen.getByText('Watch the idea · 40 seconds', { exact: true }),
         ).toBeVisible()
       await user.click(links[0]!)
-      expect(screen.getByText(control.requirement.text)).toBeVisible()
+      expect(
+        screen.getByText(quotation(control.requirement.text)),
+      ).toBeVisible()
       expect(screen.getByText(activity.title)).not.toBeVisible()
       expect(new URLSearchParams(window.location.search).has('tab')).toBe(false)
       const ids = [...document.querySelectorAll('[id]')].map(

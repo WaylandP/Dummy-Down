@@ -6,6 +6,7 @@ import { referenceControls } from '../data/content'
 import { lessonIdentity, lessonIdentityKey } from '../state/explorer-state'
 import { chalkFor } from './board/chalks'
 import { ControlResults } from './ControlResults'
+import { quotation } from '../test/quotation'
 
 beforeEach(() => window.history.replaceState(null, '', '/learn'))
 
@@ -82,7 +83,9 @@ describe('Versioned CMMC reference catalog', () => {
         explorer.getByRole('combobox', { name: 'Content collection' }),
       ).toHaveValue('references')
       expect(
-        explorer.getByText(reference('AC.L2-3.1.1').requirement.text),
+        explorer.getByText(
+          quotation(reference('AC.L2-3.1.1').requirement.text),
+        ),
       ).toBeVisible()
       expect(
         explorer.getByRole('button', { name: 'Copy reference link' }),
@@ -109,7 +112,9 @@ describe('Versioned CMMC reference catalog', () => {
     const control = reference('AT.L2-3.2.1')
     await user.click(explorer.getByText('Compare model wording'))
     expect(explorer.getByText(control.modelRequirement.text)).toBeVisible()
-    expect(explorer.getByText(control.requirement.text)).toBeVisible()
+    expect(
+      explorer.getByText(quotation(control.requirement.text)),
+    ).toBeVisible()
     await user.click(explorer.getByRole('link', { name: 'Related' }))
     await user.click(explorer.getByText('Sources & publication context'))
     for (const link of explorer.getAllByRole('link', {
@@ -141,7 +146,7 @@ describe('Versioned CMMC reference catalog', () => {
       explorer.getByRole('combobox', { name: 'Content collection' }),
     ).toHaveValue('references')
     expect(
-      explorer.getByText(reference('AC.L2-3.1.1').requirement.text),
+      explorer.getByText(quotation(reference('AC.L2-3.1.1').requirement.text)),
     ).toBeVisible()
     act(() => {
       window.history.replaceState(

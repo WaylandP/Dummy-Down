@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import App from '../App'
 import { referenceControls } from '../data/content'
+import { quotation } from '../test/quotation'
 
 vi.mock('../data/cmmc-perspectives', () => {
   throw new Error('Simulated failed curriculum chunk')
@@ -31,9 +32,11 @@ describe('Curriculum load failure', () => {
       }),
     ).toBeVisible()
     expect(screen.queryByRole('tab')).not.toBeInTheDocument()
-    expect(screen.getByText(control.requirement.text)).toBeInTheDocument()
+    expect(
+      screen.getByText(quotation(control.requirement.text)),
+    ).toBeInTheDocument()
     await user.click(screen.getByRole('link', { name: 'Decode' }))
-    expect(screen.getByText(control.requirement.text)).toBeVisible()
+    expect(screen.getByText(quotation(control.requirement.text))).toBeVisible()
     expect(new URLSearchParams(window.location.search).get('mode')).toBe(
       'compliance',
     )

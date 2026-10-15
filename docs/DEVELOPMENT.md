@@ -97,6 +97,7 @@ their existing values; historical source URLs are preserved.
 | `src/data/editions.ts`            | Project editorial editions and the explicit sample identity.                                                                  |
 | `src/data/cmmc-references.ts`     | Attributed CMMC publication quotations with snapshot/page provenance.                                                         |
 | `src/data/cmmc-perspectives.ts`   | Separately authored, edition-bound teaching drafts, loaded on demand.                                                         |
+| `src/data/cmmc-clause-map.ts`     | The Decode view's clause map: which objectives each clause of a requirement sentence produces, read from the pinned text.     |
 | `src/analytics/`                  | Allowlisted usage events, production gating and visitor privacy preferences.                                                  |
 | `src/data/learning.ts`            | Fictional scenarios and questions tied to an exact teaching identity.                                                         |
 | `src/data/level-one-learning.ts`  | Three Level 1 draft activities, misunderstandings and accessible diagram data.                                                |

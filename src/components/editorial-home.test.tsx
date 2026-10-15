@@ -45,7 +45,13 @@ describe('Learning page and reading navigation', () => {
       }),
     ).toBeVisible()
     expect(
-      screen.getByText(/Limit information system access to authorized users/),
+      screen.getByText(
+        (_, node) =>
+          node?.tagName === 'BLOCKQUOTE' &&
+          /Limit information system access to authorized users/.test(
+            node.textContent ?? '',
+          ),
+      ),
     ).toBeVisible()
   })
 

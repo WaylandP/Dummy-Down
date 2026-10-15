@@ -6,6 +6,7 @@ import { referenceControls } from '../data/content'
 import { findCmmcPerspective } from '../data/cmmc-perspectives'
 import { chalkFor } from './board/chalks'
 import { ExplainTab } from './control/ExplainTab'
+import { quotation } from '../test/quotation'
 
 beforeEach(() => window.history.replaceState(null, '', '/learn'))
 
@@ -64,7 +65,9 @@ describe('Control-specific teaching perspectives', () => {
         explorer.getByText(/not an evidence list or assessment objectives/),
       ).toBeVisible()
       await user.click(views.getByRole('link', { name: 'Decode' }))
-      expect(explorer.getByText(control.requirement.text)).toBeVisible()
+      expect(
+        explorer.getByText(quotation(control.requirement.text)),
+      ).toBeVisible()
       await user.click(views.getByRole('link', { name: 'Practice' }))
       if (id === 'AC.L1-b.1.i' || id === 'IA.L2-3.5.3') {
         expect(explorer.getByText('Practice activity')).toBeVisible()
@@ -77,7 +80,9 @@ describe('Control-specific teaching perspectives', () => {
           explorer.getByText('No practice for this control yet.'),
         ).toBeVisible()
       }
-      expect(explorer.getByText(control.requirement.text)).toBeInTheDocument()
+      expect(
+        explorer.getByText(quotation(control.requirement.text)),
+      ).toBeInTheDocument()
       expect(new URLSearchParams(window.location.search).get('tab')).toBe(
         'practice',
       )
@@ -112,7 +117,7 @@ describe('Control-specific teaching perspectives', () => {
       screen.getByRole('button', { name: 'Yes, it clicked' }),
     ).toHaveAttribute('aria-pressed', 'false')
     expect(
-      screen.getByText(second.control.requirement.text),
+      screen.getByText(quotation(second.control.requirement.text)),
     ).toBeInTheDocument()
   })
 

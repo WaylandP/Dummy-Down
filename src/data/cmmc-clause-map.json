@@ -1,0 +1,1623 @@
+{
+  "schemaVersion": 1,
+  "frameworkId": "cmmc",
+  "editionId": "cmmc-2-13-sep-2024",
+  "derivedFrom": ["cmmc-213-catalog.json", "cmmc-objectives.json"],
+  "controls": {
+    "AC.L1-b.1.i": [
+      {
+        "text": "authorized users",
+        "letters": ["a", "d"]
+      },
+      {
+        "text": "processes acting on behalf of authorized users",
+        "letters": ["b", "e"]
+      },
+      {
+        "text": "devices (including other information systems)",
+        "letters": ["c", "f"]
+      }
+    ],
+    "AC.L1-b.1.ii": [
+      {
+        "text": "Limit information system access",
+        "letters": ["b"]
+      },
+      {
+        "text": "the types of transactions and functions that authorized users are permitted to execute",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L1-b.1.iii": [
+      {
+        "text": "connections to",
+        "letters": ["a", "c", "e"]
+      },
+      {
+        "text": "use of external information systems",
+        "letters": ["b", "d", "f"]
+      }
+    ],
+    "AC.L1-b.1.iv": [],
+    "IA.L1-b.1.v": [
+      {
+        "text": "information system users",
+        "letters": ["a"]
+      },
+      {
+        "text": "processes acting on behalf of users",
+        "letters": ["b"]
+      },
+      {
+        "text": "devices",
+        "letters": ["c"]
+      }
+    ],
+    "IA.L1-b.1.vi": [
+      {
+        "text": "users",
+        "letters": ["a"]
+      },
+      {
+        "text": "processes",
+        "letters": ["b"]
+      },
+      {
+        "text": "devices",
+        "letters": ["c"]
+      }
+    ],
+    "MP.L1-b.1.vii": [
+      {
+        "text": "before disposal",
+        "letters": ["a"]
+      },
+      {
+        "text": "release for reuse",
+        "letters": ["b"]
+      }
+    ],
+    "PE.L1-b.1.viii": [
+      {
+        "text": "organizational information systems",
+        "letters": ["b"]
+      },
+      {
+        "text": "equipment",
+        "letters": ["c"]
+      },
+      {
+        "text": "the respective operating environments",
+        "letters": ["d"]
+      },
+      {
+        "text": "authorized individuals",
+        "letters": ["a"]
+      }
+    ],
+    "PE.L1-b.1.ix": [
+      {
+        "text": "Escort visitors",
+        "letters": ["a"]
+      },
+      {
+        "text": "monitor visitor activity",
+        "letters": ["b"]
+      },
+      {
+        "text": "maintain audit logs of physical access",
+        "letters": ["c"]
+      },
+      {
+        "text": "control",
+        "letters": ["e"]
+      },
+      {
+        "text": "manage",
+        "letters": ["f"]
+      },
+      {
+        "text": "physical access devices",
+        "letters": ["d"]
+      }
+    ],
+    "SC.L1-b.1.x": [
+      {
+        "text": "Monitor",
+        "letters": ["c", "d"]
+      },
+      {
+        "text": "control",
+        "letters": ["e", "f"]
+      },
+      {
+        "text": "protect",
+        "letters": ["g", "h"]
+      },
+      {
+        "text": "external boundaries",
+        "letters": ["a"]
+      },
+      {
+        "text": "key internal boundaries",
+        "letters": ["b"]
+      }
+    ],
+    "SC.L1-b.1.xi": [
+      {
+        "text": "publicly accessible system components",
+        "letters": ["a"]
+      },
+      {
+        "text": "physically or logically separated from internal networks",
+        "letters": ["b"]
+      }
+    ],
+    "SI.L1-b.1.xii": [
+      {
+        "text": "Identify",
+        "letters": ["b"]
+      },
+      {
+        "text": "report",
+        "letters": ["d"]
+      },
+      {
+        "text": "correct",
+        "letters": ["f"]
+      },
+      {
+        "text": "in a timely manner",
+        "letters": ["a", "c", "e"]
+      }
+    ],
+    "SI.L1-b.1.xiii": [
+      {
+        "text": "Provide protection from malicious code",
+        "letters": ["b"]
+      },
+      {
+        "text": "appropriate locations",
+        "letters": ["a"]
+      }
+    ],
+    "SI.L1-b.1.xiv": [],
+    "SI.L1-b.1.xv": [
+      {
+        "text": "periodic scans of the information system",
+        "letters": ["a", "b"]
+      },
+      {
+        "text": "real-time scans of files from external sources as files are downloaded, opened, or executed",
+        "letters": ["c"]
+      }
+    ],
+    "AC.L2-3.1.1": [
+      {
+        "text": "authorized users",
+        "letters": ["a", "d"]
+      },
+      {
+        "text": "processes acting on behalf of authorized users",
+        "letters": ["b", "e"]
+      },
+      {
+        "text": "devices (including other systems)",
+        "letters": ["c", "f"]
+      }
+    ],
+    "AC.L2-3.1.2": [
+      {
+        "text": "Limit system access",
+        "letters": ["b"]
+      },
+      {
+        "text": "the types of transactions and functions that authorized users are permitted to execute",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L2-3.1.3": [
+      {
+        "text": "Control the flow of CUI",
+        "letters": ["a", "b"]
+      },
+      {
+        "text": "approved authorizations",
+        "letters": ["d", "e"]
+      }
+    ],
+    "AC.L2-3.1.4": [
+      {
+        "text": "Separate the duties of individuals",
+        "letters": ["a", "b", "c"]
+      }
+    ],
+    "AC.L2-3.1.5": [
+      {
+        "text": "specific security functions",
+        "letters": ["c", "d"]
+      },
+      {
+        "text": "privileged accounts",
+        "letters": ["a", "b"]
+      }
+    ],
+    "AC.L2-3.1.6": [
+      {
+        "text": "Use non-privileged accounts or roles",
+        "letters": ["b"]
+      },
+      {
+        "text": "nonsecurity functions",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L2-3.1.7": [
+      {
+        "text": "Prevent",
+        "letters": ["c"]
+      },
+      {
+        "text": "non-privileged users",
+        "letters": ["b"]
+      },
+      {
+        "text": "privileged functions",
+        "letters": ["a"]
+      },
+      {
+        "text": "capture the execution of such functions in audit logs",
+        "letters": ["d"]
+      }
+    ],
+    "AC.L2-3.1.8": [],
+    "AC.L2-3.1.9": [
+      {
+        "text": "Provide privacy and security notices",
+        "letters": ["b"]
+      },
+      {
+        "text": "consistent with applicable CUI rules",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L2-3.1.10": [
+      {
+        "text": "Use session lock",
+        "letters": ["b"]
+      },
+      {
+        "text": "pattern-hiding displays",
+        "letters": ["c"]
+      },
+      {
+        "text": "after a period of inactivity",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L2-3.1.11": [
+      {
+        "text": "Terminate (automatically) a user session",
+        "letters": ["b"]
+      },
+      {
+        "text": "a defined condition",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L2-3.1.12": [
+      {
+        "text": "Monitor",
+        "letters": ["d"]
+      },
+      {
+        "text": "control",
+        "letters": ["c"]
+      },
+      {
+        "text": "remote access sessions",
+        "letters": ["a", "b"]
+      }
+    ],
+    "AC.L2-3.1.13": [
+      {
+        "text": "Employ",
+        "letters": ["b"]
+      },
+      {
+        "text": "cryptographic mechanisms to protect the confidentiality of remote access sessions",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L2-3.1.14": [
+      {
+        "text": "Route remote access",
+        "letters": ["b"]
+      },
+      {
+        "text": "managed access control points",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L2-3.1.15": [
+      {
+        "text": "remote execution of privileged commands",
+        "letters": ["a", "c"]
+      },
+      {
+        "text": "remote access to security-relevant information",
+        "letters": ["b", "d"]
+      }
+    ],
+    "AC.L2-3.1.16": [
+      {
+        "text": "Authorize",
+        "letters": ["b"]
+      },
+      {
+        "text": "wireless access",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L2-3.1.17": [
+      {
+        "text": "authentication",
+        "letters": ["a"]
+      },
+      {
+        "text": "encryption",
+        "letters": ["b"]
+      }
+    ],
+    "AC.L2-3.1.18": [
+      {
+        "text": "Control",
+        "letters": ["b", "c"]
+      },
+      {
+        "text": "mobile devices",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L2-3.1.19": [
+      {
+        "text": "Encrypt CUI",
+        "letters": ["b"]
+      },
+      {
+        "text": "mobile devices and mobile computing platforms",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L2-3.1.20": [
+      {
+        "text": "connections to",
+        "letters": ["a", "c", "e"]
+      },
+      {
+        "text": "use of external systems",
+        "letters": ["b", "d", "f"]
+      }
+    ],
+    "AC.L2-3.1.21": [
+      {
+        "text": "Limit",
+        "letters": ["b", "c"]
+      },
+      {
+        "text": "use of portable storage devices on external systems",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L2-3.1.22": [],
+    "AT.L2-3.2.1": [
+      {
+        "text": "the security risks associated with their activities",
+        "letters": ["a", "c"]
+      },
+      {
+        "text": "the applicable policies, standards, and procedures related to the security of those systems",
+        "letters": ["b", "d"]
+      }
+    ],
+    "AT.L2-3.2.2": [
+      {
+        "text": "personnel are trained",
+        "letters": ["c"]
+      },
+      {
+        "text": "assigned",
+        "letters": ["b"]
+      },
+      {
+        "text": "information security-related duties and responsibilities",
+        "letters": ["a"]
+      }
+    ],
+    "AT.L2-3.2.3": [
+      {
+        "text": "Provide security awareness training",
+        "letters": ["b"]
+      },
+      {
+        "text": "potential indicators of insider threat",
+        "letters": ["a"]
+      }
+    ],
+    "AU.L2-3.3.1": [
+      {
+        "text": "Create",
+        "letters": ["c", "d"]
+      },
+      {
+        "text": "retain",
+        "letters": ["e", "f"]
+      },
+      {
+        "text": "system audit logs and records to the extent needed to enable the monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity",
+        "letters": ["a", "b"]
+      }
+    ],
+    "AU.L2-3.3.2": [],
+    "AU.L2-3.3.3": [
+      {
+        "text": "Review",
+        "letters": ["a", "b"]
+      },
+      {
+        "text": "update",
+        "letters": ["c"]
+      }
+    ],
+    "AU.L2-3.3.4": [
+      {
+        "text": "Alert",
+        "letters": ["a", "c"]
+      },
+      {
+        "text": "an audit logging process failure",
+        "letters": ["b"]
+      }
+    ],
+    "AU.L2-3.3.5": [
+      {
+        "text": "Correlate",
+        "letters": ["b"]
+      },
+      {
+        "text": "audit record review, analysis, and reporting processes for investigation and response to indications of unlawful, unauthorized, suspicious, or unusual activity",
+        "letters": ["a"]
+      }
+    ],
+    "AU.L2-3.3.6": [
+      {
+        "text": "audit record reduction",
+        "letters": ["a"]
+      },
+      {
+        "text": "report generation",
+        "letters": ["b"]
+      }
+    ],
+    "AU.L2-3.3.7": [
+      {
+        "text": "compares and synchronizes internal system clocks",
+        "letters": ["c"]
+      },
+      {
+        "text": "an authoritative source",
+        "letters": ["b"]
+      },
+      {
+        "text": "generate time stamps for audit records",
+        "letters": ["a"]
+      }
+    ],
+    "AU.L2-3.3.8": [
+      {
+        "text": "audit information",
+        "letters": ["a", "b", "c"]
+      },
+      {
+        "text": "audit logging tools",
+        "letters": ["d", "e", "f"]
+      }
+    ],
+    "AU.L2-3.3.9": [
+      {
+        "text": "Limit management of audit logging functionality",
+        "letters": ["b"]
+      },
+      {
+        "text": "a subset of privileged users",
+        "letters": ["a"]
+      }
+    ],
+    "CM.L2-3.4.1": [
+      {
+        "text": "baseline configurations",
+        "letters": ["a", "b", "c"]
+      },
+      {
+        "text": "inventories",
+        "letters": ["d", "e", "f"]
+      }
+    ],
+    "CM.L2-3.4.2": [
+      {
+        "text": "Establish",
+        "letters": ["a"]
+      },
+      {
+        "text": "enforce",
+        "letters": ["b"]
+      }
+    ],
+    "CM.L2-3.4.3": [
+      {
+        "text": "Track",
+        "letters": ["a"]
+      },
+      {
+        "text": "review",
+        "letters": ["b"]
+      },
+      {
+        "text": "approve or disapprove",
+        "letters": ["c"]
+      },
+      {
+        "text": "log",
+        "letters": ["d"]
+      }
+    ],
+    "CM.L2-3.4.4": [],
+    "CM.L2-3.4.5": [
+      {
+        "text": "Define",
+        "letters": ["a", "e"]
+      },
+      {
+        "text": "document",
+        "letters": ["b", "f"]
+      },
+      {
+        "text": "approve",
+        "letters": ["c", "g"]
+      },
+      {
+        "text": "enforce",
+        "letters": ["d", "h"]
+      }
+    ],
+    "CM.L2-3.4.6": [
+      {
+        "text": "configuring organizational systems",
+        "letters": ["b"]
+      },
+      {
+        "text": "only essential capabilities",
+        "letters": ["a"]
+      }
+    ],
+    "CM.L2-3.4.7": [
+      {
+        "text": "programs",
+        "letters": ["a", "b", "c"]
+      },
+      {
+        "text": "functions",
+        "letters": ["d", "e", "f"]
+      },
+      {
+        "text": "ports",
+        "letters": ["g", "h", "i"]
+      },
+      {
+        "text": "protocols",
+        "letters": ["j", "k", "l"]
+      },
+      {
+        "text": "services",
+        "letters": ["m", "n", "o"]
+      }
+    ],
+    "CM.L2-3.4.8": [],
+    "CM.L2-3.4.9": [
+      {
+        "text": "Control",
+        "letters": ["a", "b"]
+      },
+      {
+        "text": "monitor",
+        "letters": ["c"]
+      }
+    ],
+    "IA.L2-3.5.1": [
+      {
+        "text": "system users",
+        "letters": ["a"]
+      },
+      {
+        "text": "processes acting on behalf of users",
+        "letters": ["b"]
+      },
+      {
+        "text": "devices",
+        "letters": ["c"]
+      }
+    ],
+    "IA.L2-3.5.2": [
+      {
+        "text": "users",
+        "letters": ["a"]
+      },
+      {
+        "text": "processes",
+        "letters": ["b"]
+      },
+      {
+        "text": "devices",
+        "letters": ["c"]
+      }
+    ],
+    "IA.L2-3.5.3": [
+      {
+        "text": "local",
+        "letters": ["b"]
+      },
+      {
+        "text": "network",
+        "letters": ["c"]
+      },
+      {
+        "text": "privileged accounts",
+        "letters": ["a"]
+      },
+      {
+        "text": "network access to non-privileged accounts",
+        "letters": ["d"]
+      }
+    ],
+    "IA.L2-3.5.4": [],
+    "IA.L2-3.5.5": [
+      {
+        "text": "Prevent reuse of identifiers",
+        "letters": ["b"]
+      },
+      {
+        "text": "a defined period",
+        "letters": ["a"]
+      }
+    ],
+    "IA.L2-3.5.6": [
+      {
+        "text": "Disable identifiers",
+        "letters": ["b"]
+      },
+      {
+        "text": "a defined period of inactivity",
+        "letters": ["a"]
+      }
+    ],
+    "IA.L2-3.5.7": [
+      {
+        "text": "minimum password complexity",
+        "letters": ["a", "c"]
+      },
+      {
+        "text": "change of characters",
+        "letters": ["b", "d"]
+      }
+    ],
+    "IA.L2-3.5.8": [
+      {
+        "text": "Prohibit password reuse",
+        "letters": ["b"]
+      },
+      {
+        "text": "a specified number of generations",
+        "letters": ["a"]
+      }
+    ],
+    "IA.L2-3.5.9": [],
+    "IA.L2-3.5.10": [
+      {
+        "text": "Store",
+        "letters": ["a"]
+      },
+      {
+        "text": "transmit",
+        "letters": ["b"]
+      }
+    ],
+    "IA.L2-3.5.11": [],
+    "IR.L2-3.6.1": [
+      {
+        "text": "Establish an operational incident-handling capability",
+        "letters": ["a"]
+      },
+      {
+        "text": "preparation",
+        "letters": ["b"]
+      },
+      {
+        "text": "detection",
+        "letters": ["c"]
+      },
+      {
+        "text": "analysis",
+        "letters": ["d"]
+      },
+      {
+        "text": "containment",
+        "letters": ["e"]
+      },
+      {
+        "text": "recovery",
+        "letters": ["f"]
+      },
+      {
+        "text": "user response activities",
+        "letters": ["g"]
+      }
+    ],
+    "IR.L2-3.6.2": [
+      {
+        "text": "Track",
+        "letters": ["a"]
+      },
+      {
+        "text": "document",
+        "letters": ["b"]
+      },
+      {
+        "text": "report",
+        "letters": ["e", "f"]
+      },
+      {
+        "text": "designated officials",
+        "letters": ["d"]
+      },
+      {
+        "text": "authorities",
+        "letters": ["c"]
+      }
+    ],
+    "IR.L2-3.6.3": [],
+    "MA.L2-3.7.1": [],
+    "MA.L2-3.7.2": [
+      {
+        "text": "tools",
+        "letters": ["a"]
+      },
+      {
+        "text": "techniques",
+        "letters": ["b"]
+      },
+      {
+        "text": "mechanisms",
+        "letters": ["c"]
+      },
+      {
+        "text": "personnel",
+        "letters": ["d"]
+      }
+    ],
+    "MA.L2-3.7.3": [],
+    "MA.L2-3.7.4": [],
+    "MA.L2-3.7.5": [
+      {
+        "text": "Require multifactor authentication to establish nonlocal maintenance sessions via external network connections",
+        "letters": ["a"]
+      },
+      {
+        "text": "terminate such connections when nonlocal maintenance is complete",
+        "letters": ["b"]
+      }
+    ],
+    "MA.L2-3.7.6": [],
+    "MP.L2-3.8.1": [
+      {
+        "text": "physically control",
+        "letters": ["a", "b"]
+      },
+      {
+        "text": "securely store",
+        "letters": ["c", "d"]
+      }
+    ],
+    "MP.L2-3.8.2": [],
+    "MP.L2-3.8.3": [
+      {
+        "text": "before disposal",
+        "letters": ["a"]
+      },
+      {
+        "text": "release for reuse",
+        "letters": ["b"]
+      }
+    ],
+    "MP.L2-3.8.4": [
+      {
+        "text": "necessary CUI markings",
+        "letters": ["a"]
+      },
+      {
+        "text": "distribution limitations",
+        "letters": ["b"]
+      }
+    ],
+    "MP.L2-3.8.5": [
+      {
+        "text": "Control access to media containing CUI",
+        "letters": ["a"]
+      },
+      {
+        "text": "maintain accountability for media during transport outside of controlled areas",
+        "letters": ["b"]
+      }
+    ],
+    "MP.L2-3.8.6": [],
+    "MP.L2-3.8.7": [],
+    "MP.L2-3.8.8": [],
+    "MP.L2-3.8.9": [],
+    "PS.L2-3.9.1": [],
+    "PS.L2-3.9.2": [],
+    "PE.L2-3.10.1": [
+      {
+        "text": "organizational systems",
+        "letters": ["b"]
+      },
+      {
+        "text": "equipment",
+        "letters": ["c"]
+      },
+      {
+        "text": "the respective operating environments",
+        "letters": ["d"]
+      },
+      {
+        "text": "authorized individuals",
+        "letters": ["a"]
+      }
+    ],
+    "PE.L2-3.10.2": [
+      {
+        "text": "the physical facility",
+        "letters": ["a", "c"]
+      },
+      {
+        "text": "support infrastructure",
+        "letters": ["b", "d"]
+      }
+    ],
+    "PE.L2-3.10.3": [
+      {
+        "text": "Escort visitors",
+        "letters": ["a"]
+      },
+      {
+        "text": "monitor visitor activity",
+        "letters": ["b"]
+      }
+    ],
+    "PE.L2-3.10.4": [],
+    "PE.L2-3.10.5": [
+      {
+        "text": "Control",
+        "letters": ["b"]
+      },
+      {
+        "text": "manage",
+        "letters": ["c"]
+      },
+      {
+        "text": "physical access devices",
+        "letters": ["a"]
+      }
+    ],
+    "PE.L2-3.10.6": [
+      {
+        "text": "Enforce",
+        "letters": ["b"]
+      },
+      {
+        "text": "safeguarding measures for CUI",
+        "letters": ["a"]
+      }
+    ],
+    "RA.L2-3.11.1": [
+      {
+        "text": "Periodically",
+        "letters": ["a"]
+      },
+      {
+        "text": "assess the risk to organizational operations (including mission, functions, image, or reputation), organizational assets, and individuals, resulting from the operation of organizational systems and the associated processing, storage, or transmission of CUI",
+        "letters": ["b"]
+      }
+    ],
+    "RA.L2-3.11.2": [
+      {
+        "text": "organizational systems",
+        "letters": ["b", "d"]
+      },
+      {
+        "text": "applications",
+        "letters": ["c", "e"]
+      },
+      {
+        "text": "periodically",
+        "letters": ["a"]
+      }
+    ],
+    "RA.L2-3.11.3": [
+      {
+        "text": "Remediate",
+        "letters": ["b"]
+      },
+      {
+        "text": "vulnerabilities",
+        "letters": ["a"]
+      }
+    ],
+    "CA.L2-3.12.1": [
+      {
+        "text": "Periodically",
+        "letters": ["a"]
+      },
+      {
+        "text": "assess the security controls",
+        "letters": ["b"]
+      }
+    ],
+    "CA.L2-3.12.2": [
+      {
+        "text": "Develop",
+        "letters": ["b"]
+      },
+      {
+        "text": "implement",
+        "letters": ["c"]
+      },
+      {
+        "text": "correct deficiencies and reduce or eliminate vulnerabilities",
+        "letters": ["a"]
+      }
+    ],
+    "CA.L2-3.12.3": [],
+    "CA.L2-3.12.4": [
+      {
+        "text": "Develop",
+        "letters": ["a"]
+      },
+      {
+        "text": "periodically",
+        "letters": ["g"]
+      },
+      {
+        "text": "update",
+        "letters": ["h"]
+      },
+      {
+        "text": "system boundaries",
+        "letters": ["b"]
+      },
+      {
+        "text": "system environments of operation",
+        "letters": ["c"]
+      },
+      {
+        "text": "how security requirements are implemented",
+        "letters": ["e"]
+      },
+      {
+        "text": "the relationships with or connections to other systems",
+        "letters": ["f"]
+      }
+    ],
+    "SC.L2-3.13.1": [
+      {
+        "text": "Monitor",
+        "letters": ["c", "d"]
+      },
+      {
+        "text": "control",
+        "letters": ["e", "f"]
+      },
+      {
+        "text": "protect",
+        "letters": ["g", "h"]
+      },
+      {
+        "text": "external boundaries",
+        "letters": ["a"]
+      },
+      {
+        "text": "key internal boundaries",
+        "letters": ["b"]
+      }
+    ],
+    "SC.L2-3.13.2": [
+      {
+        "text": "architectural designs",
+        "letters": ["a", "d"]
+      },
+      {
+        "text": "software development techniques",
+        "letters": ["b", "e"]
+      },
+      {
+        "text": "systems engineering principles",
+        "letters": ["c", "f"]
+      }
+    ],
+    "SC.L2-3.13.3": [
+      {
+        "text": "Separate",
+        "letters": ["c"]
+      },
+      {
+        "text": "user functionality",
+        "letters": ["a"]
+      },
+      {
+        "text": "system management functionality",
+        "letters": ["b"]
+      }
+    ],
+    "SC.L2-3.13.4": [],
+    "SC.L2-3.13.5": [
+      {
+        "text": "publicly accessible system components",
+        "letters": ["a"]
+      },
+      {
+        "text": "physically or logically separated from internal networks",
+        "letters": ["b"]
+      }
+    ],
+    "SC.L2-3.13.6": [
+      {
+        "text": "Deny network communications traffic by default",
+        "letters": ["a"]
+      },
+      {
+        "text": "allow network communications traffic by exception",
+        "letters": ["b"]
+      }
+    ],
+    "SC.L2-3.13.7": [],
+    "SC.L2-3.13.8": [
+      {
+        "text": "Implement",
+        "letters": ["c"]
+      },
+      {
+        "text": "cryptographic mechanisms",
+        "letters": ["a"]
+      },
+      {
+        "text": "alternative physical safeguards",
+        "letters": ["b"]
+      }
+    ],
+    "SC.L2-3.13.9": [
+      {
+        "text": "at the end of the sessions",
+        "letters": ["b"]
+      },
+      {
+        "text": "after a defined period of inactivity",
+        "letters": ["a", "c"]
+      }
+    ],
+    "SC.L2-3.13.10": [
+      {
+        "text": "Establish",
+        "letters": ["a"]
+      },
+      {
+        "text": "manage",
+        "letters": ["b"]
+      }
+    ],
+    "SC.L2-3.13.11": [],
+    "SC.L2-3.13.12": [
+      {
+        "text": "Prohibit remote activation",
+        "letters": ["c"]
+      },
+      {
+        "text": "collaborative computing devices",
+        "letters": ["a"]
+      },
+      {
+        "text": "provide indication of devices in use to users present at the device",
+        "letters": ["b"]
+      }
+    ],
+    "SC.L2-3.13.13": [
+      {
+        "text": "Control",
+        "letters": ["a"]
+      },
+      {
+        "text": "monitor",
+        "letters": ["b"]
+      }
+    ],
+    "SC.L2-3.13.14": [
+      {
+        "text": "Control",
+        "letters": ["a"]
+      },
+      {
+        "text": "monitor",
+        "letters": ["b"]
+      }
+    ],
+    "SC.L2-3.13.15": [],
+    "SC.L2-3.13.16": [],
+    "SI.L2-3.14.1": [
+      {
+        "text": "Identify",
+        "letters": ["b"]
+      },
+      {
+        "text": "report",
+        "letters": ["d"]
+      },
+      {
+        "text": "correct",
+        "letters": ["f"]
+      },
+      {
+        "text": "in a timely manner",
+        "letters": ["a", "c", "e"]
+      }
+    ],
+    "SI.L2-3.14.2": [
+      {
+        "text": "Provide protection from malicious code",
+        "letters": ["b"]
+      },
+      {
+        "text": "designated locations",
+        "letters": ["a"]
+      }
+    ],
+    "SI.L2-3.14.3": [
+      {
+        "text": "Monitor system security alerts and advisories",
+        "letters": ["b"]
+      },
+      {
+        "text": "take action in response",
+        "letters": ["a", "c"]
+      }
+    ],
+    "SI.L2-3.14.4": [],
+    "SI.L2-3.14.5": [
+      {
+        "text": "periodic scans of organizational systems",
+        "letters": ["a", "b"]
+      },
+      {
+        "text": "real-time scans of files from external sources as files are downloaded, opened, or executed",
+        "letters": ["c"]
+      }
+    ],
+    "SI.L2-3.14.6": [
+      {
+        "text": "Monitor organizational systems",
+        "letters": ["a"]
+      },
+      {
+        "text": "inbound",
+        "letters": ["b"]
+      },
+      {
+        "text": "outbound communications traffic",
+        "letters": ["c"]
+      }
+    ],
+    "SI.L2-3.14.7": [],
+    "AC.L3-3.1.2e": [
+      {
+        "text": "Restrict access to systems and system components",
+        "letters": ["b"]
+      },
+      {
+        "text": "information resources that are owned, provisioned, or issued by the organization",
+        "letters": ["a"]
+      }
+    ],
+    "AC.L3-3.1.3e": [
+      {
+        "text": "Employ",
+        "letters": ["b"]
+      },
+      {
+        "text": "secure information transfer solutions",
+        "letters": ["ODP1"]
+      },
+      {
+        "text": "information flows between security domains on connected systems",
+        "letters": ["a"]
+      }
+    ],
+    "AT.L3-3.2.1e": [
+      {
+        "text": "Provide awareness training upon initial hire, following a significant cyber event, and at least annually",
+        "letters": ["b"]
+      },
+      {
+        "text": "threats from social engineering, advanced persistent threat actors, breaches, and suspicious behaviors",
+        "letters": ["a"]
+      },
+      {
+        "text": "update the training at least annually",
+        "letters": ["d"]
+      },
+      {
+        "text": "significant changes to the threat",
+        "letters": ["c"]
+      }
+    ],
+    "AT.L3-3.2.2e": [
+      {
+        "text": "Include",
+        "letters": ["d"]
+      },
+      {
+        "text": "practical exercises",
+        "letters": ["a"]
+      },
+      {
+        "text": "current threat scenarios",
+        "letters": ["b"]
+      },
+      {
+        "text": "provide feedback",
+        "letters": ["e"]
+      },
+      {
+        "text": "individuals involved in the training and their supervisors",
+        "letters": ["c"]
+      }
+    ],
+    "CM.L3-3.4.1e": [
+      {
+        "text": "Establish",
+        "letters": ["c"]
+      },
+      {
+        "text": "maintain",
+        "letters": ["d"]
+      },
+      {
+        "text": "approved",
+        "letters": ["a"]
+      },
+      {
+        "text": "implemented system components",
+        "letters": ["b"]
+      }
+    ],
+    "CM.L3-3.4.2e": [
+      {
+        "text": "Employ",
+        "letters": ["b"]
+      },
+      {
+        "text": "automated mechanisms",
+        "letters": ["a"]
+      },
+      {
+        "text": "detect misconfigured or unauthorized system components",
+        "letters": ["c"]
+      },
+      {
+        "text": "after detection, remove the components or place the components in a quarantine or remediation network to facilitate patching, re-configuration, or other mitigations",
+        "letters": ["d"]
+      }
+    ],
+    "CM.L3-3.4.3e": [
+      {
+        "text": "Employ",
+        "letters": ["c"]
+      },
+      {
+        "text": "automated discovery and management tools",
+        "letters": ["a"]
+      },
+      {
+        "text": "an up-to-date, complete, accurate, and readily available inventory of system components",
+        "letters": ["b"]
+      }
+    ],
+    "IA.L3-3.5.1e": [
+      {
+        "text": "Identify and authenticate",
+        "letters": ["c"]
+      },
+      {
+        "text": "systems and system components",
+        "letters": ["ODP1"]
+      },
+      {
+        "text": "cryptographically based",
+        "letters": ["a"]
+      },
+      {
+        "text": "replay resistant",
+        "letters": ["b"]
+      }
+    ],
+    "IA.L3-3.5.3e": [
+      {
+        "text": "Employ",
+        "letters": ["c"]
+      },
+      {
+        "text": "automated or manual/procedural mechanisms",
+        "letters": ["b"]
+      },
+      {
+        "text": "known, authenticated, in a properly configured state, or in a trust profile",
+        "letters": ["a"]
+      }
+    ],
+    "IR.L3-3.6.1e": [
+      {
+        "text": "Establish",
+        "letters": ["a"]
+      },
+      {
+        "text": "maintain",
+        "letters": ["c"]
+      },
+      {
+        "text": "operates 24/7, with allowance for remote/on-call staff",
+        "letters": ["b"]
+      }
+    ],
+    "IR.L3-3.6.2e": [
+      {
+        "text": "Establish",
+        "letters": ["a"]
+      },
+      {
+        "text": "maintain",
+        "letters": ["c"]
+      },
+      {
+        "text": "deployed by the organization within 24 hours",
+        "letters": ["b"]
+      }
+    ],
+    "PS.L3-3.9.2e": [
+      {
+        "text": "organizational systems",
+        "letters": ["c"]
+      },
+      {
+        "text": "protected",
+        "letters": ["d"]
+      },
+      {
+        "text": "adverse information",
+        "letters": ["b"]
+      },
+      {
+        "text": "individuals with access to CUI",
+        "letters": ["a"]
+      }
+    ],
+    "RA.L3-3.11.1e": [
+      {
+        "text": "at a minimum from open or commercial sources, and any DoD-provided sources",
+        "letters": ["ODP1"]
+      },
+      {
+        "text": "a risk assessment",
+        "letters": ["a"]
+      },
+      {
+        "text": "the development of organizational systems, security architectures",
+        "letters": ["b"]
+      },
+      {
+        "text": "selection of security solutions",
+        "letters": ["c"]
+      },
+      {
+        "text": "monitoring",
+        "letters": ["d"]
+      },
+      {
+        "text": "threat hunting",
+        "letters": ["e"]
+      },
+      {
+        "text": "response and recovery activities",
+        "letters": ["f"]
+      }
+    ],
+    "RA.L3-3.11.2e": [
+      {
+        "text": "search for indicators of compromise",
+        "letters": ["a", "b"]
+      },
+      {
+        "text": "organizational systems",
+        "letters": ["ODP4"]
+      },
+      {
+        "text": "detect, track, and disrupt threats that evade existing controls",
+        "letters": ["c"]
+      }
+    ],
+    "RA.L3-3.11.3e": [
+      {
+        "text": "Employ",
+        "letters": ["c"]
+      },
+      {
+        "text": "advanced automation and analytics capabilities",
+        "letters": ["a"]
+      },
+      {
+        "text": "analysts",
+        "letters": ["b"]
+      }
+    ],
+    "RA.L3-3.11.4e": [
+      {
+        "text": "the security solution selected",
+        "letters": ["a"]
+      },
+      {
+        "text": "the rationale for the security solution",
+        "letters": ["b"]
+      },
+      {
+        "text": "the risk determination",
+        "letters": ["c"]
+      }
+    ],
+    "RA.L3-3.11.5e": [
+      {
+        "text": "Assess the effectiveness",
+        "letters": ["d"]
+      },
+      {
+        "text": "security solutions",
+        "letters": ["a"]
+      },
+      {
+        "text": "anticipated risk to organizational systems and the organization",
+        "letters": ["c"]
+      },
+      {
+        "text": "current and accumulated threat intelligence",
+        "letters": ["b"]
+      }
+    ],
+    "RA.L3-3.11.6e": [
+      {
+        "text": "Assess",
+        "letters": ["b"]
+      },
+      {
+        "text": "respond to",
+        "letters": ["c"]
+      },
+      {
+        "text": "monitor",
+        "letters": ["d"]
+      },
+      {
+        "text": "supply chain risks associated with organizational systems and system components",
+        "letters": ["a"]
+      }
+    ],
+    "RA.L3-3.11.7e": [
+      {
+        "text": "Develop a plan",
+        "letters": ["c"]
+      },
+      {
+        "text": "supply chain risks",
+        "letters": ["a"]
+      },
+      {
+        "text": "organizational systems and system components",
+        "letters": ["b"]
+      },
+      {
+        "text": "update the plan at least annually, and upon receipt of relevant cyber threat information, or in response to a relevant cyber incident",
+        "letters": ["d"]
+      }
+    ],
+    "CA.L3-3.12.1e": [
+      {
+        "text": "Conduct penetration testing at least annually or when significant security changes are made to the system",
+        "letters": ["c"]
+      },
+      {
+        "text": "automated scanning tools",
+        "letters": ["a"]
+      },
+      {
+        "text": "ad hoc tests using subject matter experts",
+        "letters": ["b"]
+      }
+    ],
+    "SC.L3-3.13.4e": [
+      {
+        "text": "Employ",
+        "letters": ["a"]
+      },
+      {
+        "text": "physical isolation techniques",
+        "letters": ["ODP2"]
+      },
+      {
+        "text": "logical isolation techniques",
+        "letters": ["ODP3"]
+      }
+    ],
+    "SI.L3-3.14.1e": [
+      {
+        "text": "Verify the integrity",
+        "letters": ["b"]
+      },
+      {
+        "text": "security critical and essential software",
+        "letters": ["ODP1"]
+      },
+      {
+        "text": "root of trust mechanisms or cryptographic signatures",
+        "letters": ["a"]
+      }
+    ],
+    "SI.L3-3.14.3e": [
+      {
+        "text": "included in the scope of the specified enhanced security requirements",
+        "letters": ["a"]
+      },
+      {
+        "text": "segregated in purpose-specific networks",
+        "letters": ["b"]
+      }
+    ],
+    "SI.L3-3.14.6e": [
+      {
+        "text": "Use",
+        "letters": ["e"]
+      },
+      {
+        "text": "threat indicator information",
+        "letters": ["a"]
+      },
+      {
+        "text": "effective mitigations",
+        "letters": ["b"]
+      },
+      {
+        "text": "at a minimum, open or commercial sources, and any DoD-provided sources",
+        "letters": ["ODP1"]
+      },
+      {
+        "text": "intrusion detection",
+        "letters": ["c"]
+      },
+      {
+        "text": "threat hunting",
+        "letters": ["d"]
+      }
+    ]
+  }
+}

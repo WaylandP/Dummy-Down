@@ -75,7 +75,10 @@ not establish it.
   is decoded on the first line from the catalog and the publication it names,
   the title is the heading, and five views follow as links in the address
   (`tab=`; Decode is the default and never serialized): Decode shows the
-  requirement sentence and its assessment objectives verbatim; Explain has the
+  requirement sentence verbatim with each mapped clause underlined in yellow
+  chalk and the letters of the objectives it produces beside it (the map is
+  data in `src/data/cmmc-clause-map.json`; a control with no clean map shows
+  the sentence plain), then its assessment objectives verbatim; Explain has the
   chalk picker, the explanation in the chalk's colour and the example in the
   margin; Evidence has the compliance questions and evidence examples; Practice
   holds the existing activity and visual lesson; Related lists neighbours by
