@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The doodle chalk</title>
+
+</head>
+<body>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Walter+Turncoat&amp;family=Atkinson+Hyperlegible+Next:wght@400;500;700&amp;family=Martian+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#1B2522;color:#EDE9DD;font-family:'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#EDE9DD}
+.hand{font-family:'Walter Turncoat',cursive;font-weight:400}
+.mono{font-family:'Martian Mono',monospace}
+.chalk{filter:url(#chalk)}
+.muted{color:#9AA39B}.mid{color:#C9CFC6}.yel{color:#F2D16B}.blu{color:#8FB7D6}
+.nv{text-decoration:none;color:#C9CFC6;display:inline-flex;flex-direction:column;gap:3px;align-items:center;min-height:36px;justify-content:center}
+.nv.on{color:#EDE9DD}
+.rule{border:0;border-top:1px solid rgba(237,233,221,.18);margin:0}
+.p{font:400 15px/1.55 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6;margin:0}
+.stick{display:inline-block;height:11px;border-radius:5px;box-shadow:0 2px 2px rgba(0,0,0,.4)}
+.find{display:flex;align-items:center;gap:10px}
+.find input{flex:1;min-width:0;font:400 18px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;padding:6px 2px;border:0;background:transparent;color:#EDE9DD;outline:none}
+.find input::placeholder{color:#6F7A74}
+.u{position:relative;display:inline-block}
+.u svg{position:absolute;left:-2px;right:-2px;bottom:-6px;height:8px;width:calc(100% + 4px)}
+.lt{font-family:'Walter Turncoat',cursive;color:#F2D16B;font-size:17px;vertical-align:top;margin-left:3px}
+.seg{display:flex;gap:18px;font:500 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#9AA39B;align-items:baseline}
+.seg .on{color:#EDE9DD;display:inline-flex;flex-direction:column;gap:2px}
+</style>
+
+<div style="width:1280px;height:800px;box-sizing:border-box;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 20%,#243330 0%,#1B2522 60%,#161F1C 100%);display:flex;flex-direction:column">
+  <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.16">
+    <defs>
+      <filter id="chalk" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d"/><feColorMatrix in="n" type="luminanceToAlpha" result="a"/><feComponentTransfer in="a" result="m"><feFuncA type="table" tableValues="0 0.55 1 1 1 1"/></feComponentTransfer><feComposite in="d" in2="m" operator="in"/></filter>
+      <filter id="dust"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" seed="3"/><feColorMatrix type="saturate" values="0"/></filter>
+    </defs>
+    <rect width="100%" height="100%" filter="url(#dust)"/>
+  </svg>
+  <svg aria-hidden="true" style="position:absolute;left:520px;top:120px;width:640px;height:440px;pointer-events:none;opacity:.07"><ellipse cx="320" cy="220" rx="290" ry="130" fill="#EDE9DD" transform="rotate(-8 320 220)" style="filter:blur(40px)"/></svg>
+  <header style="position:relative;display:flex;align-items:center;justify-content:space-between;padding:22px 48px 0">
+    <a href="#" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#EDE9DD">
+      <svg width="34" height="34" viewBox="0 0 100 100" role="img" aria-label="Cipher and Chalk" class="chalk"><circle cx="50" cy="50" r="38" fill="none" stroke="#EDE9DD" stroke-width="9" stroke-linecap="round" stroke-dasharray="72 17 14 17 72 17 14 16" transform="rotate(-100 50 50)"/></svg>
+      <span class="hand" style="font-size:25px;line-height:1">Cipher &amp; Chalk</span>
+    </a>
+    <nav aria-label="Main" style="display:flex;gap:30px;align-items:center;font:500 15px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif">
+      <a class="nv" href="#">Home</a><a class="nv on" href="#" aria-current="page">Controls<svg aria-hidden="true" width="64" height="5" viewBox="0 0 64 5" class="chalk"><path d="M1 3c21-2 42 0 62-1" fill="none" stroke="#F2D16B" stroke-width="2.5" stroke-linecap="round"/></svg></a><a class="nv" href="#">Glossary</a><a class="nv" href="#">Practice</a><a class="nv" href="#">Timeline</a><a class="nv" href="#">About</a>
+      <button type="button" aria-label="Find a control" style="border:0;background:none;padding:6px;color:#EDE9DD;min-height:36px;min-width:36px;margin-left:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    </nav>
+  </header>
+  <main style="position:relative;flex:1;min-height:0;display:flex;flex-direction:column;padding:0 48px">
+
+    <section style="flex:1;display:grid;grid-template-columns:290px 1fr;gap:36px;min-height:0;padding-top:20px">
+      <nav aria-label="All controls" style="display:flex;flex-direction:column;gap:14px;min-height:0;border-right:1px solid rgba(237,233,221,.18);padding-right:24px">
+        <form role="search" style="display:flex;flex-direction:column;gap:4px;width:266px;max-width:100%">
+        <label style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Find</label>
+        <div class="find"><input type="search" placeholder="Find: 3.1.1, MFA, media…"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2D16B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="chalk"><path d="M4 12.5c5-1 10-1 15 0M14 7l5 5.5-5 5"/></svg></div>
+        <svg aria-hidden="true" width="266" height="8" viewBox="0 0 266 8" class="chalk" style="display:block;max-width:100%"><path d="M2 5c88-3 177-1 262-2" fill="none" stroke="#EDE9DD" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </form>
+        <a href="#" style="display:flex;flex-direction:column;gap:6px;text-decoration:none;padding:10px 0 2px">
+          <span style="display:flex;justify-content:space-between;align-items:baseline"><span class="hand yel" style="font-size:20px">Start here</span><span class="muted" style="font:400 12px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif">1 of 15</span></span>
+          <span class="p" style="font-size:13px">The fifteen Level 1 basics, in order.</span>
+          <svg aria-hidden="true" width="225" height="8" viewBox="0 0 225 8" class="chalk"><rect x="0" y="2" width="11" height="4" rx="2" fill="#F2D16B" opacity="1"/><rect x="15" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="30" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="45" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="60" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="75" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="90" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="105" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="120" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="135" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="150" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="165" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="180" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="195" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/><rect x="210" y="2" width="11" height="4" rx="2" fill="#EDE9DD" opacity="0.3"/></svg>
+        </a>
+        <div class="seg"><span class="muted" style="font-weight:400">Level</span><span class="on">All<svg aria-hidden="true" width="22" height="5" viewBox="0 0 22 5" class="chalk"><path d="M1 3c7-2 14 0 20-1" fill="none" stroke="#F2D16B" stroke-width="2.5" stroke-linecap="round"/></svg></span><span>1</span><span>2</span><span>3</span></div>
+        <hr class="rule">
+        <div style="position:relative;flex:1;min-height:0;overflow:hidden">
+          <div style="display:flex;flex-direction:column"><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#EDE9DD;font:500 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▾</span><span class="mono blu" style="font-size:12px">AC</span><span>Access Control</span><span class="mono muted" style="font-size:11px">28</span></a><a href="#" style="position:relative;display:flex;flex-direction:column;padding:5px 0 5px 0;text-decoration:none;margin-left:50px"><span style="position:absolute;left:-14px;top:6px;bottom:6px;width:3px;border-radius:2px;background:#F2D16B"></span><span class="mono" style="font-size:12px;color:#8FB7D6">AC.L1-b.1.i</span><span style="font:400 13px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#EDE9DD">Authorized Access Control</span></a><a href="#" style="position:relative;display:flex;flex-direction:column;padding:5px 0 5px 0;text-decoration:none;margin-left:50px"><span class="mono" style="font-size:12px;color:#7FA3BF">AC.L1-b.1.ii</span><span style="font:400 13px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#9AA39B">Transaction &amp; Function Control</span></a><a href="#" style="position:relative;display:flex;flex-direction:column;padding:5px 0 5px 0;text-decoration:none;margin-left:50px"><span class="mono" style="font-size:12px;color:#7FA3BF">AC.L1-b.1.iii</span><span style="font:400 13px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#9AA39B">External Connections</span></a><a href="#" style="position:relative;display:flex;flex-direction:column;padding:5px 0 5px 0;text-decoration:none;margin-left:50px"><span class="mono" style="font-size:12px;color:#7FA3BF">AC.L1-b.1.iv</span><span style="font:400 13px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#9AA39B">Control Public Information</span></a><a href="#" style="position:relative;display:flex;flex-direction:column;padding:5px 0 5px 0;text-decoration:none;margin-left:50px"><span class="mono" style="font-size:12px;color:#7FA3BF">AC.L2-3.1.1</span><span style="font:400 13px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#9AA39B">Authorized Access Control</span></a><a href="#" class="muted" style="margin-left:50px;font:400 13px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;padding:3px 0 6px;text-decoration:none">23 more in Access Control</a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">AT</span><span>Awareness &amp; Training</span><span class="mono muted" style="font-size:11px">5</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">AU</span><span>Audit &amp; Accountability</span><span class="mono muted" style="font-size:11px">9</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">CA</span><span>Security Assessment</span><span class="mono muted" style="font-size:11px">5</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">CM</span><span>Configuration Management</span><span class="mono muted" style="font-size:11px">12</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">IA</span><span>Identification &amp; Authentication</span><span class="mono muted" style="font-size:11px">15</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">IR</span><span>Incident Response</span><span class="mono muted" style="font-size:11px">5</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">MA</span><span>Maintenance</span><span class="mono muted" style="font-size:11px">6</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">MP</span><span>Media Protection</span><span class="mono muted" style="font-size:11px">10</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">PE</span><span>Physical Protection</span><span class="mono muted" style="font-size:11px">8</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">PS</span><span>Personnel Security</span><span class="mono muted" style="font-size:11px">3</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">RA</span><span>Risk Assessment</span><span class="mono muted" style="font-size:11px">10</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">SC</span><span>System &amp; Comms Protection</span><span class="mono muted" style="font-size:11px">19</span></a><a href="#" style="display:grid;grid-template-columns:14px 30px 1fr auto;gap:6px;align-items:baseline;padding:6px 0;text-decoration:none;color:#C9CFC6;font:400 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif"><span class="muted" style="font-size:11px">▸</span><span class="mono blu" style="font-size:12px">SI</span><span>System &amp; Info Integrity</span><span class="mono muted" style="font-size:11px">14</span></a></div>
+          <div style="position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(rgba(29,40,37,0),#1D2825)"></div>
+        </div>
+      </nav>
+
+      <article style="display:flex;flex-direction:column;min-height:0">
+        <div style="display:flex;align-items:flex-end;gap:24px">
+          <div class="mono blu" style="font-size:26px;letter-spacing:.01em;white-space:nowrap">AC.L1-b.1.i</div>
+          <svg aria-hidden="true" width="34" height="26" viewBox="0 0 40 34" class="chalk"><path d="M4 18c10-2 20-2 32 0M28 10l8 8-8 8" fill="none" stroke="#F2D16B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div style="display:flex;gap:22px;font:400 13px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6;white-space:nowrap">
+            <span style="display:flex;flex-direction:column"><span class="mono muted" style="font-size:11px">AC</span>Access Control</span>
+            <span style="display:flex;flex-direction:column"><span class="mono muted" style="font-size:11px">L1</span>Level 1, FCI</span>
+            <span style="display:flex;flex-direction:column"><span class="mono muted" style="font-size:11px">b.1.i</span>FAR 52.204-21, b.1.i</span>
+          </div>
+          <span style="margin-left:auto;display:flex;gap:16px;font:400 13px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;white-space:nowrap" class="muted"><span>Print</span><span>Copy link</span><span>Send this chalk</span></span>
+        </div>
+        <h1 class="hand chalk" style="margin:14px 0 0;font-size:38px;line-height:1">Authorized Access Control [FCI Data]</h1>
+        <nav aria-label="Views of this control" style="display:flex;gap:32px;margin-top:12px;border-bottom:1px solid rgba(237,233,221,.18);font:500 15px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif">
+          <a class="nv on" href="#" style="padding:8px 0">Decode<svg aria-hidden="true" width="56" height="5" viewBox="0 0 56 5" class="chalk"><path d="M1 3c18-2 37 0 54-1" fill="none" stroke="#F2D16B" stroke-width="2.5" stroke-linecap="round"/></svg></a><a class="nv" href="#">Explain</a><a class="nv" href="#">Evidence</a><a class="nv" href="#">Practice</a><a class="nv" href="#">Related</a>
+        </nav>
+        <section style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:20px">
+          <p style="margin:0;font:400 27px/1.6 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;letter-spacing:-.01em">Limit information system access to <span class="u">authorized users<svg aria-hidden="true" class="chalk" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M1 4c30-2 60 0 98-1" fill="none" stroke="#F2D16B" stroke-width="3" stroke-linecap="round"/></svg></span><span class="lt">a d</span>, <span class="u">processes acting on behalf of authorized users<svg aria-hidden="true" class="chalk" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M1 5c30-3 60 1 98-2" fill="none" stroke="#F2D16B" stroke-width="3" stroke-linecap="round"/></svg></span><span class="lt">b e</span>, or <span class="u">devices (including other information systems)<svg aria-hidden="true" class="chalk" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M1 3c30 1 60-2 98 0" fill="none" stroke="#F2D16B" stroke-width="3" stroke-linecap="round"/></svg></span><span class="lt">c f</span>.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 30px;font:400 14px/1.45 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6;max-width:780px">
+            <span><span class="mono blu" style="margin-right:8px">[a]</span>authorized users are identified;</span><span><span class="mono blu" style="margin-right:8px">[d]</span>system access is limited to authorized users;</span>
+            <span><span class="mono blu" style="margin-right:8px">[b]</span>processes acting on behalf of authorized users are identified;</span><span><span class="mono blu" style="margin-right:8px">[e]</span>system access is limited to processes acting on behalf of authorized users; and</span>
+            <span><span class="mono blu" style="margin-right:8px">[c]</span>devices (and other systems) authorized to connect to the system are identified;</span><span><span class="mono blu" style="margin-right:8px">[f]</span>system access is limited to authorized devices (including other systems).</span>
+          </div>
+        </section>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:0 150px 14px 0;font:400 13px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#9AA39B">
+          <span>Verbatim. CMMC Assessment Guide – Level 1, v2.13, page 12. <a href="#" style="color:#9AA39B">Open the page</a></span>
+          <a href="#" style="color:#EDE9DD;text-decoration:none;font-weight:500">Next on the path: AC.L1-b.1.ii →</a>
+        </div>
+      </article>
+    </section>
+
+  </main>
+  <div style="position:relative;display:flex;align-items:baseline;gap:22px;padding:0 196px 10px 48px;white-space:nowrap"><span class="hand yel" style="font-size:18px">Doodling.</span><span style="font:400 13px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6">Your marks stay on this screen only. Esc or the tray puts the chalk back. Click Smudge to wipe them.</span></div>
+  <div aria-hidden="true" style="position:relative;height:34px;background:linear-gradient(#5E4A36,#4A3A2B 55%,#3B2E22);box-shadow:0 -1px 0 #7A6349,0 -10px 24px rgba(0,0,0,.35);display:flex;align-items:center;gap:14px;padding:0 48px">
+    <span class="stick" style="width:64px;background:#EDE9DD"></span>
+    <span class="stick" style="width:48px;background:#F2D16B"></span>
+    <span class="stick" style="width:56px;background:#8FB7D6"></span>
+    <span style="margin-left:auto;margin-right:260px;display:flex;gap:18px;font:400 12px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9B795"><span>white: new to this</span><span>yellow: runs the systems</span><span>blue: preparing for assessment</span></span>
+    <div style="position:absolute;right:190px;bottom:7px"><svg width="62" height="22" viewBox="0 0 62 22" aria-hidden="true" style="opacity:.5"><rect x="2" y="4" width="56" height="14" rx="7" fill="none" stroke="#C9B795" stroke-width="1.5" stroke-dasharray="4 4"/></svg></div>
+    <div style="position:absolute;right:44px;bottom:19px"><svg width="132" height="85" viewBox="0 0 170 110" aria-hidden="true">
+  <defs><linearGradient id="wood132" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A6349"/><stop offset=".25" stop-color="#5E4A36"/><stop offset="1" stop-color="#3B2E22"/></linearGradient></defs>
+  <ellipse cx="85" cy="100" rx="70" ry="5" fill="#000" opacity=".3"/>
+  <rect x="12" y="24" width="146" height="46" rx="7" fill="url(#wood132)"/>
+  <rect x="18" y="27" width="134" height="4" rx="2" fill="#8C7455" opacity=".7"/>
+  <rect x="12" y="66" width="146" height="30" rx="6" fill="#B3B9B0"/>
+  <path d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0" fill="none" stroke="#EDE9DD" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+  <rect x="12" y="90" width="146" height="6" rx="3" fill="#EDE9DD" opacity=".85"/>
+  <g class="chalk"><circle cx="66" cy="48" r="9" fill="#EDE9DD"/><circle cx="104" cy="48" r="9" fill="#EDE9DD"/><circle cx="65" cy="47" r="4" fill="#1B2522"/><circle cx="103" cy="47" r="4" fill="#1B2522"/><path d="M55 33l18-3M97 30l18 3" stroke="#EDE9DD" stroke-width="3" stroke-linecap="round"/><path d="M78 60c4 3 10 3 14 0" fill="none" stroke="#EDE9DD" stroke-width="2.5" stroke-linecap="round"/></g>
+</svg></div>
+    
+  </div>
+  <svg aria-hidden="true" class="chalk" style="position:absolute;left:0;top:0;width:1280px;height:800px;pointer-events:none;z-index:3" viewBox="0 0 1280 800">
+    <g fill="none" stroke="#EDE9DD" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+      <ellipse cx="884" cy="354" rx="106" ry="26" transform="rotate(-2 884 354)"/>
+      <path d="M372 474c30-5 60 5 90 0s60 5 90 0 60 5 90 0 60 5 90 0 60 5 92 0"/>
+      <path d="M1048 440c-30 6-60 6-90 0"/><path d="M972 431l-16 9 15 10"/>
+      <rect x="364" y="556" width="390" height="42" rx="9" transform="rotate(-.6 558 577)"/>
+    </g>
+    <text x="1048" y="432" font-family="Walter Turncoat,cursive" font-size="21" fill="#EDE9DD">ask IT about</text>
+    <text x="1048" y="458" font-family="Walter Turncoat,cursive" font-size="21" fill="#EDE9DD">the scanner?</text>
+    <text x="1146" y="580" font-family="Walter Turncoat,cursive" font-size="30" fill="#EDE9DD">!!</text>
+    <g transform="translate(1176 560) rotate(-38)"><rect x="0" y="-8" width="60" height="16" rx="8" fill="#EDE9DD"/><rect x="24" y="-8" width="36" height="16" rx="4" fill="#C9B795"/></g>
+  </svg>
+</div>
+
+</body>
+</html>

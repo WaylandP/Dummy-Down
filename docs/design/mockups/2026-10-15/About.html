@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>About — what's next</title>
+
+</head>
+<body>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Walter+Turncoat&amp;family=Atkinson+Hyperlegible+Next:wght@400;500;700&amp;family=Martian+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#1B2522;color:#EDE9DD;font-family:'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#EDE9DD}
+.hand{font-family:'Walter Turncoat',cursive;font-weight:400}
+.mono{font-family:'Martian Mono',monospace}
+.chalk{filter:url(#chalk)}
+.muted{color:#9AA39B}.mid{color:#C9CFC6}.yel{color:#F2D16B}.blu{color:#8FB7D6}
+.nv{text-decoration:none;color:#C9CFC6;display:inline-flex;flex-direction:column;gap:3px;align-items:center;min-height:36px;justify-content:center}
+.nv.on{color:#EDE9DD}
+.rule{border:0;border-top:1px solid rgba(237,233,221,.18);margin:0}
+.p{font:400 15px/1.55 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6;margin:0}
+.stick{display:inline-block;height:11px;border-radius:5px;box-shadow:0 2px 2px rgba(0,0,0,.4)}
+.find{display:flex;align-items:center;gap:10px}
+.find input{flex:1;min-width:0;font:400 18px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;padding:6px 2px;border:0;background:transparent;color:#EDE9DD;outline:none}
+.find input::placeholder{color:#6F7A74}
+.u{position:relative;display:inline-block}
+.u svg{position:absolute;left:-2px;right:-2px;bottom:-6px;height:8px;width:calc(100% + 4px)}
+.lt{font-family:'Walter Turncoat',cursive;color:#F2D16B;font-size:17px;vertical-align:top;margin-left:3px}
+.seg{display:flex;gap:18px;font:500 14px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#9AA39B;align-items:baseline}
+.seg .on{color:#EDE9DD;display:inline-flex;flex-direction:column;gap:2px}
+</style>
+
+<div style="width:1280px;height:800px;box-sizing:border-box;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 20%,#243330 0%,#1B2522 60%,#161F1C 100%);display:flex;flex-direction:column">
+  <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.16">
+    <defs>
+      <filter id="chalk" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d"/><feColorMatrix in="n" type="luminanceToAlpha" result="a"/><feComponentTransfer in="a" result="m"><feFuncA type="table" tableValues="0 0.55 1 1 1 1"/></feComponentTransfer><feComposite in="d" in2="m" operator="in"/></filter>
+      <filter id="dust"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" seed="3"/><feColorMatrix type="saturate" values="0"/></filter>
+    </defs>
+    <rect width="100%" height="100%" filter="url(#dust)"/>
+  </svg>
+  <svg aria-hidden="true" style="position:absolute;left:520px;top:120px;width:640px;height:440px;pointer-events:none;opacity:.07"><ellipse cx="320" cy="220" rx="290" ry="130" fill="#EDE9DD" transform="rotate(-8 320 220)" style="filter:blur(40px)"/></svg>
+  <header style="position:relative;display:flex;align-items:center;justify-content:space-between;padding:22px 48px 0">
+    <a href="#" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#EDE9DD">
+      <svg width="34" height="34" viewBox="0 0 100 100" role="img" aria-label="Cipher and Chalk" class="chalk"><circle cx="50" cy="50" r="38" fill="none" stroke="#EDE9DD" stroke-width="9" stroke-linecap="round" stroke-dasharray="72 17 14 17 72 17 14 16" transform="rotate(-100 50 50)"/></svg>
+      <span class="hand" style="font-size:25px;line-height:1">Cipher &amp; Chalk</span>
+    </a>
+    <nav aria-label="Main" style="display:flex;gap:30px;align-items:center;font:500 15px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif">
+      <a class="nv" href="#">Home</a><a class="nv" href="#">Controls</a><a class="nv" href="#">Glossary</a><a class="nv" href="#">Practice</a><a class="nv" href="#">Timeline</a><a class="nv on" href="#" aria-current="page">About<svg aria-hidden="true" width="40" height="5" viewBox="0 0 40 5" class="chalk"><path d="M1 3c13-2 26 0 38-1" fill="none" stroke="#F2D16B" stroke-width="2.5" stroke-linecap="round"/></svg></a>
+      <button type="button" aria-label="Find a control" style="border:0;background:none;padding:6px;color:#EDE9DD;min-height:36px;min-width:36px;margin-left:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    </nav>
+  </header>
+  <main style="position:relative;flex:1;min-height:0;display:flex;flex-direction:column;padding:0 48px">
+
+    <section style="flex:1;display:grid;grid-template-columns:1fr 430px;gap:56px;min-height:0;padding-top:24px">
+      <div style="display:flex;flex-direction:column;gap:14px;min-height:0;overflow:hidden">
+        <h1 class="hand chalk" style="margin:0;font-size:46px;line-height:1.08">A little clarity<br>goes a long way.</h1>
+        <p class="p" style="font-size:16px">Cybersecurity requirements can be hard to read. Cipher &amp; Chalk keeps the official sentence on the page and then says, in plain words, what it is asking for.</p>
+        <p class="p" style="font-size:16px">This independent, open-source project covers all 149 CMMC controls, pinned to CMMC v2.13, September 2024. Each one carries the official requirement, quoted word for word with its page citation, and three perspectives written to explain it.</p>
+        <h2 class="hand" style="margin:10px 0 0;font-size:26px">Who makes this.</h2>
+        <p class="p" style="font-size:16px">I’m Wayland. I work in IT and compliance, and CMMC Level 2 is part of my day job: the system security plan, the policies, the evidence, and the meetings where a technical person and an assessor use the same word to mean different things. I started Cipher &amp; Chalk because the explanation I kept wishing existed didn’t.</p>
+        <h2 class="hand" style="margin:10px 0 0;font-size:26px">CMMC in one paragraph.</h2>
+        <p class="p" style="font-size:16px">The Cybersecurity Maturity Model Certification is how the Department of Defense checks that its contractors protect the information it shares with them. Level 1 covers 15 basic safeguards for Federal Contract Information and is self-assessed. Level 2 covers the 110 requirements of NIST SP 800-171 for Controlled Unclassified Information.</p>
+      </div>
+
+      <aside aria-label="What's next" style="display:flex;flex-direction:column;gap:14px;border-left:1px solid rgba(237,233,221,.18);padding:4px 0 14px 36px;min-height:0">
+        <p class="hand chalk" style="margin:0;font-size:30px;color:#F2D16B;line-height:1">What's next on the board</p>
+        <div>
+          <p class="hand" style="margin:0 0 2px;font-size:19px">On the board</p>
+          <ul style="list-style:none;margin:0;padding:0">
+            <li style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:5px 0"><span style="padding-top:1px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" class="chalk"><path d="M3 3.5c4-.5 8-.4 12 0 .4 4 .4 7.5 0 11-4 .5-8 .4-12 0-.4-3.5-.4-7 0-11z" fill="none" stroke="#F2D16B" stroke-width="1.8"/><path d="M5 9.5l3 3 6-7" fill="none" stroke="#F2D16B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span style="font:400 14px/1.4 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6">CMMC, all three levels: 149 controls, quoted and cited</span></li>
+            <li style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:5px 0"><span style="padding-top:1px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" class="chalk"><path d="M3 3.5c4-.5 8-.4 12 0 .4 4 .4 7.5 0 11-4 .5-8 .4-12 0-.4-3.5-.4-7 0-11z" fill="none" stroke="#F2D16B" stroke-width="1.8"/><path d="M5 9.5l3 3 6-7" fill="none" stroke="#F2D16B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span style="font:400 14px/1.4 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6">Three chalks for three readers</span></li>
+            <li style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:5px 0"><span style="padding-top:1px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" class="chalk"><path d="M3 3.5c4-.5 8-.4 12 0 .4 4 .4 7.5 0 11-4 .5-8 .4-12 0-.4-3.5-.4-7 0-11z" fill="none" stroke="#F2D16B" stroke-width="1.8"/><path d="M5 9.5l3 3 6-7" fill="none" stroke="#F2D16B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span style="font:400 14px/1.4 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6">Decode, the Rev 3 view and the timeline</span></li>
+            <li style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:5px 0"><span style="padding-top:1px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" class="chalk"><path d="M3 3.5c4-.5 8-.4 12 0 .4 4 .4 7.5 0 11-4 .5-8 .4-12 0-.4-3.5-.4-7 0-11z" fill="none" stroke="#F2D16B" stroke-width="1.8"/><path d="M5 9.5l3 3 6-7" fill="none" stroke="#F2D16B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span style="font:400 14px/1.4 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6">Thirteen practice situations and 54 glossary words</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="hand" style="margin:0 0 2px;font-size:19px">Next</p>
+          <ul style="list-style:none;margin:0;padding:0">
+            <li style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:5px 0"><span style="padding-top:1px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" class="chalk"><path d="M3 3.5c4-.5 8-.4 12 0 .4 4 .4 7.5 0 11-4 .5-8 .4-12 0-.4-3.5-.4-7 0-11z" fill="none" stroke="#9AA39B" stroke-width="1.8"/></svg></span><span style="font:400 14px/1.4 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6">One fictional company, CedarPoint, through every family’s examples</span></li>
+            <li style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:5px 0"><span style="padding-top:1px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" class="chalk"><path d="M3 3.5c4-.5 8-.4 12 0 .4 4 .4 7.5 0 11-4 .5-8 .4-12 0-.4-3.5-.4-7 0-11z" fill="none" stroke="#9AA39B" stroke-width="1.8"/></svg></span><span style="font:400 14px/1.4 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6">Review by qualified CMMC professionals<span class="muted" style="display:block;font-size:12px;margin-top:1px">Know one? The repository says how to help.</span></span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="hand" style="margin:0 0 2px;font-size:19px">Later</p>
+          <ul style="list-style:none;margin:0;padding:0">
+            <li style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:5px 0"><span style="padding-top:1px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" class="chalk"><path d="M3 3.5c4-.5 8-.4 12 0 .4 4 .4 7.5 0 11-4 .5-8 .4-12 0-.4-3.5-.4-7 0-11z" fill="none" stroke="#9AA39B" stroke-width="1.8"/></svg></span><span style="font:400 14px/1.4 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6">More frameworks<span class="muted" style="display:block;font-size:12px;margin-top:1px">NIST SP 800-53, FedRAMP, SOC 2, ISO/IEC 27001, HIPAA Security Rule</span></span></li>
+            <li style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:5px 0"><span style="padding-top:1px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" class="chalk"><path d="M3 3.5c4-.5 8-.4 12 0 .4 4 .4 7.5 0 11-4 .5-8 .4-12 0-.4-3.5-.4-7 0-11z" fill="none" stroke="#9AA39B" stroke-width="1.8"/></svg></span><span style="font:400 14px/1.4 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6">Animated chalk talks for visual learners</span></li>
+            <li style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:5px 0"><span style="padding-top:1px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" class="chalk"><path d="M3 3.5c4-.5 8-.4 12 0 .4 4 .4 7.5 0 11-4 .5-8 .4-12 0-.4-3.5-.4-7 0-11z" fill="none" stroke="#9AA39B" stroke-width="1.8"/></svg></span><span style="font:400 14px/1.4 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6">Flashcards for every objective</span></li>
+            <li style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:5px 0"><span style="padding-top:1px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" class="chalk"><path d="M3 3.5c4-.5 8-.4 12 0 .4 4 .4 7.5 0 11-4 .5-8 .4-12 0-.4-3.5-.4-7 0-11z" fill="none" stroke="#9AA39B" stroke-width="1.8"/></svg></span><span style="font:400 14px/1.4 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9CFC6">Two controls side by side</span></li>
+          </ul>
+        </div>
+        <p class="p muted" style="font-size:12px;margin-top:6px">Directions, not dates. <a href="#" style="color:#C9CFC6">Suggest something on GitHub</a></p>
+      </aside>
+    </section>
+
+  </main>
+  <div style="position:relative;display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:0 196px 10px 48px;font:400 12.5px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#9AA39B;white-space:nowrap">
+    <span>Independent and educational. Not legal advice; not affiliated with DoD or NIST. <a href="#" style="color:#C9CFC6">Disclaimer &amp; terms</a></span>
+    <span style="display:flex;gap:16px"><a href="#" style="color:#C9CFC6">Assessment objectives</a><a href="#" style="color:#C9CFC6">Usage &amp; privacy</a><a href="#" style="color:#C9CFC6">Smudge: on</a><a href="#" style="color:#C9CFC6">Open source · MIT</a></span>
+  </div>
+  <div aria-hidden="true" style="position:relative;height:34px;background:linear-gradient(#5E4A36,#4A3A2B 55%,#3B2E22);box-shadow:0 -1px 0 #7A6349,0 -10px 24px rgba(0,0,0,.35);display:flex;align-items:center;gap:14px;padding:0 48px">
+    <span class="stick" style="width:64px;background:#EDE9DD"></span>
+    <span class="stick" style="width:48px;background:#F2D16B"></span>
+    <span class="stick" style="width:56px;background:#8FB7D6"></span>
+    <span style="margin-left:auto;margin-right:260px;display:flex;gap:18px;font:400 12px 'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;color:#C9B795"><span>white: new to this</span><span>yellow: runs the systems</span><span>blue: preparing for assessment</span></span>
+    <div style="position:absolute;right:190px;bottom:7px"><svg width="62" height="22" viewBox="0 0 62 22" aria-hidden="true"><rect x="2" y="4" width="56" height="14" rx="7" fill="#EDE9DD"/><rect x="24" y="4" width="34" height="14" rx="4" fill="#C9B795"/><path d="M30 6v10M36 6v10" stroke="#9C8A6A" stroke-width="1"/><ellipse cx="30" cy="20" rx="26" ry="2" fill="#000" opacity=".3"/></svg></div>
+    <div style="position:absolute;right:44px;bottom:19px"><svg width="132" height="85" viewBox="0 0 170 110" aria-hidden="true">
+  <defs><linearGradient id="wood132" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A6349"/><stop offset=".25" stop-color="#5E4A36"/><stop offset="1" stop-color="#3B2E22"/></linearGradient></defs>
+  <ellipse cx="85" cy="100" rx="70" ry="5" fill="#000" opacity=".3"/>
+  <rect x="12" y="24" width="146" height="46" rx="7" fill="url(#wood132)"/>
+  <rect x="18" y="27" width="134" height="4" rx="2" fill="#8C7455" opacity=".7"/>
+  <rect x="12" y="66" width="146" height="30" rx="6" fill="#B3B9B0"/>
+  <path d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0" fill="none" stroke="#EDE9DD" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+  <rect x="12" y="90" width="146" height="6" rx="3" fill="#EDE9DD" opacity=".85"/>
+  <g class="chalk"><circle cx="66" cy="48" r="9" fill="#EDE9DD"/><circle cx="104" cy="48" r="9" fill="#EDE9DD"/><circle cx="68" cy="49" r="4" fill="#1B2522"/><circle cx="106" cy="49" r="4" fill="#1B2522"/><path d="M55 33l18-3M97 30l18 3" stroke="#EDE9DD" stroke-width="3" stroke-linecap="round"/><path d="M78 60c4 3 10 3 14 0" fill="none" stroke="#EDE9DD" stroke-width="2.5" stroke-linecap="round"/></g>
+</svg></div>
+    
+  </div>
+  
+</div>
+
+</body>
+</html>
