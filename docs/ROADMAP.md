@@ -55,10 +55,10 @@ content-review milestone.
       Practice, Assessment objectives, About and Disclaimer (#42); the phone
       bar, keys and print sheet. Routes, content identities, legacy links and
       the analytics allowlist did not change. The specification's remaining
-      features follow one pull request each, in its order: the Rev 3 tab,
+      features follow one pull request each, in its order; the Decode clause
+      map deferred from the control page and the Rev 3 tab are merged, and
       chalk popovers, Send this chalk, the CedarPoint story, Erase, the
-      timeline, the assessor's three words and Dash, plus the Decode clause
-      map deferred from the control page.
+      timeline, the assessor's three words and Dash follow.
 - [x] **Completed and merged into main** — Repair reproduced
       implementation issues and prepare a repeatable owner/learner acceptance packet
       in Increment 1 (PR #14). This does not record a completed human acceptance cycle.

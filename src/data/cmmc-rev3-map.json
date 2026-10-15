@@ -1,0 +1,1151 @@
+{
+  "schemaVersion": 1,
+  "frameworkId": "cmmc",
+  "editionId": "cmmc-2-13-sep-2024",
+  "source": {
+    "id": "nist-sp-800-171-r3",
+    "title": "Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations",
+    "publication": "NIST SP 800-171 Rev. 3",
+    "publicationDate": "2024-05",
+    "officialUrl": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171r3.pdf",
+    "sha256": "3e4631df8b5d61f40a6e542b52779ef30ddbbfff31e09214fa94ad6e6f5e6d08",
+    "retrievedDate": "2026-10-15"
+  },
+  "requirements": [
+    {
+      "controlId": "AC.L2-3.1.1",
+      "rev3Id": "03.01.01",
+      "rev3Title": "Account Management",
+      "rev3Text": "a. Define the types of system accounts allowed and prohibited. b. Create, enable, modify, disable, and remove system accounts in accordance with policy, procedures, prerequisites, and criteria. c. Specify: 1. Authorized users of the system, 2. Group and role membership, and 3. Access authorizations (i.e., privileges) for each account. d. Authorize access to the system based on: 1. A valid access authorization and 2. Intended system usage. e. Monitor the use of system accounts. f. Disable system accounts when: 1. The accounts have expired, 2. The accounts have been inactive for [Assignment: organization-defined time period], 3. The accounts are no longer associated with a user or individual, 4. The accounts are in violation of organizational policy, or 5. Significant risks associated with individuals are discovered. g. Notify account managers and designated personnel or roles within: 1. [Assignment: organization-defined time period] when accounts are no longer required. 2. [Assignment: organization-defined time period] when users are terminated or transferred. 3. [Assignment: organization-defined time period] when system usage or the need-to-know changes for an individual. h. Require that users log out of the system after [Assignment: organization-defined time period] of expected inactivity or when [Assignment: organization-defined circumstances].",
+      "pdfPage": 16,
+      "printedPage": 6,
+      "change": "new-odp",
+      "note": "Rev 3 turns the one sentence into eight account-management steps: allowed account types, creation and removal, authorizations, monitoring, disabling and notification, three of them with organization-defined time periods."
+    },
+    {
+      "controlId": "AC.L2-3.1.2",
+      "rev3Id": "03.01.02",
+      "rev3Title": "Access Enforcement",
+      "rev3Text": "Enforce approved authorizations for logical access to CUI and system resources in accordance with applicable access control policies.",
+      "pdfPage": 18,
+      "printedPage": 8,
+      "change": "changed",
+      "note": "Rev 3 restates it as enforcing approved authorizations for logical access to CUI and system resources under the access control policies."
+    },
+    {
+      "controlId": "AC.L2-3.1.3",
+      "rev3Id": "03.01.03",
+      "rev3Title": "Information Flow Enforcement",
+      "rev3Text": "Enforce approved authorizations for controlling the flow of CUI within the system and between connected systems.",
+      "pdfPage": 18,
+      "printedPage": 8,
+      "change": "changed",
+      "note": "Rev 3 restates it as enforcing approved authorizations for the flow of CUI within the system and between connected systems."
+    },
+    {
+      "controlId": "AC.L2-3.1.4",
+      "rev3Id": "03.01.04",
+      "rev3Title": "Separation of Duties",
+      "rev3Text": "a. Identify the duties of individuals requiring separation. b. Define system access authorizations to support separation of duties.",
+      "pdfPage": 19,
+      "printedPage": 9,
+      "change": "changed",
+      "note": "Rev 3 splits it into identifying the duties that need separation and defining access authorizations to support it, and drops the rationale clause."
+    },
+    {
+      "controlId": "AC.L2-3.1.5",
+      "rev3Id": "03.01.05",
+      "rev3Title": "Least Privilege",
+      "rev3Text": "a. Allow only authorized system access for users (or processes acting on behalf of users) that is necessary to accomplish assigned organizational tasks. b. Authorize access to [Assignment: organization-defined security functions] and [Assignment: organization-defined security-relevant information]. c. Review the privileges assigned to roles or classes of users [Assignment: organization-defined frequency] to validate the need for such privileges. d. Reassign or remove privileges, as necessary.",
+      "pdfPage": 20,
+      "printedPage": 10,
+      "change": "new-odp",
+      "note": "Rev 3 spells least privilege out in four parts and adds organization-defined security functions, security-relevant information and a privilege review frequency."
+    },
+    {
+      "controlId": "AC.L2-3.1.6",
+      "rev3Id": "03.01.06",
+      "rev3Title": "Least Privilege – Privileged Accounts",
+      "rev3Text": "a. Restrict privileged accounts on the system to [Assignment: organization-defined personnel or roles]. b. Require that users (or roles) with privileged accounts use non-privileged accounts when accessing non-security functions or non-security information.",
+      "pdfPage": 21,
+      "printedPage": 11,
+      "change": "new-odp",
+      "note": "Rev 3 adds restricting privileged accounts to organization-defined personnel or roles alongside using non-privileged accounts for non-security functions."
+    },
+    {
+      "controlId": "AC.L2-3.1.7",
+      "rev3Id": "03.01.07",
+      "rev3Title": "Least Privilege – Privileged Functions",
+      "rev3Text": "a. Prevent non-privileged users from executing privileged functions. b. Log the execution of privileged functions.",
+      "pdfPage": 21,
+      "printedPage": 11,
+      "change": "unchanged",
+      "note": "Unchanged in substance: prevent non-privileged users from executing privileged functions and log their execution."
+    },
+    {
+      "controlId": "AC.L2-3.1.8",
+      "rev3Id": "03.01.08",
+      "rev3Title": "Unsuccessful Logon Attempts",
+      "rev3Text": "a. Enforce a limit of [Assignment: organization-defined number] consecutive invalid logon attempts by a user during a [Assignment: organization-defined time period]. b. Automatically [Selection (one or more): lock the account or node for an [Assignment: organization-defined time period]; lock the account or node until released by an administrator; delay next logon prompt; notify system administrator; take other action] when the maximum number of unsuccessful attempts is exceeded.",
+      "pdfPage": 22,
+      "printedPage": 12,
+      "change": "new-odp",
+      "note": "Rev 3 makes the limit explicit: an organization-defined number of consecutive invalid attempts within a defined time period, and an organization-selected automatic response."
+    },
+    {
+      "controlId": "AC.L2-3.1.9",
+      "rev3Id": "03.01.09",
+      "rev3Title": "System Use Notification",
+      "rev3Text": "Display a system use notification message with privacy and security notices consistent with applicable CUI rules before granting access to the system.",
+      "pdfPage": 23,
+      "printedPage": 13,
+      "change": "changed",
+      "note": "Rev 3 makes it a system use notification displayed before access is granted, with the same privacy and security notices."
+    },
+    {
+      "controlId": "AC.L2-3.1.10",
+      "rev3Id": "03.01.10",
+      "rev3Title": "Device Lock",
+      "rev3Text": "a. Prevent access to the system by [Selection (one or more): initiating a device lock after [Assignment: organization-defined time period] of inactivity; requiring the user to initiate a device lock before leaving the system unattended]. b. Retain the device lock until the user reestablishes access using established identification and authentication procedures. c. Conceal, via the device lock, information previously visible on the display with a publicly viewable image.",
+      "pdfPage": 23,
+      "printedPage": 13,
+      "change": "new-odp",
+      "note": "Rev 3 renames it device lock, lets the organization choose a timed or user-initiated lock with a defined period, and requires re-authentication to release it."
+    },
+    {
+      "controlId": "AC.L2-3.1.11",
+      "rev3Id": "03.01.11",
+      "rev3Title": "Session Termination",
+      "rev3Text": "Terminate a user session automatically after [Assignment: organization-defined conditions or trigger events requiring session disconnect].",
+      "pdfPage": 24,
+      "printedPage": 14,
+      "change": "new-odp",
+      "note": "Rev 3 makes the conditions that end a session an organization-defined parameter."
+    },
+    {
+      "controlId": "AC.L2-3.1.12",
+      "rev3Id": "03.01.12",
+      "rev3Title": "Remote Access",
+      "rev3Text": "a. Establish usage restrictions, configuration requirements, and connection requirements for each type of allowable remote system access. b. Authorize each type of remote system access prior to establishing such connections. c. Route remote access to the system through authorized and managed access control points. d. Authorize the remote execution of privileged commands and remote access to security-relevant information.",
+      "pdfPage": 24,
+      "printedPage": 14,
+      "change": "changed",
+      "note": "Rev 3 absorbs 3.1.14 and 3.1.15: usage restrictions and authorization for each type of remote access, routing through managed access control points, and authorized privileged commands."
+    },
+    {
+      "controlId": "AC.L2-3.1.13",
+      "rev3Id": "03.01.13",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Addressed by 03.13.08.",
+      "pdfPage": 25,
+      "printedPage": 15,
+      "change": "withdrawn",
+      "note": "Withdrawn; addressed by 03.13.08 (Transmission and Storage Confidentiality), which covers cryptographic protection of CUI in transmission and storage.",
+      "into": ["03.13.08"]
+    },
+    {
+      "controlId": "AC.L2-3.1.14",
+      "rev3Id": "03.01.14",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.01.12.",
+      "pdfPage": 25,
+      "printedPage": 15,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.01.12 (Remote Access).",
+      "into": ["03.01.12"]
+    },
+    {
+      "controlId": "AC.L2-3.1.15",
+      "rev3Id": "03.01.15",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.01.12.",
+      "pdfPage": 25,
+      "printedPage": 15,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.01.12 (Remote Access).",
+      "into": ["03.01.12"]
+    },
+    {
+      "controlId": "AC.L2-3.1.16",
+      "rev3Id": "03.01.16",
+      "rev3Title": "Wireless Access",
+      "rev3Text": "a. Establish usage restrictions, configuration requirements, and connection requirements for each type of wireless access to the system. b. Authorize each type of wireless access to the system prior to establishing such connections. c. Disable, when not intended for use, wireless networking capabilities prior to issuance and deployment. d. Protect wireless access to the system using authentication and encryption.",
+      "pdfPage": 25,
+      "printedPage": 15,
+      "change": "changed",
+      "note": "Rev 3 absorbs 3.1.17: usage restrictions and authorization per type of wireless access, disabling unused wireless capability, and authentication with encryption."
+    },
+    {
+      "controlId": "AC.L2-3.1.17",
+      "rev3Id": "03.01.17",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.01.16.",
+      "pdfPage": 26,
+      "printedPage": 16,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.01.16 (Wireless Access).",
+      "into": ["03.01.16"]
+    },
+    {
+      "controlId": "AC.L2-3.1.18",
+      "rev3Id": "03.01.18",
+      "rev3Title": "Access Control for Mobile Devices",
+      "rev3Text": "a. Establish usage restrictions, configuration requirements, and connection requirements for mobile devices. b. Authorize the connection of mobile devices to the system. c. Implement full-device or container-based encryption to protect the confidentiality of CUI on mobile devices.",
+      "pdfPage": 26,
+      "printedPage": 16,
+      "change": "changed",
+      "note": "Rev 3 absorbs 3.1.19: usage restrictions and authorization for mobile devices plus full-device or container encryption of CUI."
+    },
+    {
+      "controlId": "AC.L2-3.1.19",
+      "rev3Id": "03.01.19",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.01.18.",
+      "pdfPage": 27,
+      "printedPage": 17,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.01.18 (Access Control for Mobile Devices).",
+      "into": ["03.01.18"]
+    },
+    {
+      "controlId": "AC.L2-3.1.20",
+      "rev3Id": "03.01.20",
+      "rev3Title": "Use of External Systems",
+      "rev3Text": "a. Prohibit the use of external systems unless the systems are specifically authorized. b. Establish the following security requirements to be satisfied on external systems prior to allowing use of or access to those systems by authorized individuals: [Assignment: organization-defined security requirements]. c. Permit authorized individuals to use external systems to access the organizational system or to process, store, or transmit CUI only after: 1. Verifying that the security requirements on the external systems as specified in the organization’s system security plans have been satisfied and 2. Retaining approved system connection or processing agreements with the organizational entities hosting the external systems. d. Restrict the use of organization-controlled portable storage devices by authorized individuals on external systems.",
+      "pdfPage": 27,
+      "printedPage": 17,
+      "change": "new-odp",
+      "note": "Rev 3 absorbs 3.1.21: external systems are prohibited unless authorized, must meet organization-defined security requirements, and portable storage use on them is restricted."
+    },
+    {
+      "controlId": "AC.L2-3.1.21",
+      "rev3Id": "03.01.21",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.01.20.",
+      "pdfPage": 28,
+      "printedPage": 18,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.01.20 (Use of External Systems).",
+      "into": ["03.01.20"]
+    },
+    {
+      "controlId": "AC.L2-3.1.22",
+      "rev3Id": "03.01.22",
+      "rev3Title": "Publicly Accessible Content",
+      "rev3Text": "a. Train authorized individuals to ensure that publicly accessible information does not contain CUI. b. Review the content on publicly accessible systems for CUI and remove such information, if discovered.",
+      "pdfPage": 28,
+      "printedPage": 18,
+      "change": "changed",
+      "note": "Rev 3 names the two actions: train the people who post publicly, and review public content for CUI and remove it."
+    },
+    {
+      "controlId": "AT.L2-3.2.1",
+      "rev3Id": "03.02.01",
+      "rev3Title": "Literacy Training and Awareness",
+      "rev3Text": "a. Provide security literacy training to system users: 1. As part of initial training for new users and [Assignment: organization-defined frequency] thereafter, 2. When required by system changes or following [Assignment: organization-defined events], and 3. On recognizing and reporting indicators of insider threat, social engineering, and social mining. b. Update security literacy training content [Assignment: organization-defined frequency] and following [Assignment: organization-defined events].",
+      "pdfPage": 29,
+      "printedPage": 19,
+      "change": "new-odp",
+      "note": "Rev 3 turns awareness into security literacy training at organization-defined intervals and events, including insider threat indicators (absorbing 3.2.3)."
+    },
+    {
+      "controlId": "AT.L2-3.2.2",
+      "rev3Id": "03.02.02",
+      "rev3Title": "Role-Based Training",
+      "rev3Text": "a. Provide role-based security training to organizational personnel: 1. Before authorizing access to the system or CUI, before performing assigned duties, and [Assignment: organization-defined frequency] thereafter 2. When required by system changes or following [Assignment: organization-defined events]. b. Update role-based training content [Assignment: organization-defined frequency] and following [Assignment: organization-defined events].",
+      "pdfPage": 30,
+      "printedPage": 20,
+      "change": "new-odp",
+      "note": "Rev 3 requires role-based training before access and duties and at organization-defined intervals and events, and keeping its content updated."
+    },
+    {
+      "controlId": "AT.L2-3.2.3",
+      "rev3Id": "03.02.03",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.02.01.",
+      "pdfPage": 31,
+      "printedPage": 21,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.02.01 (Literacy Training and Awareness).",
+      "into": ["03.02.01"]
+    },
+    {
+      "controlId": "AU.L2-3.3.1",
+      "rev3Id": "03.03.01",
+      "rev3Title": "Event Logging",
+      "rev3Text": "a. Specify the following event types selected for logging within the system: [Assignment: organization-defined event types]. b. Review and update the event types selected for logging [Assignment: organization-defined frequency].",
+      "pdfPage": 31,
+      "printedPage": 21,
+      "change": "new-odp",
+      "note": "Rev 3 narrows this to event logging: the organization defines the event types to log and reviews them at a defined frequency; record content and retention move to 03.03.02 and 03.03.03."
+    },
+    {
+      "controlId": "AU.L2-3.3.2",
+      "rev3Id": "03.03.02",
+      "rev3Title": "Audit Record Content",
+      "rev3Text": "a. Include the following content in audit records: 1. What type of event occurred 2. When the event occurred 3. Where the event occurred 4. Source of the event 5. Outcome of the event 6. Identity of the individuals, subjects, objects, or entities associated with the event b. Provide additional information for audit records as needed.",
+      "pdfPage": 32,
+      "printedPage": 22,
+      "change": "changed",
+      "note": "Rev 3 replaces the traceability sentence with the six contents every audit record must hold: what, when, where, source, outcome and identity."
+    },
+    {
+      "controlId": "AU.L2-3.3.3",
+      "rev3Id": "03.03.03",
+      "rev3Title": "Audit Record Generation",
+      "rev3Text": "a. Generate audit records for the selected event types and audit record content specified in 03.03.01 and 03.03.02. b. Retain audit records for a time period consistent with the records retention policy.",
+      "pdfPage": 33,
+      "printedPage": 23,
+      "change": "changed",
+      "note": "Rev 3 uses this number for generating the records for the selected events and retaining them under the records retention policy; reviewing and updating the logged event types now sits in 03.03.01 b."
+    },
+    {
+      "controlId": "AU.L2-3.3.4",
+      "rev3Id": "03.03.04",
+      "rev3Title": "Response to Audit Logging Process Failures",
+      "rev3Text": "a. Alert organizational personnel or roles within [Assignment: organization-defined time period] in the event of an audit logging process failure. b. Take the following additional actions: [Assignment: organization-defined additional actions].",
+      "pdfPage": 33,
+      "printedPage": 23,
+      "change": "new-odp",
+      "note": "Rev 3 adds an organization-defined alert time period and organization-defined additional actions on a logging failure."
+    },
+    {
+      "controlId": "AU.L2-3.3.5",
+      "rev3Id": "03.03.05",
+      "rev3Title": "Audit Record Review, Analysis, and Reporting",
+      "rev3Text": "a. Review and analyze system audit records [Assignment: organization-defined frequency] for indications and the potential impact of inappropriate or unusual activity. b. Report findings to organizational personnel or roles. c. Analyze and correlate audit records across different repositories to gain organization-wide situational awareness.",
+      "pdfPage": 34,
+      "printedPage": 24,
+      "change": "new-odp",
+      "note": "Rev 3 adds review and analysis at an organization-defined frequency and reporting findings, keeping correlation across repositories."
+    },
+    {
+      "controlId": "AU.L2-3.3.6",
+      "rev3Id": "03.03.06",
+      "rev3Title": "Audit Record Reduction and Report Generation",
+      "rev3Text": "a. Implement an audit record reduction and report generation capability that supports audit record review, analysis, reporting requirements, and after-the-fact investigations of incidents. b. Preserve the original content and time ordering of audit records.",
+      "pdfPage": 35,
+      "printedPage": 25,
+      "change": "changed",
+      "note": "Rev 3 keeps reduction and report generation and adds preserving the original content and time ordering of records."
+    },
+    {
+      "controlId": "AU.L2-3.3.7",
+      "rev3Id": "03.03.07",
+      "rev3Title": "Time Stamps",
+      "rev3Text": "a. Use internal system clocks to generate time stamps for audit records. b. Record time stamps for audit records that meet [Assignment: organization-defined granularity of time measurement] and that use Coordinated Universal Time (UTC), have a fixed local time offset from UTC, or include the local time offset as part of the time stamp.",
+      "pdfPage": 35,
+      "printedPage": 25,
+      "change": "new-odp",
+      "note": "Rev 3 drops the authoritative-source comparison and instead requires time stamps at an organization-defined granularity in UTC or with a known offset."
+    },
+    {
+      "controlId": "AU.L2-3.3.8",
+      "rev3Id": "03.03.08",
+      "rev3Title": "Protection of Audit Information",
+      "rev3Text": "a. Protect audit information and audit logging tools from unauthorized access, modification, and deletion. b. Authorize access to management of audit logging functionality to only a subset of privileged users or roles.",
+      "pdfPage": 36,
+      "printedPage": 26,
+      "change": "changed",
+      "note": "Rev 3 keeps the sentence and absorbs 3.3.9 by limiting audit management to a subset of privileged users or roles."
+    },
+    {
+      "controlId": "AU.L2-3.3.9",
+      "rev3Id": "03.03.09",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.03.08.",
+      "pdfPage": 36,
+      "printedPage": 26,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.03.08 (Protection of Audit Information).",
+      "into": ["03.03.08"]
+    },
+    {
+      "controlId": "CM.L2-3.4.1",
+      "rev3Id": "03.04.01",
+      "rev3Title": "Baseline Configuration",
+      "rev3Text": "a. Develop and maintain under configuration control, a current baseline configuration of the system. b. Review and update the baseline configuration of the system [Assignment: organization-defined frequency] and when system components are installed or modified.",
+      "pdfPage": 36,
+      "printedPage": 26,
+      "change": "new-odp",
+      "note": "Rev 3 keeps the baseline under configuration control with an organization-defined review frequency; the inventory becomes its own requirement, 03.04.10."
+    },
+    {
+      "controlId": "CM.L2-3.4.2",
+      "rev3Id": "03.04.02",
+      "rev3Title": "Configuration Settings",
+      "rev3Text": "a. Establish, document, and implement the following configuration settings for the system that reflect the most restrictive mode consistent with operational requirements: [Assignment: organization-defined configuration settings]. b. Identify, document, and approve any deviations from established configuration settings.",
+      "pdfPage": 37,
+      "printedPage": 27,
+      "change": "new-odp",
+      "note": "Rev 3 adds the most-restrictive-mode principle, organization-defined configuration settings, and documented, approved deviations."
+    },
+    {
+      "controlId": "CM.L2-3.4.3",
+      "rev3Id": "03.04.03",
+      "rev3Title": "Configuration Change Control",
+      "rev3Text": "a. Define the types of changes to the system that are configuration-controlled. b. Review proposed configuration-controlled changes to the system, and approve or disapprove such changes with explicit consideration for security impacts. c. Implement and document approved configuration-controlled changes to the system. d. Monitor and review activities associated with configuration-controlled changes to the system.",
+      "pdfPage": 38,
+      "printedPage": 28,
+      "change": "changed",
+      "note": "Rev 3 spells out change control: define the controlled change types, review and approve with security impact in mind, implement and document, and monitor."
+    },
+    {
+      "controlId": "CM.L2-3.4.4",
+      "rev3Id": "03.04.04",
+      "rev3Title": "Impact Analyses",
+      "rev3Text": "a. Analyze changes to the system to determine potential security impacts prior to change implementation. b. Verify that the security requirements for the system continue to be satisfied after the system changes have been implemented.",
+      "pdfPage": 39,
+      "printedPage": 29,
+      "change": "changed",
+      "note": "Rev 3 adds verifying after the change that the security requirements are still satisfied."
+    },
+    {
+      "controlId": "CM.L2-3.4.5",
+      "rev3Id": "03.04.05",
+      "rev3Title": "Access Restrictions for Change",
+      "rev3Text": "Define, document, approve, and enforce physical and logical access restrictions associated with changes to the system.",
+      "pdfPage": 39,
+      "printedPage": 29,
+      "change": "unchanged",
+      "note": "Unchanged except that organizational systems becomes the system."
+    },
+    {
+      "controlId": "CM.L2-3.4.6",
+      "rev3Id": "03.04.06",
+      "rev3Title": "Least Functionality",
+      "rev3Text": "a. Configure the system to provide only mission-essential capabilities. b. Prohibit or restrict use of the following functions, ports, protocols, connections, and services: [Assignment: organization-defined functions, ports, protocols, connections, and services]. c. Review the system [Assignment: organization-defined frequency] to identify unnecessary or nonsecure functions, ports, protocols, connections, and services. d. Disable or remove functions, ports, protocols, connections, and services that are unnecessary or nonsecure.",
+      "pdfPage": 40,
+      "printedPage": 30,
+      "change": "new-odp",
+      "note": "Rev 3 absorbs 3.4.7 with organization-defined functions, ports, protocols, connections and services to restrict and a defined review frequency."
+    },
+    {
+      "controlId": "CM.L2-3.4.7",
+      "rev3Id": "03.04.07",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.04.06 and 03.04.08.",
+      "pdfPage": 40,
+      "printedPage": 30,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.04.06 (Least Functionality) and 03.04.08 (Authorized Software).",
+      "into": ["03.04.06", "03.04.08"]
+    },
+    {
+      "controlId": "CM.L2-3.4.8",
+      "rev3Id": "03.04.08",
+      "rev3Title": "Authorized Software – Allow by Exception",
+      "rev3Text": "a. Identify software programs authorized to execute on the system. b. Implement a deny-all, allow-by-exception policy for the execution of authorized software programs on the system. c. Review and update the list of authorized software programs [Assignment: organization-defined frequency].",
+      "pdfPage": 40,
+      "printedPage": 30,
+      "change": "new-odp",
+      "note": "Rev 3 keeps only deny-all, allow-by-exception: identify the authorized software, enforce the policy and review the list at an organization-defined frequency."
+    },
+    {
+      "controlId": "CM.L2-3.4.9",
+      "rev3Id": "03.04.09",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Addressed by 03.01.05, 03.01.06, 03.01.07, 03.04.08, and 03.12.03.",
+      "pdfPage": 41,
+      "printedPage": 31,
+      "change": "withdrawn",
+      "note": "Withdrawn; addressed by 03.01.05, 03.01.06, 03.01.07, 03.04.08 and 03.12.03.",
+      "into": ["03.01.05", "03.01.06", "03.01.07", "03.04.08", "03.12.03"]
+    },
+    {
+      "controlId": "IA.L2-3.5.1",
+      "rev3Id": "03.05.01",
+      "rev3Title": "User Identification and Authentication",
+      "rev3Text": "a. Uniquely identify and authenticate system users, and associate that unique identification with processes acting on behalf of those users. b. Re-authenticate users when [Assignment: organization-defined circumstances or situations requiring re-authentication].",
+      "pdfPage": 43,
+      "printedPage": 33,
+      "change": "new-odp",
+      "note": "Rev 3 merges identification with authentication of users and adds re-authentication in organization-defined circumstances; devices move to 03.05.02."
+    },
+    {
+      "controlId": "IA.L2-3.5.2",
+      "rev3Id": "03.05.02",
+      "rev3Title": "Device Identification and Authentication",
+      "rev3Text": "Uniquely identify and authenticate [Assignment: organization-defined devices or types of devices] before establishing a system connection.",
+      "pdfPage": 44,
+      "printedPage": 34,
+      "change": "new-odp",
+      "note": "Rev 3 narrows this to identifying and authenticating organization-defined devices before a connection; users are covered by 03.05.01."
+    },
+    {
+      "controlId": "IA.L2-3.5.3",
+      "rev3Id": "03.05.03",
+      "rev3Title": "Multi-Factor Authentication",
+      "rev3Text": "Implement multi-factor authentication for access to privileged and non-privileged accounts.",
+      "pdfPage": 44,
+      "printedPage": 34,
+      "change": "changed",
+      "note": "Rev 3 drops the local-versus-network distinction: multi-factor authentication for access to all privileged and non-privileged accounts."
+    },
+    {
+      "controlId": "IA.L2-3.5.4",
+      "rev3Id": "03.05.04",
+      "rev3Title": "Replay-Resistant Authentication",
+      "rev3Text": "Implement replay-resistant authentication mechanisms for access to privileged and non-privileged accounts.",
+      "pdfPage": 45,
+      "printedPage": 35,
+      "change": "changed",
+      "note": "Rev 3 drops the word network: replay resistance for access to privileged and non-privileged accounts."
+    },
+    {
+      "controlId": "IA.L2-3.5.5",
+      "rev3Id": "03.05.05",
+      "rev3Title": "Identifier Management",
+      "rev3Text": "a. Receive authorization from organizational personnel or roles to assign an individual, group, role, service, or device identifier. b. Select and assign an identifier that identifies an individual, group, role, service, or device. c. Prevent the reuse of identifiers for [Assignment: organization-defined time period]. d. Manage individual identifiers by uniquely identifying each individual as [Assignment: organization-defined characteristic identifying individual status].",
+      "pdfPage": 45,
+      "printedPage": 35,
+      "change": "new-odp",
+      "note": "Rev 3 widens it to identifier management: authorization, assignment, reuse prevention for a defined period, and an organization-defined status characteristic."
+    },
+    {
+      "controlId": "IA.L2-3.5.6",
+      "rev3Id": "03.05.06",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Consistency with SP 800-53 [8].",
+      "pdfPage": 46,
+      "printedPage": 36,
+      "change": "withdrawn",
+      "note": "Withdrawn for consistency with SP 800-53, as Rev 3 states."
+    },
+    {
+      "controlId": "IA.L2-3.5.7",
+      "rev3Id": "03.05.07",
+      "rev3Title": "Password Management",
+      "rev3Text": "a. Maintain a list of commonly-used, expected, or compromised passwords, and update the list [Assignment: organization-defined frequency] and when organizational passwords are suspected to have been compromised. b. Verify that passwords are not found on the list of commonly used, expected, or compromised passwords when users create or update passwords. c. Transmit passwords only over cryptographically protected channels. d. Store passwords in a cryptographically protected form. e. Select a new password upon first use after account recovery. f. Enforce the following composition and complexity rules for passwords: [Assignment: organization-defined composition and complexity rules].",
+      "pdfPage": 46,
+      "printedPage": 36,
+      "change": "new-odp",
+      "note": "Rev 3 replaces complexity-and-change rules with password management: a list of compromised passwords, protected transmission and storage (absorbing 3.5.10), a change after recovery, and organization-defined composition rules."
+    },
+    {
+      "controlId": "IA.L2-3.5.8",
+      "rev3Id": "03.05.08",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Consistency with SP 800-53 [8].",
+      "pdfPage": 47,
+      "printedPage": 37,
+      "change": "withdrawn",
+      "note": "Withdrawn for consistency with SP 800-53, as Rev 3 states."
+    },
+    {
+      "controlId": "IA.L2-3.5.9",
+      "rev3Id": "03.05.09",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Consistency with SP 800-53 [8].",
+      "pdfPage": 47,
+      "printedPage": 37,
+      "change": "withdrawn",
+      "note": "Withdrawn for consistency with SP 800-53, as Rev 3 states."
+    },
+    {
+      "controlId": "IA.L2-3.5.10",
+      "rev3Id": "03.05.10",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.05.07.",
+      "pdfPage": 47,
+      "printedPage": 37,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.05.07 (Password Management).",
+      "into": ["03.05.07"]
+    },
+    {
+      "controlId": "IA.L2-3.5.11",
+      "rev3Id": "03.05.11",
+      "rev3Title": "Authentication Feedback",
+      "rev3Text": "Obscure feedback of authentication information during the authentication process.",
+      "pdfPage": 47,
+      "printedPage": 37,
+      "change": "unchanged",
+      "note": "Unchanged in substance; Rev 3 adds during the authentication process."
+    },
+    {
+      "controlId": "IR.L2-3.6.1",
+      "rev3Id": "03.06.01",
+      "rev3Title": "Incident Handling",
+      "rev3Text": "Implement an incident-handling capability that is consistent with the incident response plan and includes preparation, detection and analysis, containment, eradication, and recovery.",
+      "pdfPage": 49,
+      "printedPage": 39,
+      "change": "changed",
+      "note": "Rev 3 ties the capability to the incident response plan and lists preparation, detection and analysis, containment, eradication and recovery."
+    },
+    {
+      "controlId": "IR.L2-3.6.2",
+      "rev3Id": "03.06.02",
+      "rev3Title": "Incident Monitoring, Reporting, and Response Assistance",
+      "rev3Text": "a. Track and document system security incidents. b. Report suspected incidents to the organizational incident response capability within [Assignment: organization-defined time period]. c. Report incident information to [Assignment: organization-defined authorities]. d. Provide an incident response support resource that offers advice and assistance to system users on handling and reporting incidents.",
+      "pdfPage": 49,
+      "printedPage": 39,
+      "change": "new-odp",
+      "note": "Rev 3 adds reporting within an organization-defined time period, organization-defined authorities, and a support resource for users."
+    },
+    {
+      "controlId": "IR.L2-3.6.3",
+      "rev3Id": "03.06.03",
+      "rev3Title": "Incident Response Testing",
+      "rev3Text": "Test the effectiveness of the incident response capability [Assignment: organization-defined frequency].",
+      "pdfPage": 50,
+      "printedPage": 40,
+      "change": "new-odp",
+      "note": "Rev 3 adds an organization-defined testing frequency."
+    },
+    {
+      "controlId": "MA.L2-3.7.1",
+      "rev3Id": "03.07.01",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Recategorized as NCO.",
+      "pdfPage": 52,
+      "printedPage": 42,
+      "change": "withdrawn",
+      "note": "Withdrawn and recategorized as NCO, Rev 3’s term for a control not directly related to protecting the confidentiality of CUI."
+    },
+    {
+      "controlId": "MA.L2-3.7.2",
+      "rev3Id": "03.07.02",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.07.04 and 03.07.06.",
+      "pdfPage": 52,
+      "printedPage": 42,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.07.04 (Maintenance Tools) and 03.07.06 (Maintenance Personnel).",
+      "into": ["03.07.04", "03.07.06"]
+    },
+    {
+      "controlId": "MA.L2-3.7.3",
+      "rev3Id": "03.07.03",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.08.03.",
+      "pdfPage": 52,
+      "printedPage": 42,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.08.03 (Media Sanitization).",
+      "into": ["03.08.03"]
+    },
+    {
+      "controlId": "MA.L2-3.7.4",
+      "rev3Id": "03.07.04",
+      "rev3Title": "Maintenance Tools",
+      "rev3Text": "a. Approve, control, and monitor the use of system maintenance tools. b. Check media with diagnostic and test programs for malicious code before it is used in the system. c. Prevent the removal of system maintenance equipment containing CUI by verifying that there is no CUI on the equipment, sanitizing or destroying the equipment, or retaining the equipment within the facility.",
+      "pdfPage": 52,
+      "printedPage": 42,
+      "change": "changed",
+      "note": "Rev 3 widens media inspection into maintenance tools: approve and monitor the tools, check their media, and keep CUI off equipment that leaves."
+    },
+    {
+      "controlId": "MA.L2-3.7.5",
+      "rev3Id": "03.07.05",
+      "rev3Title": "Nonlocal Maintenance",
+      "rev3Text": "a. Approve and monitor nonlocal maintenance and diagnostic activities. b. Implement multi-factor authentication and replay resistance in the establishment of nonlocal maintenance and diagnostic sessions. c. Terminate session and network connections when nonlocal maintenance is completed.",
+      "pdfPage": 53,
+      "printedPage": 43,
+      "change": "changed",
+      "note": "Rev 3 adds approving and monitoring nonlocal maintenance and replay resistance to the multi-factor authentication."
+    },
+    {
+      "controlId": "MA.L2-3.7.6",
+      "rev3Id": "03.07.06",
+      "rev3Title": "Maintenance Personnel",
+      "rev3Text": "a. Establish a process for maintenance personnel authorization. b. Maintain a list of authorized maintenance organizations or personnel. c. Verify that non-escorted personnel who perform maintenance on the system possess the required access authorizations. d. Designate organizational personnel with required access authorizations and technical competence to supervise the maintenance activities of personnel who do not possess the required access authorizations.",
+      "pdfPage": 53,
+      "printedPage": 43,
+      "change": "changed",
+      "note": "Rev 3 adds an authorization process and list for maintenance personnel and verification of non-escorted personnel, keeping supervision of those without authorization."
+    },
+    {
+      "controlId": "MP.L2-3.8.1",
+      "rev3Id": "03.08.01",
+      "rev3Title": "Media Storage",
+      "rev3Text": "Physically control and securely store system media that contain CUI.",
+      "pdfPage": 54,
+      "printedPage": 44,
+      "change": "unchanged",
+      "note": "Unchanged in substance; Rev 3 drops the phrase both paper and digital."
+    },
+    {
+      "controlId": "MP.L2-3.8.2",
+      "rev3Id": "03.08.02",
+      "rev3Title": "Media Access",
+      "rev3Text": "Restrict access to CUI on system media to authorized personnel or roles.",
+      "pdfPage": 55,
+      "printedPage": 45,
+      "change": "unchanged",
+      "note": "Unchanged in substance; authorized users becomes authorized personnel or roles."
+    },
+    {
+      "controlId": "MP.L2-3.8.3",
+      "rev3Id": "03.08.03",
+      "rev3Title": "Media Sanitization",
+      "rev3Text": "Sanitize system media that contain CUI prior to disposal, release out of organizational control, or release for reuse.",
+      "pdfPage": 55,
+      "printedPage": 45,
+      "change": "changed",
+      "note": "Rev 3 adds release out of organizational control as a trigger and names sanitization alone, absorbing 3.7.3."
+    },
+    {
+      "controlId": "MP.L2-3.8.4",
+      "rev3Id": "03.08.04",
+      "rev3Title": "Media Marking",
+      "rev3Text": "Mark system media that contain CUI to indicate distribution limitations, handling caveats, and applicable CUI markings.",
+      "pdfPage": 56,
+      "printedPage": 46,
+      "change": "changed",
+      "note": "Rev 3 adds handling caveats to the required markings."
+    },
+    {
+      "controlId": "MP.L2-3.8.5",
+      "rev3Id": "03.08.05",
+      "rev3Title": "Media Transport",
+      "rev3Text": "a. Protect and control system media that contain CUI during transport outside of controlled areas. b. Maintain accountability of system media that contain CUI during transport outside of controlled areas. c. Document activities associated with the transport of system media that contain CUI.",
+      "pdfPage": 56,
+      "printedPage": 46,
+      "change": "changed",
+      "note": "Rev 3 adds documenting transport activities to protection, control and accountability during transport."
+    },
+    {
+      "controlId": "MP.L2-3.8.6",
+      "rev3Id": "03.08.06",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Addressed by 03.13.08.",
+      "pdfPage": 57,
+      "printedPage": 47,
+      "change": "withdrawn",
+      "note": "Withdrawn; addressed by 03.13.08 (Transmission and Storage Confidentiality).",
+      "into": ["03.13.08"]
+    },
+    {
+      "controlId": "MP.L2-3.8.7",
+      "rev3Id": "03.08.07",
+      "rev3Title": "Media Use",
+      "rev3Text": "a. Restrict or prohibit the use of [Assignment: organization-defined types of system media]. b. Prohibit the use of removable system media without an identifiable owner.",
+      "pdfPage": 57,
+      "printedPage": 47,
+      "change": "new-odp",
+      "note": "Rev 3 makes the restricted media types organization-defined and absorbs 3.8.8: no removable media without an identifiable owner."
+    },
+    {
+      "controlId": "MP.L2-3.8.8",
+      "rev3Id": "03.08.08",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.08.07.",
+      "pdfPage": 58,
+      "printedPage": 48,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.08.07 (Media Use).",
+      "into": ["03.08.07"]
+    },
+    {
+      "controlId": "MP.L2-3.8.9",
+      "rev3Id": "03.08.09",
+      "rev3Title": "System Backup – Cryptographic Protection",
+      "rev3Text": "a. Protect the confidentiality of backup information. b. Implement cryptographic mechanisms to prevent the unauthorized disclosure of CUI at backup storage locations.",
+      "pdfPage": 58,
+      "printedPage": 48,
+      "change": "changed",
+      "note": "Rev 3 adds cryptographic mechanisms against disclosure of CUI at backup storage locations."
+    },
+    {
+      "controlId": "PS.L2-3.9.1",
+      "rev3Id": "03.09.01",
+      "rev3Title": "Personnel Screening",
+      "rev3Text": "a. Screen individuals prior to authorizing access to the system. b. Rescreen individuals in accordance with [Assignment: organization-defined conditions requiring rescreening].",
+      "pdfPage": 58,
+      "printedPage": 48,
+      "change": "new-odp",
+      "note": "Rev 3 adds rescreening under organization-defined conditions."
+    },
+    {
+      "controlId": "PS.L2-3.9.2",
+      "rev3Id": "03.09.02",
+      "rev3Title": "Personnel Termination and Transfer",
+      "rev3Text": "a. When individual employment is terminated: 1. Disable system access within [Assignment: organization-defined time period], 2. Terminate or revoke authenticators and credentials associated with the individual, and 3. Retrieve security-related system property. b. When individuals are reassigned or transferred to other positions in the organization: 1. Review and confirm the ongoing operational need for current logical and physical access authorizations to the system and facility, and 2. Modify access authorization to correspond with any changes in operational need.",
+      "pdfPage": 59,
+      "printedPage": 49,
+      "change": "new-odp",
+      "note": "Rev 3 spells out termination (disable access within a defined period, revoke credentials, retrieve property) and transfer (review and adjust access)."
+    },
+    {
+      "controlId": "PE.L2-3.10.1",
+      "rev3Id": "03.10.01",
+      "rev3Title": "Physical Access Authorizations",
+      "rev3Text": "a. Develop, approve, and maintain a list of individuals with authorized access to the facility where the system resides. b. Issue authorization credentials for facility access. c. Review the facility access list [Assignment: organization-defined frequency]. d. Remove individuals from the facility access list when access is no longer required.",
+      "pdfPage": 60,
+      "printedPage": 50,
+      "change": "new-odp",
+      "note": "Rev 3 turns it into physical access authorizations: an approved access list, credentials, a defined review frequency and removal when access is no longer needed."
+    },
+    {
+      "controlId": "PE.L2-3.10.2",
+      "rev3Id": "03.10.02",
+      "rev3Title": "Monitoring Physical Access",
+      "rev3Text": "a. Monitor physical access to the facility where the system resides to detect and respond to physical security incidents. b. Review physical access logs [Assignment: organization-defined frequency] and upon occurrence of [Assignment: organization-defined events or potential indications of events].",
+      "pdfPage": 60,
+      "printedPage": 50,
+      "change": "new-odp",
+      "note": "Rev 3 keeps monitoring physical access and adds reviewing access logs at a defined frequency and on defined events."
+    },
+    {
+      "controlId": "PE.L2-3.10.3",
+      "rev3Id": "03.10.03",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.10.07.",
+      "pdfPage": 61,
+      "printedPage": 51,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.10.07 (Physical Access Control).",
+      "into": ["03.10.07"]
+    },
+    {
+      "controlId": "PE.L2-3.10.4",
+      "rev3Id": "03.10.04",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.10.07.",
+      "pdfPage": 61,
+      "printedPage": 51,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.10.07 (Physical Access Control).",
+      "into": ["03.10.07"]
+    },
+    {
+      "controlId": "PE.L2-3.10.5",
+      "rev3Id": "03.10.05",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.10.07.",
+      "pdfPage": 61,
+      "printedPage": 51,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.10.07 (Physical Access Control).",
+      "into": ["03.10.07"]
+    },
+    {
+      "controlId": "PE.L2-3.10.6",
+      "rev3Id": "03.10.06",
+      "rev3Title": "Alternate Work Site",
+      "rev3Text": "a. Determine alternate work sites allowed for use by employees. b. Employ the following security requirements at alternate work sites: [Assignment: organization-defined security requirements].",
+      "pdfPage": 61,
+      "printedPage": 51,
+      "change": "new-odp",
+      "note": "Rev 3 adds determining the allowed alternate work sites and makes the safeguards organization-defined."
+    },
+    {
+      "controlId": "RA.L2-3.11.1",
+      "rev3Id": "03.11.01",
+      "rev3Title": "Risk Assessment",
+      "rev3Text": "a. Assess the risk (including supply chain risk) of unauthorized disclosure resulting from the processing, storage, or transmission of CUI. b. Update risk assessments [Assignment: organization-defined frequency].",
+      "pdfPage": 63,
+      "printedPage": 53,
+      "change": "new-odp",
+      "note": "Rev 3 focuses the assessment on the risk of unauthorized CUI disclosure, including supply chain risk, updated at an organization-defined frequency."
+    },
+    {
+      "controlId": "RA.L2-3.11.2",
+      "rev3Id": "03.11.02",
+      "rev3Title": "Vulnerability Monitoring and Scanning",
+      "rev3Text": "a. Monitor and scan the system for vulnerabilities [Assignment: organization-defined frequency] and when new vulnerabilities affecting the system are identified. b. Remediate system vulnerabilities within [Assignment: organization-defined response times]. c. Update system vulnerabilities to be scanned [Assignment: organization-defined frequency] and when new vulnerabilities are identified and reported.",
+      "pdfPage": 64,
+      "printedPage": 54,
+      "change": "new-odp",
+      "note": "Rev 3 adds monitoring, an organization-defined scan frequency, remediation within defined response times (absorbing 3.11.3) and updating the vulnerabilities scanned for."
+    },
+    {
+      "controlId": "RA.L2-3.11.3",
+      "rev3Id": "03.11.03",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.11.02.",
+      "pdfPage": 65,
+      "printedPage": 55,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.11.02 (Vulnerability Monitoring and Scanning).",
+      "into": ["03.11.02"]
+    },
+    {
+      "controlId": "CA.L2-3.12.1",
+      "rev3Id": "03.12.01",
+      "rev3Title": "Security Assessment",
+      "rev3Text": "Assess the security requirements for the system and its environment of operation [Assignment: organization-defined frequency] to determine if the requirements have been satisfied.",
+      "pdfPage": 65,
+      "printedPage": 55,
+      "change": "new-odp",
+      "note": "Rev 3 assesses the security requirements rather than controls, at an organization-defined frequency."
+    },
+    {
+      "controlId": "CA.L2-3.12.2",
+      "rev3Id": "03.12.02",
+      "rev3Title": "Plan of Action and Milestones",
+      "rev3Text": "a. Develop a plan of action and milestones for the system: 1. To document the planned remediation actions to correct weaknesses or deficiencies noted during security assessments and 2. To reduce or eliminate known system vulnerabilities. b. Update the existing plan of action and milestones based on the findings from: 1. Security assessments, 2. Audits or reviews, and 3. Continuous monitoring activities.",
+      "pdfPage": 66,
+      "printedPage": 56,
+      "change": "changed",
+      "note": "Rev 3 names the plan of action and milestones and requires updating it from assessments, audits and continuous monitoring."
+    },
+    {
+      "controlId": "CA.L2-3.12.3",
+      "rev3Id": "03.12.03",
+      "rev3Title": "Continuous Monitoring",
+      "rev3Text": "Develop and implement a system-level continuous monitoring strategy that includes ongoing monitoring and security assessments.",
+      "pdfPage": 66,
+      "printedPage": 56,
+      "change": "changed",
+      "note": "Rev 3 requires a system-level continuous monitoring strategy with ongoing monitoring and assessments."
+    },
+    {
+      "controlId": "CA.L2-3.12.4",
+      "rev3Id": "03.12.04",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.15.02.",
+      "pdfPage": 67,
+      "printedPage": 57,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.15.02 (System Security Plan) in the new Planning family.",
+      "into": ["03.15.02"]
+    },
+    {
+      "controlId": "SC.L2-3.13.1",
+      "rev3Id": "03.13.01",
+      "rev3Title": "Boundary Protection",
+      "rev3Text": "a. Monitor and control communications at external managed interfaces to the system and key internal managed interfaces within the system. b. Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks. c. Connect to external systems only through managed interfaces that consist of boundary protection devices arranged in accordance with an organizational security architecture.",
+      "pdfPage": 68,
+      "printedPage": 58,
+      "change": "changed",
+      "note": "Rev 3 keeps monitoring and control at managed interfaces, absorbs 3.13.5’s subnetworks, and adds connecting externally only through managed interfaces."
+    },
+    {
+      "controlId": "SC.L2-3.13.2",
+      "rev3Id": "03.13.02",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Recategorized as NCO.",
+      "pdfPage": 68,
+      "printedPage": 58,
+      "change": "withdrawn",
+      "note": "Withdrawn and recategorized as NCO, Rev 3’s term for a control not directly related to protecting the confidentiality of CUI."
+    },
+    {
+      "controlId": "SC.L2-3.13.3",
+      "rev3Id": "03.13.03",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Addressed by 03.01.01, 03.01.02, 03.01.03, 03.01.04, 03.01.05, 03.01.06, and 03.01.07.",
+      "pdfPage": 68,
+      "printedPage": 58,
+      "change": "withdrawn",
+      "note": "Withdrawn; addressed by the access control requirements 03.01.01 through 03.01.07.",
+      "into": [
+        "03.01.01",
+        "03.01.02",
+        "03.01.03",
+        "03.01.04",
+        "03.01.05",
+        "03.01.06",
+        "03.01.07"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.4",
+      "rev3Id": "03.13.04",
+      "rev3Title": "Information in Shared System Resources",
+      "rev3Text": "Prevent unauthorized and unintended information transfer via shared system resources.",
+      "pdfPage": 68,
+      "printedPage": 58,
+      "change": "unchanged",
+      "note": "Unchanged."
+    },
+    {
+      "controlId": "SC.L2-3.13.5",
+      "rev3Id": "03.13.05",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.13.01.",
+      "pdfPage": 69,
+      "printedPage": 59,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.13.01 (Boundary Protection).",
+      "into": ["03.13.01"]
+    },
+    {
+      "controlId": "SC.L2-3.13.6",
+      "rev3Id": "03.13.06",
+      "rev3Title": "Network Communications – Deny by Default – Allow by Exception",
+      "rev3Text": "Deny network communications traffic by default, and allow network communications traffic by exception.",
+      "pdfPage": 69,
+      "printedPage": 59,
+      "change": "unchanged",
+      "note": "Unchanged in substance; the parenthetical is dropped."
+    },
+    {
+      "controlId": "SC.L2-3.13.7",
+      "rev3Id": "03.13.07",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Addressed by 03.01.12, 03.04.02 and 03.04.06.",
+      "pdfPage": 69,
+      "printedPage": 59,
+      "change": "withdrawn",
+      "note": "Withdrawn; addressed by 03.01.12, 03.04.02 and 03.04.06.",
+      "into": ["03.01.12", "03.04.02", "03.04.06"]
+    },
+    {
+      "controlId": "SC.L2-3.13.8",
+      "rev3Id": "03.13.08",
+      "rev3Title": "Transmission and Storage Confidentiality",
+      "rev3Text": "Implement cryptographic mechanisms to prevent the unauthorized disclosure of CUI during transmission and while in storage.",
+      "pdfPage": 70,
+      "printedPage": 60,
+      "change": "changed",
+      "note": "Rev 3 covers CUI in storage as well as transmission (3.13.16 is folded in; 3.1.13 and 3.8.6 are addressed here) and drops the alternative-physical-safeguards exception."
+    },
+    {
+      "controlId": "SC.L2-3.13.9",
+      "rev3Id": "03.13.09",
+      "rev3Title": "Network Disconnect",
+      "rev3Text": "Terminate the network connection associated with a communications session at the end of the session or after [Assignment: organization-defined time period] of inactivity.",
+      "pdfPage": 70,
+      "printedPage": 60,
+      "change": "new-odp",
+      "note": "Rev 3 makes the inactivity period organization-defined."
+    },
+    {
+      "controlId": "SC.L2-3.13.10",
+      "rev3Id": "03.13.10",
+      "rev3Title": "Cryptographic Key Establishment and Management",
+      "rev3Text": "Establish and manage cryptographic keys in the system in accordance with the following key management requirements: [Assignment: organization-defined requirements for key generation, distribution, storage, access, and destruction].",
+      "pdfPage": 71,
+      "printedPage": 61,
+      "change": "new-odp",
+      "note": "Rev 3 adds organization-defined key management requirements for generation, distribution, storage, access and destruction."
+    },
+    {
+      "controlId": "SC.L2-3.13.11",
+      "rev3Id": "03.13.11",
+      "rev3Title": "Cryptographic Protection",
+      "rev3Text": "Implement the following types of cryptography to protect the confidentiality of CUI: [Assignment: organization-defined types of cryptography].",
+      "pdfPage": 71,
+      "printedPage": 61,
+      "change": "new-odp",
+      "note": "Rev 3 replaces FIPS-validated with organization-defined types of cryptography."
+    },
+    {
+      "controlId": "SC.L2-3.13.12",
+      "rev3Id": "03.13.12",
+      "rev3Title": "Collaborative Computing Devices and Applications",
+      "rev3Text": "a. Prohibit the remote activation of collaborative computing devices and applications with the following exceptions: [Assignment: organization-defined exceptions where remote activation is to be allowed]. b. Provide an explicit indication of use to users physically present at the devices.",
+      "pdfPage": 72,
+      "printedPage": 62,
+      "change": "new-odp",
+      "note": "Rev 3 adds applications and organization-defined exceptions for remote activation."
+    },
+    {
+      "controlId": "SC.L2-3.13.13",
+      "rev3Id": "03.13.13",
+      "rev3Title": "Mobile Code",
+      "rev3Text": "a. Define acceptable mobile code and mobile code technologies. b. Authorize, monitor, and control the use of mobile code.",
+      "pdfPage": 72,
+      "printedPage": 62,
+      "change": "changed",
+      "note": "Rev 3 adds defining acceptable mobile code and technologies and authorizing its use."
+    },
+    {
+      "controlId": "SC.L2-3.13.14",
+      "rev3Id": "03.13.14",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Technology-specific.",
+      "pdfPage": 73,
+      "printedPage": 63,
+      "change": "withdrawn",
+      "note": "Withdrawn as technology-specific, as Rev 3 states."
+    },
+    {
+      "controlId": "SC.L2-3.13.15",
+      "rev3Id": "03.13.15",
+      "rev3Title": "Session Authenticity",
+      "rev3Text": "Protect the authenticity of communications sessions.",
+      "pdfPage": 73,
+      "printedPage": 63,
+      "change": "unchanged",
+      "note": "Unchanged."
+    },
+    {
+      "controlId": "SC.L2-3.13.16",
+      "rev3Id": "03.13.16",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.13.08.",
+      "pdfPage": 73,
+      "printedPage": 63,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.13.08 (Transmission and Storage Confidentiality).",
+      "into": ["03.13.08"]
+    },
+    {
+      "controlId": "SI.L2-3.14.1",
+      "rev3Id": "03.14.01",
+      "rev3Title": "Flaw Remediation",
+      "rev3Text": "a. Identify, report, and correct system flaws. b. Install security-relevant software and firmware updates within [Assignment: organization-defined time period] of the release of the updates.",
+      "pdfPage": 73,
+      "printedPage": 63,
+      "change": "new-odp",
+      "note": "Rev 3 drops in a timely manner and instead requires installing security updates within an organization-defined time period of release."
+    },
+    {
+      "controlId": "SI.L2-3.14.2",
+      "rev3Id": "03.14.02",
+      "rev3Title": "Malicious Code Protection",
+      "rev3Text": "a. Implement malicious code protection mechanisms at system entry and exit points to detect and eradicate malicious code. b. Update malicious code protection mechanisms as new releases are available in accordance with configuration management policies and procedures. c. Configure malicious code protection mechanisms to: 1. Perform scans of the system [Assignment: organization-defined frequency] and real-time scans of files from external sources at endpoints or system entry and exit points as the files are downloaded, opened, or executed; and 2. Block malicious code, quarantine malicious code, or take other mitigation actions in response to malicious code detection.",
+      "pdfPage": 74,
+      "printedPage": 64,
+      "change": "new-odp",
+      "note": "Rev 3 absorbs 3.14.4 and 3.14.5: protection at entry and exit points, updates, scans at a defined frequency plus real-time scans, and blocking or quarantining."
+    },
+    {
+      "controlId": "SI.L2-3.14.3",
+      "rev3Id": "03.14.03",
+      "rev3Title": "Security Alerts, Advisories, and Directives",
+      "rev3Text": "a. Receive system security alerts, advisories, and directives from external organizations on an ongoing basis. b. Generate and disseminate internal system security alerts, advisories, and directives, as necessary.",
+      "pdfPage": 75,
+      "printedPage": 65,
+      "change": "changed",
+      "note": "Rev 3 adds directives and internal dissemination; the explicit take-action clause is gone."
+    },
+    {
+      "controlId": "SI.L2-3.14.4",
+      "rev3Id": "03.14.04",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.14.02.",
+      "pdfPage": 76,
+      "printedPage": 66,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.14.02 (Malicious Code Protection).",
+      "into": ["03.14.02"]
+    },
+    {
+      "controlId": "SI.L2-3.14.5",
+      "rev3Id": "03.14.05",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Addressed by 03.14.02.",
+      "pdfPage": 76,
+      "printedPage": 66,
+      "change": "withdrawn",
+      "note": "Withdrawn; addressed by 03.14.02 (Malicious Code Protection).",
+      "into": ["03.14.02"]
+    },
+    {
+      "controlId": "SI.L2-3.14.6",
+      "rev3Id": "03.14.06",
+      "rev3Title": "System Monitoring",
+      "rev3Text": "a. Monitor the system to detect: 1. Attacks and indicators of potential attacks and 2. Unauthorized connections. b. Identify unauthorized use of the system. c. Monitor inbound and outbound communications traffic to detect unusual or unauthorized activities or conditions.",
+      "pdfPage": 76,
+      "printedPage": 66,
+      "change": "changed",
+      "note": "Rev 3 adds unauthorized connections, absorbs 3.14.7’s unauthorized use, and monitors traffic for unusual or unauthorized activity."
+    },
+    {
+      "controlId": "SI.L2-3.14.7",
+      "rev3Id": "03.14.07",
+      "rev3Title": "Withdrawn",
+      "rev3Text": "Incorporated into 03.14.06.",
+      "pdfPage": 77,
+      "printedPage": 67,
+      "change": "withdrawn",
+      "note": "Withdrawn into 03.14.06 (System Monitoring).",
+      "into": ["03.14.06"]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-/* The control screen: the ID decoded, the title, five views and one footer line.
+/* The control screen: the ID decoded, the title, its views and one footer line.
    Unlayered on purpose: the older reader's media rules in styles.css are unlayered
    and would otherwise win over these at phone widths. */
 /* On the Board the explorer section is only a frame around the control page;
@@ -494,6 +494,113 @@
   margin-top: 8px;
 }
 
+/* Rev 3: the two sentences side by side, the change in chalk. */
+.rev3 {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 1000px;
+}
+.rev3-pinned {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-chalk-dim);
+}
+.rev3-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 40px;
+}
+.rev3-side h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 10px;
+  margin: 0 0 10px;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--color-yellow);
+}
+.rev3-id {
+  font-size: 15px;
+  color: var(--color-blue);
+}
+.rev3-title {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--color-chalk-dim);
+}
+.rev3 .rev3-quote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-size: 21px;
+  line-height: 1.45;
+  color: var(--color-chalk);
+}
+.rev3 .rev3-quote.is-long {
+  font-size: 17px;
+  line-height: 1.5;
+}
+.rev3-side + .rev3-side {
+  padding-left: 40px;
+  border-left: 1px solid var(--color-rule);
+  margin-left: -40px;
+}
+.rev3-cite {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--color-chalk-dim);
+}
+.rev3-change {
+  margin: 0;
+  max-width: 72ch;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--color-chalk);
+}
+.rev3-change-kind {
+  margin-right: 8px;
+  font-size: 22px;
+  color: var(--color-yellow);
+}
+.rev3-went {
+  margin: 0;
+  font-size: 15px;
+  color: var(--color-chalk-muted);
+}
+.rev3-went a {
+  color: var(--color-chalk);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 1024px) {
+  .rev3-pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .rev3-side + .rev3-side {
+    margin-left: 0;
+    padding-left: 0;
+    padding-top: 20px;
+    border-left: 0;
+    border-top: 1px solid var(--color-rule);
+  }
+  .rev3 .rev3-quote {
+    font-size: 18px;
+  }
+}
+.decode-note {
+  margin: 0 0 18px;
+  font-size: 14px;
+  color: var(--color-chalk-dim);
+}
+.control-panel-rev3 {
+  justify-content: flex-start;
+}
+
 /* Practice and Related read from the top and may scroll. */
 .practice-empty p {
   margin: 0;
@@ -743,6 +850,7 @@
   .control-prevnext,
   .control-panel-practice,
   .control-panel-related,
+  .decode-note,
   .control-id-summary,
   .decode-compare,
   .chalk-picker,
@@ -855,6 +963,34 @@
     padding: 10pt 0 0;
     font-size: 9pt;
     color: #222;
+  }
+  .rev3 {
+    gap: 8pt;
+  }
+  .rev3-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16pt;
+  }
+  .rev3-side + .rev3-side {
+    margin-left: -16pt;
+    padding-left: 16pt;
+    border-left: 1px solid #aaa;
+  }
+  .rev3 .rev3-quote,
+  .rev3 .rev3-quote.is-long {
+    font-size: 10pt;
+    line-height: 1.35;
+  }
+  .rev3-side h2 {
+    font-size: 12pt;
+  }
+  .rev3-change {
+    font-size: 10pt;
+  }
+  .rev3-pinned,
+  .rev3-cite,
+  .rev3-went {
+    font-size: 8.5pt;
   }
   .control-foot-note a[href]::after {
     content: ' ' attr(href);

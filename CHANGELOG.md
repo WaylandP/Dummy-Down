@@ -46,6 +46,21 @@ analytics allowlist do not change.
   pick a chalk, `/` finds a control and `?` shows the keys. Print gives a
   one-page control sheet in black on white.
 
+## The Board's features — October 15, 2026
+
+The features the specification lists after the five Board pull requests, one
+pull request each. Anything that adds a fact lives in `src/data/` with a
+source record under `docs/sources/`.
+
+- [PR #44](https://github.com/WaylandP/cipher-and-chalk/pull/44): the Decode
+  clause map. Each clause of the requirement sentence that produces assessment
+  objectives is underlined in yellow chalk with the letters of those objectives
+  beside it, as in `mockups/Decode.html`. The map
+  (`src/data/cmmc-clause-map.json`) was read against the verbatim objectives
+  and nothing else, is locked by tests to the pinned text and is recorded in
+  `docs/sources/cmmc-clause-map-2026-10-15.md`; 118 of the 149 controls are
+  mapped and the rest show the sentence plain.
+
 ## Week 2 content and trust — October 14, 2026
 
 - [PR #31](https://github.com/WaylandP/cipher-and-chalk/pull/31): a dedicated
