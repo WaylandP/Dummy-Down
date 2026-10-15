@@ -218,7 +218,7 @@
     align-items: baseline;
     justify-content: space-between;
     gap: 4px 32px;
-    padding: 4px var(--gutter) 6px;
+    padding: 2px var(--gutter) 4px;
     color: var(--color-chalk-dim);
     font-size: 13px;
     line-height: 1.5;
@@ -236,6 +236,14 @@
     text-decoration: underline;
     text-decoration-color: var(--color-rule);
     text-underline-offset: 4px;
+  }
+  /* The note's link keeps its 44px target in its padding, so the line stays a
+     text line and the note can wrap without growing the footer. */
+  .footer-note a {
+    display: inline;
+    min-height: 0;
+    padding: 12px 0;
+    white-space: nowrap;
   }
   .footer-note a:hover,
   .footer-links a:hover,
@@ -393,6 +401,151 @@
     clip: rect(0 0 0 0);
     white-space: nowrap;
   }
+  /* Dash: the white chalk in the tray, one stroke with two eyes. Every gesture
+     is one animation; off, it is a plain stub. */
+  .dash {
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height: 20px;
+    margin-top: -4px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .dash-body {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transform-origin: 20% 60%;
+  }
+  .dash-stroke {
+    fill: none;
+    stroke: var(--color-chalk);
+    stroke-width: 26;
+    stroke-linecap: round;
+  }
+  .dash-eye {
+    fill: var(--color-tray-bottom);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: dash-blink 5.2s ease-in-out infinite;
+  }
+  .dash-eye + .dash-eye {
+    animation-delay: 0.08s;
+  }
+  .dash.is-still .dash-eye {
+    display: none;
+  }
+  .dash[data-gesture='hand'] .dash-body {
+    animation: dash-hand 0.6s ease-out;
+  }
+  .dash[data-gesture='sweep'] .dash-body {
+    animation: dash-sweep 0.4s ease-in-out;
+  }
+  .dash[data-gesture='sweep'] .dash-eye {
+    animation: none;
+    transform: scaleY(0.15);
+  }
+  .dash[data-gesture='nod'] .dash-body {
+    animation: dash-nod 0.5s ease-in-out;
+  }
+  .dash-dot {
+    position: absolute;
+    top: -18px;
+    right: -14px;
+    width: 18px;
+    height: 18px;
+    overflow: visible;
+    animation: dash-dot 3s ease-in-out forwards;
+  }
+  .dash-dot-body {
+    fill: var(--color-chalk);
+  }
+  .dash-dot-eye {
+    fill: var(--color-tray-bottom);
+  }
+  @keyframes dash-blink {
+    0%,
+    93%,
+    100% {
+      transform: scaleY(1);
+    }
+    96% {
+      transform: scaleY(0.1);
+    }
+  }
+  @keyframes dash-hand {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0);
+    }
+    40% {
+      transform: translateY(-4px) rotate(-5deg);
+    }
+  }
+  @keyframes dash-sweep {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(44px, -12px) rotate(-6deg);
+    }
+  }
+  @keyframes dash-nod {
+    0%,
+    100% {
+      transform: rotate(0);
+    }
+    40% {
+      transform: rotate(7deg) translateY(1px);
+    }
+  }
+  @keyframes dash-dot {
+    0%,
+    100% {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    15%,
+    80% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dash .dash-eye,
+    .dash-dot {
+      display: none;
+    }
+    .dash[data-gesture] .dash-body {
+      animation: none;
+    }
+  }
+  /* The footer's Dash switch reads like the links beside it. */
+  .footer-links .dash-switch {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    border: 0;
+    padding: 0;
+    background: none;
+    color: var(--color-chalk-muted);
+    font: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--color-rule);
+    text-underline-offset: 4px;
+    cursor: pointer;
+  }
+  .footer-links .dash-switch:hover {
+    color: var(--color-yellow);
+  }
+  .footer-links .dash-switch:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 3px;
+  }
 
   /* The keys, on request ("?"). */
   .keys-help-backdrop {
@@ -544,6 +697,13 @@
     height: 10px;
     opacity: 1;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  }
+  /* Dash is taller than a stick; the negative margin keeps the three labels level. */
+  .chalk-tray.is-switch .dash {
+    width: 44px;
+    height: 14px;
+    margin: -2px 0;
+    box-shadow: none;
   }
   .chalk-tray.is-switch .tray-pick[aria-pressed='true'] .tray-stick {
     transform: translateY(-5px) rotate(-6deg);

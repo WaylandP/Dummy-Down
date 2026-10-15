@@ -9,6 +9,7 @@ import { ContextTerms } from './ContextTerms'
 import { glossaryTerms } from '../data/glossary'
 import { useActivityProgress } from '../progress/useLocalProgress'
 import { ActivityProgressTools } from '../progress/ActivityProgressTools'
+import { cueDash } from './board/tray-state'
 
 interface LearningPracticeProps {
   lesson: LessonIdentity
@@ -126,12 +127,14 @@ function KnowledgeCheck({
       focusRequested.current = false
       return
     }
+    const finished = questionIndex === activity.questions.length - 1
     trackUsage({
       name: 'practice_action',
       lesson,
-      action:
-        questionIndex === activity.questions.length - 1 ? 'complete' : 'next',
+      action: finished ? 'complete' : 'next',
     })
+    // Dot visits once, when the activity is finished here.
+    if (finished) cueDash('dot')
     setSelection(null)
   }
 

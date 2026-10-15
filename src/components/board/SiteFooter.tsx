@@ -1,5 +1,6 @@
 import type { SitePage } from '../../state/site-page'
 import { UsagePreferences } from '../../analytics/UsagePreferences'
+import { DashSwitch } from './DashSwitch'
 
 const repositoryUrl = 'https://github.com/WaylandP/cipher-and-chalk'
 
@@ -9,7 +10,7 @@ export function SiteFooter({ page }: { readonly page: SitePage }) {
     <footer className="site-footer">
       <p className="footer-note">
         Independent and educational. Not legal advice; not affiliated with DoD,
-        NIST or any certification body.
+        NIST or any certification body.{' '}
         <a
           href="/disclaimer"
           aria-current={page === 'disclaimer' ? 'page' : undefined}
@@ -25,6 +26,7 @@ export function SiteFooter({ page }: { readonly page: SitePage }) {
           Assessment objectives
         </a>
         <UsagePreferences />
+        <DashSwitch />
         <a
           href={`${repositoryUrl}/blob/main/LICENSE`}
           target="_blank"

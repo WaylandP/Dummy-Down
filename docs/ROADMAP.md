@@ -57,9 +57,9 @@ content-review milestone.
       the analytics allowlist did not change. The specification's remaining
       features follow one pull request each, in its order; the Decode clause
       map deferred from the control page, the Rev 3 tab, chalk popovers for
-      the lesson's words on Explain, Send this chalk, Erase, the timeline and the
-      assessor's three words are merged, and the CedarPoint story and Dash
-      follow.
+      the lesson's words on Explain, Send this chalk, Erase, the timeline, the
+      assessor's three words and Dash are merged, and the CedarPoint story
+      follows.
 - [x] **Completed and merged into main** — Repair reproduced
       implementation issues and prepare a repeatable owner/learner acceptance packet
       in Increment 1 (PR #14). This does not record a completed human acceptance cycle.

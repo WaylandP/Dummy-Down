@@ -24,8 +24,11 @@ Three localStorage keys use the existing project namespace:
   identifiers of the control opened last, written only while saving is on and
   shown on Home as "Last time".
 
-No free text, search, organizational evidence, CUI, scores, timestamps, visitor
-identifiers or network synchronization are added. Progress is not passed to
+Two preference keys in the same namespace are not progress and are not
+removed with it: `cipher-and-chalk:usage-preference` (the Usage & privacy
+switch) and `cipher-and-chalk:dash:v1` (the footer's Dash switch, which
+stores only `off`). No free text, search, organizational evidence, CUI,
+scores, timestamps, visitor identifiers or network synchronization are added. Progress is not passed to
 analytics and saving permission does not change usage-measurement permission.
 Anyone using the same browser profile can see the saved practice. Storage is
 specific to the website origin: a Vercel preview and production do not share it.

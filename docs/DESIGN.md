@@ -8,7 +8,7 @@ work follows that specification.
 
 The app shell is the Board's: the slate ground with chalk dust, the Morse-C ring
 and lockup, the five-item nav with a find line, the one-line footer and the
-wooden tray, drawn from the tokens and fonts in `src/styles.css` and the
+wooden tray with Dash in it, drawn from the tokens and fonts in `src/styles.css` and the
 components in `src/components/board/`. Walter Turncoat writes headings, Atkinson
 Hyperlegible Next the reading text, Martian Mono anything that is code; all three
 are self-hosted from `public/fonts/` with licenses in `public/font-licenses/`.
@@ -104,7 +104,15 @@ not establish it.
   lifted); on a phone the tray is the bottom bar, 72px, labelled, ending the
   page rather than floating over it, so no tap target is covered
   (`mockups/Phone.html`, `PhoneExplain.html`); Explain keeps its own chalk
-  picker on phones because the bar is not fixed. Between controls (Previous and Next, the keys, a
+  picker on phones because the bar is not fixed. Dash is the tray's white
+  chalk (`mockups/Dash.html`): one chalk stroke with two eyes, hidden from
+  assistive technology, that blinks every few seconds, lifts the chalk that
+  was picked, sweeps once when the board is erased, nods once when a chalk
+  popover opens, and is joined by Dot once when a practice activity is
+  finished here; it never speaks, and each gesture is one CSS animation. The
+  footer's "Dash" switch turns it into a plain stub of chalk and remembers
+  only `off`, under `cipher-and-chalk:dash:v1` in this browser; reduced motion
+  makes it a stub as well, and print hides the tray. Between controls (Previous and Next, the keys, a
   result, Back and Forward) the board is erased: the old chalk sweeps off as
   dust, left to right in 400 ms, over the new control, which is underneath with
   focus and the announcement exactly as before; it is the only page-change
