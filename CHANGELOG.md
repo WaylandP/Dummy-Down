@@ -91,6 +91,14 @@ source record under `docs/sources/`.
   date). Every line is a paraphrase in `src/data/cmmc-timeline.json` over
   its quoted source, pinned in `docs/sources/cmmc-timeline-2026-10-15.md`;
   the analytics allowlist grows to eight paths and nothing new is collected.
+- [PR #50](https://github.com/WaylandP/cipher-and-chalk/pull/50): the
+  assessor's three words. The Evidence view opens with Examine the document,
+  Interview the role and Test the action: three chalk columns listing verbatim
+  what the pinned assessment guide prints under "Potential Assessment Methods
+  and Objects" for the control, cited to the guide and page, above the
+  compliance chalk's questions and evidence examples. The lists for all 149
+  controls are in `src/data/cmmc-assessment-methods.json`, recorded in
+  `docs/sources/cmmc-assessment-methods-2026-10-15.md`.
 
 ## Week 2 content and trust — October 14, 2026
 
