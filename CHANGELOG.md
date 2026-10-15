@@ -39,6 +39,12 @@ analytics allowlist do not change.
   word's sources and one letter of words at a time with their sources in blue
   mono; the other four pages follow the Board's lines with their words
   unchanged. The glossary's open event is retired with the disclosures.
+- [PR #43](https://github.com/WaylandP/cipher-and-chalk/pull/43): the phone
+  bar, the keys and the printed sheet. With a control on the board the tray's
+  three chalks pick the perspective; on a phone the tray is the labelled
+  bottom bar from the mockups. `j`/`k` step through the results, `1`/`2`/`3`
+  pick a chalk, `/` finds a control and `?` shows the keys. Print gives a
+  one-page control sheet in black on white.
 
 ## Week 2 content and trust — October 14, 2026
 

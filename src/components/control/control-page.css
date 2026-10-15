@@ -335,6 +335,38 @@
   color: var(--color-chalk);
 }
 
+/* The clauses: a yellow chalk underline and the letters in the hand beside it.
+   The clause stays inline so a long one wraps like the rest of the sentence; the
+   stroke is a background that every line fragment draws for itself. */
+.decode-clause {
+  display: inline;
+  padding-bottom: 6px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 8px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'%3E%3Cpath d='M1 4c30-2 60 0 98-1' fill='none' stroke='%23f2d16b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.decode-clause[data-stroke='1'] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'%3E%3Cpath d='M1 5c30-3 60 1 98-2' fill='none' stroke='%23f2d16b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.decode-clause[data-stroke='2'] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'%3E%3Cpath d='M1 3c30 1 60-2 98 0' fill='none' stroke='%23f2d16b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.decode-letters {
+  margin-left: 4px;
+  color: var(--color-yellow);
+  font-size: 22px;
+  line-height: 1;
+  vertical-align: top;
+  white-space: nowrap;
+}
+/* The letters are drawn, not written into the quotation. */
+.decode-letters::after {
+  content: attr(data-letters);
+}
+
 /* Explain: pick a chalk, read in its colour. */
 .explain {
   display: grid;
@@ -644,6 +676,14 @@
     columns: 1;
     font-size: 14px;
   }
+  .decode-clause {
+    padding-bottom: 4px;
+    background-size: 100% 6px;
+  }
+  .decode-letters {
+    margin-left: 3px;
+    font-size: 15px;
+  }
   .explain-text {
     font-size: 23px;
     line-height: 1.4;
@@ -674,6 +714,12 @@
   .control-tab[aria-current='page'],
   .stick.on {
     text-decoration: underline;
+  }
+  /* Background images are dropped in forced colours; the underline is text decoration. */
+  .decode-clause {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
   }
   .stick-bar {
     forced-color-adjust: none;
@@ -757,6 +803,17 @@
   .decode .decode-sentence {
     font-size: 14pt;
     line-height: 1.35;
+  }
+  .decode-clause,
+  .decode-clause[data-stroke='1'],
+  .decode-clause[data-stroke='2'] {
+    padding-bottom: 3pt;
+    background-size: 100% 5pt;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'%3E%3Cpath d='M1 4c30-2 60 0 98-1' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+    print-color-adjust: exact;
+  }
+  .decode-letters {
+    font-size: 11pt;
   }
   .decode-objectives {
     columns: 2;

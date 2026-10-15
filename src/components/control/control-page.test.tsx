@@ -10,6 +10,7 @@ import {
   parseExplorerSearch,
 } from '../../state/explorer-state'
 import { decodeControlId } from './decode-id'
+import { quotation } from '../../test/quotation'
 
 function control(id: string) {
   const found = referenceControls.find((item) => item.id === id)
@@ -142,7 +143,7 @@ describe('Assessment objectives on Decode', () => {
       expect(list.getByText(objective.text)).toBeVisible()
     }
     expect(
-      screen.getByText(control('AC.L1-b.1.i').requirement.text),
+      screen.getByText(quotation(control('AC.L1-b.1.i').requirement.text)),
     ).toBeVisible()
   })
 })
