@@ -120,6 +120,17 @@ analytics allowlist do not change.
   cut under reduced motion); a resize that changes the width clears them.
   Links under the layer are inert, the wheel scrolls, two fingers scroll,
   print leaves the marks out.
+- [PR #67](https://github.com/WaylandP/cipher-and-chalk/pull/67): the Home
+  hero, the owner's approved Home (`mockups/2026-10-15/HomeHero.html`),
+  replacing #61's. One thing first, then second, then third: a kicker in
+  yellow chalk, the one headline "CMMC, in plain words." (112px on desktop,
+  two lines on a phone), one line with the count from the catalog, "Pick up
+  a chalk to start." with the three chalks as the main action (each sets its
+  chalk; the stick lifts under the pointer or focus, not under reduced
+  motion), then the search line. The "What this is" column, "Who's reading?"
+  and the decode example are gone. The headline names CMMC on purpose and is
+  reworded when a second framework ships. The discover unit test now awaits
+  its result counts.
 
 ## The Board's features — October 15, 2026
 
