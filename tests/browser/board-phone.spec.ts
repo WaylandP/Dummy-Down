@@ -110,7 +110,10 @@ test('the keys: ? shows them, j and k step, 1 2 3 pick a chalk, / finds', async 
     .getByRole('button', { name: /^Next: / })
     .textContent())!.replace('Next: ', '')
   await page.keyboard.type('j')
-  await expect(page.locator('.control-id')).toHaveText(nextId)
+  // The live page, not the dust of the one being erased.
+  await expect(
+    page.locator('.control-page:not(.erase-dust) .control-id'),
+  ).toHaveText(nextId)
   await expect(page.getByRole('heading', { level: 1 })).toBeFocused()
   await page.keyboard.type('k')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(title)

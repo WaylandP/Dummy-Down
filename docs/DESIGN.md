@@ -104,7 +104,11 @@ not establish it.
   lifted); on a phone the tray is the bottom bar, 72px, labelled, ending the
   page rather than floating over it, so no tap target is covered
   (`mockups/Phone.html`, `PhoneExplain.html`); Explain keeps its own chalk
-  picker on phones because the bar is not fixed. Keys,
+  picker on phones because the bar is not fixed. Between controls (Previous and Next, the keys, a
+  result, Back and Forward) the board is erased: the old chalk sweeps off as
+  dust, left to right in 400 ms, over the new control, which is underneath with
+  focus and the announcement exactly as before; it is the only page-change
+  motion, and a cut under reduced motion, forced colours and print. Keys,
   wherever nothing is being typed and no dialog is open: `j` and `k` step to
   the next and previous control within the current results and focus the
   title, `1`, `2`, `3` pick a chalk and open Explain, `/` opens the find line

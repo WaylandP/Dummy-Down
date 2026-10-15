@@ -75,9 +75,14 @@ source record under `docs/sources/`.
 - [PR #47](https://github.com/WaylandP/cipher-and-chalk/pull/47): Send this
   chalk. A control address may name a chalk instead of a mode (`chalk=white`,
   `yellow` or `blue`) and opens Explain in that chalk; the parameter is read
-  once, rewritten to the usual address and never sent anywhere. \"Send this
-  chalk\" beside Print and Copy reference link copies such a link for the chalk
+  once, rewritten to the usual address and never sent anywhere. "Send this
+  chalk" beside Print and Copy reference link copies such a link for the chalk
   in hand, with the same feedback.
+- [PR #48](https://github.com/WaylandP/cipher-and-chalk/pull/48): Erase.
+  Between controls the old chalk sweeps off the board as dust, left to right
+  in 400 ms, while the new control is already underneath with focus and the
+  announcement exactly as before; the only page-change motion, and a cut
+  under reduced motion, forced colours and print.
 
 ## Week 2 content and trust — October 14, 2026
 
