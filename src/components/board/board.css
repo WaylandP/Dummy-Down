@@ -360,6 +360,109 @@
     font-size: 12px;
     white-space: nowrap;
   }
+  /* With a control on the board the sticks are buttons: 44px tall over a 34px tray. */
+  .tray-pick {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin: -10px 0 0;
+    border: 0;
+    padding: 10px 0 0;
+    background: none;
+    color: var(--color-tray-label);
+  }
+  .tray-pick .tray-stick {
+    transition: transform 0.15s;
+  }
+  .tray-pick:hover .tray-stick:not([data-lifted='true']) {
+    transform: translateY(-2px);
+  }
+  .tray-pick:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 3px;
+  }
+  /* The label is for the phone bar and screen readers; desktop reads the legend. */
+  .tray-pick-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* The keys, on request ("?"). */
+  .keys-help-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(22, 31, 28, 0.78);
+  }
+  .keys-help {
+    position: relative;
+    width: min(440px, 100%);
+    padding: 22px 28px 18px;
+    border: 1px solid var(--color-rule);
+    background: var(--color-board-lift);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  }
+  .keys-help h2 {
+    margin: 0 0 16px;
+    font-size: 34px;
+    line-height: 1;
+  }
+  .keys-list {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 10px 20px;
+    margin: 0;
+  }
+  .keys-list > div {
+    display: contents;
+  }
+  .keys-list dt {
+    display: flex;
+    gap: 6px;
+  }
+  .keys-list dd {
+    margin: 0;
+    color: var(--color-chalk-muted);
+    font-size: 15px;
+  }
+  .keys-list kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 7px;
+    border: 1px solid var(--color-rule);
+    border-radius: 6px;
+    box-shadow: 0 2px 0 var(--color-rule-soft);
+    color: var(--color-blue);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .keys-close {
+    margin-top: 14px;
+  }
+  .keys-close:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* On paper only. */
+  .print-only {
+    display: none;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -416,6 +519,54 @@
     right: var(--gutter);
     width: auto;
   }
+  /* Phone: with a control on the board the tray is the bottom bar; its three
+     chalks are the perspective switch, labelled (mockups/Phone.html). It ends
+     the page rather than floating over it: a floating bar covers part of the
+     tap targets under it. */
+  .chalk-tray.is-switch {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: 0;
+    height: 72px;
+    padding: 0 12px;
+  }
+  .chalk-tray.is-switch .tray-pick {
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0;
+  }
+  .chalk-tray.is-switch .tray-stick {
+    width: 44px;
+    height: 10px;
+    opacity: 1;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  }
+  .chalk-tray.is-switch .tray-pick[aria-pressed='true'] .tray-stick {
+    transform: translateY(-5px) rotate(-6deg);
+  }
+  .chalk-tray.is-switch .tray-pick-label {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    color: var(--color-tray-text);
+    font-size: 11px;
+    line-height: 1.2;
+  }
+  .chalk-tray.is-switch .tray-pick[aria-pressed='true'] .tray-pick-label {
+    color: #fff;
+    font-weight: 500;
+  }
+  .chalk-tray.is-switch .tray-stub,
+  .chalk-tray.is-switch .tray-legend {
+    display: none;
+  }
 }
 @media (max-width: 380px) {
   .site-nav {
@@ -445,16 +596,89 @@
   .footer-links a[aria-current='page'] {
     text-decoration: underline;
   }
+  .tray-stick,
+  .tray-stub {
+    forced-color-adjust: none;
+  }
+  .tray-pick {
+    border: 2px solid transparent;
+  }
+  .tray-pick[aria-pressed='true'] {
+    border-color: Highlight;
+  }
+  .keys-help {
+    border-color: CanvasText;
+  }
 }
 
+/* Paper: black on white, the lockup and the page, no tray, no nav. */
 @media print {
+  @page {
+    margin: 14mm 16mm;
+  }
+  :root {
+    color-scheme: light;
+    --color-board: #fff;
+    --color-board-lift: #fff;
+    --color-board-edge: #fff;
+    --color-chalk: #000;
+    --color-chalk-muted: #111;
+    --color-chalk-dim: #222;
+    --color-chalk-faint: #333;
+    --color-yellow: #000;
+    --color-yellow-deep: #000;
+    --color-blue: #000;
+    --color-rule: #777;
+    --color-rule-soft: #aaa;
+    --color-wash: transparent;
+  }
+  html,
+  body {
+    background: #fff;
+    color: #000;
+  }
   .board-ground,
   .board-dust,
-  .usage-panel-dust {
+  .usage-panel-dust,
+  .skip-link,
+  .site-nav,
+  .find-toggle,
+  .find-line,
+  .site-footer,
+  .chalk-tray,
+  .keys-help-backdrop {
     display: none;
   }
   .chalk,
   h1 {
     filter: none;
+  }
+  .board-page {
+    display: block;
+    min-height: 0;
+  }
+  .site-header {
+    padding: 0 0 6pt;
+    border-bottom: 1px solid #777;
+  }
+  .lockup,
+  .page-home .lockup {
+    gap: 8pt;
+    min-height: 0;
+  }
+  .lockup-mark,
+  .page-home .lockup-mark {
+    width: 20pt;
+    height: 20pt;
+  }
+  .lockup-name,
+  .page-home .lockup-name {
+    font-size: 16pt;
+  }
+  .print-only {
+    display: block;
+  }
+  a {
+    color: #000;
   }
 }

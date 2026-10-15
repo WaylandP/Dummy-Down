@@ -1,4 +1,4 @@
-import { useEffect, useSyncExternalStore } from 'react'
+import { useEffect, useState, useSyncExternalStore } from 'react'
 import { glossaryTerms } from './data/content'
 import { sitePage } from './state/site-page'
 import { Glossary } from './components/Glossary'
@@ -6,7 +6,9 @@ import { BoardDefs, BoardDust, BoardGround } from './components/board/BoardDefs'
 import { SiteHeader, browseUrl } from './components/board/SiteHeader'
 import { SiteFooter } from './components/board/SiteFooter'
 import { ChalkTray, TrayLegend } from './components/board/ChalkTray'
-import { useLiftedChalk } from './components/board/tray-state'
+import { useLiftedChalk, useTrayControl } from './components/board/tray-state'
+import { KeysHelp } from './components/board/KeysHelp'
+import { FIND_EVENT, keyIsFree } from './components/board/keys'
 import { CoverageRoute } from './components/CoverageRoute'
 import { PracticeRoute } from './components/PracticeRoute'
 import { Home } from './components/Home'
@@ -33,6 +35,25 @@ function currentPage() {
 function Application() {
   const page = useSyncExternalStore(subscribePage, currentPage)
   const lifted = useLiftedChalk()
+  const trayControl = useTrayControl()
+  const [keysOpen, setKeysOpen] = useState(false)
+  // "/" finds a control and "?" shows the keys, anywhere a key is free.
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (!keyIsFree(event)) return
+      if (event.key === '?') {
+        event.preventDefault()
+        setKeysOpen(true)
+      } else if (event.key === '/') {
+        event.preventDefault()
+        const home = document.getElementById('home-q')
+        if (home instanceof HTMLInputElement) home.focus()
+        else window.dispatchEvent(new Event(FIND_EVENT))
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
   useEffect(() => {
     if (page !== 'learn') {
       const meta = {
@@ -126,7 +147,9 @@ function Application() {
       <ChalkTray
         lifted={lifted}
         label={page === 'home' ? undefined : <TrayLegend />}
+        control={page === 'learn' ? trayControl : null}
       />
+      {keysOpen && <KeysHelp onClose={() => setKeysOpen(false)} />}
       <UsageAnalytics />
     </div>
   )

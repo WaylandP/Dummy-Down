@@ -150,7 +150,7 @@ export function ControlPage(props: ControlPageProps) {
             control.id
           )}
         </p>
-        {decoded && tab === 'decode' && (
+        {decoded && (
           <>
             <svg
               className="control-arrow chalk"
@@ -278,6 +278,12 @@ export function ControlPage(props: ControlPageProps) {
           <RelatedTab control={control} edition={edition} mode={mode} />
         </section>
       </div>
+      {tab !== 'decode' && guide && (
+        <p className="print-only control-print-citation">
+          Verbatim. {guide.title}, v{guide.version}, page {guide.printedPage}.{' '}
+          {isHttps(guideUrl) && <span className="mono">{guideUrl}</span>}
+        </p>
+      )}
       <div className="control-foot">
         <p className="control-foot-note">{footers[tab]}</p>
         <div className="control-prevnext">
