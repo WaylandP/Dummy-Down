@@ -83,6 +83,14 @@ source record under `docs/sources/`.
   in 400 ms, while the new control is already underneath with focus and the
   announcement exactly as before; the only page-change motion, and a cut
   under reduced motion, forced colours and print.
+- [PR #49](https://github.com/WaylandP/cipher-and-chalk/pull/49): the
+  timeline. A page at `/timeline`, in the header beside Practice: when the
+  program rule was published and took effect, when the DFARS clause took
+  effect and when each of its four phases begins, how long each status stays
+  current, and what DoD has said about Revision 3 (neither source gives a
+  date). Every line is a paraphrase in `src/data/cmmc-timeline.json` over
+  its quoted source, pinned in `docs/sources/cmmc-timeline-2026-10-15.md`;
+  the analytics allowlist grows to eight paths and nothing new is collected.
 
 ## Week 2 content and trust — October 14, 2026
 
