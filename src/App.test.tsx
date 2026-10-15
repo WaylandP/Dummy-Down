@@ -383,7 +383,9 @@ describe('Shareable lessons and reading tools', () => {
       window.history.replaceState(null, '', `${lessonAddress}&mode=compliance`)
       window.dispatchEvent(new PopStateEvent('popstate'))
     })
-    expect(screen.getByRole('tabpanel', { name: 'Compliance' })).toBeVisible()
+    expect(
+      await screen.findByRole('tabpanel', { name: 'Compliance' }),
+    ).toBeVisible()
     act(() => {
       window.history.replaceState(
         null,

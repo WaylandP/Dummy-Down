@@ -30,6 +30,7 @@ import { ShareLesson } from './ShareLesson'
 import { LearningPractice } from './LearningPractice'
 import { ControlResults } from './ControlResults'
 import { ControlPage } from './control/ControlPage'
+import { Erase } from './control/Erase'
 import { trackUsage } from '../analytics/usage'
 import { useSearchUsage } from '../analytics/useSearchUsage'
 import { CmmcLevels } from './CmmcLevels'
@@ -488,58 +489,62 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
       ) : selected?.contentKind === 'official-reference' &&
         resolution?.kind === 'lesson' &&
         ready ? (
-        <ControlPage
-          control={selected}
-          mode={mode}
-          tab={tab}
-          onModeChange={(nextMode) =>
-            dispatch({ type: 'change-mode', mode: nextMode })
-          }
-          onTabChange={(nextTab) => dispatch({ type: 'set-tab', tab: nextTab })}
-          tabUrl={(nextTab) =>
-            window.location.pathname +
-            serializeExplorerSearch({ ...ready, tab: nextTab })
-          }
-          framework={resolution.framework}
-          edition={resolution.edition}
-          shareUrl={createLessonUrl(
-            lessonIdentity(selected),
-            mode,
-            new URL(window.location.href),
-            tab,
-          )}
-          chalkUrl={createChalkUrl(
-            lessonIdentity(selected),
-            mode,
-            new URL(window.location.href),
-          )}
-          excludedByFilters={resolution.excludedByFilters}
-          onShowInResults={() => dispatch({ type: 'show-lesson-in-results' })}
-          headingRef={(node) => {
-            lessonHeading.current = node
-            if (node && focusLesson.current) {
-              focusLesson.current = false
-              node.focus()
+        <Erase subject={lessonIdentityKey(lessonIdentity(selected))}>
+          <ControlPage
+            control={selected}
+            mode={mode}
+            tab={tab}
+            onModeChange={(nextMode) =>
+              dispatch({ type: 'change-mode', mode: nextMode })
             }
-          }}
-          previous={neighbour(-1)}
-          next={neighbour(1)}
-          onNeighbour={(control, direction) => {
-            // Keep focus on the pressed button while it still has somewhere
-            // to go; move to the title only when it is about to disappear.
-            const index = results.findIndex(
-              (item) =>
-                lessonIdentityKey(lessonIdentity(item)) ===
-                lessonIdentityKey(lessonIdentity(control)),
-            )
-            focusLesson.current =
-              direction === 'next' ? index + 1 >= results.length : index <= 0
-            dispatch({
-              type: 'select-lesson',
-              identity: lessonIdentity(control),
-            })
-          }}
-        />
+            onTabChange={(nextTab) =>
+              dispatch({ type: 'set-tab', tab: nextTab })
+            }
+            tabUrl={(nextTab) =>
+              window.location.pathname +
+              serializeExplorerSearch({ ...ready, tab: nextTab })
+            }
+            framework={resolution.framework}
+            edition={resolution.edition}
+            shareUrl={createLessonUrl(
+              lessonIdentity(selected),
+              mode,
+              new URL(window.location.href),
+              tab,
+            )}
+            chalkUrl={createChalkUrl(
+              lessonIdentity(selected),
+              mode,
+              new URL(window.location.href),
+            )}
+            excludedByFilters={resolution.excludedByFilters}
+            onShowInResults={() => dispatch({ type: 'show-lesson-in-results' })}
+            headingRef={(node) => {
+              lessonHeading.current = node
+              if (node && focusLesson.current) {
+                focusLesson.current = false
+                node.focus()
+              }
+            }}
+            previous={neighbour(-1)}
+            next={neighbour(1)}
+            onNeighbour={(control, direction) => {
+              // Keep focus on the pressed button while it still has somewhere
+              // to go; move to the title only when it is about to disappear.
+              const index = results.findIndex(
+                (item) =>
+                  lessonIdentityKey(lessonIdentity(item)) ===
+                  lessonIdentityKey(lessonIdentity(control)),
+              )
+              focusLesson.current =
+                direction === 'next' ? index + 1 >= results.length : index <= 0
+              dispatch({
+                type: 'select-lesson',
+                identity: lessonIdentity(control),
+              })
+            }}
+          />
+        </Erase>
       ) : (
         <div className="empty-state">
           <span className="empty-icon">
