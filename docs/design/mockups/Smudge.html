@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Smudge — the mascot</title>
+
+</head>
+<body>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Walter+Turncoat&amp;family=Atkinson+Hyperlegible+Next:wght@400;500;700&amp;family=Martian+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#1B2522;color:#EDE9DD;font-family:'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;-webkit-font-smoothing:antialiased}
+.hand{font-family:'Walter Turncoat',cursive}
+.chalk{filter:url(#chalk)}
+.pose{display:flex;flex-direction:column;align-items:center;gap:10px}
+.pose p{margin:0;font:400 14px/1.4 'Atkinson Hyperlegible Next',sans-serif;color:#C9CFC6;text-align:center;max-width:24ch}
+.pose b{display:block;font:500 15px 'Atkinson Hyperlegible Next',sans-serif;color:#EDE9DD;margin-bottom:2px}
+</style>
+
+<div style="width:1280px;height:800px;box-sizing:border-box;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 20%,#243330 0%,#1B2522 60%,#161F1C 100%);display:flex;flex-direction:column">
+  <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.16">
+    <defs>
+      <filter id="chalk" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d"/><feColorMatrix in="n" type="luminanceToAlpha" result="a"/><feComponentTransfer in="a" result="m"><feFuncA type="table" tableValues="0 0.55 1 1 1 1"/></feComponentTransfer><feComposite in="d" in2="m" operator="in"/></filter>
+      <filter id="dust"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" seed="3"/><feColorMatrix type="saturate" values="0"/></filter>
+    </defs>
+    <rect width="100%" height="100%" filter="url(#dust)"/>
+  </svg>
+
+  <div style="position:relative;flex:1;display:grid;grid-template-columns:430px 1fr;gap:48px;padding:44px 48px 0;min-height:0">
+    <section aria-label="Meet Smudge" style="display:flex;flex-direction:column;justify-content:center;gap:24px">
+      <h1 class="hand chalk" style="margin:0;font-size:52px;line-height:1;font-weight:400">Meet Smudge.</h1>
+      <div style="display:flex;align-items:flex-end;gap:18px"><svg width="230" height="148" viewBox="0 0 170 110" aria-hidden="true">
+  <defs><linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A6349"/><stop offset=".25" stop-color="#5E4A36"/><stop offset="1" stop-color="#3B2E22"/></linearGradient></defs>
+  <ellipse cx="85" cy="100" rx="70" ry="5" fill="#000" opacity=".3"/>
+  
+  <g transform="rotate(0)">
+    <rect x="12" y="24" width="146" height="46" rx="7" fill="url(#wood)"/>
+    <rect x="18" y="27" width="134" height="4" rx="2" fill="#8C7455" opacity=".7"/>
+    <rect x="12" y="66" width="146" height="30" rx="6" fill="#B3B9B0"/>
+    <path d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0" fill="none" stroke="#EDE9DD" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+    <rect x="12" y="90" width="146" height="6" rx="3" fill="#EDE9DD" opacity=".85"/>
+    <g class="chalk"><circle cx="66" cy="48" r="9" fill="#EDE9DD"/><circle cx="104" cy="48" r="9" fill="#EDE9DD"/><circle cx="68" cy="49" r="4" fill="#1B2522"/><circle cx="106" cy="49" r="4" fill="#1B2522"/><path d="M55 33l18-3M97 30l18 3" stroke="#EDE9DD" stroke-width="3" stroke-linecap="round"/><path d="M78 60c4 3 10 3 14 0" fill="none" stroke="#EDE9DD" stroke-width="2.5" stroke-linecap="round"/></g>
+  </g>
+</svg></div>
+      <p style="margin:0;font:400 17px/1.5 'Atkinson Hyperlegible Next',sans-serif;color:#C9CFC6;max-width:38ch">The eraser that lives on the chalk tray. Wooden back, felt face, and two eyes somebody drew on him in chalk. He is the thing that wipes the board between controls, so when the board changes, that was him.</p>
+      <ul style="margin:0;padding-left:18px;font:400 15px/1.65 'Atkinson Hyperlegible Next',sans-serif;color:#C9CFC6">
+        <li>Sits on the right end of the tray, on every screen</li>
+        <li>Never speaks. Eyes follow your cursor. One gesture per thing you do</li>
+        <li>Click him: a sneeze of chalk dust. Leave him a minute: he dozes off</li>
+        <li>Off switch in the footer; a plain eraser in print and under reduced motion</li>
+      </ul>
+    </section>
+
+    <section aria-label="Poses" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:26px 20px;align-content:center">
+      <div class="pose"><svg width="150" height="97" viewBox="0 0 170 110" aria-hidden="true">
+  <defs><linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A6349"/><stop offset=".25" stop-color="#5E4A36"/><stop offset="1" stop-color="#3B2E22"/></linearGradient></defs>
+  <ellipse cx="85" cy="100" rx="70" ry="5" fill="#000" opacity=".3"/>
+  
+  <g transform="rotate(0)">
+    <rect x="12" y="24" width="146" height="46" rx="7" fill="url(#wood)"/>
+    <rect x="18" y="27" width="134" height="4" rx="2" fill="#8C7455" opacity=".7"/>
+    <rect x="12" y="66" width="146" height="30" rx="6" fill="#B3B9B0"/>
+    <path d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0" fill="none" stroke="#EDE9DD" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+    <rect x="12" y="90" width="146" height="6" rx="3" fill="#EDE9DD" opacity=".85"/>
+    <g class="chalk"><circle cx="66" cy="48" r="9" fill="#EDE9DD"/><circle cx="104" cy="48" r="9" fill="#EDE9DD"/><circle cx="68" cy="49" r="4" fill="#1B2522"/><circle cx="106" cy="49" r="4" fill="#1B2522"/><path d="M55 33l18-3M97 30l18 3" stroke="#EDE9DD" stroke-width="3" stroke-linecap="round"/><path d="M78 60c4 3 10 3 14 0" fill="none" stroke="#EDE9DD" stroke-width="2.5" stroke-linecap="round"/></g>
+  </g>
+</svg><p><b>Idle</b>Blinks. Eyes drift toward your cursor. A tiny puff of dust now and then.</p></div>
+      <div class="pose"><div style="transform:rotate(-10deg)"><svg width="150" height="97" viewBox="0 0 170 110" aria-hidden="true">
+  <defs><linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A6349"/><stop offset=".25" stop-color="#5E4A36"/><stop offset="1" stop-color="#3B2E22"/></linearGradient></defs>
+  <ellipse cx="85" cy="100" rx="70" ry="5" fill="#000" opacity=".3"/>
+  <path d="M2 40h22M0 56h18M4 72h22" stroke="#EDE9DD" stroke-width="3" stroke-linecap="round" opacity=".5"/><g fill="#EDE9DD"><circle cx="150" cy="40" r="7" opacity=".35"/><circle cx="162" cy="30" r="5" opacity=".25"/><circle cx="140" cy="22" r="4" opacity=".3"/><circle cx="166" cy="50" r="3" opacity=".2"/></g>
+  <g transform="rotate(0)">
+    <rect x="12" y="24" width="146" height="46" rx="7" fill="url(#wood)"/>
+    <rect x="18" y="27" width="134" height="4" rx="2" fill="#8C7455" opacity=".7"/>
+    <rect x="12" y="66" width="146" height="30" rx="6" fill="#B3B9B0"/>
+    <path d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0" fill="none" stroke="#EDE9DD" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+    <rect x="12" y="90" width="146" height="6" rx="3" fill="#EDE9DD" opacity=".85"/>
+    <g class="chalk"><path d="M58 48c4-4 12-4 16 0M96 48c4-4 12-4 16 0" fill="none" stroke="#EDE9DD" stroke-width="3.5" stroke-linecap="round"/><path d="M54 32l20 2M96 34l20-2" stroke="#EDE9DD" stroke-width="3" stroke-linecap="round"/><path d="M76 60c5 4 13 4 18 0" fill="none" stroke="#EDE9DD" stroke-width="2.5" stroke-linecap="round"/></g>
+  </g>
+</svg></div><p><b>Erases</b>You change control: he leaps up, sweeps across the board, and the old text goes to dust. That is the Erase feature, with a face.</p></div>
+      <div class="pose"><svg width="150" height="97" viewBox="0 0 170 110" aria-hidden="true">
+  <defs><linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A6349"/><stop offset=".25" stop-color="#5E4A36"/><stop offset="1" stop-color="#3B2E22"/></linearGradient></defs>
+  <ellipse cx="85" cy="100" rx="70" ry="5" fill="#000" opacity=".3"/>
+  <rect x="118" y="2" width="12" height="58" rx="6" fill="#F2D16B" transform="rotate(18 124 30)"/>
+  <g transform="rotate(0)">
+    <rect x="12" y="24" width="146" height="46" rx="7" fill="url(#wood)"/>
+    <rect x="18" y="27" width="134" height="4" rx="2" fill="#8C7455" opacity=".7"/>
+    <rect x="12" y="66" width="146" height="30" rx="6" fill="#B3B9B0"/>
+    <path d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0" fill="none" stroke="#EDE9DD" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+    <rect x="12" y="90" width="146" height="6" rx="3" fill="#EDE9DD" opacity=".85"/>
+    <g class="chalk"><circle cx="66" cy="48" r="9" fill="#EDE9DD"/><circle cx="104" cy="48" r="9" fill="#EDE9DD"/><circle cx="70" cy="47" r="4" fill="#1B2522"/><circle cx="108" cy="47" r="4" fill="#1B2522"/><path d="M55 31l18-2M97 29l18 1" stroke="#EDE9DD" stroke-width="3" stroke-linecap="round"/><path d="M78 59c4 4 10 4 14 0" fill="none" stroke="#EDE9DD" stroke-width="2.5" stroke-linecap="round"/></g>
+  </g>
+</svg><p><b>Hands you a chalk</b>Pick a perspective and he nudges that chalk up out of the tray.</p></div>
+      <div class="pose"><svg width="150" height="97" viewBox="0 0 170 110" aria-hidden="true">
+  <defs><linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A6349"/><stop offset=".25" stop-color="#5E4A36"/><stop offset="1" stop-color="#3B2E22"/></linearGradient></defs>
+  <ellipse cx="85" cy="100" rx="70" ry="5" fill="#000" opacity=".3"/>
+  <g fill="#EDE9DD"><circle cx="110" cy="92" r="10" opacity=".35"/><circle cx="135" cy="98" r="8" opacity=".3"/><circle cx="92" cy="102" r="6" opacity=".25"/><circle cx="150" cy="86" r="5" opacity=".25"/><circle cx="70" cy="100" r="5" opacity=".2"/></g>
+  <g transform="rotate(0)">
+    <rect x="12" y="24" width="146" height="46" rx="7" fill="url(#wood)"/>
+    <rect x="18" y="27" width="134" height="4" rx="2" fill="#8C7455" opacity=".7"/>
+    <rect x="12" y="66" width="146" height="30" rx="6" fill="#B3B9B0"/>
+    <path d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0" fill="none" stroke="#EDE9DD" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+    <rect x="12" y="90" width="146" height="6" rx="3" fill="#EDE9DD" opacity=".85"/>
+    <g class="chalk"><path d="M58 46c4 4 12 4 16 0M96 46c4 4 12 4 16 0" fill="none" stroke="#EDE9DD" stroke-width="3.5" stroke-linecap="round"/><path d="M55 30l18 5M97 35l18-5" stroke="#EDE9DD" stroke-width="3" stroke-linecap="round"/><circle cx="85" cy="61" r="4" fill="none" stroke="#EDE9DD" stroke-width="2.5"/></g>
+  </g>
+</svg><p><b>Sneezes</b>Click or tap him. A burst of dust, and he settles. Also on a correct practice answer.</p></div>
+      <div class="pose"><svg width="150" height="97" viewBox="0 0 170 110" aria-hidden="true">
+  <defs><linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A6349"/><stop offset=".25" stop-color="#5E4A36"/><stop offset="1" stop-color="#3B2E22"/></linearGradient></defs>
+  <ellipse cx="85" cy="100" rx="70" ry="5" fill="#000" opacity=".3"/>
+  <text x="150" y="30" font-family="Walter Turncoat,cursive" font-size="22" fill="#EDE9DD" class="chalk">z</text><text x="162" y="16" font-family="Walter Turncoat,cursive" font-size="16" fill="#EDE9DD" opacity=".7" class="chalk">z</text>
+  <g transform="rotate(0)">
+    <rect x="12" y="24" width="146" height="46" rx="7" fill="url(#wood)"/>
+    <rect x="18" y="27" width="134" height="4" rx="2" fill="#8C7455" opacity=".7"/>
+    <rect x="12" y="66" width="146" height="30" rx="6" fill="#B3B9B0"/>
+    <path d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0" fill="none" stroke="#EDE9DD" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+    <rect x="12" y="90" width="146" height="6" rx="3" fill="#EDE9DD" opacity=".85"/>
+    <g class="chalk"><path d="M58 50c4 3 12 3 16 0M96 50c4 3 12 3 16 0" fill="none" stroke="#EDE9DD" stroke-width="3.5" stroke-linecap="round"/><path d="M80 61h10" stroke="#EDE9DD" stroke-width="2.5" stroke-linecap="round"/></g>
+  </g>
+</svg><p><b>Dozes</b>After a minute with nothing to do. Any mouse or key wakes him.</p></div>
+      <div class="pose"><svg width="150" height="97" viewBox="0 0 170 110" aria-hidden="true" opacity=".45">
+  <defs><linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A6349"/><stop offset=".25" stop-color="#5E4A36"/><stop offset="1" stop-color="#3B2E22"/></linearGradient></defs>
+  <ellipse cx="85" cy="100" rx="70" ry="5" fill="#000" opacity=".3"/>
+  
+  <g transform="rotate(0)">
+    <rect x="12" y="24" width="146" height="46" rx="7" fill="url(#wood)"/>
+    <rect x="18" y="27" width="134" height="4" rx="2" fill="#8C7455" opacity=".7"/>
+    <rect x="12" y="66" width="146" height="30" rx="6" fill="#B3B9B0"/>
+    <path d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0" fill="none" stroke="#EDE9DD" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+    <rect x="12" y="90" width="146" height="6" rx="3" fill="#EDE9DD" opacity=".85"/>
+    <g class="chalk"></g>
+  </g>
+</svg><p><b>Off</b>Footer switch, print, or reduced motion: a plain eraser, no face, no motion.</p></div>
+    </section>
+  </div>
+
+  <div style="position:relative;display:flex;justify-content:space-between;align-items:baseline;padding:0 48px 14px;font:400 14px 'Atkinson Hyperlegible Next',sans-serif;color:#9AA39B">
+    <span>Replaces Dash. One SVG, the face drawn in the chalk filter; the body is wood and felt, so it reads as a real object on the tray.</span>
+    <span class="hand" style="font-size:20px;color:#F2D16B;margin-right:190px">wipe · blink · sneeze</span>
+  </div>
+
+  <div aria-hidden="true" style="position:relative;height:34px;background:linear-gradient(#5E4A36,#4A3A2B 55%,#3B2E22);box-shadow:0 -1px 0 #7A6349,0 -10px 24px rgba(0,0,0,.35);display:flex;align-items:center;gap:14px;padding:0 48px">
+    <span style="width:64px;height:11px;border-radius:5px;background:#EDE9DD;box-shadow:0 2px 2px rgba(0,0,0,.4)"></span>
+    <span style="width:48px;height:11px;border-radius:5px;background:#F2D16B;box-shadow:0 2px 2px rgba(0,0,0,.4)"></span>
+    <span style="width:56px;height:11px;border-radius:5px;background:#8FB7D6;box-shadow:0 2px 2px rgba(0,0,0,.4)"></span>
+    <span style="margin-left:auto;font:400 12px 'Atkinson Hyperlegible Next',sans-serif;color:#C9B795;margin-right:190px">He was on the tray the whole time.</span>
+    <div style="position:absolute;right:44px;bottom:21px"><svg width="140" height="90" viewBox="0 0 170 110" aria-hidden="true">
+  <defs><linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A6349"/><stop offset=".25" stop-color="#5E4A36"/><stop offset="1" stop-color="#3B2E22"/></linearGradient></defs>
+  <ellipse cx="85" cy="100" rx="70" ry="5" fill="#000" opacity=".3"/>
+  
+  <g transform="rotate(0)">
+    <rect x="12" y="24" width="146" height="46" rx="7" fill="url(#wood)"/>
+    <rect x="18" y="27" width="134" height="4" rx="2" fill="#8C7455" opacity=".7"/>
+    <rect x="12" y="66" width="146" height="30" rx="6" fill="#B3B9B0"/>
+    <path d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0" fill="none" stroke="#EDE9DD" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+    <rect x="12" y="90" width="146" height="6" rx="3" fill="#EDE9DD" opacity=".85"/>
+    <g class="chalk"><circle cx="66" cy="48" r="9" fill="#EDE9DD"/><circle cx="104" cy="48" r="9" fill="#EDE9DD"/><circle cx="68" cy="49" r="4" fill="#1B2522"/><circle cx="106" cy="49" r="4" fill="#1B2522"/><path d="M55 33l18-3M97 30l18 3" stroke="#EDE9DD" stroke-width="3" stroke-linecap="round"/><path d="M78 60c4 3 10 3 14 0" fill="none" stroke="#EDE9DD" stroke-width="2.5" stroke-linecap="round"/></g>
+  </g>
+</svg></div>
+  </div>
+
+</div>
+
+</body>
+</html>
