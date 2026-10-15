@@ -85,7 +85,7 @@ describe('Usage interaction wiring', () => {
     const user = userEvent.setup()
     render(<App />)
     vi.mocked(trackUsage).mockClear()
-    const search = screen.getByRole('searchbox', { name: 'Search glossary' })
+    const search = screen.getByRole('searchbox', { name: 'Search words' })
     await user.click(search)
     await user.tab()
     expect(trackUsage).not.toHaveBeenCalled()

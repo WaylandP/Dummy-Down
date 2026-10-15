@@ -55,13 +55,15 @@ test('filters, history, glossary and empty-result recovery keep a reader oriente
     .getByRole('navigation', { name: 'Main' })
     .getByRole('link', { name: 'Glossary' })
     .click()
-  const glossary = page.getByRole('searchbox', { name: 'Search glossary' })
+  const glossary = page.getByRole('searchbox', { name: 'Search words' })
+  const count = page.getByRole('status', { name: 'Glossary search results' })
+  const every = (await count.textContent())!
+  expect(every).toMatch(/^\d+ words$/)
   await glossary.fill('no-such-fictional-term')
+  await expect(count).toHaveText('0 words')
   await page.getByRole('button', { name: 'Clear glossary search' }).click()
   await expect(glossary).toBeFocused()
-  await expect(
-    page.getByRole('status', { name: 'Glossary search results' }),
-  ).toContainText('54 terms')
+  await expect(count).toHaveText(every)
 })
 
 test('practice keeps answers across perspectives and supports retry, completion and restart', async ({

@@ -31,7 +31,7 @@ export function LearningRoute({
     return <Page />
   }
   return (
-    <section className="section-shell about-page">
+    <section className="about-page page">
       <h1>Learning workspace</h1>
       <p role="status" aria-busy={!failed}>
         {failed

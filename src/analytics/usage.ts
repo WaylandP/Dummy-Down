@@ -1,5 +1,5 @@
 import { track } from '@vercel/analytics'
-import { explorerCatalog, glossaryTerms } from '../data/content'
+import { explorerCatalog } from '../data/content'
 import { findLearningActivity } from '../data/learning'
 import type { ExplanationMode, LessonIdentity } from '../types/content'
 import { getUsageStatus } from './privacy'
@@ -42,7 +42,6 @@ export type UsageEvent =
       direction: 'next' | 'previous'
       collection: Collection
     }
-  | { name: 'glossary_open'; termId: string }
   | {
       name: 'practice_action'
       lesson: LessonIdentity
@@ -164,10 +163,6 @@ export function usageProperties(event: UsageEvent): Properties | null {
       return oneOf(event.direction, ['next', 'previous']) &&
         oneOf(event.collection, ['lessons', 'references'])
         ? { direction: event.direction, collection: event.collection }
-        : null
-    case 'glossary_open':
-      return glossaryTerms.some((term) => term.id === event.termId)
-        ? { term: event.termId }
         : null
     case 'practice_action': {
       const properties = controlProperties(event.lesson)

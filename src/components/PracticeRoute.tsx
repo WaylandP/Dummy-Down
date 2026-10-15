@@ -23,8 +23,8 @@ export function PracticeRoute() {
     return <Page />
   }
   return (
-    <section className="section-shell practice-page">
-      <h1>The practice room</h1>
+    <section className="practice-page page">
+      <h1 className="chalk">Work through a situation.</h1>
       <p role="status" aria-busy={!failed}>
         {failed
           ? 'The practice index could not load. Your lessons are still available.'

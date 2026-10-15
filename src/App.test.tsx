@@ -416,12 +416,12 @@ describe('Shareable lessons and reading tools', () => {
     followPageLink(screen.getByRole('link', { name: 'Glossary' }))
     const glossaryAddress = window.location.href
     await user.type(
-      screen.getByRole('searchbox', { name: 'Search glossary' }),
+      screen.getByRole('searchbox', { name: 'Search words' }),
       'offboarding',
     )
     expect(
       screen.getByRole('status', { name: 'Glossary search results' }),
-    ).toHaveTextContent('1 term')
+    ).toHaveTextContent('1 word')
     expect(window.location.href).toBe(glossaryAddress)
     act(() => {
       window.history.replaceState(null, '', address)

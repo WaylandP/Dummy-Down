@@ -67,6 +67,7 @@ function deferred() {
 
 afterEach(() => {
   vi.restoreAllMocks()
+  window.history.replaceState(null, '', '/')
   if (originalClipboard) {
     Object.defineProperty(navigator, 'clipboard', originalClipboard)
   } else {
@@ -75,34 +76,49 @@ afterEach(() => {
 })
 
 describe('Glossary', () => {
-  it('presents alphabetic native disclosures and honest draft/source context', async () => {
-    const user = userEvent.setup()
+  it('files words under their letter with the text that defines each one', () => {
     const { container } = render(<Glossary terms={terms} />)
 
     expect(
-      [...container.querySelectorAll('.glossary-term > summary')].map(
-        (summary) => summary.textContent,
+      [...container.querySelectorAll('.word h2')].map(
+        (heading) => heading.textContent,
       ),
-    ).toEqual(['Account', 'Device'])
+    ).toEqual(['Account'])
+    expect(screen.getByRole('region', { name: 'Words under A' })).toBeVisible()
     expect(
       screen.getByRole('status', { name: 'Glossary search results' }),
-    ).toHaveTextContent('2 terms')
-    expect(screen.getByText(/not the official wording/)).toBeVisible()
-
-    await user.click(screen.getByText('Device', { selector: 'summary' }))
-    expect(screen.getByText(deviceTerm.definition)).toBeVisible()
-    await user.click(
-      within(
-        screen.getByText('Device', { selector: 'summary' }).parentElement!,
-      ).getByText('Definition sources & context'),
+    ).toHaveTextContent('2 words')
+    expect(screen.getByText(accountTerm.definition)).toBeVisible()
+    expect(
+      within(screen.getByRole('navigation', { name: 'Jump to a letter' }))
+        .getAllByRole('link')
+        .map((link) => link.textContent),
+    ).toEqual(['A', 'D'])
+    expect(
+      screen.getByText(/each linked to the text that defines it/),
+    ).toBeVisible()
+    expect(screen.getByRole('link', { name: 'Next: D' })).toHaveAttribute(
+      'href',
+      '/glossary?letter=D',
     )
-    expect(screen.getByText('Official resource index')).toBeVisible()
+  })
+
+  it('turns a letter without leaving the page and links the source by its short name', async () => {
+    const user = userEvent.setup()
+    render(<Glossary terms={terms} />)
+    await user.click(screen.getByRole('link', { name: 'D' }))
+    expect(window.location.search).toBe('?letter=D')
+    expect(screen.getByRole('link', { name: 'D' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    )
+    expect(screen.getByRole('region', { name: 'Words under D' })).toHaveFocus()
+    expect(screen.getByText(deviceTerm.definition)).toBeVisible()
     const source = screen.getByRole('link', { name: /Resource index/ })
     expect(source).toHaveAttribute('href', 'https://example.org/resources')
     expect(source).toHaveAttribute('rel', 'noopener noreferrer')
-    expect(
-      screen.getByText('Find the applicable publication here.'),
-    ).toBeVisible()
+    expect(screen.getByRole('link', { name: 'Previous: A' })).toBeVisible()
+    expect(screen.queryByRole('link', { name: /^Next:/ })).toBeNull()
   })
 
   it('searches title and definition conjunctively without navigation', async () => {
@@ -113,16 +129,15 @@ describe('Glossary', () => {
     render(<Glossary terms={terms} />)
 
     await user.type(
-      screen.getByRole('searchbox', { name: 'Search glossary' }),
+      screen.getByRole('searchbox', { name: 'Search words' }),
       '  ACCOUNT   company ',
     )
-    expect(screen.getByText('Account', { selector: 'summary' })).toBeVisible()
-    expect(
-      screen.queryByText('Device', { selector: 'summary' }),
-    ).not.toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Account' })).toBeVisible()
+    expect(screen.queryByRole('heading', { name: 'Device' })).toBeNull()
     expect(
       screen.getByRole('status', { name: 'Glossary search results' }),
-    ).toHaveTextContent('1 term')
+    ).toHaveTextContent('1 word')
+    expect(screen.getByRole('region', { name: 'Search results' })).toBeVisible()
     expect(window.location.href).toBe(address)
     expect(push).not.toHaveBeenCalled()
     expect(replace).not.toHaveBeenCalled()
@@ -136,10 +151,10 @@ describe('Glossary', () => {
         <Glossary terms={terms} />
       </>,
     )
-    const search = screen.getByRole('searchbox', { name: 'Search glossary' })
+    const search = screen.getByRole('searchbox', { name: 'Search words' })
     await user.type(search, 'nothing-here')
     expect(
-      screen.getByRole('heading', { name: 'No matching terms.' }),
+      screen.getByRole('heading', { name: 'No matching words.' }),
     ).toBeVisible()
     await user.click(
       screen.getByRole('button', { name: 'Clear glossary search' }),
@@ -151,7 +166,7 @@ describe('Glossary', () => {
     )
     expect(
       screen.getByRole('status', { name: 'Glossary search results' }),
-    ).toHaveTextContent('2 terms')
+    ).toHaveTextContent('2 words')
   })
 })
 

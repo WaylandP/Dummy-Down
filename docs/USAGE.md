@@ -40,7 +40,6 @@ actions explain how readers use the learning workspace:
 | `filter_change`        | How readers narrow the catalog                                  | Known filter and catalog value                                |
 | `search_used`          | Whether search produces useful results                          | Search scope, active yes/no, result bucket: none/one/few/many |
 | `results_page`         | Whether readers explore beyond the first page                   | Previous/next and content collection                          |
-| `glossary_open`        | Which terms need explanation                                    | Known term ID                                                 |
 | `practice_action`      | Whether readers try and continue practice                       | Known supported lesson and action category                    |
 | `source_open`          | Whether readers consult primary publications                    | Known control, source ID, publisher/mirror/index category     |
 | `share_link`           | Whether readers share the material                              | Known control and copied/fallback category                    |

@@ -2,6 +2,9 @@
 @import './components/board/board.css';
 @import './components/home.css';
 @import './components/control/control-page.css';
+@import './components/pages.css';
+@import './components/glossary.css';
+@import './components/about.css';
 @import './components/coverage.css';
 
 /* Three self-hosted faces. Sources: public/fonts/sources.json; licenses: public/font-licenses. */
@@ -413,8 +416,7 @@
     gap: var(--space-6);
     margin-bottom: 18px;
   }
-  .section-caption,
-  .eyebrow {
+  .section-caption {
     color: var(--color-accent);
     font-size: 14px;
     margin-bottom: var(--space-2);
@@ -503,8 +505,7 @@
     color: var(--color-muted);
     font-size: 14px;
   }
-  .search-input-wrap,
-  .glossary-search-field {
+  .search-input-wrap {
     display: flex;
     align-items: center;
     gap: var(--space-3);
@@ -514,12 +515,10 @@
     border-radius: var(--radius-sm);
     background: var(--color-surface);
   }
-  .search-input-wrap svg,
-  .glossary-search-field svg {
+  .search-input-wrap svg {
     color: var(--color-muted);
   }
-  .search-input-wrap input,
-  .glossary-search-field input {
+  .search-input-wrap input {
     width: 100%;
     min-width: 0;
     border: 0;
@@ -528,8 +527,7 @@
     font-size: 16px;
     outline-offset: 2px;
   }
-  .search-input-wrap input::placeholder,
-  .glossary-search-field input::placeholder {
+  .search-input-wrap input::placeholder {
     color: var(--color-muted);
     opacity: 1;
   }
@@ -715,7 +713,6 @@
   .share-button,
   .term-trigger,
   .term-close,
-  .text-action,
   .inline-action {
     display: inline-flex;
     align-items: center;
@@ -771,7 +768,6 @@
     resize: vertical;
   }
   .inline-action,
-  .text-action,
   .term-trigger {
     text-decoration: underline;
     text-underline-offset: 4px;
@@ -1090,96 +1086,6 @@
   .mobile-results-toggle {
     display: none;
   }
-  .perspective-list {
-    display: flex;
-    align-items: start;
-    gap: var(--space-8);
-  }
-  .perspective-link {
-    flex: 1;
-    min-width: 0;
-    padding-block: 6px;
-  }
-  .perspective-title {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    min-height: 36px;
-    color: var(--color-accent);
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .perspective-description {
-    display: block;
-    color: var(--color-muted);
-    font-size: 14px;
-    line-height: 1.6;
-    margin-top: var(--space-1);
-  }
-  .perspective-link:hover .perspective-title {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-  .glossary {
-    padding-block: var(--space-section);
-  }
-  .glossary .section-heading {
-    align-items: start;
-  }
-  .glossary .section-heading > p {
-    max-width: 48ch;
-    color: var(--color-muted);
-    font-size: 16px;
-  }
-  .glossary .eyebrow {
-    display: block;
-  }
-  .glossary-search {
-    max-width: 640px;
-  }
-  .glossary-search > label {
-    display: block;
-    color: var(--color-muted);
-    font-size: 14px;
-    margin-bottom: 6px;
-  }
-  .glossary-count {
-    color: var(--color-muted);
-    font-size: 14px;
-    margin-block: 20px var(--space-3);
-  }
-  .glossary-list {
-    border-top: 1px solid var(--color-line);
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 var(--space-8);
-  }
-  .glossary-term {
-    border-bottom: 1px solid var(--color-line);
-  }
-  .glossary-term > summary {
-    min-height: 60px;
-    padding-block: var(--space-4);
-    font-size: 18px;
-  }
-  .glossary-term[open] > summary {
-    color: var(--color-accent);
-  }
-  .glossary-term > .term-definition {
-    padding: var(--space-2) 20px var(--space-6);
-    background: var(--color-surface);
-    border-left: 2px solid var(--color-accent);
-  }
-  .glossary-empty {
-    padding-block: var(--space-6);
-  }
-  .glossary-empty h3 {
-    font-size: 28px;
-  }
-  .glossary-empty p {
-    margin-block: var(--space-3);
-    color: var(--color-muted);
-  }
   .learning-practice {
     margin-top: 28px;
     padding: var(--space-6);
@@ -1497,9 +1403,6 @@
   .level-paths a {
     grid-template-columns: 1fr;
   }
-  .perspective-list {
-    gap: 20px;
-  }
 }
 
 @media (max-width: 760px) {
@@ -1654,13 +1557,6 @@
     grid-template-columns: 1fr;
     gap: 18px;
   }
-  .perspective-list {
-    display: block;
-    margin-top: var(--space-4);
-  }
-  .glossary-list {
-    grid-template-columns: 1fr;
-  }
   .cmmc-levels {
     margin: var(--space-4);
   }
@@ -1669,17 +1565,6 @@
   }
   .lesson-diagram {
     padding: 20px;
-  }
-  .perspective-link {
-    display: block;
-    min-height: 60px;
-    padding-block: 10px;
-  }
-  .perspective-title {
-    min-height: 28px;
-  }
-  .glossary .section-heading > p {
-    margin-top: var(--space-3);
   }
 }
 
@@ -1705,85 +1590,6 @@
 }
 
 @layer components {
-  .home-kicker {
-    color: var(--color-muted);
-    font-size: 15px;
-    margin-bottom: 24px;
-  }
-  .about-page h1,
-  .page-title {
-    font-weight: 400;
-    color: var(--color-chalk);
-    text-wrap: initial;
-  }
-  .page-title {
-    font-size: 48px;
-    margin-top: 56px;
-  }
-  .page-glossary .glossary {
-    padding-top: 24px;
-    max-width: 1040px;
-  }
-  .page-glossary .page-title {
-    max-width: 1040px;
-  }
-  .page-glossary .glossary .eyebrow {
-    display: none;
-  }
-  .page-glossary .glossary-list {
-    column-gap: 64px;
-  }
-  .about-page {
-    max-width: 760px;
-    padding-block: 64px 80px;
-  }
-  .about-page h1 {
-    font-size: clamp(36px, 4vw, 52px);
-    line-height: 1.2;
-    margin-bottom: 32px;
-  }
-  .about-page section > p:not(.home-kicker),
-  .about-page > p {
-    font-size: 18px;
-    line-height: 1.85;
-    color: var(--color-chalk-muted);
-    margin-block: 20px;
-    max-width: 65ch;
-  }
-  .about-page #approach {
-    margin-top: 64px;
-    padding-top: 36px;
-    border-top: 1px solid var(--color-line);
-  }
-  .about-page section + section {
-    margin-top: 48px;
-  }
-  .about-page section p a {
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .about-page h2 {
-    font-size: 26px;
-  }
-  .legal-page section + section {
-    margin-top: 40px;
-  }
-  .legal-page h2 {
-    font-size: 22px;
-    margin-bottom: 8px;
-  }
-  .about-page .perspective-list {
-    display: block;
-  }
-  .about-page .perspective-link {
-    display: block;
-    padding-block: 20px;
-    border-bottom: 1px solid var(--color-line);
-  }
-  .about-page .perspective-description {
-    font-size: 16px;
-  }
   .explorer-section {
     max-width: 1160px;
     padding-block: 48px 72px;
@@ -1887,20 +1693,6 @@
   }
 }
 @media (max-width: 760px) {
-  .home-kicker {
-    font-size: 13px;
-    margin-bottom: 24px;
-  }
-  .page-title {
-    font-size: 40px;
-    margin-top: 36px;
-  }
-  .about-page {
-    padding-block: 40px 56px;
-  }
-  .about-page section > p:not(.home-kicker) {
-    font-size: 16px;
-  }
   .explorer-section {
     padding-top: 32px;
   }
@@ -1947,39 +1739,6 @@
 }
 
 @layer components {
-  .page-glossary .page-title {
-    max-width: 1160px;
-    font-size: 48px;
-  }
-  .page-glossary .glossary {
-    max-width: 1160px;
-  }
-  .page-glossary .glossary .section-heading {
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--color-line);
-  }
-  .page-glossary .glossary-search {
-    max-width: 720px;
-  }
-  .page-glossary .glossary-list {
-    column-gap: 64px;
-  }
-  .glossary-term > summary {
-    font-size: 20px;
-    padding-block: 20px;
-  }
-  .about-page .perspective-link {
-    padding-block: 28px;
-  }
-  .about-page .perspective-title {
-    font-size: 23px;
-  }
-  .about-page .home-kicker {
-    font-family: var(--font-code);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
   .reference-requirement {
     background: var(--color-board-lift);
     border-color: var(--color-yellow);
@@ -2011,9 +1770,6 @@
   }
 }
 @media (max-width: 760px) {
-  .page-glossary .page-title {
-    font-size: 36px;
-  }
   .explorer-section .section-heading h2 {
     font-size: 30px;
   }

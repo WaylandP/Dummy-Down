@@ -1,0 +1,164 @@
+/* Shared pieces for the pages that are lines, chalk strokes and space: the
+   search line, the quiet selects, the footer line. Unlayered like the control
+   page so the older reader's unlayered rules cannot win over them. */
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 30px var(--gutter) 0;
+}
+.page h1 {
+  margin: 0;
+  font-size: 46px;
+  line-height: 1;
+}
+.page-lead {
+  margin: 14px 0 0;
+  max-width: 64ch;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-chalk-muted);
+}
+.page-note {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-chalk-dim);
+}
+.line-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.line-field input {
+  width: 100%;
+  min-height: 44px;
+  padding: 6px 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-chalk);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  outline: none;
+}
+.line-field input::placeholder {
+  color: var(--color-chalk-dim);
+}
+.line-field input::-webkit-search-cancel-button {
+  filter: invert(1);
+}
+.line-underline {
+  width: 100%;
+  height: 8px;
+}
+.line-underline path {
+  fill: none;
+  stroke: var(--color-chalk);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+/* Focus is the underline turning to yellow chalk; there is no box to ring. */
+.line-field:has(input:focus-visible) .line-underline path {
+  stroke: var(--color-yellow);
+  stroke-width: 4;
+}
+.line-select {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  font-size: 13px;
+  color: var(--color-chalk-dim);
+}
+.line-select select {
+  min-height: 44px;
+  padding: 6px 28px 6px 2px;
+  border: 0;
+  border-bottom: 1px solid var(--color-rule);
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-chalk);
+  font-family: var(--font-sans);
+  font-size: 16px;
+}
+.line-select select:focus-visible {
+  outline: none;
+  border-bottom: 2px solid var(--color-yellow);
+}
+.line-select option {
+  color: var(--color-chalk);
+  background: var(--color-board);
+}
+.line-action,
+.page a.line-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--color-yellow);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.line-action:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.line-action.is-quiet {
+  color: var(--color-chalk-dim);
+  font-weight: 400;
+}
+.line-action.is-quiet:hover {
+  color: var(--color-yellow);
+}
+.page-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 18px;
+  margin: auto 0 0;
+  padding: 16px 0 12px;
+  color: var(--color-chalk-dim);
+  font-size: 14px;
+}
+.page-foot a {
+  color: var(--color-chalk-dim);
+}
+.page-foot a:hover {
+  color: var(--color-yellow);
+}
+.page-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.page-rows > li {
+  padding: 16px 0;
+  border-top: 1px solid var(--color-rule-soft);
+}
+@media (forced-colors: active) {
+  .line-field input:focus-visible,
+  .line-select select:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+@media (max-width: 640px) {
+  .page {
+    padding-top: 20px;
+  }
+  .page h1 {
+    font-size: 36px;
+    line-height: 1.05;
+  }
+  .page-lead {
+    font-size: 16px;
+  }
+}

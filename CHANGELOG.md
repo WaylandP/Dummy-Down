@@ -33,6 +33,12 @@ analytics allowlist do not change.
   the example in the margin), Evidence, Practice and Related, with a footer
   line that holds the citation and Previous/Next within the current results.
   The older reader and its stylesheet rules are retired.
+- [PR #42](https://github.com/WaylandP/cipher-and-chalk/pull/42): Words,
+  Practice, Assessment objectives, About and Disclaimer. Words follows its
+  mockup with a search line, an A–Z row, four groupings derived from each
+  word's sources and one letter of words at a time with their sources in blue
+  mono; the other four pages follow the Board's lines with their words
+  unchanged. The glossary's open event is retired with the disclosures.
 
 ## Week 2 content and trust — October 14, 2026
 

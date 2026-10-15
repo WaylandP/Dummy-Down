@@ -1,15 +1,13 @@
-import { ArrowUpRight } from 'lucide-react'
-
 const repositoryUrl = 'https://github.com/WaylandP/cipher-and-chalk'
 export const disclaimerUpdated = 'October 14, 2026'
 
 /** One page that states the limits of the site plainly; linked from every footer. */
 export function DisclaimerPage() {
   return (
-    <div className="about-page legal-page section-shell">
+    <div className="about-page legal-page page">
       <section aria-labelledby="disclaimer-title">
-        <p className="home-kicker">Disclaimer &amp; terms of use</p>
-        <h1 id="disclaimer-title">
+        <p className="page-note">Disclaimer &amp; terms of use</p>
+        <h1 id="disclaimer-title" className="chalk">
           Read this before
           <br /> you rely on anything here.
         </h1>
@@ -138,12 +136,12 @@ export function DisclaimerPage() {
           through the project’s public issue tracker.
         </p>
         <a
-          className="text-link"
+          className="line-action"
           href={`${repositoryUrl}/issues`}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Open an issue on GitHub <ArrowUpRight size={16} aria-hidden="true" />
+          Open an issue on GitHub
           <span className="sr-only"> (opens in a new tab)</span>
         </a>
       </section>

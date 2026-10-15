@@ -84,23 +84,16 @@ export default function CoveragePage() {
     return `/coverage?${nextParams.toString()}#coverage-results`
   }
   return (
-    <div className="coverage-page section-shell">
-      <header className="coverage-intro">
-        <p className="home-kicker">Assessment objectives</p>
-        <h1>
-          Every assessment objective.
-          <br />
-          Searchable.
-        </h1>
-        <p>
-          All {counts.total} determination statements from the CMMC Level 1–3
-          assessment guides, quoted with page citations and linked to the
-          explanation that covers each one.
-        </p>
-        <p className="coverage-context">
-          CMMC v2.13 · September 2024 snapshot · Levels 1–3
-        </p>
-      </header>
+    <div className="coverage-page page">
+      <h1 className="chalk">Every assessment objective.</h1>
+      <p className="page-lead">
+        All {counts.total} determination statements from the CMMC Level 1–3
+        assessment guides, quoted with page citations and linked to the
+        explanation that covers each one.
+      </p>
+      <p className="page-note coverage-context">
+        CMMC v2.13 · September 2024 snapshot · Levels 1–3
+      </p>
       <dl
         className="coverage-totals"
         aria-label="Coverage across the full snapshot"
@@ -118,7 +111,7 @@ export default function CoveragePage() {
           <dd>{counts.total}</dd>
         </div>
       </dl>
-      <p className="coverage-scope">
+      <p className="page-note coverage-scope">
         459 determinations + 9 organization-defined parameter statements. The
         counts describe which statements have an explanation here; they are not
         a compliance score.
@@ -154,21 +147,30 @@ export default function CoveragePage() {
         role="search"
         aria-label="Assessment coverage"
       >
-        <label className="search-field">
-          <span className="field-caption">
+        <div className="line-field">
+          <label htmlFor="coverage-q" className="sr-only">
             Find a control or source statement
-          </span>
-          <span className="search-input-wrap">
-            <input
-              name="q"
-              type="search"
-              defaultValue={query}
-              placeholder="Try AC.L1-b.1.i or remote access"
-              maxLength={200}
-            />
-          </span>
-        </label>
-        <label className="filter-field" htmlFor="coverage-level">
+          </label>
+          <input
+            id="coverage-q"
+            name="q"
+            type="search"
+            defaultValue={query}
+            placeholder="Try AC.L1-b.1.i or remote access"
+            maxLength={200}
+            autoComplete="off"
+          />
+          <svg
+            className="line-underline chalk"
+            viewBox="0 0 300 8"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M1 5c60-3 120-1 180 0s90-2 118-1" />
+          </svg>
+        </div>
+        <label className="line-select" htmlFor="coverage-level">
           <span>Level</span>
           <select id="coverage-level" name="level" defaultValue={level}>
             <option value="">All levels</option>
@@ -177,7 +179,7 @@ export default function CoveragePage() {
             ))}
           </select>
         </label>
-        <label className="filter-field" htmlFor="coverage-status">
+        <label className="line-select" htmlFor="coverage-status">
           <span>Explanation coverage</span>
           <select id="coverage-status" name="status" defaultValue={status}>
             <option value="">All statements</option>
@@ -185,7 +187,7 @@ export default function CoveragePage() {
             <option value="missing">Missing explanation</option>
           </select>
         </label>
-        <button className="button button-primary" type="submit">
+        <button className="line-action" type="submit">
           Apply filters
         </button>
       </form>
@@ -195,7 +197,7 @@ export default function CoveragePage() {
           · {grouped.size} {grouped.size === 1 ? 'control' : 'controls'}
         </h2>
         {(query || level || status) && (
-          <a className="text-link" href="/coverage">
+          <a className="line-action is-quiet" href="/coverage">
             Clear filters
           </a>
         )}
@@ -204,7 +206,7 @@ export default function CoveragePage() {
         <div className="coverage-empty">
           <h3>No statements match this search.</h3>
           <p>Try a control identifier, a shorter phrase, or another level.</p>
-          <a className="button button-secondary" href="/coverage">
+          <a className="line-action" href="/coverage">
             Browse all statements
           </a>
         </div>
@@ -221,9 +223,8 @@ export default function CoveragePage() {
             >
               <summary>
                 <span>
-                  <span className="coverage-control-id">
-                    {id} · {first.level}
-                  </span>
+                  <span className="coverage-control-id mono">{id}</span>
+                  <span className="coverage-control-level">{first.level}</span>
                   <strong>{first.title}</strong>
                   <span className="coverage-control-count">
                     {rows.length} matching statements
@@ -330,7 +331,7 @@ export default function CoveragePage() {
       {totalPages > 1 && (
         <nav className="coverage-pagination" aria-label="Coverage result pages">
           {page > 1 && (
-            <a className="button button-secondary" href={pageUrl(page - 1)}>
+            <a className="line-action is-quiet" href={pageUrl(page - 1)}>
               Previous controls
             </a>
           )}
@@ -338,7 +339,7 @@ export default function CoveragePage() {
             Page {page} of {totalPages}
           </span>
           {page < totalPages && (
-            <a className="button button-secondary" href={pageUrl(page + 1)}>
+            <a className="line-action" href={pageUrl(page + 1)}>
               Next controls
             </a>
           )}
