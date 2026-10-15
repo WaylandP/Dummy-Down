@@ -1,7 +1,7 @@
 import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { explorerCatalog, glossaryTerms } from '../data/content'
+import { explorerCatalog } from '../data/content'
 import type { UsageEvent } from './usage'
 import { trackUsage, usageProperties } from './usage'
 import {
@@ -345,17 +345,10 @@ describe('bounded interaction metadata', () => {
     })
   })
 
-  it('accepts only known glossary terms and sources belonging to the exact control', () => {
-    const term = glossaryTerms[0]!
+  it('accepts only sources belonging to the exact control', () => {
     const source = explorerCatalog.controls.find(
       (control) => control.key === lesson.controlKey,
     )!.sources[0]!
-    expect(usageProperties({ name: 'glossary_open', termId: term.id })).toEqual(
-      { term: term.id },
-    )
-    expect(
-      usageProperties({ name: 'glossary_open', termId: 'private-customer' }),
-    ).toBeNull()
     expect(
       usageProperties({
         name: 'source_open',

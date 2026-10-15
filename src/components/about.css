@@ -1,0 +1,89 @@
+/* About and the Disclaimer: sentences in reading type under chalk headings. */
+.about-page h1 {
+  margin: 0 0 18px;
+  font-size: 46px;
+  line-height: 1.05;
+}
+.about-page section + section {
+  margin-top: 34px;
+}
+.about-page h2 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  line-height: 1.15;
+}
+.about-page p:not(.page-foot):not(.page-note) {
+  margin: 0 0 14px;
+  max-width: 64ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-chalk-muted);
+}
+.about-page section > p:last-child:not(.page-note) {
+  margin-bottom: 0;
+}
+.about-page p a {
+  color: var(--color-chalk);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.about-page p a:hover {
+  color: var(--color-yellow);
+}
+.about-page .page-note {
+  margin: 0 0 10px;
+}
+.perspective-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 64ch;
+  margin-top: 6px;
+}
+.perspective-link {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  align-items: center;
+  gap: 2px 18px;
+  min-height: 56px;
+  padding: 10px 0;
+  border-top: 1px solid var(--color-rule-soft);
+  color: var(--color-chalk);
+  text-decoration: none;
+}
+.perspective-link:last-child {
+  border-bottom: 1px solid var(--color-rule-soft);
+}
+.perspective-link .stick-bar {
+  grid-row: 1 / span 2;
+}
+.perspective-link:hover .perspective-title {
+  color: var(--color-yellow);
+}
+.perspective-title {
+  font-size: 17px;
+  font-weight: 500;
+}
+.perspective-description {
+  font-size: 15px;
+  color: var(--color-chalk-muted);
+}
+.about-page .page-foot {
+  margin-top: 36px;
+}
+.legal-page section + section {
+  margin-top: 30px;
+}
+.legal-page h2 {
+  font-size: 24px;
+}
+@media (max-width: 640px) {
+  .about-page h1 {
+    font-size: 36px;
+  }
+  .about-page h2 {
+    font-size: 23px;
+  }
+  .about-page p:not(.page-foot):not(.page-note) {
+    font-size: 16px;
+  }
+}

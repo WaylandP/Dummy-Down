@@ -84,16 +84,25 @@ not establish it.
   Previous/Next within the current results. “Browse & filter controls” sits
   under the page and reopens search, filters and results. Discovery and the
   project's demo lesson keep their earlier layout until their own pass.
-- **Glossary `/glossary`:** searchable definitions on their own page. Inline
-  definitions still open inside lessons without a page change.
-- **Coverage `/coverage`:** a separate source-to-explanation index. Summary counts
-  distinguish draft explanations, unresolved gaps and overlapping human-review
-  status. Native search/filters, paginated control disclosures and exact lesson
-  links keep detailed review work out of the primary reading workspace. Source
-  quotations and teaching notes stay visibly separate; no compliance scores.
-- **Practice `/practice`:** a searchable index of actual activities, optional local
-  progress, revisit marks and clear source/draft context.
-- **About `/about`:** mission, honest content limits and perspective shortcuts.
+- **Glossary `/glossary`:** the Board's Words page (`mockups/Glossary.html`).
+  Left: "Words", a search line, an A–Z row with the active letter on a yellow
+  block, and four groupings derived from each word's sources (the program,
+  scoping, the clauses, the lessons). Right: one letter of words in
+  two columns, each with its definition and its source in blue mono, linked.
+  The letter and the group live in the address (`?letter=`, `?group=`);
+  typing a search never touches history. Inline definitions still open inside
+  lessons without a page change.
+- **Coverage `/coverage`:** a separate source-to-explanation index on the
+  Board's lines: one sentence, the counts on one rule, a search line with two
+  quiet selects, paginated control disclosures and exact lesson links. Source
+  quotations keep a yellow chalk rule beside them and teaching notes stay
+  visibly separate; no compliance scores.
+- **Practice `/practice`:** a searchable index of actual activities as rows on
+  hairlines (no numbered markers), optional local progress, revisit marks and
+  the control identifier in blue mono.
+- **About `/about`:** mission and honest content limits in sentences, and the
+  three chalks as links into a control. **Disclaimer `/disclaimer`:** the same
+  frame, its text unchanged.
 
 Native links support direct loads and normal browser navigation; Vercel rewrites
 serve the six non-root paths. Legacy root query links and section hashes still

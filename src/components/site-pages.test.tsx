@@ -72,7 +72,7 @@ describe('Separate blackboard pages', () => {
       window.dispatchEvent(new HashChangeEvent('hashchange'))
     })
     expect(
-      screen.getByRole('searchbox', { name: 'Search glossary' }),
+      screen.getByRole('searchbox', { name: 'Search words' }),
     ).toBeVisible()
     expect(trackUsage).not.toHaveBeenCalled()
   })

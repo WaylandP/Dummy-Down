@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-import { ArrowUpRight } from 'lucide-react'
 import { learningActivities } from '../data/learning'
 import { controls, referenceControls } from '../data/content'
 import { createLessonUrl } from '../state/explorer-state'
@@ -62,17 +61,12 @@ export default function PracticePage() {
         .includes(query.toLocaleLowerCase()),
   )
   return (
-    <div className="practice-page section-shell">
-      <header className="practice-page-intro">
-        <p className="instruction-eyebrow">The practice room</p>
-        <h1>Work through a situation.</h1>
-        <p>
-          Make a decision. Explore the reasoning. Try again.
-          <br />
-          Short, fictional exercises with the source close at hand.
-        </p>
-      </header>
-      <ProgressPreferences />
+    <div className="practice-page page">
+      <h1 className="chalk">Work through a situation.</h1>
+      <p className="page-lead">
+        Make a decision. Explore the reasoning. Try again. Short, fictional
+        exercises with the source close at hand.
+      </p>
       <form
         method="get"
         action="/practice"
@@ -80,17 +74,29 @@ export default function PracticePage() {
         role="search"
         aria-label="Find a practice activity"
       >
-        <label>
-          Search activities
+        <div className="line-field">
+          <label htmlFor="practice-q" className="sr-only">
+            Search activities
+          </label>
           <input
+            id="practice-q"
             type="search"
             name="q"
             defaultValue={query}
             placeholder="A situation, topic or control ID"
             autoComplete="off"
           />
-        </label>
-        <label>
+          <svg
+            className="line-underline chalk"
+            viewBox="0 0 300 8"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M1 5c60-3 120-1 180 0s90-2 118-1" />
+          </svg>
+        </div>
+        <label className="line-select">
           Level
           <select name="level" defaultValue={selectedLevel}>
             <option value="">All levels</option>
@@ -104,7 +110,7 @@ export default function PracticePage() {
             )}
           </select>
         </label>
-        <label>
+        <label className="line-select">
           Learning status
           <select
             name="status"
@@ -123,17 +129,18 @@ export default function PracticePage() {
               )}
           </select>
         </label>
-        <button className="practice-action" type="submit">
+        <button className="line-action" type="submit">
           Find activities
         </button>
         {(query || selectedLevel || selectedStatus) && (
-          <a href="/practice" className="inline-action">
+          <a href="/practice" className="line-action is-quiet">
             Clear filters
           </a>
         )}
       </form>
+      <ProgressPreferences />
       {mode !== 'on' && (
-        <p className="practice-context">
+        <p className="page-note">
           Status filters need saving to be available and turned on above.
           Changing filters or leaving this page clears unsaved marks.
         </p>
@@ -150,19 +157,19 @@ export default function PracticePage() {
       </p>
       {filtered.length === 0 ? (
         <section className="practice-empty">
-          <h2>No matching activities.</h2>
+          <h2 className="chalk">No matching activities.</h2>
           <p>
             {selectedStatus
               ? 'Your current learning record has no matches for these filters. Start any activity or clear the filters.'
               : 'Try a broader topic or browse all available practice.'}
           </p>
-          <a href="/practice" className="text-link">
+          <a href="/practice" className="line-action">
             Browse all activities
           </a>
         </section>
       ) : (
-        <ol className="practice-index">
-          {filtered.map(({ activity, control }, index) => {
+        <ol className="practice-index page-rows">
+          {filtered.map(({ activity, control }) => {
             const saved = progress[activity.id]
             const destination = createLessonUrl(
               activity.lesson,
@@ -176,82 +183,71 @@ export default function PracticePage() {
               : 0
             return (
               <li key={activity.id}>
-                <span className="practice-index-number" aria-hidden="true">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div>
-                  <p className="instruction-eyebrow">
-                    {control?.contentKind === 'educational-example'
-                      ? 'Project example'
-                      : control?.level}{' '}
-                    · {activity.questions.length} questions
-                    {hasVisualExplanation(activity.lesson) &&
-                      ' · 40-second visual'}
-                  </p>
-                  <h2>
-                    <a
-                      href={createLessonUrl(
-                        activity.lesson,
-                        'beginner',
-                        new URL('/learn', window.location.origin),
-                        'practice',
-                      )}
-                    >
-                      {activity.title}
-                      <ArrowUpRight size={20} aria-hidden="true" />
-                    </a>
-                  </h2>
-                  <p>{activity.learningObjective ?? activity.introduction}</p>
-                  <code>{control?.id}</code>
-                  <div className="practice-row-actions">
-                    <a className="inline-action" href={destination}>
-                      {saved?.completed
-                        ? 'Review reasoning'
-                        : checkedCount
-                          ? 'Continue questions'
-                          : 'Start questions'}
-                      <span className="sr-only">: {activity.title}</span>
-                    </a>
-                    <button
-                      className="inline-action"
-                      type="button"
-                      aria-pressed={saved?.revisit ?? false}
-                      aria-label={`Revisit later: ${activity.title}`}
-                      disabled={mode === 'loading'}
-                      onClick={() => {
-                        if (
-                          store.markRevisit(activity.id, !saved?.revisit) &&
-                          selectedStatus === 'revisit' &&
-                          saved?.revisit
-                        )
-                          results.current?.focus()
-                      }}
-                    >
-                      {saved?.revisit ? 'Marked to revisit' : 'Revisit later'}
-                    </button>
-                  </div>
-                  {saved?.visited && (
-                    <p className="practice-row-status">
-                      {saved.completed
-                        ? 'Practice complete'
-                        : checkedCount
-                          ? `${checkedCount} of ${activity.questions.length} answers checked`
-                          : 'Visited · Questions not started'}
-                      {reviewCount > 0 &&
-                        ` · ${reviewCount} ${reviewCount === 1 ? 'answer' : 'answers'} worth another look`}
-                    </p>
-                  )}
+                <p className="practice-row-kicker">
+                  {control?.contentKind === 'educational-example'
+                    ? 'Project example'
+                    : control?.level}{' '}
+                  · {activity.questions.length} questions
+                  {hasVisualExplanation(activity.lesson) &&
+                    ' · 40-second visual'}
+                </p>
+                <h2>
+                  <a href={destination}>{activity.title}</a>
+                </h2>
+                <p className="practice-row-goal">
+                  {activity.learningObjective ?? activity.introduction}
+                </p>
+                <code className="practice-row-id">{control?.id}</code>
+                <div className="practice-row-actions">
+                  <a className="line-action" href={destination}>
+                    {saved?.completed
+                      ? 'Review reasoning'
+                      : checkedCount
+                        ? 'Continue questions'
+                        : 'Start questions'}
+                    <span className="sr-only">: {activity.title}</span>
+                  </a>
+                  <button
+                    className="line-action is-quiet"
+                    type="button"
+                    aria-pressed={saved?.revisit ?? false}
+                    aria-label={`Revisit later: ${activity.title}`}
+                    disabled={mode === 'loading'}
+                    onClick={() => {
+                      if (
+                        store.markRevisit(activity.id, !saved?.revisit) &&
+                        selectedStatus === 'revisit' &&
+                        saved?.revisit
+                      )
+                        results.current?.focus()
+                    }}
+                  >
+                    {saved?.revisit ? 'Marked to revisit' : 'Revisit later'}
+                  </button>
                 </div>
+                {saved?.visited && (
+                  <p className="practice-row-status">
+                    {saved.completed
+                      ? 'Practice complete'
+                      : checkedCount
+                        ? `${checkedCount} of ${activity.questions.length} answers checked`
+                        : 'Visited · Questions not started'}
+                    {reviewCount > 0 &&
+                      ` · ${reviewCount} ${reviewCount === 1 ? 'answer' : 'answers'} worth another look`}
+                  </p>
+                )}
               </li>
             )
           })}
         </ol>
       )}
-      <p className="practice-library-note">
-        Looking for the full requirement?{' '}
-        <a href="/learn?view=discover&collection=references">
-          Browse all controls and sources.
-        </a>
+      <p className="page-foot">
+        <span>
+          Looking for the full requirement?{' '}
+          <a href="/learn?view=discover&collection=references">
+            Browse all controls and sources.
+          </a>
+        </span>
       </p>
     </div>
   )
