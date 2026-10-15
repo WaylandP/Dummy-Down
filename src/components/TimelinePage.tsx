@@ -118,8 +118,7 @@ export default function TimelinePage() {
       <p className="page-lead">
         When the program rule took effect, when the clause reaches contracts,
         how long a status stays current, and what DoD has said about Revision 3.
-        Each line paraphrases the rule, the clause or DoD guidance, quoted under
-        Sources.
+        Each line paraphrases its source, quoted under Sources.
       </p>
       <section className="timeline-section" aria-labelledby="timeline-dates">
         <h2 id="timeline-dates" className="sr-only">
