@@ -608,12 +608,27 @@ describe('transitionExplorerState', () => {
     })
   })
 
-  it('selects only a known tuple included in the current discovery results', () => {
+  it('lets a selection through a family filter that would hide it, clearing that filter', () => {
+    // The rail lists every control, so a pick from it gives way to the control.
     const current = ready(discovery({ ...unfiltered, family: 'IA' }))
     expect(
       transitionExplorerState(
         current,
         { type: 'select-lesson', identity: sampleIdentity },
+        catalog,
+      ),
+    ).toMatchObject({ parsed: ready(lesson()), history: 'push' })
+  })
+
+  it('ignores a selection it cannot resolve at all', () => {
+    const current = ready(discovery())
+    expect(
+      transitionExplorerState(
+        current,
+        {
+          type: 'select-lesson',
+          identity: { ...sampleIdentity, controlKey: 'no-such-control' },
+        },
         catalog,
       ),
     ).toMatchObject({ parsed: current, history: 'none' })

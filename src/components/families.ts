@@ -20,6 +20,28 @@ const familyLabels: Readonly<Record<string, string>> = {
   SI: 'System Integrity',
 }
 
+/** The families as the rail writes them (mockups/2026-10-15/Controls.html). */
+const railLabels: Readonly<Record<string, string>> = {
+  AC: 'Access Control',
+  AT: 'Awareness & Training',
+  AU: 'Audit & Accountability',
+  CA: 'Security Assessment',
+  CM: 'Configuration Management',
+  IA: 'Identification & Authentication',
+  IR: 'Incident Response',
+  MA: 'Maintenance',
+  MP: 'Media Protection',
+  PE: 'Physical Protection',
+  PS: 'Personnel Security',
+  RA: 'Risk Assessment',
+  SC: 'System & Comms Protection',
+  SI: 'System & Info Integrity',
+}
+/** A family's name on the rail; the catalog's official one when none is drawn. */
+export function railFamilyName(family: FamilyEntry): string {
+  return railLabels[family.code] ?? family.name
+}
+
 export interface FamilyEntry {
   readonly code: string
   readonly name: string

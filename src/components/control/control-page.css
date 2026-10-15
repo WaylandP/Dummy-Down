@@ -2,7 +2,8 @@
    Unlayered on purpose: the older reader's media rules in styles.css are unlayered
    and would otherwise win over these at phone widths. */
 /* On the Board the explorer section is only a frame around the control page;
-     browsing lives in a line under it. The id wins over the older reader rules. */
+   the rail beside it lives in controls/rail.css. The id wins over the older
+   reader rules. */
 #explorer.is-board {
   flex: 1;
   display: flex;
@@ -12,53 +13,9 @@
   min-height: 0;
   padding: 0;
 }
-#explorer.is-board .explorer-shell,
-#explorer.is-board .explorer-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-height: 0;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  background: transparent;
-}
 #explorer.is-board .explorer-notice {
   padding: 12px var(--gutter) 0;
   font-size: 14px;
-}
-#explorer.is-board .control-sidebar {
-  margin: 0;
-  padding: 0 var(--gutter) 16px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-}
-#explorer.is-board .mobile-results-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  width: 100%;
-  min-height: 48px;
-  border-top: 1px solid var(--color-rule-soft);
-  color: var(--color-chalk-dim);
-  font-size: 14px;
-  font-weight: 400;
-}
-#explorer.is-board .mobile-results-toggle:hover {
-  color: var(--color-yellow);
-}
-#explorer.is-board .explorer-toolbar {
-  padding-inline: 0;
-  border-bottom: 0;
-}
-#explorer.is-board .cmmc-levels {
-  margin-inline: 0;
-}
-#explorer.is-board .results-body {
-  padding-top: 12px;
 }
 
 .control-page {
@@ -918,7 +875,6 @@
 /* Paper: a one-page control sheet. The ID decoded, the title, the sentence and
    its objectives, the citation, and the open Explain or Evidence view. */
 @media print {
-  #explorer.is-board .control-sidebar,
   #explorer.is-board .explorer-notice,
   .control-page .lesson-mismatch,
   .control-actions,

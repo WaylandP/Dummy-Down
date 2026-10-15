@@ -4,17 +4,16 @@ const reader =
   '/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l1-b-1-i&mode=beginner'
 const title = 'Authorized Access Control [FCI Data]'
 
-/** The frame stretches to the results line under it, and the live page fills the frame. */
+/** The frame fills the column beside the rail, and the live page fills the frame. */
 async function fillsTheScreen(page: import('@playwright/test').Page) {
-  const body = (await page.locator('.explorer-body').boundingBox())!
+  const column = (await page.locator('.controls-main').boundingBox())!
   const frame = (await page.locator('.erase-frame').boundingBox())!
   const live = (await page
     .locator('.control-page:not(.erase-dust)')
     .boundingBox())!
-  const results = (await page.locator('.control-sidebar').boundingBox())!
-  expect(Math.round(frame.y + frame.height)).toBe(Math.round(results.y))
-  expect(Math.round(results.y + results.height)).toBe(
-    Math.round(body.y + body.height),
+  expect(Math.round(frame.y)).toBe(Math.round(column.y))
+  expect(Math.round(frame.y + frame.height)).toBe(
+    Math.round(column.y + column.height),
   )
   expect(Math.round(live.height)).toBe(Math.round(frame.height))
 }

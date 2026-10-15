@@ -1,0 +1,509 @@
+/* The Controls page with Learn merged in (mockups/2026-10-15/Controls.html):
+   the rail of every control beside the control on screen. Unlayered like the
+   other page sheets so it wins over the older reader's rules. */
+#explorer.has-rail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  padding: 0;
+}
+#explorer.has-rail .explorer-notice {
+  padding: 12px var(--gutter) 0;
+  font-size: 14px;
+}
+.controls-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+  gap: 36px;
+  min-height: 0;
+  padding: 20px var(--gutter) 0;
+}
+/* An address with no state for the rail (an invalid one) gets the column alone. */
+.controls-layout.is-railless {
+  grid-template-columns: minmax(0, 1fr);
+}
+.controls-main {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+/* The control page keeps its own frame but not its gutters: the layout has them. */
+#explorer.has-rail .control-page {
+  padding-inline: 0;
+  padding-top: 0;
+}
+/* In the desktop frame (board.css) the screen holds two scrollers: the rail's
+   list and the control's column. The explorer is exactly the frame; the
+   column scrolls its content, which is never shorter than itself, so a short
+   control still fills the column and a long one scrolls under the rail. */
+@media (min-width: 1024px) and (min-height: 640px) {
+  .board-main > #explorer.has-rail {
+    flex: 1 1 0;
+    min-height: 0;
+  }
+  .controls-main {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-padding-block: 24px 56px;
+  }
+  .controls-main > * {
+    flex: 1 0 auto;
+  }
+}
+/* Beside the rail the overview is the results alone, at full width: the rail
+   holds the families. */
+@media (min-width: 1024px) {
+  #explorer.has-rail .discover-body:not(.is-reading) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Beside the rail the control is set as Controls.html draws it: the same
+   page, a size down, so the sentence and its objectives share one screen. */
+@media (min-width: 1024px) {
+  #explorer.has-rail .control-id-line {
+    gap: 10px 24px;
+  }
+  #explorer.has-rail .control-id {
+    font-size: 26px;
+    letter-spacing: 0.01em;
+  }
+  #explorer.has-rail .control-arrow {
+    width: 34px;
+    height: 26px;
+  }
+  #explorer.has-rail .control-pieces {
+    gap: 10px 22px;
+  }
+  #explorer.has-rail .piece dt {
+    font-size: 11px;
+  }
+  #explorer.has-rail .piece dd {
+    font-size: 13px;
+  }
+  #explorer.has-rail .control-actions {
+    gap: 16px;
+    font-size: 13px;
+  }
+  #explorer.has-rail .control-page h1 {
+    margin-top: 14px;
+    font-size: 38px;
+  }
+  #explorer.has-rail .control-tabs {
+    gap: 32px;
+    margin-top: 12px;
+  }
+  #explorer.has-rail .control-tab {
+    font-size: 15px;
+  }
+  #explorer.has-rail .decode {
+    gap: 20px;
+  }
+  #explorer.has-rail .decode .decode-sentence {
+    font-size: 27px;
+    line-height: 1.6;
+  }
+  #explorer.has-rail .decode-objectives {
+    column-gap: 30px;
+    max-width: 780px;
+    font-size: 14px;
+  }
+  #explorer.has-rail .decode-objectives li {
+    padding-bottom: 8px;
+  }
+  #explorer.has-rail .control-foot {
+    padding-bottom: 14px;
+    font-size: 13px;
+  }
+}
+
+/* The rail: a column that scrolls on its own, on a hairline. */
+.rail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+  border-right: 1px solid var(--color-rule);
+  padding-right: 24px;
+}
+.rail-find {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.rail-find-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-yellow);
+}
+.rail-find-line input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 6px 2px;
+  border: 0;
+  background: transparent;
+  color: var(--color-chalk);
+  font-size: 18px;
+}
+.rail-find-line input::placeholder {
+  color: var(--color-chalk-faint);
+}
+.rail-find-line input:focus-visible {
+  outline: none;
+}
+.rail-underline {
+  display: block;
+  width: 100%;
+  height: 8px;
+}
+.rail-underline path {
+  fill: none;
+  stroke: var(--color-chalk);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.rail-find:has(input:focus-visible) .rail-underline path {
+  stroke: var(--color-yellow);
+  stroke-width: 4;
+}
+
+/* Start here: the path through the basics, its position in chalk dashes. */
+.rail-path {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 0 2px;
+  color: var(--color-chalk-muted);
+  text-decoration: none;
+}
+.rail-path-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.rail-path-title {
+  color: var(--color-yellow);
+  font-size: 20px;
+}
+.rail-path-count {
+  color: var(--color-chalk-dim);
+  font-size: 12px;
+}
+.rail-path-text {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.rail-path-dashes {
+  display: block;
+  width: 225px;
+  max-width: 100%;
+  height: 8px;
+}
+.rail-path-dashes rect {
+  fill: var(--color-chalk);
+  opacity: 0.3;
+}
+.rail-path-dashes rect.is-current {
+  fill: var(--color-yellow);
+  opacity: 1;
+}
+.rail-path:hover .rail-path-title,
+.rail-path:focus-visible .rail-path-title {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* The level switch: four quiet words, the one in force under a chalk stroke;
+   each word is a 44px target. */
+.rail-levels {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-chalk-dim);
+}
+.rail-levels-label {
+  margin-right: 8px;
+  font-weight: 400;
+}
+.rail-levels a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+  color: var(--color-chalk-dim);
+  text-decoration: none;
+}
+.rail-levels a[aria-current='true'] {
+  color: var(--color-chalk);
+}
+.rail-levels a:hover {
+  color: var(--color-yellow);
+}
+.rail-stroke {
+  width: 22px;
+  height: 5px;
+  visibility: hidden;
+}
+.rail-stroke path {
+  fill: none;
+  stroke: var(--color-yellow);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.rail-levels a[aria-current='true'] .rail-stroke {
+  visibility: visible;
+}
+
+/* The families, then the open one's controls; the list scrolls under a fade
+   (a mask, so the board's own ground shows through it). */
+.rail-list {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-top: 1px solid var(--color-rule);
+  /* Room at the sides for focus rings, which a scroller would clip. */
+  margin-inline: -6px;
+  padding: 6px 6px 48px;
+  scroll-padding-block: 8px 52px;
+  mask-image: linear-gradient(#000 calc(100% - 44px), transparent);
+}
+.controls-layout.is-railless .controls-main {
+  grid-column: auto;
+}
+.rail-families,
+.rail-controls {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.rail-family {
+  display: grid;
+  grid-template-columns: 14px 30px minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: baseline;
+  min-height: 44px;
+  padding: 6px 0;
+  color: var(--color-chalk-muted);
+  font-size: 14px;
+  text-decoration: none;
+}
+.rail-family[aria-current='true'] {
+  color: var(--color-chalk);
+  font-weight: 500;
+}
+.rail-family:hover .rail-family-name {
+  color: var(--color-yellow);
+}
+.rail-caret {
+  color: var(--color-chalk-dim);
+  font-size: 11px;
+}
+.rail-family-code {
+  color: var(--color-blue);
+  font-size: 12px;
+}
+.rail-family-count {
+  color: var(--color-chalk-dim);
+  font-size: 11px;
+}
+.rail-controls {
+  margin-left: 50px;
+}
+.rail-control {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 44px;
+  padding: 5px 0;
+  justify-content: center;
+  color: var(--color-chalk-muted);
+  text-decoration: none;
+}
+.rail-control-id {
+  color: var(--color-blue-dim, var(--color-blue));
+  font-size: 12px;
+}
+.rail-control-title {
+  font-size: 13px;
+  line-height: 1.3;
+}
+.rail-control[aria-current='page'] {
+  color: var(--color-chalk);
+}
+.rail-control[aria-current='page'] .rail-control-id {
+  color: var(--color-blue);
+}
+/* The yellow bar at the current control. */
+.rail-control[aria-current='page']::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--color-yellow);
+}
+.rail-control:hover .rail-control-title {
+  color: var(--color-yellow);
+}
+.rail-more {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--color-chalk-dim);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.rail-more:hover {
+  color: var(--color-yellow);
+}
+.rail-path:focus-visible,
+.rail-levels a:focus-visible,
+.rail-family:focus-visible,
+.rail-control:focus-visible,
+.rail-more:focus-visible,
+.rail-open:focus-visible,
+.rail-close:focus-visible,
+.rail-line-path:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Below desktop: the rail is a sheet; its line and "Start here" stay on the page. */
+.rail-line {
+  display: none;
+}
+.rail-sheet {
+  display: none;
+}
+@media (max-width: 1023px) {
+  .controls-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 10px;
+  }
+  .rail-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-rule);
+    margin-bottom: 10px;
+  }
+  .rail-open {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    border: 0;
+    padding: 0;
+    background: none;
+    color: var(--color-chalk);
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--color-rule);
+    text-underline-offset: 4px;
+    cursor: pointer;
+  }
+  .rail-line-path {
+    display: inline-flex;
+    align-items: baseline;
+    min-height: 44px;
+    color: var(--color-yellow);
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .rail-line-path .hand {
+    font-size: 19px;
+  }
+  .rail-line-count {
+    color: var(--color-chalk-dim);
+    font-size: 13px;
+  }
+  .rail-sheet[open] {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    border: 0;
+    padding: 12px var(--gutter) 16px;
+    background: var(--color-board);
+    color: var(--color-chalk);
+  }
+  .rail-sheet::backdrop {
+    background: var(--color-board);
+  }
+  .rail-sheet .rail {
+    flex: 1;
+    min-height: 0;
+    border-right: 0;
+    padding-right: 0;
+  }
+  .rail-close {
+    align-self: flex-end;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    border: 0;
+    padding: 0 4px;
+    background: none;
+    color: var(--color-chalk-muted);
+    font: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--color-rule);
+    text-underline-offset: 4px;
+    cursor: pointer;
+  }
+}
+@media (forced-colors: active) {
+  .rail-path-dashes rect,
+  .rail-stroke path {
+    forced-color-adjust: none;
+  }
+  /* The underline cannot change colour here, so the line gets a ring. */
+  .rail-find-line input:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+  .rail-control[aria-current='page']::before {
+    background: Highlight;
+  }
+}
+@media print {
+  .rail,
+  .rail-line,
+  .rail-sheet {
+    display: none;
+  }
+}

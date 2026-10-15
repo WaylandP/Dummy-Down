@@ -38,12 +38,15 @@ describe('Explorer navigation regressions', () => {
     expect(compliance).toHaveAttribute('aria-selected', 'true')
   })
 
-  it('focuses enabled search after recovering an invalid address', async () => {
+  it('focuses the find line after recovering an invalid address', async () => {
     window.history.replaceState(null, '', '?view=lesson&framework=cmmc')
     const { user, explorer } = await setup()
-    const search = explorer.getByRole('searchbox', { name: 'Search controls' })
-    expect(search).toBeDisabled()
+    // An invalid address has no state for the rail to show.
+    expect(
+      explorer.queryByRole('searchbox', { name: 'Find controls' }),
+    ).not.toBeInTheDocument()
     await user.click(explorer.getByRole('button', { name: 'Browse examples' }))
+    const search = explorer.getByRole('searchbox', { name: 'Find controls' })
     expect(search).toBeEnabled()
     expect(search).toHaveFocus()
     expect(explorer.queryByRole('tabpanel')).not.toBeInTheDocument()
@@ -65,7 +68,7 @@ describe('Explorer navigation regressions', () => {
     expect(params.get('family')).toBe('AC')
     expect(params.get('level')).toBe('Level 2')
     expect(
-      explorer.getByRole('searchbox', { name: 'Search controls' }),
+      explorer.getByRole('searchbox', { name: 'Find controls' }),
     ).toHaveFocus()
     expect(explorer.queryByRole('tabpanel')).not.toBeInTheDocument()
     await user.click(

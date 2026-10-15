@@ -1,8 +1,9 @@
-import { defaultLesson, explorerCatalog } from '../data/content'
+import { explorerCatalog } from '../data/content'
 import {
   createLessonUrl,
   lessonIdentity,
   lessonIdentityKey,
+  pathControls,
 } from '../state/explorer-state'
 import {
   readChalkPreference,
@@ -21,11 +22,17 @@ import {
   reportFindControl,
 } from './board/find-control'
 
-function lessonUrl(lesson: LessonIdentity, mode: ExplanationMode) {
+function lessonUrl(
+  lesson: LessonIdentity,
+  mode: ExplanationMode,
+  path?: 'basics',
+) {
   return createLessonUrl(
     lesson,
     mode,
     new URL('/learn', window.location.origin),
+    'decode',
+    path,
   ).replace(window.location.origin, '')
 }
 
@@ -39,6 +46,9 @@ function findControl(lesson: LessonIdentity | null): CatalogControl | null {
   )
 }
 
+/** The first of the Level 1 basics: where the Start here path begins. */
+const firstBasic = lessonIdentity(pathControls('basics', explorerCatalog)[0]!)
+
 /** One row per chalk: who is reading, where that starts them, and the chalk it picks. */
 const rows = [
   {
@@ -47,7 +57,7 @@ const rows = [
     line: 'I’m new to this.',
     text: 'Start with what CUI is and why the DoD cares, then one control at a time in plain words.',
     go: 'Start here',
-    href: () => lessonUrl(defaultLesson, 'beginner'),
+    href: () => lessonUrl(firstBasic, 'beginner', 'basics'),
   },
   {
     mode: 'it-cyber',

@@ -163,7 +163,7 @@ test('printing a control gives a one-page sheet in black on white without the tr
     '.control-actions',
     '.control-prevnext',
     '.chalk-picker',
-    '.control-sidebar',
+    '.rail-line',
     '.board-dust',
   ])
     await expect(page.locator(selector).first()).toBeHidden()

@@ -49,11 +49,12 @@ test('home asks who is reading on one screen at 1280×800, and a row picks the c
   await rows.getByRole('link', { name: /^I run the systems\./ }).click()
   await expect(page).toHaveURL(/view=discover/)
   await expect(page).toHaveURL(/mode=it-cyber/)
+  // The rail holds the fourteen families; the overview is the results.
+  const rail = page.getByRole('navigation', { name: 'All controls' })
+  await expect(rail.getByRole('link', { name: /^[A-Z]{2} / })).toHaveCount(14)
   await expect(
-    page
-      .getByRole('navigation', { name: 'Control families' })
-      .getByRole('link'),
-  ).toHaveCount(15)
+    page.getByRole('navigation', { name: 'Control families' }),
+  ).toHaveCount(0)
   await expect(nav.getByRole('link', { name: 'Controls' })).toHaveAttribute(
     'aria-current',
     'page',
@@ -73,10 +74,7 @@ test('home asks who is reading on one screen at 1280×800, and a row picks the c
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
 
   // A family filters in place; the next control opens in the yellow chalk.
-  await page
-    .getByRole('navigation', { name: 'Control families' })
-    .getByRole('link', { name: /Media Protection/ })
-    .click()
+  await rail.getByRole('link', { name: /^MP Media Protection/ }).click()
   await expect(page).toHaveURL(/family=MP/)
   await expect(
     page.getByRole('status', { name: 'Control search results' }),

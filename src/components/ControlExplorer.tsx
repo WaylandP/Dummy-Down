@@ -1,13 +1,5 @@
-import { Fragment, useLayoutEffect, useRef, useState } from 'react'
-import {
-  ArrowUpRight,
-  Check,
-  ChevronDown,
-  ChevronUp,
-  Info,
-  Search,
-  SlidersHorizontal,
-} from 'lucide-react'
+import { Fragment, useLayoutEffect, useRef } from 'react'
+import { ArrowUpRight, Check, Info } from 'lucide-react'
 import {
   explorerCatalog,
   frameworks,
@@ -20,6 +12,8 @@ import {
   effectiveCollection,
   lessonIdentity,
   lessonIdentityKey,
+  pathControls,
+  pathIndex,
   serializeExplorerSearch,
   type ControlTab,
 } from '../state/explorer-state'
@@ -35,6 +29,9 @@ import { Erase } from './control/Erase'
 import { trackUsage } from '../analytics/usage'
 import { useSearchUsage } from '../analytics/useSearchUsage'
 import { CmmcLevels } from './CmmcLevels'
+import { ControlRail } from './controls/ControlRail'
+import { RailSheet } from './controls/RailSheet'
+import { useDesktop } from './controls/useDesktop'
 import { families as catalogFamilies, familyUrl, plainClick } from './families'
 import { chalkFor } from './board/chalks'
 import { readChalkPreference } from '../state/chalk-preference'
@@ -44,7 +41,7 @@ interface ControlExplorerProps {
 }
 
 export function ControlExplorer({ controller }: ControlExplorerProps) {
-  const [mobileResultsOpen, setMobileResultsOpen] = useState(false)
+  const desktop = useDesktop()
   const searchInput = useRef<HTMLInputElement>(null)
   const searchUsage = useSearchUsage('explorer')
   const focusLesson = useRef(false)
@@ -105,11 +102,6 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
         ? control.contentKind === 'official-reference'
         : control.contentKind === 'educational-example'),
   )
-  const families = [
-    ...new Map(
-      frameworkControls.map((control) => [control.family, control.familyName]),
-    ).entries(),
-  ]
   const levels = [
     ...new Set(
       frameworkControls.flatMap((control) =>
@@ -120,6 +112,15 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
   const selectedKey = selected
     ? lessonIdentityKey(lessonIdentity(selected))
     : null
+  // The Start here path: where the control on the board sits on it, and what follows.
+  const pathAt =
+    ready?.view === 'lesson' && ready.path
+      ? pathIndex('basics', ready.lesson, explorerCatalog)
+      : -1
+  const pathNext =
+    pathAt >= 0
+      ? (pathControls('basics', explorerCatalog)[pathAt + 1] ?? null)
+      : undefined
   const unavailable =
     parsed.kind === 'invalid' || resolution?.kind === 'not-found'
   const planned =
@@ -136,13 +137,24 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
 
   function selectControl(control: CatalogControl) {
     const key = lessonIdentityKey(lessonIdentity(control))
-    setMobileResultsOpen(false)
     if (selectedKey === key) {
       lessonHeading.current?.focus()
       return
     }
     focusLesson.current = true
     dispatch({ type: 'select-lesson', identity: lessonIdentity(control) })
+  }
+  // Along the path the focus stays on "Next on the path" while there is a
+  // next; at the last of the basics it moves to the title.
+  function followPath(control: CatalogControl) {
+    const path = pathControls('basics', explorerCatalog)
+    const at = pathIndex('basics', lessonIdentity(control), explorerCatalog)
+    focusLesson.current = at < 0 || at + 1 >= path.length || pathAt < 0
+    dispatch({
+      type: 'follow-path',
+      path: 'basics',
+      identity: lessonIdentity(control),
+    })
   }
   function clearFilters() {
     dispatch({ type: 'clear-filters' })
@@ -160,26 +172,7 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
     dispatch({ type: 'back-to-discovery' })
   }
 
-  // The fields are shared by the older reader's toolbar and the Controls page.
-  const searchInputElement = (
-    <input
-      type="search"
-      id="control-search"
-      ref={searchInput}
-      placeholder="Search a topic or control ID…"
-      value={filters.query}
-      disabled={parsed.kind === 'invalid'}
-      onChange={(event) => {
-        searchUsage.edited(event.target.value)
-        dispatch({ type: 'set-query', query: event.target.value })
-      }}
-      onBlur={() => searchUsage.report(filters.query, results.length)}
-      onKeyDown={(event) => {
-        if (event.key === 'Enter')
-          searchUsage.report(filters.query, results.length)
-      }}
-    />
-  )
+  // The two quiet selects of the overview: which collection, which framework.
   const collectionSelect = (
     <select
       value={collection}
@@ -214,137 +207,6 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
         </option>
       ))}
     </select>
-  )
-  const familySelect = (
-    <select
-      value={filters.family}
-      disabled={parsed.kind === 'invalid'}
-      onChange={(event) =>
-        dispatch({ type: 'set-family', family: event.target.value })
-      }
-    >
-      <option value="">All families</option>
-      {families.map(([id, name]) => (
-        <option key={id} value={id}>
-          {name}
-        </option>
-      ))}
-    </select>
-  )
-  const levelSelect = (
-    <select
-      value={filters.level}
-      disabled={parsed.kind === 'invalid'}
-      onChange={(event) =>
-        dispatch({ type: 'set-level', level: event.target.value })
-      }
-    >
-      <option value="">All levels</option>
-      {levels.map((item) => (
-        <option key={item} value={item}>
-          {item}
-        </option>
-      ))}
-    </select>
-  )
-  const toolbar = (
-    <div id="explorer-toolbar" className="explorer-toolbar">
-      <label className="search-field">
-        <span className="field-caption">Search controls</span>
-        <span className="search-input-wrap">
-          <Search size={18} aria-hidden="true" />
-          {searchInputElement}
-        </span>
-      </label>
-      <label className="framework-field collection-field">
-        <span>Content collection</span>
-        {collectionSelect}
-      </label>
-      <label className="framework-field">
-        <span>Framework</span>
-        {frameworkSelect}
-      </label>
-    </div>
-  )
-  const levelPaths = <CmmcLevels mode={mode} />
-
-  // On the Board the browse panel follows the control page in the DOM as it
-  // does on screen, so focus order and reading order agree.
-  const sidebar = (
-    <aside
-      key="sidebar"
-      className={`control-sidebar ${selected && !mobileResultsOpen ? 'is-collapsed' : ''}`}
-      aria-label="Control results and filters"
-    >
-      {selected && (
-        <button
-          type="button"
-          className="mobile-results-toggle"
-          aria-expanded={mobileResultsOpen}
-          aria-controls="explorer-toolbar explorer-levels control-results-body"
-          onClick={() => {
-            if (!mobileResultsOpen) focusRecoveredSearch.current = true
-            setMobileResultsOpen(!mobileResultsOpen)
-          }}
-        >
-          {mobileResultsOpen
-            ? 'Return to reading'
-            : `Browse & filter controls (${results.length})`}
-          {mobileResultsOpen ? (
-            <ChevronUp size={18} aria-hidden="true" />
-          ) : (
-            <ChevronDown size={18} aria-hidden="true" />
-          )}
-        </button>
-      )}
-      {onBoard && toolbar}
-      {onBoard && levelPaths}
-      <div id="control-results-body" className="results-body">
-        <div className="filter-title">
-          <SlidersHorizontal size={15} aria-hidden="true" />
-          <span>Refine your view</span>
-        </div>
-        <label className="filter-field">
-          Control family
-          {familySelect}
-        </label>
-        {levels.length > 0 && (
-          <label className="filter-field">
-            Level
-            {levelSelect}
-          </label>
-        )}
-        <div
-          className="result-count"
-          role="status"
-          aria-label="Control search results"
-        >
-          {results.length}{' '}
-          {collection === 'references'
-            ? results.length === 1
-              ? 'reference'
-              : 'references'
-            : results.length === 1
-              ? 'example'
-              : 'examples'}{' '}
-          found
-        </div>
-        <ControlResults
-          key={results
-            .map((control) => lessonIdentityKey(lessonIdentity(control)))
-            .join('|')}
-          results={results}
-          selectedKey={selectedKey}
-          onSelect={selectControl}
-        />
-        <p className="sidebar-note">
-          <Info size={15} aria-hidden="true" />
-          {collection === 'references'
-            ? 'September 2024 CMMC v2.13 snapshot. Every control has three teaching perspectives.'
-            : 'Original demo lesson. Choose a level above or Controls & sources to explore all 149 controls.'}
-        </p>
-      </div>
-    </aside>
   )
   const reading = (
     <Fragment key="reading">
@@ -549,6 +411,8 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
             }}
             previous={neighbour(-1)}
             next={neighbour(1)}
+            pathNext={pathNext}
+            onFollowPath={followPath}
             onNeighbour={(control, direction) => {
               // Keep focus on the pressed button while it still has somewhere
               // to go; move to the title only when it is about to disappear.
@@ -595,204 +459,195 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
     </>
   )
 
-  // The Controls page: the find row, then the fourteen families beside the
-  // results, so nothing is left blank. The project's demo lesson, which keeps
-  // its older reader, opens in the same frame beside the results, so the find
-  // row never remounts while a visitor types.
-  if (!onBoard) {
-    const showFamilies =
-      !selected && collection === 'references' && filters.catalog === 'cmmc'
-    const noun = collection === 'references' ? 'references' : 'examples'
-    return (
-      <section
-        id="explorer"
-        className={`section-shell explorer-section is-discovery ${selected ? 'is-reading' : ''}`}
-        aria-label="Control Explorer"
-      >
-        {notices}
-        <div className="discover">
-          <div className="discover-head">
-            <h1 className="chalk">Controls</h1>
-            <p className="discover-lead">
-              The {referenceControls.length} CMMC controls, quoted and cited.
-              Pick a family, a level, or search.
-            </p>
-          </div>
-          <div id="explorer-toolbar" className="discover-find">
-            <label className="discover-search">
-              <span className="sr-only">Search controls</span>
-              <span className="discover-search-line">
-                {searchInputElement}
-                <Search size={22} aria-hidden="true" />
-              </span>
-              <svg
-                className="discover-underline chalk"
-                viewBox="0 0 520 10"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M2 6c90-3 180-2 270-1s180 1 246-2" />
-              </svg>
-            </label>
-            <label className="line-select discover-field discover-field-wide">
-              Control family
-              {familySelect}
-            </label>
-            {levels.length > 0 && (
-              <label className="line-select discover-field">
-                Level
-                {levelSelect}
-              </label>
-            )}
-            <label className="line-select discover-field discover-field-wide">
-              Content collection
-              {collectionSelect}
-            </label>
-            <label className="line-select discover-field">
-              Framework
-              {frameworkSelect}
-            </label>
-          </div>
-          <div className={`discover-body ${selected ? 'is-reading' : ''}`}>
-            {showFamilies && (
-              <nav className="discover-families" aria-label="Control families">
-                <h2 className="hand">Families</h2>
-                <div className="family-rows">
-                  <a
-                    className="family"
-                    href={familyUrl('', mode)}
-                    aria-current={filters.family ? undefined : 'true'}
-                    onClick={(event) => {
-                      if (!plainClick(event)) return
-                      event.preventDefault()
-                      dispatch({ type: 'set-family', family: '' })
-                    }}
-                  >
-                    <span className="family-code mono" aria-hidden="true">
-                      —
-                    </span>
-                    All families
-                    <span className="family-count mono">
-                      {referenceControls.length}
-                    </span>
-                  </a>
-                  {catalogFamilies.map((family) => (
-                    <a
-                      key={family.code}
-                      className="family"
-                      href={familyUrl(family.code, mode)}
-                      aria-current={
-                        filters.family === family.code ? 'true' : undefined
-                      }
-                      onClick={(event) => {
-                        if (!plainClick(event)) return
-                        event.preventDefault()
-                        dispatch({ type: 'set-family', family: family.code })
-                      }}
-                    >
-                      <span className="family-code mono">{family.code}</span>
-                      {family.name}
-                      <span className="family-count mono">{family.count}</span>
-                    </a>
-                  ))}
-                </div>
-              </nav>
-            )}
-            <div className="discover-results">
-              <div className="discover-results-head">
-                <div
-                  className="result-count"
-                  role="status"
-                  aria-label="Control search results"
-                >
-                  {results.length}{' '}
-                  {results.length === 1 ? noun.slice(0, -1) : noun} found
-                </div>
-                {levels.length > 0 && (
-                  <CmmcLevels
-                    mode={mode}
-                    active={filters.level}
-                    onPick={(level) => dispatch({ type: 'set-level', level })}
-                  />
-                )}
-              </div>
-              {unavailable || planned ? (
-                <div className="empty-state">
-                  <h2>
-                    {parsed.kind === 'invalid'
-                      ? 'This lesson link is invalid.'
-                      : resolution?.kind === 'not-found'
-                        ? 'This lesson isn’t available here.'
-                        : `${planned?.shortName} is on the roadmap.`}
-                  </h2>
-                  <p>
-                    {planned
-                      ? 'This framework has no published content here yet. Browse the available examples instead.'
-                      : 'This address doesn’t identify an available lesson. Browse the examples to choose where to begin.'}
-                  </p>
-                  <button
-                    className="button button-primary"
-                    type="button"
-                    onClick={recover}
-                  >
-                    {planned ? 'Browse available examples' : 'Browse examples'}
-                  </button>
-                </div>
-              ) : results.length ? (
-                <ControlResults
-                  key={results
-                    .map((control) =>
-                      lessonIdentityKey(lessonIdentity(control)),
-                    )
-                    .join('|')}
-                  results={results}
-                  selectedKey={selectedKey}
-                  onSelect={selectControl}
-                />
-              ) : (
-                <div className="empty-state">
-                  <h2>
-                    {collection === 'references'
-                      ? 'No matching references.'
-                      : 'No matching examples.'}
-                  </h2>
-                  <p>
-                    {collection === 'references'
-                      ? 'Try a control identifier, topic, family or level in the September 2024 source snapshot.'
-                      : 'Try “access”, “authorized”, or “AC.L2-3.1.1”. This collection contains one example.'}
-                  </p>
-                  <button
-                    className="button button-primary"
-                    type="button"
-                    onClick={clearFilters}
-                  >
-                    Clear filters
-                  </button>
-                </div>
-              )}
-            </div>
-            {selected && reading}
-          </div>
-        </div>
-      </section>
-    )
-  }
+  // The rail of every control: a column at desktop widths, a sheet below them.
+  const rail =
+    ready &&
+    (desktop ? (
+      <ControlRail
+        state={ready}
+        selected={selected}
+        dispatch={dispatch}
+        onSelect={selectControl}
+        onFollowPath={followPath}
+        searchRef={searchInput}
+        searchUsage={searchUsage}
+        resultCount={results.length}
+      />
+    ) : (
+      <RailSheet
+        state={ready}
+        selected={selected}
+        dispatch={dispatch}
+        onSelect={selectControl}
+        onFollowPath={followPath}
+        searchRef={searchInput}
+        searchUsage={searchUsage}
+        resultCount={results.length}
+      />
+    ))
 
-  // A control on the board: its page, then the browse line under it.
+  // With no control on the board: the overview, the results for the filters
+  // in force, with the fourteen families beside them where the rail is not on
+  // screen (below desktop widths it waits in its sheet). The project's demo
+  // lesson, which keeps its older reader, opens in the same frame beside the
+  // results.
+  const showFamilies =
+    !desktop &&
+    !selected &&
+    collection === 'references' &&
+    filters.catalog === 'cmmc'
+  const noun = collection === 'references' ? 'references' : 'examples'
+  const overview = (
+    <div className="discover">
+      <div className="discover-head">
+        <h1 className="chalk">Controls</h1>
+        <p className="discover-lead">
+          The {referenceControls.length} CMMC controls, quoted and cited. Pick a
+          family, a level, or search.
+        </p>
+      </div>
+      <div className="discover-find discover-find-quiet">
+        <label className="line-select discover-field discover-field-wide">
+          Content collection
+          {collectionSelect}
+        </label>
+        <label className="line-select discover-field">
+          Framework
+          {frameworkSelect}
+        </label>
+      </div>
+      <div className={`discover-body ${selected ? 'is-reading' : ''}`}>
+        {showFamilies && (
+          <nav className="discover-families" aria-label="Control families">
+            <h2 className="hand">Families</h2>
+            <div className="family-rows">
+              <a
+                className="family"
+                href={familyUrl('', mode)}
+                aria-current={filters.family ? undefined : 'true'}
+                onClick={(event) => {
+                  if (!plainClick(event)) return
+                  event.preventDefault()
+                  dispatch({ type: 'set-family', family: '' })
+                }}
+              >
+                <span className="family-code mono" aria-hidden="true">
+                  —
+                </span>
+                All families
+                <span className="family-count mono">
+                  {referenceControls.length}
+                </span>
+              </a>
+              {catalogFamilies.map((family) => (
+                <a
+                  key={family.code}
+                  className="family"
+                  href={familyUrl(family.code, mode)}
+                  aria-current={
+                    filters.family === family.code ? 'true' : undefined
+                  }
+                  onClick={(event) => {
+                    if (!plainClick(event)) return
+                    event.preventDefault()
+                    dispatch({ type: 'set-family', family: family.code })
+                  }}
+                >
+                  <span className="family-code mono">{family.code}</span>
+                  {family.name}
+                  <span className="family-count mono">{family.count}</span>
+                </a>
+              ))}
+            </div>
+          </nav>
+        )}
+        <div className="discover-results">
+          <div className="discover-results-head">
+            <div
+              className="result-count"
+              role="status"
+              aria-label="Control search results"
+            >
+              {results.length} {results.length === 1 ? noun.slice(0, -1) : noun}{' '}
+              found
+            </div>
+            {levels.length > 0 && (
+              <CmmcLevels
+                mode={mode}
+                active={filters.level}
+                onPick={(level) => dispatch({ type: 'set-level', level })}
+              />
+            )}
+          </div>
+          {unavailable || planned ? (
+            <div className="empty-state">
+              <h2>
+                {parsed.kind === 'invalid'
+                  ? 'This lesson link is invalid.'
+                  : resolution?.kind === 'not-found'
+                    ? 'This lesson isn’t available here.'
+                    : `${planned?.shortName} is on the roadmap.`}
+              </h2>
+              <p>
+                {planned
+                  ? 'This framework has no published content here yet. Browse the available examples instead.'
+                  : 'This address doesn’t identify an available lesson. Browse the examples to choose where to begin.'}
+              </p>
+              <button
+                className="button button-primary"
+                type="button"
+                onClick={recover}
+              >
+                {planned ? 'Browse available examples' : 'Browse examples'}
+              </button>
+            </div>
+          ) : results.length ? (
+            <ControlResults
+              key={results
+                .map((control) => lessonIdentityKey(lessonIdentity(control)))
+                .join('|')}
+              results={results}
+              selectedKey={selectedKey}
+              onSelect={selectControl}
+            />
+          ) : (
+            <div className="empty-state">
+              <h2>
+                {collection === 'references'
+                  ? 'No matching references.'
+                  : 'No matching examples.'}
+              </h2>
+              <p>
+                {collection === 'references'
+                  ? 'Try a control identifier, topic, family or level in the September 2024 source snapshot.'
+                  : 'Try “access”, “authorized”, or “AC.L2-3.1.1”. This collection contains one example.'}
+              </p>
+              <button
+                className="button button-primary"
+                type="button"
+                onClick={clearFilters}
+              >
+                Clear filters
+              </button>
+            </div>
+          )}
+        </div>
+        {selected && reading}
+      </div>
+    </div>
+  )
+
   return (
     <section
       id="explorer"
-      className="section-shell explorer-section is-board"
+      className={`section-shell explorer-section has-rail ${onBoard ? 'is-board' : 'is-discovery'}`}
       aria-label="Control Explorer"
     >
       {notices}
-      <div
-        className={`explorer-shell is-reading ${mobileResultsOpen ? 'is-browsing' : ''}`}
-      >
-        <div className="explorer-body">
-          {reading}
-          {sidebar}
+      <div className={`controls-layout ${rail ? '' : 'is-railless'}`}>
+        {rail}
+        <div className="controls-main" data-scroller="">
+          {onBoard ? reading : overview}
         </div>
       </div>
     </section>

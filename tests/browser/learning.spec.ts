@@ -12,8 +12,10 @@ test('filters, history, glossary and empty-result recovery keep a reader oriente
 }) => {
   await page.goto('/learn?view=discover&collection=references')
   await page
-    .getByRole('combobox', { name: 'Level', exact: true })
-    .selectOption({ label: 'Level 3' })
+    .getByRole('navigation', { name: 'All controls' })
+    .getByRole('group', { name: 'Level' })
+    .getByRole('link', { name: '3', exact: true })
+    .click()
   await expect(
     page.getByRole('status', { name: 'Control search results' }),
   ).toContainText('24 references')
@@ -37,11 +39,8 @@ test('filters, history, glossary and empty-result recovery keep a reader oriente
   await expect(
     page.getByRole('tabpanel', { name: preparing, exact: true }),
   ).toBeVisible()
-  await page
-    .getByRole('button', { name: /^Browse & filter controls \(\d+\)$/ })
-    .click()
-  const search = page.getByRole('searchbox', { name: 'Search controls' })
-  await expect(search).toBeFocused()
+  const search = page.getByRole('searchbox', { name: 'Find controls' })
+  await search.focus()
   await search.fill('no-such-fictional-learning-topic')
   await expect(
     page.getByRole('heading', { name: 'No matching references.' }),
@@ -150,7 +149,7 @@ test('malformed links recover explicitly without silently substituting a control
   await expect(page.getByRole('tabpanel')).toHaveCount(0)
   await page.getByRole('button', { name: 'Browse examples' }).click()
   await expect(
-    page.getByRole('searchbox', { name: 'Search controls' }),
+    page.getByRole('searchbox', { name: 'Find controls' }),
   ).toBeFocused()
   await expect(
     page.getByRole('heading', { name: 'This lesson link is invalid.' }),

@@ -50,6 +50,9 @@ export interface ControlPageProps {
   readonly headingRef?: (node: HTMLHeadingElement | null) => void
   readonly previous?: CatalogControl
   readonly next?: CatalogControl
+  /** On the Start here path: the next basic, or null at the end of it. */
+  readonly pathNext?: CatalogControl | null
+  readonly onFollowPath?: (control: CatalogControl) => void
   readonly onNeighbour: (
     control: CatalogControl,
     direction: 'previous' | 'next',
@@ -82,6 +85,8 @@ export function ControlPage(props: ControlPageProps) {
     previous,
     next,
     onNeighbour,
+    pathNext,
+    onFollowPath,
   } = props
   const prefix = useId()
   const lesson = lessonIdentity(control)
@@ -357,7 +362,21 @@ export function ControlPage(props: ControlPageProps) {
       <div className="control-foot">
         <p className="control-foot-note">{footers[shown]}</p>
         <div className="control-prevnext">
-          {previous && (
+          {pathNext !== undefined && pathNext && onFollowPath ? (
+            <button
+              type="button"
+              className="control-action control-action-next"
+              onClick={() => {
+                byNeighbour.current = true
+                onFollowPath(pathNext)
+              }}
+            >
+              Next on the path: {pathNext.id} →
+            </button>
+          ) : pathNext === null ? (
+            <span className="control-path-done">The basics, done.</span>
+          ) : null}
+          {pathNext === undefined && previous && (
             <button
               type="button"
               className="control-action"
@@ -369,7 +388,7 @@ export function ControlPage(props: ControlPageProps) {
               Previous: {previous.id}
             </button>
           )}
-          {next && (
+          {pathNext === undefined && next && (
             <button
               type="button"
               className="control-action control-action-next"

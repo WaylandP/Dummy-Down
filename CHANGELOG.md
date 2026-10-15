@@ -65,6 +65,19 @@ analytics allowlist do not change.
   Glossary · Practice · Timeline · About, with Controls lit for every `/learn`
   address and every `/learn` link unchanged. The tray's fourth stub is gone,
   Smudge is sized as drawn, and the content ends above him at every size.
+- [PR #60](https://github.com/WaylandP/cipher-and-chalk/pull/60): Controls
+  with Learn merged in. A rail of every control stands beside the control,
+  always visible at desktop widths and scrolling on its own: a find line that
+  filters it as you type, "Start here" through the fifteen Level 1 controls
+  in catalog order as a path in the address (`path=basics`, "n of 15",
+  fifteen chalk dashes), the level switch, and the fourteen families with
+  their counts for the level in force, collapsible, the open one listing its
+  controls with the current one under the yellow bar. On the path the foot
+  reads "Next on the path"; a control picked on its own leaves it. With no
+  control chosen the overview shows the results beside the rail. Phone: an
+  "All controls" line opens the rail as a full-screen sheet. The old "Browse
+  & filter controls" disclosure is gone; Home's first row opens the first
+  control on the path.
 
 ## The Board's features — October 15, 2026
 

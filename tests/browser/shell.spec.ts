@@ -139,17 +139,15 @@ test('the scrolling keys reach the content from a fresh load and from the header
     .focus()
   await page.keyboard.press('Space')
   await expect.poll(top).toBeGreaterThan(0)
-  // ...and on the footer's switch it is the switch's own key. (The smooth
-  // scroll settles first: two reads a quarter second apart agree.)
-  await page.waitForFunction(
-    () =>
-      new Promise<boolean>((resolve) => {
-        const main = document.getElementById('main')!
-        const was = main.scrollTop
-        setTimeout(() => resolve(main.scrollTop === was), 250)
-      }),
+  // ...and on the footer's switch it is the switch's own key. (The content is
+  // put at a known place first, instantly, so no smooth scroll is in flight.)
+  await page.evaluate(() =>
+    document
+      .getElementById('main')!
+      .scrollTo({ top: 300, behavior: 'instant' }),
   )
   const before = await top()
+  expect(before).toBe(300)
   const smudge = page.getByRole('switch', { name: 'Smudge' })
   await smudge.focus()
   await page.keyboard.press('Space')
@@ -166,8 +164,11 @@ test('a long control page scrolls inside the frame, its tabs and foot clear of t
   await page.goto(`${control}&tab=practice`)
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   await page.evaluate(() => document.fonts.ready)
+  // The content's own scroller when the page has one (the Controls column).
   const main = await page.evaluate(() => {
-    const node = document.getElementById('main')!
+    const node =
+      document.querySelector<HTMLElement>('#main [data-scroller]') ??
+      document.getElementById('main')!
     return { client: node.clientHeight, scroll: node.scrollHeight }
   })
   expect(main.scroll).toBeGreaterThan(main.client)
