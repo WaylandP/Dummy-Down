@@ -72,6 +72,12 @@ source record under `docs/sources/`.
   lists carries its definition and source on hover, pinned by a tap, Enter or
   Space with focus inside, closed by Escape with focus returned. Only the
   words listed for the lesson are marked, and the explanation stays verbatim.
+- [PR #47](https://github.com/WaylandP/cipher-and-chalk/pull/47): Send this
+  chalk. A control address may name a chalk instead of a mode (`chalk=white`,
+  `yellow` or `blue`) and opens Explain in that chalk; the parameter is read
+  once, rewritten to the usual address and never sent anywhere. \"Send this
+  chalk\" beside Print and Copy reference link copies such a link for the chalk
+  in hand, with the same feedback.
 
 ## Week 2 content and trust — October 14, 2026
 
