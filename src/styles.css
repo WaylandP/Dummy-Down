@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import './components/board/board.css';
 @import './components/home.css';
-@import './components/reader-outline.css';
+@import './components/control/control-page.css';
 @import './components/coverage.css';
 
 /* Three self-hosted faces. Sources: public/fonts/sources.json; licenses: public/font-licenses. */
@@ -221,16 +221,6 @@
 }
 
 @layer components {
-  /* The supplied reference governs both teaching and reading surfaces. */
-  .board-masthead {
-    background: transparent;
-    color: var(--color-chalk);
-    --color-foreground: var(--color-chalk);
-    --color-muted: var(--color-board-muted);
-    --color-accent: var(--color-board-accent);
-    --color-line: var(--color-board-line);
-    --focus-ring: 3px solid var(--color-board-accent);
-  }
   .learning-meaning,
   .learning-misunderstanding {
     max-width: 68ch;
@@ -240,10 +230,12 @@
     padding-left: 18px;
     border-left: 3px solid var(--color-line);
   }
-  .learning-meaning h5,
-  .learning-misunderstanding h5,
-  .lesson-diagram h5 {
+  .learning-meaning :is(h3, h5),
+  .learning-misunderstanding :is(h3, h5),
+  .lesson-diagram :is(h3, h5) {
     margin: 0 0 10px;
+    font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 17px;
     color: var(--color-foreground);
   }
@@ -303,7 +295,7 @@
     gap: var(--space-2) var(--space-6);
     justify-content: space-between;
   }
-  .lesson-diagram-heading h5 {
+  .lesson-diagram-heading :is(h3, h5) {
     margin-bottom: 0;
   }
   .diagram-step-number {
@@ -333,8 +325,7 @@
     font-weight: 500;
     margin-bottom: 6px;
   }
-  .practice-introduction,
-  .perspective-meaning {
+  .practice-introduction {
     max-width: 68ch;
     font-size: 17px;
     line-height: 1.8;
@@ -347,17 +338,6 @@
   }
   .mode-tabs button:not([aria-selected='true']) .mode-tab-indicator {
     visibility: hidden;
-  }
-  .teaching-state {
-    padding: var(--space-6);
-    background: var(--color-raised);
-    border: 1px dashed var(--color-field-border);
-    border-radius: var(--radius-md);
-  }
-  .source-label {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
   }
   .context-terms-heading {
     display: flex;
@@ -845,17 +825,6 @@
     font-weight: 500;
     margin-block: var(--space-6) var(--space-2);
   }
-  .perspective-heading {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-2) 20px;
-    margin-block: var(--space-6) var(--space-2);
-  }
-  .perspective-heading .mode-label {
-    margin: 0;
-  }
   .mode-tabs {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -899,47 +868,20 @@
     margin-bottom: var(--space-3);
   }
   .explanation-panel > p,
-  .perspective-example p,
-  .perspective-watch p,
-  .perspective-questions li,
   .term-definition {
     font-size: 17px;
     line-height: 1.75;
     max-width: 68ch;
   }
-  .explanation-panel .perspective-purpose {
-    color: var(--color-muted);
-    font-size: 14px;
-    margin-bottom: 14px;
-  }
-  .perspective-example,
-  .perspective-watch,
-  .perspective-questions,
   .example-box {
     margin-top: 22px;
     max-width: 68ch;
   }
-  .perspective-example,
   .example-box {
     padding: 20px;
     background: var(--color-board-lift);
     border: 1px solid var(--color-line);
     border-radius: var(--radius-md);
-  }
-  .perspective-watch {
-    padding-left: 20px;
-    border-left: 3px solid var(--color-yellow);
-  }
-  .control-perspective h5 {
-    font-size: 17px;
-    margin-block: 0 var(--space-2);
-  }
-  .perspective-questions ul {
-    list-style: disc;
-    padding-left: 22px;
-  }
-  .perspective-questions li + li {
-    margin-top: var(--space-2);
   }
   .example-box ul {
     list-style: none;
@@ -959,14 +901,6 @@
   .takeaway svg {
     color: var(--color-accent);
     margin-top: 6px;
-  }
-  .explanation-panel .perspective-context {
-    margin-top: var(--space-6);
-    padding-top: var(--space-4);
-    border-top: 1px solid var(--color-line);
-    color: var(--color-muted);
-    font-size: 14px;
-    line-height: 1.65;
   }
   .perspective-reflection {
     margin-top: 20px;
@@ -1089,24 +1023,13 @@
   .button-primary:active {
     background: var(--color-chalk-muted);
   }
-  .explorer-disclaimer {
-    display: flex;
-    align-items: start;
-    gap: var(--space-2);
-    margin-top: var(--space-4);
-    color: var(--color-muted);
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  .explorer-disclaimer svg {
-    margin-top: var(--space-1);
-  }
   .context-terms {
     margin-top: 20px;
   }
-  .context-terms > h4 {
-    color: var(--color-muted);
-    font-size: 14px;
+  .context-terms-heading :is(h2, h3, h4, h5) {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--text-body);
   }
   .term-triggers {
     display: flex;
@@ -1132,7 +1055,9 @@
     gap: var(--space-3);
     margin-bottom: 10px;
   }
-  .context-definition-heading h4 {
+  .context-definition-heading :is(h3, h4, h5, h6) {
+    font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 22px;
   }
   .term-context,
@@ -1164,21 +1089,6 @@
   }
   .mobile-results-toggle {
     display: none;
-  }
-  .approach-section {
-    display: grid;
-    grid-template-columns: 240px minmax(0, 1fr);
-    gap: 40px;
-    padding-block: var(--space-8);
-    border-block: 1px solid var(--color-line);
-  }
-  .approach-intro h2 {
-    font-size: 27px;
-  }
-  .approach-intro p {
-    color: var(--color-muted);
-    font-size: 14px;
-    margin-top: var(--space-2);
   }
   .perspective-list {
     display: flex;
@@ -1308,7 +1218,7 @@
     padding-block: 20px;
     border-top: 1px solid var(--color-line);
   }
-  .practice-recap h6 {
+  .practice-recap :is(h4, h6) {
     font: inherit;
     font-weight: 600;
     margin-bottom: 12px;
@@ -1320,7 +1230,9 @@
     color: var(--color-accent);
     font-size: 12px;
   }
-  .practice-heading h4 {
+  .practice-heading :is(h2, h4) {
+    font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 24px;
   }
   .practice-heading > span {
@@ -1352,7 +1264,9 @@
   .scenario-flow li::marker {
     color: var(--color-accent);
   }
-  .scenario-flow h5 {
+  .scenario-flow :is(h3, h5) {
+    font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 18px;
     margin-block: 0 var(--space-2);
   }
@@ -1514,7 +1428,9 @@
   .practice-feedback strong {
     color: var(--color-accent);
   }
-  .practice-complete h5 {
+  .practice-complete :is(h3, h5) {
+    font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 24px;
     margin-block: 0 14px;
   }
@@ -1531,38 +1447,6 @@
     margin-top: var(--space-3);
     color: var(--color-muted);
     font-size: 14px;
-  }
-  .reference-pending {
-    margin-top: 22px;
-    max-width: 68ch;
-    color: var(--color-muted);
-  }
-  .reference-pending h4 {
-    font-size: 22px;
-    margin-bottom: var(--space-3);
-  }
-  .reference-pending p {
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  .mission-section {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: var(--space-12);
-    padding-block: var(--space-8);
-    border-top: 1px solid var(--color-line);
-  }
-  .mission-section h2 {
-    font-size: 28px;
-  }
-  .mission-copy p {
-    max-width: 68ch;
-    color: var(--color-muted);
-    font-size: 15px;
-  }
-  .mission-copy .roadmap-note {
-    font-size: 14px;
-    margin-top: var(--space-3);
   }
   .text-link {
     display: inline-flex;
@@ -1588,10 +1472,6 @@
 }
 
 @media (max-width: 1100px) {
-  .editorial-intro {
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-    gap: var(--space-8);
-  }
   .explorer-toolbar {
     grid-template-columns: minmax(0, 1fr) 190px 160px;
     gap: 14px;
@@ -1617,10 +1497,6 @@
   .level-paths a {
     grid-template-columns: 1fr;
   }
-  .approach-section {
-    grid-template-columns: 200px minmax(0, 1fr);
-    gap: var(--space-6);
-  }
   .perspective-list {
     gap: 20px;
   }
@@ -1629,33 +1505,6 @@
 @media (max-width: 760px) {
   :root {
     --space-section: 40px;
-  }
-  .editorial-intro {
-    display: block;
-    padding-block: var(--space-8) 36px;
-  }
-  .intro-copy h1 {
-    font-size: clamp(38px, 9.6vw, 62px);
-    max-width: 20ch;
-    line-height: 1.14;
-    letter-spacing: -0.8px;
-  }
-  .hero-actions {
-    margin-top: 20px;
-  }
-  .intro-meta {
-    font-size: 14px;
-    margin-top: var(--space-4);
-    max-width: 60ch;
-  }
-  .intro-meta p {
-    display: none;
-  }
-  .intro-meta a {
-    margin-top: 0;
-  }
-  .intro-meta p + p {
-    margin-top: 6px;
   }
   .explorer-section {
     padding-top: var(--space-8);
@@ -1789,13 +1638,6 @@
   .mode-tab-indicator {
     display: none;
   }
-  .perspective-heading {
-    display: block;
-  }
-  .perspective-heading .draft-label {
-    display: block;
-    margin-top: var(--space-1);
-  }
   .explanation-panel h4 {
     font-size: 23px;
   }
@@ -1811,10 +1653,6 @@
   .scenario-flow {
     grid-template-columns: 1fr;
     gap: 18px;
-  }
-  .approach-section {
-    display: block;
-    padding-block: var(--space-6);
   }
   .perspective-list {
     display: block;
@@ -1843,19 +1681,9 @@
   .glossary .section-heading > p {
     margin-top: var(--space-3);
   }
-  .mission-section {
-    display: block;
-    padding-block: var(--space-6);
-  }
-  .mission-copy {
-    margin-top: var(--space-4);
-  }
 }
 
 @media (max-width: 380px) {
-  .intro-copy h1 {
-    font-size: 36px;
-  }
   .control-detail {
     padding-inline: var(--space-4);
   }
@@ -1966,7 +1794,7 @@
   .explorer-section .section-heading {
     margin-bottom: 28px;
   }
-  .explorer-section h2 {
+  .explorer-section .section-heading h2 {
     font-size: 30px;
   }
   .explorer-shell {
@@ -2019,9 +1847,6 @@
     padding: 22px 24px;
     border-left-width: 2px;
   }
-  .perspective-heading {
-    margin-top: 36px;
-  }
   .mode-tabs {
     background: transparent;
     border: 0;
@@ -2047,7 +1872,6 @@
     font-family: var(--font-chalk);
     font-size: 19px;
   }
-  .perspective-example,
   .example-box {
     margin-top: 32px;
     padding: 24px;
@@ -2080,7 +1904,7 @@
   .explorer-section {
     padding-top: 32px;
   }
-  .explorer-section h2 {
+  .explorer-section .section-heading h2 {
     font-size: 26px;
   }
   .explorer-shell.is-reading:not(.is-browsing) .control-sidebar {
@@ -2098,7 +1922,6 @@
   .reference-requirement {
     padding: 18px 16px;
   }
-  .perspective-example,
   .example-box,
   .learning-practice {
     padding: 18px;

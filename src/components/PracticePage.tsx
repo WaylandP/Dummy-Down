@@ -168,6 +168,7 @@ export default function PracticePage() {
               activity.lesson,
               'beginner',
               new URL('/learn', window.location.origin),
+              'practice',
             )
             const checkedCount = Object.keys(saved?.checkedAnswers ?? {}).length
             const reviewCount = saved
@@ -193,6 +194,7 @@ export default function PracticePage() {
                         activity.lesson,
                         'beginner',
                         new URL('/learn', window.location.origin),
+                        'practice',
                       )}
                     >
                       {activity.title}

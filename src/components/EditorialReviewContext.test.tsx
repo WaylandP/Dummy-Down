@@ -84,7 +84,8 @@ describe('Visible editorial provenance', () => {
     const explorer = within(
       await screen.findByRole('region', { name: 'Control Explorer' }),
     )
-    await explorer.findByRole('tabpanel', { name: 'Beginner' })
+    await explorer.findByRole('heading', { level: 1 })
+    await user.click(explorer.getByRole('link', { name: 'Related' }))
     const opener = explorer.getByRole('button', {
       name: 'Federal Contract Information (FCI)',
     })
@@ -107,7 +108,7 @@ describe('Visible editorial provenance', () => {
     expect(
       explorer.queryByRole('button', { name: 'Close definition' }),
     ).not.toBeInTheDocument()
-    expect(explorer.getByText('Practice activity')).toBeVisible()
+    expect(explorer.getByText('Practice activity')).toBeInTheDocument()
     await user.click(
       explorer.getByText('Review record & assessment objectives'),
     )

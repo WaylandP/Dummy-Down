@@ -22,7 +22,10 @@ describe('Known control render measurement', () => {
         <App />
       </StrictMode>,
     )
-    await screen.findByRole('tabpanel', { name: 'IT & Cyber' })
+    await screen.findByRole('heading', {
+      level: 1,
+      name: 'Authorized Access Control [FCI Data]',
+    })
     const calls = vi
       .mocked(trackUsage)
       .mock.calls.filter(([event]) => event.name === 'control_view')

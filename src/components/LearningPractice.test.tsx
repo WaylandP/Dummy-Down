@@ -113,7 +113,7 @@ describe('LearningPractice', () => {
     expect(flow).toBeVisible()
     expect(within(flow as HTMLElement).getAllByRole('listitem')).toHaveLength(4)
     expect(
-      [...flow.querySelectorAll('h5')].map((heading) => heading.textContent),
+      [...flow.querySelectorAll('h3')].map((heading) => heading.textContent),
     ).toEqual(activity.scenario.map((step) => step.title))
   })
 

@@ -80,7 +80,7 @@ npm run test:browser   # Playwright + axe-core accessibility checks
 
 ```
 src/
-  components/   pages and UI (Home, ControlExplorer, ReferenceDetail, PracticePage, ...)
+  components/   pages and UI (Home, ControlExplorer, control/, PracticePage, ...)
   data/         CMMC catalog, perspectives, objectives, glossary, practice activities
   state/        URL-driven explorer state and page routing
   progress/     optional, local-only learning progress

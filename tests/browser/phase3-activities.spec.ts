@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 import { expandedLearningActivities } from '../../src/data/expanded-learning'
+import { chalkFor } from '../../src/components/board/chalks'
 
 for (const activity of expandedLearningActivities) {
   test(`source-bound practice: ${activity.id}`, async ({ page }) => {
@@ -12,9 +13,10 @@ for (const activity of expandedLearningActivities) {
       edition: activity.lesson.editionId,
       control: activity.lesson.controlKey,
       mode: 'beginner',
+      tab: 'practice',
     })
     await page.goto(`/learn?${params}`)
-    await expect(page.getByRole('tabpanel', { name: 'Beginner' })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
     await expect(
       page.getByText(activity.learningObjective, { exact: false }).first(),
     ).toBeVisible()
@@ -32,7 +34,17 @@ for (const activity of expandedLearningActivities) {
       )!
       await page.getByRole('radio', { name: choice.label, exact: true }).check()
       if (index === 0) {
-        await page.getByRole('tab', { name: 'Compliance', exact: true }).click()
+        await page.getByRole('link', { name: 'Explain', exact: true }).click()
+        await page
+          .getByRole('tab', {
+            name: chalkFor('compliance').prompt,
+            exact: true,
+          })
+          .click()
+        await page
+          .getByRole('navigation', { name: 'Views of this control' })
+          .getByRole('link', { name: 'Practice', exact: true })
+          .click()
         await expect(
           page.getByRole('radio', { name: choice.label, exact: true }),
         ).toBeChecked()

@@ -2,13 +2,21 @@ import { useId } from 'react'
 import type { LearningDiagram } from '../types/learning'
 
 /** Semantic text is the diagram: it remains readable without images or motion. */
-export function LessonDiagram({ diagram }: { diagram: LearningDiagram }) {
+export function LessonDiagram({
+  diagram,
+  level = 3,
+}: {
+  diagram: LearningDiagram
+  /** The heading level under the practice title. */
+  level?: 3 | 5
+}) {
   const prefix = useId()
+  const Heading = `h${level}` as const
 
   return (
     <figure className="lesson-diagram" aria-labelledby={`${prefix}-title`}>
       <div className="lesson-diagram-heading">
-        <h5 id={`${prefix}-title`}>{diagram.title}</h5>
+        <Heading id={`${prefix}-title`}>{diagram.title}</Heading>
         <p className="small-label">Diagram</p>
       </div>
       <ol className="lesson-diagram-flow" role="list">

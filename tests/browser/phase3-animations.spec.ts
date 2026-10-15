@@ -8,7 +8,7 @@ const visualExplanations = visualLessonIdentities.map((lesson, index) => ({
 }))
 
 function address(key: string) {
-  return `/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=${key}&mode=beginner`
+  return `/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=${key}&mode=beginner&tab=practice`
 }
 
 for (const explanation of visualExplanations) {
@@ -152,7 +152,7 @@ test('player loads only on request and recovers a failed chunk without hiding th
   const requests: string[] = []
   page.on('request', (request) => requests.push(request.url()))
   await page.goto(address('ac-l1-b-1-i'))
-  await expect(page.getByRole('tabpanel')).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   expect(
     requests.some((url) => /assets\/VisualExplanation-.*\.js/.test(url)),
   ).toBe(false)
@@ -161,7 +161,7 @@ test('player loads only on request and recovers a failed chunk without hiding th
   await expect(
     page.getByRole('status').filter({ hasText: 'could not load' }),
   ).toContainText('source, perspectives and practice are still available')
-  await expect(page.getByRole('tabpanel')).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   await page.unroute('**/assets/VisualExplanation-*.js')
   await page.getByRole('button', { name: 'Reload this lesson' }).click()
   await page.getByText('Watch the idea · 40 seconds', { exact: true }).click()

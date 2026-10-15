@@ -1,5 +1,10 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test } from '@playwright/test'
+import { chalkFor } from '../../src/components/board/chalks'
+
+const newTo = chalkFor('beginner').prompt
+const runs = chalkFor('it-cyber').prompt
+const preparing = chalkFor('compliance').prompt
 
 const reader =
   '/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l1-b-1-i&mode=beginner'
@@ -12,12 +17,16 @@ const routes = [
   ['Disclaimer', '/disclaimer'],
   ['Assessment objectives', '/coverage?control=SC.L3-3.13.4e'],
   ['AC.L1-b.1.i', reader],
+  ['AC.L1-b.1.i Explain', `${reader}&tab=explain`, /AC\.L1-b\.1\.i/],
+  ['AC.L1-b.1.i Evidence', `${reader}&tab=evidence`, /AC\.L1-b\.1\.i/],
+  ['AC.L1-b.1.i Practice', `${reader}&tab=practice`, /AC\.L1-b\.1\.i/],
+  ['AC.L1-b.1.i Related', `${reader}&tab=related`, /AC\.L1-b\.1\.i/],
 ] as const
 
 // Real layout and semantics are not exercised by the existing jsdom suite.
 // Automated scans do not prove screen-reader usability or WCAG conformance.
 for (const width of [1440, 1024, 768, 640, 390, 320]) {
-  for (const [name, path] of routes) {
+  for (const [name, path, title] of routes) {
     test(`${name}: accessible structure and reflow at ${width}px`, async ({
       page,
     }) => {
@@ -33,10 +42,26 @@ for (const width of [1440, 1024, 768, 640, 390, 320]) {
         await expect(
           page.getByRole('heading', { name: 'Work through a situation.' }),
         ).toBeVisible()
-      if (path === reader)
-        await expect(page.getByRole('tabpanel')).toBeVisible()
+      if (path.startsWith(reader))
+        await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+          'Authorized Access Control [FCI Data]',
+        )
+      if (path.endsWith('tab=explain'))
+        await expect(page.getByRole('tab', { name: newTo })).toBeVisible()
+      if (path.endsWith('tab=evidence'))
+        await expect(page.getByRole('heading', { name: 'Ask' })).toBeVisible()
+      if (path.endsWith('tab=practice'))
+        await expect(
+          page.getByText('Watch the idea · 40 seconds', { exact: true }),
+        ).toBeVisible()
+      if (path.endsWith('tab=related'))
+        await expect(
+          page.getByRole('heading', {
+            name: 'The same practice at another level',
+          }),
+        ).toBeVisible()
       await page.evaluate(() => document.fonts.ready)
-      await expect(page).toHaveTitle(new RegExp(name))
+      await expect(page).toHaveTitle(title ?? new RegExp(name))
       await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1)
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth),
@@ -74,20 +99,20 @@ test.describe('system accessibility preferences', () => {
   test('forced colors and reduced motion retain visible keyboard selection and feedback', async ({
     page,
   }) => {
-    await page.goto(reader)
-    const beginner = page.getByRole('tab', { name: 'Beginner', exact: true })
+    // Opening the view by address keeps the next focus keyboard-visible; a
+    // pointer click first would make Chromium treat the scripted focus as a click.
+    await page.goto(`${reader}&tab=explain`)
+    const beginner = page.getByRole('tab', { name: newTo, exact: true })
     await beginner.focus()
     expect(
       await beginner.evaluate((node) => getComputedStyle(node).outlineStyle),
     ).toBe('solid')
     await page.keyboard.press('ArrowRight')
-    await expect(page.getByRole('tab', { name: 'IT & Cyber' })).toBeFocused()
-    await expect(
-      page.getByRole('tabpanel', { name: 'IT & Cyber' }),
-    ).toBeVisible()
+    await expect(page.getByRole('tab', { name: runs })).toBeFocused()
+    await expect(page.getByRole('tabpanel', { name: runs })).toBeVisible()
     await page.keyboard.press('End')
     await expect(
-      page.getByRole('tab', { name: 'Compliance', exact: true }),
+      page.getByRole('tab', { name: preparing, exact: true }),
     ).toHaveAttribute('aria-selected', 'true')
     await page.keyboard.press('Home')
     await expect(beginner).toBeFocused()
@@ -96,6 +121,10 @@ test.describe('system accessibility preferences', () => {
         () => getComputedStyle(document.documentElement).scrollBehavior,
       ),
     ).toBe('auto')
+    await page
+      .getByRole('navigation', { name: 'Views of this control' })
+      .getByRole('link', { name: 'Practice', exact: true })
+      .click()
     await page.getByText('Check your understanding', { exact: true }).click()
     await page.getByRole('radio').first().check()
     await page.getByRole('button', { name: 'Check answer' }).click()
@@ -131,6 +160,10 @@ test('expanded quiz feedback meets normal-color accessibility rules', async ({
   page,
 }) => {
   await page.goto(reader)
+  await page
+    .getByRole('navigation', { name: 'Views of this control' })
+    .getByRole('link', { name: 'Practice', exact: true })
+    .click()
   await page.getByText('Check your understanding', { exact: true }).click()
   await page.getByRole('radio').first().check()
   await page.getByRole('button', { name: 'Check answer' }).click()

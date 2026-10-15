@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
+import { chalkFor } from '../../src/components/board/chalks'
 
 test('coverage filters, ODP labels, missing explanations and native history work', async ({
   page,
@@ -69,7 +70,7 @@ test('source details lead to the exact perspective and coverage return link', as
     .getByRole('link', { name: 'Read IT & Cyber in the lesson' })
     .click()
   await expect(
-    page.getByRole('tab', { name: 'IT & Cyber', exact: true }),
+    page.getByRole('tab', { name: chalkFor('it-cyber').prompt, exact: true }),
   ).toHaveAttribute('aria-selected', 'true')
   await expect(
     page.getByRole('heading', {
@@ -77,6 +78,7 @@ test('source details lead to the exact perspective and coverage return link', as
       exact: true,
     }),
   ).toBeVisible()
+  await page.getByRole('link', { name: 'Related', exact: true }).click()
   await page.getByRole('link', { name: /See assessment statements/ }).click()
   await expect(
     page.getByRole('heading', { name: '6 statements · 1 control' }),

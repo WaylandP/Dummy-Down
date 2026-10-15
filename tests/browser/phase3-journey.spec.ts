@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
+import { chalks } from '../../src/components/board/chalks'
 
 async function capture(page: Page, name: string, width: number) {
   if (!process.env.CAPTURE_PHASE3) return
@@ -47,6 +48,7 @@ for (const width of [390, 1440]) {
       await expect(source).toContainText('authorized users')
       await expect(source).toContainText('processes acting on behalf')
       sourceText = (await source.textContent())!
+      await page.getByRole('link', { name: 'Related', exact: true }).click()
       await page
         .getByText('Sources & publication context', { exact: true })
         .click()
@@ -63,11 +65,15 @@ for (const width of [390, 1440]) {
         .click()
     })
 
-    await test.step('4. Compare the three perspectives without changing the source', async () => {
+    await test.step('4. Compare the three chalks without changing the source', async () => {
+      await page.getByRole('link', { name: 'Explain', exact: true }).click()
       const perspectives = new Set<string>()
-      for (const mode of ['Beginner', 'IT & Cyber', 'Compliance']) {
-        await page.getByRole('tab', { name: mode, exact: true }).click()
-        const panel = page.getByRole('tabpanel', { name: mode, exact: true })
+      for (const chalk of chalks) {
+        await page.getByRole('tab', { name: chalk.prompt, exact: true }).click()
+        const panel = page.getByRole('tabpanel', {
+          name: chalk.prompt,
+          exact: true,
+        })
         await expect(panel).toBeVisible()
         perspectives.add((await panel.textContent())!)
         expect(await page.locator('.reference-requirement').textContent()).toBe(
@@ -75,10 +81,16 @@ for (const width of [390, 1440]) {
         )
       }
       expect(perspectives.size).toBe(3)
-      await page.getByRole('tab', { name: 'Beginner', exact: true }).click()
+      await page
+        .getByRole('tab', { name: chalks[0].prompt, exact: true })
+        .click()
     })
 
     await test.step('5. Work through the visual stages and full transcript', async () => {
+      await page
+        .getByRole('navigation', { name: 'Views of this control' })
+        .getByRole('link', { name: 'Practice', exact: true })
+        .click()
       await page
         .getByText('Watch the idea · 40 seconds', { exact: true })
         .click()
@@ -108,6 +120,7 @@ for (const width of [390, 1440]) {
     })
 
     await test.step('6. Look up a term and return to the same lesson', async () => {
+      await page.getByRole('link', { name: 'Related', exact: true }).click()
       const term = page.getByRole('button', {
         name: 'Authorization',
         exact: true,
@@ -120,6 +133,10 @@ for (const width of [390, 1440]) {
       await expect(term).toBeFocused()
       await expect(term).toHaveAttribute('aria-expanded', 'false')
       expect(page.url()).toBe(address)
+      await page
+        .getByRole('navigation', { name: 'Views of this control' })
+        .getByRole('link', { name: 'Practice', exact: true })
+        .click()
     })
 
     await test.step('7. Try a decision and read why the misconception fails', async () => {
@@ -237,9 +254,7 @@ for (const width of [390, 1440]) {
       ).toHaveText('1 activity available')
       await page.getByRole('link', { name: /^Start questions\s*:/ }).click()
       await expect(page).toHaveURL(/control=ia-l2-3-5-3(?:&|#|$)/)
-      await expect(
-        page.getByRole('tabpanel', { name: 'Beginner' }),
-      ).toBeVisible()
+      await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
       await expect(
         page.getByText('Watch the idea · 40 seconds', { exact: true }),
       ).toBeVisible()

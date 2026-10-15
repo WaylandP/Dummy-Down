@@ -12,15 +12,26 @@ import { ActivityProgressTools } from '../progress/ActivityProgressTools'
 
 interface LearningPracticeProps {
   lesson: LessonIdentity
+  /** The heading level under the surface this sits on (2 on the Board, 4 in the demo reader). */
+  level?: 2 | 4
 }
+
+type PracticeLevel = 2 | 4
+const headings = {
+  2: { title: 'h2', section: 'h3', item: 'h4' },
+  4: { title: 'h4', section: 'h5', item: 'h6' },
+} as const
 
 function AnswerReview({
   questions,
   answers,
+  level,
 }: {
   questions: LearningActivity['questions']
   answers: Readonly<Record<string, string>>
+  level: PracticeLevel
 }) {
+  const Item = headings[level].item
   return (
     <ol>
       {questions.map((item) => {
@@ -32,7 +43,7 @@ function AnswerReview({
         )!
         return (
           <li key={item.id}>
-            <h6>{item.prompt}</h6>
+            <Item>{item.prompt}</Item>
             <p className="small-label">
               {answer?.id === best.id ? 'Correct choice' : 'Worth another look'}
             </p>
@@ -53,11 +64,14 @@ function AnswerReview({
 function KnowledgeCheck({
   activity,
   lesson,
+  level,
 }: {
   activity: LearningActivity
   lesson: LessonIdentity
+  level: PracticeLevel
 }) {
   const prefix = useId()
+  const Section = headings[level].section
   const progress = useActivityProgress(activity)
   const { entry, store, resetEpoch, questionIndex, checked } = progress
   const complete = entry.completed
@@ -142,16 +156,20 @@ function KnowledgeCheck({
       {complete ? (
         <div className="practice-complete">
           <CheckCircle2 className="practice-complete-icon" aria-hidden="true" />
-          <h5 ref={completion} tabIndex={-1}>
+          <Section ref={completion} tabIndex={-1}>
             Practice complete. Keep asking why.
-          </h5>
+          </Section>
           <p>
             You’ve explored this activity’s situations. Revisit the activity as
             often as you need.
           </p>
           <details className="practice-disclosure practice-recap">
             <summary>Review the reasoning</summary>
-            <AnswerReview questions={activity.questions} answers={answers} />
+            <AnswerReview
+              questions={activity.questions}
+              answers={answers}
+              level={level}
+            />
           </details>
           <button className="practice-action" type="button" onClick={reset}>
             Practice again
@@ -170,6 +188,7 @@ function KnowledgeCheck({
               <AnswerReview
                 questions={activity.questions.slice(0, questionIndex)}
                 answers={answers}
+                level={level}
               />
             </details>
           )}
@@ -322,7 +341,9 @@ function KnowledgeCheck({
 }
 
 /** Exact-identity practice; optional version-bound saving is owned by the local provider. */
-export function LearningPractice({ lesson }: LearningPracticeProps) {
+export function LearningPractice({ lesson, level = 2 }: LearningPracticeProps) {
+  const Title = headings[level].title
+  const Section = headings[level].section
   const prefix = useId()
   const questions = useRef<HTMLDetailsElement | null>(null)
   const activity = findLearningActivity(lesson)
@@ -336,7 +357,7 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
       <div className="practice-heading">
         <div className="practice-heading-copy">
           <p className="instruction-eyebrow">Put it into practice</p>
-          <h4 id={`${prefix}-heading`}>{activity.title}</h4>
+          <Title id={`${prefix}-heading`}>{activity.title}</Title>
         </div>
         <span className="draft-label">Practice activity</span>
       </div>
@@ -361,7 +382,7 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
             questions.current.open = true
             questions.current
               .querySelector<HTMLElement>(
-                '.practice-complete h5, .practice-feedback[data-outcome], .practice-prompt',
+                '.practice-complete h3, .practice-complete h5, .practice-feedback[data-outcome], .practice-prompt',
               )
               ?.focus()
           }}
@@ -372,24 +393,27 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
       <ActivityProgressTools activity={activity} />
       {activity.plainEnglish && (
         <div className="learning-meaning teaching-note">
-          <h5>The idea in plain English</h5>
+          <Section>The idea in plain English</Section>
           <p>{activity.plainEnglish}</p>
         </div>
       )}
       {activity.commonMisunderstanding && (
         <div className="learning-misunderstanding teaching-note">
-          <h5>A common misunderstanding</h5>
+          <Section>A common misunderstanding</Section>
           <p className="misconception-claim">
             <strong>{activity.commonMisunderstanding.claim}</strong>
           </p>
           <p>{activity.commonMisunderstanding.correction}</p>
         </div>
       )}
-      {activity.diagram && <LessonDiagram diagram={activity.diagram} />}
+      {activity.diagram && (
+        <LessonDiagram diagram={activity.diagram} level={level === 2 ? 3 : 5} />
+      )}
       {activity.glossaryTermIds && (
         <ContextTerms
           termIds={activity.glossaryTermIds}
           terms={glossaryTerms}
+          level={level === 2 ? 3 : 5}
         />
       )}
       <details
@@ -403,7 +427,7 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
         <ol className="scenario-flow">
           {activity.scenario.map((step) => (
             <li key={step.id}>
-              <h5>{step.title}</h5>
+              <Section>{step.title}</Section>
               <p>{step.description}</p>
             </li>
           ))}
@@ -418,7 +442,12 @@ export function LearningPractice({ lesson }: LearningPracticeProps) {
         }}
       >
         <summary>Check your understanding</summary>
-        <KnowledgeCheck key={activity.id} activity={activity} lesson={lesson} />
+        <KnowledgeCheck
+          key={activity.id}
+          activity={activity}
+          lesson={lesson}
+          level={level}
+        />
       </details>
       <p className="practice-context">{activity.disclaimer}</p>
       <p className="practice-source">

@@ -9,7 +9,9 @@
     align-items: baseline;
     gap: 12px 24px;
   }
-  .visual-explanation-heading h4 {
+  .visual-explanation-heading h2 {
+    font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 25px;
     line-height: 1.35;
     max-width: 34ch;
@@ -178,7 +180,9 @@
   .visual-caption {
     padding-top: 6px;
   }
-  .visual-caption h5 {
+  .visual-caption h3 {
+    font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 23px;
     line-height: 1.4;
     margin-block: 12px 18px;
@@ -211,7 +215,9 @@
   .visual-transcript li + li {
     border-top: 1px solid var(--color-line);
   }
-  .visual-transcript h5 {
+  .visual-transcript h3 {
+    font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 18px;
     margin-bottom: 12px;
   }
@@ -241,7 +247,7 @@
     .visual-teaching-board {
       padding: 8px;
     }
-    .visual-explanation-heading h4 {
+    .visual-explanation-heading h2 {
       font-size: 23px;
     }
   }

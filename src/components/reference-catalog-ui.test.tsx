@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from '../App'
 import { referenceControls } from '../data/content'
 import { lessonIdentity, lessonIdentityKey } from '../state/explorer-state'
+import { chalkFor } from './board/chalks'
 import { ControlResults } from './ControlResults'
 
 beforeEach(() => window.history.replaceState(null, '', '/learn'))
@@ -76,7 +77,7 @@ describe('Versioned CMMC reference catalog', () => {
         '',
         address('AC.L2-3.1.1').replace('mode=compliance', `mode=${mode}`),
       )
-      const { explorer } = await setup()
+      const { user, explorer } = await setup()
       expect(
         explorer.getByRole('combobox', { name: 'Content collection' }),
       ).toHaveValue('references')
@@ -84,14 +85,19 @@ describe('Versioned CMMC reference catalog', () => {
         explorer.getByText(reference('AC.L2-3.1.1').requirement.text),
       ).toBeVisible()
       expect(
-        await explorer.findByRole('tabpanel', {
-          name: mode === 'compliance' ? 'Compliance' : 'Beginner',
-        }),
-      ).toBeVisible()
-      expect(explorer.getByText('Choose your perspective')).toBeVisible()
-      expect(
         explorer.getByRole('button', { name: 'Copy reference link' }),
       ).toBeVisible()
+      expect(explorer.queryByRole('tab')).not.toBeInTheDocument()
+      await user.click(explorer.getByRole('link', { name: 'Explain' }))
+      expect(
+        await explorer.findByRole('tabpanel', {
+          name:
+            mode === 'compliance'
+              ? chalkFor('compliance').prompt
+              : chalkFor('beginner').prompt,
+        }),
+      ).toBeVisible()
+      expect(explorer.getByText('Pick a chalk')).toBeVisible()
       expect(explorer.getAllByRole('tab')).toHaveLength(3)
       expect(explorer.queryByText('Practice activity')).not.toBeInTheDocument()
     },
@@ -104,6 +110,7 @@ describe('Versioned CMMC reference catalog', () => {
     await user.click(explorer.getByText('Compare model wording'))
     expect(explorer.getByText(control.modelRequirement.text)).toBeVisible()
     expect(explorer.getByText(control.requirement.text)).toBeVisible()
+    await user.click(explorer.getByRole('link', { name: 'Related' }))
     await user.click(explorer.getByText('Sources & publication context'))
     for (const link of explorer.getAllByRole('link', {
       name: /Official publication URL|Pinned third-party PDF mirror/,
@@ -170,9 +177,14 @@ describe('Versioned CMMC reference catalog', () => {
     expect(url.searchParams.has('q')).toBe(false)
     expect(url.searchParams.has('collection')).toBe(false)
     expect(explorer.getByText('Reference link copied.')).toBeVisible()
-    await user.click(explorer.getByRole('tab', { name: 'Beginner' }))
+    await user.click(explorer.getByRole('link', { name: 'Explain' }))
+    await user.click(
+      await explorer.findByRole('tab', { name: chalkFor('beginner').prompt }),
+    )
     expect(
-      await explorer.findByRole('tabpanel', { name: 'Beginner' }),
+      await explorer.findByRole('tabpanel', {
+        name: chalkFor('beginner').prompt,
+      }),
     ).toBeVisible()
     await user.selectOptions(
       explorer.getByRole('combobox', { name: 'Content collection' }),

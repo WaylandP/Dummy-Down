@@ -44,7 +44,10 @@ describe('Separate blackboard pages', () => {
       }),
     )
     expect(
-      await screen.findByRole('tabpanel', { name: 'Beginner' }),
+      await screen.findByRole('heading', {
+        level: 1,
+        name: 'Authorized Access Control [FCI Data]',
+      }),
     ).toBeVisible()
     expect(new URLSearchParams(window.location.search).get('control')).toBe(
       'ac-l1-b-1-i',

@@ -10,7 +10,7 @@ describe('Learning page and reading navigation', () => {
     const user = userEvent.setup()
     render(<App />)
     await screen.findByRole('region', { name: 'Control Explorer' })
-    await screen.findByRole('tabpanel', { name: 'Beginner' })
+    await screen.findByRole('heading', { level: 1 })
     await user.click(
       screen.getByRole('button', { name: 'Browse & filter controls (149)' }),
     )
@@ -31,7 +31,7 @@ describe('Learning page and reading navigation', () => {
     render(<App />)
     await screen.findByRole('region', { name: 'Control Explorer' })
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      'Learning workspace',
+      'Authorized Access Control [FCI Data]',
     )
     expect(
       screen.getByRole('combobox', { name: 'Content collection' }),
@@ -45,7 +45,7 @@ describe('Learning page and reading navigation', () => {
       }),
     ).toBeVisible()
     expect(
-      await screen.findByRole('tabpanel', { name: 'Beginner' }),
+      screen.getByText(/Limit information system access to authorized users/),
     ).toBeVisible()
   })
 
@@ -56,7 +56,7 @@ describe('Learning page and reading navigation', () => {
     const explorer = within(
       await screen.findByRole('region', { name: 'Control Explorer' }),
     )
-    await explorer.findByRole('tabpanel', { name: 'Beginner' })
+    await explorer.findByRole('heading', { level: 1 })
     const toggle = explorer.getByRole('button', {
       name: 'Browse & filter controls (149)',
     })

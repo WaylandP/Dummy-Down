@@ -16,6 +16,17 @@ export interface ExplorerCatalog {
 
 export type ExplorerCollection = 'lessons' | 'references'
 
+/** The five views of a control; Decode is the one a bare address opens. */
+export type ControlTab =
+  'decode' | 'explain' | 'evidence' | 'practice' | 'related'
+export const controlTabs: readonly ControlTab[] = [
+  'decode',
+  'explain',
+  'evidence',
+  'practice',
+  'related',
+]
+
 export interface ExplorerFilters {
   readonly catalog: string
   readonly query: string
@@ -27,6 +38,8 @@ export interface ExplorerFilters {
 export type ValidExplorerState = {
   readonly mode: ExplanationMode
   readonly filters: ExplorerFilters
+  /** Absent means Decode; never serialized as the default. */
+  readonly tab?: ControlTab
 } & (
   | { readonly view: 'lesson'; readonly lesson: LessonIdentity }
   | { readonly view: 'discover' }
@@ -42,7 +55,8 @@ export type AddressError =
   | 'unknown-catalog'
   | 'invalid-collection'
 
-export type NormalizationNotice = 'mode-reset' | 'family-reset' | 'level-reset'
+export type NormalizationNotice =
+  'mode-reset' | 'tab-reset' | 'family-reset' | 'level-reset'
 
 export type ParsedExplorerState =
   | {
@@ -66,6 +80,7 @@ export type LessonResolution =
 export type ExplorerIntent =
   | { readonly type: 'select-lesson'; readonly identity: LessonIdentity }
   | { readonly type: 'change-mode'; readonly mode: ExplanationMode }
+  | { readonly type: 'set-tab'; readonly tab: ControlTab }
   | { readonly type: 'set-query'; readonly query: string }
   | { readonly type: 'set-catalog'; readonly catalog: string }
   | { readonly type: 'set-collection'; readonly collection: ExplorerCollection }
@@ -94,6 +109,7 @@ const recognizedKeys = new Set([
   'family',
   'level',
   'collection',
+  'tab',
 ])
 const identitySlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const modes: readonly ExplanationMode[] = ['beginner', 'it-cyber', 'compliance']
@@ -299,6 +315,10 @@ export function parseExplorerSearch(
   const mode = modes.find((item) => item === rawMode) ?? 'beginner'
   const notices: NormalizationNotice[] = []
   if (values.has('mode') && rawMode !== mode) notices.push('mode-reset')
+  // A view only belongs to a lesson address; discovery ignores one quietly.
+  const rawTab = identity ? values.get('tab') : null
+  const tab = controlTabs.find((item) => item === rawTab) ?? 'decode'
+  if (identity && values.has('tab') && rawTab !== tab) notices.push('tab-reset')
   const normalized = normalizeFilters(
     {
       catalog: catalogId,
@@ -312,7 +332,11 @@ export function parseExplorerSearch(
     catalog,
   )
   notices.push(...normalized.notices)
-  const shared = { mode, filters: normalized.filters }
+  const shared = {
+    mode,
+    filters: normalized.filters,
+    ...(tab === 'decode' ? {} : { tab }),
+  }
   return ready(
     identity
       ? { ...shared, view: 'lesson', lesson: identity }
@@ -329,6 +353,7 @@ export function serializeExplorerSearch(state: ValidExplorerState): string {
     params.set('control', state.lesson.controlKey)
   }
   params.set('mode', state.mode)
+  if (state.tab && state.tab !== 'decode') params.set('tab', state.tab)
   // The implicit lesson catalog may be an unknown framework in a not-found URL.
   // Emitting it explicitly would turn that exact address into a catalog error.
   if (
@@ -446,6 +471,12 @@ export function transitionExplorerState(
       case 'change-mode':
         next = ready({ ...state, mode: intent.mode })
         break
+      case 'set-tab':
+        next = ready({
+          ...state,
+          tab: intent.tab === 'decode' ? undefined : intent.tab,
+        })
+        break
       case 'set-query':
         next = withFilters(
           state,
@@ -547,20 +578,23 @@ export function transitionExplorerState(
   }
 }
 
-/** A share URL contains the lesson and mode, never someone's discovery query. */
+/** A share URL contains the lesson, mode and view, never someone's discovery query. */
 export function createLessonUrl(
   identity: LessonIdentity,
   mode: ExplanationMode,
   location: URL,
+  tab: ControlTab = 'decode',
 ): string {
   const url = new URL(location.href)
-  url.search = new URLSearchParams({
+  const params = new URLSearchParams({
     view: 'lesson',
     framework: identity.frameworkId,
     edition: identity.editionId,
     control: identity.controlKey,
     mode,
-  }).toString()
+  })
+  if (tab !== 'decode') params.set('tab', tab)
+  url.search = params.toString()
   url.hash = 'explorer'
   return url.href
 }

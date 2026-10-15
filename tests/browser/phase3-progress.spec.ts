@@ -2,7 +2,7 @@ import { expect, test, type Page } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
 
 const lesson =
-  '/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l1-b-1-i&mode=beginner'
+  '/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l1-b-1-i&mode=beginner&tab=practice'
 const consent = 'cipher-and-chalk:learning-saving:v1'
 const data = 'cipher-and-chalk:learning-progress:v1'
 async function settings(page: Page) {

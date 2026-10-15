@@ -27,6 +27,10 @@ test('checking an answer leaves focus on readable feedback', async ({
   page,
 }) => {
   await page.goto(reader)
+  await page
+    .getByRole('navigation', { name: 'Views of this control' })
+    .getByRole('link', { name: 'Practice', exact: true })
+    .click()
   await page.getByText('Check your understanding', { exact: true }).click()
   await page.getByRole('radio').first().focus()
   await page.keyboard.press('Space')
