@@ -26,3 +26,8 @@ const words = [
 export function numberWord(count: number): string {
   return words[count] ?? String(count)
 }
+
+/** The word at the start of a sentence. */
+export function capitalize(text: string): string {
+  return text.charAt(0).toLocaleUpperCase('en-US') + text.slice(1)
+}
