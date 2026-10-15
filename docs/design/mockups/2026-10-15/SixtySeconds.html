@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CMMC in Sixty Seconds</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&family=Nunito:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: a chalk clock face (Level 2's three-year cycle, SPRS at the hub) beside a column of teacher's notes, with a chaptered player underneath. */
+:root{
+  --board:#2a302c;
+  --board-edge:#202622;
+  --chalk:#efeee6;
+  --chalk-dim:rgba(239,238,230,.62);
+  --chalk-faint:rgba(239,238,230,.24);
+  --chalk-ghost:rgba(239,238,230,.1);
+  --yellow:#ecc969;
+  --f-chalk:"Patrick Hand SC","Chalkboard SE","Comic Sans MS",cursive;
+  --f-ui:"Nunito","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 50% 30% at 30% 25%,rgba(239,238,230,.05),transparent 70%),
+    radial-gradient(ellipse at 45% 35%,var(--board) 55%,var(--board-edge) 100%);
+  background-color:var(--board);
+  color:var(--chalk);
+  font-family:var(--f-ui);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:clamp(18px,4vw,48px);
+  min-height:100vh;
+}
+.stage{max-width:1000px;margin:0 auto}
+.screen{cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+svg.board{display:block;width:100%;height:auto;overflow:visible}
+.board text{font-family:var(--f-chalk);fill:var(--chalk)}
+.board .y{fill:var(--yellow)}
+.board .dim{fill:var(--chalk-dim)}
+.board .ln{fill:none;stroke:var(--chalk);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.board .ln.y{stroke:var(--yellow)}
+.board .ln.dim{stroke:var(--chalk-dim);stroke-width:2}
+.board .ln.tick{stroke-width:1.5}
+.board .ln.hand{stroke-width:3.4}
+.board .dash{stroke-dasharray:6 7}
+.wedge{fill:var(--chalk);fill-opacity:.06;opacity:0}
+.glow{fill:none;stroke:var(--yellow);stroke-width:6;opacity:0}
+
+.player{display:flex;align-items:center;gap:clamp(12px,2.4vw,22px);margin-top:clamp(12px,2.2vw,22px)}
+.play{
+  flex:none;width:clamp(54px,8vw,72px);aspect-ratio:1;max-width:100%;
+  border-radius:50%;border:3px solid var(--chalk);background:transparent;color:var(--chalk);
+  display:grid;place-items:center;cursor:pointer;padding:0;transition:border-color .15s,color .15s;
+}
+.play:hover{border-color:var(--yellow);color:var(--yellow)}
+.play svg{width:42%;height:42%;overflow:visible}
+.scrub{flex:1 1 auto;min-width:0;cursor:pointer;touch-action:none;padding:8px 0;border-radius:6px}
+.track{position:relative;display:grid;gap:6px;align-items:center;height:16px}
+.seg{height:6px;border-radius:3px;background:var(--chalk-faint);overflow:hidden}
+.seg i{display:block;height:100%;width:0;background:var(--yellow);border-radius:3px}
+.knob{position:absolute;top:50%;left:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--chalk);box-shadow:0 0 0 3px var(--board);pointer-events:none}
+.scrub:hover .knob,.scrub:focus-visible .knob{background:var(--yellow)}
+.labels{display:grid;gap:6px;margin-top:6px}
+.labels span{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.labels span.on{color:var(--yellow)}
+.time{flex:none;font-family:var(--f-mono);font-size:clamp(.9rem,2vw,1.2rem);color:var(--chalk-dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.speed{flex:none;font-family:var(--f-mono);font-size:.85rem;color:var(--chalk-dim);background:transparent;border:1.5px solid var(--chalk-faint);border-radius:999px;padding:4px 10px;cursor:pointer;min-width:3.6em}
+.speed:hover{color:var(--yellow);border-color:var(--yellow)}
+.play:focus-visible,.speed:focus-visible,.scrub:focus-visible{outline:2px dashed var(--yellow);outline-offset:4px}
+
+.cap{margin-top:clamp(12px,2vw,20px)}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow)}
+.caption{margin:6px 0 0;font-size:clamp(1.05rem,2.3vw,1.32rem);line-height:1.55;max-width:60ch;min-height:3.1em;color:var(--chalk)}
+.term{text-decoration:underline dotted var(--chalk-dim);text-underline-offset:5px;cursor:help}
+.keys{margin:16px 0 0;font-size:.8rem;color:var(--chalk-dim);display:flex;flex-wrap:wrap;gap:6px 16px}
+.keys kbd{font-family:var(--f-mono);font-size:.75rem;border:1px solid var(--chalk-faint);border-radius:4px;padding:0 5px;color:var(--chalk)}
+
+@media (max-width:640px){
+  .labels{display:none}
+  .player{flex-wrap:wrap}
+  .scrub{order:3;flex-basis:100%}
+  .time{margin-left:auto}
+}
+@media (hover:none){ .keys{display:none} }
+@media (prefers-reduced-motion:reduce){ .play{transition:none} }
+</style>
+</head>
+<body>
+
+
+<div class="stage">
+  <div class="screen" id="screen" title="Click to play or pause">
+    <svg class="board" id="board" viewBox="0 0 960 600" role="img" aria-labelledby="bt bd">
+      <title id="bt">CMMC in sixty seconds: the Level 2 clock</title>
+      <desc id="bd">The DoD shares information with your company. FCI needs Level 1: 15 rules, self-assessed every year. CUI needs Level 2: 110 rules from NIST SP 800-171. Critical CUI needs Level 3: Level 2 plus 24 more requirements, assessed by DIBCAC. Level 2 is drawn as a three-year clock with SPRS at its hub. A C3PAO certifies on day one. Every year the company assesses its own controls and a senior official affirms compliance. A significant change requires a new assessment right away. At three years the C3PAO returns and the cycle restarts. No current status in SPRS means no contract.</desc>
+      <defs>
+        <filter id="chalk">
+          <feTurbulence type="fractalNoise" baseFrequency="1.3" numOctaves="2" seed="3" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" xChannelSelector="R" yChannelSelector="G" result="d"/>
+          <feTurbulence type="fractalNoise" baseFrequency="2.4" numOctaves="1" seed="9" result="g"/>
+          <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.4 1.9" result="ga"/>
+          <feComposite in="d" in2="ga" operator="in"/>
+        </filter>
+        <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+      </defs>
+
+      <g filter="url(#chalk)">
+        <text class="y" x="40" y="64" font-size="38" data-t="0.3,2.0">CMMC in sixty seconds</text>
+      </g>
+
+      <!-- THE CLOCK -->
+      <g id="dialWrap">
+        <path id="wedge" class="wedge"/>
+        <circle id="glow" class="glow" cx="280" cy="335" r="56" filter="url(#soft)"/>
+        <g filter="url(#chalk)">
+          <text class="dim po" x="280" y="98" font-size="16" text-anchor="middle" data-t="16.7,0.8">Level 2 runs on this clock</text>
+
+          <!-- chapter 3: draw the clock -->
+          <path class="ln" d="M280 160 C377 159 456 238 455 335 C455 432 377 511 280 510 C183 510 104 431 105 335 C106 238 184 160 283 161" data-t="17.6,1.6"/>
+          <path class="ln" d="M280 171 L280 146 M422.9 417.5 L444.5 430 M137.1 417.5 L115.5 430" data-t="19.3,0.5"/>
+          <path class="ln dim tick" id="ticks" d="M0 0" data-t="19.9,0.8"/>
+          <path class="ln" d="M280 285 C308 285 330 307 330 335 C330 363 308 385 280 385 C252 385 230 363 230 335 C230 307 252 285 283 286" data-t="20.8,0.6"/>
+          <text class="y" x="280" y="343" font-size="24" text-anchor="middle" data-t="21.4,0.6">SPRS</text>
+          <text class="dim" x="384" y="280" font-size="17" text-anchor="middle" data-t="22.0,0.3">year 1</text>
+          <text class="dim" x="280" y="460" font-size="17" text-anchor="middle" data-t="22.3,0.3">year 2</text>
+          <text class="dim" x="176" y="280" font-size="17" text-anchor="middle" data-t="22.6,0.3">year 3</text>
+
+          <!-- chapter 4: certify -->
+          <path class="ln y" data-star="280,160,17,7.5" data-t="23.4,0.8"/>
+          <text class="y" x="280" y="128" font-size="21" text-anchor="middle" data-t="24.3,0.7">C3PAO</text>
+          <path class="ln dim dash" d="M280 184 L280 282" data-t="25.0,0.5"/>
+          <text class="dim" x="280" y="364" font-size="13" text-anchor="middle" data-t="25.6,0.5">current</text>
+
+          <!-- chapter 5: every year -->
+          <path class="ln y" d="M320 140 L326 147 L337 131" data-t="31.3,0.4"/>
+          <path class="ln y" d="M449 437 L455 444 L467 428" data-t="36.0,0.4"/>
+          <path class="ln dim dash" d="M420 416 L328 363" data-t="36.4,0.5"/>
+
+          <!-- chapter 6: significant change -->
+          <path class="ln y" d="M188 590 L212 552 L196 548 L219 505" data-t="42.2,0.5"/>
+          <path class="ln y dash" data-star="246,530,11,5" data-t="42.8,0.5"/>
+          <path class="ln dim dash" d="M225 484 L261 388" data-t="43.3,0.4"/>
+          <text x="266" y="532" font-size="17" data-t="43.7,0.7">significant change</text>
+          <text class="y" x="266" y="555" font-size="17" data-t="44.4,0.5">reassess now</text>
+
+          <!-- chapter 7: repeat -->
+          <path class="ln y" d="M94 437 L100 444 L112 428" data-t="46.0,0.4"/>
+          <path class="ln dim dash" d="M140 416 L232 363" data-t="46.4,0.5"/>
+          <path class="ln y" d="M178 170 Q200 140 254 150 M243 141 L256 150 L243 158" data-t="53.8,0.6"/>
+          <text class="y" x="52" y="150" font-size="17" data-t="54.5,0.9">3 yrs: recertify</text>
+        </g>
+        <g id="hand" filter="url(#chalk)" opacity="0"><path class="ln y hand" d="M280 279 L280 190 M271 202 L280 189 L289 202"/></g>
+      </g>
+
+      <!-- THE NOTES -->
+      <g id="notesWrap">
+        <g filter="url(#chalk)">
+          <!-- chapter 1 -->
+          <text x="598" y="122" font-size="28" data-t="2.5,0.6">DoD</text>
+          <text class="dim" x="716" y="96" font-size="15" text-anchor="middle" data-t="3.2,1.1">shares information</text>
+          <path class="ln y" d="M662 114 C690 107,730 119,764 111 M752 104 L766 111 L753 119" data-t="4.4,0.9"/>
+          <text x="780" y="122" font-size="26" data-t="5.4,1.1">your company</text>
+
+          <!-- chapter 2 -->
+          <text x="660" y="190" font-size="24" text-anchor="end" data-t="7.3,0.5">FCI</text>
+          <path class="ln y" d="M674 183 C686 178,698 188,710 181 M703 176 L712 182 L704 188" data-t="7.9,0.4"/>
+          <text class="y" x="724" y="190" font-size="24" data-t="8.4,0.7">Level 1</text>
+          <text class="dim" x="724" y="212" font-size="14" data-t="9.2,1.0">15 rules · self-assess yearly</text>
+
+          <text x="660" y="258" font-size="24" text-anchor="end" data-t="10.3,0.5">CUI</text>
+          <path class="ln y" d="M674 251 C686 246,698 256,710 249 M703 244 L712 250 L704 256" data-t="10.9,0.4"/>
+          <text class="y" x="724" y="258" font-size="24" data-t="11.4,0.7">Level 2</text>
+          <text class="dim" x="724" y="285" font-size="14" data-t="12.2,1.0">110 rules · NIST SP 800-171</text>
+
+          <text x="660" y="326" font-size="17" text-anchor="end" data-t="13.3,0.6">critical CUI</text>
+          <path class="ln y" d="M674 319 C686 314,698 324,710 317 M703 312 L712 318 L704 324" data-t="14.0,0.3"/>
+          <text class="y" x="724" y="326" font-size="24" data-t="14.4,0.5">Level 3</text>
+          <text class="dim" x="724" y="348" font-size="14" data-t="14.9,0.9">Level 2 + 24 more · DIBCAC</text>
+
+          <!-- chapter 3: Level 2 is the clock -->
+          <path class="ln y" d="M718 251 C716 238,740 233,764 233 C790 233,812 240,812 250 C812 260,790 265,762 265 C740 265,720 261,712 247" data-t="15.9,0.7"/>
+          <path class="ln y lo" d="M716 262 C688 282,600 292,478 312 M492 303 L477 312 L492 321" data-t="16.7,0.8"/>
+
+          <!-- legend, written as each mark first appears -->
+          <path class="ln y" data-star="600,414,10,4.5" data-t="27.0,0.4"/>
+          <text x="622" y="421" font-size="17" data-t="27.5,1.3">C3PAO certifies · every 3 yrs</text>
+          <path class="ln y" d="M592 456 L598 463 L609 448" data-t="37.0,0.4"/>
+          <text x="622" y="463" font-size="17" data-t="37.5,1.3">self-assess + affirm · every year</text>
+          <path class="ln y" d="M605 491 L595 506 L603 507 L594 521" data-t="44.9,0.2"/>
+          <text x="622" y="505" font-size="17" data-t="45.1,0.8">big change: reassess now</text>
+
+          <!-- chapter 8 -->
+          <path class="ln y" d="M590 544 C700 541,820 543,930 545 C933 556,932 572,930 586 C820 588,700 587,590 585 C588 572,589 556,592 543" data-t="56.3,0.9"/>
+          <text class="y" x="760" y="572" font-size="20" text-anchor="middle" data-t="57.3,1.3">no current status = no contract</text>
+        </g>
+      </g>
+
+      <g id="stick" opacity="0" aria-hidden="true">
+        <g transform="rotate(-38)">
+          <rect x="-3" y="-34" width="10" height="36" rx="3" fill="#f6f4ec"/>
+          <rect x="-3" y="-34" width="3" height="36" rx="1.5" fill="rgba(0,0,0,.12)"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="player">
+    <button class="play" id="play" type="button" aria-label="Play">
+      <svg viewBox="0 0 24 24" aria-hidden="true" id="icon"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>
+    </button>
+    <div class="scrub" id="scrub" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="60" aria-valuenow="60" aria-valuetext="1:00">
+      <div class="track" id="track"><span class="knob" id="knob"></span></div>
+      <div class="labels" id="labels" aria-hidden="true"></div>
+    </div>
+    <div class="time" id="time">1:00 / 1:00</div>
+    <button class="speed" id="speed" type="button" aria-label="Playback speed 1 times">1×</button>
+  </div>
+
+  <div class="cap">
+    <div class="eyebrow" id="eyebrow">60 seconds · 8 parts</div>
+    <p class="caption" id="caption" aria-live="polite">Press play to watch three years of CMMC Level 2 drawn in sixty seconds.</p>
+  </div>
+  <p class="keys"><span><kbd>Space</kbd> play or pause</span><span><kbd>←</kbd> <kbd>→</kbd> skip 5 seconds</span><span><kbd>PgUp</kbd> <kbd>PgDn</kbd> change part</span><span>Click the board to pause</span></p>
+</div>
+
+<script>
+(function(){
+  var TOTAL=60, H0=26, H1=56, CX=280, CY=335;
+  var CH=[
+    {s:0, e:7, n:'Who', k:'Who', c:'The Department of Defense shares information with the companies it hires. CMMC is how it checks that you actually protect it.'},
+    {s:7, e:15, n:'Levels', k:'Levels', c:'Contract information (<span class="term" title="Federal Contract Information">FCI</span>) needs Level 1. Controlled Unclassified Information (<span class="term" title="Controlled Unclassified Information">CUI</span>) needs Level 2. The most critical CUI adds Level 3.'},
+    {s:15, e:23, n:'The clock', k:'Clock', c:'Level 2 runs on a three-year clock. Every result lands in the middle: <span class="term" title="Supplier Performance Risk System">SPRS</span>, the DoD’s supplier risk system.'},
+    {s:23, e:31, n:'Certify', k:'Certify', c:'Day one: an independent <span class="term" title="Certified Third-Party Assessment Organization">C3PAO</span> assesses all 110 requirements. Pass, and your status in SPRS is current for three years.'},
+    {s:31, e:39, n:'Every year', k:'Yearly', c:'Every year, you assess your own controls and a senior official affirms compliance in SPRS. Skip the affirmation and your status lapses.'},
+    {s:39, e:46, n:'Big change', k:'Change', c:'A significant change, like expanding your network or a merger, means a new assessment now, not at year three.'},
+    {s:46, e:56, n:'Repeat', k:'Repeat', c:'Year two, same routine. At year three, the C3PAO comes back and the clock starts over.'},
+    {s:56, e:60, n:'Bottom line', k:'End', c:'Before every award, the DoD checks SPRS. No current status, no contract.'}
+  ];
+  var INTRO='Press play to watch three years of CMMC Level 2 drawn in sixty seconds.';
+  var PULSES=[25.1,36.4,43.3,46.4,56];
+  var SPEEDS=[1,0.75,0.5,1.5];
+  var PLAY='<path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/>';
+  var PAUSE='<rect x="6.5" y="5" width="3.6" height="14" rx="1" fill="currentColor"/><rect x="13.9" y="5" width="3.6" height="14" rx="1" fill="currentColor"/>';
+  var REPLAY='<path d="M12 4.5a7.5 7.5 0 1 1-7.1 5.1" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M3.4 4.4l1.5 5.3 5.2-1.6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>';
+
+  var reduce=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var ns='http://www.w3.org/2000/svg';
+  function $(id){return document.getElementById(id);}
+  var svg=$('board'), defs=svg.querySelector('defs'), stick=$('stick'), hand=$('hand'), wedge=$('wedge'), glow=$('glow');
+  var dialWrap=$('dialWrap'), notesWrap=$('notesWrap'), screenEl=$('screen');
+  var playBtn=$('play'), icon=$('icon'), timeEl=$('time'), cap=$('caption'), eyebrow=$('eyebrow');
+  var scrub=$('scrub'), track=$('track'), knob=$('knob'), labelsEl=$('labels'), speedBtn=$('speed');
+  var items=[], segEls=[], segFills=[], labelEls=[];
+  var t=TOTAL, playing=false, started=false, last=0, shown=-2, speedIdx=0, narrow=null, dragging=false, wasPlaying=false, ready=false;
+
+  /* chaptered scrub bar */
+  var cols=CH.map(function(c){return (c.e-c.s)+'fr';}).join(' ');
+  track.style.gridTemplateColumns=cols; labelsEl.style.gridTemplateColumns=cols;
+  CH.forEach(function(c){
+    var s=document.createElement('div'); s.className='seg'; s.innerHTML='<i></i>';
+    track.insertBefore(s,knob); segEls.push(s); segFills.push(s.firstChild);
+    var l=document.createElement('span'); l.textContent=c.k; labelsEl.appendChild(l); labelEls.push(l);
+  });
+
+  /* generated shapes: stars and the 36 month ticks */
+  function starD(cx,cy,ro,ri){
+    var d='';
+    for(var i=0;i<10;i++){var a=-Math.PI/2+i*Math.PI/5, r=i%2?ri:ro; d+=(i?'L':'M')+(cx+r*Math.cos(a)).toFixed(1)+' '+(cy+r*Math.sin(a)).toFixed(1)+' ';}
+    return d+'Z';
+  }
+  svg.querySelectorAll('[data-star]').forEach(function(el){
+    var p=el.getAttribute('data-star').split(',').map(Number); el.setAttribute('d',starD(p[0],p[1],p[2],p[3]));
+  });
+  var td='';
+  for(var i=1;i<36;i++){
+    if(i%12===0) continue;
+    var a=i*Math.PI/18, s=Math.sin(a), c=Math.cos(a);
+    td+='M'+(CX+167*s).toFixed(1)+' '+(CY-167*c).toFixed(1)+' L'+(CX+176*s).toFixed(1)+' '+(CY-176*c).toFixed(1)+' ';
+  }
+  $('ticks').setAttribute('d',td);
+
+  function clamp(v){return v<0?0:v>1?1:v;}
+  function fmt(x){x=Math.max(0,Math.min(TOTAL,Math.floor(x)));return Math.floor(x/60)+':'+String(x%60).padStart(2,'0');}
+  function chapterAt(x){for(var i=CH.length-1;i>=0;i--){if(x>=CH[i].s)return i;}return 0;}
+  function sector(a){
+    if(a<=0.05) return '';
+    a=Math.min(a,359.9);
+    var r1=58, r2=166, rad=a*Math.PI/180, s=Math.sin(rad), c=Math.cos(rad), L=a>180?1:0;
+    return 'M'+CX+' '+(CY-r2)+' A'+r2+' '+r2+' 0 '+L+' 1 '+(CX+r2*s).toFixed(1)+' '+(CY-r2*c).toFixed(1)+
+      ' L'+(CX+r1*s).toFixed(1)+' '+(CY-r1*c).toFixed(1)+' A'+r1+' '+r1+' 0 '+L+' 0 '+CX+' '+(CY-r1)+' Z';
+  }
+
+  function setup(){
+    var n=0;
+    svg.querySelectorAll('[data-t]').forEach(function(el){
+      var p=el.getAttribute('data-t').split(','), it={el:el, s:+p[0], d:+p[1], lo:el.classList.contains('lo'), po:el.classList.contains('po')};
+      if(el.tagName==='path'){
+        it.len=el.getTotalLength();
+        if(el.classList.contains('dash')){
+          var m=document.createElementNS(ns,'mask'), id='m'+(n++);
+          m.setAttribute('id',id); m.setAttribute('maskUnits','userSpaceOnUse');
+          var cl=el.cloneNode(); ['class','data-t','data-star'].forEach(function(k){cl.removeAttribute(k);});
+          cl.setAttribute('fill','none'); cl.setAttribute('stroke','#fff'); cl.setAttribute('stroke-width','10'); cl.setAttribute('stroke-linecap','round');
+          cl.style.strokeDasharray=it.len; m.appendChild(cl); defs.appendChild(m);
+          el.setAttribute('mask','url(#'+id+')'); it.mask=cl;
+        } else { el.style.strokeDasharray=it.len; }
+      } else {
+        var bb=el.getBBox(), cp=document.createElementNS(ns,'clipPath'), id2='c'+(n++), r=document.createElementNS(ns,'rect');
+        cp.setAttribute('id',id2); cp.setAttribute('clipPathUnits','userSpaceOnUse');
+        r.setAttribute('x',bb.x-4); r.setAttribute('y',bb.y-6); r.setAttribute('height',bb.height+12);
+        cp.appendChild(r); defs.appendChild(cp); el.setAttribute('clip-path','url(#'+id2+')');
+        it.rect=r; it.bb=bb;
+      }
+      items.push(it);
+    });
+    ready=true;
+    layout(); render();
+  }
+
+  function layout(){
+    var nw=screenEl.clientWidth<640;
+    if(nw===narrow) return;
+    narrow=nw;
+    svg.setAttribute('viewBox',nw?'0 0 520 1275':'0 0 960 600');
+    dialWrap.setAttribute('transform',nw?'translate(-12 0)':'translate(0 0)');
+    notesWrap.setAttribute('transform',nw?'translate(-632 549) scale(1.2)':'translate(0 0)');
+    svg.querySelectorAll('.lo').forEach(function(el){el.style.visibility=nw?'hidden':'visible';});
+    svg.querySelectorAll('.po').forEach(function(el){el.style.visibility=nw?'visible':'hidden';});
+  }
+
+  function render(){
+    if(!ready) return;
+    var tip=null;
+    for(var i=0;i<items.length;i++){
+      var it=items[i], p=reduce?(t>=it.s?1:0):clamp((t-it.s)/it.d);
+      var shownNow=!(it.lo&&narrow)&&!(it.po&&!narrow);
+      if(it.len!=null){
+        (it.mask||it.el).style.strokeDashoffset=it.len*(1-p);
+        if(p>0&&p<1&&shownNow){var pt=it.el.getPointAtLength(it.len*p); tip=[it.el,pt.x,pt.y];}
+      } else {
+        it.rect.setAttribute('width',Math.max(0,(it.bb.width+8)*p));
+        if(p>0&&p<1&&shownNow){tip=[it.el,it.bb.x+it.bb.width*p,it.bb.y+it.bb.height*.75];}
+      }
+    }
+    if(tip&&playing&&!reduce){
+      var m=svg.getScreenCTM().inverse().multiply(tip[0].getScreenCTM());
+      var q=new DOMPoint(tip[1],tip[2]).matrixTransform(m);
+      stick.setAttribute('transform','translate('+q.x.toFixed(1)+' '+q.y.toFixed(1)+')');
+      stick.setAttribute('opacity','1');
+    } else stick.setAttribute('opacity','0');
+
+    /* the clock hand: still until day one, then three years in thirty seconds */
+    var ang;
+    if(reduce) ang=t<36?0:t<42.67?120:t<46?200:t<56?240:360;
+    else ang=t<H0?0:t<H1?(t-H0)/(H1-H0)*360:360;
+    hand.setAttribute('transform','rotate('+ang.toFixed(2)+' '+CX+' '+CY+')');
+    hand.setAttribute('opacity',clamp((t-22.9)/0.5).toFixed(2));
+    var w=reduce?0:t<H0?0:t<H1?1:1-clamp((t-H1)/1.5);
+    wedge.style.opacity=w;
+    if(w>0) wedge.setAttribute('d',sector(ang));
+    var g=0;
+    if(!reduce) PULSES.forEach(function(p){g=Math.max(g,1-Math.abs(t-p)/0.9);});
+    glow.style.opacity=(g*0.6).toFixed(3);
+
+    /* player */
+    var ci=chapterAt(t);
+    for(var j=0;j<CH.length;j++){
+      segFills[j].style.width=(clamp((t-CH[j].s)/(CH[j].e-CH[j].s))*100)+'%';
+      labelEls[j].classList.toggle('on',started&&j===ci);
+    }
+    var se=segEls[ci], f=clamp((t-CH[ci].s)/(CH[ci].e-CH[ci].s));
+    knob.style.left=(se.offsetLeft+f*se.offsetWidth)+'px';
+    timeEl.textContent=fmt(t)+' / 1:00';
+    scrub.setAttribute('aria-valuenow',String(Math.round(t)));
+    scrub.setAttribute('aria-valuetext',fmt(t)+', '+CH[ci].n);
+    if(!started){
+      if(shown!==-1){eyebrow.textContent='60 seconds · 8 parts'; cap.innerHTML=INTRO; shown=-1;}
+    } else if(ci!==shown){
+      eyebrow.textContent='Part '+(ci+1)+' of 8 · '+CH[ci].n; cap.innerHTML=CH[ci].c; shown=ci;
+    }
+  }
+
+  function setIcon(){
+    var ended=started&&t>=TOTAL&&!playing;
+    icon.innerHTML=playing?PAUSE:ended?REPLAY:PLAY;
+    playBtn.setAttribute('aria-label',playing?'Pause':ended?'Replay':'Play');
+  }
+  function frame(now){
+    if(!playing) return;
+    var dt=Math.min(0.1,(now-last)/1000); last=now;
+    t+=dt*SPEEDS[speedIdx];
+    if(t>=TOTAL){t=TOTAL; playing=false; setIcon(); render(); return;}
+    render(); requestAnimationFrame(frame);
+  }
+  function play(){
+    if(t>=TOTAL){t=0; shown=-2;}
+    started=true; playing=true; last=performance.now(); setIcon(); render(); requestAnimationFrame(frame);
+  }
+  function pause(){playing=false; setIcon(); render();}
+  function toggle(){playing?pause():play();}
+  function seek(nt){
+    t=Math.max(0,Math.min(TOTAL,nt)); started=true; last=performance.now(); setIcon(); render();
+  }
+
+  playBtn.addEventListener('click',toggle);
+  screenEl.addEventListener('click',toggle);
+  speedBtn.addEventListener('click',function(){
+    speedIdx=(speedIdx+1)%SPEEDS.length;
+    speedBtn.textContent=SPEEDS[speedIdx]+'×';
+    speedBtn.setAttribute('aria-label','Playback speed '+SPEEDS[speedIdx]+' times');
+  });
+
+  /* drag anywhere on the bar to scrub; gaps snap to the next part */
+  function tFromX(x){
+    var first=segEls[0].getBoundingClientRect(), lastR=segEls[segEls.length-1].getBoundingClientRect();
+    if(x<=first.left) return 0;
+    if(x>=lastR.right) return TOTAL;
+    for(var i=0;i<segEls.length;i++){
+      var r=segEls[i].getBoundingClientRect();
+      if(x<r.left) return CH[i].s;
+      if(x<=r.right) return CH[i].s+(x-r.left)/r.width*(CH[i].e-CH[i].s);
+    }
+    return TOTAL;
+  }
+  scrub.addEventListener('pointerdown',function(e){
+    dragging=true; wasPlaying=playing; playing=false;
+    try{scrub.setPointerCapture(e.pointerId);}catch(_){}
+    seek(tFromX(e.clientX)); e.preventDefault();
+  });
+  scrub.addEventListener('pointermove',function(e){if(dragging) seek(tFromX(e.clientX));});
+  function endDrag(){
+    if(!dragging) return; dragging=false;
+    if(wasPlaying&&t<TOTAL) play(); else {setIcon(); render();}
+  }
+  scrub.addEventListener('pointerup',endDrag);
+  scrub.addEventListener('pointercancel',endDrag);
+
+  document.addEventListener('keydown',function(e){
+    if(e.altKey||e.ctrlKey||e.metaKey) return;
+    var k=e.key, onBtn=e.target&&e.target.tagName==='BUTTON';
+    if((k===' '||k==='Enter')&&onBtn) return;
+    var ci=chapterAt(t);
+    if(k===' '||k==='k'||k==='K'){e.preventDefault(); toggle();}
+    else if(k==='ArrowLeft'){e.preventDefault(); seek(t-5);}
+    else if(k==='ArrowRight'){e.preventDefault(); seek(t+5);}
+    else if(k==='Home'){e.preventDefault(); seek(0);}
+    else if(k==='End'){e.preventDefault(); seek(TOTAL);}
+    else if(k==='PageDown'){e.preventDefault(); seek(ci<CH.length-1?CH[ci+1].s:TOTAL);}
+    else if(k==='PageUp'){e.preventDefault(); seek(t-CH[ci].s>1.5?CH[ci].s:CH[Math.max(0,ci-1)].s);}
+  });
+
+  if(window.ResizeObserver){ new ResizeObserver(function(){layout(); render();}).observe(screenEl); }
+  else window.addEventListener('resize',function(){layout(); render();});
+
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(setup);
+})();
+</script>
+
+</body>
+</html>
