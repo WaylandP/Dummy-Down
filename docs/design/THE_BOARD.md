@@ -1,8 +1,9 @@
 # The Board — design specification
 
-Approved by the owner on October 14, 2026 from the design canvas. This replaces
-the "reference desk" direction in `DESIGN.md`. The eight files in
-`docs/design/mockups/` are the approved screens as HTML; open them in a browser.
+Approved by the owner on October 14, 2026 from the design canvas, with the Home
+screen and the mascot revised on October 15. This replaces the "reference desk"
+direction in `DESIGN.md`. The files in `docs/design/mockups/` are the approved
+screens as HTML; open them in a browser.
 They are the source of truth for color, type, spacing and copy voice. Where this
 document and a mockup disagree, the mockup wins.
 
@@ -62,10 +63,16 @@ none. Both live once in the app shell, not per component.
 
 ## Screens
 
-**Home** — `mockups/Main.html`. Left: the lockup and the fourteen families with
-counts. Center: the question in chalk, a search line (an input with a chalk
-underline, no box), one sentence of what the site holds. Bottom row: "Last
-time" and the version. The tray.
+**Home** — `mockups/Home.html` (supersedes `Main.html`). Written for the
+stranger who arrives from a shared link. Header: the lockup and the nav, Home
+first, the active item under a yellow chalk stroke. The question in chalk:
+"Who's reading?", with one sentence at the right saying what the site is.
+Three rows, one per chalk: "I'm new to this." / "I run the systems." / "I'm
+preparing for an assessment.", each with one sentence of where it starts you
+and a yellow link. Choosing a row also picks that chalk for the visitor. Below:
+"Or just look something up:" and the search line. Footer: made-by, source,
+privacy in one line. Smudge sits on the right end of the tray. The fourteen
+families move to the Controls page.
 
 **Control, Decode** — `mockups/Decode.html`. Top line: the ID in blue mono,
 then a chalk arrow, then the ID decoded (family, level, source requirement).
@@ -101,11 +108,15 @@ horizontally. Everything else stacks.
 r=38 in a 100-unit box, rotated −100°. App icon: the same ring on a chalk or
 yellow tile with radius 22. Replace `public/brand/*` and the favicon with it.
 
-**Dash** — `mockups/Dash.html`. One SVG path (a stroke, width 26, round caps)
-with two circular holes for eyes. Lives in the tray as the white chalk. Idle:
-blinks every few seconds. Pick a chalk: lifts that stick. Erase: sweeps once
-across the board, eyes closed. Glossary popover: one nod. Never speaks. Off
-switch in the footer; hidden in print; a plain stub under reduced motion.
+**Smudge** — `mockups/Smudge.html` (replaces Dash). The eraser on the right
+end of the tray, on every screen: a wooden back, a felt face with chalk dust in
+it, and eyes, brows and a mouth drawn on the wood in chalk. Idle: blinks, eyes
+drift toward the cursor, a puff of dust now and then. Erase: he leaps up and
+sweeps across the board; the old text goes to dust. Pick a chalk: he nudges
+that stick up out of the tray. Click or tap him, or finish a practice item
+correctly: a sneeze of dust. A minute idle: he dozes, and any input wakes him.
+Never speaks. Off switch in the footer; a plain faceless eraser in print and
+under reduced motion.
 
 ## Features, in build order
 
@@ -122,7 +133,8 @@ switch in the footer; hidden in print; a plain stub under reduced motion.
    `prefers-reduced-motion` turns it into a cut.
 7. The timeline, in chalk: one screen; every date sourced.
 8. The assessor's three words on the Evidence tab.
-9. Dash.
+9. Smudge (built as Dash, then replaced; see above).
+10. Home for the stranger: `mockups/Home.html`.
 
 Not doing: an AI assistant (it would answer beyond the sources and would need
 to collect what visitors type).
