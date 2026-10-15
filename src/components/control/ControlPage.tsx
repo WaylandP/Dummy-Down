@@ -42,6 +42,8 @@ export interface ControlPageProps {
   readonly onTabChange: (tab: ControlTab) => void
   readonly tabUrl: (tab: ControlTab) => string
   readonly shareUrl: string
+  /** The link that opens this control in the chalk in hand. */
+  readonly chalkUrl: string
   readonly excludedByFilters: boolean
   readonly onShowInResults: () => void
   readonly headingRef?: (node: HTMLHeadingElement | null) => void
@@ -72,6 +74,7 @@ export function ControlPage(props: ControlPageProps) {
     onTabChange,
     tabUrl,
     shareUrl,
+    chalkUrl,
     excludedByFilters,
     onShowInResults,
     headingRef,
@@ -209,6 +212,13 @@ export function ControlPage(props: ControlPageProps) {
           Print
         </button>
         <ShareLesson url={shareUrl} subject="reference" lesson={lesson} />
+        <ShareLesson
+          url={chalkUrl}
+          subject="reference"
+          lesson={lesson}
+          label="Send this chalk"
+          name="Chalk"
+        />
       </div>
       {excludedByFilters && (
         <p className="lesson-mismatch">

@@ -743,12 +743,21 @@
   .control-actions {
     align-self: start;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0 20px;
     padding-bottom: 8px;
   }
+  /* Three actions wrap at 320px; a copy's feedback or fallback flows under its
+     button instead of hanging over the next row. */
   .control-actions .share-feedback,
   .control-actions .share-fallback {
-    right: auto;
-    left: 0;
+    position: static;
+    width: auto;
+    max-width: 100%;
+    white-space: normal;
+  }
+  .control-actions .share-lesson:has(.share-fallback) {
+    flex-basis: 100%;
   }
   .control-page h1 {
     margin-top: 10px;

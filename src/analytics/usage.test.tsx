@@ -206,6 +206,16 @@ describe('analytics URL sanitization', () => {
     ).toEqual({ type: 'event', url: `${origin}${path.replace(/\/$/, '')}` })
   })
 
+  it('strips a chalk from a lesson address like any other query', () => {
+    const origin = window.location.origin
+    expect(
+      beforeUsageSend({
+        type: 'pageview',
+        url: `${origin}/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l2-3-1-1&chalk=yellow#explorer`,
+      }),
+    ).toEqual({ type: 'pageview', url: `${origin}/learn` })
+  })
+
   it.each(['pageview', 'event'] as const)(
     'strips all query and fragment data from a %s',
     (type) => {
