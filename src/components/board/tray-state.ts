@@ -95,6 +95,18 @@ export function setSmudgeOn(on: boolean) {
   notify()
 }
 
+/** The doodle layer listens for his sweep: his click, or the Erase between controls. */
+export function subscribeSmudgeCue(
+  listener: (cue: SmudgeCue) => void,
+): () => void {
+  let last = cue?.at ?? 0
+  return subscribe(() => {
+    if (!cue || cue.at === last) return
+    last = cue.at
+    listener(cue)
+  })
+}
+
 export function useSmudgeCue(): SmudgeCue | null {
   return useSyncExternalStore(
     subscribe,

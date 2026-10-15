@@ -95,8 +95,22 @@ not establish it.
   from a fresh load or the header; below that the tray is the bottom bar and
   the footer line ends the content. The footer line's links are 44px targets
   in their padding; where the line wraps they are rows of their own. The content ends above Smudge at every
-  size, so no text or control sits under him. The tray holds the three chalks
-  and Smudge; the fourth stub is gone.
+  size, so no text or control sits under him. The tray holds the three chalks,
+  the doodle chalk and Smudge; the fourth stub is gone.
+- **The doodle chalk (October 15, `mockups/2026-10-15/Doodle.html`):** a fat
+  white stick with a kraft-paper sleeve just left of Smudge, on screens 768
+  wide or more: a button, "Doodle chalk", pressed while the chalk is up (`d`
+  too; Esc and the slot put it back). Up, the slot keeps a dashed outline, the
+  cursor is a chalk tip, and a layer over the content only takes the marks:
+  chalk white at .9, about 3px, smoothed, with the chalk filter, anchored to
+  the text so they scroll with it. The footer line says "Doodling. Your marks
+  stay on this screen only. Esc or the tray puts the chalk back. Click Smudge
+  to wipe them." while it is up. Smudge's eyes follow the tip, and his click,
+  the Erase between controls and a page change sweep the marks to dust (a cut
+  under reduced motion); a resize that changes the content's width clears
+  them. Links under the layer are inert, the wheel still scrolls, one finger
+  draws and two scroll, print leaves the marks out, and they are never
+  stored, sent or counted.
 - **Controls `/learn` (October 15, `mockups/2026-10-15/Controls.html`):** the
   Controls page and the control page are one screen with Learn merged in. A
   rail of every control stands on the left, always visible at desktop widths

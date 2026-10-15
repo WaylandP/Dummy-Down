@@ -34,8 +34,13 @@ describe('The Board shell', () => {
     expect(document.querySelectorAll('.board-dust')).toHaveLength(1)
     expect(document.querySelectorAll('.board-ground')).toHaveLength(1)
     const tray = document.querySelector('.chalk-tray')
-    expect(tray).toHaveAttribute('aria-hidden', 'true')
-    expect(tray?.querySelectorAll('.tray-stick')).toHaveLength(3)
+    expect(
+      tray?.querySelectorAll('.tray-stick[aria-hidden="true"]'),
+    ).toHaveLength(3)
+    expect(tray?.querySelector('.tray-legend')).toHaveAttribute(
+      'aria-hidden',
+      'true',
+    )
     expect(tray).toHaveTextContent(
       'white: new to thisyellow: runs the systemsblue: preparing for assessment',
     )

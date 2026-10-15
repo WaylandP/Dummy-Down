@@ -17,7 +17,7 @@ test('home defers the Explorer and a failed lesson chunk recovers the exact addr
     '/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ia-l2-3-5-3&mode=compliance#main'
   await page.route('**/assets/LearningPage-*.js', (route) => route.abort())
   await page.goto(address)
-  await expect(page.getByRole('status')).toContainText(
+  await expect(page.locator('#main').getByRole('status')).toContainText(
     'The learning workspace could not load.',
   )
   await expect(
