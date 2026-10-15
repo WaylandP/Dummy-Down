@@ -1,4 +1,4 @@
-/* Home: the question, a search line, the families, and where you left off. */
+/* Home: who's reading, three chalk rows, a search line, and where you left off. */
 @layer components {
   .home {
     position: relative;
@@ -6,13 +6,16 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
+    padding: 0 var(--gutter);
+    /* The glow may run past the right edge; it never widens the page. */
+    overflow-x: clip;
   }
   /* The wiped-smudge glow, a soft ellipse off to the right. */
   .home-glow {
     position: absolute;
-    left: 50%;
-    top: 80px;
-    width: 560px;
+    left: 560px;
+    top: 100px;
+    width: 600px;
     height: 420px;
     opacity: 0.07;
     pointer-events: none;
@@ -21,31 +24,97 @@
     fill: var(--color-chalk);
     filter: blur(40px);
   }
-  .home-board {
+  .home-head {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 40px;
+    padding-top: 28px;
+  }
+  .home-head h1 {
+    margin: 0;
+    font-size: 52px;
+    line-height: 1;
+  }
+  .home-lead {
+    margin: 0;
+    max-width: 420px;
+    color: var(--color-chalk-muted);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  /* The rows share the leftover height and sit between rules, like the mockup. */
+  .home-chalks {
     position: relative;
     flex: 1;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: 48px;
-    padding: 16px var(--gutter) 8px;
-    min-height: 0;
-  }
-  .home-ask {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 30px;
-    max-width: 720px;
+    max-width: 980px;
+    min-height: 0;
   }
-  .home-ask h1 {
-    font-size: 68px;
-    line-height: 1.05;
+  .home-row {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 28px;
+    min-height: 44px;
+    padding: 22px 0;
+    border-top: 1px solid var(--color-rule);
+    color: var(--color-chalk);
+  }
+  .home-row:last-child {
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .home-row:hover .home-row-line,
+  .home-row:focus-visible .home-row-line {
+    color: var(--color-yellow);
+  }
+  .home-row:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 4px;
+  }
+  .home-row .home-stick {
+    width: 72px;
+    height: 12px;
+  }
+  .home-row-line {
+    display: block;
+    font-size: 30px;
+    line-height: 1.1;
+  }
+  .home-row-text {
+    display: block;
+    margin-top: 6px;
+    color: var(--color-chalk-muted);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .home-row-go {
+    color: var(--color-yellow);
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .home-lookup {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 16px 0 6px;
+  }
+  .home-lookup-label {
+    color: var(--color-chalk-muted);
+    font-size: 20px;
+    white-space: nowrap;
   }
   .home-search {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    max-width: 620px;
+    gap: 6px;
+    max-width: 520px;
   }
   .home-search-line {
     display: flex;
@@ -55,11 +124,11 @@
   .home-search-line input {
     flex: 1;
     min-width: 0;
-    padding: 10px 4px;
+    padding: 8px 4px;
     border: 0;
     background: transparent;
     color: var(--color-chalk);
-    font-size: 26px;
+    font-size: 22px;
   }
   /* Focus is the underline turning to yellow chalk; there is no box to ring. */
   .home-search-line input:focus-visible {
@@ -73,8 +142,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border: 0;
     padding: 0;
     background: none;
@@ -91,65 +160,13 @@
     stroke-width: 3;
     stroke-linecap: round;
   }
-  .home-note {
-    margin-top: 6px;
-    color: var(--color-chalk-dim);
-    font-size: 15px;
-  }
-  .home-families {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-width: 0;
-  }
-  .home-families h2 {
-    margin: 0 0 4px;
-    color: var(--color-yellow);
-    font-size: 22px;
-  }
-  .home-families nav {
-    display: flex;
-    flex-direction: column;
-  }
-  /* Fourteen rows must fit one 800px screen; touch screens get the 44px rows below. */
-  .family {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    min-height: 38px;
-    padding: 8px 0 0;
-    color: var(--color-chalk-muted);
-    font-size: 15px;
-    white-space: nowrap;
-  }
-  .family:hover {
-    color: var(--color-chalk);
-  }
-  .family-code {
-    width: 28px;
-    color: var(--color-chalk-faint);
-    font-size: 12px;
-    font-weight: 500;
-  }
-  .family-count {
-    margin-left: auto;
-    color: var(--color-chalk-faint);
-    font-size: 12px;
-  }
-  .home-foot {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 4px 32px;
-    padding: 0 var(--gutter) 10px;
-    color: var(--color-chalk-dim);
-    font-size: 14px;
-  }
   .home-last {
-    margin: 0;
+    position: relative;
+    margin: 0 0 14px;
     color: var(--color-chalk-muted);
+    font-size: 16px;
+  }
+  .home-last .hand {
     font-size: 18px;
   }
   /* A 44px target without moving the line: the hit area grows into the margins. */
@@ -160,52 +177,47 @@
     color: var(--color-yellow);
   }
 }
-@media (max-width: 1024px), (pointer: coarse) {
-  .family {
-    min-height: 44px;
-    padding-top: 10px;
-  }
-}
 @media (max-width: 1024px) {
-  .home-board {
-    grid-template-columns: minmax(0, 1fr) 260px;
-    gap: 32px;
-  }
-  .home-ask h1 {
-    font-size: 52px;
-  }
   .home-glow {
     display: none;
   }
+  .home-head h1 {
+    font-size: 44px;
+  }
 }
 @media (max-width: 640px) {
-  .home-board {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
+  /* Phone: the sentence under the question, the stick above its line. */
+  .home-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
     padding-top: 20px;
   }
-  .home-ask {
-    gap: 22px;
+  .home-head h1 {
+    font-size: 38px;
   }
-  /* "understand?" must fit the 280px column in one piece. */
-  .home-ask h1 {
-    font-size: 36px;
+  .home-chalks {
+    justify-content: flex-start;
+    padding-top: 18px;
+  }
+  .home-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding: 18px 0;
+  }
+  .home-row-line {
+    font-size: 26px;
+  }
+  .home-lookup {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+  .home-search {
+    max-width: none;
   }
   .home-search-line input {
     font-size: 20px;
-  }
-  .family {
-    white-space: normal;
-  }
-  .home-foot {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 8px;
-  }
-}
-@media (max-width: 380px) {
-  .home-ask h1 {
-    font-size: 32px;
   }
 }
 @media (forced-colors: active) {
@@ -215,5 +227,8 @@
   .home-search-line input:focus-visible {
     outline: 2px solid Highlight;
     outline-offset: 2px;
+  }
+  .home-row .home-stick {
+    forced-color-adjust: none;
   }
 }

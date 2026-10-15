@@ -14,7 +14,7 @@ describe('Separate blackboard pages', () => {
   it('keeps the homepage calm and does not count an unseen control as viewed', () => {
     render(<App />)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      'What are you trying to understand?',
+      'Who’s reading?',
     )
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     expect(
@@ -25,9 +25,12 @@ describe('Separate blackboard pages', () => {
     ).not.toBeInTheDocument()
     expect(
       within(
-        screen.getByRole('navigation', { name: 'Control families' }),
+        screen.getByRole('navigation', { name: 'Who’s reading?' }),
       ).getAllByRole('link'),
-    ).toHaveLength(14)
+    ).toHaveLength(3)
+    expect(
+      screen.queryByRole('navigation', { name: 'Control families' }),
+    ).not.toBeInTheDocument()
     expect(trackUsage).not.toHaveBeenCalled()
   })
   it('opens discovery without a preselected lesson and renders the shared sample from home', async () => {
@@ -38,11 +41,7 @@ describe('Separate blackboard pages', () => {
     ).toHaveTextContent('149 references found')
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     followPageLink(screen.getByRole('link', { name: 'Cipher & Chalk home' }))
-    followPageLink(
-      screen.getByRole('link', {
-        name: 'AC.L1-b.1.i Authorized Access Control [FCI Data]',
-      }),
-    )
+    followPageLink(screen.getByRole('link', { name: /^I’m new to this\./ }))
     expect(
       await screen.findByRole('heading', {
         level: 1,

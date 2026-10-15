@@ -4,8 +4,25 @@ import { DashSwitch } from './DashSwitch'
 
 const repositoryUrl = 'https://github.com/WaylandP/cipher-and-chalk'
 
-/** One line above the tray: the project's limits, and the pages that live off the nav. */
+/**
+ * One line above the tray: the project's limits, and the pages that live off
+ * the nav. Home carries the stranger's line instead: made by whom, the source,
+ * and the privacy promise.
+ */
 export function SiteFooter({ page }: { readonly page: SitePage }) {
+  if (page === 'home')
+    return (
+      <footer className="site-footer site-footer-home">
+        <p className="footer-note">
+          Made by one person, in the open.{' '}
+          <a href={repositoryUrl} target="_blank" rel="noopener noreferrer">
+            Source on GitHub
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>{' '}
+          · No account. Nothing you type is collected.
+        </p>
+      </footer>
+    )
   return (
     <footer className="site-footer">
       <p className="footer-note">

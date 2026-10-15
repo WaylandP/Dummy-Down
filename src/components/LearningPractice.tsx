@@ -13,15 +13,17 @@ import { cueDash } from './board/tray-state'
 
 interface LearningPracticeProps {
   lesson: LessonIdentity
-  /** The heading level under the surface this sits on (2 on the Board, 4 in the demo reader). */
-  level?: 2 | 4
+  /** The heading level under the surface this sits on (2 on the Board, 3 in the demo reader). */
+  level?: 2 | 3 | 4
 }
 
-type PracticeLevel = 2 | 4
+type PracticeLevel = 2 | 3 | 4
 const headings = {
   2: { title: 'h2', section: 'h3', item: 'h4' },
+  3: { title: 'h3', section: 'h4', item: 'h5' },
   4: { title: 'h4', section: 'h5', item: 'h6' },
 } as const
+const nested = { 2: 3, 3: 4, 4: 5 } as const
 
 function AnswerReview({
   questions,
@@ -410,13 +412,13 @@ export function LearningPractice({ lesson, level = 2 }: LearningPracticeProps) {
         </div>
       )}
       {activity.diagram && (
-        <LessonDiagram diagram={activity.diagram} level={level === 2 ? 3 : 5} />
+        <LessonDiagram diagram={activity.diagram} level={nested[level]} />
       )}
       {activity.glossaryTermIds && (
         <ContextTerms
           termIds={activity.glossaryTermIds}
           terms={glossaryTerms}
-          level={level === 2 ? 3 : 5}
+          level={nested[level]}
         />
       )}
       <details

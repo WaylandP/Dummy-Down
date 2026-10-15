@@ -1,0 +1,574 @@
+/* The Controls page: the question of where to start answered with the
+   fourteen families beside the results, on the Board. Unlayered on purpose,
+   and under the explorer's id, so it wins over the older reader's rules. */
+#explorer.is-discovery {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#explorer.is-discovery .explorer-notice {
+  margin: 0;
+  padding: 12px var(--gutter) 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-chalk-muted);
+  font-size: 14px;
+}
+.discover {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 26px var(--gutter) 0;
+}
+.discover-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 40px;
+}
+.discover-head h1 {
+  margin: 0;
+  font-size: 46px;
+  line-height: 1;
+}
+.discover-lead {
+  margin: 0;
+  max-width: 600px;
+  color: var(--color-chalk-muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+/* The find line and the quiet selects on one row over a rule. */
+.discover-find {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  margin-top: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-rule);
+}
+.discover-search {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  max-width: 520px;
+}
+.discover-search-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-yellow);
+}
+#explorer.is-discovery .discover-search input {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  min-height: 44px;
+  padding: 6px 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--color-chalk);
+  font-family: var(--font-sans);
+  font-size: 20px;
+}
+#explorer.is-discovery .discover-search input::placeholder {
+  color: var(--color-chalk-faint);
+}
+/* Focus is the underline turning to yellow chalk; there is no box to ring. */
+#explorer.is-discovery .discover-search input:focus-visible {
+  outline: none;
+}
+.discover-search:has(input:focus-visible) .discover-underline path {
+  stroke: var(--color-yellow);
+  stroke-width: 5;
+}
+.discover-underline {
+  display: block;
+  width: 100%;
+  height: 10px;
+}
+.discover-underline path {
+  fill: none;
+  stroke: var(--color-chalk);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+/* Each quiet select is as wide as its widest option, so no label is cut. */
+.discover-field {
+  flex: none;
+  min-width: 110px;
+}
+/* The families on the left, the results on the right, both reading from the top. */
+.discover-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 392px minmax(0, 1fr);
+  gap: 48px;
+  min-height: 0;
+  padding-top: 10px;
+}
+.discover-families {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.discover-families h2 {
+  margin: 0 0 2px;
+  color: var(--color-yellow);
+  font-size: 22px;
+  line-height: 1.2;
+}
+/* Two columns of 44px rows: every family is a target, and all fifteen fit one screen. */
+.family-rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+}
+.family {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0;
+  color: var(--color-chalk-muted);
+  font-size: 14px;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.family:hover,
+.family:focus-visible {
+  color: var(--color-chalk);
+}
+.family:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+.family[aria-current='true'] {
+  color: var(--color-chalk);
+}
+.family[aria-current='true'] .family-count,
+.family[aria-current='true'] .family-code {
+  color: var(--color-yellow);
+}
+.family-code {
+  width: 28px;
+  color: var(--color-chalk-faint);
+  font-size: 12px;
+  font-weight: 500;
+}
+.family-count {
+  margin-left: auto;
+  color: var(--color-chalk-faint);
+  font-size: 12px;
+}
+.discover-results {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+}
+.discover-results-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 24px;
+  margin-bottom: 4px;
+}
+#explorer.is-discovery .result-count {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-chalk-dim);
+  font-size: 14px;
+}
+/* The three levels as one quiet row; the one in force is underlined in chalk. */
+#explorer.is-discovery .cmmc-levels {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+#explorer.is-discovery .cmmc-levels > p {
+  display: none;
+}
+#explorer.is-discovery .level-paths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 22px;
+  margin: 0;
+  padding: 0;
+}
+#explorer.is-discovery .level-paths a {
+  flex: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  width: auto;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--color-chalk-muted);
+  font-size: 14px;
+  text-decoration: none;
+}
+#explorer.is-discovery .level-paths a > span {
+  display: inline;
+}
+#explorer.is-discovery .level-paths a:hover,
+#explorer.is-discovery .level-paths a:focus-visible,
+#explorer.is-discovery .level-paths a[aria-current='true'] {
+  color: var(--color-chalk);
+}
+#explorer.is-discovery .level-paths a[aria-current='true'] .level-path-name {
+  text-decoration: underline;
+  text-decoration-color: var(--color-yellow);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+#explorer.is-discovery .level-path-name {
+  color: var(--color-chalk);
+  font-weight: 500;
+}
+#explorer.is-discovery .level-path-name svg {
+  display: none;
+}
+#explorer.is-discovery .level-path-count {
+  color: var(--color-chalk-dim);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+/* The description and the count's noun stay for screen readers; the row reads "Level 1 15". */
+#explorer.is-discovery
+  .level-paths
+  a
+  > span:not(.level-path-name, .level-path-count),
+#explorer.is-discovery .level-path-noun {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+/* The results as rows between hairlines: the ID in blue mono, the title, the family. */
+#explorer.is-discovery .control-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-rule-soft);
+}
+#explorer.is-discovery .control-item {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) auto auto;
+  column-gap: 20px;
+  align-items: baseline;
+  width: 100%;
+  min-height: 44px;
+  margin: 0;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid var(--color-rule-soft);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--color-chalk);
+  font-family: var(--font-sans);
+  text-align: left;
+}
+#explorer.is-discovery .control-item:hover .control-item-title,
+#explorer.is-discovery .control-item:focus-visible .control-item-title {
+  color: var(--color-yellow);
+}
+#explorer.is-discovery .control-item:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: -2px;
+}
+#explorer.is-discovery .control-code {
+  grid-column: 1;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--color-blue);
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+#explorer.is-discovery .control-item-title {
+  grid-column: 2;
+  min-width: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+#explorer.is-discovery .control-item-title svg {
+  display: none;
+}
+/* The family reads at the right; the kind is the collection's and stays for screen readers. */
+#explorer.is-discovery .control-item-meta {
+  grid-column: 3;
+  margin: 0;
+  color: var(--color-chalk-dim);
+  font-size: 13px;
+  white-space: nowrap;
+}
+#explorer.is-discovery .control-item-meta > span,
+#explorer.is-discovery .control-item-kind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+#explorer.is-discovery .control-item-practice {
+  grid-column: 4;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--color-yellow);
+  font-size: 13px;
+  white-space: nowrap;
+}
+#explorer.is-discovery .results-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin: 2px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+#explorer.is-discovery .result-page-count {
+  margin: 0;
+  color: var(--color-chalk-dim);
+  font-size: 13px;
+}
+#explorer.is-discovery .result-page-actions {
+  display: flex;
+  gap: 20px;
+}
+#explorer.is-discovery .results-pagination button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-chalk-muted);
+  font-family: var(--font-sans);
+  font-size: 14px;
+}
+#explorer.is-discovery .results-pagination button:hover:not(:disabled) {
+  color: var(--color-yellow);
+}
+#explorer.is-discovery .results-pagination button:disabled {
+  color: var(--color-chalk-faint);
+}
+#explorer.is-discovery .empty-state {
+  margin: 0;
+  padding: 18px 0 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+#explorer.is-discovery .empty-state :is(h2, h3) {
+  margin: 0 0 8px;
+  font-family: var(--font-hand);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+#explorer.is-discovery .empty-state p {
+  margin: 0 0 12px;
+  max-width: 60ch;
+  color: var(--color-chalk-muted);
+  font-size: 15px;
+}
+#explorer.is-discovery .empty-state .button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--color-yellow);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+/* The project's demo lesson keeps its older reader, beside the results. */
+.discover-body.is-reading {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  overflow-y: auto;
+}
+.discover-body.is-reading .discover-results {
+  overflow: visible;
+}
+@media (max-width: 1024px) {
+  .discover-find {
+    flex-wrap: wrap;
+    gap: 12px 24px;
+  }
+  .discover-search {
+    flex-basis: 100%;
+    max-width: none;
+  }
+  .discover-field {
+    flex: 1 1 40%;
+    min-width: 0;
+  }
+  .discover-field select {
+    width: 100%;
+  }
+  .discover-body {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 32px;
+  }
+  .family-rows {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .discover-body.is-reading {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Narrow results (tablets, or beside the demo lesson): the family and the
+   practice note move under the title. */
+@media (max-width: 1024px) {
+  #explorer.is-discovery .control-item {
+    grid-template-columns: 155px auto minmax(0, 1fr);
+    row-gap: 2px;
+  }
+  #explorer.is-discovery .control-item-title {
+    grid-column: 2 / -1;
+    grid-row: 1;
+  }
+  #explorer.is-discovery .control-item-meta {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  #explorer.is-discovery .control-item-practice {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: start;
+  }
+}
+#explorer.is-discovery .is-reading .control-item {
+  grid-template-columns: 155px auto minmax(0, 1fr);
+  row-gap: 2px;
+}
+#explorer.is-discovery .is-reading .control-item-title {
+  grid-column: 2 / -1;
+  grid-row: 1;
+}
+#explorer.is-discovery .is-reading .control-item-meta {
+  grid-column: 2;
+  grid-row: 2;
+}
+#explorer.is-discovery .is-reading .control-item-practice {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: start;
+}
+@media (max-width: 640px) {
+  /* Phone: everything stacks; the families take two columns. */
+  .discover {
+    padding-top: 18px;
+  }
+  .discover-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .discover-head h1 {
+    font-size: 36px;
+  }
+  .discover-find {
+    flex-wrap: wrap;
+    gap: 10px 16px;
+  }
+  .discover-search {
+    flex-basis: 100%;
+    max-width: none;
+  }
+  .discover-field {
+    flex: 1 1 34%;
+  }
+  .discover-field-wide {
+    flex-basis: 54%;
+  }
+  .discover-field select {
+    width: 100%;
+  }
+  .discover-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .family-rows {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #explorer.is-discovery .control-item {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 2px;
+  }
+  #explorer.is-discovery .control-code {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #explorer.is-discovery .control-item-title {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  #explorer.is-discovery .control-item-meta {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  #explorer.is-discovery .control-item-practice {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+@media (forced-colors: active) {
+  .discover-find,
+  #explorer.is-discovery .control-item,
+  #explorer.is-discovery .control-list {
+    border-color: CanvasText;
+  }
+}

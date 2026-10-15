@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { objectiveCoverage } from '../data/objective-coverage'
 import { createLessonUrl, type ControlTab } from '../state/explorer-state'
 import type { ObjectiveCoverage } from '../types/coverage'
+import { readChalkPreference } from '../state/chalk-preference'
 
 const pageSize = 15
 const modes = {
@@ -18,7 +19,7 @@ const counts = {
 }
 function lessonUrl(
   row: ObjectiveCoverage,
-  mode: keyof typeof modes = 'beginner',
+  mode: keyof typeof modes = readChalkPreference() ?? 'beginner',
   tab: ControlTab = 'decode',
 ) {
   return createLessonUrl(

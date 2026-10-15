@@ -87,7 +87,7 @@ their existing values; historical source URLs are preserved.
 | `src/App.tsx`                     | Assembles the page and coordinates the interactive experience.                                                                                           |
 | `src/components/`                 | Reusable interface pieces, including the Control Explorer.                                                                                               |
 | `src/components/board/`           | The Board shell: chalk filter and dust, the lockup, header with its find line, footer, the tray (the phone bar) and the keys.                            |
-| `src/components/Home.tsx`         | The question, the find line, the fourteen families and where the visitor left off.                                                                       |
+| `src/components/Home.tsx`         | Who's reading: three chalk rows that each pick a chalk and a place to start, the find line and where the visitor left off.                               |
 | `src/components/control/`         | The control page: the decoded ID, the title and the Decode, Explain, Evidence, Practice, Related and Rev 3 views; chalk popovers for the lesson's words. |
 | `src/components/Glossary.tsx`     | Words: one letter at a time, four groupings and a search line; `glossary/groups.ts` derives the groups from sources.                                     |
 | `src/components/TimelinePage.tsx` | The timeline: the dates that matter, each paraphrased over its quoted source from `src/data/cmmc-timeline.json`.                                         |
@@ -171,17 +171,23 @@ Discovery state uses `view=discover` with optional `catalog`, `q`, `family`,
 `level`, `mode` and `collection=references`. Home does not open or track a selected
 lesson. Its native GET form submits to `/learn` with `view=discover`,
 `collection=references`, `catalog=cmmc` and the encoded query `q`. An empty search
-shows all references. The family links use `serializeExplorerSearch`; they
-do not add a second history controller.
+shows all references. The Controls page's family and level links carry real
+`serializeExplorerSearch` addresses and filter in place through the explorer's
+own dispatch; a modifier click leaves them to the browser.
 
-Home lists the fourteen control families from the catalog, each linking to
-reference discovery filtered by `family`, and a bottom row that links to the
-default lesson (`cmmc/cmmc-2-13-sep-2024/ac-l1-b-1-i`) as "Start here". When
-optional saving is on, the control page records the control on screen under a
-third key (`cipher-and-chalk:last-control:v1`, three bounded identifiers) and
-Home shows it as "Last time" instead; the row never reads that key without the
-consent marker, and deleting progress removes it. The bare `/learn` address
-still uses the explicit default identity.
+Home offers three rows, one per chalk: the first lesson
+(`cmmc/cmmc-2-13-sep-2024/ac-l1-b-1-i`) in white, the Controls page in yellow
+and the assessment objectives in blue. Choosing a row writes that chalk to
+`cipher-and-chalk:chalk:v1` (`src/state/chalk-preference.ts`); the explorer
+store reads it as the default mode for an address that names none, and the
+header's Learn link and Home's "Last time" link carry it. The Controls page
+(`src/components/ControlExplorer.tsx`, discovery) lists the fourteen families
+from `src/components/families.ts`, each filtering in place with a real link
+behind it. When optional saving is on, the control page records the control on
+screen under a third key (`cipher-and-chalk:last-control:v1`, three bounded
+identifiers) and Home shows it as "Last time"; the row never reads that key
+without the consent marker, and deleting progress removes it. The bare `/learn`
+address still uses the explicit default identity.
 
 The source collection is inferred only for an exact known source identity on a
 shared link; explicit `collection=lessons` remains authoritative on a mismatch.

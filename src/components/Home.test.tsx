@@ -1,13 +1,14 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { Home } from './Home'
-import { explorerCatalog, referenceControls } from '../data/content'
+import { explorerCatalog } from '../data/content'
 import { learningActivities } from '../data/learning'
 import {
   explorerResults,
   parseExplorerSearch,
   resolveLesson,
 } from '../state/explorer-state'
+import { CHALK_PREFERENCE_KEY } from '../state/chalk-preference'
 import { LocalProgressProvider } from '../progress/LocalProgressProvider'
 import {
   LAST_CONTROL_KEY,
@@ -22,6 +23,7 @@ vi.mock('../analytics/usage', () => ({ trackUsage: vi.fn() }))
 
 beforeEach(() => {
   window.history.replaceState(null, '', '/')
+  window.localStorage.clear()
   vi.mocked(trackUsage).mockClear()
 })
 
@@ -31,6 +33,14 @@ function formDestination(form: HTMLFormElement) {
   new FormData(form).forEach((value, key) => params.append(key, String(value)))
   destination.search = params.toString()
   return destination
+}
+
+/** The rows are real links; jsdom cannot follow them, so a click only records its side effect. */
+function clickWithoutLeaving(link: HTMLElement) {
+  link.addEventListener('click', (event) => event.preventDefault(), {
+    once: true,
+  })
+  fireEvent.click(link)
 }
 
 describe('Home', () => {
@@ -83,80 +93,98 @@ describe('Home', () => {
     },
   )
 
-  it('lists the fourteen families with their real counts, each opening filtered discovery', () => {
+  it('asks who is reading and offers one row per chalk, each a place to start', () => {
     renderWithProgress(<Home />)
-    const links = within(
-      screen.getByRole('navigation', { name: 'Control families' }),
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Who’s reading?' }),
+    ).toBeVisible()
+    expect(
+      screen.getByText(
+        'A reference desk for CMMC Level 2. The 149 controls, quoted and cited, then explained for the person in front of the board.',
+      ),
+    ).toBeVisible()
+    const rows = within(
+      screen.getByRole('navigation', { name: 'Who’s reading?' }),
     ).getAllByRole('link') as HTMLAnchorElement[]
-    expect(links).toHaveLength(14)
-    expect(links.map((link) => link.textContent?.slice(0, 2))).toEqual(
-      [...new Set(referenceControls.map((control) => control.family))].sort(),
-    )
-    let total = 0
-    for (const link of links) {
-      const code = link.textContent!.slice(0, 2)
-      const expected = referenceControls.filter(
-        (control) => control.family === code,
-      )
-      expect(
-        within(link).getByText(String(expected.length), {
-          selector: '.family-count',
-        }),
-      ).toBeInTheDocument()
-      const destination = new URL(link.href)
-      expect(destination.pathname).toBe('/learn')
-      const parsed = parseExplorerSearch(destination.search, explorerCatalog)
-      expect(parsed.kind).toBe('ready')
-      if (parsed.kind !== 'ready') throw new Error('Family address is invalid')
-      expect(parsed.state.view).toBe('discover')
-      expect(parsed.state.filters).toMatchObject({
-        catalog: 'cmmc',
-        collection: 'references',
-        family: code,
-        query: '',
-      })
-      const results = explorerResults(parsed.state, explorerCatalog)
-      expect(results).toHaveLength(expected.length)
-      expect(results.every((control) => control.family === code)).toBe(true)
-      total += results.length
-    }
-    expect(total).toBe(referenceControls.length)
-    expect(screen.getByText(/149 controls\./)).toBeVisible()
-    expect(screen.getByText('CMMC v2.13, September 2024')).toBeVisible()
-    expect(trackUsage).not.toHaveBeenCalled()
-  })
+    expect(rows.map((row) => row.textContent)).toEqual([
+      'I’m new to this.Start with what CUI is and why the DoD cares, then one control at a time in plain words.Start here →',
+      'I run the systems.Start with the fourteen families and what each one actually asks of your network.The families →',
+      'I’m preparing for an assessment.Start with the objectives: what gets examined, who gets interviewed, what gets tested.The objectives →',
+    ])
+    expect(
+      rows.map((row) => row.querySelector('.tray-stick')?.className),
+    ).toEqual([
+      'home-stick tray-stick tray-stick-white',
+      'home-stick tray-stick tray-stick-yellow',
+      'home-stick tray-stick tray-stick-blue',
+    ])
 
-  it('offers a starting control until saving remembers the one opened last', () => {
-    renderWithProgress(<Home />)
-    expect(screen.getByText(/^Start here:/)).toBeVisible()
-    const link = screen.getByRole('link', {
-      name: 'AC.L1-b.1.i Authorized Access Control [FCI Data]',
-    }) as HTMLAnchorElement
-    const destination = new URL(link.href)
-    expect(destination.pathname).toBe('/learn')
-    expect(destination.hash).toBe('#explorer')
-    const parsed = parseExplorerSearch(destination.search, explorerCatalog)
-    if (parsed.kind !== 'ready' || parsed.state.view !== 'lesson')
-      throw new Error('Starting point did not identify a lesson')
-    expect(parsed.state.lesson).toEqual({
+    // White chalk: the first lesson, in plain words.
+    const first = new URL(rows[0]!.href)
+    expect(first.pathname).toBe('/learn')
+    const lesson = parseExplorerSearch(first.search, explorerCatalog)
+    if (lesson.kind !== 'ready' || lesson.state.view !== 'lesson')
+      throw new Error('The first row did not identify a lesson')
+    expect(lesson.state.lesson).toEqual({
       frameworkId: 'cmmc',
       editionId: 'cmmc-2-13-sep-2024',
       controlKey: 'ac-l1-b-1-i',
     })
+    expect(lesson.state.mode).toBe('beginner')
     expect(
-      resolveLesson(parsed.state.lesson, parsed.state.filters, explorerCatalog)
+      resolveLesson(lesson.state.lesson, lesson.state.filters, explorerCatalog)
         .kind,
     ).toBe('lesson')
-    expect(screen.queryByText(/^Last time:/)).toBeNull()
+
+    // Yellow chalk: the Controls page with the fourteen families.
+    const second = new URL(rows[1]!.href)
+    expect(second.pathname).toBe('/learn')
+    const discover = parseExplorerSearch(second.search, explorerCatalog)
+    if (discover.kind !== 'ready') throw new Error('The second row is invalid')
+    expect(discover.state.view).toBe('discover')
+    expect(discover.state.mode).toBe('it-cyber')
+    expect(discover.state.filters.collection).toBe('references')
+    expect(explorerResults(discover.state, explorerCatalog)).toHaveLength(149)
+
+    // Blue chalk: the assessment objectives.
+    expect(new URL(rows[2]!.href).pathname).toBe('/coverage')
+    expect(trackUsage).not.toHaveBeenCalled()
   })
 
-  it('shows the control opened last only while saving is on, and never a stranger', async () => {
+  it('remembers the chalk of the row chosen, so the next control opens in it', () => {
+    renderWithProgress(<Home />)
+    const rows = within(
+      screen.getByRole('navigation', { name: 'Who’s reading?' }),
+    ).getAllByRole('link')
+    expect(window.localStorage.getItem(CHALK_PREFERENCE_KEY)).toBeNull()
+    clickWithoutLeaving(rows[1]!)
+    expect(window.localStorage.getItem(CHALK_PREFERENCE_KEY)).toBe('it-cyber')
+    clickWithoutLeaving(rows[2]!)
+    expect(window.localStorage.getItem(CHALK_PREFERENCE_KEY)).toBe('compliance')
+    clickWithoutLeaving(rows[0]!)
+    expect(window.localStorage.getItem(CHALK_PREFERENCE_KEY)).toBe('beginner')
+    expect(trackUsage).not.toHaveBeenCalled()
+  })
+
+  it('keeps the families and the version off Home, and shows no starting line without saving', () => {
+    renderWithProgress(<Home />)
+    expect(
+      screen.queryByRole('navigation', { name: 'Control families' }),
+    ).toBeNull()
+    expect(screen.queryByText(/CMMC v2\.13/)).toBeNull()
+    expect(screen.queryByText(/Start here:/)).toBeNull()
+    expect(screen.queryByText(/Last time:/)).toBeNull()
+    expect(screen.getByText('Or just look something up:')).toBeInTheDocument()
+  })
+
+  it('shows the control opened last only while saving is on, in the remembered chalk, and never a stranger', async () => {
     const remembered = JSON.stringify({
       frameworkId: 'cmmc',
       editionId: 'cmmc-2-13-sep-2024',
       controlKey: 'ac-l2-3-1-1',
     })
     const saved = JSON.stringify({ schema: 1, entries: [] })
+    window.localStorage.setItem(CHALK_PREFERENCE_KEY, 'compliance')
     const on = render(
       <LocalProgressProvider
         activities={learningActivities}
@@ -169,12 +197,18 @@ describe('Home', () => {
         <Home />
       </LocalProgressProvider>,
     )
-    expect(await screen.findByText(/^Last time:/)).toBeVisible()
-    expect(
-      screen.getByRole('link', {
-        name: 'AC.L2-3.1.1 Authorized Access Control [CUI Data]',
-      }),
-    ).toHaveAttribute('href', expect.stringContaining('control=ac-l2-3-1-1'))
+    expect(await screen.findByText(/Last time:/)).toBeVisible()
+    const link = screen.getByRole('link', {
+      name: 'AC.L2-3.1.1 Authorized Access Control [CUI Data]',
+    })
+    expect(link).toHaveAttribute(
+      'href',
+      expect.stringContaining('control=ac-l2-3-1-1'),
+    )
+    expect(link).toHaveAttribute(
+      'href',
+      expect.stringContaining('mode=compliance'),
+    )
     on.unmount()
 
     const strangers: Record<string, string>[] = [
@@ -203,8 +237,13 @@ describe('Home', () => {
           <Home />
         </LocalProgressProvider>,
       )
-      expect(await screen.findByText(/^Start here:/)).toBeVisible()
-      expect(screen.queryByText(/^Last time:/)).toBeNull()
+      expect(
+        await screen.findByRole('heading', {
+          level: 1,
+          name: 'Who’s reading?',
+        }),
+      ).toBeVisible()
+      expect(screen.queryByText(/Last time:/)).toBeNull()
       view.unmount()
     }
     expect(trackUsage).not.toHaveBeenCalled()

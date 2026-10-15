@@ -8,7 +8,7 @@
 
 **[Open the site →](https://cipherandchalk.vercel.app)**
 
-![Cipher & Chalk home page: a chalkboard asking "What are you trying to understand?", a search line, and the fourteen CMMC control families with their counts](docs/screenshots/board/home-1280.jpg)
+![Cipher & Chalk home page: a chalkboard asking "Who’s reading?", three rows, one per chalk, for someone new, someone who runs the systems and someone preparing for an assessment, and a search line](docs/screenshots/board/home-1280.jpg)
 
 ## What it is
 

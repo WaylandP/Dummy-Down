@@ -7,7 +7,7 @@ work follows that specification.
 ## What is live
 
 The app shell is the Board's: the slate ground with chalk dust, the Morse-C ring
-and lockup, the five-item nav with a find line, the one-line footer and the
+and lockup, the seven-item nav with a find line, the one-line footer and the
 wooden tray with Dash in it, drawn from the tokens and fonts in `src/styles.css` and the
 components in `src/components/board/`. Walter Turncoat writes headings, Atkinson
 Hyperlegible Next the reading text, Martian Mono anything that is code; all three
@@ -63,13 +63,31 @@ not establish it.
 
 ## One main task per page
 
-- **Home `/`:** the Board's `mockups/Main.html`. Left: the question in chalk,
-  a search line (an input on a chalk underline, no box) that submits the same
-  discovery address as the header's find line, and one sentence of what the
-  site holds. Right: the fourteen families with their catalog counts, each a
-  link to filtered discovery. Bottom row: "Start here" with the default lesson,
-  or "Last time" with the control opened last when optional saving is on, and
-  the publication version. Home mounts no lesson and records nothing.
+- **Home `/`:** the Board's `mockups/Home.html`, written for the stranger who
+  arrives from a shared link. "Who's reading?" in chalk with one sentence at
+  the right saying what the site is; then three rows between rules, one per
+  chalk, each a link: "I'm new to this." to the first lesson in white,
+  "I run the systems." to the Controls page in yellow, "I'm preparing for an
+  assessment." to the assessment objectives in blue. Choosing a row remembers
+  that chalk under `cipher-and-chalk:chalk:v1` in this browser, and an
+  address that names no chalk opens in it from then on. Below: "Or just look
+  something up:" and the search line (an input on a chalk underline, no box)
+  that submits the same discovery address as the header's find line, and
+  "Last time" with the control opened last when optional saving is on. Home's
+  footer line is the made-by, the source link and the privacy promise; the
+  publication version lives on About. Home mounts no lesson and records
+  nothing. The header's nav is Home · Controls · Learn · Glossary · Practice ·
+  Timeline · About, the one you are on under a yellow chalk stroke; Controls
+  and Learn share `/learn`, Learn lit while a control is on the board.
+- **Controls `/learn?view=discover`:** the Board's discovery: "Controls" in
+  chalk with one sentence, the search line with the quiet selects (family,
+  level, collection, framework) on one row over a rule, then the fourteen
+  families with their counts on the left (links that filter in place, the one
+  in force marked) and on the right the result count, the three levels as a
+  quiet row, and the results as rows between hairlines: ID in blue mono,
+  title, family, "Practice available". One screen at 1280×800; the results
+  scroll in place and page eight at a time. The project's demo lesson opens in
+  the same frame beside the results, so the find row never remounts.
 - **Learn `/learn`:** a selected control is the Board's control page
   (`mockups/Decode.html`, `Explain.html` and the phone variants). The identifier
   is decoded on the first line from the catalog and the publication it names,
@@ -150,8 +168,8 @@ not establish it.
   on a yellow chalk line, how long each status stays current, and what DoD
   has said about Revision 3, each sentence paraphrased over its quoted source
   (`src/data/cmmc-timeline.json`), the sources one disclosure per section on
-  a row at the foot, open in print. On the narrowest phones the five places to go
-  wrap to a further row.
+  a row at the foot, open in print. On phones the seven places to go wrap to
+  a further row.
 
 Native links support direct loads and normal browser navigation; Vercel rewrites
 serve the seven non-root paths. Legacy root query links and section hashes still
