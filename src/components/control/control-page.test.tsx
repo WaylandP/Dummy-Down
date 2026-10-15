@@ -1,4 +1,4 @@
-import { act, render, screen, within } from '@testing-library/react'
+import { act, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import App from '../../App'
@@ -154,7 +154,13 @@ describe('Views in the address', () => {
     expect(
       await screen.findByText('That view is unavailable; showing Decode.'),
     ).toBeVisible()
-    expect(new URLSearchParams(window.location.search).has('tab')).toBe(false)
+    // The explorer rewrites the address once it subscribes, after the lazy
+    // page mounts, so the canonical address can land a tick after the notice.
+    await waitFor(() =>
+      expect(new URLSearchParams(window.location.search).has('tab')).toBe(
+        false,
+      ),
+    )
     expect(
       within(
         screen.getByRole('navigation', { name: 'Views of this control' }),
