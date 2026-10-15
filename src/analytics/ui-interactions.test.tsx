@@ -73,7 +73,7 @@ describe('Usage interaction wiring', () => {
       ),
     )
     vi.mocked(trackUsage).mockClear()
-    const search = screen.getByRole('searchbox', { name: 'Search controls' })
+    const search = screen.getByRole('searchbox', { name: 'Find controls' })
     await user.type(search, 'private-example-search')
     expect(trackUsage).not.toHaveBeenCalled()
     await user.keyboard('{Enter}')

@@ -100,10 +100,9 @@ describe('Visible editorial provenance', () => {
     ).not.toBeInTheDocument()
     await user.click(opener)
     await user.click(
-      explorer.getByRole('button', { name: 'Browse & filter controls (149)' }),
-    )
-    await user.click(
-      explorer.getByRole('button', { name: /AC\.L1-b\.1\.ii.*Transaction/ }),
+      within(
+        explorer.getByRole('navigation', { name: 'All controls' }),
+      ).getByRole('link', { name: /^AC\.L1-b\.1\.ii Transaction/ }),
     )
     expect(
       explorer.queryByRole('button', { name: 'Close definition' }),

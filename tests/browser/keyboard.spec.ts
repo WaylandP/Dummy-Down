@@ -75,19 +75,23 @@ test('delayed clipboard failure keeps focus and selects the fallback link', asyn
   ).toBeGreaterThan(0)
 })
 
-test('reopening browsing starts at its newly exposed search', async ({
+test('on a phone the All controls sheet opens on its find line and closes back to its line', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto(reader)
-  const browse = page.getByRole('button', { name: 'Browse & filter controls' })
-  await browse.focus()
+  const open = page.getByRole('button', { name: 'All controls' })
+  await open.focus()
   await page.keyboard.press('Enter')
-  await expect(
-    page.getByRole('searchbox', { name: 'Search controls' }),
-  ).toBeFocused()
+  const search = page.getByRole('searchbox', { name: 'Find controls' })
+  await expect(search).toBeFocused()
   await page.keyboard.press('Tab')
   await expect(
-    page.getByRole('combobox', { name: 'Content collection' }),
+    page.getByRole('dialog', { name: 'All controls' }).getByRole('link', {
+      name: /^Start here/,
+    }),
   ).toBeFocused()
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('dialog', { name: 'All controls' })).toBeHidden()
+  await expect(open).toBeFocused()
 })

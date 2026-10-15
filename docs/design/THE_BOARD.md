@@ -136,11 +136,24 @@ request each; each line says whether it is built.
    · Practice · Timeline · About; Controls is lit for every `/learn` address,
    and every `/learn` link keeps working. The tray's fourth stub is gone (the
    doodle chalk takes its place). Content keeps clear of Smudge at every size.
-2. **Controls with Learn merged in** — `Controls.html` (not built). A rail of
-   every control beside the control: a find line, "Start here" through the
-   fifteen Level 1 controls as a path in the address, the level switch, the
-   fourteen families with counts, collapsible. Phone: an "All controls" line
-   opens the rail as a sheet.
+2. **Controls with Learn merged in** — `Controls.html` (built). A rail of
+   every control beside the control, always visible at desktop widths and
+   scrolling on its own: a find line that filters it as you type, "Start
+   here" through the fifteen Level 1 controls in catalog order as a path in
+   the address (`path=basics`, "n of 15", fifteen chalk dashes with the
+   current one yellow), the level switch All · 1 · 2 · 3 on the existing
+   level filter, and the fourteen families with their counts for the level in
+   force, collapsible, the open one listing its controls with the current one
+   under the yellow bar; every count from the catalog. On the right the
+   control exactly as before, and with no control chosen the overview (the
+   results at full width beside the rail; below desktop widths, with the
+   families as before). Beside a control the family rows open in place. On
+   the path the foot reads "Next on the path: ‹id› →"; a control picked from
+   the rail leaves the path. The old "Browse & filter controls"
+   disclosure is gone. Phone: an "All controls" line at the top opens the rail
+   as a full-screen sheet, and "Start here" stays visible as one line. Home's
+   "I'm new to this." row opens the first control on the path with the white
+   chalk.
 3. **Home: what this is** — `Home.html` (not built). The "What this is"
    column; copy covers all three levels; the frameworks being researched.
 4. **Glossary: All** (not built). An "All" button before A, selected by

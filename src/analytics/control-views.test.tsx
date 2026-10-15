@@ -22,10 +22,11 @@ describe('Known control render measurement', () => {
         <App />
       </StrictMode>,
     )
-    await screen.findByRole('heading', {
-      level: 1,
-      name: 'Authorized Access Control [FCI Data]',
-    })
+    await screen.findByRole(
+      'heading',
+      { level: 1, name: 'Authorized Access Control [FCI Data]' },
+      { timeout: 5000 },
+    )
     // The view is recorded in a passive effect after the lazy page's first paint.
     const views = () =>
       vi

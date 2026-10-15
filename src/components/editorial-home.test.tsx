@@ -6,20 +6,23 @@ import App from '../App'
 beforeEach(() => window.history.replaceState(null, '', '/learn'))
 
 describe('Learning page and reading navigation', () => {
-  it('closes discovery when the reader selects the already displayed control', async () => {
+  it('focuses the title when the rail picks the control already on the board', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await screen.findByRole('region', { name: 'Control Explorer' })
+    await screen.findByRole(
+      'region',
+      { name: 'Control Explorer' },
+      { timeout: 5000 },
+    )
     await screen.findByRole('heading', { level: 1 })
-    await user.click(
-      screen.getByRole('button', { name: 'Browse & filter controls (149)' }),
+    const rail = within(
+      screen.getByRole('navigation', { name: 'All controls' }),
     )
-    await user.click(
-      screen.getByRole('button', { name: /AC\.L1-b\.1\.i.*Authorized/ }),
-    )
-    expect(
-      screen.getByRole('button', { name: 'Browse & filter controls (149)' }),
-    ).toHaveAttribute('aria-expanded', 'false')
+    const current = rail.getByRole('link', {
+      name: /^AC\.L1-b\.1\.i Authorized/,
+    })
+    expect(current).toHaveAttribute('aria-current', 'page')
+    await user.click(current)
     expect(
       screen.getByRole('heading', {
         name: 'Authorized Access Control [FCI Data]',
@@ -27,18 +30,23 @@ describe('Learning page and reading navigation', () => {
     ).toHaveFocus()
     expect(window.location.search).toBe('')
   })
-  it('opens the full reference collection and a real Level 1 control immediately', async () => {
+  it('opens a real Level 1 control immediately, with the rail of every control beside it', async () => {
     render(<App />)
-    await screen.findByRole('region', { name: 'Control Explorer' })
+    await screen.findByRole(
+      'region',
+      { name: 'Control Explorer' },
+      { timeout: 5000 },
+    )
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
       'Authorized Access Control [FCI Data]',
     )
+    const rail = within(
+      screen.getByRole('navigation', { name: 'All controls' }),
+    )
+    expect(rail.getAllByRole('link', { name: /^[A-Z]{2} / })).toHaveLength(14)
     expect(
-      screen.getByRole('combobox', { name: 'Content collection' }),
-    ).toHaveValue('references')
-    expect(
-      screen.getByRole('status', { name: 'Control search results' }),
-    ).toHaveTextContent('149 references found')
+      rail.getByRole('link', { name: /^AC\.L1-b\.1\.i Authorized/ }),
+    ).toHaveAttribute('aria-current', 'page')
     expect(
       screen.getByRole('heading', {
         name: 'Authorized Access Control [FCI Data]',
@@ -55,35 +63,42 @@ describe('Learning page and reading navigation', () => {
     ).toBeVisible()
   })
 
-  it('lets readers expand discovery and returns to reading after choosing another result', async () => {
+  it('puts another control from the rail on the board, focused, and marks it in the rail', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await screen.findByRole('region', { name: 'Control Explorer' })
     const explorer = within(
-      await screen.findByRole('region', { name: 'Control Explorer' }),
+      await screen.findByRole(
+        'region',
+        { name: 'Control Explorer' },
+        { timeout: 5000 },
+      ),
     )
     await explorer.findByRole('heading', { level: 1 })
-    const toggle = explorer.getByRole('button', {
-      name: 'Browse & filter controls (149)',
-    })
-    expect(toggle).toHaveAttribute('aria-expanded', 'false')
-    await user.click(toggle)
-    expect(
-      explorer.getByRole('button', { name: 'Return to reading' }),
-    ).toHaveAttribute('aria-expanded', 'true')
-    await user.click(
-      explorer.getByRole('button', { name: /AC\.L1-b\.1\.ii.*Transaction/ }),
+    const rail = within(
+      explorer.getByRole('navigation', { name: 'All controls' }),
     )
+    // The family of the control on the board is the open one.
     expect(
-      explorer.getByRole('button', { name: 'Browse & filter controls (149)' }),
-    ).toHaveAttribute('aria-expanded', 'false')
+      rail.getByRole('link', { name: /^AC Access Control/ }),
+    ).toHaveAttribute('aria-expanded', 'true')
+    const next = rail.getByRole('link', {
+      name: /^AC\.L1-b\.1\.ii Transaction/,
+    })
+    expect(next).not.toHaveAttribute('aria-current')
+    await user.click(next)
     expect(
       explorer.getByRole('heading', {
         name: 'Transaction & Function Control [FCI Data]',
       }),
     ).toHaveFocus()
+    expect(
+      rail.getByRole('link', { name: /^AC\.L1-b\.1\.ii Transaction/ }),
+    ).toHaveAttribute('aria-current', 'page')
     expect(new URLSearchParams(window.location.search).get('control')).toBe(
       'ac-l1-b-1-ii',
     )
+    expect(
+      explorer.queryByRole('button', { name: /Browse & filter/ }),
+    ).not.toBeInTheDocument()
   })
 })

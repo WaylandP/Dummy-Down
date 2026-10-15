@@ -166,8 +166,11 @@ test('a long control page scrolls inside the frame, its tabs and foot clear of t
   await page.goto(`${control}&tab=practice`)
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   await page.evaluate(() => document.fonts.ready)
+  // The content's own scroller when the page has one (the Controls column).
   const main = await page.evaluate(() => {
-    const node = document.getElementById('main')!
+    const node =
+      document.querySelector<HTMLElement>('#main [data-scroller]') ??
+      document.getElementById('main')!
     return { client: node.clientHeight, scroll: node.scrollHeight }
   })
   expect(main.scroll).toBeGreaterThan(main.client)

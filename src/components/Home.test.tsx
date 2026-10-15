@@ -131,6 +131,7 @@ describe('Home', () => {
       controlKey: 'ac-l1-b-1-i',
     })
     expect(lesson.state.mode).toBe('beginner')
+    expect(lesson.state.path).toBe('basics')
     expect(
       resolveLesson(lesson.state.lesson, lesson.state.filters, explorerCatalog)
         .kind,

@@ -158,7 +158,7 @@ describe('Control Explorer learning experience', () => {
 
   it('finds a control by its identifier and recovers from a search with no matches', async () => {
     const { user, explorer } = await renderApp()
-    const search = explorer.getByRole('searchbox', { name: 'Search controls' })
+    const search = explorer.getByRole('searchbox', { name: 'Find controls' })
 
     await user.type(search, 'AC.L2-3.1.1')
     expect(
@@ -199,24 +199,30 @@ describe('Control Explorer learning experience', () => {
     ).toBeVisible()
   })
 
-  it('supports family and level filters and clears them together with search', async () => {
+  it('supports family and level filters from the rail and clears them together with search', async () => {
     const { user, explorer } = await renderApp()
-    const family = explorer.getByRole('combobox', { name: 'Control family' })
-    const level = explorer.getByRole('combobox', { name: 'Level' })
-    const search = explorer.getByRole('searchbox', { name: 'Search controls' })
+    const rail = within(
+      explorer.getByRole('navigation', { name: 'All controls' }),
+    )
+    const family = () => rail.getByRole('link', { name: /^AC Access Control/ })
+    const level = (name: string) =>
+      within(rail.getByRole('group', { name: 'Level' })).getByRole('link', {
+        name,
+      })
+    const search = rail.getByRole('searchbox', { name: 'Find controls' })
 
-    await user.selectOptions(family, 'AC')
-    await user.selectOptions(level, 'Level 2')
-    expect(family).toHaveValue('AC')
-    expect(level).toHaveValue('Level 2')
+    await user.click(family())
+    await user.click(level('2'))
+    expect(family()).toHaveAttribute('aria-expanded', 'true')
+    expect(level('2')).toHaveAttribute('aria-current', 'true')
     expect(
       explorer.getByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('1 example found')
 
     await user.type(search, 'no matching topic')
     await user.click(explorer.getByRole('button', { name: 'Clear filters' }))
-    expect(family).toHaveValue('')
-    expect(level).toHaveValue('')
+    expect(family()).toHaveAttribute('aria-expanded', 'false')
+    expect(level('All')).toHaveAttribute('aria-current', 'true')
     expect(search).toHaveValue('')
     expect(
       explorer.getByRole('status', { name: 'Control search results' }),
@@ -241,16 +247,10 @@ describe('Control Explorer learning experience', () => {
     )
     const { user, explorer } = await renderApp()
     const framework = explorer.getByRole('combobox', { name: 'Framework' })
-    const family = explorer.getByRole('combobox', { name: 'Control family' })
     expect(framework).toHaveValue('nist-sp-800-53')
     expect(
       within(framework).getByRole('option', { name: 'NIST 800-53 · planned' }),
     ).toBeInTheDocument()
-
-    expect(family).toHaveValue('')
-    expect(
-      explorer.queryByRole('combobox', { name: 'Level' }),
-    ).not.toBeInTheDocument()
     expect(
       explorer.getByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('0 examples found')
@@ -266,7 +266,7 @@ describe('Control Explorer learning experience', () => {
       explorer.getByRole('button', { name: 'Browse available examples' }),
     )
     expect(
-      explorer.getByRole('searchbox', { name: 'Search controls' }),
+      explorer.getByRole('searchbox', { name: 'Find controls' }),
     ).toHaveFocus()
     expect(framework).toHaveValue('cmmc')
     expect(
@@ -337,7 +337,7 @@ describe('Shareable lessons and reading tools', () => {
       explorer.getByRole('button', { name: 'Show this lesson in results' }),
     )
     expect(
-      explorer.getByRole('searchbox', { name: 'Search controls' }),
+      explorer.getByRole('searchbox', { name: 'Find controls' }),
     ).toHaveValue('')
     expect(explorer.getByRole('tabpanel', { name: 'Compliance' })).toBeVisible()
     expect(

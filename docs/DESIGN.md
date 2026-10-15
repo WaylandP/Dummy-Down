@@ -89,15 +89,32 @@ not establish it.
   in their padding; where the line wraps they are rows of their own. The content ends above Smudge at every
   size, so no text or control sits under him. The tray holds the three chalks
   and Smudge; the fourth stub is gone.
-- **Controls `/learn?view=discover`:** the Board's discovery: "Controls" in
-  chalk with one sentence, the search line with the quiet selects (family,
-  level, collection, framework) on one row over a rule, then the fourteen
-  families with their counts on the left (links that filter in place, the one
-  in force marked) and on the right the result count, the three levels as a
-  quiet row, and the results as rows between hairlines: ID in blue mono,
-  title, family, "Practice available". One screen at 1280×800; the results
-  scroll in place and page eight at a time. The project's demo lesson opens in
-  the same frame beside the results, so the find row never remounts.
+- **Controls `/learn` (October 15, `mockups/2026-10-15/Controls.html`):** the
+  Controls page and the control page are one screen with Learn merged in. A
+  rail of every control stands on the left, always visible at desktop widths
+  and scrolling on its own: a find line that filters the rail as you type
+  (the same `q` as the results); "Start here", the fifteen Level 1 controls in
+  catalog order as a path in the address (`path=basics`), with "n of 15" and
+  fifteen chalk dashes, the current one yellow, while a reader is on it; the
+  level switch All · 1 · 2 · 3 (the existing `level` filter); then the fourteen
+  families with their counts for the level in force, collapsible, the open one
+  listing its control IDs and titles five at a time, the current one with the
+  yellow bar. Every count comes from the catalog. On the right stands the
+  control exactly as before; with no control chosen, the overview: "Controls"
+  in chalk with one sentence, the quiet collection and framework selects, the
+  result count, the three levels as a quiet row and the results as rows
+  between hairlines that page eight at a time, at full width (the rail holds
+  the families; below desktop widths, where it waits in its sheet, the
+  overview keeps the fourteen families as links beside the results). Beside a
+  control the family rows open in place and the control stays; in the
+  overview they also filter the results. A pick from the rail that the
+  filters would hide brings the collection, framework, family, level or query
+  along with it. On the path the foot reads "Next on the path: ‹id› →" and
+  keeps the path; a control picked from the rail leaves it. Below 1024px the
+  rail is a sheet: an "All controls" line at the top of the page opens it
+  full screen on its find line, and "Start here" stays visible as one line.
+  Home's "I'm new to this." row opens the first control on the path with the
+  white chalk.
 - **The control page `/learn`:** a selected control is the Board's control page
   (`mockups/Decode.html`, `Explain.html` and the phone variants). The identifier
   is decoded on the first line from the catalog and the publication it names,

@@ -31,6 +31,14 @@ async function openControls(address = controls) {
 beforeEach(() => {
   window.localStorage.clear()
   vi.mocked(trackUsage).mockClear()
+  // Below desktop widths: the rail waits in its sheet and the overview keeps
+  // the families beside the results, which these tests drive.
+  vi.stubGlobal('matchMedia', (query: string) => ({
+    matches: false,
+    media: query,
+    addEventListener() {},
+    removeEventListener() {},
+  }))
 })
 
 describe('the Controls page', () => {

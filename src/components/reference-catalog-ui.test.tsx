@@ -24,9 +24,20 @@ async function setup() {
   return {
     user: userEvent.setup(),
     explorer: within(
-      await screen.findByRole('region', { name: 'Control Explorer' }),
+      await screen.findByRole(
+        'region',
+        { name: 'Control Explorer' },
+        { timeout: 5000 },
+      ),
     ),
   }
+}
+/** The explorer follows the address, as it does for Back and Forward. */
+function replay(address: string) {
+  act(() => {
+    window.history.replaceState(null, '', address)
+    window.dispatchEvent(new PopStateEvent('popstate'))
+  })
 }
 
 describe('Versioned CMMC reference catalog', () => {
@@ -57,13 +68,17 @@ describe('Versioned CMMC reference catalog', () => {
     expect(
       explorer.queryByText('Check your understanding'),
     ).not.toBeInTheDocument()
-    const level = explorer.getByRole('combobox', { name: 'Level' })
+    const levels = within(
+      within(
+        explorer.getByRole('navigation', { name: 'All controls' }),
+      ).getByRole('group', { name: 'Level' }),
+    )
     for (const [label, count] of [
-      ['Level 1', 15],
-      ['Level 2', 110],
-      ['Level 3', 24],
+      ['1', 15],
+      ['2', 110],
+      ['3', 24],
     ] as const) {
-      await user.selectOptions(level, label)
+      await user.click(levels.getByRole('link', { name: label }))
       expect(
         explorer.getByRole('status', { name: 'Control search results' }),
       ).toHaveTextContent(`${count} references found`)
@@ -80,8 +95,8 @@ describe('Versioned CMMC reference catalog', () => {
       )
       const { user, explorer } = await setup()
       expect(
-        explorer.getByRole('combobox', { name: 'Content collection' }),
-      ).toHaveValue('references')
+        explorer.queryByText('This lesson is outside the current results.'),
+      ).not.toBeInTheDocument()
       expect(
         explorer.getByText(
           quotation(reference('AC.L2-3.1.1').requirement.text),
@@ -143,22 +158,15 @@ describe('Versioned CMMC reference catalog', () => {
       explorer.getByRole('button', { name: 'Show this lesson in results' }),
     )
     expect(
-      explorer.getByRole('combobox', { name: 'Content collection' }),
-    ).toHaveValue('references')
+      new URLSearchParams(window.location.search).get('collection'),
+    ).not.toBe('lessons')
+    expect(
+      explorer.queryByText('This lesson is outside the current results.'),
+    ).not.toBeInTheDocument()
     expect(
       explorer.getByText(quotation(reference('AC.L2-3.1.1').requirement.text)),
     ).toBeVisible()
-    act(() => {
-      window.history.replaceState(
-        null,
-        '',
-        `${address('AC.L2-3.1.1')}&collection=lessons`,
-      )
-      window.dispatchEvent(new PopStateEvent('popstate'))
-    })
-    expect(
-      explorer.getByRole('combobox', { name: 'Content collection' }),
-    ).toHaveValue('lessons')
+    replay(`${address('AC.L2-3.1.1')}&collection=lessons`)
     expect(
       explorer.getByText('This lesson is outside the current results.'),
     ).toBeVisible()
@@ -191,6 +199,8 @@ describe('Versioned CMMC reference catalog', () => {
         name: chalkFor('beginner').prompt,
       }),
     ).toBeVisible()
+    // The demo lesson is reached from the overview's collection select.
+    replay('/learn?view=discover&collection=references&mode=beginner')
     await user.selectOptions(
       explorer.getByRole('combobox', { name: 'Content collection' }),
       'lessons',

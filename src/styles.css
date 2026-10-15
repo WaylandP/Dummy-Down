@@ -3,6 +3,7 @@
 @import './components/home.css';
 @import './components/control/control-page.css';
 @import './components/discover.css';
+@import './components/controls/rail.css';
 @import './components/pages.css';
 @import './components/glossary.css';
 @import './components/about.css';

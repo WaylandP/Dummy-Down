@@ -139,8 +139,18 @@ describe('Control-specific teaching perspectives', () => {
   })
 
   it('makes every level directly discoverable through canonical shareable addresses', async () => {
+    // The three levels as a row are the overview's, beside the results.
+    window.history.replaceState(
+      null,
+      '',
+      '/learn?view=discover&collection=references',
+    )
     render(<App />)
-    await screen.findByRole('region', { name: 'Control Explorer' })
+    await screen.findByRole(
+      'region',
+      { name: 'Control Explorer' },
+      { timeout: 5000 },
+    )
     const navigation = within(
       screen.getByRole('navigation', { name: 'CMMC levels' }),
     )

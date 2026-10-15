@@ -80,6 +80,28 @@ describe('the scrolling keys reach the content', () => {
     expect(scrollBy).toHaveBeenCalledTimes(1)
   })
 
+  it("scrolls a page's own scroller when it has one, and main otherwise", () => {
+    main.insertAdjacentHTML(
+      'beforeend',
+      '<div id="column" data-scroller="" style="overflow-y: auto"></div>',
+    )
+    const column = document.getElementById('column')!
+    Object.defineProperty(column, 'clientHeight', { value: 600 })
+    Object.defineProperty(column, 'scrollHeight', {
+      value: 2400,
+      configurable: true,
+    })
+    const columnScroll = vi.fn()
+    column.scrollBy = columnScroll as unknown as HTMLElement['scrollBy']
+    press('PageDown')
+    expect(columnScroll).toHaveBeenCalledWith({ top: 525, behavior: 'smooth' })
+    expect(scrollBy).not.toHaveBeenCalled()
+    // With nothing of its own to scroll, main takes the key.
+    Object.defineProperty(column, 'scrollHeight', { value: 600 })
+    press('PageDown')
+    expect(scrollBy).toHaveBeenCalledTimes(1)
+  })
+
   it('does nothing where the page itself scrolls, or when the key is taken or modified', () => {
     main.style.overflowY = 'visible'
     press('PageDown')
