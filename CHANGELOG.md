@@ -109,6 +109,17 @@ analytics allowlist do not change.
   (more frameworks with the Phase 4 list, animated chalk talks, flashcards,
   two controls side by side), then "Directions, not dates." and a link to a
   new issue. The roadmap carries the same directions and nothing more.
+- [PR #66](https://github.com/WaylandP/cipher-and-chalk/pull/66): the doodle
+  chalk. A stick with a kraft-paper sleeve just left of Smudge on screens 768
+  wide or more; a button, "Doodle chalk" (`d`, Esc and the slot put it
+  back). Up, the slot keeps a dashed outline, the cursor is a chalk tip and a
+  layer over the content takes smoothed chalk strokes that scroll with the
+  text and live in memory only: never stored, never sent. The footer line
+  says so while the chalk is up. Smudge's eyes follow the tip; his click,
+  the Erase between controls and a page change sweep the marks to dust (a
+  cut under reduced motion); a resize that changes the width clears them.
+  Links under the layer are inert, the wheel scrolls, two fingers scroll,
+  print leaves the marks out.
 
 ## The Board's features — October 15, 2026
 
