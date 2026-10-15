@@ -99,7 +99,7 @@ their existing values; historical source URLs are preserved.
 | `src/data/cmmc-references.ts`     | Attributed CMMC publication quotations with snapshot/page provenance.                                                                                    |
 | `src/data/cmmc-perspectives.ts`   | Separately authored, edition-bound teaching drafts, loaded on demand.                                                                                    |
 | `src/data/cmmc-clause-map.ts`     | The Decode view's clause map: which objectives each clause of a requirement sentence produces, read from the pinned text.                                |
-| `src/data/cmmc-rev3.ts`           | The Rev 3 view: each Level 2 control's NIST SP 800-171 Rev. 3 counterpart, verbatim and pinned, with one sentence on the change.                         |
+| \1                                | `src/data/cmmc-assessment-methods.ts`                                                                                                                    | The Evidence view's three words: each pinned control's Examine, Interview and Test lists, verbatim from its guide page. |
 | `src/analytics/`                  | Allowlisted usage events, production gating and visitor privacy preferences.                                                                             |
 | `src/data/learning.ts`            | Fictional scenarios and questions tied to an exact teaching identity.                                                                                    |
 | `src/data/level-one-learning.ts`  | Three Level 1 draft activities, misunderstandings and accessible diagram data.                                                                           |

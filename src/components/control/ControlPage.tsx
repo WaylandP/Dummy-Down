@@ -22,6 +22,7 @@ import { PracticeTab } from './PracticeTab'
 import { RelatedTab } from './RelatedTab'
 import { Rev3Tab } from './Rev3Tab'
 import { rev3For, rev3Source } from '../../data/cmmc-rev3'
+import { assessmentMethodsFor } from '../../data/cmmc-assessment-methods'
 
 const tabLabels: Readonly<Record<ControlTab, string>> = {
   decode: 'Decode',
@@ -106,6 +107,26 @@ export function ControlPage(props: ControlPageProps) {
     (source) => source.id === control.requirement.sourceId,
   )
   const guideUrl = guide ? `${guide.url}#page=${guide.pdfPage}` : ''
+  const methods = assessmentMethodsFor(control)
+  // The footer's link to the cited page, on the views that quote it.
+  const openPage = guide && isHttps(guideUrl) && (
+    <a
+      href={guideUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() =>
+        trackUsage({
+          name: 'source_open',
+          lesson,
+          sourceId: guide.id,
+          destination: 'publisher',
+        })
+      }
+    >
+      Open the page
+      <span className="sr-only"> (opens in a new tab)</span>
+    </a>
+  )
   const footers: Readonly<Record<ControlTab, ReactNode>> = {
     decode: (
       <>
@@ -113,30 +134,26 @@ export function ControlPage(props: ControlPageProps) {
         {guide
           ? `${guide.title}, v${guide.version}, page ${guide.printedPage}. `
           : ''}
-        {guide && isHttps(guideUrl) && (
-          <a
-            href={guideUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() =>
-              trackUsage({
-                name: 'source_open',
-                lesson,
-                sourceId: guide.id,
-                destination: 'publisher',
-              })
-            }
-          >
-            Open the page
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
-        )}
+        {openPage}
       </>
     ),
     explain:
       'Written by Cipher & Chalk from the cited guide. One approach, not the only one.',
-    evidence:
-      'Teaching aids from the cited guide, not an evidence list or assessment objectives.',
+    evidence: methods ? (
+      <>
+        The three words are the guide’s, verbatim; the questions and examples
+        are teaching aids, not an evidence list or assessment objectives.{' '}
+        {/* The printed sheet carries the citation on its own line. */}
+        <span className="print-hide">
+          {guide
+            ? `${guide.title}, v${guide.version}, page ${methods.printedPage}. `
+            : ''}
+          {openPage}
+        </span>
+      </>
+    ) : (
+      'Teaching aids from the cited guide, not an evidence list or assessment objectives.'
+    ),
     practice: 'Fictional situations. Written from the cited guide.',
     related: `${edition.title}. Relations follow identifiers and titles in this snapshot.`,
     rev3: (
@@ -302,7 +319,7 @@ export function ControlPage(props: ControlPageProps) {
           aria-labelledby={`${prefix}-view-evidence`}
           hidden={shown !== 'evidence'}
         >
-          <EvidenceTab draft={draft} />
+          <EvidenceTab control={control} draft={draft} />
         </section>
         <section
           className="control-panel control-panel-practice"

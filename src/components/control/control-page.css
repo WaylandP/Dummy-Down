@@ -597,8 +597,75 @@
   font-size: 14px;
   color: var(--color-chalk-dim);
 }
-.control-panel-rev3 {
+.control-panel-rev3,
+.control-panel-evidence {
   justify-content: flex-start;
+}
+
+/* Evidence: the assessor's three words in chalk columns, then the compliance chalk. */
+.evidence-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 1000px;
+}
+.assessor-words {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 32px;
+}
+.assessor-word h3 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--color-yellow);
+}
+.assessor-means {
+  font-size: 18px;
+  color: var(--color-chalk-dim);
+}
+.assessor-word ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-chalk-muted);
+}
+.assessor-word li {
+  padding: 4px 0;
+  border-top: 1px solid var(--color-rule-soft);
+}
+@media (max-width: 1024px) {
+  .assessor-words {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+@media print {
+  /* Compact in print: no rules between items, so a long list still shares the sheet. */
+  .evidence-tab {
+    gap: 8pt;
+  }
+  .assessor-words {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4pt 12pt;
+  }
+  .assessor-word h3 {
+    margin: 0 0 2pt;
+    font-size: 11pt;
+  }
+  .assessor-word ul {
+    font-size: 7.5pt;
+    line-height: 1.2;
+  }
+  .assessor-word li {
+    padding: 0.5pt 0;
+    border-top: 0;
+  }
+  .print-hide {
+    display: none;
+  }
 }
 
 /* Practice and Related read from the top and may scroll. */
@@ -908,6 +975,11 @@
     display: block;
     padding: 10pt 0 0;
     break-inside: avoid;
+  }
+  /* The three words can be long; the sheet breaks inside them rather than leaving a page empty. */
+  .control-panel-evidence,
+  .assessor-words {
+    break-inside: auto;
   }
   .control-panel-decode + .control-panel {
     margin-top: 8pt;

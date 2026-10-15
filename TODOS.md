@@ -8,8 +8,8 @@ already merged into `main`. No completion percentage is implied.
   page, the phone bar, the print sheet and the keys ship in five pull
   requests. [THE_BOARD.md](docs/design/THE_BOARD.md) lists what comes next,
   one pull request each; the Decode clause map, the Rev 3 tab, chalk
-  popovers (for the lesson's words on Explain), Send this chalk, Erase and the
-  timeline are in, and the CedarPoint story, the assessor's three words and
+  popovers (for the lesson's words on Explain), Send this chalk, Erase, the
+  timeline and the assessor's three words are in, and the CedarPoint story and
   Dash follow. Discovery
   and the project's demo lesson keep their earlier layout until their own
   pass. Anything that adds a fact lives in `src/data/` with a source record

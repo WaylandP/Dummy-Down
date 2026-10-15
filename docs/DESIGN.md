@@ -85,7 +85,7 @@ not establish it.
   chalk picker, the explanation in the chalk's colour and the example in the
   margin; in both, the first mention of each word listed for the lesson carries
   a chalk popover with the definition and its source on hover, tap or Enter,
-  placed on the screen, closed by Escape with focus returned; Evidence has the compliance questions and evidence examples; Practice
+  placed on the screen, closed by Escape with focus returned; Evidence opens with the assessor's three words, Examine the document, Interview the role, Test the action, each a column listing verbatim what the pinned assessment guide prints under "Potential Assessment Methods and Objects" for the control with the guide and page cited once, then the compliance questions and evidence examples; Practice
   holds the existing activity and visual lesson; Related lists neighbours by
   identifier and title, the words, the objectives index and the sources; Rev
   3, on Level 2 controls only, reads the pinned Rev 2 requirement beside its
@@ -116,7 +116,9 @@ not establish it.
   closes, returning focus. Print gives a one-page control sheet: the lockup,
   the ID decoded, the title, the requirement sentence and its objectives with
   the verbatim citation, plus the open Explain, Evidence or Rev 3 view; black on
-  white, no tray, nav, footer, tabs or actions.
+  white, no tray, nav, footer, tabs or actions. With the Evidence view open the
+  three words print compact, and a control with long lists runs to a second
+  page.
 - **Glossary `/glossary`:** the Board's Words page (`mockups/Glossary.html`).
   Left: "Words", a search line, an A–Z row with the active letter on a yellow
   block, and four groupings derived from each word's sources (the program,
