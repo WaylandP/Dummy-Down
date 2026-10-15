@@ -322,6 +322,49 @@ describe('optional progress store', () => {
     },
   )
 
+  it('keeps another tab’s merged work when this tab writes right after reading', () => {
+    const env = harness()
+    const secondEnv = harness(env.shared)
+    const first = createLocalProgressStore(learningActivities, env.port)
+    const second = createLocalProgressStore(learningActivities, secondEnv.port)
+    first.connect()
+    second.connect()
+    first.checkAnswer(activity.id, question.id, question.correctChoiceId)
+    const otherQuestion = other.questions[0]!
+    second.checkAnswer(
+      other.id,
+      otherQuestion.id,
+      otherQuestion.correctChoiceId,
+    )
+    first.enable()
+    // The second tab joins saving (and writes its merge) between this tab's
+    // read and its write, as two browser tabs do when consent appears.
+    const read = env.port.get
+    let interposed = false
+    ;(env.port as { get: ProgressPort['get'] }).get = (key) => {
+      const value = read(key)
+      if (key === PROGRESS_DATA_KEY && !interposed) {
+        interposed = true
+        secondEnv.emit()
+      }
+      return value
+    }
+    expect(first.markRevisit(activity.id, true)).toBe(true)
+    expect(interposed).toBe(true)
+    const stored = decodeProgress(env.shared.get(PROGRESS_DATA_KEY)!, catalog)
+    expect(stored.valid && stored.entries[other.id]?.checkedAnswers).toEqual({
+      [otherQuestion.id]: otherQuestion.correctChoiceId,
+    })
+    expect(stored.valid && stored.entries[activity.id]?.revisit).toBe(true)
+    expect(first.getSnapshot().entries[other.id]).toBeDefined()
+    // A visit already recorded writes nothing at all.
+    const writes = (env.port.set as ReturnType<typeof vi.fn>).mock.calls.length
+    expect(first.visit(activity.id)).toBe(true)
+    expect((env.port.set as ReturnType<typeof vi.fn>).mock.calls.length).toBe(
+      writes,
+    )
+  })
+
   it('lets an external clear discard unsaved work even if another tab has already enabled again', () => {
     const env = harness()
     const secondEnv = harness(env.shared)

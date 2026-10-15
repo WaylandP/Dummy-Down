@@ -239,12 +239,28 @@ export function createLocalProgressStore(
     }
   }
 
-  function writeCurrent() {
+  function writeCurrent(touched?: string) {
     if (checkPrivacy() || snapshot.mode !== 'on' || locked) return
     try {
       if (port.get(PROGRESS_CONSENT_KEY) !== 'on') {
         publish({ mode: 'off', entries: {} }, true)
         return
+      }
+      // Another tab can write between this page's last read and this write
+      // (it joins saving the moment consent appears). Read once more right
+      // before writing: its entries stay, disk wins for shared identities,
+      // and only the entry this action changed comes from this page.
+      if (touched && Object.hasOwn(snapshot.entries, touched)) {
+        const disk = decodeProgress(port.get(PROGRESS_DATA_KEY), catalog)
+        if (disk.valid) {
+          const entries = {
+            ...snapshot.entries,
+            ...disk.entries,
+            [touched]: snapshot.entries[touched]!,
+          }
+          if (JSON.stringify(entries) !== JSON.stringify(snapshot.entries))
+            publish({ entries })
+        }
       }
       port.set(PROGRESS_DATA_KEY, encodeProgress(snapshot.entries, catalog))
       // Close the revoke/write race: consent is separate and cannot be recreated here.
@@ -310,8 +326,11 @@ export function createLocalProgressStore(
       : emptyProgress(activity)
     const next = update(entry, activity)
     if (!next) return false
+    // Nothing changed (a visit already recorded): no write, so no chance of
+    // overwriting what another tab saved meanwhile.
+    if (JSON.stringify(next) === JSON.stringify(entry)) return true
     publish({ entries: { ...snapshot.entries, [activityId]: next } })
-    writeCurrent()
+    writeCurrent(activityId)
     return true
   }
 
