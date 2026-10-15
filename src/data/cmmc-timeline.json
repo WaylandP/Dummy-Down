@@ -1,0 +1,318 @@
+{
+  "schemaVersion": 1,
+  "comparedOn": "2026-10-15",
+  "sources": {
+    "cfr-32-170": {
+      "title": "32 CFR part 170, Cybersecurity Maturity Model Certification (CMMC) Program",
+      "version": "eCFR text as of December 16, 2024 (source: 89 FR 83214, Oct. 15, 2024)",
+      "officialUrl": "https://www.ecfr.gov/on/2024-12-16/title-32/subtitle-A/chapter-I/subchapter-D/part-170",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/2ef86f6d8ca8f3fe66eb127cccaa14dc7b86f473/raw/public/cfr/32-cfr-170/2024-12-16/ecfr-xml/REG-R01.xml",
+      "sha256": "4df7572a76794b236c0d5f9fb1d2ff814d8c973cf2d030067d00f9c0b0fb2680",
+      "retrievedDate": "2026-10-15"
+    },
+    "fr-2024-22905": {
+      "title": "Cybersecurity Maturity Model Certification (CMMC) Program; final rule",
+      "version": "89 FR 83092, October 15, 2024, document 2024-22905",
+      "officialUrl": "https://www.federalregister.gov/documents/2024/10/15/2024-22905/cybersecurity-maturity-model-certification-cmmc-program",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/2ef86f6d8ca8f3fe66eb127cccaa14dc7b86f473/raw/public/federal-register/89-fr-83092/2024-10-15/regulation-html/REG-R06.html",
+      "sha256": "9cc8371dac8540c699d0d4ee20e7f9335e9d5df93ab3373ce32b7e48dd2ed0d8",
+      "retrievedDate": "2026-10-15"
+    },
+    "dfars-252-204-7021": {
+      "title": "DFARS 252.204-7021, Contractor Compliance With the Cybersecurity Maturity Model Certification Level Requirements",
+      "version": "NOV 2025 clause text",
+      "officialUrl": "https://www.acquisition.gov/dfars/252.204-7021-contractor-compliance-cybersecurity-maturity-model-certification-level-requirements.",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/2ef86f6d8ca8f3fe66eb127cccaa14dc7b86f473/derived/public/dfars/252.204-7021/2025-11/regulation-html/text.md",
+      "sha256": "0ed62f6cb74123c936725c286c2919606aa2a497077f7208476ca0996c308aaa",
+      "retrievedDate": "2026-10-15"
+    },
+    "cmmc-101-2025": {
+      "title": "CMMC 101 Overview Briefing (DoD CIO)",
+      "version": "Cleared for open publication August 22, 2025 (CMMC-101-Nov2025.pdf)",
+      "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/CMMC-101-Nov2025.pdf",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/2ef86f6d8ca8f3fe66eb127cccaa14dc7b86f473/raw/public/dod-cio/cmmc-101-brief/2025-11/general/CMMC-101-Nov2025.pdf",
+      "sha256": "2a31ba0d8232fb067bb56975e0125682f220a873fa6d43c132c53f45f51edb7b",
+      "retrievedDate": "2026-10-15"
+    },
+    "cmmc-faq-2-3": {
+      "title": "Cybersecurity Maturity Model Certification Program (CMMC) Frequently Asked Questions (Office of the Chief Information Officer, U.S. Department of War)",
+      "version": "Revision 2.3 (Excerpt), July 2026 (FAQsv6.pdf)",
+      "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/FAQsv6.pdf",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/2ef86f6d8ca8f3fe66eb127cccaa14dc7b86f473/raw/public/dod-cio/cmmc-faq/2.3/general/FAQsv6.pdf",
+      "sha256": "b2563aabbfd3ad4013e2ade962641813cf9ff6976c07a446864a2b4f7ed44394",
+      "retrievedDate": "2026-10-15"
+    },
+    "cmmc-alignment-2025-02": {
+      "title": "CMMC Briefing: CMMC Alignment to NIST Standards (DoD CIO)",
+      "version": "February 2025",
+      "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/CMMC-AlignmentNIST-Standards.pdf",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/2ef86f6d8ca8f3fe66eb127cccaa14dc7b86f473/raw/public/dod-cio/cmmc-alignment-to-nist/2025-02/general/CMMC-AlignmentNIST-Standards.pdf",
+      "sha256": "796e59e8f04412975255c0c943740ab1bf694a24820553fdcdb216127042d643",
+      "retrievedDate": "2026-10-15"
+    },
+    "fr-2025-17359": {
+      "title": "Defense Federal Acquisition Regulation Supplement: Assessing Contractor Implementation of Cybersecurity Requirements (DFARS Case 2019-D041); final rule",
+      "version": "90 FR 43560, September 10, 2025, document 2025-17359",
+      "officialUrl": "https://www.federalregister.gov/documents/2025/09/10/2025-17359/defense-federal-acquisition-regulation-supplement-assessing-contractor-implementation-of",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/2ef86f6d8ca8f3fe66eb127cccaa14dc7b86f473/raw/public/federal-register/dfars-case-2019-d041/2025-09-10/regulation-html/REG-R03.html",
+      "sha256": "a84a572d0ccc5af65bb4daba97471918906eb56bce570305068c41e6d271cdcb",
+      "retrievedDate": "2026-10-15"
+    }
+  },
+  "dates": [
+    {
+      "id": "program-rule-published",
+      "date": "2024-10-15",
+      "title": "The program rule is published",
+      "text": "32 CFR part 170, the CMMC Program rule, appears in the Federal Register.",
+      "citations": [
+        {
+          "source": "cfr-32-170",
+          "where": "Part 170, Source note",
+          "quote": "89 FR 83214, Oct. 15, 2024, unless otherwise noted."
+        },
+        {
+          "source": "fr-2024-22905",
+          "where": "closing line, printed page 83237",
+          "quote": "FR Doc. 2024-22905 Filed 10-11-24; 8:45 am"
+        }
+      ]
+    },
+    {
+      "id": "program-rule-effective",
+      "date": "2024-12-16",
+      "title": "32 CFR part 170 takes effect",
+      "text": "The program rule is in force from this day, with its requirements for defense contractors and subcontractors.",
+      "citations": [
+        {
+          "source": "fr-2024-22905",
+          "where": "DATES",
+          "quote": "This rule is effective December 16, 2024."
+        },
+        {
+          "source": "cfr-32-170",
+          "where": "§ 170.1(a)",
+          "quote": "This part describes the Cybersecurity Maturity Model Certification (CMMC) Program of the Department of Defense (DoD) and establishes requirements for defense contractors and subcontractors to implement prescribed cybersecurity standards for safeguarding Federal Contract Information (FCI) and Controlled Unclassified Information (CUI)."
+        }
+      ]
+    },
+    {
+      "id": "phase-1",
+      "date": "2025-11-10",
+      "title": "The clause takes effect; Phase 1 begins",
+      "text": "Awards can require Level 1 (Self) or Level 2 (Self); DoD may ask for Level 2 (C3PAO) instead.",
+      "citations": [
+        {
+          "source": "fr-2025-17359",
+          "where": "DATES",
+          "quote": "This rule is effective November 10, 2025."
+        },
+        {
+          "source": "cmmc-101-2025",
+          "where": "PDF page 6",
+          "quote": "The Effective Date for the Final CMMC DFARS Clause is 10 Nov 2025"
+        },
+        {
+          "source": "cmmc-101-2025",
+          "where": "PDF page 10, phase slide",
+          "quote": "Phase 1 – Initial Implementation · Begins 10 Nov 2025 · Where applicable, solicitations will require Level 1 or 2 self-assessment"
+        },
+        {
+          "source": "cfr-32-170",
+          "where": "§ 170.3(e)(1)",
+          "quote": "Phase 1. Begins on the effective date of the complementary 48 CFR part 204 CMMC Acquisition final rule. DoD intends to include the requirement for CMMC Statuses of Level 1 (Self) or Level 2 (Self) for all applicable DoD solicitations and contracts as a condition of contract award. DoD may, at its discretion, include the requirement for CMMC Status of Level 1 (Self) or Level 2 (Self) for applicable DoD solicitations and contracts as a condition to exercise an option period on a contract awarded prior to the effective date. DoD may also, at its discretion, include the requirement for CMMC Status of Level 2 (C3PAO) in place of the Level 2 (Self) CMMC Status for applicable DoD solicitations and contracts."
+        }
+      ]
+    },
+    {
+      "id": "phase-2",
+      "date": "2026-11-10",
+      "title": "Phase 2 begins",
+      "text": "Level 2 (C3PAO) can be a condition of award, or wait for an option period; DoD may ask for Level 3 (DIBCAC).",
+      "citations": [
+        {
+          "source": "cmmc-101-2025",
+          "where": "PDF page 10, phase slide",
+          "quote": "Phase 2 · Begins 10 Nov 2026 · Where applicable, solicitations will require Level 2 Certification · DoW may opt to delay the Level 2 certification requirement in a contract to an option period"
+        },
+        {
+          "source": "cfr-32-170",
+          "where": "§ 170.3(e)(2)",
+          "quote": "Phase 2. Begins one calendar year following the start date of Phase 1. In addition to Phase 1 requirements, DoD intends to include the requirement for CMMC Status of Level 2 (C3PAO) for applicable DoD solicitations and contracts as a condition of contract award. DoD may, at its discretion, delay the inclusion of requirement for CMMC Status of Level 2 (C3PAO) to an option period instead of as a condition of contract award. DoD may also, at its discretion, include the requirement for CMMC Status of Level 3 (DIBCAC) for applicable DoD solicitations and contracts."
+        }
+      ]
+    },
+    {
+      "id": "phase-3",
+      "date": "2027-11-10",
+      "title": "Phase 3 begins",
+      "text": "Level 2 (C3PAO) for every applicable award, and for option periods on contracts awarded since the clause took effect; Level 3 (DIBCAC) can be a condition of award.",
+      "citations": [
+        {
+          "source": "cmmc-101-2025",
+          "where": "PDF page 10, phase slide",
+          "quote": "Phase 3 · Begins 10 Nov 2027 · Where applicable solicitations will require Level 3 Certification · DoW may opt to delay the Level 3 certification requirement in a contract to an option period"
+        },
+        {
+          "source": "cfr-32-170",
+          "where": "§ 170.3(e)(3)",
+          "quote": "Phase 3. Begins one calendar year following the start date of Phase 2. In addition to Phase 1 and 2 requirements, DoD intends to include the requirement for CMMC Status of Level 2 (C3PAO) for all applicable DoD solicitations and contracts as a condition of contract award and as a condition to exercise an option period on a contract awarded after the effective date. DoD intends to include the requirement for CMMC Status of Level 3 (DIBCAC) for all applicable DoD solicitations and contracts as a condition of contract award. DoD may, at its discretion, delay the inclusion of requirement for CMMC Status of Level 3 (DIBCAC) to an option period instead of as a condition of contract award."
+        }
+      ]
+    },
+    {
+      "id": "phase-4",
+      "date": "2028-11-10",
+      "title": "Phase 4: full implementation",
+      "text": "Every applicable solicitation and contract carries its CMMC requirement, including option periods on contracts awarded before this day.",
+      "citations": [
+        {
+          "source": "cmmc-101-2025",
+          "where": "PDF page 10, phase slide",
+          "quote": "Phase 4 – Full Implementation · Begins 10 Nov 2028 · All solicitations and contracts will include applicable CMMC Level requirements as a condition of contract award"
+        },
+        {
+          "source": "cfr-32-170",
+          "where": "§ 170.3(e)(4)",
+          "quote": "Phase 4, full implementation. Begins one calendar year following the start date of Phase 3. DoD will include CMMC Program requirements in all applicable DoD solicitations and contracts including option periods on contracts awarded prior to the beginning of Phase 4."
+        }
+      ]
+    }
+  ],
+  "durations": [
+    {
+      "id": "level-1-self",
+      "status": "Final Level 1 (Self)",
+      "lasts": "1 year",
+      "text": "Repeated every year.",
+      "citations": [
+        {
+          "source": "dfars-252-204-7021",
+          "where": "(a) Definitions, “Current” (2)(i)",
+          "quote": "Not older than 1 year for Final Level 1 (Self)"
+        },
+        {
+          "source": "cfr-32-170",
+          "where": "§ 170.15(a)(1)",
+          "quote": "the OSA must conduct a Level 1 self-assessment on an annual basis and submit the results in SPRS"
+        }
+      ]
+    },
+    {
+      "id": "level-2-self",
+      "status": "Final Level 2 (Self)",
+      "lasts": "3 years",
+      "text": "Repeated every three years, within three years of the status date.",
+      "citations": [
+        {
+          "source": "dfars-252-204-7021",
+          "where": "(a) Definitions, “Current” (2)(ii)",
+          "quote": "Not older than 3 years for Final Level 2 (Self) assessments and Final Level 2 (C3PAO) assessments"
+        },
+        {
+          "source": "cfr-32-170",
+          "where": "§ 170.16(a)(1)",
+          "quote": "the OSA must conduct a Level 2 self-assessment every three years and submit the results in SPRS, within three years of the CMMC Status Date associated with the Conditional Level 2 (Self)."
+        }
+      ]
+    },
+    {
+      "id": "level-2-c3pao",
+      "status": "Final Level 2 (C3PAO)",
+      "lasts": "3 years",
+      "text": "Repeated within three years of the status date.",
+      "citations": [
+        {
+          "source": "dfars-252-204-7021",
+          "where": "(a) Definitions, “Current” (2)(ii)",
+          "quote": "Not older than 3 years for Final Level 2 (Self) assessments and Final Level 2 (C3PAO) assessments"
+        },
+        {
+          "source": "cfr-32-170",
+          "where": "§ 170.17(a)(1)",
+          "quote": "To maintain compliance with the requirements for a CMMC Status of Level 2 (C3PAO), the Level 2 certification assessment must be completed within three years of the CMMC Status Date associated with the Conditional Level 2 (C3PAO)."
+        }
+      ]
+    },
+    {
+      "id": "level-3-dibcac",
+      "status": "Final Level 3 (DIBCAC)",
+      "lasts": "3 years",
+      "text": "Every three years, and the Level 2 (C3PAO) assessment under it too.",
+      "citations": [
+        {
+          "source": "dfars-252-204-7021",
+          "where": "(a) Definitions, “Current” (2)(iii)",
+          "quote": "Not older than 3 years for Final Level 3 (DIBCAC) assessments"
+        },
+        {
+          "source": "cfr-32-170",
+          "where": "§ 170.18(a)(1)",
+          "quote": "the Level 3 certification assessment must be performed every three years for all information systems within the Level 3 CMMC Assessment Scope. In addition, given that compliance with Level 2 requirements is a prerequisite for applying for CMMC Level 3, a Level 2 (C3PAO) certification assessment must also be conducted every three years to maintain CMMC Level 3 (DIBCAC) status."
+        }
+      ]
+    },
+    {
+      "id": "conditional",
+      "status": "Conditional status",
+      "lasts": "180 days",
+      "text": "Expires unless the plan of action is closed out within 180 days of the status date.",
+      "citations": [
+        {
+          "source": "dfars-252-204-7021",
+          "where": "(a) Definitions, “Current” (1)(i)",
+          "quote": "Not older than 180 days for Conditional Level 2 (Self) assessments and Conditional Level 2 (certified third-party assessment organization (C3PAO)) assessments"
+        },
+        {
+          "source": "dfars-252-204-7021",
+          "where": "(a) Definitions, “Current” (1)(ii)",
+          "quote": "Not older than 180 days for Conditional Level 3 (Defense Industrial Base Cybersecurity Assessment Center (DIBCAC)) assessments"
+        },
+        {
+          "source": "cfr-32-170",
+          "where": "§ 170.21(b)",
+          "quote": "The closing of a POA&M must be confirmed by a POA&M closeout assessment within 180-days of the Conditional CMMC Status Date. If the POA&M is not successfully closed out within the 180-day timeframe, the Conditional CMMC Status for the information system will expire."
+        }
+      ]
+    },
+    {
+      "id": "affirmation",
+      "status": "Affirmation of continuous compliance",
+      "lasts": "1 year",
+      "text": "After every assessment, and every year after.",
+      "citations": [
+        {
+          "source": "dfars-252-204-7021",
+          "where": "(a) Definitions, “Current” (3)",
+          "quote": "With regard to affirmation of continuous compliance (32 CFR 170.22), not older than 1 year with no changes in compliance with the requirements at 32 CFR part 170."
+        },
+        {
+          "source": "cfr-32-170",
+          "where": "§ 170.22(a)",
+          "quote": "must affirm the continuing compliance of their respective organizations with the specified security requirement after every assessment, including POA&M closeout, and annually thereafter"
+        }
+      ]
+    }
+  ],
+  "rev3": {
+    "title": "When Rev 3 enters CMMC",
+    "text": "Neither source gives a date: DoD says Revision 3 will come in through future rulemaking, and that assessments stay against Revision 2 under a class deviation until then.",
+    "citations": [
+      {
+        "source": "cmmc-faq-2-3",
+        "where": "B-A3, printed page 2 (PDF page 6)",
+        "quote": "Yes, the Department will incorporate Revision 3 with future rulemaking. In the interim, the Department has issued a class deviation to Defense Federal Acquisition Regulation Supplement clause 252.204-7012 to maintain Revision 2 as the standard against which defense industrial base companies will be assessed until Revision 3 has been incorporated into the 32 Code of Federal Regulations CMMC Program rule through rulemaking."
+      },
+      {
+        "source": "cmmc-alignment-2025-02",
+        "where": "PDF page 7",
+        "quote": "DoD will formally adopt Rev. 3 through future rulemaking."
+      },
+      {
+        "source": "cmmc-alignment-2025-02",
+        "where": "PDF page 7",
+        "quote": "DFARS 7012 Class Deviation: Assessments remain against Rev. 2 until Rev. 3 is officially adopted."
+      }
+    ]
+  }
+}

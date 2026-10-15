@@ -7,7 +7,7 @@ work follows that specification.
 ## What is live
 
 The app shell is the Board's: the slate ground with chalk dust, the Morse-C ring
-and lockup, the four-item nav with a find line, the one-line footer and the
+and lockup, the five-item nav with a find line, the one-line footer and the
 wooden tray, drawn from the tokens and fonts in `src/styles.css` and the
 components in `src/components/board/`. Walter Turncoat writes headings, Atkinson
 Hyperlegible Next the reading text, Martian Mono anything that is code; all three
@@ -136,16 +136,22 @@ not establish it.
 - **About `/about`:** mission and honest content limits in sentences, and the
   three chalks as links into a control. **Disclaimer `/disclaimer`:** the same
   frame, its text unchanged.
+- **Timeline `/timeline`:** the dates that matter on one screen: the six dates
+  on a yellow chalk line, how long each status stays current, and what DoD
+  has said about Revision 3, each sentence paraphrased over its quoted source
+  (`src/data/cmmc-timeline.json`), the sources one disclosure per section on
+  a row at the foot, open in print. On the narrowest phones the five places to go
+  wrap to a further row.
 
 Native links support direct loads and normal browser navigation; Vercel rewrites
-serve the six non-root paths. Legacy root query links and section hashes still
+serve the seven non-root paths. Legacy root query links and section hashes still
 work. Explorer state stays in its existing controller. Native navigation/reloads
 reset unsaved practice. Explicit optional saving restores version-bound checked
 answers on this origin; there are no accounts or cloud synchronization.
 
 Do not render a hidden learning workspace on Home: that creates false control-view
 signals and unnecessary complexity. Production-only usage retains opt-out, DNT,
-GPC and property restrictions. Only the seven public pathnames are allowed; queries,
+GPC and property restrictions. Only the eight public pathnames are allowed; queries,
 fragments, answers and raw searches are never forwarded.
 
 Home search submits to `/learn` with explicit discovery state and the reference

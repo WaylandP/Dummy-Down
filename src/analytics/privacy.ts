@@ -104,7 +104,7 @@ export function useUsagePreference() {
   }
 }
 
-/** Only the seven public page names may leave the app; never retain queries or fragments. */
+/** Only the eight public page names may leave the app; never retain queries or fragments. */
 export function sanitizeUsageUrl(value: string, origin: string): string | null {
   try {
     const url = new URL(value, origin)
@@ -119,6 +119,7 @@ export function sanitizeUsageUrl(value: string, origin: string): string | null {
         '/coverage',
         '/practice',
         '/disclaimer',
+        '/timeline',
       ].includes(path)
     )
       return null

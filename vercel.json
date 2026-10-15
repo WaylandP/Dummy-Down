@@ -24,6 +24,10 @@
     {
       "source": "/disclaimer",
       "destination": "/index.html"
+    },
+    {
+      "source": "/timeline",
+      "destination": "/index.html"
     }
   ]
 }

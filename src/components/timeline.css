@@ -1,0 +1,211 @@
+/* The timeline: the dates on one chalk line, the statuses on a row under it,
+   Rev 3, and one Sources disclosure per section on a row at the foot. One
+   screen at 1280×800. */
+.timeline-page h1 {
+  margin-bottom: 4px;
+}
+.timeline-page .page-lead {
+  margin: 0;
+  max-width: 80ch;
+}
+.timeline-page .page-foot {
+  margin-top: -8px;
+}
+.timeline-section {
+  margin-top: 8px;
+}
+.timeline-section > h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  line-height: 1.1;
+  color: var(--color-yellow);
+}
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0 20px;
+  margin: 8px 0 0;
+  padding: 14px 0 0;
+  list-style: none;
+  border-top: 2px solid var(--color-yellow);
+}
+.timeline-date {
+  position: relative;
+  min-width: 0;
+}
+/* A dot drawn as a border keeps its colour under forced colours. */
+.timeline-date::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -25px;
+  width: 0;
+  height: 0;
+  border: 6px solid var(--color-yellow);
+  border-radius: 50%;
+}
+.timeline-when {
+  display: block;
+  font-size: 13px;
+  color: var(--color-blue);
+}
+.timeline-date > h3 {
+  margin: 4px 0;
+  font-size: 20px;
+  line-height: 1.15;
+  color: var(--color-chalk);
+}
+.timeline-date > p,
+.timeline-statuses li > p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-chalk-muted);
+}
+.timeline-statuses {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.timeline-status {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 2px;
+}
+.timeline-status-name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--color-chalk);
+}
+.timeline-lasts {
+  font-size: 13px;
+  color: var(--color-blue);
+}
+.timeline-rev3 > p {
+  margin: 0;
+  max-width: 100ch;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-chalk);
+}
+/* The sources, one disclosure per section, on one row at the foot; an open one
+   takes the whole row. */
+.timeline-sources-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 28px;
+  margin-top: 0;
+}
+.timeline-sources[open] {
+  flex-basis: 100%;
+}
+.timeline-sources {
+  margin: 0;
+}
+.timeline-sources > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  list-style: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--color-chalk-dim);
+}
+.timeline-sources > summary::-webkit-details-marker {
+  display: none;
+}
+.timeline-sources > summary::before {
+  content: '▸';
+  font-size: 11px;
+}
+.timeline-sources[open] > summary::before {
+  content: '▾';
+}
+.timeline-sources > summary:hover {
+  color: var(--color-yellow);
+}
+.timeline-sources > summary:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+.timeline-source-group {
+  margin: 4px 0 12px;
+}
+.timeline-source-group h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-chalk);
+}
+.timeline-source-group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.timeline-source-group li + li {
+  margin-top: 8px;
+}
+.timeline-cite {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-chalk-dim);
+}
+.timeline-cite a {
+  color: var(--color-chalk);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.timeline-quote {
+  margin: 4px 0 0;
+  padding-left: 12px;
+  max-width: 100ch;
+  border-left: 2px solid var(--color-rule);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-chalk-muted);
+}
+@media (max-width: 1024px) {
+  .timeline,
+  .timeline-statuses {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px 20px;
+  }
+}
+@media (max-width: 640px) {
+  .timeline {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 0;
+    border-top: 0;
+  }
+  .timeline-date {
+    padding-left: 14px;
+    border-left: 2px solid var(--color-yellow);
+  }
+  .timeline-date::before {
+    display: none;
+  }
+  .timeline-statuses {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .timeline-statuses li {
+    padding-top: 8px;
+    border-top: 1px solid var(--color-rule-soft);
+  }
+}
+@media (forced-colors: active) {
+  .timeline {
+    border-top-color: CanvasText;
+  }
+  .timeline-date::before,
+  .timeline-date {
+    border-color: CanvasText;
+  }
+}

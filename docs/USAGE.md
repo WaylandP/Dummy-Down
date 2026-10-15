@@ -76,7 +76,7 @@ for each pageview and custom event, including after a previously allowed SDK was
 loaded. Pausing cannot undo an event already sent or an in-flight request.
 
 Every pageview and custom-event URL is restricted to the current origin's `/`,
-`/learn`, `/glossary`, `/practice`, `/coverage` or `/about` path (trailing slash normalized), with all query
+`/learn`, `/glossary`, `/practice`, `/coverage`, `/about`, `/disclaimer` or `/timeline` path (trailing slash normalized), with all query
 parameters and fragments removed. Known control metadata
 comes from the local catalog, never by forwarding the address bar. Unknown paths
 and external URLs are discarded. If new app routes are added, explicitly review

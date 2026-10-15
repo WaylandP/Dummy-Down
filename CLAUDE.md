@@ -17,7 +17,7 @@ implementation that is live until the Board ships).
 - **Automated checks and AI review are not human approval.** Record real
   reviewers and dates only for reviews that happened. Never fabricate completion
   percentages.
-- **Privacy stays intact.** Analytics are production-only, allowlist the seven
+- **Privacy stays intact.** Analytics are production-only, allowlist the eight
   public paths, strip queries and fragments, honor DNT and GPC, and never collect
   search text, answers, shared links or visitor identifiers. Learning progress is
   opt-in, local-only, and deletable. Do not enable paid services or change
