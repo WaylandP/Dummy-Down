@@ -1,4 +1,10 @@
-import { fireEvent, render, screen, within } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from '../App'
@@ -8,6 +14,14 @@ import { CHALK_PREFERENCE_KEY } from '../state/chalk-preference'
 vi.mock('../analytics/usage', () => ({ trackUsage: vi.fn() }))
 
 const controls = '/learn?view=discover&collection=references'
+
+/** The count is read once React has flushed the click, never in the same tick. */
+async function expectCount(
+  page: { readonly count: () => HTMLElement },
+  text: string,
+) {
+  await waitFor(() => expect(page.count()).toHaveTextContent(text))
+}
 
 async function openControls(address = controls) {
   window.history.replaceState(null, '', address)
@@ -45,7 +59,7 @@ describe('the Controls page', () => {
   it('filters by family in place from real links, and marks the family in force', async () => {
     const user = userEvent.setup()
     const page = await openControls()
-    expect(page.count()).toHaveTextContent('149 references found')
+    await expectCount(page, '149 references found')
     const links = page.families().getAllByRole('link')
     expect(links).toHaveLength(15)
     expect(links[0]).toHaveAttribute('aria-current', 'true')
@@ -54,12 +68,12 @@ describe('the Controls page', () => {
       .getByRole('link', { name: /Media Protection/ })
     expect(media).toHaveAttribute('href', expect.stringContaining('family=MP'))
     await user.click(media)
-    expect(page.count()).toHaveTextContent('10 references found')
+    await expectCount(page, '10 references found')
     expect(media).toHaveAttribute('aria-current', 'true')
     expect(links[0]).not.toHaveAttribute('aria-current')
     expect(page.address()).toContain('family=MP')
     await user.click(links[0]!)
-    expect(page.count()).toHaveTextContent('149 references found')
+    await expectCount(page, '149 references found')
     expect(page.address()).not.toContain('family=')
   })
 
@@ -69,11 +83,11 @@ describe('the Controls page', () => {
     const handled = fireEvent.click(access, { ctrlKey: true })
     // jsdom does not navigate; what matters is that nothing swallowed the click.
     expect(handled).toBe(true)
-    expect(page.count()).toHaveTextContent('149 references found')
+    await expectCount(page, '149 references found')
     expect(page.address()).not.toContain('family=')
     const plain = fireEvent.click(access)
     expect(plain).toBe(false)
-    expect(page.count()).toHaveTextContent('28 references found')
+    await expectCount(page, '28 references found')
   })
 
   it('filters by level in place, clears it on a second pick, and reports each change once', async () => {
@@ -82,14 +96,14 @@ describe('the Controls page', () => {
     vi.mocked(trackUsage).mockClear()
     const one = page.levels().getByRole('link', { name: /^Level 1/ })
     await user.click(one)
-    expect(page.count()).toHaveTextContent('15 references found')
+    await expectCount(page, '15 references found')
     expect(one).toHaveAttribute('aria-current', 'true')
     expect(page.address()).toContain('level=Level+1')
     expect(vi.mocked(trackUsage).mock.calls).toEqual([
       [{ name: 'filter_change', filter: 'level', value: 'Level 1' }],
     ])
     await user.click(one)
-    expect(page.count()).toHaveTextContent('149 references found')
+    await expectCount(page, '149 references found')
     expect(one).not.toHaveAttribute('aria-current')
     expect(vi.mocked(trackUsage).mock.calls).toEqual([
       [{ name: 'filter_change', filter: 'level', value: 'Level 1' }],
@@ -100,7 +114,7 @@ describe('the Controls page', () => {
       page.families().getByRole('link', { name: /Access Control/ }),
     )
     await user.click(page.levels().getByRole('link', { name: /^Level 2/ }))
-    expect(page.count()).toHaveTextContent('22 references found')
+    await expectCount(page, '22 references found')
   })
 
   it('opens a bare /learn and a recovered link in the chalk picked on Home, and names that chalk in a notice', async () => {

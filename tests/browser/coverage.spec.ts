@@ -120,10 +120,10 @@ test('coverage is lazy and has recoverable chunk failure', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   expect(requests.some((url) => /\/CoveragePage-.*\.js/.test(url))).toBe(false)
   await page.route('**/assets/CoveragePage-*.js', (route) => route.abort())
-  // Home's third row is the stranger's way to the objectives.
+  // Home's third chalk is the stranger's way to the objectives.
   await page
-    .getByRole('navigation', { name: 'Who’s reading?' })
-    .getByRole('link', { name: /^I’m preparing for an assessment\./ })
+    .getByRole('list', { name: 'Pick up a chalk to start.' })
+    .getByRole('link', { name: /^I’m preparing for an assessment/ })
     .click()
   await expect(page.locator('#main').getByRole('status')).toHaveText(
     /coverage report could not load/,

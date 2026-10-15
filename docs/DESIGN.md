@@ -63,27 +63,34 @@ not establish it.
 
 ## One main task per page
 
-- **Home `/`:** the Board's `mockups/Home.html` and, since October 15,
-  `mockups/2026-10-15/Home.html`, written for the stranger who arrives from a
-  shared link. "Who's reading?" in chalk; then three rows between rules, one
-  per chalk, each a link: "I'm new to this." ("Start with Level 1: fifteen
-  basics, one control at a time, in plain words.", the count from the
+- **Home `/` (October 15, `mockups/2026-10-15/HomeHero.html`):** one thing
+  first, then second, then third. A kicker in the chalk hand, yellow ("A free
+  reference desk for cybersecurity compliance", a paragraph); the page's one
+  `h1` in the chalk hand, "CMMC, / in plain words.", 112px on desktop and,
+  on a phone, two lines as large as the width allows (about 50px at 390; a
+  clamp between); one supporting line
+  at 20px, muted, with the count from the catalog ("All 149 controls across
+  the three levels, each quoted from the official guide with its page, then
+  explained three ways. More frameworks to come."); then "Pick up a chalk to
+  start." and the three chalks as the main action, in a list of that name:
+  large sticks (20px tall) with a label in the chalk hand and one short line,
+  "I'm new to this" ("Level 1's fifteen basics first.", the count from the
   catalog) to the first control on the Start here path in white, "I run the
-  systems." to the Controls page in yellow, "I'm preparing for an
-  assessment." to the assessment objectives in blue. Beside them, on a
-  hairline, the "What this is" column: one paragraph, the AC.L2-3.1.1
-  example decoded (family, level, requirement), "On the board now" with the
-  three levels and their counts from the catalog, "Later" with the frameworks
-  being researched (the Phase 4 list in `docs/ROADMAP.md`, "not here yet"),
-  and "Free. No account. Made by one person, in the open." Below desktop
-  widths the column follows the search. Choosing a row remembers
-  that chalk under `cipher-and-chalk:chalk:v1` in this browser, and an
-  address that names no chalk opens in it from then on. Below: "Or just look
-  something up:" and the search line (an input on a chalk underline, no box)
-  that submits the same discovery address as the header's find line, and
-  "Last time" with the control opened last when optional saving is on. The
-  publication version lives on About. Home mounts no lesson and records
-  nothing. The header's nav is Home · Controls · Glossary · Practice ·
+  systems" ("The fourteen families.") to the Controls page in yellow, "I'm
+  preparing for an assessment" ("Examine, interview, test.") to the
+  assessment objectives in blue; the stick lifts a few pixels under the
+  pointer or keyboard focus (not under reduced motion; the focus ring stays).
+  At the end of that row, "Or find a control…", the search line (an input on
+  a chalk underline, no box) that submits the same discovery address as the
+  header's find line; on a phone the chalks stack as rows (stick left, 44px
+  tall) and the search follows them. No "What this is" column, no "Who's
+  reading?", no decode example. The headline names CMMC on purpose; it is
+  reworded when a second framework ships. Choosing a chalk remembers it under
+  `cipher-and-chalk:chalk:v1` in this browser, and an address that names no
+  chalk opens in it from then on. "Last time" shows the control opened last
+  when optional saving is on. The publication version lives on About. Home
+  mounts no lesson and records nothing. The header's nav is Home · Controls ·
+  Glossary · Practice ·
   Timeline · About, the one you are on under a yellow chalk stroke; Controls
   is lit for every `/learn` address, a control on the board included.
 - **The shell (October 15):** the footer line (the disclaimer and "Disclaimer

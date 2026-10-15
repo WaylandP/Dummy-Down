@@ -23,9 +23,7 @@ for (const width of [390, 1440]) {
     await test.step('1. Start on the homepage', async () => {
       await page.goto('/')
       await expect(
-        page.getByRole('heading', {
-          name: 'Who’s reading?',
-        }),
+        page.getByRole('heading', { name: 'CMMC, in plain words.' }),
       ).toBeVisible()
       await capture(page, 'home', width)
     })
