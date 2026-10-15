@@ -80,7 +80,9 @@ not establish it.
   data in `src/data/cmmc-clause-map.json`; a control with no clean map shows
   the sentence plain), then its assessment objectives verbatim; Explain has the
   chalk picker, the explanation in the chalk's colour and the example in the
-  margin; Evidence has the compliance questions and evidence examples; Practice
+  margin; in both, the first mention of each word listed for the lesson carries
+  a chalk popover with the definition and its source on hover, tap or Enter,
+  placed on the screen, closed by Escape with focus returned; Evidence has the compliance questions and evidence examples; Practice
   holds the existing activity and visual lesson; Related lists neighbours by
   identifier and title, the words, the objectives index and the sources; Rev
   3, on Level 2 controls only, reads the pinned Rev 2 requirement beside its

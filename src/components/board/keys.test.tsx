@@ -176,7 +176,8 @@ describe('The tray with a control on the board', () => {
     window.history.replaceState(null, '', lesson)
     render(<App />)
     await screen.findByRole('heading', { level: 1, name: title })
-    const tray = screen.getByRole('navigation', { name: 'Pick a chalk' })
+    // The tray learns of the control from the page's effect, a tick later.
+    const tray = await screen.findByRole('navigation', { name: 'Pick a chalk' })
     const picks = within(tray).getAllByRole('button')
     expect(picks.map((pick) => pick.textContent)).toEqual([
       'white chalk: new to this',
