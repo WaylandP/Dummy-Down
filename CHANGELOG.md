@@ -99,6 +99,13 @@ source record under `docs/sources/`.
   compliance chalk's questions and evidence examples. The lists for all 149
   controls are in `src/data/cmmc-assessment-methods.json`, recorded in
   `docs/sources/cmmc-assessment-methods-2026-10-15.md`.
+- [PR #51](https://github.com/WaylandP/cipher-and-chalk/pull/51): Dash. The
+  tray's white chalk is the mascot from `mockups/Dash.html`: one stroke with
+  two eyes that blinks now and then, lifts the chalk that was picked, sweeps
+  once with the erase, nods once at a chalk popover, and is joined by Dot when
+  a practice activity is finished. It never speaks and is hidden from
+  assistive technology; a footer switch turns it into a plain stub (remembered
+  in this browser only), as reduced motion and print do.
 
 ## Week 2 content and trust — October 14, 2026
 

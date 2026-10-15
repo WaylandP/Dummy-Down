@@ -1,4 +1,5 @@
 import { Component, createRef, type ReactNode } from 'react'
+import { cueDash } from '../board/tray-state'
 
 interface EraseProps {
   /** The erase runs when this changes: one control replaced by another. */
@@ -54,6 +55,7 @@ export class Erase extends Component<EraseProps> {
     frame.append(dust)
     dust.addEventListener('animationend', this.onAnimationEnd)
     this.timer = window.setTimeout(this.settle, 600)
+    cueDash('sweep')
   }
 
   override componentWillUnmount() {

@@ -65,6 +65,13 @@ describe('Usage interaction wiring', () => {
     const user = userEvent.setup()
     render(<App />)
     await screen.findByRole('region', { name: 'Control Explorer' })
+    // The lesson left on screen by the previous test reports its view once its
+    // chunk loads; wait for that so it cannot land among the search events.
+    await waitFor(() =>
+      expect(trackUsage).toHaveBeenCalledWith(
+        expect.objectContaining({ name: 'control_view' }),
+      ),
+    )
     vi.mocked(trackUsage).mockClear()
     const search = screen.getByRole('searchbox', { name: 'Search controls' })
     await user.type(search, 'private-example-search')
