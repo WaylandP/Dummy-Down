@@ -1,0 +1,4053 @@
+{
+  "schemaVersion": 1,
+  "frameworkId": "cmmc",
+  "editionId": "cmmc-2-13-sep-2024",
+  "sourceSha256": {
+    "cmmc-assessment-l1-213": "88116fa807b3685703f08c1992580ad0cfbc22ad2bcf76f99378fadf964f7368",
+    "cmmc-assessment-l2-213": "0dcaba1626a0d23893981d74dd3f0f2338fff54cece67d81bc811ce76392d867",
+    "cmmc-assessment-l3-213": "6601eb20e8f1490b49c4addd83505eb269062abb3c2bae9b5256449187048ef3"
+  },
+  "methods": [
+    {
+      "controlId": "AC.L1-b.1.i",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 16,
+      "printedPage": 12,
+      "examine": [
+        "Access control policy",
+        "procedures addressing account management",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "list of active system accounts and the name of the individual associated with each account",
+        "notifications or records of recently transferred, separated, or terminated employees",
+        "list of conditions for group and role membership",
+        "list of recently disabled system accounts along with the name of the individual associated with each account",
+        "access authorization records",
+        "account management compliance reviews",
+        "system monitoring records",
+        "system audit logs and records",
+        "list of devices and systems authorized to connect to organizational systems",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with account management responsibilities",
+        "system or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for managing system accounts",
+        "mechanisms for implementing account management"
+      ]
+    },
+    {
+      "controlId": "AC.L1-b.1.ii",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 19,
+      "printedPage": 15,
+      "examine": [
+        "Access control policy",
+        "procedures addressing access enforcement",
+        "system security plan",
+        "system design documentation",
+        "list of approved authorizations including remote access authorizations",
+        "system audit logs and records",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with access enforcement responsibilities",
+        "system or network administrators",
+        "personnel with information security responsibilities",
+        "system developers"
+      ],
+      "test": ["Mechanisms implementing access control policy"]
+    },
+    {
+      "controlId": "AC.L1-b.1.iii",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 21,
+      "printedPage": 17,
+      "examine": [
+        "Access control policy",
+        "procedures addressing the use of external systems",
+        "terms and conditions for external systems",
+        "system security plan",
+        "list of applications accessible from external systems",
+        "system configuration settings and associated documentation",
+        "system connection or processing agreements",
+        "account management documents",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for defining terms and conditions for use of external systems to access organizational systems",
+        "system or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Mechanisms implementing terms and conditions on use of external systems"
+      ]
+    },
+    {
+      "controlId": "AC.L1-b.1.iv",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 24,
+      "printedPage": 20,
+      "examine": [
+        "Access control policy",
+        "procedures addressing publicly accessible content",
+        "system security plan",
+        "list of users authorized to post publicly accessible content on organizational systems",
+        "training materials and/or records",
+        "records of publicly accessible information reviews",
+        "records of response to nonpublic information on public websites",
+        "system audit logs and records",
+        "security awareness training records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for managing publicly accessible information posted on organizational systems",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Mechanisms implementing management of publicly accessible content"
+      ]
+    },
+    {
+      "controlId": "IA.L1-b.1.v",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 26,
+      "printedPage": 22,
+      "examine": [
+        "Identification and authentication policy",
+        "procedures addressing user identification and authentication",
+        "system security plan, system design documentation",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "list of system accounts",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system operations responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators",
+        "personnel with account management responsibilities",
+        "system developers"
+      ],
+      "test": [
+        "Organizational processes for uniquely identifying and authenticating users",
+        "mechanisms supporting or implementing identification and authentication capability"
+      ]
+    },
+    {
+      "controlId": "IA.L1-b.1.vi",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 28,
+      "printedPage": 24,
+      "examine": [
+        "Identification and authentication policy",
+        "system security plan",
+        "procedures addressing authenticator management",
+        "procedures addressing user identification and authentication",
+        "system design documentation",
+        "list of system authenticator types",
+        "system configuration settings and associated documentation",
+        "change control records associated with managing system authenticators",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with authenticator management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing authenticator management capability"
+      ]
+    },
+    {
+      "controlId": "MP.L1-b.1.vii",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 31,
+      "printedPage": 27,
+      "examine": [
+        "System media protection policy",
+        "procedures addressing media sanitization and disposal",
+        "applicable standards and policies addressing media sanitization",
+        "system security plan",
+        "media sanitization records",
+        "system audit logs and records",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with media sanitization responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for media sanitization",
+        "mechanisms supporting or implementing media sanitization"
+      ]
+    },
+    {
+      "controlId": "PE.L1-b.1.viii",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 33,
+      "printedPage": 29,
+      "examine": [
+        "Physical and environmental protection policy",
+        "procedures addressing physical access authorizations",
+        "system security plan",
+        "authorized personnel access list",
+        "authorization credentials",
+        "physical access list reviews",
+        "physical access termination records and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with physical access authorization responsibilities",
+        "personnel with physical access to system facility",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for physical access authorizations",
+        "mechanisms supporting or implementing physical access authorizations"
+      ]
+    },
+    {
+      "controlId": "PE.L1-b.1.ix",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 35,
+      "printedPage": 31,
+      "examine": [
+        "Physical and environmental protection policy",
+        "procedures addressing physical access control",
+        "system security plan",
+        "physical access control logs or records",
+        "inventory records of physical access control devices",
+        "system entry and exit points",
+        "records of key and lock combination changes",
+        "storage locations for physical access control devices",
+        "physical access control devices",
+        "list of security safeguards controlling access to designated publicly accessible areas within facility",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with physical access control responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for physical access control",
+        "mechanisms supporting or implementing physical access control",
+        "physical access control devices"
+      ]
+    },
+    {
+      "controlId": "SC.L1-b.1.x",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 38,
+      "printedPage": 34,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing boundary protection",
+        "system security plan",
+        "list of key internal boundaries of the system",
+        "system design documentation",
+        "boundary protection hardware and software",
+        "enterprise security architecture documentation",
+        "system audit logs and records",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developers",
+        "personnel with boundary protection responsibilities"
+      ],
+      "test": ["Mechanisms implementing boundary protection capability"]
+    },
+    {
+      "controlId": "SC.L1-b.1.xi",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 41,
+      "printedPage": 37,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing boundary protection",
+        "system security plan",
+        "list of key internal boundaries of the system",
+        "system design documentation",
+        "boundary protection hardware and software",
+        "system configuration settings and associated documentation",
+        "enterprise security architecture documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developers",
+        "personnel with boundary protection responsibilities"
+      ],
+      "test": ["Mechanisms implementing boundary protection capability"]
+    },
+    {
+      "controlId": "SI.L1-b.1.xii",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 43,
+      "printedPage": 39,
+      "examine": [
+        "System and information integrity policy",
+        "procedures addressing flaw remediation",
+        "procedures addressing configuration management",
+        "system security plan",
+        "list of flaws and vulnerabilities potentially affecting the system",
+        "list of recent security flaw remediation actions performed on the system (e.g., list of installed patches, service packs, hot fixes, and other software updates to correct system flaws)",
+        "test results from the installation of software and firmware updates to correct system flaws",
+        "installation/change control records for security-relevant software and firmware updates",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel installing, configuring, and maintaining the system",
+        "personnel with responsibility for flaw remediation",
+        "personnel with configuration management responsibility"
+      ],
+      "test": [
+        "Organizational processes for identifying, reporting, and correcting system flaws",
+        "organizational process for installing software and firmware updates",
+        "mechanisms supporting or implementing reporting, and correcting system flaws",
+        "mechanisms supporting or implementing testing software and firmware updates"
+      ]
+    },
+    {
+      "controlId": "SI.L1-b.1.xiii",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 46,
+      "printedPage": 42,
+      "examine": [
+        "System and information integrity policy",
+        "configuration management policy and procedures",
+        "procedures addressing malicious code protection",
+        "records of malicious code protection updates",
+        "malicious code protection mechanisms",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "record of actions initiated by malicious code protection mechanisms in response to malicious code detection",
+        "scan results from malicious code protection mechanisms",
+        "system design documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel installing, configuring, and maintaining the system",
+        "personnel with responsibility for malicious code protection",
+        "personnel with configuration management responsibility"
+      ],
+      "test": [
+        "Organizational processes for employing, updating, and configuring malicious code protection mechanisms",
+        "organizational process for addressing false positives and resulting potential impact",
+        "mechanisms supporting or implementing employing, updating, and configuring malicious code protection mechanisms",
+        "mechanisms supporting or implementing malicious code scanning and subsequent actions"
+      ]
+    },
+    {
+      "controlId": "SI.L1-b.1.xiv",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 49,
+      "printedPage": 45,
+      "examine": [
+        "System and information integrity policy",
+        "configuration management policy and procedures",
+        "procedures addressing malicious code protection",
+        "malicious code protection mechanisms",
+        "records of malicious code protection updates",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "scan results from malicious code protection mechanisms",
+        "record of actions initiated by malicious code protection mechanisms in response to malicious code detection",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel installing, configuring, and maintaining the system",
+        "personnel with responsibility for malicious code protection",
+        "personnel with configuration management responsibility"
+      ],
+      "test": [
+        "Organizational processes for employing, updating, and configuring malicious code protection mechanisms",
+        "organizational process for addressing false positives and resulting potential impact",
+        "mechanisms supporting or implementing malicious code protection mechanisms (including updates and configurations)",
+        "mechanisms supporting or implementing malicious code scanning and subsequent actions"
+      ]
+    },
+    {
+      "controlId": "SI.L1-b.1.xv",
+      "sourceId": "cmmc-assessment-l1-213",
+      "pdfPage": 51,
+      "printedPage": 47,
+      "examine": [
+        "System and information integrity policy",
+        "configuration management policy and procedures",
+        "procedures addressing malicious code protection",
+        "malicious code protection mechanisms",
+        "records of malicious code protection updates",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "scan results from malicious code protection mechanisms",
+        "record of actions initiated by malicious code protection mechanisms in response to malicious code detection",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel installing, configuring, and maintaining the system",
+        "personnel with responsibility for malicious code protection",
+        "personnel with configuration management responsibility"
+      ],
+      "test": [
+        "Organizational processes for employing, updating, and configuring malicious code protection mechanisms",
+        "organizational process for addressing false positives and resulting potential impact",
+        "mechanisms supporting or implementing malicious code protection mechanisms (including updates and configurations)",
+        "mechanisms supporting or implementing malicious code scanning and subsequent actions"
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 22,
+      "printedPage": 14,
+      "examine": [
+        "Access control policy",
+        "procedures addressing account management",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "list of active system accounts and the name of the individual associated with each account",
+        "notifications or records of recently transferred, separated, or terminated employees",
+        "list of conditions for group and role membership",
+        "list of recently disabled system accounts along with the name of the individual associated with each account",
+        "access authorization records",
+        "account management compliance reviews",
+        "system monitoring records",
+        "system audit logs and records",
+        "list of devices and systems authorized to connect to organizational systems",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with account management responsibilities",
+        "system or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for managing system accounts",
+        "mechanisms for implementing account management"
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 25,
+      "printedPage": 17,
+      "examine": [
+        "Access control policy",
+        "procedures addressing access enforcement",
+        "system security plan",
+        "system design documentation",
+        "list of approved authorizations including remote access authorizations",
+        "system audit logs and records",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with access enforcement responsibilities",
+        "system or network administrators",
+        "personnel with information security responsibilities",
+        "system developers"
+      ],
+      "test": ["Mechanisms implementing access control policy"]
+    },
+    {
+      "controlId": "AC.L2-3.1.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 27,
+      "printedPage": 19,
+      "examine": [
+        "Access control policy",
+        "information flow control policies",
+        "procedures addressing information flow enforcement",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "list of information flow authorizations",
+        "system baseline configuration",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developers"
+      ],
+      "test": ["Mechanisms implementing information flow enforcement policy"]
+    },
+    {
+      "controlId": "AC.L2-3.1.4",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 30,
+      "printedPage": 22,
+      "examine": [
+        "Access control policy",
+        "procedures addressing divisions of responsibility and separation of duties",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "list of divisions of responsibility and separation of duties",
+        "system access authorizations",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for defining divisions of responsibility and separation of duties",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": ["Mechanisms implementing separation of duties policy"]
+    },
+    {
+      "controlId": "AC.L2-3.1.5",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 32,
+      "printedPage": 24,
+      "examine": [
+        "Access control policy",
+        "procedures addressing account management",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "list of active system accounts and the name of the individual associated with each account",
+        "list of conditions for group and role membership",
+        "notifications or records of recently transferred, separated, or terminated employees",
+        "list of recently disabled system accounts along with the name of the individual associated with each account",
+        "access authorization records",
+        "account management compliance reviews",
+        "system monitoring/audit records",
+        "procedures addressing least privilege",
+        "list of security functions (deployed in hardware, software, and firmware) and security-relevant information for which access is to be explicitly authorized",
+        "list of system-generated privileged accounts",
+        "list of system administration personnel",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with account management responsibilities",
+        "system or network administrators",
+        "personnel with information security responsibilities",
+        "personnel with responsibilities for defining least privileges necessary to accomplish specified tasks"
+      ],
+      "test": [
+        "Organizational processes for managing system accounts",
+        "mechanisms for implementing account management",
+        "mechanisms implementing least privilege functions",
+        "mechanisms prohibiting privileged access to the system"
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.6",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 35,
+      "printedPage": 27,
+      "examine": [
+        "Access control policy",
+        "procedures addressing least privilege",
+        "system security plan",
+        "list of system-generated security functions assigned to system accounts or roles",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for defining least privileges necessary to accomplish specified organizational tasks",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": ["Mechanisms implementing least privilege functions"]
+    },
+    {
+      "controlId": "AC.L2-3.1.7",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 37,
+      "printedPage": 29,
+      "examine": [
+        "Privacy and security policies, procedures addressing system use notification",
+        "documented approval of system use notification messages or banners",
+        "system audit logs and records",
+        "system design documentation",
+        "user acknowledgements of notification message or banner",
+        "system security plan",
+        "system use notification messages",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for defining least privileges necessary to accomplish specified tasks",
+        "personnel with information security responsibilities",
+        "system developers"
+      ],
+      "test": [
+        "Mechanisms implementing least privilege functions for non-privileged users",
+        "mechanisms auditing the execution of privileged functions"
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.8",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 40,
+      "printedPage": 32,
+      "examine": [
+        "Access control policy",
+        "procedures addressing unsuccessful logon attempts",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with information security responsibilities",
+        "system developers",
+        "system or network administrators"
+      ],
+      "test": [
+        "Mechanisms implementing access control policy for unsuccessful logon attempts"
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.9",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 42,
+      "printedPage": 34,
+      "examine": [
+        "Privacy and security policies, procedures addressing system use notification",
+        "documented approval of system use notification messages or banners",
+        "system audit logs and records",
+        "system design documentation",
+        "user acknowledgements of notification message or banner",
+        "system security plan",
+        "system use notification messages",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel with responsibility for providing legal advice",
+        "system developers"
+      ],
+      "test": ["Mechanisms implementing system use notification"]
+    },
+    {
+      "controlId": "AC.L2-3.1.10",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 44,
+      "printedPage": 36,
+      "examine": [
+        "Access control policy",
+        "procedures addressing session lock",
+        "procedures addressing identification and authentication",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developers"
+      ],
+      "test": ["Mechanisms implementing access control policy for session lock"]
+    },
+    {
+      "controlId": "AC.L2-3.1.11",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 46,
+      "printedPage": 38,
+      "examine": [
+        "Access control policy",
+        "procedures addressing session termination",
+        "system design documentation",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "list of conditions or trigger events requiring session disconnect",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developers"
+      ],
+      "test": ["Mechanisms implementing user session termination"]
+    },
+    {
+      "controlId": "AC.L2-3.1.12",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 48,
+      "printedPage": 40,
+      "examine": [
+        "Access control policy",
+        "procedures addressing remote access implementation and usage (including restrictions)",
+        "configuration management plan",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "remote access authorizations",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for managing remote access connections",
+        "system or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": ["Remote access management capability for the system"]
+    },
+    {
+      "controlId": "AC.L2-3.1.13",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 51,
+      "printedPage": 43,
+      "examine": [
+        "Access control policy",
+        "procedures addressing remote access to the system",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "cryptographic mechanisms and associated configuration documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developers"
+      ],
+      "test": ["Cryptographic mechanisms protecting remote access sessions"]
+    },
+    {
+      "controlId": "AC.L2-3.1.14",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 53,
+      "printedPage": 45,
+      "examine": [
+        "Access control policy",
+        "procedures addressing remote access to the system",
+        "system security plan",
+        "system design documentation",
+        "list of all managed network access control points",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Mechanisms routing all remote accesses through managed network access control points"
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.15",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 55,
+      "printedPage": 47,
+      "examine": [
+        "Access control policy",
+        "procedures addressing remote access to the system",
+        "system configuration settings and associated documentation",
+        "system security plan",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": ["Mechanisms implementing remote access management"]
+    },
+    {
+      "controlId": "AC.L2-3.1.16",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 58,
+      "printedPage": 50,
+      "examine": [
+        "Access control policy",
+        "configuration management plan",
+        "procedures addressing wireless access implementation and usage (including restrictions)",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "wireless access authorizations",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for managing wireless access connections",
+        "personnel with information security responsibilities"
+      ],
+      "test": ["Wireless access management capability for the system"]
+    },
+    {
+      "controlId": "AC.L2-3.1.17",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 60,
+      "printedPage": 52,
+      "examine": [
+        "Access control policy",
+        "system design documentation",
+        "procedures addressing wireless implementation and usage (including restrictions)",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developers"
+      ],
+      "test": [
+        "Mechanisms implementing wireless access protections to the system"
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.18",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 62,
+      "printedPage": 54,
+      "examine": [
+        "Access control policy",
+        "authorizations for mobile device connections to organizational systems",
+        "procedures addressing access control for mobile device usage (including restrictions)",
+        "system design documentation",
+        "configuration management plan",
+        "system security plan",
+        "system audit logs and records",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel using mobile devices to access organizational systems",
+        "system or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Access control capability authorizing mobile device connections to organizational systems"
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.19",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 64,
+      "printedPage": 56,
+      "examine": [
+        "Access control policy",
+        "procedures addressing access control for mobile devices",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "encryption mechanisms and associated configuration documentation",
+        "system security plan",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with access control responsibilities for mobile devices",
+        "system or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Encryption mechanisms protecting confidentiality of information on mobile devices"
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.20",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 66,
+      "printedPage": 58,
+      "examine": [
+        "Access control policy",
+        "procedures addressing the use of external systems",
+        "terms and conditions for external systems",
+        "system security plan",
+        "list of applications accessible from external systems",
+        "system configuration settings and associated documentation",
+        "system connection or processing agreements",
+        "account management documents",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for defining terms and conditions for use of external systems to access organizational systems",
+        "system or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Mechanisms implementing terms and conditions on use of external systems"
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.21",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 69,
+      "printedPage": 61,
+      "examine": [
+        "Access control policy",
+        "procedures addressing the use of external systems",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "system connection or processing agreements",
+        "account management documents",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for restricting or prohibiting use of organization-controlled storage devices on external systems",
+        "system or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Mechanisms implementing restrictions on use of portable storage devices"
+      ]
+    },
+    {
+      "controlId": "AC.L2-3.1.22",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 71,
+      "printedPage": 63,
+      "examine": [
+        "Access control policy",
+        "procedures addressing publicly accessible content",
+        "system security plan",
+        "list of users authorized to post publicly accessible content on organizational systems",
+        "training materials and/or records",
+        "records of publicly accessible information reviews",
+        "records of response to nonpublic information on public websites",
+        "system audit logs and records",
+        "security awareness training records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for managing publicly accessible information posted on organizational systems",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Mechanisms implementing management of publicly accessible content"
+      ]
+    },
+    {
+      "controlId": "AT.L2-3.2.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 73,
+      "printedPage": 65,
+      "examine": [
+        "Security awareness and training policy",
+        "procedures addressing security awareness training implementation",
+        "relevant codes of federal regulations",
+        "security awareness training curriculum",
+        "security awareness training materials",
+        "system security plan",
+        "training records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for security awareness training",
+        "personnel with information security responsibilities",
+        "personnel composing the general system user community",
+        "personnel with responsibilities for role-based awareness training"
+      ],
+      "test": [
+        "Mechanisms managing security awareness training",
+        "mechanisms managing role-based security training"
+      ]
+    },
+    {
+      "controlId": "AT.L2-3.2.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 76,
+      "printedPage": 68,
+      "examine": [
+        "Security awareness and training policy",
+        "procedures addressing security training implementation",
+        "codes of federal regulations",
+        "security training curriculum",
+        "security training materials",
+        "system security plan",
+        "training records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for role-based security training",
+        "personnel with assigned system security roles and responsibilities",
+        "personnel with responsibilities for security awareness training",
+        "personnel with information security responsibilities",
+        "personnel representing the general system user community"
+      ],
+      "test": [
+        "Mechanisms managing role-based security training",
+        "mechanisms managing security awareness training"
+      ]
+    },
+    {
+      "controlId": "AT.L2-3.2.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 78,
+      "printedPage": 70,
+      "examine": [
+        "Security awareness and training policy",
+        "procedures addressing security awareness training implementation",
+        "security awareness training curriculum",
+        "security awareness training materials",
+        "insider threat policy and procedures",
+        "system security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel that participate in security awareness training",
+        "personnel with responsibilities for basic security awareness training",
+        "personnel with information security responsibilities"
+      ],
+      "test": ["Mechanisms managing insider threat training"]
+    },
+    {
+      "controlId": "AU.L2-3.3.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 80,
+      "printedPage": 72,
+      "examine": [
+        "Audit and accountability policy",
+        "procedures addressing auditable events",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "procedures addressing control of audit records",
+        "procedures addressing audit record generation",
+        "system audit logs and records",
+        "system auditable events",
+        "system incident reports",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with audit and accountability responsibilities",
+        "personnel with information security responsibilities",
+        "personnel with audit review, analysis and reporting responsibilities",
+        "system or network administrators"
+      ],
+      "test": ["Mechanisms implementing system audit logging"]
+    },
+    {
+      "controlId": "AU.L2-3.3.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 83,
+      "printedPage": 75,
+      "examine": [
+        "Audit and accountability policy",
+        "procedures addressing audit records and event types",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "procedures addressing audit record generation",
+        "procedures addressing audit review, analysis, and reporting",
+        "reports of audit findings",
+        "system audit logs and records",
+        "system events",
+        "system incident reports",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with audit and accountability responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": ["Mechanisms implementing system audit logging"]
+    },
+    {
+      "controlId": "AU.L2-3.3.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 85,
+      "printedPage": 77,
+      "examine": [
+        "Audit and accountability policy",
+        "procedures addressing audit records and event types",
+        "system security plan",
+        "list of organization-defined event types to be logged",
+        "reviewed and updated records of logged event types",
+        "system audit logs and records",
+        "system incident reports",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with audit and accountability responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": ["Mechanisms supporting review and update of logged event types"]
+    },
+    {
+      "controlId": "AU.L2-3.3.4",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 87,
+      "printedPage": 79,
+      "examine": [
+        "Audit and accountability policy",
+        "procedures addressing response to audit logging processing failures",
+        "system design documentation",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "list of personnel to be notified in case of an audit logging processing failure",
+        "system incident reports",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with audit and accountability responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators",
+        "system developers"
+      ],
+      "test": [
+        "Mechanisms implementing system response to audit logging process failures"
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.5",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 89,
+      "printedPage": 81,
+      "examine": [
+        "Audit and accountability policy",
+        "procedures addressing audit record review, analysis, and reporting",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "procedures addressing investigation of and response to suspicious activities",
+        "system audit logs and records across different repositories",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with audit record review, analysis, and reporting responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Mechanisms supporting analysis and correlation of audit records",
+        "mechanisms integrating audit review, analysis and reporting"
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.6",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 91,
+      "printedPage": 83,
+      "examine": [
+        "Audit and accountability policy",
+        "procedures addressing audit record reduction and report generation",
+        "system design documentation",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "audit record reduction, review, analysis, and reporting tools",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with audit record reduction and report generation responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": ["Audit record reduction and report generation capability"]
+    },
+    {
+      "controlId": "AU.L2-3.3.7",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 93,
+      "printedPage": 85,
+      "examine": [
+        "Audit and accountability policy",
+        "procedures addressing time stamp generation",
+        "system design documentation",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with information security responsibilities",
+        "system or network administrators",
+        "system developers"
+      ],
+      "test": [
+        "Mechanisms implementing time stamp generation",
+        "mechanisms implementing internal information system clock synchronization"
+      ]
+    },
+    {
+      "controlId": "AU.L2-3.3.8",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 95,
+      "printedPage": 87,
+      "examine": [
+        "Audit and accountability policy",
+        "access control policy and procedures",
+        "procedures addressing protection of audit information",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation, system audit logs and records",
+        "audit logging tools",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with audit and accountability responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators",
+        "system developers"
+      ],
+      "test": ["Mechanisms implementing audit information protection"]
+    },
+    {
+      "controlId": "AU.L2-3.3.9",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 97,
+      "printedPage": 89,
+      "examine": [
+        "Audit and accountability policy",
+        "access control policy and procedures",
+        "procedures addressing protection of audit information",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "access authorizations",
+        "system-generated list of privileged users with access to management of audit logging functionality",
+        "access control list",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with audit and accountability responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators",
+        "system developers"
+      ],
+      "test": ["Mechanisms managing access to audit logging functionality"]
+    },
+    {
+      "controlId": "CM.L2-3.4.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 99,
+      "printedPage": 91,
+      "examine": [
+        "Configuration management policy",
+        "procedures addressing the baseline configuration of the system",
+        "procedures addressing system inventory",
+        "system security plan",
+        "configuration management plan",
+        "system inventory records",
+        "inventory review and update records",
+        "enterprise architecture documentation",
+        "system design documentation",
+        "system architecture and configuration documentation",
+        "system configuration settings and associated documentation",
+        "change control records",
+        "system component installation records",
+        "system component removal records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with configuration management responsibilities",
+        "personnel with responsibilities for establishing the system inventory",
+        "personnel with responsibilities for updating the system inventory",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for managing baseline configurations",
+        "mechanisms supporting configuration control of the baseline configuration",
+        "organizational processes for developing and documenting an inventory of system components",
+        "organizational processes for updating inventory of system components",
+        "mechanisms supporting or implementing the system inventory",
+        "mechanisms implementing updating of the system inventory"
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 102,
+      "printedPage": 94,
+      "examine": [
+        "Configuration management policy",
+        "baseline configuration",
+        "procedures addressing configuration settings for the system",
+        "configuration management plan",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "security configuration checklists",
+        "evidence supporting approved deviations from established configuration settings",
+        "change control records",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with security configuration management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for managing configuration settings",
+        "mechanisms that implement, monitor, and/or control system configuration settings",
+        "mechanisms that identify and/or document deviations from established configuration settings",
+        "processes for managing baseline configurations",
+        "mechanisms supporting configuration control of baseline configurations"
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 104,
+      "printedPage": 96,
+      "examine": [
+        "Configuration management policy",
+        "procedures addressing system configuration change control",
+        "configuration management plan",
+        "system architecture and configuration documentation",
+        "system security plan",
+        "change control records",
+        "system audit logs and records",
+        "change control audit and review reports",
+        "agenda/minutes from configuration change control oversight meetings",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with configuration change control responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators",
+        "members of change control board or similar"
+      ],
+      "test": [
+        "Organizational processes for configuration change control",
+        "mechanisms that implement configuration change control"
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.4",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 106,
+      "printedPage": 98,
+      "examine": [
+        "Configuration management policy",
+        "procedures addressing security impact analysis for system changes",
+        "configuration management plan",
+        "security impact analysis documentation",
+        "system security plan",
+        "analysis tools and associated outputs",
+        "change control records",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibility for conducting security impact analysis",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": ["Organizational processes for security impact analysis"]
+    },
+    {
+      "controlId": "CM.L2-3.4.5",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 108,
+      "printedPage": 100,
+      "examine": [
+        "Configuration management policy",
+        "procedures addressing access restrictions for changes to the system",
+        "system security plan",
+        "configuration management plan",
+        "system design documentation",
+        "system architecture and configuration documentation",
+        "system configuration settings and associated documentation",
+        "logical access approvals",
+        "physical access approvals",
+        "access credentials",
+        "change control records",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with logical access control responsibilities",
+        "personnel with physical access control responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for managing access restrictions associated with changes to the system",
+        "mechanisms supporting, implementing, and enforcing access restrictions associated with changes to the system"
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.6",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 111,
+      "printedPage": 103,
+      "examine": [
+        "Configuration management policy",
+        "configuration management plan",
+        "procedures addressing least functionality in the system",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "security configuration checklists",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with security configuration management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes prohibiting or restricting functions, ports, protocols, or services",
+        "mechanisms implementing restrictions or prohibition of functions, ports, protocols, or services"
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.7",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 113,
+      "printedPage": 105,
+      "examine": [
+        "Configuration management policy",
+        "procedures addressing least functionality in the system",
+        "configuration management plan",
+        "system security plan",
+        "system design documentation",
+        "security configuration checklists",
+        "system configuration settings and associated documentation",
+        "specifications for preventing software program execution",
+        "documented reviews of programs, functions, ports, protocols, and/or services",
+        "change control records",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for reviewing programs, functions, ports, protocols, and services on the system",
+        "personnel with information security responsibilities",
+        "system or network administrators",
+        "system developers"
+      ],
+      "test": [
+        "Organizational processes for reviewing and disabling nonessential programs, functions, ports, protocols, or services",
+        "mechanisms implementing review and handling of nonessential programs, functions, ports, protocols, or services",
+        "organizational processes preventing program execution on the system",
+        "organizational processes for software program usage and restrictions",
+        "mechanisms supporting or implementing software program usage and restrictions",
+        "mechanisms preventing program execution on the system"
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.8",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 116,
+      "printedPage": 108,
+      "examine": [
+        "Configuration management policy",
+        "procedures addressing least functionality in the system",
+        "system security plan",
+        "configuration management plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "list of software programs not authorized to execute on the system",
+        "list of software programs authorized to execute on the system",
+        "security configuration checklists",
+        "review and update records associated with list of authorized or unauthorized software programs",
+        "change control records",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for identifying software authorized or not authorized to execute on the system",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational process for identifying, reviewing, and updating programs authorized or not authorized to execute on the system",
+        "process for implementing blacklisting or whitelisting",
+        "mechanisms supporting or implementing blacklisting or whitelisting"
+      ]
+    },
+    {
+      "controlId": "CM.L2-3.4.9",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 118,
+      "printedPage": 110,
+      "examine": [
+        "Configuration management policy",
+        "procedures addressing user installed software",
+        "configuration management plan",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "list of rules governing user-installed software",
+        "system monitoring records",
+        "system audit logs and records",
+        "continuous monitoring strategy",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibilities for governing user-installed software",
+        "personnel operating, using, or maintaining the system",
+        "personnel monitoring compliance with user-installed software policy",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes governing user-installed software on the system",
+        "mechanisms enforcing rules or methods for governing the installation of software by users",
+        "mechanisms monitoring policy compliance"
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 120,
+      "printedPage": 112,
+      "examine": [
+        "Identification and authentication policy",
+        "procedures addressing user identification and authentication",
+        "system security plan, system design documentation",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "list of system accounts",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system operations responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators",
+        "personnel with account management responsibilities",
+        "system developers"
+      ],
+      "test": [
+        "Organizational processes for uniquely identifying and authenticating users",
+        "mechanisms supporting or implementing identification and authentication capability"
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 122,
+      "printedPage": 114,
+      "examine": [
+        "Identification and authentication policy",
+        "system security plan",
+        "procedures addressing authenticator management",
+        "procedures addressing user identification and authentication",
+        "system design documentation",
+        "list of system authenticator types",
+        "system configuration settings and associated documentation",
+        "change control records associated with managing system authenticators",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with authenticator management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing authenticator management capability"
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 125,
+      "printedPage": 117,
+      "examine": [
+        "Identification and authentication policy",
+        "procedures addressing user identification and authentication",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "list of system accounts",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with authenticator management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing authenticator management capability"
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.4",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 128,
+      "printedPage": 120,
+      "examine": [
+        "Identification and authentication policy",
+        "procedures addressing user identification and authentication",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "list of privileged system accounts",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system operations responsibilities",
+        "personnel with account management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators",
+        "system developers"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing identification and authentication capability or replay resistant authentication mechanisms"
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.5",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 130,
+      "printedPage": 122,
+      "examine": [
+        "Identification and authentication policy",
+        "system security plan",
+        "procedures addressing authenticator management",
+        "procedures addressing user identification and authentication",
+        "system design documentation",
+        "list of system authenticator types",
+        "system configuration settings and associated documentation",
+        "change control records associated with managing system authenticators",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with authenticator management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing authenticator management capability"
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.6",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 132,
+      "printedPage": 124,
+      "examine": [
+        "Identification and authentication policy",
+        "procedures addressing identifier management",
+        "procedures addressing account management",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "list of system accounts",
+        "list of identifiers generated from physical access control devices",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with identifier management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators",
+        "system developers"
+      ],
+      "test": ["Mechanisms supporting or implementing identifier management"]
+    },
+    {
+      "controlId": "IA.L2-3.5.7",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 134,
+      "printedPage": 126,
+      "examine": [
+        "Identification and authentication policy",
+        "password policy",
+        "procedures addressing authenticator management",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "system design documentation",
+        "password configurations and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with authenticator management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing authenticator management capability"
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.8",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 136,
+      "printedPage": 128,
+      "examine": [
+        "Identification and authentication policy",
+        "password policy",
+        "procedures addressing authenticator management",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "password configurations and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with authenticator management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators",
+        "system developers"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing password-based authenticator management capability"
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.9",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 138,
+      "printedPage": 130,
+      "examine": [
+        "Identification and authentication policy",
+        "password policy",
+        "procedures addressing authenticator management",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "system design documentation",
+        "password configurations and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with authenticator management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators",
+        "system developers"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing password-based authenticator management capability"
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.10",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 140,
+      "printedPage": 132,
+      "examine": [
+        "Identification and authentication policy",
+        "system security plan",
+        "procedures addressing authenticator management",
+        "procedures addressing user identification and authentication",
+        "system design documentation",
+        "list of system authenticator types",
+        "system configuration settings and associated documentation",
+        "change control records associated with managing system authenticators",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with authenticator management responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing authenticator management capability"
+      ]
+    },
+    {
+      "controlId": "IA.L2-3.5.11",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 142,
+      "printedPage": 134,
+      "examine": [
+        "Identification and authentication policy",
+        "procedures addressing authenticator feedback",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with information security responsibilities",
+        "system or network administrators",
+        "system developers"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing the obscuring of feedback of authentication information during authentication"
+      ]
+    },
+    {
+      "controlId": "IR.L2-3.6.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 144,
+      "printedPage": 136,
+      "examine": [
+        "Incident response policy",
+        "contingency planning policy",
+        "procedures addressing incident handling",
+        "procedures addressing incident response assistance",
+        "incident response plan",
+        "contingency plan",
+        "system security plan",
+        "procedures addressing incident response training",
+        "incident response training curriculum",
+        "incident response training materials",
+        "incident response training records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with incident handling responsibilities",
+        "personnel with contingency planning responsibilities",
+        "personnel with incident response training and operational responsibilities",
+        "personnel with incident response assistance and support responsibilities",
+        "personnel with access to incident response support and assistance capability",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Incident-handling capability for the organization",
+        "organizational processes for incident response assistance",
+        "mechanisms supporting or implementing incident response assistance"
+      ]
+    },
+    {
+      "controlId": "IR.L2-3.6.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 147,
+      "printedPage": 139,
+      "examine": [
+        "Incident response policy",
+        "procedures addressing incident monitoring",
+        "incident response records and documentation",
+        "procedures addressing incident reporting",
+        "incident reporting records and documentation",
+        "incident response plan",
+        "system security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with incident monitoring responsibilities",
+        "personnel with incident reporting responsibilities",
+        "personnel who have or should have reported incidents",
+        "personnel (authorities) to whom incident information is to be reported",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Incident monitoring capability for the organization",
+        "mechanisms supporting or implementing tracking and documenting of system security incidents",
+        "organizational processes for incident reporting",
+        "mechanisms supporting or implementing incident reporting"
+      ]
+    },
+    {
+      "controlId": "IR.L2-3.6.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 150,
+      "printedPage": 142,
+      "examine": [
+        "Incident response policy",
+        "contingency planning policy",
+        "procedures addressing incident response testing",
+        "procedures addressing contingency plan testing",
+        "incident response testing material",
+        "incident response test results",
+        "incident response test plan",
+        "incident response plan",
+        "contingency plan",
+        "system security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with incident response testing responsibilities",
+        "personnel with information security responsibilities",
+        "personnel with responsibilities for testing plans related to incident response"
+      ],
+      "test": ["Mechanisms and processes for incident response"]
+    },
+    {
+      "controlId": "MA.L2-3.7.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 152,
+      "printedPage": 144,
+      "examine": [
+        "System maintenance policy",
+        "procedures addressing controlled system maintenance",
+        "maintenance records",
+        "manufacturer or vendor maintenance specifications",
+        "equipment sanitization records",
+        "media sanitization records",
+        "system security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system maintenance responsibilities",
+        "personnel with information security responsibilities",
+        "personnel responsible for media sanitization",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for scheduling, performing, documenting, reviewing, approving, and monitoring maintenance and repairs for systems",
+        "organizational processes for sanitizing system components",
+        "mechanisms supporting or implementing controlled maintenance",
+        "mechanisms implementing sanitization of system components"
+      ]
+    },
+    {
+      "controlId": "MA.L2-3.7.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 154,
+      "printedPage": 146,
+      "examine": [
+        "System maintenance policy",
+        "procedures addressing system maintenance tools and media",
+        "maintenance records",
+        "system maintenance tools and associated documentation",
+        "maintenance tool inspection records",
+        "system security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system maintenance responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for approving, controlling, and monitoring maintenance tools",
+        "mechanisms supporting or implementing approval, control, and monitoring of maintenance tools",
+        "organizational processes for inspecting maintenance tools",
+        "mechanisms supporting or implementing inspection of maintenance tools",
+        "organizational process for inspecting media for malicious code",
+        "mechanisms supporting or implementing inspection of media used for maintenance"
+      ]
+    },
+    {
+      "controlId": "MA.L2-3.7.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 156,
+      "printedPage": 148,
+      "examine": [
+        "System maintenance policy",
+        "procedures addressing controlled system maintenance",
+        "maintenance records",
+        "manufacturer or vendor maintenance specifications",
+        "equipment sanitization records",
+        "media sanitization records",
+        "system security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system maintenance responsibilities",
+        "personnel with information security responsibilities",
+        "personnel responsible for media sanitization",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for scheduling, performing, documenting, reviewing, approving, and monitoring maintenance and repairs for systems",
+        "organizational processes for sanitizing system components",
+        "mechanisms supporting or implementing controlled maintenance",
+        "mechanisms implementing sanitization of system components"
+      ]
+    },
+    {
+      "controlId": "MA.L2-3.7.4",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 158,
+      "printedPage": 150,
+      "examine": [
+        "System maintenance policy",
+        "procedures addressing system maintenance tools",
+        "system maintenance tools and associated documentation",
+        "maintenance records",
+        "system security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system maintenance responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational process for inspecting media for malicious code",
+        "mechanisms supporting or implementing inspection of media used for maintenance"
+      ]
+    },
+    {
+      "controlId": "MA.L2-3.7.5",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 160,
+      "printedPage": 152,
+      "examine": [
+        "System maintenance policy",
+        "procedures addressing nonlocal system maintenance",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "maintenance records",
+        "diagnostic records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system maintenance responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for managing nonlocal maintenance",
+        "mechanisms implementing, supporting, and managing nonlocal maintenance",
+        "mechanisms for strong authentication of nonlocal maintenance diagnostic sessions",
+        "mechanisms for terminating nonlocal maintenance sessions and network connections"
+      ]
+    },
+    {
+      "controlId": "MA.L2-3.7.6",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 163,
+      "printedPage": 155,
+      "examine": [
+        "System maintenance policy",
+        "procedures addressing maintenance personnel",
+        "service provider contracts",
+        "service-level agreements",
+        "list of authorized personnel",
+        "maintenance records",
+        "access control records",
+        "system security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system maintenance responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for authorizing and managing maintenance personnel",
+        "mechanisms supporting or implementing authorization of maintenance personnel"
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 165,
+      "printedPage": 157,
+      "examine": [
+        "System media protection policy",
+        "procedures addressing media storage",
+        "procedures addressing media access restrictions",
+        "access control policy and procedures",
+        "physical and environmental protection policy and procedures",
+        "system security plan",
+        "media storage facilities",
+        "access control records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system media protection responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for restricting information media",
+        "mechanisms supporting or implementing media access restrictions"
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 167,
+      "printedPage": 159,
+      "examine": [
+        "System media protection policy",
+        "procedures addressing media storage",
+        "physical and environmental protection policy and procedures",
+        "access control policy and procedures",
+        "system security plan",
+        "system media",
+        "designated controlled areas",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system media protection and storage responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for storing media",
+        "mechanisms supporting or implementing secure media storage and media protection"
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 169,
+      "printedPage": 161,
+      "examine": [
+        "System media protection policy",
+        "procedures addressing media sanitization and disposal",
+        "applicable standards and policies addressing media sanitization",
+        "system security plan",
+        "media sanitization records",
+        "system audit logs and records",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with media sanitization responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for media sanitization",
+        "mechanisms supporting or implementing media sanitization"
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.4",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 171,
+      "printedPage": 163,
+      "examine": [
+        "System media protection policy",
+        "procedures addressing media marking",
+        "physical and environmental protection policy and procedures",
+        "system security plan",
+        "list of system media marking security attributes",
+        "designated controlled areas",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system media protection and marking responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for marking information media",
+        "mechanisms supporting or implementing media marking"
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.5",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 173,
+      "printedPage": 165,
+      "examine": [
+        "System media protection policy",
+        "procedures addressing media storage",
+        "physical and environmental protection policy and procedures",
+        "access control policy and procedures",
+        "system security plan",
+        "system media",
+        "designated controlled areas",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system media protection and storage responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for storing media",
+        "mechanisms supporting or implementing media storage and media protection"
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.6",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 175,
+      "printedPage": 167,
+      "examine": [
+        "System media protection policy",
+        "procedures addressing media transport",
+        "system design documentation",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "system media transport records",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system media transport responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Cryptographic mechanisms protecting information on digital media during transportation outside controlled areas"
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.7",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 177,
+      "printedPage": 169,
+      "examine": [
+        "System media protection policy",
+        "system use policy",
+        "procedures addressing media usage restrictions",
+        "system security plan",
+        "rules of behavior",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system media use responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for media use",
+        "mechanisms restricting or prohibiting use of system media on systems or system components"
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.8",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 179,
+      "printedPage": 171,
+      "examine": [
+        "System media protection policy",
+        "system use policy",
+        "procedures addressing media usage restrictions",
+        "system security plan",
+        "rules of behavior",
+        "system configuration settings and associated documentation",
+        "system design documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system media use responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for media use",
+        "mechanisms prohibiting use of media on systems or system components"
+      ]
+    },
+    {
+      "controlId": "MP.L2-3.8.9",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 181,
+      "printedPage": 173,
+      "examine": [
+        "Procedures addressing system backup",
+        "system configuration settings and associated documentation",
+        "security plan",
+        "backup storage locations",
+        "system backup logs or records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with system backup responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for conducting system backups",
+        "mechanisms supporting or implementing system backups"
+      ]
+    },
+    {
+      "controlId": "PS.L2-3.9.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 183,
+      "printedPage": 175,
+      "examine": [
+        "Personnel security policy",
+        "procedures addressing personnel screening",
+        "records of screened personnel",
+        "system security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with personnel security responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": ["Organizational processes for personnel screening"]
+    },
+    {
+      "controlId": "PS.L2-3.9.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 185,
+      "printedPage": 177,
+      "examine": [
+        "Personnel security policy",
+        "procedures addressing personnel transfer and termination",
+        "records of personnel transfer and termination actions",
+        "list of system accounts",
+        "records of terminated or revoked authenticators and credentials",
+        "records of exit interviews",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with personnel security responsibilities",
+        "personnel with account management responsibilities",
+        "system or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for personnel transfer and termination",
+        "mechanisms supporting or implementing personnel transfer and termination notifications",
+        "mechanisms for disabling system access and revoking authenticators"
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 188,
+      "printedPage": 180,
+      "examine": [
+        "Physical and environmental protection policy",
+        "procedures addressing physical access authorizations",
+        "system security plan",
+        "authorized personnel access list",
+        "authorization credentials",
+        "physical access list reviews",
+        "physical access termination records and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with physical access authorization responsibilities",
+        "personnel with physical access to system facility",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for physical access authorizations",
+        "mechanisms supporting or implementing physical access authorizations"
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 190,
+      "printedPage": 182,
+      "examine": [
+        "Physical and environmental protection policy",
+        "procedures addressing physical access monitoring",
+        "system security plan",
+        "physical access logs or records",
+        "physical access monitoring records",
+        "physical access log reviews",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with physical access monitoring responsibilities",
+        "personnel with incident response responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for monitoring physical access",
+        "mechanisms supporting or implementing physical access monitoring",
+        "mechanisms supporting or implementing the review of physical access logs"
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 192,
+      "printedPage": 184,
+      "examine": [
+        "Physical and environmental protection policy",
+        "procedures addressing physical access control",
+        "system security plan",
+        "physical access control logs or records",
+        "inventory records of physical access control devices",
+        "system entry and exit points",
+        "records of key and lock combination changes",
+        "storage locations for physical access control devices",
+        "physical access control devices",
+        "list of security safeguards controlling access to designated publicly accessible areas within facility",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with physical access control responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for physical access control",
+        "mechanisms supporting or implementing physical access control",
+        "physical access control devices"
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.4",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 194,
+      "printedPage": 186,
+      "examine": [
+        "Physical and environmental protection policy",
+        "procedures addressing physical access control",
+        "system security plan",
+        "physical access control logs or records",
+        "inventory records of physical access control devices",
+        "system entry and exit points",
+        "records of key and lock combination changes",
+        "storage locations for physical access control devices",
+        "physical access control devices",
+        "list of security safeguards controlling access to designated publicly accessible areas within facility",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with physical access control responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for physical access control",
+        "mechanisms supporting or implementing physical access control",
+        "physical access control devices"
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.5",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 196,
+      "printedPage": 188,
+      "examine": [
+        "Physical and environmental protection policy",
+        "procedures addressing physical access control",
+        "system security plan",
+        "physical access control logs or records",
+        "inventory records of physical access control devices",
+        "system entry and exit points",
+        "records of key and lock combination changes",
+        "storage locations for physical access control devices",
+        "physical access control devices",
+        "list of security safeguards controlling access to designated publicly accessible areas within facility",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with physical access control responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for physical access control",
+        "mechanisms supporting or implementing physical access control",
+        "physical access control devices"
+      ]
+    },
+    {
+      "controlId": "PE.L2-3.10.6",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 198,
+      "printedPage": 190,
+      "examine": [
+        "Physical and environmental protection policy",
+        "procedures addressing alternate work sites for personnel",
+        "system security plan",
+        "list of safeguards required for alternate work sites",
+        "assessments of safeguards at alternate work sites",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel approving use of alternate work sites",
+        "personnel using alternate work sites",
+        "personnel assessing controls at alternate work sites",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for security at alternate work sites",
+        "mechanisms supporting alternate work sites",
+        "safeguards employed at alternate work sites",
+        "means of communications between personnel at alternate work sites and security personnel"
+      ]
+    },
+    {
+      "controlId": "RA.L2-3.11.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 200,
+      "printedPage": 192,
+      "examine": [
+        "Risk assessment policy",
+        "security planning policy and procedures",
+        "procedures addressing organizational risk assessments",
+        "system security plan",
+        "risk assessment",
+        "risk assessment results",
+        "risk assessment reviews",
+        "risk assessment updates",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with risk assessment responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for risk assessment",
+        "mechanisms supporting or for conducting, documenting, reviewing, disseminating, and updating the risk assessment"
+      ]
+    },
+    {
+      "controlId": "RA.L2-3.11.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 203,
+      "printedPage": 195,
+      "examine": [
+        "Risk assessment policy",
+        "procedures addressing vulnerability scanning",
+        "risk assessment",
+        "system security plan",
+        "security assessment report",
+        "vulnerability scanning tools and associated configuration documentation",
+        "vulnerability scanning results",
+        "patch and vulnerability management records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with risk assessment, security assessment and vulnerability scanning responsibilities",
+        "personnel with vulnerability scan analysis and remediation responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for vulnerability scanning, analysis, remediation, and information sharing",
+        "mechanisms supporting or implementing vulnerability scanning, analysis, remediation, and information sharing"
+      ]
+    },
+    {
+      "controlId": "RA.L2-3.11.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 206,
+      "printedPage": 198,
+      "examine": [
+        "Risk assessment policy",
+        "procedures addressing vulnerability scanning",
+        "risk assessment",
+        "system security plan",
+        "security assessment report",
+        "vulnerability scanning tools and associated configuration documentation",
+        "vulnerability scanning results",
+        "patch and vulnerability management records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with risk assessment, security assessment and vulnerability scanning responsibilities",
+        "personnel with vulnerability scan analysis responsibilities",
+        "personnel with vulnerability remediation responsibilities",
+        "personnel with information security responsibilities",
+        "system or network administrators"
+      ],
+      "test": [
+        "Organizational processes for vulnerability scanning, analysis, remediation, and information sharing",
+        "mechanisms supporting or implementing vulnerability scanning, analysis, remediation, and information sharing"
+      ]
+    },
+    {
+      "controlId": "CA.L2-3.12.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 208,
+      "printedPage": 200,
+      "examine": [
+        "Security assessment and authorization policy",
+        "procedures addressing security assessment planning",
+        "procedures addressing security assessments",
+        "security assessment plan",
+        "system security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with security assessment responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Mechanisms supporting security assessment, security assessment plan development, and security assessment reporting"
+      ]
+    },
+    {
+      "controlId": "CA.L2-3.12.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 211,
+      "printedPage": 203,
+      "examine": [
+        "Security assessment and authorization policy",
+        "procedures addressing plan of action",
+        "system security plan",
+        "security assessment plan",
+        "security assessment report",
+        "security assessment evidence",
+        "plan of action",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with plan of action development and implementation responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Mechanisms for developing, implementing, and maintaining plan of action"
+      ]
+    },
+    {
+      "controlId": "CA.L2-3.12.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 214,
+      "printedPage": 206,
+      "examine": [
+        "Security planning policy",
+        "organizational procedures addressing system security plan development and implementation",
+        "procedures addressing system security plan reviews and updates",
+        "enterprise architecture documentation",
+        "system security plan",
+        "records of system security plan reviews and updates",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with security planning and system security plan implementation responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for system security plan development, review, update, and approval",
+        "mechanisms supporting the system security plan"
+      ]
+    },
+    {
+      "controlId": "CA.L2-3.12.4",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 216,
+      "printedPage": 208,
+      "examine": [
+        "Security planning policy",
+        "procedures addressing system security plan development and implementation",
+        "procedures addressing system security plan reviews and updates",
+        "enterprise architecture documentation",
+        "system security plan",
+        "records of system security plan reviews and updates",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with security planning and system security plan implementation responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for system security plan development, review, update, and approval",
+        "mechanisms supporting the system security plan"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 219,
+      "printedPage": 211,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing boundary protection",
+        "system security plan",
+        "list of key internal boundaries of the system",
+        "system design documentation",
+        "boundary protection hardware and software",
+        "enterprise security architecture documentation",
+        "system audit logs and records",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developers",
+        "personnel with boundary protection responsibilities"
+      ],
+      "test": ["Mechanisms implementing boundary protection capability"]
+    },
+    {
+      "controlId": "SC.L2-3.13.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 222,
+      "printedPage": 214,
+      "examine": [
+        "Security planning policy",
+        "procedures addressing system security plan development and implementation",
+        "procedures addressing system security plan reviews and updates",
+        "enterprise architecture documentation",
+        "system security plan",
+        "records of system security plan reviews and updates",
+        "system and communications protection policy",
+        "procedures addressing security engineering principles used in the specification, design, development, implementation, and modification of the system",
+        "security architecture documentation",
+        "security requirements and specifications for the system",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with responsibility for determining information system security requirements",
+        "personnel with information system design, development, implementation, and modification responsibilities",
+        "personnel with security planning and system security plan implementation responsibilities",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for system security plan development, review, update, and approval",
+        "mechanisms supporting the system security plan",
+        "processes for applying security engineering principles in system specification, design, development, implementation, and modification",
+        "automated mechanisms supporting the application of security engineering principles in information system specification, design, development, implementation, and modification"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 225,
+      "printedPage": 217,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing application partitioning",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system security plan",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developer"
+      ],
+      "test": [
+        "Separation of user functionality from system management functionality"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.4",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 227,
+      "printedPage": 219,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing application partitioning",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developer"
+      ],
+      "test": [
+        "Separation of user functionality from system management functionality"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.5",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 229,
+      "printedPage": 221,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing boundary protection",
+        "system security plan",
+        "list of key internal boundaries of the system",
+        "system design documentation",
+        "boundary protection hardware and software",
+        "system configuration settings and associated documentation",
+        "enterprise security architecture documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developers",
+        "personnel with boundary protection responsibilities"
+      ],
+      "test": ["Mechanisms implementing boundary protection capability"]
+    },
+    {
+      "controlId": "SC.L2-3.13.6",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 231,
+      "printedPage": 223,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing boundary protection",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developer",
+        "personnel with boundary protection responsibilities"
+      ],
+      "test": [
+        "Mechanisms implementing traffic management at managed interfaces"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.7",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 233,
+      "printedPage": 225,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing boundary protection",
+        "system security plan",
+        "system design documentation",
+        "system hardware and software",
+        "system architecture",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developer",
+        "personnel with boundary protection responsibilities"
+      ],
+      "test": [
+        "Mechanisms implementing boundary protection capability",
+        "mechanisms supporting or restricting non-remote connections"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.8",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 235,
+      "printedPage": 227,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing transmission confidentiality and integrity",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developer"
+      ],
+      "test": [
+        "Cryptographic mechanisms or mechanisms supporting or implementing transmission confidentiality",
+        "organizational processes for defining and implementing alternative physical safeguards"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.9",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 237,
+      "printedPage": 229,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing network disconnect",
+        "system design documentation",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developer"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing network disconnect capability"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.10",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 239,
+      "printedPage": 231,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing cryptographic key establishment and management",
+        "system security plan",
+        "system design documentation",
+        "cryptographic mechanisms",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel with responsibilities for cryptographic key establishment and management"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing cryptographic key establishment and management"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.11",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 242,
+      "printedPage": 234,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing cryptographic protection",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "cryptographic module validation certificates",
+        "list of FIPS-validated cryptographic modules",
+        "system audit logs and records",
+        "any other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developers",
+        "personnel with responsibilities for cryptographic protection"
+      ],
+      "test": ["Mechanisms supporting or implementing cryptographic protection"]
+    },
+    {
+      "controlId": "SC.L2-3.13.12",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 244,
+      "printedPage": 236,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing collaborative computing",
+        "access control policy and procedures",
+        "system security plan",
+        "system design documentation",
+        "system audit logs and records",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developer",
+        "personnel with responsibilities for managing collaborative computing devices"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing management of remote activation of collaborative computing devices",
+        "mechanisms providing an indication of use of collaborative computing devices"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.13",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 246,
+      "printedPage": 238,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing mobile code",
+        "mobile code usage restrictions, mobile code implementation policy and procedures",
+        "system audit logs and records",
+        "system security plan",
+        "list of acceptable mobile code and mobile code technologies",
+        "list of unacceptable mobile code and mobile technologies",
+        "authorization records",
+        "system monitoring records",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel with responsibilities for managing mobile code"
+      ],
+      "test": [
+        "Organizational process for controlling, authorizing, monitoring, and restricting mobile code",
+        "mechanisms supporting or implementing the management of mobile code",
+        "mechanisms supporting or implementing the monitoring of mobile code"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.14",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 248,
+      "printedPage": 240,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing VoIP",
+        "VoIP usage restrictions",
+        "VoIP implementation guidance",
+        "system security plan",
+        "system design documentation",
+        "system audit logs and records",
+        "system configuration settings and associated documentation",
+        "system monitoring records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel with responsibilities for managing VoIP"
+      ],
+      "test": [
+        "Organizational process for authorizing, monitoring, and controlling VoIP",
+        "mechanisms supporting or implementing authorizing, monitoring, and controlling VoIP"
+      ]
+    },
+    {
+      "controlId": "SC.L2-3.13.15",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 250,
+      "printedPage": 242,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing session authenticity",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": ["Mechanisms supporting or implementing session authenticity"]
+    },
+    {
+      "controlId": "SC.L2-3.13.16",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 252,
+      "printedPage": 244,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing protection of information at rest",
+        "system security plan",
+        "system design documentation",
+        "list of information at rest requiring confidentiality protections",
+        "system configuration settings and associated documentation",
+        "cryptographic mechanisms and associated configuration documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "system developer"
+      ],
+      "test": [
+        "Mechanisms supporting or implementing confidentiality protections for information at rest"
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.1",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 254,
+      "printedPage": 246,
+      "examine": [
+        "System and information integrity policy",
+        "procedures addressing flaw remediation",
+        "procedures addressing configuration management",
+        "system security plan",
+        "list of flaws and vulnerabilities potentially affecting the system",
+        "list of recent security flaw remediation actions performed on the system (e.g., list of installed patches, service packs, hot fixes, and other software updates to correct system flaws)",
+        "test results from the installation of software and firmware updates to correct system flaws",
+        "installation/change control records for security-relevant software and firmware updates",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel installing, configuring, and maintaining the system",
+        "personnel with responsibility for flaw remediation",
+        "personnel with configuration management responsibility"
+      ],
+      "test": [
+        "Organizational processes for identifying, reporting, and correcting system flaws",
+        "organizational process for installing software and firmware updates",
+        "mechanisms supporting or implementing reporting, and correcting system flaws",
+        "mechanisms supporting or implementing testing software and firmware updates"
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.2",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 257,
+      "printedPage": 249,
+      "examine": [
+        "System and information integrity policy",
+        "configuration management policy and procedures",
+        "procedures addressing malicious code protection",
+        "records of malicious code protection updates",
+        "malicious code protection mechanisms",
+        "system security plan",
+        "system configuration settings and associated documentation",
+        "record of actions initiated by malicious code protection mechanisms in response to malicious code detection",
+        "scan results from malicious code protection mechanisms",
+        "system design documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel installing, configuring, and maintaining the system",
+        "personnel with responsibility for malicious code protection",
+        "personnel with configuration management responsibility"
+      ],
+      "test": [
+        "Organizational processes for employing, updating, and configuring malicious code protection mechanisms",
+        "organizational process for addressing false positives and resulting potential impact",
+        "mechanisms supporting or implementing employing, updating, and configuring malicious code protection mechanisms",
+        "mechanisms supporting or implementing malicious code scanning and subsequent actions"
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.3",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 260,
+      "printedPage": 252,
+      "examine": [
+        "System and information integrity policy",
+        "procedures addressing security alerts, advisories, and directives",
+        "system security plan",
+        "records of security alerts and advisories",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Personnel with security alert and advisory responsibilities",
+        "personnel implementing, operating, maintaining, and using the system",
+        "personnel, organizational elements, and external organizations to whom alerts, advisories, and directives are to be disseminated",
+        "system or network administrators",
+        "personnel with information security responsibilities"
+      ],
+      "test": [
+        "Organizational processes for defining, receiving, generating, disseminating, and complying with security alerts, advisories, and directives",
+        "mechanisms supporting or implementing definition, receipt, generation, and dissemination of security alerts, advisories, and directives",
+        "mechanisms supporting or implementing security directives"
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.4",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 262,
+      "printedPage": 254,
+      "examine": [
+        "System and information integrity policy",
+        "configuration management policy and procedures",
+        "procedures addressing malicious code protection",
+        "malicious code protection mechanisms",
+        "records of malicious code protection updates",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "scan results from malicious code protection mechanisms",
+        "record of actions initiated by malicious code protection mechanisms in response to malicious code detection",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel installing, configuring, and maintaining the system",
+        "personnel with responsibility for malicious code protection",
+        "personnel with configuration management responsibility"
+      ],
+      "test": [
+        "Organizational processes for employing, updating, and configuring malicious code protection mechanisms",
+        "organizational process for addressing false positives and resulting potential impact",
+        "mechanisms supporting or implementing malicious code protection mechanisms (including updates and configurations)",
+        "mechanisms supporting or implementing malicious code scanning and subsequent actions"
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.5",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 264,
+      "printedPage": 256,
+      "examine": [
+        "System and information integrity policy",
+        "configuration management policy and procedures",
+        "procedures addressing malicious code protection",
+        "malicious code protection mechanisms",
+        "records of malicious code protection updates",
+        "system security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "scan results from malicious code protection mechanisms",
+        "record of actions initiated by malicious code protection mechanisms in response to malicious code detection",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel installing, configuring, and maintaining the system",
+        "personnel with responsibility for malicious code protection",
+        "personnel with configuration management responsibility"
+      ],
+      "test": [
+        "Organizational processes for employing, updating, and configuring malicious code protection mechanisms",
+        "organizational process for addressing false positives and resulting potential impact",
+        "mechanisms supporting or implementing malicious code protection mechanisms (including updates and configurations)",
+        "mechanisms supporting or implementing malicious code scanning and subsequent actions"
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.6",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 266,
+      "printedPage": 258,
+      "examine": [
+        "System and information integrity policy",
+        "procedures addressing system monitoring tools and techniques",
+        "continuous monitoring strategy",
+        "system and information integrity policy",
+        "procedures addressing system monitoring tools and techniques",
+        "facility diagram or layout",
+        "system security plan",
+        "system monitoring tools and techniques documentation",
+        "system design documentation",
+        "locations within system where monitoring devices are deployed",
+        "system protocols",
+        "system configuration settings and associated documentation",
+        "system audit logs and records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel installing, configuring, and maintaining the system",
+        "personnel with responsibility monitoring the system",
+        "personnel with responsibility for the intrusion detection system"
+      ],
+      "test": [
+        "Organizational processes for system monitoring",
+        "mechanisms supporting or implementing intrusion detection capability and system monitoring",
+        "mechanisms supporting or implementing system monitoring capability",
+        "organizational processes for intrusion detection and system monitoring",
+        "mechanisms supporting or implementing the monitoring of inbound and outbound communications traffic"
+      ]
+    },
+    {
+      "controlId": "SI.L2-3.14.7",
+      "sourceId": "cmmc-assessment-l2-213",
+      "pdfPage": 269,
+      "printedPage": 261,
+      "examine": [
+        "Continuous monitoring strategy",
+        "system and information integrity policy",
+        "procedures addressing system monitoring tools and techniques",
+        "facility diagram/layout",
+        "system security plan",
+        "system design documentation",
+        "system monitoring tools and techniques documentation",
+        "locations within system where monitoring devices are deployed",
+        "system configuration settings and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System or network administrators",
+        "personnel with information security responsibilities",
+        "personnel installing, configuring, and maintaining the system",
+        "personnel with responsibility for monitoring the system"
+      ],
+      "test": [
+        "Organizational processes for system monitoring",
+        "mechanisms supporting or implementing system monitoring capability"
+      ]
+    },
+    {
+      "controlId": "AC.L3-3.1.2e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 19,
+      "printedPage": 15,
+      "examine": [
+        "Access control policy",
+        "procedures addressing the use of external systems",
+        "list of information resources owned, provisioned, or issued by the organization",
+        "security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system connection or processing agreements",
+        "system audit records",
+        "account management documents",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for restricting or prohibiting the use of non-organizationally owned systems, system components, or devices",
+        "system and network administrators",
+        "organizational personnel responsible for system security"
+      ],
+      "test": [
+        "Mechanisms implementing restrictions on the use of non-organizationally owned systems, components, or devices"
+      ]
+    },
+    {
+      "controlId": "AC.L3-3.1.3e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 21,
+      "printedPage": 17,
+      "examine": [
+        "Access control policy",
+        "information flow control policies",
+        "procedures addressing information flow enforcement",
+        "system design documentation",
+        "security plan",
+        "system configuration settings and associated documentation",
+        "system audit records",
+        "system baseline configuration",
+        "list of information flow authorizations",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "System and network administrators",
+        "organizational personnel responsible for information security",
+        "system developers"
+      ],
+      "test": [
+        "Mechanisms implementing information flow enforcement policy",
+        "mechanisms implementing secure information transfer solutions"
+      ]
+    },
+    {
+      "controlId": "AT.L3-3.2.1e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 24,
+      "printedPage": 20,
+      "examine": [
+        "Awareness training policy",
+        "procedures addressing awareness training implementation",
+        "appropriate codes of federal regulations",
+        "awareness training curriculum",
+        "awareness training materials",
+        "security plan",
+        "training records",
+        "threat information on social engineering, advanced persistent threat actors, suspicious behaviors, and breaches",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for awareness training",
+        "organizational personnel responsible for information security",
+        "organizational personnel comprising the general system user community"
+      ],
+      "test": [
+        "Mechanisms managing awareness training",
+        "mechanisms managing threat information"
+      ]
+    },
+    {
+      "controlId": "AT.L3-3.2.2e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 26,
+      "printedPage": 22,
+      "examine": [
+        "Awareness training policy",
+        "procedures addressing awareness training implementation",
+        "appropriate codes of federal regulations",
+        "awareness training curriculum",
+        "awareness training materials",
+        "security plan",
+        "training records",
+        "threat information on social engineering, advanced persistent threat actors, suspicious behaviors, breaches, or other relevant adversary tactics, techniques, or procedures",
+        "feedback on practical exercises and awareness training",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for awareness training",
+        "organizational personnel responsible for information security",
+        "organizational personnel with roles identified for practical exercises",
+        "supervisors of personnel with roles identified for practical exercises"
+      ],
+      "test": [
+        "Mechanisms managing awareness training",
+        "mechanisms managing threat information"
+      ]
+    },
+    {
+      "controlId": "CM.L3-3.4.1e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 29,
+      "printedPage": 25,
+      "examine": [
+        "Configuration management policy",
+        "procedures addressing the baseline configuration of the system",
+        "configuration management plan",
+        "enterprise architecture documentation",
+        "system design documentation",
+        "system architecture and configuration documentation",
+        "system configuration settings and associated documentation",
+        "change control records",
+        "system and system component inventory records",
+        "inventory reviews and update records",
+        "security plan",
+        "system audit records",
+        "change control audit and review reports",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for configuration management",
+        "organizational personnel responsible for system component inventory",
+        "organizational personnel responsible for configuration change control",
+        "organizational personnel responsible for information security",
+        "system/network administrators",
+        "members of a change control board or similar"
+      ],
+      "test": [
+        "Mechanisms that implement configuration change control",
+        "mechanisms supporting configuration control of the baseline configuration",
+        "mechanisms supporting and/or implementing the system component inventory"
+      ]
+    },
+    {
+      "controlId": "CM.L3-3.4.2e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 32,
+      "printedPage": 28,
+      "examine": [
+        "Configuration management policy",
+        "procedures addressing the baseline configuration of the system",
+        "configuration management plan",
+        "authoritative source or repository",
+        "enterprise architecture documentation",
+        "system design documentation",
+        "system architecture and configuration documentation",
+        "system procedures addressing system configuration change control",
+        "configuration settings and associated documentation",
+        "change control records",
+        "change control audit and review reports",
+        "agenda/minutes from configuration change control oversight meetings",
+        "alerts/notifications of unauthorized baseline configuration changes",
+        "security plan",
+        "system audit records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for configuration management",
+        "organizational personnel responsible for information security",
+        "organizational personnel responsible for configuration change control",
+        "system developers",
+        "system/network administrators",
+        "members of a change control board or similar roles"
+      ],
+      "test": [
+        "Automated mechanisms supporting configuration control of the baseline configuration",
+        "automated mechanisms that implement security responses to changes to the baseline configurations",
+        "automated mechanisms that implement configuration change control",
+        "automated mechanisms that detect misconfigured or unauthorized system components"
+      ]
+    },
+    {
+      "controlId": "CM.L3-3.4.3e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 35,
+      "printedPage": 31,
+      "examine": [
+        "Configuration management policy",
+        "configuration management plan",
+        "procedures addressing system component inventory",
+        "procedures addressing the baseline configuration of the system",
+        "configuration management plan",
+        "system design documentation",
+        "system architecture and configuration documentation",
+        "security plan",
+        "system configuration settings and associated documentation",
+        "configuration change control records",
+        "system inventory records",
+        "change control records",
+        "system maintenance records",
+        "system audit records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for information security",
+        "organizational personnel responsible for configuration management",
+        "organizational personnel responsible for managing the automated mechanisms implementing the system component inventory",
+        "system developers",
+        "system/network administrators"
+      ],
+      "test": [
+        "Automated mechanisms implementing baseline configuration maintenance",
+        "automated mechanisms implementing the system component inventory"
+      ]
+    },
+    {
+      "controlId": "IA.L3-3.5.1e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 38,
+      "printedPage": 34,
+      "examine": [
+        "Identification and authentication policy",
+        "procedures addressing device identification and authentication",
+        "network connection policy",
+        "security plan",
+        "system configuration settings and associated documentation",
+        "system design documentation",
+        "list of devices requiring unique identification and authentication",
+        "device connection reports",
+        "system audit records",
+        "list of privileged system accounts",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for system operations",
+        "organizational personnel responsible for account management",
+        "organizational personnel responsible for device identification and authentication",
+        "organizational personnel responsible for information security",
+        "system/network administrators",
+        "system developers"
+      ],
+      "test": [
+        "Cryptographically-based bidirectional authentication mechanisms",
+        "mechanisms supporting and/or implementing network connection policy",
+        "mechanisms supporting and/or implementing replay-resistant authentication mechanisms",
+        "mechanisms supporting and/or implementing an identification and authentication capability",
+        "mechanisms supporting and/or implementing a device identification and authentication capability"
+      ]
+    },
+    {
+      "controlId": "IA.L3-3.5.3e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 41,
+      "printedPage": 37,
+      "examine": [
+        "Configuration management policy",
+        "identification and authentication policy",
+        "system and information integrity policy",
+        "procedures addressing system component inventory",
+        "procedures addressing device identification and authentication",
+        "procedures addressing device configuration management",
+        "procedures addressing system monitoring tools and techniques",
+        "configuration management plan",
+        "security plan",
+        "system design documentation",
+        "system configuration settings and associated documentation",
+        "system inventory records",
+        "configuration management records",
+        "system monitoring records",
+        "alerts/notifications of unauthorized components within the system",
+        "change control records",
+        "system audit records",
+        "system monitoring tools and techniques documentation",
+        "documented authorization/approval of network services",
+        "notifications or alerts of unauthorized network services",
+        "system monitoring logs or records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for managing the mechanisms implementing unauthorized system component detection",
+        "organizational personnel responsible for device identification and authentication",
+        "organizational personnel responsible for information security",
+        "organizational personnel responsible for installing, configuring, and/or maintaining the system",
+        "system/network administrators",
+        "organizational personnel responsible for monitoring the system",
+        "system developers"
+      ],
+      "test": [
+        "Mechanisms implementing the detection of unauthorized system components",
+        "mechanisms supporting and/or implementing a device identification and authentication capability",
+        "mechanisms for providing alerts",
+        "mechanisms supporting and/or implementing configuration management",
+        "cryptographic mechanisms supporting device attestation",
+        "mechanisms supporting and/or implementing a system monitoring capability",
+        "mechanisms for auditing network services"
+      ]
+    },
+    {
+      "controlId": "IR.L3-3.6.1e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 44,
+      "printedPage": 40,
+      "examine": [
+        "Incident response policy",
+        "contingency planning policy",
+        "procedures addressing incident handling",
+        "procedures addressing the security operations center operations",
+        "mechanisms supporting dynamic response capabilities",
+        "incident response plan",
+        "contingency plan",
+        "security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for incident handling",
+        "organizational personnel responsible for contingency planning",
+        "security operations center personnel",
+        "organizational personnel responsible for information security"
+      ],
+      "test": [
+        "Mechanisms that support and/or implement the security operations center capability",
+        "mechanisms that support and/or implement the incident handling process"
+      ]
+    },
+    {
+      "controlId": "IR.L3-3.6.2e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 47,
+      "printedPage": 43,
+      "examine": [
+        "Incident response policy",
+        "procedures addressing incident response",
+        "incident response plan",
+        "security plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for incident response",
+        "organizational personnel from the incident response team",
+        "organizational personnel responsible for information security"
+      ],
+      "test": ["Mechanisms supporting and/or implementing incident response"]
+    },
+    {
+      "controlId": "PS.L3-3.9.2e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 50,
+      "printedPage": 46,
+      "examine": [
+        "Personnel security policy",
+        "system and services acquisition policy",
+        "procedures addressing personnel screening",
+        "records of screened personnel",
+        "enterprise architecture documentation",
+        "system design documentation",
+        "system architecture and configuration documentation",
+        "security plan",
+        "list of individuals who have been identified as posing an increased level of risk",
+        "list of appropriate access authorizations required for system personnel",
+        "personnel screening criteria and associated documentation",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for personnel security",
+        "organizational personnel responsible for information security",
+        "organizational personnel responsible for system and services acquisition",
+        "organizational personnel responsible for personnel screening"
+      ],
+      "test": [
+        "Organizational processes for personnel screening",
+        "mechanisms supporting personnel screening"
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.1e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 52,
+      "printedPage": 48,
+      "examine": [
+        "Information security program plan",
+        "risk assessment policy",
+        "threat awareness program documentation",
+        "procedures for the threat awareness program",
+        "security planning policy and procedures",
+        "procedures addressing organizational assessments of risk",
+        "threat hunting program documentation",
+        "procedures for the threat hunting program",
+        "risk assessment results relevant to threat awareness",
+        "threat hunting results",
+        "list or other documentation on the cross-organization, information-sharing capability",
+        "security plan",
+        "risk assessment",
+        "risk assessment results",
+        "risk assessment reviews",
+        "risk assessment updates",
+        "contingency planning policy",
+        "contingency plan",
+        "incident response policy",
+        "incident response plan",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for information security program planning and plan implementation",
+        "organizational personnel responsible for the threat awareness and threat hunting programs",
+        "organizational personnel responsible for risk assessments",
+        "organizational personnel responsible for the cross-organization, information-sharing capability",
+        "organizational personnel responsible for information security",
+        "organizational personnel responsible for contingency planning",
+        "organizational personnel responsible for incident response",
+        "personnel with whom threat awareness information is shared by the organization"
+      ],
+      "test": [
+        "Mechanisms supporting and/or implementing the threat awareness program",
+        "mechanisms supporting and/or implementing the cross-organization, information-sharing capability",
+        "mechanisms supporting and/or implementing the threat hunting program",
+        "mechanisms for conducting, documenting, reviewing, disseminating, and updating risk assessments",
+        "mechanisms supporting and/or implementing contingency plans",
+        "mechanisms supporting and/or implementing incident response plans"
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.2e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 55,
+      "printedPage": 51,
+      "examine": [
+        "System and information integrity policy",
+        "policy and procedures addressing system monitoring",
+        "threat hunting program documentation",
+        "procedures for the threat hunting program",
+        "threat hunting results",
+        "system design documentation",
+        "security plan",
+        "system monitoring tools and techniques documentation",
+        "security planning policy and procedures",
+        "system configuration settings and associated documentation",
+        "system monitoring logs or records",
+        "system audit records",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for threat hunting program",
+        "system/network administrators",
+        "organizational personnel responsible for information security",
+        "system developers",
+        "organizational personnel installing, configuring, and/or maintaining the system",
+        "organizational personnel responsible for monitoring the system and/or network"
+      ],
+      "test": [
+        "Mechanisms supporting and/or implementing a threat hunting program",
+        "mechanisms supporting and/or implementing a system monitoring capability",
+        "mechanisms supporting and/or supporting and/or implementing incident response plans"
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.3e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 58,
+      "printedPage": 54,
+      "examine": [
+        "System and information integrity policy",
+        "risk assessment policy",
+        "security planning policy and procedures",
+        "procedures addressing organizational assessments of risk",
+        "procedures addressing system monitoring",
+        "enterprise architecture documentation",
+        "system design documentation",
+        "system architecture and configuration documentation",
+        "system monitoring tools and techniques documentation",
+        "system configuration settings and associated documentation",
+        "system monitoring logs or records",
+        "system audit records",
+        "security plan",
+        "risk assessment artifacts",
+        "risk assessment results",
+        "risk assessment reviews",
+        "risk assessment updates",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for information security",
+        "organizational personnel responsible for risk assessments",
+        "risk analysts",
+        "system developers",
+        "organizational personnel installing, configuring, and/or maintaining the system",
+        "organizational personnel responsible for monitoring",
+        "system/network administrators"
+      ],
+      "test": [
+        "Automated mechanisms supporting and/or implementing risk analytics capabilities",
+        "automated mechanisms supporting and/or implementing system monitoring capability",
+        "automated mechanisms supporting and/or implementing the discovery, collection, distribution, and use of indicators of compromise",
+        "automated mechanisms for conducting, documenting, reviewing, disseminating, and updating risk assessments"
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.4e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 61,
+      "printedPage": 57,
+      "examine": [
+        "system security plan",
+        "records of security plan reviews and updates",
+        "system design documentation",
+        "security planning policy",
+        "procedures addressing security plan development",
+        "procedures addressing security plan reviews and updates",
+        "enterprise architecture documentation",
+        "enterprise security architecture documentation",
+        "system interconnection security agreements and other information exchange agreements",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for information security",
+        "organizational personnel responsible for developing, implementing, or approving system interconnection and information exchange agreements",
+        "personnel managing the systems to which the Interconnection Security Agreement/Information Exchange Agreement applies",
+        "system developers",
+        "organizational personnel responsible for security planning and plan implementation",
+        "organizational personnel responsible for boundary protection",
+        "system developers",
+        "system/network administrators"
+      ],
+      "test": [
+        "Organizational processes for security plan development, review, update, and approval"
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.5e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 64,
+      "printedPage": 60,
+      "examine": [
+        "Risk assessment policy",
+        "security planning policy and procedures",
+        "security assessment policy and procedures",
+        "security assessment plans",
+        "security assessment results",
+        "procedures addressing organizational assessments of risk",
+        "security plan",
+        "risk assessment",
+        "risk assessment results",
+        "risk assessment reviews",
+        "risk assessment updates",
+        "threat intelligence information",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for security assessments",
+        "organizational personnel responsible for risk assessments",
+        "organizational personnel responsible for threat analysis",
+        "organizational personnel responsible for information security"
+      ],
+      "test": [
+        "Mechanisms supporting, conducting, documenting, reviewing, disseminating, and updating risk assessments",
+        "mechanisms supporting and/or implementing security assessments"
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.6e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 67,
+      "printedPage": 63,
+      "examine": [
+        "Risk assessment policy",
+        "procedures addressing organizational assessments of risk",
+        "security planning policy and procedures",
+        "supply chain risk management plan",
+        "security plan",
+        "risk assessment",
+        "risk assessment results",
+        "risk assessment reviews",
+        "risk assessment updates",
+        "threat intelligence information",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for information security",
+        "organizational personnel responsible for risk assessments",
+        "organizational personnel responsible for supply chain risk management"
+      ],
+      "test": [
+        "Mechanisms supporting, conducting, documenting, reviewing, disseminating, and updating risk assessments"
+      ]
+    },
+    {
+      "controlId": "RA.L3-3.11.7e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 69,
+      "printedPage": 65,
+      "examine": [
+        "Risk assessment policy",
+        "supply chain risk management plan",
+        "security planning policy and procedures",
+        "procedures addressing organizational assessments of risk",
+        "security plan",
+        "risk assessment",
+        "risk assessment results",
+        "risk assessment reviews",
+        "risk assessment updates",
+        "threat intelligence information",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for information security",
+        "organizational personnel responsible for risk assessments",
+        "organizational personnel responsible for supply chain risk management"
+      ],
+      "test": [
+        "Automated mechanisms supporting, conducting, documenting, reviewing, disseminating, and updating risk assessments"
+      ]
+    },
+    {
+      "controlId": "CA.L3-3.12.1e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 71,
+      "printedPage": 67,
+      "examine": [
+        "Security assessment policy",
+        "procedures addressing penetration testing",
+        "security plan",
+        "security assessment plan",
+        "penetration test report",
+        "security assessment report",
+        "security assessment evidence",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for security assessments",
+        "penetration testing team",
+        "system/network administrators",
+        "organizational personnel responsible for information security"
+      ],
+      "test": [
+        "Automated mechanisms supporting security assessments",
+        "automated mechanisms supporting penetration testing"
+      ]
+    },
+    {
+      "controlId": "SC.L3-3.13.4e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 74,
+      "printedPage": 70,
+      "examine": [
+        "System and communications protection policy",
+        "procedures addressing boundary protection",
+        "system design documentation",
+        "procedures addressing the use of thin nodes",
+        "list of key internal boundaries of the system",
+        "security plan",
+        "boundary protection hardware and software",
+        "system configuration settings and associated documentation",
+        "enterprise architecture documentation",
+        "system architecture",
+        "security architecture documentation",
+        "system audit records",
+        "system component inventory",
+        "list of security tools and support components to be isolated from other system components",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for information security",
+        "system/network administrators",
+        "system developers",
+        "organizational personnel responsible for boundary protection"
+      ],
+      "test": [
+        "Mechanisms implementing the boundary protection capability",
+        "mechanisms implementing physical isolation techniques",
+        "mechanisms supporting and/or implementing the isolation of information security tools, mechanisms, and support components",
+        "mechanisms supporting and/or implementing the capability to separate system components supporting organizational missions and business functions",
+        "mechanisms implementing logical isolation techniques",
+        "mechanisms supporting or implementing separate network addresses/different subnets",
+        "mechanisms supporting and/or implementing thin nodes"
+      ]
+    },
+    {
+      "controlId": "SI.L3-3.14.1e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 77,
+      "printedPage": 73,
+      "examine": [
+        "System and information integrity policy",
+        "procedures addressing software, firmware, and information integrity",
+        "system design documentation",
+        "security plan",
+        "system configuration settings and associated documentation",
+        "system component inventory",
+        "integrity verification tools and associated documentation",
+        "records of integrity verification scans",
+        "system audit records",
+        "cryptographic mechanisms and associated documentation",
+        "records of detected unauthorized changes to software, firmware, and information",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for information security",
+        "organizational personnel responsible for software, firmware, and/or information integrity",
+        "system developers",
+        "system/network administrators"
+      ],
+      "test": [
+        "Software, firmware, and information integrity verification tools",
+        "mechanisms supporting and/or implementing integrity verification of the boot process",
+        "mechanisms supporting and/or implementing protection of the integrity of boot firmware",
+        "cryptographic mechanisms implementing software, firmware, and information integrity",
+        "safeguards implementing protection of the integrity of boot firmware"
+      ]
+    },
+    {
+      "controlId": "SI.L3-3.14.3e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 81,
+      "printedPage": 77,
+      "examine": [
+        "Access control policy",
+        "information flow control policies",
+        "system and services acquisition policy",
+        "system and communications protection policy",
+        "procedures addressing security function isolation",
+        "procedures addressing application partitioning",
+        "procedures addressing security engineering principles used in the specification, design, development, implementation, and modification of the system",
+        "procedures addressing information flow enforcement",
+        "procedures addressing access enforcement",
+        "system architecture",
+        "system design documentation",
+        "security plan",
+        "system component inventory",
+        "system configuration settings and associated documentation",
+        "system baseline configuration",
+        "list of security functions to be isolated from non-security functions",
+        "system audit records",
+        "security requirements and specifications for the system",
+        "list of approved authorizations (user privileges)",
+        "list of information flow authorizations",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for access enforcement",
+        "system/network administrators",
+        "organizational personnel responsible for information security",
+        "system developers",
+        "system integrators",
+        "organizational personnel responsible for acquisition/contracting",
+        "organizational personnel responsible for determining system security requirements",
+        "system security architects",
+        "enterprise architects",
+        "organizational personnel responsible for system specification, design, development, implementation, and modification"
+      ],
+      "test": [
+        "Mechanisms implementing the access control policy",
+        "mechanisms implementing the information flow enforcement policy",
+        "mechanisms supporting the application of security engineering principles in system specification, design, development, implementation, and modification"
+      ]
+    },
+    {
+      "controlId": "SI.L3-3.14.6e",
+      "sourceId": "cmmc-assessment-l3-213",
+      "pdfPage": 84,
+      "printedPage": 80,
+      "examine": [
+        "System and information integrity policy",
+        "information security program plan",
+        "procedures addressing security alerts, advisories, and directives",
+        "threat awareness program documentation",
+        "procedures addressing system monitoring",
+        "procedures for the threat awareness program",
+        "risk assessment results relevant to threat awareness",
+        "records of security alerts and advisories",
+        "system design documentation",
+        "security plan",
+        "system monitoring tools and techniques documentation",
+        "system configuration settings and associated documentation",
+        "system monitoring logs or records",
+        "system audit records",
+        "documentation on the cross-organization information-sharing capability",
+        "other relevant documents or records"
+      ],
+      "interview": [
+        "Organizational personnel responsible for information security program planning and plan implementation",
+        "system/network administrators",
+        "organizational personnel responsible for the threat awareness program",
+        "organizational personnel responsible for the cross-organization information-sharing capability",
+        "organizational personnel responsible for information security",
+        "organizational personnel responsible for installing, configuring, and/or maintaining the system",
+        "organizational personnel security alerts and advisories",
+        "organizational personnel responsible for implementing, operating, maintaining, and using the system",
+        "organizational personnel, organizational elements, and/or external organizations to whom alerts, advisories, and directives are to be disseminated",
+        "personnel with whom threat awareness information is shared by the organization",
+        "system developers"
+      ],
+      "test": [
+        "Mechanisms supporting and/or implementing the threat awareness program",
+        "mechanisms supporting and/or implementing the cross-organization information-sharing capability",
+        "mechanisms supporting and/or implementing the system monitoring capability",
+        "mechanisms supporting and/or implementing the definition, receipt, generation, and dissemination of security alerts, advisories, and directives",
+        "mechanisms supporting and/or implementing security directives",
+        "mechanisms supporting and/or implementing threat hunting",
+        "mechanisms supporting and/or implementing intrusion detection",
+        "mechanisms supporting and/or implementing the discovery, collection, distribution, and use of indicators of compromise"
+      ]
+    }
+  ]
+}

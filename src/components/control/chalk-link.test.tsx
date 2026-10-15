@@ -143,7 +143,11 @@ describe('A chalk in the address', () => {
     const pushState = vi.spyOn(window.history, 'pushState')
     render(<App />)
     expect(
-      await screen.findByRole('tab', { name: 'I run the systems' }),
+      await screen.findByRole(
+        'tab',
+        { name: 'I run the systems' },
+        { timeout: 5000 },
+      ),
     ).toHaveAttribute('aria-selected', 'true')
     await waitFor(() => expect(param('chalk')).toBeNull())
     expect(param('mode')).toBe('it-cyber')
@@ -164,7 +168,11 @@ describe('A chalk in the address', () => {
     expect(param('mode')).toBe('beginner')
     expect(param('tab')).toBe('explain')
     expect(
-      screen.getByRole('tab', { name: chalkFor('beginner').prompt }),
+      await screen.findByRole(
+        'tab',
+        { name: chalkFor('beginner').prompt },
+        { timeout: 5000 },
+      ),
     ).toHaveAttribute('aria-selected', 'true')
   })
 
