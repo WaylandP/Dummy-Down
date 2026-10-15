@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { act, render, screen } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from '../App'
 import { trackUsage } from './usage'
@@ -26,10 +26,13 @@ describe('Known control render measurement', () => {
       level: 1,
       name: 'Authorized Access Control [FCI Data]',
     })
-    const calls = vi
-      .mocked(trackUsage)
-      .mock.calls.filter(([event]) => event.name === 'control_view')
-    expect(calls).toHaveLength(1)
+    // The view is recorded in a passive effect after the lazy page's first paint.
+    const views = () =>
+      vi
+        .mocked(trackUsage)
+        .mock.calls.filter(([event]) => event.name === 'control_view')
+    await waitFor(() => expect(views()).toHaveLength(1))
+    const calls = views()
     expect(calls[0]?.[0]).toEqual({
       name: 'control_view',
       lesson: {
@@ -60,7 +63,8 @@ describe('Known control render measurement', () => {
     replay(
       '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access',
     )
-    expect(trackUsage).toHaveBeenCalledTimes(1)
+    // The lazy page's address subscription settles after its first paint.
+    await waitFor(() => expect(trackUsage).toHaveBeenCalledTimes(1))
     replay(
       '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access&q=access',
     )

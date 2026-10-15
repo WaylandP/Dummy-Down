@@ -84,6 +84,20 @@ not establish it.
   Previous/Next within the current results. “Browse & filter controls” sits
   under the page and reopens search, filters and results. Discovery and the
   project's demo lesson keep their earlier layout until their own pass.
+  With a control on the board the tray's three chalks are the perspective
+  switch (a `Pick a chalk` navigation; the chalk in hand is pressed and
+  lifted); on a phone the tray is the bottom bar, 72px, labelled, ending the
+  page rather than floating over it, so no tap target is covered
+  (`mockups/Phone.html`, `PhoneExplain.html`); Explain keeps its own chalk
+  picker on phones because the bar is not fixed. Keys,
+  wherever nothing is being typed and no dialog is open: `j` and `k` step to
+  the next and previous control within the current results and focus the
+  title, `1`, `2`, `3` pick a chalk and open Explain, `/` opens the find line
+  (the search line on Home), `?` shows the keys in a dialog that Escape
+  closes, returning focus. Print gives a one-page control sheet: the lockup,
+  the ID decoded, the title, the requirement sentence and its objectives with
+  the verbatim citation, plus the open Explain or Evidence view; black on
+  white, no tray, nav, footer, tabs or actions.
 - **Glossary `/glossary`:** the Board's Words page (`mockups/Glossary.html`).
   Left: "Words", a search line, an A–Z row with the active letter on a yellow
   block, and four groupings derived from each word's sources (the program,

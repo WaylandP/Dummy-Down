@@ -21,7 +21,7 @@ function trackIntent(intent: ExplorerIntent, parsed: ParsedExplorerState) {
   if (intent.type === 'select-lesson' || intent.type === 'open-example') {
     if (state.view === 'lesson')
       trackUsage({ name: 'control_open', lesson: state.lesson })
-  } else if (intent.type === 'change-mode') {
+  } else if (intent.type === 'change-mode' || intent.type === 'pick-chalk') {
     if (state.view === 'lesson')
       trackUsage({
         name: 'perspective_change',

@@ -7,6 +7,7 @@ import {
   findControlFields,
   reportFindControl,
 } from './find-control'
+import { FIND_EVENT } from './keys'
 
 export const browseUrl = '/learn?view=discover&collection=references'
 
@@ -39,6 +40,15 @@ export function SiteHeader({ page }: { readonly page: SitePage }) {
   useEffect(() => {
     if (finding) input.current?.focus()
   }, [finding])
+  useEffect(() => {
+    const open = () => {
+      if (page === 'home') return
+      setFindingOn(page)
+      input.current?.focus()
+    }
+    window.addEventListener(FIND_EVENT, open)
+    return () => window.removeEventListener(FIND_EVENT, open)
+  }, [page])
 
   return (
     <header className="site-header">

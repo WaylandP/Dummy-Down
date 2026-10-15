@@ -80,6 +80,8 @@ export type LessonResolution =
 export type ExplorerIntent =
   | { readonly type: 'select-lesson'; readonly identity: LessonIdentity }
   | { readonly type: 'change-mode'; readonly mode: ExplanationMode }
+  /** A chalk from the tray or the keys: the mode and the Explain view in one step. */
+  | { readonly type: 'pick-chalk'; readonly mode: ExplanationMode }
   | { readonly type: 'set-tab'; readonly tab: ControlTab }
   | { readonly type: 'set-query'; readonly query: string }
   | { readonly type: 'set-catalog'; readonly catalog: string }
@@ -470,6 +472,9 @@ export function transitionExplorerState(
       }
       case 'change-mode':
         next = ready({ ...state, mode: intent.mode })
+        break
+      case 'pick-chalk':
+        next = ready({ ...state, mode: intent.mode, tab: 'explain' })
         break
       case 'set-tab':
         next = ready({

@@ -679,3 +679,146 @@
     forced-color-adjust: none;
   }
 }
+
+/* Off Decode the line is compact: the ID and a summary; the pieces wait for paper. */
+.control-id-line.is-compact .control-arrow,
+.control-id-line.is-compact .control-pieces {
+  display: none;
+}
+
+/* Paper: a one-page control sheet. The ID decoded, the title, the sentence and
+   its objectives, the citation, and the open Explain or Evidence view. */
+@media print {
+  #explorer.is-board .control-sidebar,
+  #explorer.is-board .explorer-notice,
+  .control-page .lesson-mismatch,
+  .control-actions,
+  .control-tabs,
+  .control-prevnext,
+  .control-panel-practice,
+  .control-panel-related,
+  .control-id-summary,
+  .decode-compare,
+  .chalk-picker,
+  .perspective-reflection,
+  .perspective-pending button {
+    display: none;
+  }
+  .control-page {
+    display: block;
+    padding: 8pt 0 0;
+  }
+  .control-id-line,
+  .control-id-line.is-compact {
+    align-items: flex-end;
+    gap: 6pt 16pt;
+  }
+  .control-id-line.is-compact .control-arrow {
+    display: block;
+  }
+  .control-id-line.is-compact .control-pieces {
+    display: flex;
+  }
+  .control-id,
+  .control-id-line.is-compact .control-id {
+    font-size: 18pt;
+  }
+  .control-arrow {
+    width: 24pt;
+    height: 18pt;
+  }
+  .piece dt {
+    font-size: 8pt;
+  }
+  .piece dd {
+    font-size: 10pt;
+  }
+  .control-page h1 {
+    margin: 8pt 0 0;
+    font-size: 24pt;
+    line-height: 1.05;
+  }
+  .control-panels {
+    display: block;
+  }
+  .control-panel {
+    display: block;
+    padding: 10pt 0 0;
+    break-inside: avoid;
+  }
+  .control-panel-decode + .control-panel {
+    margin-top: 8pt;
+    border-top: 1px solid #aaa;
+  }
+  .decode {
+    gap: 10pt;
+    max-width: none;
+  }
+  .decode .decode-sentence {
+    font-size: 14pt;
+    line-height: 1.35;
+  }
+  .decode-objectives {
+    columns: 2;
+    column-gap: 18pt;
+    max-width: none;
+    font-size: 9.5pt;
+    line-height: 1.35;
+  }
+  .decode-objectives li {
+    padding-bottom: 5pt;
+  }
+  .explain {
+    display: block;
+  }
+  .explain-panel,
+  .evidence {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 8pt 20pt;
+    max-width: none;
+    color: #000;
+  }
+  .explain-text {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  .explain-margin {
+    gap: 8pt;
+    padding-left: 14pt;
+  }
+  .explain-margin h2 {
+    font-size: 12pt;
+  }
+  .explain-margin p,
+  .explain-margin ul {
+    font-size: 9.5pt;
+    line-height: 1.4;
+  }
+  .control-foot {
+    padding: 10pt 0 0;
+    font-size: 9pt;
+    color: #222;
+  }
+  .control-foot-note a[href]::after {
+    content: ' ' attr(href);
+    font-family: var(--font-mono);
+    font-size: 8pt;
+  }
+  .control-print-citation {
+    margin: 10pt 0 0;
+    font-size: 9pt;
+    color: #222;
+  }
+  .control-print-citation .mono {
+    font-size: 8pt;
+  }
+}
+/* Tailwind's preflight hides [hidden] with !important in the base layer, so the
+   sheet's Decode panel is shown from the same layer with a more specific rule. */
+@layer base {
+  @media print {
+    .control-panel-decode[hidden] {
+      display: block !important;
+    }
+  }
+}
