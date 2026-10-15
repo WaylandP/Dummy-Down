@@ -115,6 +115,27 @@ const dfars7021 = dfars(
   'November 2025',
 )
 
+const purpose = cfr170('1', 'Purpose', 'paragraph (d)')
+const policy = cfr170('5', 'Policy', 'paragraph (a)')
+const affirmation = cfr170('22', 'Affirmation', 'paragraph (a)')
+const flowdown = cfr170('23', 'Flowdown requirements', 'paragraph (a)(2)')
+
+/** The pinned records the chalk talk's script rests on, shared with the glossary. */
+export const cmmcProgramSources = {
+  purpose,
+  definitions,
+  policy,
+  levelOne,
+  levelTwoSelf,
+  levelTwoCert,
+  levelThree,
+  scoping,
+  affirmation,
+  flowdown,
+  farClause,
+  dfars7021,
+} as const
+
 const scopingGuideL2: SourceReference = {
   id: 'cmmc-scoping-guide-l2-213-page-13',
   title: 'CMMC Level 2 Scoping Guide — Use of Enclaves',

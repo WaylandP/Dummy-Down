@@ -227,9 +227,14 @@ not interactive coverage of the full catalog. See the
       network still need to be established.
 - [ ] **Planned for future development** — Investigate source access, licensing, and
       reuse rights before selecting or importing content for any future framework.
-- [ ] **Planned for future development** — Animated chalk talks for visual learners:
-      more 40-second explanations beyond the three samples, each written from its
-      pinned source and awaiting the same qualified review.
+- [x] **Completed and merged into main** — The first chalk talk, CMMC in sixty
+      seconds, on Home: eight scenes that draw the program on the board, each
+      caption written from the pinned 32 CFR part 170 and DFARS 252.204-7021
+      texts with its section and paragraph beside it, the counts from the
+      catalog; it plays once on a desktop and waits for play on a phone.
+- [ ] **Planned for future development** — More chalk talks for visual learners:
+      further short explanations beyond the first, each written from its pinned
+      source and awaiting the same qualified review.
 - [ ] **Planned for future development** — Flashcards for every objective: the
       determination statements as cards, each with its citation, for recall rather
       than assessment.

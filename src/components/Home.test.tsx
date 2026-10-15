@@ -99,8 +99,10 @@ describe('Home', () => {
 
   it('says what it is first: a kicker, the one headline, then one line with the count from the catalog', () => {
     renderWithProgress(<Home />)
-    const headings = screen.getAllByRole('heading')
+    // One h1; the chalk talk's own title is an h2 beside it.
+    const headings = screen.getAllByRole('heading', { level: 1 })
     expect(headings).toHaveLength(1)
+    expect(screen.getAllByRole('heading')).toHaveLength(2)
     expect(headings[0]).toHaveTextContent('CMMC, in plain words.')
     expect(headings[0]!.tagName).toBe('H1')
     expect(headings[0]!.querySelector('br')).not.toBeNull()

@@ -11,10 +11,13 @@ test('home puts one thing first on one screen at 1280×800, and a chalk picks th
   const title = page.getByRole('heading', { level: 1 })
   await expect(title).toHaveText('CMMC, in plain words.')
   await page.evaluate(() => document.fonts.ready)
-  await expect(page.getByRole('heading')).toHaveCount(1)
-  expect(await title.evaluate((node) => getComputedStyle(node).fontSize)).toBe(
-    '112px',
+  await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1)
+  // Sized from the hero's own width beside the chalk talk: about 100px here.
+  const size = parseFloat(
+    await title.evaluate((node) => getComputedStyle(node).fontSize),
   )
+  expect(size).toBeGreaterThanOrEqual(96)
+  expect(size).toBeLessThanOrEqual(104)
   // One screen: the content fits its frame with nothing to scroll.
   expect(
     await page.evaluate(() => {
@@ -66,7 +69,8 @@ test('home puts one thing first on one screen at 1280×800, and a chalk picks th
   await page.keyboard.press('Tab')
   await page.keyboard.press('Tab')
   const focused = page.locator(':focus')
-  // Tab reaches the first chalk from the header's last control.
+  // Tab reaches the first chalk from the header's last control: the chalk
+  // talk's controls come after the chalks and the search.
   for (let step = 0; step < 12; step += 1) {
     if (await first.evaluate((node) => node === document.activeElement)) break
     await page.keyboard.press('Tab')
@@ -152,6 +156,112 @@ test('“I’m new to this” opens Controls filtered to Level 1, the first basi
   await expect(page).toHaveURL(/level=Level\+1/)
 })
 
+test('“CMMC in sixty seconds” stands beside the hero, plays once from the top, and its dashes jump to a scene', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 })
+  await page.goto('/')
+  await page.evaluate(() => document.fonts.ready)
+  const talk = page.getByRole('region', { name: 'CMMC in sixty seconds' })
+  await expect(talk).toBeVisible()
+  // A column beside the hero, from the kicker down to above the chalks, with
+  // a hairline on its left; nothing in it larger than the headline.
+  const column = (await page.locator('.home-talk').boundingBox())!
+  const kicker = (await page
+    .getByText('A free reference desk for cybersecurity compliance')
+    .boundingBox())!
+  const headline = (await page
+    .getByRole('heading', { level: 1 })
+    .boundingBox())!
+  const pick = (await page
+    .getByText('Pick up a chalk to start.')
+    .boundingBox())!
+  expect(column.x).toBeGreaterThan(headline.x + headline.width - 1)
+  expect(Math.abs(column.y - kicker.y)).toBeLessThanOrEqual(6)
+  expect(column.y + column.height).toBeLessThanOrEqual(pick.y + 1)
+  expect(
+    await page
+      .locator('.home-talk')
+      .evaluate((node) => getComputedStyle(node).borderLeftWidth),
+  ).toBe('1px')
+  const titleSize = parseFloat(
+    await page
+      .getByRole('heading', { level: 1 })
+      .evaluate((node) => getComputedStyle(node).fontSize),
+  )
+  for (const text of await talk.locator('h2, p, li, button, span').all()) {
+    const size = parseFloat(
+      await text.evaluate((node) => getComputedStyle(node).fontSize),
+    )
+    expect(size).toBeLessThan(titleSize)
+  }
+  // Playing from the top: pause is there, the time moves, the drawing is
+  // hidden from assistive technology, and nothing is announced.
+  const pause = talk.getByRole('button', { name: 'Pause' })
+  await expect(pause).toBeVisible()
+  const pauseBox = (await pause.boundingBox())!
+  expect(pauseBox.width).toBeGreaterThanOrEqual(44)
+  expect(pauseBox.height).toBeGreaterThanOrEqual(44)
+  await expect(talk.locator('.chalk-talk-drawing')).toHaveAttribute(
+    'aria-hidden',
+    'true',
+  )
+  await expect(talk.locator('[aria-live]')).toHaveCount(0)
+  await expect(talk.locator('.chalk-talk-time')).not.toHaveText('0:00 / 1:00')
+  // Paused, a dash jumps to its scene, which stands drawn.
+  await pause.click()
+  const playButton = talk.getByRole('button', { name: 'Play' })
+  await expect(playButton).toBeVisible()
+  const dashes = talk.getByRole('list', { name: 'Scenes' }).getByRole('button')
+  await expect(dashes).toHaveCount(8)
+  await dashes.nth(5).click()
+  await expect(dashes.nth(5)).toHaveAttribute('aria-current', 'step')
+  await expect(talk.locator('li[aria-current="step"]')).toContainText(
+    'Meeting the minimum score earns a status',
+  )
+  // A glossary word in the caption carries its popover.
+  await talk
+    .locator('li[aria-current="step"]')
+    .getByRole('button', { name: 'SPRS' })
+    .click()
+  await expect(page.getByRole('dialog')).toContainText(
+    'Supplier Performance Risk System',
+  )
+  await page.keyboard.press('Escape')
+  await playButton.click()
+  await expect(pause).toBeVisible()
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
+})
+
+test('on shorter laptop frames the talk never runs into the chalks, and on a phone it follows the search in the DOM', async ({
+  page,
+}) => {
+  for (const [width, height] of [
+    [1280, 720],
+    [1024, 768],
+  ] as const) {
+    await page.setViewportSize({ width, height })
+    await page.goto('/')
+    await page.evaluate(() => document.fonts.ready)
+    const column = (await page.locator('.home-talk').boundingBox())!
+    const pick = (await page
+      .getByText('Pick up a chalk to start.')
+      .boundingBox())!
+    expect(column.y + column.height).toBeLessThanOrEqual(pick.y + 1)
+  }
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/')
+  expect(
+    await page.evaluate(
+      () =>
+        document
+          .querySelector('.home-search')!
+          .compareDocumentPosition(document.querySelector('.home-talk')!) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ),
+  ).toBeTruthy()
+})
+
 test('the search line finds a control from Home', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 })
   await page.goto('/')
@@ -200,6 +310,13 @@ test('on a phone the headline is two lines, as large as the width allows, the ch
   await expect(
     page.getByRole('searchbox', { name: 'Find a control' }),
   ).toBeVisible()
+  // The chalk talk follows the search, full width, and waits for play.
+  const talk = page.getByRole('region', { name: 'CMMC in sixty seconds' })
+  const talkBox = (await talk.boundingBox())!
+  expect(talkBox.y).toBeGreaterThanOrEqual(search.y + search.height - 1)
+  expect(talkBox.width).toBeGreaterThanOrEqual(340)
+  await expect(talk.getByRole('button', { name: 'Play' })).toBeVisible()
+  await expect(talk.locator('.chalk-talk-time')).toHaveText('0:00 / 1:00')
   const tray = page.locator('.chalk-tray')
   await tray.scrollIntoViewIfNeeded()
   const box = (await tray.boundingBox())!
@@ -216,6 +333,34 @@ test('on a phone the headline is two lines, as large as the width allows, the ch
 
 test.describe('reduced motion', () => {
   test.use({ reducedMotion: 'reduce' })
+  test('the chalk talk does not play: the finished drawing with the captions stepped by Previous and Next', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 800 })
+    await page.goto('/')
+    const talk = page.getByRole('region', { name: 'CMMC in sixty seconds' })
+    await expect(talk).toBeVisible()
+    await expect(talk.getByRole('button', { name: /Play|Pause/ })).toHaveCount(
+      0,
+    )
+    await expect(talk.locator('.chalk-talk-drawing text')).toHaveCount(11)
+    for (const text of await talk.locator('.chalk-talk-drawing text').all())
+      expect(
+        await text.evaluate((node) => getComputedStyle(node).visibility),
+      ).toBe('visible')
+    for (const part of await talk.locator('.chalk-talk-drawing g[style]').all())
+      expect(await part.getAttribute('style')).not.toMatch(/hidden|clip-path/)
+    const next = talk.getByRole('button', { name: 'Next' })
+    await expect(
+      talk.getByRole('button', { name: 'Previous' }),
+    ).toHaveAttribute('aria-disabled', 'true')
+    await next.click()
+    await expect(talk.locator('li[aria-current="step"]')).toContainText(
+      'Some of it is Federal Contract Information',
+    )
+    await expect(talk.locator('.chalk-talk-time')).toHaveText('2 / 8')
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
+  })
   test('the stick stays put and the focus ring still shows', async ({
     page,
   }) => {

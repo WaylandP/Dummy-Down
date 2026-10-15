@@ -1,19 +1,42 @@
-/* Home (mockups/2026-10-15/HomeHero.html): one thing first, then second,
-   then third. The kicker, the headline, one supporting line; then "Pick up
-   a chalk to start." with the three chalks and the search line. */
+/* Home (mockups/2026-10-15/HomeHero.html and HomeChalkTalk.html): one
+   thing first, then second, then third. The kicker, the headline, one
+   supporting line, with the chalk talk beside them in a column of its own;
+   then "Pick up a chalk to start." with the three chalks and the search
+   line, across the width. */
 @layer components {
   .home {
     position: relative;
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 430px;
+    /* The first row is never shorter than its taller column: on a short
+       frame the page scrolls instead of the talk running into the chalks. */
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      'hero talk'
+      'start start';
+    column-gap: 44px;
     min-height: 0;
-    padding: 40px var(--gutter) 0;
+    padding: 26px var(--gutter) 0;
     /* The glow may run past the right edge; it never widens the page. */
     overflow-x: clip;
-    /* The headline is sized from the real content width (cqw), scrollbar
-       and all, not the viewport. */
+  }
+  /* The hero: what this is. The headline is sized from the hero's real
+     width (cqw), beside the chalk talk or alone, never the viewport. */
+  .home-hero {
+    grid-area: hero;
+    position: relative;
+    min-width: 0;
     container-type: inline-size;
+  }
+  /* The chalk talk beside the hero, from the kicker down to just above
+     "Pick up a chalk to start.", a hairline rule on its left. */
+  .home-talk {
+    grid-area: talk;
+    position: relative;
+    min-width: 0;
+    padding: 4px 0 0 32px;
+    border-left: 1px solid var(--color-rule);
   }
   /* The wiped-smudge glow, a soft ellipse off to the right. */
   .home-glow {
@@ -36,11 +59,13 @@
     font-size: 22px;
     line-height: 1.2;
   }
-  /* The one headline: 112px at the mockup's width, scaling down with the screen. */
+  /* The one headline, two lines as large as the hero's width allows ("in
+     plain words." is 7.04em wide in the chalk hand): about 100px beside the
+     chalk talk at 1280, 112px where the width allows. */
   .home-title {
     position: relative;
     margin: 10px 0 0;
-    font-size: clamp(56px, 8.75vw, 112px);
+    font-size: clamp(36px, calc(100cqw / 7.04), 112px);
     line-height: 0.95;
   }
   .home-lead {
@@ -53,9 +78,9 @@
   }
   /* The chalks and the search sit at the foot of the screen, as drawn. */
   .home-start {
+    grid-area: start;
     position: relative;
-    margin-top: auto;
-    padding: 36px 0 34px;
+    padding: 20px 0 26px;
   }
   .home-pick {
     margin: 0 0 16px;
@@ -212,6 +237,24 @@
   }
   .home-search {
     padding-top: 18px;
+  }
+}
+@media (max-width: 1023px) {
+  /* One column: the hero, the chalks and the search, then the chalk talk
+     across the width, under a hairline. */
+  .home {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      'hero'
+      'start'
+      'talk';
+    column-gap: 0;
+  }
+  .home-talk {
+    padding: 28px 0 32px;
+    border-left: 0;
+    border-top: 1px solid var(--color-rule);
   }
 }
 @media (max-width: 1024px) {

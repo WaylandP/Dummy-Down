@@ -1,0 +1,249 @@
+/* "CMMC in sixty seconds" (mockups/2026-10-15/HomeChalkTalk.html): the
+   right column of Home at desktop widths, a hairline rule on its left, from
+   the kicker down to just above "Pick up a chalk to start."; below the
+   chalks and the search, full width, on a phone. The title in the chalk
+   hand, yellow; the drawing in chalk white with yellow arrows and level
+   labels; the controls in a row; the caption under the drawing. */
+.chalk-talk {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.chalk-talk-title {
+  margin: 0;
+  color: var(--color-yellow);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+.chalk-talk-drawing {
+  display: block;
+  width: 100%;
+  max-width: 368px;
+  height: auto;
+  overflow: visible;
+}
+.chalk-talk-drawing path {
+  fill: none;
+  stroke: var(--color-chalk);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.chalk-talk-arrows path {
+  stroke: var(--color-yellow);
+}
+.chalk-talk-dashed {
+  stroke-width: 1.6;
+  stroke-dasharray: 3 5;
+  opacity: 0.6;
+}
+.chalk-talk-dashed-thin {
+  stroke-width: 1.4;
+  stroke-dasharray: 4 6;
+  opacity: 0.5;
+}
+.chalk-talk-drawing text {
+  fill: var(--color-chalk);
+  font-family: var(--font-hand);
+  font-size: 17px;
+}
+.chalk-talk-note {
+  fill: var(--color-chalk-muted);
+  font-size: 13px;
+}
+.chalk-talk-word {
+  font-size: 18px;
+}
+.chalk-talk-level {
+  fill: var(--color-yellow);
+  font-size: 15px;
+}
+.chalk-talk-drawing .chalk-talk-note {
+  fill: var(--color-chalk-muted);
+}
+.chalk-talk-drawing .chalk-talk-level {
+  fill: var(--color-yellow);
+}
+.chalk-talk-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 14px;
+  min-height: 44px;
+}
+/* Before the first play the finished drawing shows faintly: what is coming. */
+.chalk-talk-drawing.is-preview {
+  opacity: 0.4;
+}
+/* The play/pause button: 44px, a ring of chalk; "Watch again" at the end. */
+.chalk-talk-play {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid var(--color-chalk);
+  border-radius: 22px;
+  background: none;
+  color: var(--color-chalk);
+  cursor: pointer;
+}
+.chalk-talk-play svg path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.chalk-talk-play svg path[d^='M3 2l'] {
+  fill: currentColor;
+}
+.chalk-talk-play.is-again {
+  padding: 0 16px;
+  font-size: 19px;
+  color: var(--color-yellow);
+}
+.chalk-talk-play:hover {
+  border-color: var(--color-yellow);
+  color: var(--color-yellow);
+}
+.chalk-talk-play:focus-visible,
+.chalk-talk-dash:focus-visible,
+.chalk-talk-step:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+/* Eight chalk dashes, one per scene: the drawn ones yellow. Each is a 44px
+   tall target around a small dash, between 24px and 32px wide: the eight
+   share the room left on the row by the play button and the time (about
+   26px each at desktop widths, as in the mockup; eight 44px targets would
+   not fit), and widen where the time wraps under them on a phone. */
+.chalk-talk-dashes {
+  display: flex;
+  flex: 1 1 206px;
+  min-width: 206px;
+  max-width: 270px;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chalk-talk-dash {
+  display: inline-grid;
+  place-items: center;
+  flex: 1 1 24px;
+  min-width: 24px;
+  max-width: 32px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.chalk-talk-dash span {
+  display: block;
+  width: 20px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-chalk);
+  opacity: 0.3;
+}
+.chalk-talk-dash[data-drawn='true'] span {
+  background: var(--color-yellow);
+  opacity: 1;
+}
+.chalk-talk-dash:hover span {
+  opacity: 1;
+}
+.chalk-talk-time {
+  margin-left: auto;
+  color: var(--color-chalk-dim);
+  font-size: 12px;
+  white-space: nowrap;
+}
+/* The caption, always under the drawing: the current one shows, the rest
+   stay in the list for a screen reader. */
+.chalk-talk-script {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-chalk-muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.chalk-talk-script li {
+  min-height: 40px;
+}
+.chalk-talk-script a {
+  color: var(--color-chalk);
+  text-decoration: underline;
+  text-decoration-color: var(--color-rule);
+  text-underline-offset: 4px;
+}
+.chalk-talk-script a:hover {
+  color: var(--color-yellow);
+}
+/* Reduced motion: the captions stepped one at a time with Previous and
+   Next under the finished drawing. */
+.chalk-talk-steps {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.chalk-talk-step {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  color: var(--color-chalk-muted);
+  font: inherit;
+  font-size: 15px;
+  text-decoration: underline;
+  text-decoration-color: var(--color-rule);
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+/* At either end the button stays focusable, so focus never falls off it. */
+.chalk-talk-step:hover:not([aria-disabled='true']) {
+  color: var(--color-yellow);
+}
+.chalk-talk-step[aria-disabled='true'] {
+  color: var(--color-chalk-dim);
+  text-decoration: none;
+  cursor: default;
+}
+@media (forced-colors: active) {
+  .chalk-talk-drawing path {
+    stroke: CanvasText;
+    opacity: 1;
+  }
+  .chalk-talk-drawing text {
+    fill: CanvasText;
+  }
+  .chalk-talk-dash span {
+    background: CanvasText;
+    opacity: 0.4;
+  }
+  .chalk-talk-dash[data-drawn='true'] span {
+    background: Highlight;
+    opacity: 1;
+  }
+  .chalk-talk-play {
+    border-color: ButtonText;
+  }
+  .chalk-talk-play:focus-visible,
+  .chalk-talk-dash:focus-visible,
+  .chalk-talk-step:focus-visible {
+    outline: 2px solid Highlight;
+  }
+}
+@media print {
+  .chalk-talk-controls,
+  .chalk-talk-steps {
+    display: none;
+  }
+}

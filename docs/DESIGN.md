@@ -66,9 +66,9 @@ not establish it.
 - **Home `/` (October 15, `mockups/2026-10-15/HomeHero.html`):** one thing
   first, then second, then third. A kicker in the chalk hand, yellow ("A free
   reference desk for cybersecurity compliance", a paragraph); the page's one
-  `h1` in the chalk hand, "CMMC, / in plain words.", 112px on desktop and,
-  on a phone, two lines as large as the width allows (about 50px at 390; a
-  clamp between); one supporting line
+  `h1` in the chalk hand, "CMMC, / in plain words.", two lines as large as
+  the hero's own width allows (about 100px beside the chalk talk at 1280,
+  112px at most, about 50px on a phone at 390); one supporting line
   at 20px, muted, with the count from the catalog ("All 149 controls across
   the three levels, each quoted from the official guide with its page, then
   explained three ways. More frameworks to come."); then "Pick up a chalk to
@@ -86,7 +86,25 @@ not establish it.
   header's find line; on a phone the chalks stack as rows (stick left, 44px
   tall) and the search follows them. No "What this is" column, no "Who's
   reading?", no decode example. The headline names CMMC on purpose; it is
-  reworded when a second framework ships. Choosing a chalk remembers it under
+  reworded when a second framework ships. Beside the hero, from the kicker
+  down to just above "Pick up a chalk to start." with a hairline rule on its
+  left (`mockups/2026-10-15/HomeChalkTalk.html`), the chalk talk "CMMC in
+  sixty seconds": eight scenes of 7.5 seconds from `src/data/chalk-talk.ts`,
+  each a caption of twenty words or fewer with its pinned sources, drawing
+  one diagram part by part (strokes along their length, lettering left to
+  right, chalk with yellow arrows and level labels); a 44px play/pause
+  button, a chalk dash per scene that jumps to it (44px tall, 24 to 32px
+  wide, sharing the row), the time in mono, the caption under the drawing,
+  glossary words in it opening their popovers. In the DOM the talk follows
+  the chalks and the search, as on a phone's screen. It plays once on a
+  desktop, pauses while the tab is hidden or a caption's word has focus,
+  never loops,
+  and ends on "Watch again", which has Smudge sweep the board before it
+  starts over; under reduced motion the finished drawing stands with the
+  captions stepped by Previous and Next; the drawing is aria-hidden and the
+  captions are an ordered list in a region of that name, the current one
+  marked; on a phone it follows the chalks and the search and waits for
+  play. No audio, no analytics events. Choosing a chalk remembers it under
   `cipher-and-chalk:chalk:v1` in this browser, and an address that names no
   chalk opens in it from then on. "Last time" shows the control opened last
   when optional saving is on. The publication version lives on About. Home

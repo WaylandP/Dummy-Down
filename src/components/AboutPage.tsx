@@ -8,7 +8,7 @@ import { createLessonUrl } from '../state/explorer-state'
 import type { ExplanationMode } from '../types/content'
 import { chalkFor, chalks } from './board/chalks'
 import { laterFrameworkNames } from './home-later'
-import { capitalize, numberWord } from './number-words'
+import { capitalize, numberWord } from '../data/number-words'
 import { publicationLabel } from './publication-label'
 
 const repositoryUrl = 'https://github.com/WaylandP/cipher-and-chalk'
@@ -58,6 +58,7 @@ const onTheBoard: readonly NextItem[] = [
     text: `${capitalize(numberWord(chalks.length))} chalks for ${numberWord(chalks.length)} readers`,
   },
   { text: 'Decode, the Rev 3 view and the timeline' },
+  { text: 'The first chalk talk, CMMC in sixty seconds' },
   {
     text: `${capitalize(numberWord(learningActivities.length))} practice situations and ${glossaryTerms.length} glossary words`,
   },
@@ -73,7 +74,7 @@ const next: readonly NextItem[] = [
 ]
 const later: readonly NextItem[] = [
   { text: 'More frameworks', note: laterFrameworkNames },
-  { text: 'Animated chalk talks for visual learners' },
+  { text: 'More chalk talks for visual learners' },
   { text: 'Flashcards for every objective' },
   { text: 'Two controls side by side' },
 ]
