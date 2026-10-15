@@ -1,16 +1,18 @@
 # Optional learning progress
 
-Saving starts off. Open **Learning progress on this browser** in a lesson or the
-practice room and choose **Save learning on this browser**. No account is needed.
+Saving starts off. Open **Learning progress on this browser** in a lesson and
+choose **Save learning on this browser**, or turn the Practice page's **Keep my
+progress on this browser** line on. No account is needed.
 Checked answers, the current question, visited/completed states and revisit marks
 can then survive navigation and reload. A completion means the exercise was
 finished, including any incorrect choices; it is never a compliance result.
 
-The practice room can filter unfinished, completed, marked and incorrectly answered
-activities. An unfinished lesson offers **Review earlier answers**; a finished one
-offers **Review the reasoning**. Both explain the latest checked choice and the
-intended takeaway. An unchecked radio selection is temporary. Retry replaces the
-latest answer; this is not a history of attempts.
+The Practice page marks finished situations and can hide them, and a situation
+opens on the question in hand (the address may look back at an answered one,
+never ahead). In a lesson, an unfinished practice offers **Review earlier
+answers** and a finished one **Review the reasoning**; both explain the latest
+checked choice and the intended takeaway. An unchecked radio selection is
+temporary. Retry replaces the latest answer; this is not a history of attempts.
 
 ## Stored data and deletion
 
@@ -52,7 +54,8 @@ usable in memory. Removing a privacy signal does not silently resume saving.
 `LocalProgressProvider` owns one external store above the route. React reads stable
 snapshots with `useSyncExternalStore`; the existing question player still renders
 and focuses its native controls. Restore and cross-tab updates do not fabricate
-practice events or move focus automatically. Index reads do not mark lessons visited.
+practice events or move focus automatically. The Practice page's list marks
+nothing; the situation running on it is visited, as a lesson is.
 
 The decoder accepts only the exact schema and entry fields. It caps documents at
 64,000 characters / 256 entries and validates lesson identity, content version,

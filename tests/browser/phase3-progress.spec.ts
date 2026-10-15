@@ -77,20 +77,22 @@ for (const width of [320, 390, 768, 1024, 1440]) {
       .getByRole('button', { name: 'Revisit later', exact: true })
       .click()
     await page.getByRole('link', { name: 'Choose another situation' }).click()
-    await page
-      .getByRole('combobox', { name: 'Learning status' })
-      .selectOption('completed')
-    await page.getByRole('button', { name: 'Find activities' }).click()
+    // The practice page shares the saved record: its switch is on, the
+    // finished situation is marked, and "Hide finished" takes it off the list.
     await expect(
-      page.getByRole('status', { name: 'Activity results' }),
-    ).toHaveText('1 activity available')
-    await expect(page.locator('.practice-row-status')).toContainText(
-      'Practice complete',
-    )
-    await expect(
-      page.getByRole('button', { name: /^Revisit later:/, pressed: true }),
-    ).toBeVisible()
-    await expect(page.getByText(/answers worth another look/)).toBeVisible()
+      page.getByRole('button', { name: /^Keep my progress on this browser/ }),
+    ).toHaveAttribute('aria-pressed', 'true')
+    const count = page.getByRole('status', { name: 'Situation results' })
+    const finished = page.getByRole('link', {
+      name: /\(finished\) AC\.L1-b\.1\.i$/,
+    })
+    await expect(finished).toBeVisible()
+    const hide = page.getByRole('checkbox', { name: 'Hide finished' })
+    await hide.check()
+    await expect(count).toHaveText('12 of 13 situations')
+    await expect(finished).toHaveCount(0)
+    await hide.uncheck()
+    await expect(count).toHaveText('13 situations')
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -106,13 +108,23 @@ for (const width of [320, 390, 768, 1024, 1440]) {
         fullPage: true,
       })
     }
-    await page.getByRole('link', { name: /^Review reasoning\s*:/ }).click()
+    // The finished situation opens complete; its chalk talk returns to the
+    // control, where the same record and the revisit mark wait.
+    await finished.click()
+    const run = page.getByRole('article')
+    await expect(run).toContainText('Practice complete. Keep asking why.')
+    await run
+      .getByRole('link', { name: 'Watch the 40-second chalk talk' })
+      .click()
     await start(page)
     await expect(
       page.getByRole('heading', {
         name: 'Practice complete. Keep asking why.',
       }),
     ).toBeFocused()
+    await expect(
+      page.getByRole('button', { name: 'Marked to revisit', exact: true }),
+    ).toHaveAttribute('aria-pressed', 'true')
     await page.getByText('Review the reasoning', { exact: true }).click()
     await expect(page.locator('.practice-recap li')).toHaveCount(3)
     const panel = await settings(page)
@@ -305,35 +317,40 @@ test('two unsaved tabs retain distinct work when saving is first enabled', async
   await expect(second.locator('input[type=radio]:checked')).toHaveCount(1)
 })
 
-test('removing the last revisit mark keeps focus on recoverable results', async ({
+test('the practice page keeps progress only when asked, hides what is finished, and deletes it when turned off', async ({
   page,
 }) => {
   await page.goto('/practice')
+  const keep = page.getByRole('button', {
+    name: /^Keep my progress on this browser/,
+  })
+  await expect(keep).toHaveAttribute('aria-pressed', 'false')
   await expect(
-    page.getByRole('combobox', { name: 'Learning status' }),
-  ).toBeDisabled()
-  await enable(page)
-  await page
-    .getByRole('button', { name: /^Revisit later:/ })
-    .first()
-    .click()
-  await page
-    .getByRole('combobox', { name: 'Learning status' })
-    .selectOption('revisit')
-  await page.getByRole('button', { name: 'Find activities' }).click()
-  await expect(
-    page.getByRole('status', { name: 'Activity results' }),
-  ).toHaveText('1 activity available')
-  await page
-    .getByRole('button', { name: /^Revisit later:/, pressed: true })
-    .click()
-  await expect(
-    page.getByRole('status', { name: 'Activity results' }),
-  ).toHaveText('0 activities available')
-  await expect(
-    page.getByRole('status', { name: 'Activity results' }),
-  ).toBeFocused()
-  await expect(
-    page.getByRole('link', { name: 'Browse all activities' }),
-  ).toBeVisible()
+    page.getByRole('checkbox', { name: 'Hide finished' }),
+  ).toHaveCount(0)
+  await keep.click()
+  await expect(keep).toHaveAttribute('aria-pressed', 'true')
+  expect(await page.evaluate((key) => localStorage.getItem(key), consent)).toBe(
+    'on',
+  )
+  const run = page.getByRole('article')
+  for (let index = 0; index < 3; index += 1) {
+    await run.locator('.practice-run-choice').first().click()
+    await run
+      .getByRole('button', {
+        name: index === 2 ? 'Finish practice' : 'Next question',
+      })
+      .click()
+  }
+  await expect(run).toContainText('Practice complete. Keep asking why.')
+  const count = page.getByRole('status', { name: 'Situation results' })
+  await page.getByRole('checkbox', { name: 'Hide finished' }).check()
+  await expect(count).toHaveText('12 of 13 situations')
+  await keep.click()
+  await expect(keep).toHaveAttribute('aria-pressed', 'false')
+  expect(
+    await page.evaluate((key) => localStorage.getItem(key), data),
+  ).toBeNull()
+  await expect(count).toHaveText('13 situations')
+  await expect(run).toContainText('Question 1 of 3')
 })

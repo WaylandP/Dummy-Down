@@ -75,27 +75,27 @@ for (const activity of expandedLearningActivities) {
   })
 }
 
-test('practice index filters, history, empty recovery and chunk failure', async ({
+test('practice situations narrow by level in the address and by typing, recover, and survive a chunk failure', async ({
   page,
 }) => {
   await page.goto('/practice')
-  await expect(
-    page.getByRole('status').filter({ hasText: 'activities available' }),
-  ).toHaveText('13 activities available')
+  const count = page.getByRole('status', { name: 'Situation results' })
+  await expect(count).toHaveText('13 situations')
   await page
-    .getByRole('combobox', { name: 'Level', exact: true })
-    .selectOption('Level 3')
-  await page.getByRole('button', { name: 'Find activities' }).click()
-  await expect(page.getByRole('status')).toHaveText('3 activities available')
+    .getByRole('group', { name: 'Level' })
+    .getByRole('link', { name: '3', exact: true })
+    .click()
+  await expect(page).toHaveURL(/level=Level\+3/)
+  await expect(count).toHaveText('3 of 13 situations')
   await page
-    .getByRole('searchbox', { name: 'Search activities' })
+    .getByRole('searchbox', { name: 'Find a situation' })
     .fill('no-such-situation')
-  await page.getByRole('button', { name: 'Find activities' }).click()
-  await expect(
-    page.getByRole('heading', { name: 'No matching activities.' }),
-  ).toBeVisible()
+  await expect(page.getByText('No matching situations.')).toBeVisible()
+  await page.getByRole('button', { name: 'Show every situation' }).click()
+  await expect(page).toHaveURL(/\/practice$/)
+  await expect(count).toHaveText('13 situations')
   await page.goBack()
-  await expect(page.getByRole('status')).toHaveText('3 activities available')
+  await expect(count).toHaveText('3 of 13 situations')
   await page.route('**/assets/PracticePage-*.js', (route) => route.abort())
   await page.reload()
   await expect(
@@ -105,5 +105,5 @@ test('practice index filters, history, empty recovery and chunk failure', async 
   ).toBeVisible()
   await page.unroute('**/assets/PracticePage-*.js')
   await page.getByRole('button', { name: 'Reload practice' }).click()
-  await expect(page.getByRole('status')).toHaveText('3 activities available')
+  await expect(count).toHaveText('3 of 13 situations')
 })

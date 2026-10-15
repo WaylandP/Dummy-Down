@@ -170,8 +170,18 @@ request each; each line says whether it is built.
    letter heading in the same two-column flow, the column scrolling on its
    own in the desktop frame. The letters filter as before and live in the
    address; `/glossary` alone is every word.
-5. **Practice runs in place** — `Practice.html` (not built). Pick a situation
-   on the left; it runs on the right.
+5. **Practice runs in place** — `Practice.html` (built). The thirteen
+   situations on the left (a find line, the level switch, titles without
+   their "Practice:" prefix with the control's ID, the one running under the
+   yellow bar, and "Keep my progress on this browser: off/on" with "Hide
+   finished" once on); on the right the situation running: ID, level, title,
+   "Question n of m" with chalk dashes, the prompt, the choices as rows with
+   chalk circles, the feedback under the answer, then "Next question →",
+   "Read the requirement" and "Watch the 40-second chalk talk" where there is
+   one, and after the first answer "A common mix-up" struck through in chalk
+   with its correction. The address is `/practice?activity=<id>&q=<n>`;
+   older practice links keep working; the first situation runs by default.
+   Phone: the list first; a situation opens full width with a way back.
 6. **About: what's next** — `About.html` (not built). The "What's next on the
    board" column: on the board, next, later. Directions, not dates.
 7. **The doodle chalk** — `Doodle.html` (not built). A chalk beside Smudge for

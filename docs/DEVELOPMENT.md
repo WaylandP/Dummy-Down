@@ -104,7 +104,7 @@ their existing values; historical source URLs are preserved.
 | `src/data/learning.ts`            | Fictional scenarios and questions tied to an exact teaching identity.                                                                                           |
 | `src/data/level-one-learning.ts`  | Three Level 1 draft activities, misunderstandings and accessible diagram data.                                                                                  |
 | `src/data/expanded-learning.ts`   | Nine additional source-bound draft activities across three CMMC levels.                                                                                         |
-| `src/components/PracticePage.tsx` | Searchable native-link practice index; derives levels from matched catalog entries.                                                                             |
+| `src/components/PracticePage.tsx` | Practice runs in place: the situations beside the one running (`?activity=`, `?q=`); the level in the address, the search in memory.                            |
 | `src/data/glossary.ts`            | Draft definitions with source and review context.                                                                                                               |
 | `src/data/level-one-glossary.ts`  | Fourteen sourced draft vocabulary additions.                                                                                                                    |
 | `src/data/level-one-terms.ts`     | Contextual term links guarded by framework, edition and requirement identifier.                                                                                 |
@@ -295,8 +295,14 @@ The nine Phase 3 additions extend the same framework-independent model with expl
 content versions, learning goals and existing glossary IDs. Source-review fingerprints
 in `docs/content-review/phase-3-activities-2026-10-14.json` bind each final draft and
 its real source statements. Renew editorial comparison before updating those hashes.
-The index uses native GET filters; analytics strips all queries, including practice
-searches. No quiz answers are sent to analytics.
+The Practice page keeps the situation and the question in the address
+(`?activity=<id>&q=<n>`; `/practice` alone runs the first situation on a
+desktop and lists them on a phone), the level in `?level=`, and the search in
+memory only. An older index link whose `q` is text prefills the find line.
+Progress stays the local-only, opt-in, version-bound saving it was; "Keep my
+progress on this browser" turns it on, and turning it off deletes it. Analytics
+strips all queries, including practice searches. No quiz answers are sent to
+analytics.
 
 ## Validate a change
 
