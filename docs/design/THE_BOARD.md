@@ -91,7 +91,10 @@ the width allows (about 50px at 390: "in plain words." is 7.04em wide in the
 chalk hand, so 56px would wrap), the chalks stack as rows (the stick on the
 left, 44px tall) and the search follows them. The footer line is the site's
 (see October 15 fixes, 1). Smudge sits on the right end of the tray. The
-fourteen families live on the Controls page.
+fourteen families live on the Controls page. Beside the hero, from the kicker
+down to just above "Pick up a chalk to start." with a hairline rule on its
+left, the chalk talk "CMMC in sixty seconds" (see October 15 fixes, 9); the
+headline is sized from the hero's own width, about 100px beside it at 1280.
 
 **Control, Decode** — `mockups/Decode.html`. Top line: the ID in blue mono,
 then a chalk arrow, then the ID decoded (family, level, source requirement).
@@ -144,8 +147,9 @@ under reduced motion.
 
 The owner's October 15 review, drawn in `mockups/2026-10-15/` (its README
 says what each screen changes). Where a mockup and the review's note disagree,
-the mockup wins on look and the note on behavior. Seven pieces, one pull
-request each; each line says whether it is built.
+the mockup wins on look and the note on behavior. Seven pieces, then two
+more from the owner's October 15 feedback, one pull request each; each line
+says whether it is built.
 
 1. **The shell** (built). The footer line (the disclaimer and "Disclaimer &
    terms", Assessment objectives, Usage & privacy, Smudge: on/off, Open
@@ -257,6 +261,51 @@ request each; each line says whether it is built.
    decorative and not focusable. Reduced motion and forced colors: no dust
    or sweep, the marks just go; CanvasText. Analytics never see the fragment
    (asserted). A resize keeps the marks: scaled within 15%, waiting beyond.
+9. **CMMC in sixty seconds** — `HomeChalkTalk.html` (built; the owner's
+   approved right side of Home). A column beside the hero, from the kicker
+   down to just above "Pick up a chalk to start.", a hairline rule on its
+   left; the hero keeps its hierarchy (one `h1`, nothing in the column larger
+   than it; the headline is about 100px beside it at 1280). The title "CMMC
+   in sixty seconds" in the chalk hand, yellow, an `h2` that names the
+   region. The script lives in
+   `src/data/chalk-talk.ts`: eight scenes, each one caption of twenty words
+   or fewer, the parts of the drawing it adds, and its sources (publication,
+   section, paragraph, the words relied on), all from the pinned 32 CFR
+   part 170, DFARS 252.204-7021 and FAR 52.204-21 records the glossary and
+   the timeline cite; the counts come from the catalog; the last scene is
+   about this site and rests on nothing but it. Glossary words in the
+   captions (FCI, CUI, C3PAO, SPRS, DIBCAC, Affirming Official, DFARS
+   252.204-7021) open the chalk popovers. One SVG, as drawn: a DoD box, an
+   arrow "shares information", a contractor box, FCI → Level 1, CUI →
+   Level 2, a dashed Level 3 line, the dashed "assessed" line to "status in
+   SPRS", then "current" under it; each scene adds its parts and earlier
+   parts stay; strokes draw on along their length under the chalk filter and
+   the lettering appears left to right; chalk, yellow for arrows and level
+   labels, no blue. Eight scenes of 7.5 seconds, a minute in all. A 44px
+   play/pause button whose label toggles; eight chalk dashes, each a button
+   ("Scene 3: …") that jumps to its scene, the drawn ones yellow (44px tall
+   and 24 to 32px wide: they share the row with the button and the time,
+   where eight 44px targets would not fit); the time in mono ("0:22 /
+   1:00"); the caption always under the drawing; no audio. Desktop: it plays
+   once when Home loads (a background tab waits until it shows), pause
+   always visible, never loops, ends on the full drawing with "Watch again",
+   which has Smudge sweep the board clean before it plays from the start;
+   it pauses while the tab is hidden and while a caption's word has focus,
+   so a popover opened from the keyboard stays. A jump while paused shows
+   that scene drawn, and play goes on from there. Before the first play on
+   a phone the finished drawing shows faintly. Reduced motion: no drawing;
+   the finished drawing stands with the captions stepped one at a time by
+   Previous and Next (at either end the button stays focusable and does
+   nothing). Screen readers: the drawing is aria-hidden; the eight captions
+   are an ordered list in the DOM inside the region the title names, only
+   the current one shown (aria-current="step") with its words and links
+   live, the rest plain text off the screen; nothing is announced as it
+   plays. In the DOM the talk follows "Pick up a chalk to start." and the
+   search, as on a phone's screen, so Tab reaches the chalks first. Phone:
+   the talk follows the three chalks and the search, full width under a
+   hairline, and never autoplays. No analytics events. About moves "the
+   first chalk talk, CMMC in sixty seconds" onto the board and keeps "More
+   chalk talks for visual learners" under Later.
 
 ## Features, in build order
 

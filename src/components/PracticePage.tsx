@@ -16,7 +16,7 @@ import { cueSmudge } from './board/tray-state'
 import { useDesktop } from './controls/useDesktop'
 import { announceAddress } from '../state/address'
 import { plainClick } from './families'
-import { capitalize, numberWord } from './number-words'
+import { capitalize, numberWord } from '../data/number-words'
 
 interface Situation {
   readonly activity: LearningActivity

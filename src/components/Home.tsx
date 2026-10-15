@@ -15,8 +15,10 @@ import type {
   LessonIdentity,
 } from '../types/content'
 import { browseUrl } from './board/SiteHeader'
+import { ChalkTalk } from './ChalkTalk'
+import { useDesktop } from './controls/useDesktop'
 import { families } from './families'
-import { numberWord } from './number-words'
+import { numberWord } from '../data/number-words'
 import {
   findControlAction,
   findControlFields,
@@ -90,11 +92,16 @@ const chalks = [
  * supporting line with the count from the catalog; then "Pick up a chalk to
  * start." with the three chalks as the main action, each picking its chalk
  * and a place to begin; then the search line; and where the visitor left
- * off, when saving remembers it.
+ * off, when saving remembers it. Beside the hero, from the kicker down to
+ * just above "Pick up a chalk to start.", the chalk talk "CMMC in sixty
+ * seconds" (mockups/2026-10-15/HomeChalkTalk.html), which plays once on a
+ * desktop; on a phone it follows the chalks and the search and waits for
+ * play.
  */
 export function Home() {
   const { lastControl } = useLocalProgress()
   const remembered = findControl(lastControl)
+  const desktop = useDesktop()
   return (
     <div className="home">
       <svg
@@ -111,18 +118,20 @@ export function Home() {
           transform="rotate(-8 300 210)"
         />
       </svg>
-      <p className="home-kicker hand">
-        A free reference desk for cybersecurity compliance
-      </p>
-      <h1 className="home-title chalk">
-        CMMC, <br />
-        in plain words.
-      </h1>
-      <p className="home-lead">
-        All {referenceControls.length} controls across the three levels, each
-        quoted from the official guide with its page, then explained three ways.
-        More frameworks to come.
-      </p>
+      <div className="home-hero">
+        <p className="home-kicker hand">
+          A free reference desk for cybersecurity compliance
+        </p>
+        <h1 className="home-title chalk">
+          CMMC, <br />
+          in plain words.
+        </h1>
+        <p className="home-lead">
+          All {referenceControls.length} controls across the three levels, each
+          quoted from the official guide with its page, then explained three
+          ways. More frameworks to come.
+        </p>
+      </div>
       <div className="home-start">
         <p id="home-pick" className="home-pick hand">
           Pick up a chalk to start.
@@ -220,6 +229,12 @@ export function Home() {
             </a>
           </p>
         )}
+      </div>
+      {/* After the chalks and the search in the DOM, as on a phone's screen,
+          so Tab reaches the page's main action before the talk's controls;
+          the grid puts it beside the hero at desktop widths. */}
+      <div className="home-talk">
+        <ChalkTalk autoplay={desktop} />
       </div>
     </div>
   )

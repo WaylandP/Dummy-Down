@@ -6,10 +6,8 @@ import {
   toggleSmudge,
   useDoodle,
 } from './doodle-state'
-import { cueSmudge, useSmudgeCue, useSmudgeOn } from './tray-state'
+import { cueLengths, cueSmudge, useSmudgeCue, useSmudgeOn } from './tray-state'
 
-/** How long each gesture lasts; the sweep is once across the board, 400 ms. */
-const lengths = { sweep: 400, hand: 700, sneeze: 900 } as const
 /** A minute with no input and he dozes; a puff of dust about once a minute. */
 const dozeAfter = 60_000
 const puffEvery = 50_000
@@ -96,7 +94,10 @@ export function Smudge() {
   // Each gesture lasts its own length, then he is still again.
   useEffect(() => {
     if (!cue) return
-    const timer = window.setTimeout(() => setSpent(cue.at), lengths[cue.kind])
+    const timer = window.setTimeout(
+      () => setSpent(cue.at),
+      cueLengths[cue.kind],
+    )
     return () => window.clearTimeout(timer)
   }, [cue])
 

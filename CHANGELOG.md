@@ -50,7 +50,7 @@ analytics allowlist do not change.
 
 The owner's October 15 review, drawn in `docs/design/mockups/2026-10-15/`
 and listed in `docs/design/THE_BOARD.md` ("October 15 fixes"): seven pieces,
-one pull request each. Routes, content identities, legacy links and the
+then two more from the owner's October 15 feedback, one pull request each. Routes, content identities, legacy links and the
 analytics allowlist do not change.
 
 - [PR #59](https://github.com/WaylandP/cipher-and-chalk/pull/59): the shell.
@@ -157,6 +157,19 @@ analytics allowlist do not change.
   the page shows marks Smudge is a button to pick up, "Smudge, the eraser"
   (`e`): rubbing removes each stroke it touches as dust, Wipe all sweeps
   the rest. Never stored, never sent; analytics never see the fragment.
+- [PR #73](https://github.com/WaylandP/cipher-and-chalk/pull/73): "CMMC
+  in sixty seconds", the chalk talk on Home, from the owner's approved
+  `mockups/2026-10-15/HomeChalkTalk.html`. A column beside the hero draws the
+  program on the board in eight scenes of 7.5 seconds, each a caption of
+  twenty words or fewer written over the pinned 32 CFR part 170, DFARS
+  252.204-7021 and FAR 52.204-21 texts with its section and paragraph beside
+  it, the counts from the catalog, glossary words opening their popovers. A
+  play/pause button, a chalk dash per scene, the time in mono, the caption
+  under the drawing; it plays once on a desktop, pauses while the tab is
+  hidden, ends on "Watch again" with Smudge's sweep, waits for play on a
+  phone, and stands finished with a stepped list under reduced motion. The
+  headline is sized from the hero's own width beside it. About and the
+  roadmap move the first chalk talk onto the board.
 
 ## The Board's features — October 15, 2026
 

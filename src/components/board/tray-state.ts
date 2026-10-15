@@ -61,6 +61,9 @@ export interface SmudgeCue {
   readonly at: number
 }
 
+/** How long each of his gestures lasts; the sweep is once across the board, 400 ms. */
+export const cueLengths = { sweep: 400, hand: 700, sneeze: 900 } as const
+
 export const SMUDGE_KEY = 'cipher-and-chalk:smudge:v1'
 
 let cue: SmudgeCue | null = null

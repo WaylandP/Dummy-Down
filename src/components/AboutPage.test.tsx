@@ -62,6 +62,7 @@ describe('About: what’s next on the board', () => {
       'CMMC, all three levels: 149 controls, quoted and cited',
       'Three chalks for three readers',
       'Decode, the Rev 3 view and the timeline',
+      'The first chalk talk, CMMC in sixty seconds',
       'Thirteen practice situations and 54 glossary words',
     ])
     expect(done.every((item) => item.done)).toBe(true)
@@ -79,7 +80,7 @@ describe('About: what’s next on the board', () => {
     ])
     expect(later.map((item) => item.text)).toEqual([
       'More frameworks',
-      'Animated chalk talks for visual learners',
+      'More chalk talks for visual learners',
       'Flashcards for every objective',
       'Two controls side by side',
     ])
