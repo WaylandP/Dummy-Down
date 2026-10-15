@@ -87,6 +87,12 @@ analytics allowlist do not change.
   account. Made by one person, in the open." The first row reads "Start with
   Level 1: fifteen basics, one control at a time, in plain words."; the tray's
   legend shows on Home too; the README's screenshots are regenerated.
+- [PR #62](https://github.com/WaylandP/cipher-and-chalk/pull/62): the
+  Glossary shows every word by default. An "All" button before A, pressed by
+  default: every word under its letter heading in the same two-column flow,
+  the column scrolling on its own in the desktop frame. The letters filter as
+  before and keep their place in the address; `/glossary` alone is every
+  word.
 
 ## The Board's features — October 15, 2026
 

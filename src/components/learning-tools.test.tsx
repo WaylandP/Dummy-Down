@@ -76,31 +76,79 @@ afterEach(() => {
 })
 
 describe('Glossary', () => {
-  it('files words under their letter with the text that defines each one', () => {
+  it('shows every word under its letter by default, with the text that defines each one', () => {
     const { container } = render(<Glossary terms={terms} />)
 
+    // All is pressed; the letters file the words under headings, in order.
+    const all = screen.getByRole('button', { name: 'All', pressed: true })
+    expect(all).toBeVisible()
+    expect(
+      [...container.querySelectorAll('.glossary-letter')].map(
+        (heading) => heading.textContent,
+      ),
+    ).toEqual(['A', 'D'])
+    expect(
+      [...container.querySelectorAll('.word h3')].map(
+        (heading) => heading.textContent,
+      ),
+    ).toEqual(['Account', 'Device'])
+    expect(screen.getByRole('region', { name: 'All words' })).toBeVisible()
+    expect(
+      screen.getByRole('status', { name: 'Glossary search results' }),
+    ).toHaveTextContent('2 words')
+    expect(screen.getByText(accountTerm.definition)).toBeVisible()
+    expect(screen.getByText(deviceTerm.definition)).toBeVisible()
+    const letters = within(
+      screen.getByRole('navigation', { name: 'Jump to a letter' }),
+    )
+    expect(
+      letters.getAllByRole('link').map((link) => link.textContent),
+    ).toEqual(['A', 'D'])
+    expect(letters.queryByRole('link', { current: 'page' })).toBeNull()
+    expect(
+      screen.getByText(/each linked to the text that defines it/),
+    ).toBeVisible()
+    expect(screen.queryByRole('link', { name: /^Next:/ })).toBeNull()
+    expect(screen.queryByRole('link', { name: /^Previous:/ })).toBeNull()
+  })
+
+  it('files one letter from its link and brings every word back from All, in the address', async () => {
+    const user = userEvent.setup()
+    const { container } = render(<Glossary terms={terms} />)
+    await user.click(screen.getByRole('link', { name: 'A' }))
+    expect(window.location.search).toBe('?letter=A')
+    expect(
+      screen.getByRole('button', { name: 'All', pressed: false }),
+    ).toBeVisible()
     expect(
       [...container.querySelectorAll('.word h2')].map(
         (heading) => heading.textContent,
       ),
     ).toEqual(['Account'])
+    expect(container.querySelector('.glossary-letter')).toBeNull()
     expect(screen.getByRole('region', { name: 'Words under A' })).toBeVisible()
-    expect(
-      screen.getByRole('status', { name: 'Glossary search results' }),
-    ).toHaveTextContent('2 words')
-    expect(screen.getByText(accountTerm.definition)).toBeVisible()
-    expect(
-      within(screen.getByRole('navigation', { name: 'Jump to a letter' }))
-        .getAllByRole('link')
-        .map((link) => link.textContent),
-    ).toEqual(['A', 'D'])
-    expect(
-      screen.getByText(/each linked to the text that defines it/),
-    ).toBeVisible()
     expect(screen.getByRole('link', { name: 'Next: D' })).toHaveAttribute(
       'href',
       '/glossary?letter=D',
     )
+    await user.click(screen.getByRole('button', { name: 'All' }))
+    expect(window.location.pathname + window.location.search).toBe('/glossary')
+    expect(
+      screen.getByRole('button', { name: 'All', pressed: true }),
+    ).toBeVisible()
+    expect(screen.getByRole('region', { name: 'All words' })).toHaveFocus()
+    expect(
+      [...container.querySelectorAll('.word h3')].map(
+        (heading) => heading.textContent,
+      ),
+    ).toEqual(['Account', 'Device'])
+    // Back returns to the letter; a letter in the address wins over All.
+    await act(async () => {
+      window.history.back()
+      await new Promise((resolve) => setTimeout(resolve, 0))
+      window.dispatchEvent(new PopStateEvent('popstate'))
+    })
+    expect(screen.getByRole('region', { name: 'Words under A' })).toBeVisible()
   })
 
   it('turns a letter without leaving the page and links the source by its short name', async () => {
@@ -119,6 +167,51 @@ describe('Glossary', () => {
     expect(source).toHaveAttribute('rel', 'noopener noreferrer')
     expect(screen.getByRole('link', { name: 'Previous: A' })).toBeVisible()
     expect(screen.queryByRole('link', { name: /^Next:/ })).toBeNull()
+  })
+
+  it('leaves All unpressed for a group, and presses it for a letter nobody has', async () => {
+    window.history.replaceState(null, '', '/glossary?group=lessons')
+    render(<Glossary terms={terms} />)
+    expect(
+      screen.getByRole('button', { name: 'All', pressed: false }),
+    ).toBeVisible()
+    expect(screen.queryByText(/Words under/)).toBeNull()
+    window.history.replaceState(null, '', '/glossary?letter=Q')
+    const user = userEvent.setup()
+    const again = render(<Glossary terms={terms} />)
+    // A letter with no words shows every word, and All clears the address.
+    expect(
+      within(again.container).getByRole('button', {
+        name: 'All',
+        pressed: true,
+      }),
+    ).toBeVisible()
+    await user.click(
+      within(again.container).getByRole('button', { name: 'All' }),
+    )
+    expect(window.location.pathname + window.location.search).toBe('/glossary')
+  })
+
+  it('does not touch history when All ends a search typed on the plain address', async () => {
+    window.history.replaceState(null, '', '/glossary')
+    const user = userEvent.setup()
+    const push = vi.spyOn(window.history, 'pushState')
+    render(<Glossary terms={terms} />)
+    await user.type(
+      screen.getByRole('searchbox', { name: 'Search words' }),
+      'dev',
+    )
+    expect(screen.getByRole('region', { name: 'Search results' })).toBeVisible()
+    expect(
+      screen.getByRole('button', { name: 'All', pressed: false }),
+    ).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'All' }))
+    expect(push).not.toHaveBeenCalled()
+    expect(screen.getByRole('region', { name: 'All words' })).toHaveFocus()
+    expect(screen.getByRole('searchbox', { name: 'Search words' })).toHaveValue(
+      '',
+    )
+    push.mockRestore()
   })
 
   it('searches title and definition conjunctively without navigation', async () => {

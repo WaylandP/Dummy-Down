@@ -1,4 +1,5 @@
-/* Words: a column of ways in on the left, one letter of words on the right. */
+/* Words: a column of ways in on the left, every word under its letter (or
+   one letter, a group, a search) on the right. */
 .glossary-page {
   flex: 1;
   display: grid;
@@ -22,33 +23,45 @@
   font-size: 46px;
   line-height: 1;
 }
-/* Each letter is a 44px target; the block it paints is the mockup's 32px. */
+/* "All" and each letter are 44px targets; the block they paint is the mockup's 32px. */
 .az {
   display: flex;
   flex-wrap: wrap;
   margin: -6px;
 }
-.az a {
+.az a,
+.az-all {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 44px;
+  border: 0;
   padding: 6px;
   border-radius: 10px;
+  background: none;
   background-clip: content-box;
   color: var(--color-chalk-dim);
+  font: inherit;
   font-size: 15px;
   font-weight: 500;
   text-decoration: none;
+  cursor: pointer;
 }
-.az a:hover {
-  background: var(--color-wash);
+.az-all {
+  width: auto;
+  min-width: 44px;
+  padding-inline: 10px;
+}
+.az a:hover,
+.az-all:hover {
+  background-color: var(--color-wash);
   color: var(--color-chalk);
 }
-.az a[aria-current='page'] {
+.az a[aria-current='page'],
+.az-all[aria-pressed='true'] {
   color: var(--color-board);
-  background: var(--color-yellow);
+  background-color: var(--color-yellow);
 }
 .glossary-groups {
   display: flex;
@@ -77,12 +90,26 @@
 }
 .glossary-words {
   grid-area: words;
+  /* The containing block of its own hidden labels, so they scroll with it
+     instead of stretching the frame. */
+  position: relative;
   outline-offset: 8px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 48px;
   align-content: start;
   min-width: 0;
+}
+/* Every word: a letter heading across both columns, then its words. */
+.glossary-letter {
+  grid-column: 1 / -1;
+  margin: 22px 0 4px;
+  color: var(--color-yellow);
+  font-size: 24px;
+  line-height: 1;
+}
+.glossary-letter:first-child {
+  margin-top: 0;
 }
 .word {
   display: flex;
@@ -91,10 +118,17 @@
   padding: 12px 0;
   border-top: 1px solid var(--color-rule-soft);
 }
-.word:nth-child(-n + 2) {
+.word:nth-child(-n + 2),
+.glossary-words .glossary-letter + .word {
   border-top: 0;
 }
-.word h2 {
+@media (min-width: 641px) {
+  .glossary-words .glossary-letter + .word + .word {
+    border-top: 0;
+  }
+}
+.word h2,
+.word h3 {
   margin: 0;
   font-family: var(--font-sans);
   font-size: 17px;
@@ -166,10 +200,36 @@
 .glossary-prevnext a:hover {
   color: var(--color-yellow);
 }
+/* In the desktop frame (board.css) the words scroll on their own; the column
+   of ways in and the foot stay put, and the column scrolls too if the frame
+   is shorter than it. */
+@media (min-width: 1025px) and (min-height: 640px) {
+  .board-main > .glossary-page {
+    flex: 1 1 0;
+    min-height: 0;
+  }
+  .glossary-aside {
+    min-height: 0;
+    overflow-y: auto;
+  }
+  .glossary-words {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-padding-block: 16px 24px;
+    padding-bottom: 16px;
+  }
+}
 @media (forced-colors: active) {
-  .az a[aria-current='page'] {
+  /* The block in force keeps a ring inside its box; focus rings sit outside it. */
+  .az a[aria-current='page'],
+  .az-all[aria-pressed='true'] {
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+  .az a:focus-visible,
+  .az-all:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 3px;
   }
 }
 @media (max-width: 1024px) {

@@ -1,4 +1,11 @@
-import { useEffect, useId, useRef, useState, type MouseEvent } from 'react'
+import {
+  Fragment,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type MouseEvent,
+} from 'react'
 import { filterGlossaryTerms } from '../data/glossary-search'
 import type { GlossaryTerm } from '../types/content'
 import { useSearchUsage } from '../analytics/useSearchUsage'
@@ -34,8 +41,9 @@ function plainLeftClick(event: MouseEvent<HTMLAnchorElement>): boolean {
 }
 
 /**
- * Words: one letter at a time, four groupings, a search line. The letter and
- * the group live in the address; typing a search never touches history.
+ * Words: every word under its letter by default, one letter at a time, four
+ * groupings, a search line. The letter and the group live in the address
+ * (none of them is every word); typing a search never touches history.
  */
 export function Glossary({ terms }: GlossaryProps) {
   const prefix = useId()
@@ -59,21 +67,23 @@ export function Glossary({ terms }: GlossaryProps) {
     'en-US',
   )
   const requestedGroup = params.get('group')
-  const letter = letters.includes(requestedLetter)
-    ? requestedLetter
-    : (letters[0] ?? 'A')
+  const letter = letters.includes(requestedLetter) ? requestedLetter : ''
   const mode = query.trim()
     ? 'search'
     : isGlossaryGroup(requestedGroup)
       ? 'group'
-      : 'letter'
+      : letter
+        ? 'letter'
+        : 'all'
   const group = isGlossaryGroup(requestedGroup) ? requestedGroup : null
   const shown =
     mode === 'search'
       ? filterGlossaryTerms(sorted, query)
       : mode === 'group'
         ? sorted.filter((term) => glossaryGroupOf(term) === group)
-        : sorted.filter((term) => initialOf(term) === letter)
+        : mode === 'letter'
+          ? sorted.filter((term) => initialOf(term) === letter)
+          : sorted
   // The letters are navigation, not a filter: every word stays one click away.
   const counted = mode === 'letter' ? sorted.length : shown.length
   const sectionLabel =
@@ -81,7 +91,9 @@ export function Glossary({ terms }: GlossaryProps) {
       ? 'Search results'
       : mode === 'group'
         ? (glossaryGroups.find((item) => item.id === group)?.label ?? '')
-        : `Words under ${letter}`
+        : mode === 'letter'
+          ? `Words under ${letter}`
+          : 'All words'
   const position = letters.indexOf(letter)
   const previous = mode === 'letter' ? letters[position - 1] : undefined
   const next = mode === 'letter' ? letters[position + 1] : undefined
@@ -142,6 +154,23 @@ export function Glossary({ terms }: GlossaryProps) {
           </svg>
         </form>
         <nav className="az" aria-label="Jump to a letter">
+          <button
+            type="button"
+            className="az-all"
+            aria-pressed={mode === 'all'}
+            onClick={() => {
+              // A letter or a group in the address goes; a search typed on
+              // the plain address never touched history, so nothing is pushed.
+              if (address !== '') {
+                window.history.pushState(null, '', '/glossary')
+                setAddress('')
+              }
+              setQuery('')
+              words.current?.focus()
+            }}
+          >
+            All
+          </button>
           {letters.map((item) => (
             <a
               key={item}
@@ -175,32 +204,40 @@ export function Glossary({ terms }: GlossaryProps) {
         className="glossary-words"
         aria-label={sectionLabel}
         tabIndex={-1}
+        data-scroller=""
       >
         {shown.length ? (
-          shown.map((term) => (
-            <article className="word" key={term.id} id={term.id}>
-              <h2>{term.title}</h2>
-              <p>{term.definition}</p>
-              <p className="word-sources mono">
-                {term.sources.map((source, index) => (
-                  <span key={source.id}>
-                    {index > 0 && ', '}
-                    {isHttps(source.url) ? (
-                      <a
-                        href={source.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {sourceLabels(term.sources)[index]}
-                        <span className="sr-only"> (opens in a new tab)</span>
-                      </a>
-                    ) : (
-                      sourceLabels(term.sources)[index]
-                    )}
-                  </span>
-                ))}
-              </p>
-            </article>
+          shown.map((term, position) => (
+            <Fragment key={term.id}>
+              {mode === 'all' &&
+                (position === 0 ||
+                  initialOf(shown[position - 1]!) !== initialOf(term)) && (
+                  <h2 className="glossary-letter hand">{initialOf(term)}</h2>
+                )}
+              <article className="word" id={term.id}>
+                {mode === 'all' ? <h3>{term.title}</h3> : <h2>{term.title}</h2>}
+                <p>{term.definition}</p>
+                <p className="word-sources mono">
+                  {term.sources.map((source, index) => (
+                    <span key={source.id}>
+                      {index > 0 && ', '}
+                      {isHttps(source.url) ? (
+                        <a
+                          href={source.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {sourceLabels(term.sources)[index]}
+                          <span className="sr-only"> (opens in a new tab)</span>
+                        </a>
+                      ) : (
+                        sourceLabels(term.sources)[index]
+                      )}
+                    </span>
+                  ))}
+                </p>
+              </article>
+            </Fragment>
           ))
         ) : (
           <div className="glossary-empty">
