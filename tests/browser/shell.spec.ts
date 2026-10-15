@@ -140,16 +140,16 @@ test('the scrolling keys reach the content from a fresh load and from the header
   await page.keyboard.press('Space')
   await expect.poll(top).toBeGreaterThan(0)
   // ...and on the footer's switch it is the switch's own key. (The smooth
-  // scroll settles first.)
-  let before = await top()
-  await expect
-    .poll(async () => {
-      const now = await top()
-      const same = now === before
-      before = now
-      return same
-    })
-    .toBe(true)
+  // scroll settles first: two reads a quarter second apart agree.)
+  await page.waitForFunction(
+    () =>
+      new Promise<boolean>((resolve) => {
+        const main = document.getElementById('main')!
+        const was = main.scrollTop
+        setTimeout(() => resolve(main.scrollTop === was), 250)
+      }),
+  )
+  const before = await top()
   const smudge = page.getByRole('switch', { name: 'Smudge' })
   await smudge.focus()
   await page.keyboard.press('Space')
