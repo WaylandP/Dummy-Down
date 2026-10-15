@@ -14,6 +14,7 @@ import type { CatalogControl } from '../types/content'
 import type { LearningActivity } from '../types/learning'
 import { cueSmudge } from './board/tray-state'
 import { useDesktop } from './controls/useDesktop'
+import { announceAddress } from '../state/address'
 import { plainClick } from './families'
 import { capitalize, numberWord } from './number-words'
 
@@ -152,6 +153,7 @@ export default function PracticePage() {
   }
   function go(search: string) {
     window.history.pushState(null, '', `/practice${search}`)
+    announceAddress()
     setAddress(search)
   }
   function follow(search: string, focus?: () => void) {
@@ -384,8 +386,10 @@ export default function PracticePage() {
             // The entry left behind names the question it showed, so Back
             // returns to it even from the plain address.
             const here = searchFor({ activity: current.activity.id, q: from })
-            if (window.location.search !== here)
+            if (window.location.search !== here) {
               window.history.replaceState(null, '', `/practice${here}`)
+              announceAddress()
+            }
             go(searchFor({ activity: current.activity.id, q }))
           }}
         />

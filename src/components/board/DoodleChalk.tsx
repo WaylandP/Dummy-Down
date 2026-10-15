@@ -1,13 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import {
+  addMark,
+  eraseMarks,
   putDownDoodle,
   registerDoodleTray,
   roomToDoodle,
-  setDoodleMarks,
+  setDoodleRoom,
   toggleDoodle,
+  useDoodle,
   useDoodleUp,
+  type Mark,
 } from './doodle-state'
 import { strokePath, type Point } from './doodle-path'
+import { eraserReach, inkScale, strokeTouches } from './ink'
 import { subscribeSmudgeCue } from './tray-state'
 
 /**
@@ -74,18 +79,6 @@ export function DoodleStick() {
   )
 }
 
-interface Stroke {
-  readonly id: number
-  readonly d: string
-}
-interface Marks {
-  /** The page the marks were made on; a new page takes them away. */
-  readonly page: string
-  readonly strokes: readonly Stroke[]
-  /** The last marks, on their way out. */
-  readonly dust: readonly Stroke[]
-}
-
 /** Where the wipe would be a cut anyway, the marks go without dust. */
 const cut = '(prefers-reduced-motion: reduce), (forced-colors: active)'
 const cutNow = () => window.matchMedia?.(cut).matches ?? false
@@ -95,24 +88,35 @@ const dustLength = 400
 const step = 2
 
 /**
- * The drawing layer over the content while the chalk is up: an svg the size
- * of the content, anchored to it, so the marks scroll with the text. One
- * pointer draws; two fingers scroll; the wheel still scrolls; links under it
- * are out of reach. The marks live only here: never stored, never sent. A
- * sweep (Smudge clicked), a page change and a resize that changes the
- * content's width take them away; the first two as dust, unless motion is
- * reduced. A change of control keeps them.
+ * The layer over the content whenever the page has marks or a hand holds
+ * the chalk or Smudge: an svg the size of the content, anchored to it, so
+ * the marks scroll with the text. With the chalk, one pointer draws and two
+ * fingers scroll; with Smudge, rubbing takes each stroke it touches away as
+ * dust; with neither in hand the layer only shows the marks and the page
+ * underneath keeps its links. The marks live in memory, per page, and in the
+ * page's own link: never stored, never sent.
  */
-export function DoodleLayer({ page }: { readonly page: string }) {
+export function DoodleLayer() {
+  const state = useDoodle()
+  const { up, eraser, page, marks, width, room, full } = state
+  const scale = marks.length ? inkScale(width, room) : 1
   const layer = useRef<SVGSVGElement>(null)
   const live = useRef<SVGPathElement>(null)
   /** Every pointer on the layer, where it is on the screen. */
   const pointers = useRef(new Map<number, Point>())
   const drawing = useRef<{ id: number; points: Point[] } | null>(null)
-  const width = useRef<number | null>(null)
-  const [marks, setMarks] = useState<Marks>({ page, strokes: [], dust: [] })
-  if (marks.page !== page)
-    setMarks({ page, strokes: [], dust: cutNow() ? [] : marks.strokes })
+  const rubbing = useRef<number | null>(null)
+  const [dust, setDust] = useState<readonly Mark[]>([])
+  // The marks last drawn: any of this page's that are gone become dust.
+  const [seen, setSeen] = useState({ page, marks })
+  if (seen.marks !== marks || seen.page !== page) {
+    setSeen({ page, marks })
+    if (seen.page === page && scale !== null && !cutNow()) {
+      const kept = new Set(marks.map((item) => item.id))
+      const gone = seen.marks.filter((item) => !kept.has(item.id))
+      if (gone.length) setDust((before) => [...before, ...gone])
+    }
+  }
 
   function local(event: { clientX: number; clientY: number }): Point {
     const box = layer.current?.getBoundingClientRect()
@@ -137,15 +141,15 @@ export function DoodleLayer({ page }: { readonly page: string }) {
     if (!svg || !main) return
     svg.style.height = '0px'
     svg.style.height = `${main.scrollHeight}px`
+    setDoodleRoom(main.clientWidth)
   }
-  function wipe(how: 'dust' | 'cut') {
-    drawing.current = null
-    live.current?.removeAttribute('d')
-    setMarks((before) => ({
-      page: before.page,
-      strokes: [],
-      dust: how === 'dust' ? before.strokes : [],
-    }))
+  function rub(point: Point) {
+    if (scale === null) return
+    const at = { x: point.x / scale, y: point.y / scale }
+    const touched = marks.filter((item) =>
+      strokeTouches(item.points, at, eraserReach / scale),
+    )
+    if (touched.length) eraseMarks(touched.map((item) => item.id))
   }
 
   // The layer fits the content: on each page, and whenever the content
@@ -168,54 +172,44 @@ export function DoodleLayer({ page }: { readonly page: string }) {
       children.disconnect()
     }
   }, [page])
-  // A resize that changes the content's width clears the marks; a screen
-  // that loses the room puts the chalk down.
+  // A resize re-measures the content: the marks scale with a small change
+  // and wait out a large one. A screen that loses the room puts the chalk
+  // down.
   useEffect(() => {
-    width.current = layer.current?.parentElement?.clientWidth ?? 0
     const resized = () => {
-      if (!roomToDoodle()) {
-        putDownDoodle()
-        return
-      }
-      const now = layer.current?.parentElement?.clientWidth ?? 0
-      if (width.current !== now) wipe('cut')
-      width.current = now
+      if (!roomToDoodle()) putDownDoodle()
       fit()
     }
     window.addEventListener('resize', resized)
     return () => window.removeEventListener('resize', resized)
   }, [])
-  // Smudge's sweep: his click.
+  // Smudge's sweep from the tray (Wipe all): the layer only refits.
   useEffect(
     () =>
       subscribeSmudgeCue((cue) => {
-        if (cue.kind !== 'sweep') return
-        wipe(cutNow() ? 'cut' : 'dust')
-        fit()
+        if (cue.kind === 'sweep') fit()
       }),
     [],
   )
   useEffect(() => {
-    if (!marks.dust.length) return
-    const timer = window.setTimeout(
-      () => setMarks((before) => ({ ...before, dust: [] })),
-      dustLength,
-    )
+    if (!dust.length) return
+    const timer = window.setTimeout(() => setDust([]), dustLength)
     return () => window.clearTimeout(timer)
-  }, [marks.dust])
-  useEffect(() => {
-    setDoodleMarks(marks.strokes.length)
-  }, [marks.strokes])
-  useEffect(() => () => setDoodleMarks(0), [])
+  }, [dust])
 
+  const mode = up ? 'chalk' : eraser ? 'eraser' : undefined
+  const transform =
+    scale !== null && scale !== 1 ? `scale(${scale})` : undefined
   return (
     <svg
       ref={layer}
       className="doodle-layer"
+      data-mode={mode}
       aria-hidden="true"
       focusable="false"
       onPointerDown={(event) => {
-        // Only the main button draws; a right click is the browser's.
+        if (!mode) return
+        // Only the main button draws or rubs; a right click is the browser's.
         if (event.pointerType === 'mouse' && event.button !== 0) return
         pointers.current.set(event.pointerId, {
           x: event.clientX,
@@ -224,15 +218,23 @@ export function DoodleLayer({ page }: { readonly page: string }) {
         if (pointers.current.size > 1) {
           // A second finger scrolls: the line in progress is not a mark.
           drawing.current = null
+          rubbing.current = null
           live.current?.removeAttribute('d')
           return
         }
         const point = local(event)
-        drawing.current = { id: event.pointerId, points: [point] }
-        live.current?.setAttribute('d', strokePath([point]))
         const target = event.currentTarget
         if (typeof target.setPointerCapture === 'function')
           target.setPointerCapture(event.pointerId)
+        if (mode === 'eraser') {
+          rubbing.current = event.pointerId
+          rub(point)
+          return
+        }
+        // The board is full: no stroke starts until one is erased.
+        if (full) return
+        drawing.current = { id: event.pointerId, points: [point] }
+        live.current?.setAttribute('d', strokePath([point]))
       }}
       onPointerMove={(event) => {
         const touching = pointers.current.get(event.pointerId)
@@ -251,6 +253,10 @@ export function DoodleLayer({ page }: { readonly page: string }) {
           return
         }
         const point = local(event)
+        if (rubbing.current === event.pointerId) {
+          rub(point)
+          return
+        }
         const stroke = drawing.current
         if (!stroke || stroke.id !== event.pointerId) return
         const last = stroke.points[stroke.points.length - 1]!
@@ -260,39 +266,43 @@ export function DoodleLayer({ page }: { readonly page: string }) {
       }}
       onPointerUp={(event) => {
         pointers.current.delete(event.pointerId)
+        if (rubbing.current === event.pointerId) rubbing.current = null
         const stroke = drawing.current
         if (!stroke || stroke.id !== event.pointerId) return
         drawing.current = null
         live.current?.removeAttribute('d')
-        const d = strokePath(stroke.points)
-        setMarks((before) => ({
-          ...before,
-          strokes: [
-            ...before.strokes,
-            { id: Date.now() + before.strokes.length, d },
-          ],
-        }))
+        // The stroke joins the page in the page's own pixels.
+        const factor = scale ?? 1
+        addMark(
+          stroke.points.map((item) => ({
+            x: item.x / factor,
+            y: item.y / factor,
+          })),
+        )
       }}
       onPointerCancel={(event) => {
         pointers.current.delete(event.pointerId)
+        if (rubbing.current === event.pointerId) rubbing.current = null
         if (drawing.current?.id === event.pointerId) {
           drawing.current = null
           live.current?.removeAttribute('d')
         }
       }}
     >
-      {marks.dust.length > 0 && (
-        <g className="doodle-marks doodle-dust chalk">
-          {marks.dust.map((stroke) => (
-            <path key={stroke.id} d={stroke.d} />
+      {dust.length > 0 && (
+        <g className="doodle-marks doodle-dust chalk" transform={transform}>
+          {dust.map((item) => (
+            <path key={item.id} d={strokePath(item.points)} />
           ))}
         </g>
       )}
-      <g className="doodle-marks chalk">
-        {marks.strokes.map((stroke) => (
-          <path key={stroke.id} d={stroke.d} />
-        ))}
-      </g>
+      {scale !== null && (
+        <g className="doodle-marks chalk" transform={transform}>
+          {marks.map((item) => (
+            <path key={item.id} d={strokePath(item.points)} />
+          ))}
+        </g>
+      )}
       {/* The line being drawn, outside the filter until it is a mark. */}
       <path ref={live} className="doodle-marks doodle-live" />
     </svg>

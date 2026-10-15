@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { chalkFor } from './chalks'
-import { useDoodle } from './doodle-state'
+import {
+  marksShown,
+  registerSmudgeTray,
+  toggleSmudge,
+  useDoodle,
+} from './doodle-state'
 import { cueSmudge, useSmudgeCue, useSmudgeOn } from './tray-state'
 
 /** How long each gesture lasts; the sweep is once across the board, 400 ms. */
@@ -66,18 +71,22 @@ const mouths: Record<Exclude<Pose, 'sneeze'>, string> = {
  * a wooden back, a felt face with chalk dust in it, and eyes, brows and a
  * mouth drawn on the wood in chalk. Idle he blinks, his pupils drift toward
  * the cursor and a puff of dust rises now and then; he sweeps the board only
- * when asked, nudges the chalk that was picked up out of the tray, sneezes
- * when clicked or when a practice answer is right, and dozes after a minute
- * with nothing to do. With the doodle chalk up his eyes follow its tip, and
- * a click sweeps the marks away instead. He never speaks: the markup is
- * hidden from assistive technology, nothing in it takes focus, and the
- * footer switch is the only control. Off, under reduced motion and in print
- * he is a plain eraser, though he still wipes.
+ * when asked (Wipe all), nudges the chalk that was picked up out of the
+ * tray, sneezes when clicked or when a practice answer is right, and dozes
+ * after a minute with nothing to do. With the doodle chalk up his eyes
+ * follow its tip. While the page shows chalk marks he is something to pick
+ * up, like the chalk: a button, "Smudge, the eraser", pressed while he is in
+ * hand, when his place on the tray shows a dashed outline. Otherwise he never
+ * speaks: the markup is hidden from assistive technology, nothing in it
+ * takes focus, and the footer switch is the only control. Off, under reduced
+ * motion and in print he is a plain eraser, though he still wipes.
  */
 export function Smudge() {
   const on = useSmudgeOn()
   const cue = useSmudgeCue()
-  const { up: doodling, marks } = useDoodle()
+  const doodle = useDoodle()
+  const { up: doodling, eraser } = doodle
+  const pickable = marksShown(doodle)
   const body = useRef<SVGSVGElement | null>(null)
   // A cue from before this Smudge was mounted is already spent: nothing replays.
   const [spent, setSpent] = useState(() => cue?.at ?? 0)
@@ -154,127 +163,156 @@ export function Smudge() {
   const pose: Pose = gesture ?? (on && dozing ? 'doze' : 'idle')
   const stick =
     gesture === 'hand' && cue?.mode ? chalkFor(cue.mode).color : null
+  const body_ = (
+    <svg
+      ref={body}
+      // A new cue remounts him, so the same gesture twice in a row plays twice.
+      key={gesture && cue ? cue.at : 0}
+      className="smudge-body"
+      viewBox="0 0 170 110"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {/* In hand: his place on the tray keeps a dashed outline. */}
+      {eraser && (
+        <rect
+          className="smudge-slot"
+          x="12"
+          y="24"
+          width="146"
+          height="72"
+          rx="7"
+        />
+      )}
+      <defs>
+        <linearGradient id="smudge-wood" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#7a6349" />
+          <stop offset=".25" stopColor="#5e4a36" />
+          <stop offset="1" stopColor="#3b2e22" />
+        </linearGradient>
+      </defs>
+      {/* Behind him: the chalk he hands over, the sweep's wake, the sneeze's dust. */}
+      {stick && (
+        <rect
+          className={`smudge-stick smudge-stick-${stick}`}
+          x="118"
+          y="2"
+          width="12"
+          height="58"
+          rx="6"
+        />
+      )}
+      {gesture === 'sweep' && (
+        <g className="smudge-wake">
+          <path d="M2 40h22M0 56h18M4 72h22" />
+          <circle cx="150" cy="40" r="7" />
+          <circle cx="162" cy="30" r="5" />
+          <circle cx="140" cy="22" r="4" />
+          <circle cx="166" cy="50" r="3" />
+        </g>
+      )}
+      {gesture === 'sneeze' && (
+        <g className="smudge-sneeze">
+          <circle cx="110" cy="92" r="10" />
+          <circle cx="135" cy="98" r="8" />
+          <circle cx="92" cy="102" r="6" />
+          <circle cx="150" cy="86" r="5" />
+          <circle cx="70" cy="100" r="5" />
+        </g>
+      )}
+      {on && puffing && (
+        <g className="smudge-puff">
+          <circle cx="40" cy="62" r="4" />
+          <circle cx="30" cy="54" r="3" />
+          <circle cx="48" cy="52" r="2.5" />
+        </g>
+      )}
+      {pose === 'doze' && (
+        <g className="smudge-zs chalk">
+          <text x="150" y="30">
+            z
+          </text>
+          <text className="smudge-z-far" x="162" y="16">
+            z
+          </text>
+        </g>
+      )}
+      <ellipse className="smudge-shadow" cx="85" cy="100" rx="70" ry="5" />
+      <rect
+        className="smudge-wood"
+        x="12"
+        y="24"
+        width="146"
+        height="46"
+        rx="7"
+      />
+      <rect
+        className="smudge-grain"
+        x="18"
+        y="27"
+        width="134"
+        height="4"
+        rx="2"
+      />
+      <rect
+        className="smudge-felt"
+        x="12"
+        y="66"
+        width="146"
+        height="30"
+        rx="6"
+      />
+      <path
+        className="smudge-dust-lines"
+        d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0"
+      />
+      <rect
+        className="smudge-edge"
+        x="12"
+        y="90"
+        width="146"
+        height="6"
+        rx="3"
+      />
+      {on && (
+        <g className="smudge-face chalk">
+          <Eyes pose={pose} />
+          {brows[pose] && <path className="smudge-brows" d={brows[pose]} />}
+          {pose === 'sneeze' ? (
+            <circle className="smudge-mouth" cx="85" cy="61" r="4" />
+          ) : (
+            <path className="smudge-mouth" d={mouths[pose]} />
+          )}
+        </g>
+      )}
+    </svg>
+  )
+  if (pickable)
+    return (
+      <button
+        ref={registerSmudgeTray}
+        type="button"
+        className={`smudge${on ? '' : ' is-off'}`}
+        data-pose={on ? pose : undefined}
+        data-held={eraser ? 'true' : undefined}
+        aria-pressed={eraser}
+        aria-label="Smudge, the eraser"
+        onClick={toggleSmudge}
+      >
+        {body_}
+      </button>
+    )
   return (
     <span
       className={`smudge${on ? '' : ' is-off'}`}
       data-pose={on ? pose : undefined}
       aria-hidden="true"
       onClick={() => {
-        // Doodle marks go with his sweep, face or no face; otherwise a sneeze.
-        if (marks) cueSmudge('sweep')
-        else if (on) cueSmudge('sneeze')
+        // Nothing to erase: a click is his sneeze.
+        if (on) cueSmudge('sneeze')
       }}
     >
-      <svg
-        ref={body}
-        // A new cue remounts him, so the same gesture twice in a row plays twice.
-        key={gesture && cue ? cue.at : 0}
-        className="smudge-body"
-        viewBox="0 0 170 110"
-        focusable="false"
-      >
-        <defs>
-          <linearGradient id="smudge-wood" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#7a6349" />
-            <stop offset=".25" stopColor="#5e4a36" />
-            <stop offset="1" stopColor="#3b2e22" />
-          </linearGradient>
-        </defs>
-        {/* Behind him: the chalk he hands over, the sweep's wake, the sneeze's dust. */}
-        {stick && (
-          <rect
-            className={`smudge-stick smudge-stick-${stick}`}
-            x="118"
-            y="2"
-            width="12"
-            height="58"
-            rx="6"
-          />
-        )}
-        {gesture === 'sweep' && (
-          <g className="smudge-wake">
-            <path d="M2 40h22M0 56h18M4 72h22" />
-            <circle cx="150" cy="40" r="7" />
-            <circle cx="162" cy="30" r="5" />
-            <circle cx="140" cy="22" r="4" />
-            <circle cx="166" cy="50" r="3" />
-          </g>
-        )}
-        {gesture === 'sneeze' && (
-          <g className="smudge-sneeze">
-            <circle cx="110" cy="92" r="10" />
-            <circle cx="135" cy="98" r="8" />
-            <circle cx="92" cy="102" r="6" />
-            <circle cx="150" cy="86" r="5" />
-            <circle cx="70" cy="100" r="5" />
-          </g>
-        )}
-        {on && puffing && (
-          <g className="smudge-puff">
-            <circle cx="40" cy="62" r="4" />
-            <circle cx="30" cy="54" r="3" />
-            <circle cx="48" cy="52" r="2.5" />
-          </g>
-        )}
-        {pose === 'doze' && (
-          <g className="smudge-zs chalk">
-            <text x="150" y="30">
-              z
-            </text>
-            <text className="smudge-z-far" x="162" y="16">
-              z
-            </text>
-          </g>
-        )}
-        <ellipse className="smudge-shadow" cx="85" cy="100" rx="70" ry="5" />
-        <rect
-          className="smudge-wood"
-          x="12"
-          y="24"
-          width="146"
-          height="46"
-          rx="7"
-        />
-        <rect
-          className="smudge-grain"
-          x="18"
-          y="27"
-          width="134"
-          height="4"
-          rx="2"
-        />
-        <rect
-          className="smudge-felt"
-          x="12"
-          y="66"
-          width="146"
-          height="30"
-          rx="6"
-        />
-        <path
-          className="smudge-dust-lines"
-          d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0"
-        />
-        <rect
-          className="smudge-edge"
-          x="12"
-          y="90"
-          width="146"
-          height="6"
-          rx="3"
-        />
-        {on && (
-          <g className="smudge-face chalk">
-            <Eyes pose={pose} />
-            {brows[pose] && <path className="smudge-brows" d={brows[pose]} />}
-            {pose === 'sneeze' ? (
-              <circle className="smudge-mouth" cx="85" cy="61" r="4" />
-            ) : (
-              <path className="smudge-mouth" d={mouths[pose]} />
-            )}
-          </g>
-        )}
-      </svg>
+      {body_}
     </span>
   )
 }

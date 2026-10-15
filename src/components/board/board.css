@@ -1220,3 +1220,96 @@
     display: none;
   }
 }
+
+/* Smudge in hand (October 15): while the page shows chalk marks he is a
+   button on the tray, picked up to erase, like the chalk. His box is the
+   target; the ring goes around it. In hand, his place keeps a dashed outline
+   and the pointer is a small eraser; rubbing a stroke takes it away as dust. */
+button.smudge {
+  border: 0;
+  padding: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+button.smudge:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+.smudge[data-held='true'] .smudge-body > :not(.smudge-slot) {
+  visibility: hidden;
+}
+/* His empty place takes the click that puts him back, not only its outline. */
+.smudge[data-held='true'] .smudge-slot {
+  pointer-events: all;
+}
+.smudge-slot {
+  fill: none;
+  stroke: var(--color-tray-label);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  opacity: 0.6;
+}
+/* With nothing in hand the layer only shows the marks: the page keeps its
+   links and its own cursor. */
+.doodle-layer:not([data-mode]) {
+  pointer-events: none;
+  cursor: auto;
+}
+.doodle-layer[data-mode='eraser'] {
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='rotate(-20 16 16)'%3E%3Crect x='4' y='7' width='24' height='11' rx='3' fill='%235E4A36'/%3E%3Crect x='4' y='17' width='24' height='8' rx='2' fill='%23B3B9B0'/%3E%3C/g%3E%3C/svg%3E")
+      16 22,
+    cell;
+}
+/* The footer line's actions read like the links beside them, each a 44px
+   target in its padding at desktop widths and a 44px row below them. */
+.footer-doodling .footer-action {
+  display: inline-block;
+  margin: -13px 0;
+  padding: 13px 0;
+  border: 0;
+  background: none;
+  color: var(--color-chalk-muted);
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-rule);
+  text-underline-offset: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.footer-doodling .footer-action:hover {
+  color: var(--color-yellow);
+}
+.footer-doodling .footer-action:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: -3px;
+}
+@media (max-width: 1023px) {
+  .footer-doodling .footer-action {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin: 0;
+    padding: 0;
+  }
+  .footer-doodling .footer-action:focus-visible {
+    outline-offset: 3px;
+  }
+}
+@media (forced-colors: active) {
+  button.smudge:focus-visible {
+    outline: 2px solid Highlight;
+  }
+  .smudge-slot {
+    stroke: CanvasText;
+    opacity: 1;
+  }
+  .doodle-layer[data-mode='eraser'] {
+    cursor: cell;
+  }
+  .footer-doodling .footer-action:focus-visible {
+    outline: 2px solid Highlight;
+  }
+}

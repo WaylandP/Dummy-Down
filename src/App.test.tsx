@@ -383,18 +383,23 @@ describe('Shareable lessons and reading tools', () => {
       '?view=discover&q=access&mode=it-cyber',
     )
     const view = renderView(<App />)
-    await screen.findByRole('region', { name: 'Control Explorer' })
+    // The learning page is a lazy chunk; under load it can take a while.
+    await screen.findByRole(
+      'region',
+      { name: 'Control Explorer' },
+      { timeout: 5000 },
+    )
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     act(() => {
       window.history.replaceState(null, '', `${lessonAddress}&mode=compliance`)
       window.dispatchEvent(new PopStateEvent('popstate'))
     })
-    // The lesson's reader is a lazy chunk; under load it can take a while.
+    // So is the lesson's reader: a loaded runner has taken over five seconds.
     expect(
       await screen.findByRole(
         'tabpanel',
         { name: 'Compliance' },
-        { timeout: 5000 },
+        { timeout: 10_000 },
       ),
     ).toBeVisible()
     act(() => {
@@ -408,7 +413,11 @@ describe('Shareable lessons and reading tools', () => {
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     view.unmount()
     renderView(<App />)
-    await screen.findByRole('region', { name: 'Control Explorer' })
+    await screen.findByRole(
+      'region',
+      { name: 'Control Explorer' },
+      { timeout: 5000 },
+    )
     expect(
       screen.getByRole('button', { name: /AC\.L2-3\.1\.1.*Authorized access/ }),
     ).toHaveAttribute('aria-pressed', 'false')

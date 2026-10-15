@@ -9,6 +9,7 @@ import {
 import { filterGlossaryTerms } from '../data/glossary-search'
 import type { GlossaryTerm } from '../types/content'
 import { useSearchUsage } from '../analytics/useSearchUsage'
+import { announceAddress } from '../state/address'
 import {
   glossaryGroups,
   glossaryGroupOf,
@@ -103,6 +104,7 @@ export function Glossary({ terms }: GlossaryProps) {
       if (!plainLeftClick(event)) return
       event.preventDefault()
       window.history.pushState(null, '', `/glossary${search}`)
+      announceAddress()
       setAddress(search)
       setQuery('')
       // The words are the answer to the click; read them from the top.
@@ -163,6 +165,7 @@ export function Glossary({ terms }: GlossaryProps) {
               // the plain address never touched history, so nothing is pushed.
               if (address !== '') {
                 window.history.pushState(null, '', '/glossary')
+                announceAddress()
                 setAddress('')
               }
               setQuery('')

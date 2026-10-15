@@ -64,8 +64,11 @@ describe('Known control render measurement', () => {
     replay(
       '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access',
     )
-    // The lazy page's address subscription settles after its first paint.
-    await waitFor(() => expect(trackUsage).toHaveBeenCalledTimes(1))
+    // The lazy page's address subscription settles after its first paint,
+    // later on a loaded runner.
+    await waitFor(() => expect(trackUsage).toHaveBeenCalledTimes(1), {
+      timeout: 5000,
+    })
     replay(
       '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access&q=access',
     )

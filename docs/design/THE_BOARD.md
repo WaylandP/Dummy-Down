@@ -218,15 +218,45 @@ request each; each line says whether it is built.
    tip, and a drawing layer covers the content only, anchored to it, so the
    marks scroll with the text. Strokes are chalk white at .9, about 3px,
    smoothed, with the chalk filter; CanvasText under forced colors. The
-   footer line reads "Doodling. Your marks stay on this screen only. Esc or
-   the tray puts the chalk back. Click Smudge to wipe them.", once, politely.
-   Smudge's eyes follow the tip; his click sweeps the marks to dust, as does
-   a page change (a change of control keeps them, since the Erase went); a
-   resize that changes the content's width clears them; under reduced motion
-   every wipe is a cut.
-   Links under the layer are inert, the wheel still scrolls, one finger draws
-   and two scroll, and print never includes the marks. The marks are memory
-   only: never stored, never sent, never in analytics.
+   footer line reads "Doodling. Your marks stay on this page and go with its
+   link. Esc or the tray puts the chalk back. Pick up Smudge to erase.",
+   once, politely. Smudge's eyes follow the tip. Links under the layer are
+   inert while the chalk or Smudge is up, the wheel still scrolls, one
+   finger draws and two scroll, and print never includes the marks.
+   Chalk marks stay (October 15, after the owner's review). Putting the
+   chalk down keeps the marks on the page; they go only when erased. Marks
+   belong to the page they were drawn on (its canonical address) and are
+   kept in memory, per page, while the page stays loaded, so navigating
+   away and back within it by any route shows them again (a header link
+   loads a fresh page, so there Back, Forward and the link itself bring
+   them back): never localStorage, sessionStorage or a server. They travel
+   in the link, in the fragment only (`#ink=v1…`, never
+   the query), rewritten with replaceState as you draw, so a reload keeps
+   them and Copy reference link and Send this chalk carry them. The encoding
+   is compact and versioned: strokes simplified and quantized to whole
+   pixels relative to the content area, delta-encoded, deflated where the
+   browser can, then base64url; a typical page stays under 2,000 characters
+   and the fragment is capped near 4,000, where no stroke is added and the
+   line reads "The board is full. Erase something to keep drawing." The
+   content area's width goes in with the marks: a screen within about 15%
+   draws them scaled, any other leaves them out and says "This link has
+   chalk marks drawn on a different screen size. Open it on a wider screen
+   to see them." Marks from a link someone else made always come with the
+   line "Chalk marks from the link you opened. They aren't part of Cipher &
+   Chalk. Pick up Smudge to erase them · Wipe all", gone once wiped (whose
+   marks a fragment carries is kept in the history entry's state, never in
+   storage, so a reload of your own page shows them as yours and a reload of
+   someone else's link keeps its line). Smudge is the eraser: whenever the page
+   shows marks he is something to pick up, like the chalk, a button "Smudge,
+   the eraser" (aria-pressed, `e`, in the `?` dialog); in hand his place
+   keeps a dashed outline, the cursor is a small eraser, and rubbing over a
+   mark removes each stroke it touches as dust in the sweep's 400 ms; the
+   line reads "Erasing. Esc or the tray puts Smudge back · Wipe all", and
+   Wipe all sweeps everything with his gesture. Picking up the chalk puts
+   Smudge down, and the reverse. With no marks on the page he stays
+   decorative and not focusable. Reduced motion and forced colors: no dust
+   or sweep, the marks just go; CanvasText. Analytics never see the fragment
+   (asserted). A resize keeps the marks: scaled within 15%, waiting beyond.
 
 ## Features, in build order
 

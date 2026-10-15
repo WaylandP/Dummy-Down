@@ -145,7 +145,8 @@ describe('the Controls page', () => {
     ).toHaveTextContent(
       'That learning mode is unavailable; showing the blue chalk.',
     )
-    expect(page.address()).toContain('mode=compliance')
+    // The page tidies its address after its first paint.
+    await waitFor(() => expect(page.address()).toContain('mode=compliance'))
     const links = page.families().getAllByRole('link')
     expect(links[1]).toHaveAttribute(
       'href',
