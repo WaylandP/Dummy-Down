@@ -1,4 +1,4 @@
-import { act, render, screen, within } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import { createHash } from 'node:crypto'
 import { beforeEach, describe, expect, it } from 'vitest'
 import App from '../App'
@@ -147,13 +147,14 @@ describe('The timeline', () => {
       ...document.querySelectorAll<HTMLDetailsElement>('.timeline-sources'),
     ]
     details()[0]!.open = true
-    act(() => {
+    // The print listeners attach in a passive effect, which can flush after
+    // the list is already in the DOM; keep dispatching until they are live.
+    // The handlers touch the DOM only, so no act() is needed.
+    await waitFor(() => {
       window.dispatchEvent(new Event('beforeprint'))
+      expect(details().map((node) => node.open)).toEqual([true, true, true])
     })
-    expect(details().map((node) => node.open)).toEqual([true, true, true])
-    act(() => {
-      window.dispatchEvent(new Event('afterprint'))
-    })
+    window.dispatchEvent(new Event('afterprint'))
     expect(details().map((node) => node.open)).toEqual([true, false, false])
   })
 
