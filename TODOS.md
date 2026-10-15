@@ -9,11 +9,11 @@ already merged into `main`. No completion percentage is implied.
   requests. [THE_BOARD.md](docs/design/THE_BOARD.md) lists what comes next,
   one pull request each; the Decode clause map, the Rev 3 tab, chalk
   popovers (for the lesson's words on Explain), Send this chalk, Erase, the
-  timeline, the assessor's three words, Dash and Home for the stranger (with
-  the Controls page's Board pass) are in, and the CedarPoint story follows. The
-  project's demo lesson keeps its earlier reader inside the Controls page.
-  Anything that adds a fact lives in `src/data/` with a source record under
-  `docs/sources/`.
+  timeline, the assessor's three words, Home for the stranger (with the
+  Controls page's Board pass) and Smudge (first built as Dash) are in, and the
+  CedarPoint story follows. The project's demo lesson keeps its earlier reader
+  inside the Controls page. Anything that adds a fact lives in `src/data/`
+  with a source record under `docs/sources/`.
 - **Phase 3 engineering is shipped.** All five scoped increments are merged with
   successful exact-head CI and automatic production deployments. The
   [execution log](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-3-execution-2026-10-14.md) records evidence;

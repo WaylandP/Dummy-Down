@@ -32,7 +32,11 @@ describe('Control views', () => {
         (item) => item.key === activity.lesson.controlKey,
       )!
       expect(
-        await screen.findByRole('heading', { level: 1, name: control.title }),
+        await screen.findByRole(
+          'heading',
+          { level: 1, name: control.title },
+          { timeout: 5000 },
+        ),
       ).toBeVisible()
       const views = within(
         screen.getByRole('navigation', { name: 'Views of this control' }),

@@ -17,7 +17,7 @@ yellow for the person who runs the systems, blue for the person preparing for
 assessment. Pick a chalk and the explanation is written in that color; the stick
 lifts out of the tray. Cipher is literal: a control's ID decodes itself on
 arrival, and the requirement sentence is decoded clause by clause into the
-assessment objectives it produces. One dash from the logo ring is the mascot.
+assessment objectives it produces. The eraser on the tray is the mascot.
 
 ## Rules
 
@@ -108,7 +108,7 @@ horizontally. Everything else stacks.
 r=38 in a 100-unit box, rotated −100°. App icon: the same ring on a chalk or
 yellow tile with radius 22. Replace `public/brand/*` and the favicon with it.
 
-**Smudge** — `mockups/Smudge.html` (replaces Dash). The eraser on the right
+**Smudge** — `mockups/Smudge.html` (replaces Dash; built). The eraser on the right
 end of the tray, on every screen: a wooden back, a felt face with chalk dust in
 it, and eyes, brows and a mouth drawn on the wood in chalk. Idle: blinks, eyes
 drift toward the cursor, a puff of dust now and then. Erase: he leaps up and
@@ -133,7 +133,7 @@ under reduced motion.
    `prefers-reduced-motion` turns it into a cut.
 7. The timeline, in chalk: one screen; every date sourced.
 8. The assessor's three words on the Evidence tab.
-9. Smudge (built as Dash, then replaced; see above).
+9. Smudge: built (first as Dash, then replaced by the eraser; see above).
 10. Home for the stranger: `mockups/Home.html`.
 
 Not doing: an AI assistant (it would answer beyond the sources and would need

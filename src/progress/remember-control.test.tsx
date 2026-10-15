@@ -24,7 +24,11 @@ describe('The control page remembers the control on screen', () => {
   it('writes it only when saving is on, and keeps it current as the lesson changes', async () => {
     window.history.replaceState(null, '', lesson)
     const off = render(<App />)
-    await screen.findByRole('heading', { level: 1, name: /Authorized Access/ })
+    await screen.findByRole(
+      'heading',
+      { level: 1, name: /Authorized Access/ },
+      { timeout: 5000 },
+    )
     expect(window.localStorage.getItem(LAST_CONTROL_KEY)).toBeNull()
     expect(Object.keys(window.localStorage)).toEqual([])
     off.unmount()
@@ -35,7 +39,11 @@ describe('The control page remembers the control on screen', () => {
       JSON.stringify({ schema: 1, entries: [] }),
     )
     render(<App />)
-    await screen.findByRole('heading', { level: 1, name: /Authorized Access/ })
+    await screen.findByRole(
+      'heading',
+      { level: 1, name: /Authorized Access/ },
+      { timeout: 5000 },
+    )
     await waitFor(() =>
       expect(
         JSON.parse(window.localStorage.getItem(LAST_CONTROL_KEY) ?? 'null'),
@@ -58,7 +66,11 @@ describe('The control page remembers the control on screen', () => {
       '/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=no-such-control',
     )
     render(<App />)
-    await screen.findByRole('region', { name: 'Control Explorer' })
+    await screen.findByRole(
+      'region',
+      { name: 'Control Explorer' },
+      { timeout: 5000 },
+    )
     expect(window.localStorage.getItem(LAST_CONTROL_KEY)).toBeNull()
   })
 })

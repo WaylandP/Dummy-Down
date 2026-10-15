@@ -58,9 +58,9 @@ content-review milestone.
       features follow one pull request each, in its order; the Decode clause
       map deferred from the control page, the Rev 3 tab, chalk popovers for
       the lesson's words on Explain, Send this chalk, Erase, the timeline, the
-      assessor's three words, Dash and Home for the stranger (with the
-      Controls page's Board pass) are merged, and the CedarPoint story
-      follows.
+      assessor's three words, Home for the stranger (with the Controls
+      page's Board pass) and Smudge (first built as Dash) are merged, and the
+      CedarPoint story follows.
 - [x] **Completed and merged into main** — Repair reproduced
       implementation issues and prepare a repeatable owner/learner acceptance packet
       in Increment 1 (PR #14). This does not record a completed human acceptance cycle.

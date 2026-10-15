@@ -1,6 +1,6 @@
 import type { SitePage } from '../../state/site-page'
 import { UsagePreferences } from '../../analytics/UsagePreferences'
-import { DashSwitch } from './DashSwitch'
+import { SmudgeSwitch } from './SmudgeSwitch'
 
 const repositoryUrl = 'https://github.com/WaylandP/cipher-and-chalk'
 
@@ -43,7 +43,7 @@ export function SiteFooter({ page }: { readonly page: SitePage }) {
           Assessment objectives
         </a>
         <UsagePreferences />
-        <DashSwitch />
+        <SmudgeSwitch />
         <a
           href={`${repositoryUrl}/blob/main/LICENSE`}
           target="_blank"

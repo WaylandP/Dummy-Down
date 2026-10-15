@@ -120,6 +120,16 @@ source record under `docs/sources/`.
   in place from real links, the result count with the levels as one row and
   single-line results, on one screen at 1280×800, with 44px targets; the demo
   lesson keeps its reader inside the same frame.
+- [PR #56](https://github.com/WaylandP/cipher-and-chalk/pull/56): Smudge
+  replaces Dash. The eraser from `mockups/Smudge.html` sits on the right end
+  of the tray on every screen, the phone bar included: wood, felt, and a face
+  in chalk that blinks, follows a mouse pointer with its pupils and puffs a
+  little dust; he is the Erase's sweep across the board, nudges the chalk
+  that was picked up out of the tray, sneezes at a click or a correct
+  practice answer and dozes after a minute. Hidden from assistive technology
+  and never focusable; the footer switch "Smudge: on/off" (remembered as
+  `cipher-and-chalk:smudge:v1`), reduced motion and print leave the plain
+  faceless eraser. Dash, its switch, Dot and the popover nod are retired.
 
 ## Week 2 content and trust — October 14, 2026
 

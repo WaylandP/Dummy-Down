@@ -8,7 +8,6 @@ import {
 } from 'react'
 import type { GlossaryTerm } from '../../types/content'
 import type { TextRun } from './term-matching'
-import { cueDash } from '../board/tray-state'
 
 type Opened = 'hover' | 'pinned'
 
@@ -68,13 +67,6 @@ export function ChalkTerm({ term, children }: ChalkTermProps) {
   const trigger = useRef<HTMLSpanElement>(null)
   const popover = useRef<HTMLSpanElement>(null)
   const timer = useRef(0)
-  // Dash nods once when the popover opens, not again when a hover is pinned.
-  const wasOpen = useRef(false)
-  useEffect(() => {
-    if (open && !wasOpen.current) cueDash('nod')
-    wasOpen.current = Boolean(open)
-  }, [open])
-
   function cancel() {
     window.clearTimeout(timer.current)
   }

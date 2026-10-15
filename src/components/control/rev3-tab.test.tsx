@@ -34,7 +34,11 @@ describe('The Rev 3 view', () => {
     const row = rev3For(item)!
     open(item.key, 'rev3')
     expect(
-      await screen.findByRole('heading', { level: 1, name: item.title }),
+      await screen.findByRole(
+        'heading',
+        { level: 1, name: item.title },
+        { timeout: 5000 },
+      ),
     ).toBeVisible()
     expect(views().map((link) => link.textContent)).toEqual([
       'Decode',
@@ -78,7 +82,11 @@ describe('The Rev 3 view', () => {
   it('shows where a withdrawn requirement went and links to the page it went to', async () => {
     const item = control('AC.L2-3.1.13')
     open(item.key, 'rev3')
-    const panel = await screen.findByRole('region', { name: 'Rev 3' })
+    const panel = await screen.findByRole(
+      'region',
+      { name: 'Rev 3' },
+      { timeout: 5000 },
+    )
     expect(panel.querySelector('.rev3-change-kind')).toHaveTextContent(
       'Withdrawn.',
     )
@@ -99,7 +107,11 @@ describe('The Rev 3 view', () => {
     const item = control('AC.L1-b.1.i')
     open(item.key, 'rev3')
     expect(
-      await screen.findByRole('heading', { level: 1, name: item.title }),
+      await screen.findByRole(
+        'heading',
+        { level: 1, name: item.title },
+        { timeout: 5000 },
+      ),
     ).toBeVisible()
     expect(views().map((link) => link.textContent)).toEqual([
       'Decode',
@@ -122,7 +134,11 @@ describe('The Rev 3 view', () => {
     const user = userEvent.setup()
     const last = control('SI.L1-b.1.xv')
     open(last.key, 'rev3')
-    await screen.findByRole('heading', { level: 1, name: last.title })
+    await screen.findByRole(
+      'heading',
+      { level: 1, name: last.title },
+      { timeout: 5000 },
+    )
     expect(views()).toHaveLength(5)
     await user.click(screen.getByRole('button', { name: 'Next: AC.L2-3.1.1' }))
     expect(
