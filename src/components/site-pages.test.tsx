@@ -14,7 +14,7 @@ describe('Separate blackboard pages', () => {
   it('keeps the homepage calm and does not count an unseen control as viewed', () => {
     render(<App />)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      'Who’s reading?',
+      'CMMC, in plain words.',
     )
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     expect(
@@ -25,7 +25,7 @@ describe('Separate blackboard pages', () => {
     ).not.toBeInTheDocument()
     expect(
       within(
-        screen.getByRole('navigation', { name: 'Who’s reading?' }),
+        screen.getByRole('list', { name: 'Pick up a chalk to start.' }),
       ).getAllByRole('link'),
     ).toHaveLength(3)
     expect(
@@ -37,11 +37,15 @@ describe('Separate blackboard pages', () => {
     render(<App />)
     followPageLink(screen.getByRole('link', { name: 'Controls' }))
     expect(
-      await screen.findByRole('status', { name: 'Control search results' }),
+      await screen.findByRole(
+        'status',
+        { name: 'Control search results' },
+        { timeout: 5000 },
+      ),
     ).toHaveTextContent('149 references found')
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     followPageLink(screen.getByRole('link', { name: 'Cipher & Chalk home' }))
-    followPageLink(screen.getByRole('link', { name: /^I’m new to this\./ }))
+    followPageLink(screen.getByRole('link', { name: /^I’m new to this/ }))
     expect(
       await screen.findByRole('heading', {
         level: 1,

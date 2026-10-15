@@ -1,132 +1,27 @@
-/* Home: who's reading, three chalk rows, a search line, where you left off,
-   and beside them what this is (mockups/2026-10-15/Home.html). */
+/* Home (mockups/2026-10-15/HomeHero.html): one thing first, then second,
+   then third. The kicker, the headline, one supporting line; then "Pick up
+   a chalk to start." with the three chalks and the search line. */
 @layer components {
   .home {
     position: relative;
     flex: 1;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 360px;
-    gap: 0 56px;
+    display: flex;
+    flex-direction: column;
     min-height: 0;
-    padding: 0 var(--gutter);
+    padding: 40px var(--gutter) 0;
     /* The glow may run past the right edge; it never widens the page. */
     overflow-x: clip;
-  }
-  .home-main {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    min-width: 0;
-  }
-  /* What this is: a column on a hairline, read from the top. */
-  .home-what {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    min-width: 0;
-    margin-top: 26px;
-    border-left: 1px solid var(--color-rule);
-    padding: 6px 0 20px 36px;
-  }
-  .home-what h2 {
-    margin: 0;
-    color: var(--color-yellow);
-    font-size: 26px;
-    line-height: 1;
-  }
-  .home-what-lead {
-    margin: 0;
-    color: var(--color-chalk);
-    font-size: 16px;
-    line-height: 1.55;
-  }
-  .home-decode {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 4px 0;
-  }
-  .home-decode-id {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 0;
-    color: var(--color-blue);
-    font-size: 18px;
-    line-height: 1.25;
-  }
-  .home-decode-id svg {
-    width: 28px;
-    height: 16px;
-  }
-  .home-decode-id path {
-    fill: none;
-    stroke: var(--color-yellow);
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .home-decode-pieces {
-    display: grid;
-    grid-template-columns: 52px minmax(0, 1fr);
-    gap: 3px 10px;
-    margin: 0;
-    color: var(--color-chalk-muted);
-    font-size: 13px;
-    line-height: 1.4;
-  }
-  .home-decode-pieces dt {
-    color: var(--color-blue);
-  }
-  .home-decode-pieces dd {
-    margin: 0;
-  }
-  .home-what h3 {
-    margin: 0 0 6px;
-    font-size: 20px;
-    line-height: 1.1;
-  }
-  .home-levels {
-    display: grid;
-    grid-template-columns: auto auto minmax(0, 1fr);
-    gap: 4px 14px;
-    align-items: baseline;
-    margin: 0;
-    color: var(--color-chalk-muted);
-    font-size: 14px;
-    line-height: 1.3;
-  }
-  .home-levels dd {
-    margin: 0;
-  }
-  .home-level-count {
-    color: var(--color-blue);
-    font-size: 12px;
-  }
-  .home-level-note {
-    color: var(--color-chalk-dim);
-    font-size: 13px;
-  }
-  .home-later {
-    margin: 0;
-    color: var(--color-chalk-muted);
-    font-size: 14px;
-    line-height: 1.55;
-  }
-  .home-what-note {
-    margin: 0;
-    color: var(--color-chalk-dim);
-    font-size: 13px;
-    line-height: 1.4;
+    /* The headline is sized from the real content width (cqw), scrollbar
+       and all, not the viewport. */
+    container-type: inline-size;
   }
   /* The wiped-smudge glow, a soft ellipse off to the right. */
   .home-glow {
     position: absolute;
-    left: 560px;
+    left: 520px;
     top: 100px;
-    width: 600px;
-    height: 420px;
+    width: 640px;
+    height: 440px;
     opacity: 0.07;
     pointer-events: none;
   }
@@ -134,99 +29,129 @@
     fill: var(--color-chalk);
     filter: blur(40px);
   }
-  .home-head {
+  .home-kicker {
     position: relative;
-    padding-top: 26px;
-  }
-  .home-head h1 {
     margin: 0;
-    font-size: 52px;
-    line-height: 1;
+    color: var(--color-yellow);
+    font-size: 22px;
+    line-height: 1.2;
   }
-  /* The rows share the leftover height and sit between rules, like the mockup. */
-  .home-chalks {
+  /* The one headline: 112px at the mockup's width, scaling down with the screen. */
+  .home-title {
     position: relative;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 0;
+    margin: 10px 0 0;
+    font-size: clamp(56px, 8.75vw, 112px);
+    line-height: 0.95;
+  }
+  .home-lead {
+    position: relative;
+    max-width: 780px;
+    margin: 18px 0 0;
+    color: var(--color-chalk-muted);
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  /* The chalks and the search sit at the foot of the screen, as drawn. */
+  .home-start {
+    position: relative;
+    margin-top: auto;
+    padding: 36px 0 34px;
+  }
+  .home-pick {
+    margin: 0 0 16px;
+    color: var(--color-chalk-muted);
+    font-size: 22px;
+    line-height: 1.2;
   }
   .home-row {
     display: grid;
-    grid-template-columns: 82px minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 24px;
-    min-height: 44px;
-    padding: 19px 0;
-    border-top: 1px solid var(--color-rule);
-    color: var(--color-chalk);
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 36px;
+    align-items: start;
   }
-  .home-row:last-child {
-    border-bottom: 1px solid var(--color-rule);
+  .home-chalks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.35fr;
+    gap: 36px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
-  .home-row:hover .home-row-line,
-  .home-row:focus-visible .home-row-line {
-    color: var(--color-yellow);
-  }
-  .home-row:focus-visible {
-    outline: var(--focus-ring);
-    outline-offset: 4px;
-  }
-  .home-row .home-stick {
-    width: 66px;
-    height: 12px;
-  }
-  .home-row-line {
-    display: block;
-    font-size: 27px;
-    line-height: 1.1;
-  }
-  .home-row-text {
-    display: block;
-    margin-top: 5px;
-    color: var(--color-chalk-muted);
-    font-size: 15px;
-    line-height: 1.5;
-  }
-  .home-row-go {
-    color: var(--color-yellow);
-    font-size: 15px;
-    font-weight: 500;
-    white-space: nowrap;
-  }
-  .home-lookup {
-    position: relative;
+  .home-chalk {
     display: flex;
-    align-items: center;
-    gap: 24px;
-    padding: 16px 0 6px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    min-height: 44px;
+    color: var(--color-chalk);
+    text-decoration: none;
   }
-  .home-lookup-label {
-    color: var(--color-chalk-muted);
-    font-size: 20px;
-    white-space: nowrap;
+  .home-chalk .home-stick {
+    height: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.45);
+    transition: transform 0.15s;
   }
-  .home-search {
-    flex: 1;
+  .home-chalk .tray-stick-white {
+    width: 150px;
+  }
+  .home-chalk .tray-stick-yellow {
+    width: 120px;
+  }
+  .home-chalk .tray-stick-blue {
+    width: 136px;
+  }
+  /* Picked up: the stick lifts a few pixels; the ring stays on the link. */
+  .home-chalk:hover .home-stick,
+  .home-chalk:focus-visible .home-stick {
+    transform: translateY(-6px);
+  }
+  .home-chalk:hover .home-chalk-line,
+  .home-chalk:focus-visible .home-chalk-line {
+    color: var(--color-yellow);
+  }
+  .home-chalk:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 8px;
+  }
+  .home-chalk-words {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    max-width: 520px;
+  }
+  .home-chalk-line {
+    font-size: 25px;
+    line-height: 1.1;
+  }
+  .home-chalk-text {
+    color: var(--color-chalk-muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .home-search {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 270px;
+    max-width: 100%;
+    padding-top: 30px;
   }
   .home-search-line {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
   }
   .home-search-line input {
     flex: 1;
     min-width: 0;
-    padding: 8px 4px;
+    padding: 6px 2px;
     border: 0;
     background: transparent;
     color: var(--color-chalk);
-    font-size: 22px;
+    font-size: 18px;
+  }
+  .home-search-line input::placeholder {
+    color: var(--color-chalk-faint);
   }
   /* Focus is the underline turning to yellow chalk; there is no box to ring. */
   .home-search-line input:focus-visible {
@@ -234,7 +159,7 @@
   }
   .home-search:has(input:focus-visible) .home-underline path {
     stroke: var(--color-yellow);
-    stroke-width: 5;
+    stroke-width: 4;
   }
   .home-search-submit {
     display: inline-flex;
@@ -242,6 +167,7 @@
     justify-content: center;
     width: 44px;
     height: 44px;
+    margin: -11px -11px -11px 0;
     border: 0;
     padding: 0;
     background: none;
@@ -250,17 +176,16 @@
   .home-underline {
     display: block;
     width: 100%;
-    height: 10px;
+    height: 8px;
   }
   .home-underline path {
     fill: none;
     stroke: var(--color-chalk);
-    stroke-width: 3;
+    stroke-width: 2.5;
     stroke-linecap: round;
   }
   .home-last {
-    position: relative;
-    margin: 0 0 14px;
+    margin: 18px 0 0;
     color: var(--color-chalk-muted);
     font-size: 16px;
   }
@@ -275,57 +200,98 @@
     color: var(--color-yellow);
   }
 }
-@media (max-width: 1023px) {
-  /* One column: what this is follows the search, on a hairline. */
-  .home {
-    display: flex;
-    flex-direction: column;
+@media (max-width: 1100px) {
+  /* The search takes a row of its own under the chalks, so their labels
+     keep one line. */
+  .home-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
   }
-  .home-what {
-    margin-top: 8px;
-    border-left: 0;
-    border-top: 1px solid var(--color-rule);
-    padding: 20px 0 24px;
+  .home-chalks {
+    gap: 28px;
+  }
+  .home-search {
+    padding-top: 18px;
   }
 }
 @media (max-width: 1024px) {
   .home-glow {
     display: none;
   }
-  .home-head h1 {
-    font-size: 44px;
-  }
 }
 @media (max-width: 640px) {
-  /* Phone: the stick above its line. */
-  .home-head {
-    padding-top: 20px;
+  /* Phone: the headline on two lines, as large as the width allows ("in
+     plain words." is 7.04em wide in the chalk hand: about 50px at 390);
+     the chalks as rows, the stick on the left; the search below them. */
+  .home {
+    padding-top: 24px;
   }
-  .home-head h1 {
-    font-size: 38px;
+  .home-kicker {
+    font-size: 18px;
+  }
+  .home-title {
+    font-size: clamp(36px, calc(100cqw / 7.04), 56px);
+  }
+  .home-lead {
+    margin-top: 14px;
+    font-size: 17px;
+  }
+  .home-start {
+    padding: 28px 0 20px;
   }
   .home-chalks {
-    justify-content: flex-start;
-    padding-top: 18px;
-  }
-  .home-row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 10px;
-    padding: 18px 0;
-  }
-  .home-row-line {
-    font-size: 26px;
-  }
-  .home-lookup {
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 6px;
+    gap: 0;
+  }
+  .home-chalk {
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+    min-height: 44px;
+    padding: 10px 0;
+  }
+  .home-chalk .home-stick {
+    flex: none;
+    height: 16px;
+    border-radius: 8px;
+  }
+  .home-chalk .tray-stick-white,
+  .home-chalk .tray-stick-yellow,
+  .home-chalk .tray-stick-blue {
+    width: 64px;
+  }
+  .home-chalk-words {
+    gap: 3px;
+  }
+  .home-chalk-line {
+    font-size: 22px;
+  }
+  /* The rows sit close; the ring stays inside its own row. */
+  .home-chalk:focus-visible {
+    outline-offset: 4px;
   }
   .home-search {
-    max-width: none;
+    width: 100%;
+    padding-top: 14px;
   }
-  .home-search-line input {
-    font-size: 20px;
+}
+@media (max-height: 700px) {
+  /* A short frame: less air above and around the chalks. */
+  .home {
+    padding-top: 24px;
+  }
+  .home-start {
+    padding: 24px 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-chalk .home-stick {
+    transition: none;
+  }
+  .home-chalk:hover .home-stick,
+  .home-chalk:focus-visible .home-stick {
+    transform: none;
   }
 }
 @media (forced-colors: active) {
@@ -336,7 +302,10 @@
     outline: 2px solid Highlight;
     outline-offset: 2px;
   }
-  .home-row .home-stick {
+  .home-chalk:focus-visible {
+    outline-color: Highlight;
+  }
+  .home-chalk .home-stick {
     forced-color-adjust: none;
   }
 }

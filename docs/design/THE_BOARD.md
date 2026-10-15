@@ -63,18 +63,34 @@ none. Both live once in the app shell, not per component.
 
 ## Screens
 
-**Home** — `mockups/Home.html` (supersedes `Main.html`; redrawn in
-`mockups/2026-10-15/Home.html`, see October 15 fixes, 3). Written for the
-stranger who arrives from a shared link. Header: the lockup and the nav, Home
-first, the active item under a yellow chalk stroke. The question in chalk:
-"Who's reading?", with the "What this is" column at the right (October 15
-fixes, 3; before it, one sentence saying what the site is). Three rows, one
-per chalk: "I'm new to this." / "I run the systems." / "I'm
-preparing for an assessment.", each with one sentence of where it starts you
-and a yellow link. Choosing a row also picks that chalk for the visitor. Below:
-"Or just look something up:" and the search line. The footer line is the
-site's (see October 15 fixes, 1). Smudge sits on the right end of the tray.
-The fourteen families move to the Controls page.
+**Home** — `mockups/2026-10-15/HomeHero.html` (the owner's approved Home,
+October 15, after review; it supersedes `mockups/2026-10-15/Home.html`, which
+superseded `mockups/Home.html` and `Main.html`). Written for the stranger who
+arrives from a shared link, with one thing clearly first, then second, then
+third. Header: the lockup and the nav, Home first, the active item under a
+yellow chalk stroke. Then, in order: a small line in the chalk hand, yellow,
+"A free reference desk for cybersecurity compliance" (a paragraph, not a
+heading); the page's one `h1`, in the chalk hand at 112px on desktop, "CMMC,"
+then "in plain words.", scaling down with a clamp; one supporting line at
+20px, muted, "All 149 controls across the three levels, each quoted from the
+official guide with its page, then explained three ways. More frameworks to
+come." (149 from the catalog); "Pick up a chalk to start." and the three
+chalks as the main action, each a large stick with a label in the chalk hand
+and one short line ("I'm new to this" / "Level 1's fifteen basics first." →
+the Start here path in white; "I run the systems" / "The fourteen families."
+→ the families in yellow; "I'm preparing for an assessment" / "Examine,
+interview, test." → the objectives in blue), grouped in a list labelled "Pick
+up a chalk to start.", each picking its chalk for the visitor, the stick
+lifting a few pixels under the pointer or keyboard focus (not under reduced
+motion; the focus ring always visible); then "Or find a control…", the search
+line, at the end of that row. No "What this is" column, no "Who's reading?",
+no decode example. The headline names CMMC on purpose; it is reworded when a
+second framework ships. On a phone the headline stays two lines, as large as
+the width allows (about 50px at 390: "in plain words." is 7.04em wide in the
+chalk hand, so 56px would wrap), the chalks stack as rows (the stick on the
+left, 44px tall) and the search follows them. The footer line is the site's
+(see October 15 fixes, 1). Smudge sits on the right end of the tray. The
+fourteen families live on the Controls page.
 
 **Control, Decode** — `mockups/Decode.html`. Top line: the ID in blue mono,
 then a chalk arrow, then the ID decoded (family, level, source requirement).
@@ -154,17 +170,13 @@ request each; each line says whether it is built.
    the rail leaves the path. The old "Browse & filter controls"
    disclosure is gone. Phone: an "All controls" line at the top opens the rail
    as a full-screen sheet, and "Start here" stays visible as one line. Home's
-   "I'm new to this." row opens the first control on the path with the white
+   "I'm new to this" chalk opens the first control on the path with the white
    chalk.
-3. **Home: what this is** — `Home.html` (built). The sentence at the top
-   right is gone; the "What this is" column stands beside the rows: one
-   paragraph, the AC.L2-3.1.1 example decoded, "On the board now" with the
-   three levels and their counts from the catalog, "Later" with exactly the
-   Phase 4 research list from `docs/ROADMAP.md` ("Being researched; not here
-   yet."), and "Free. No account. Made by one person, in the open." The first
-   row reads "Start with Level 1: fifteen basics, one control at a time, in
-   plain words." with the count from the catalog. No page copy says the site
-   covers only Level 2. The tray's legend shows on Home too, as drawn.
+3. **Home: what this is** — `Home.html` (built, then superseded by the Home
+   hero, below). The sentence at the top right went; the "What this is"
+   column stood beside the rows with the counts from the catalog and the
+   Phase 4 research list; no page copy says the site covers only Level 2.
+   The tray's legend shows on Home too, as drawn.
 4. **Glossary: All** (built). An "All" button before A, pressed by default
    (`aria-pressed`, a 44px target, in the tab order): every word under its
    letter heading in the same two-column flow, the column scrolling on its
@@ -187,7 +199,13 @@ request each; each line says whether it is built.
    the board (ticked, counted from the data), next and later, in the
    roadmap's words; "Directions, not dates." and a link to suggest something
    on GitHub.
-7. **The doodle chalk** — `Doodle.html` (built). A fat white stick with a
+7. **The Home hero** — `HomeHero.html` (built; the owner's approved Home,
+   superseding `Home.html`). The hierarchy above under **Home**: the kicker,
+   the one headline, one supporting line, "Pick up a chalk to start." with
+   the three chalks as the main action, then the search line; the column,
+   the question and the decode example are gone. The headline names CMMC on
+   purpose; it is reworded when a second framework ships.
+8. **The doodle chalk** — `Doodle.html` (built). A fat white stick with a
    kraft-paper sleeve in the tray, just left of Smudge, on screens 768 wide
    or more: a button, "Doodle chalk", pressed while the chalk is up; `d`
    picks it up and puts it down, Esc and the slot put it down. Up, the stick
