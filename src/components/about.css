@@ -87,3 +87,120 @@
     font-size: 16px;
   }
 }
+
+/* What's next on the board (mockups/2026-10-15/About.html): a column beside
+   the sentences at desktop widths, after them below. The Disclaimer shares
+   the sentences' type, not the column. */
+.about-page.with-next .about-main p:not(.page-foot):not(.page-note) {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.about-next {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+.about-page .about-next h2 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--color-yellow);
+}
+.about-page .about-next h3 {
+  margin: 0 0 2px;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.about-next ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.about-next li {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 0 10px;
+  align-items: start;
+  padding: 5px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-chalk-muted);
+}
+.about-next-mark {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+}
+.about-next-box,
+.about-next-tick {
+  fill: none;
+  stroke: var(--color-chalk-dim);
+  stroke-width: 1.8;
+}
+.is-done .about-next-box,
+.about-next-tick {
+  stroke: var(--color-yellow);
+}
+.about-next-tick {
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.about-next-sub {
+  grid-column: 2;
+  margin-top: 1px;
+  font-size: 12px;
+  color: var(--color-chalk-dim);
+}
+.about-page .about-next p.about-next-foot {
+  margin: 6px 0 0;
+  max-width: none;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-chalk-dim);
+}
+/* A 44px target without moving the line: the hit area grows into the margins. */
+.about-page .about-next-foot a {
+  display: inline-block;
+  padding-block: 13px;
+  margin-block: -13px;
+  color: var(--color-chalk-muted);
+}
+.about-page .about-next-foot a:hover {
+  color: var(--color-yellow);
+}
+@media (min-width: 1024px) {
+  .page.about-page.with-next {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 430px;
+    gap: 0 56px;
+    align-items: start;
+    align-content: start;
+    padding-top: 24px;
+  }
+  .about-next {
+    border-left: 1px solid var(--color-rule);
+    padding: 4px 0 14px 36px;
+  }
+}
+@media (max-width: 1023px) {
+  .about-next {
+    margin-top: 40px;
+    border-top: 1px solid var(--color-rule);
+    padding: 24px 0 16px;
+  }
+}
+@media (max-width: 640px) {
+  .about-page .about-next h2 {
+    font-size: 26px;
+    line-height: 1.1;
+  }
+}
+@media (forced-colors: active) {
+  .about-next-box,
+  .about-next-tick {
+    stroke: CanvasText;
+  }
+}

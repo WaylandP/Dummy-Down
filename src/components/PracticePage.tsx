@@ -15,7 +15,7 @@ import type { LearningActivity } from '../types/learning'
 import { cueSmudge } from './board/tray-state'
 import { useDesktop } from './controls/useDesktop'
 import { plainClick } from './families'
-import { numberWord } from './number-words'
+import { capitalize, numberWord } from './number-words'
 
 interface Situation {
   readonly activity: LearningActivity
@@ -66,10 +66,6 @@ const levelChoices = [
   ['Level 2', '2'],
   ['Level 3', '3'],
 ] as const
-
-function capitalize(text: string): string {
-  return text.charAt(0).toLocaleUpperCase('en-US') + text.slice(1)
-}
 
 function matches(situation: Situation, query: string): boolean {
   const { activity, control } = situation

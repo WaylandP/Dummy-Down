@@ -102,6 +102,13 @@ analytics allowlist do not change.
   the first answer. The address is `/practice?activity=<id>&q=<n>`; older
   practice links keep working. On a phone the list comes first and a
   situation opens full width with a way back.
+- [PR #65](https://github.com/WaylandP/cipher-and-chalk/pull/65): About says
+  what's next on the board. Beside the sentences, "What's next on the board"
+  in the roadmap's words: on the board (ticked, counted from the data), next
+  (the CedarPoint story, review by qualified CMMC professionals) and later
+  (more frameworks with the Phase 4 list, animated chalk talks, flashcards,
+  two controls side by side), then "Directions, not dates." and a link to a
+  new issue. The roadmap carries the same directions and nothing more.
 
 ## The Board's features — October 15, 2026
 

@@ -42,7 +42,8 @@ content-review milestone.
       control detail.
 - [x] **Completed and merged into main** — Add searchable controls, shareable lesson
       addresses, browser Back/Forward behavior, contextual definitions, and a searchable
-      20-term draft glossary. Feature availability does not approve glossary content.
+      draft glossary (20 terms then; 54 since the CMMC Program words of PR #32).
+      Feature availability does not approve glossary content.
 - [x] **Completed and merged into main** — Publish contribution, development,
       deployment, source-provenance, content-review, privacy, and security guidance.
 - [ ] **Currently in progress** — Refine usability from owner and learner feedback
@@ -59,8 +60,10 @@ content-review milestone.
       map deferred from the control page, the Rev 3 tab, chalk popovers for
       the lesson's words on Explain, Send this chalk, Erase, the timeline, the
       assessor's three words, Home for the stranger (with the Controls
-      page's Board pass) and Smudge (first built as Dash) are merged, and the
-      CedarPoint story follows.
+      page's Board pass) and Smudge (first built as Dash) are merged.
+- [ ] **Planned for future development** — The CedarPoint story: one fictional
+      company, CedarPoint, through every family's examples, with the review
+      fingerprints refreshed the same way.
 - [x] **Completed and merged into main** — Repair reproduced
       implementation issues and prepare a repeatable owner/learner acceptance packet
       in Increment 1 (PR #14). This does not record a completed human acceptance cycle.
@@ -159,8 +162,9 @@ seven-milestone baseline audit, limited merge authorization and validation limit
       activities cover authorized access, public information, and media disposal with
       scenarios, common misunderstandings, accessible diagrams, and nine explained
       questions.
-- [ ] **Implemented but awaiting validation or review** — The 20-term draft glossary,
-      including 14 source-cited Level 1 additions, supports contextual learning.
+- [ ] **Implemented but awaiting validation or review** — The 54-term draft glossary
+      (14 source-cited Level 1 additions, 34 CMMC Program words) supports contextual
+      learning.
 - [ ] **Currently in progress** — Improve navigation and accessibility for different
       learning styles, and test whether beginners understand the activities and the
       three modes. Semantic, keyboard, reduced-motion, forced-color, responsive, and
@@ -195,17 +199,20 @@ seven-milestone baseline audit, limited merge authorization and validation limit
 
 All five independently completable Phase 3 engineering increments are merged and
 validated. The phase itself remains open for the qualified content, learner and
-accessibility review milestones above. Thirteen activities and 39 questions are a
-focused learning sample, not interactive coverage of the full catalog. See the
+accessibility review milestones above: review by qualified CMMC professionals is
+the next step, and the [review packet](content-review/QUALIFIED_REVIEW.md) says
+how to help. Thirteen activities and 39 questions are a focused learning sample,
+not interactive coverage of the full catalog. See the
 [walkthrough and review packet](testing/PHASE_3_WALKTHROUGH.md).
 
 ## Phase 4: Expand the Platform
 
 - [x] **Completed and merged into main** — Keep the content architecture independent
       of CMMC-specific levels and publish a contribution process for code and education.
-- [ ] **Planned for future development** — Research source licensing, editions,
-      taxonomies, and review needs for NIST SP 800-53, FedRAMP, SOC 2, ISO/IEC 27001,
-      and the HIPAA Security Rule. These names do not represent available libraries.
+- [ ] **Planned for future development** — More frameworks: research source
+      licensing, editions, taxonomies, and review needs for NIST SP 800-53, FedRAMP,
+      SOC 2, ISO/IEC 27001, and the HIPAA Security Rule. These names do not
+      represent available libraries.
 - [ ] **Planned for future development** — Add another framework only after its
       authoritative-source, licensing, identity, maintenance, and qualified-review plan
       is approved.
@@ -219,8 +226,17 @@ focused learning sample, not interactive coverage of the full catalog. See the
       network still need to be established.
 - [ ] **Planned for future development** — Investigate source access, licensing, and
       reuse rights before selecting or importing content for any future framework.
+- [ ] **Planned for future development** — Animated chalk talks for visual learners:
+      more 40-second explanations beyond the three samples, each written from its
+      pinned source and awaiting the same qualified review.
+- [ ] **Planned for future development** — Flashcards for every objective: the
+      determination statements as cards, each with its citation, for recall rather
+      than assessment.
+- [ ] **Planned for future development** — Two controls side by side: read one
+      control beside another on the same board, without claiming equivalence.
 
-Phase 4 is not complete and has no committed delivery schedule.
+Phase 4 is not complete and has no committed delivery schedule. The About page's
+"What's next on the board" column repeats this roadmap's directions and nothing more.
 
 ## Other external confirmations
 

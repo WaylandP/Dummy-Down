@@ -224,9 +224,14 @@ not establish it.
   `/practice` alone runs the first situation); older index links with a
   search prefill the find line. On a phone the list comes first and a
   situation opens full width with "← All situations".
-- **About `/about`:** mission and honest content limits in sentences, and the
-  three chalks as links into a control. **Disclaimer `/disclaimer`:** the same
-  frame, its text unchanged.
+- **About `/about` (October 15, `mockups/2026-10-15/About.html`):** mission
+  and honest content limits in sentences (who makes this before CMMC in one
+  paragraph, as the mockup orders them), and the three chalks as links into a
+  control; beside them at desktop widths, after them below, "What's next on
+  the board": on the board (ticked; the counts come from the data), next and
+  later in the roadmap's words (`docs/ROADMAP.md` says no more and no less),
+  "Directions, not dates." and a link to suggest something on GitHub.
+  **Disclaimer `/disclaimer`:** the same frame, its text unchanged.
 - **Timeline `/timeline`:** the dates that matter on one screen: the six dates
   on a yellow chalk line, how long each status stays current, and what DoD
   has said about Revision 3, each sentence paraphrased over its quoted source

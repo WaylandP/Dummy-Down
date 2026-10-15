@@ -182,8 +182,11 @@ request each; each line says whether it is built.
    with its correction. The address is `/practice?activity=<id>&q=<n>`;
    older practice links keep working; the first situation runs by default.
    Phone: the list first; a situation opens full width with a way back.
-6. **About: what's next** — `About.html` (not built). The "What's next on the
-   board" column: on the board, next, later. Directions, not dates.
+6. **About: what's next** — `About.html` (built). The "What's next on the
+   board" column beside the sentences (after them below desktop widths): on
+   the board (ticked, counted from the data), next and later, in the
+   roadmap's words; "Directions, not dates." and a link to suggest something
+   on GitHub.
 7. **The doodle chalk** — `Doodle.html` (not built). A chalk beside Smudge for
    the reader's own marks, kept on this screen only.
 
