@@ -173,18 +173,18 @@ lesson. Its native GET form submits to `/learn` with `view=discover`,
 `collection=references`, `catalog=cmmc` and the encoded query `q`. An empty search
 shows all references. The Controls page's family and level links carry real
 `serializeExplorerSearch` addresses and filter in place through the explorer's
-own dispatch; a modifier click leaves them to the browser. The rail's "Start
-here" path is lesson state: `path=basics` on a lesson address names the fifteen
-Level 1 controls in catalog order (`pathControls`, `pathIndex`), is kept by the
-`follow-path` intent ("Next on the path", which also clears a query, family or
-level) and dropped by any `select-lesson`; on a control that is not one of the
-basics it is ignored and not serialized. A `select-lesson` the filters would
+own dispatch; a modifier click leaves them to the browser. `path=basics`, from
+the "Start here" path removed on October 15, is not a recognized key: an old
+link that carries it opens its control and the parameter is ignored like any
+other unrelated query data. A `select-lesson` the filters would
 hide (a pick from the rail, which lists every control) gives way: the
 collection and framework follow the control, then a family, a level or a query
 that would hide it is cleared, the narrowest first.
 
-Home offers three rows, one per chalk: the first lesson
-(`cmmc/cmmc-2-13-sep-2024/ac-l1-b-1-i`) in white, the Controls page in yellow
+Home offers three rows, one per chalk: the first Level 1 lesson
+(`cmmc/cmmc-2-13-sep-2024/ac-l1-b-1-i`, with `level=Level 1` so the rail and
+the foot's Previous/Next keep to the fifteen basics) in white, the Controls
+page in yellow
 and the assessment objectives in blue. Choosing a row writes that chalk to
 `cipher-and-chalk:chalk:v1` (`src/state/chalk-preference.ts`); the explorer
 store reads it as the default mode for an address that names none, and the

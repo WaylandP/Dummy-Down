@@ -20,11 +20,7 @@ import { readChalkPreference } from './chalk-preference'
 function trackIntent(intent: ExplorerIntent, parsed: ParsedExplorerState) {
   if (parsed.kind !== 'ready') return
   const state = parsed.state
-  if (
-    intent.type === 'select-lesson' ||
-    intent.type === 'open-example' ||
-    intent.type === 'follow-path'
-  ) {
+  if (intent.type === 'select-lesson' || intent.type === 'open-example') {
     if (state.view === 'lesson')
       trackUsage({ name: 'control_open', lesson: state.lesson })
   } else if (intent.type === 'change-mode' || intent.type === 'pick-chalk') {

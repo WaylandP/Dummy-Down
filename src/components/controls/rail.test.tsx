@@ -2,12 +2,16 @@ import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it } from 'vitest'
 import App from '../../App'
-import { explorerCatalog, referenceControls } from '../../data/content'
-import { pathControls } from '../../state/explorer-state'
+import { referenceControls } from '../../data/content'
 import { families } from '../families'
 
 const controls = '/learn?view=discover&collection=references'
-const basics = pathControls('basics', explorerCatalog)
+const lesson = (key: string, rest = '') =>
+  `/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=${key}&mode=beginner${rest}`
+/** The fifteen Level 1 controls, in catalog order. */
+const basics = referenceControls.filter(
+  (control) => control.level === 'Level 1',
+)
 
 async function open(address = controls) {
   window.history.replaceState(null, '', address)
@@ -40,15 +44,14 @@ async function open(address = controls) {
       within(rail.getByRole('group', { name: 'Level' })).getByRole('link', {
         name,
       }),
-    startHere: () => rail.getByRole('link', { name: /^Start here/ }),
   }
 }
 
 beforeEach(() => window.localStorage.clear())
 
 describe('the rail of every control', () => {
-  it('lists the fourteen families with their catalog counts, and the path through the basics', async () => {
-    const { rail, familyCount, startHere, explorer } = await open()
+  it('lists the fourteen families with their catalog counts, with no Start here', async () => {
+    const { rail, familyCount, explorer } = await open()
     expect(families).toHaveLength(14)
     for (const family of families) {
       expect(familyCount(family.code)).toBe(family.count)
@@ -58,18 +61,10 @@ describe('the rail of every control', () => {
     )
     // Nothing is open until a family or a control is chosen.
     expect(rail.queryAllByRole('link', { name: /^[A-Z]{2}\.L\d/ })).toEqual([])
-    const start = startHere()
-    expect(start).toHaveAttribute(
-      'href',
-      expect.stringContaining('path=basics'),
-    )
-    expect(start).toHaveAttribute(
-      'href',
-      expect.stringContaining(`control=${basics[0]!.key}`),
-    )
-    expect(start).toHaveTextContent('The fifteen Level 1 basics, in order.')
-    expect(start).not.toHaveTextContent('of 15')
-    expect(start.querySelectorAll('rect')).toHaveLength(basics.length)
+    // The Start here path went on October 15: nothing stands between the find
+    // line and the level switch, and nothing counts "n of 15".
+    expect(rail.queryByRole('link', { name: /^Start here/ })).toBeNull()
+    expect(rail.queryByText(/of 15/)).toBeNull()
     expect(basics).toHaveLength(15)
     // The old disclosure is gone; at desktop widths the rail holds the
     // families and the overview is the results.
@@ -130,51 +125,32 @@ describe('the rail of every control', () => {
     expect(params().get('family')).toBeNull()
   })
 
-  it('walks the path from Start here, and leaves it for a control picked on its own', async () => {
-    const { user, rail, startHere, explorer, params } = await open()
-    // A query that would hide the first basic gives way to the path.
-    await user.type(
-      rail.getByRole('searchbox', { name: 'Find controls' }),
-      'media',
+  it('opens Controls filtered to Level 1 with the first basic on the board, as Home’s white chalk does', async () => {
+    const { user, rail, level, familyCount, explorer, params } = await open(
+      lesson(basics[0]!.key, '&level=Level+1'),
     )
-    await user.click(startHere())
-    expect(params().get('q')).toBeNull()
-    expect(params().get('path')).toBe('basics')
-    expect(params().get('control')).toBe(basics[0]!.key)
-    expect(startHere()).toHaveTextContent('1 of 15')
-    expect(startHere()).toHaveAttribute('aria-current', 'true')
-    expect(startHere().querySelectorAll('rect.is-current')).toHaveLength(1)
     expect(
       explorer.getByRole('heading', { level: 1, name: basics[0]!.title }),
-    ).toHaveFocus()
-    const next = explorer.getByRole('button', {
-      name: `Next on the path: ${basics[1]!.id} →`,
-    })
-    await user.click(next)
-    expect(params().get('path')).toBe('basics')
-    expect(params().get('control')).toBe(basics[1]!.key)
-    expect(startHere()).toHaveTextContent('2 of 15')
+    ).toBeVisible()
+    expect(level('1')).toHaveAttribute('aria-current', 'true')
     expect(
-      explorer.getByRole('button', {
-        name: `Next on the path: ${basics[2]!.id} →`,
-      }),
-    ).toHaveFocus()
-    // The current control carries the bar in its open family.
+      families.reduce((sum, family) => sum + familyCount(family.code), 0),
+    ).toBe(15)
     expect(
-      rail.getByRole('link', { name: new RegExp(`^${basics[1]!.id} `) }),
+      rail.getByRole('link', { name: new RegExp(`^${basics[0]!.id} `) }),
     ).toHaveAttribute('aria-current', 'page')
-    // Another control from the rail leaves the path.
+    // The foot steps through the basics in order, keeping the level.
+    expect(explorer.queryByRole('button', { name: /^Previous/ })).toBeNull()
     await user.click(
-      rail.getByRole('link', { name: new RegExp(`^${basics[3]!.id} `) }),
+      explorer.getByRole('button', { name: `Next: ${basics[1]!.id}` }),
     )
-    expect(params().get('path')).toBeNull()
-    expect(params().get('control')).toBe(basics[3]!.key)
-    expect(startHere()).not.toHaveTextContent('of 15')
+    expect(params().get('control')).toBe(basics[1]!.key)
+    expect(params().get('level')).toBe('Level 1')
     expect(
-      explorer.queryByRole('button', { name: /^Next on the path/ }),
-    ).not.toBeInTheDocument()
+      explorer.getByRole('button', { name: `Next: ${basics[2]!.id}` }),
+    ).toHaveFocus()
     expect(
-      explorer.getByRole('button', { name: `Next: ${basics[4]!.id}` }),
+      explorer.getByRole('button', { name: `Previous: ${basics[0]!.id}` }),
     ).toBeInTheDocument()
   })
 
@@ -239,26 +215,37 @@ describe('the rail of every control', () => {
     expect(params().get('family')).toBeNull()
   })
 
-  it('ends the path at the last of the basics', async () => {
-    const last = basics[basics.length - 1]!
-    const { explorer, startHere } = await open(
-      `/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=${last.key}&mode=beginner&path=basics`,
-    )
-    expect(startHere()).toHaveTextContent('15 of 15')
-    expect(explorer.getByText('The basics, done.')).toBeInTheDocument()
-    expect(
-      explorer.queryByRole('button', { name: /^Next/ }),
-    ).not.toBeInTheDocument()
-  })
-
-  it('ignores a path on a control that is not one of the basics', async () => {
-    const { startHere } = await open(
-      '/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l2-3-1-1&mode=beginner&path=basics',
-    )
-    expect(startHere()).not.toHaveTextContent('of 15')
-    expect(startHere()).toHaveAttribute(
-      'href',
-      expect.stringContaining(`control=${basics[0]!.key}`),
-    )
-  })
+  // The Start here path was removed on October 15; a link that still carries
+  // it opens its control as if the parameter were not there.
+  it.each([basics[0]!.key, basics[basics.length - 1]!.key, 'ac-l2-3-1-1'])(
+    'opens an old Start here link to %s on its control, ignoring the path',
+    async (key) => {
+      const control = referenceControls.find((item) => item.key === key)!
+      const { user, rail, explorer, params } = await open(
+        lesson(key, '&path=basics'),
+      )
+      expect(
+        explorer.getByRole('heading', { level: 1, name: control.title }),
+      ).toBeVisible()
+      expect(document.querySelector('.explorer-notice')).toBeNull()
+      expect(rail.queryByRole('link', { name: /^Start here/ })).toBeNull()
+      expect(explorer.queryByText(/of 15/)).toBeNull()
+      expect(explorer.queryByText('The basics, done.')).toBeNull()
+      expect(
+        explorer.queryByRole('button', { name: /^Next on the path/ }),
+      ).toBeNull()
+      // The foot is plain Previous and Next, and the next address drops the
+      // parameter.
+      const next = referenceControls[referenceControls.indexOf(control) + 1]
+      if (!next) throw new Error(`${control.id} has no next control`)
+      await user.click(
+        explorer.getByRole('button', { name: `Next: ${next.id}` }),
+      )
+      expect(params().get('control')).toBe(next.key)
+      expect(params().get('path')).toBeNull()
+      expect(
+        explorer.getByRole('button', { name: `Previous: ${control.id}` }),
+      ).toBeInTheDocument()
+    },
+  )
 })

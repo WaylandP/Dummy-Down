@@ -147,7 +147,8 @@ describe('Home', () => {
       'home-stick tray-stick tray-stick-blue',
     ])
 
-    // White chalk: the first lesson on the Start here path, in plain words.
+    // White chalk: Controls filtered to Level 1, with the first of the
+    // fifteen basics on the board, in plain words.
     const first = new URL(links[0]!.href)
     expect(first.pathname).toBe('/learn')
     const lesson = parseExplorerSearch(first.search, explorerCatalog)
@@ -159,11 +160,19 @@ describe('Home', () => {
       controlKey: 'ac-l1-b-1-i',
     })
     expect(lesson.state.mode).toBe('beginner')
-    expect(lesson.state.path).toBe('basics')
-    expect(
-      resolveLesson(lesson.state.lesson, lesson.state.filters, explorerCatalog)
-        .kind,
-    ).toBe('lesson')
+    expect(lesson.state.filters.level).toBe('Level 1')
+    expect(first.searchParams.has('path')).toBe(false)
+    const resolved = resolveLesson(
+      lesson.state.lesson,
+      lesson.state.filters,
+      explorerCatalog,
+    )
+    expect(resolved.kind).toBe('lesson')
+    expect(resolved.kind === 'lesson' && resolved.excludedByFilters).toBe(false)
+    const level1 = explorerResults(lesson.state, explorerCatalog)
+    expect(level1).toHaveLength(15)
+    expect(level1[0]!.key).toBe('ac-l1-b-1-i')
+    expect(level1.every((control) => control.level === 'Level 1')).toBe(true)
 
     // Yellow chalk: the Controls page with the fourteen families.
     const second = new URL(links[1]!.href)

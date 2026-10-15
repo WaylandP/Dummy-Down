@@ -55,6 +55,9 @@ describe('Separate blackboard pages', () => {
     expect(new URLSearchParams(window.location.search).get('control')).toBe(
       'ac-l1-b-1-i',
     )
+    expect(new URLSearchParams(window.location.search).get('level')).toBe(
+      'Level 1',
+    )
   })
   it.each(['/glossary', '/about', '/disclaimer', '/glossary/', '/about/'])(
     'opens %s on direct load without rendering a hidden lesson',

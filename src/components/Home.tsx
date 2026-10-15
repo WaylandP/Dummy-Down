@@ -3,7 +3,6 @@ import {
   createLessonUrl,
   lessonIdentity,
   lessonIdentityKey,
-  pathControls,
 } from '../state/explorer-state'
 import {
   readChalkPreference,
@@ -27,15 +26,14 @@ import {
 function lessonUrl(
   lesson: LessonIdentity,
   mode: ExplanationMode,
-  path?: 'basics',
+  level?: string,
 ) {
-  return createLessonUrl(
-    lesson,
-    mode,
-    new URL('/learn', window.location.origin),
-    'decode',
-    path,
-  ).replace(window.location.origin, '')
+  const url = new URL(
+    createLessonUrl(lesson, mode, new URL('/learn', window.location.origin)),
+  )
+  // Controls filtered to a level, with this control on the board.
+  if (level) url.searchParams.set('level', level)
+  return url.href.replace(window.location.origin, '')
 }
 
 function findControl(lesson: LessonIdentity | null): CatalogControl | null {
@@ -48,8 +46,10 @@ function findControl(lesson: LessonIdentity | null): CatalogControl | null {
   )
 }
 
-/** The Level 1 basics: the Start here path begins at the first of them. */
-const basics = pathControls('basics', explorerCatalog)
+/** The Level 1 basics, in catalog order; the white chalk opens the first. */
+const basics = referenceControls.filter(
+  (control) => control.level === 'Level 1',
+)
 const firstBasic = lessonIdentity(basics[0]!)
 
 /** One chalk per reader: who they are, where that starts them, and the chalk it picks. */
@@ -59,7 +59,7 @@ const chalks = [
     colour: 'white',
     line: 'I’m new to this',
     text: `Level 1’s ${numberWord(basics.length)} basics first.`,
-    href: () => lessonUrl(firstBasic, 'beginner', 'basics'),
+    href: () => lessonUrl(firstBasic, 'beginner', 'Level 1'),
   },
   {
     mode: 'it-cyber',
