@@ -205,9 +205,25 @@ not establish it.
   quiet selects, paginated control disclosures and exact lesson links. Source
   quotations keep a yellow chalk rule beside them and teaching notes stay
   visibly separate; no compliance scores.
-- **Practice `/practice`:** a searchable index of actual activities as rows on
-  hairlines (no numbered markers), optional local progress, revisit marks and
-  the control identifier in blue mono.
+- **Practice `/practice` (October 15, `mockups/2026-10-15/Practice.html`):**
+  practice runs in place. Left: "Work through a situation.", one line, a find
+  line that narrows the list as you type (never in history), the level switch
+  (`?level=`), the thirteen situations as rows on hairlines (titles without
+  their "Practice:" prefix, the control's ID beside each, the one running
+  under the yellow bar), and at the bottom "Keep my progress on this browser:
+  off/on" (the same local-only, opt-in, deletable saving; turning it off
+  deletes it) with "Hide finished" once it is on. Right: the situation
+  running: the control's ID, level and title, "Question n of m" with chalk
+  dashes, the prompt large, the choices as rows with chalk circles (choosing
+  one answers it); after an answer its feedback under it, then "Next
+  question →" ("Finish practice" on the last), "Read the requirement" (the
+  control's Decode) and "Watch the 40-second chalk talk" where there is one;
+  after the first answer "A common mix-up" with the activity's claim struck
+  through in chalk and its correction; every word from the activity's data.
+  The situation and the question live in the address (`?activity=`, `?q=`;
+  `/practice` alone runs the first situation); older index links with a
+  search prefill the find line. On a phone the list comes first and a
+  situation opens full width with "← All situations".
 - **About `/about`:** mission and honest content limits in sentences, and the
   three chalks as links into a control. **Disclaimer `/disclaimer`:** the same
   frame, its text unchanged.
@@ -249,14 +265,13 @@ That visual revision was merged in PR #12. The Phase 1 quality increment preserv
 this direction and prepares [human acceptance](testing/PHASE_1_ACCEPTANCE.md);
 it does not initiate a new visual redesign or imply owner acceptance.
 
-### Practice index
+### Practice
 
-`/practice` provides a quiet, numbered list of actual draft activities, with a
-search and level filter, learning goals and exact edition-bound lesson links.
-Levels follow the source catalog order; the project demo is not a level-filter result. It
-uses the existing blackboard tokens and native navigation. Saving is off by
-default. A closed disclosure explains it; saved-state filters require opt-in. A
-small row action marks topics to revisit, and removing a filtered row restores
-focus to the result summary. Earlier answers stay in a disclosure above the current
-question. No scores, streaks or congratulatory overlays compete with the teaching.
-Completing a practice activity is not a compliance score.
+`/practice` lists the actual draft activities as situations in the catalog's
+order and runs the one picked beside them (the Practice bullet above has the
+October 15 layout). The project demo is not a level-filter result. Saving is
+off by default; the page's own line turns it on, and once on, finished
+situations are marked and can be hidden. Revisit marks stay in the lesson's
+Practice view, with its disclosures of earlier answers. No scores, streaks or
+congratulatory overlays compete with the teaching. Completing a practice
+activity is not a compliance score.

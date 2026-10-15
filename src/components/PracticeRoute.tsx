@@ -23,7 +23,7 @@ export function PracticeRoute() {
     return <Page />
   }
   return (
-    <section className="practice-page page">
+    <section className="page">
       <h1 className="chalk">Work through a situation.</h1>
       <p role="status" aria-busy={!failed}>
         {failed

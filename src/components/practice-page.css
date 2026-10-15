@@ -1,113 +1,574 @@
-/* The practice index: a search line, two quiet selects and rows on hairlines. */
-.practice-filters {
+/* Practice runs in place (mockups/2026-10-15/Practice.html): the situations
+   on the left, the one picked running on the right. Unlayered like the other
+   page sheets. */
+.practice-page {
+  flex: 1;
   display: grid;
-  grid-template-columns:
-    minmax(0, 1.6fr) minmax(0, 0.7fr) minmax(0, 0.9fr)
-    auto auto;
-  align-items: end;
-  gap: 12px 32px;
-  margin-top: 26px;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 0 48px;
+  min-height: 0;
+  padding: 22px var(--gutter) 0;
 }
-.practice-filters .line-action {
-  margin-bottom: 0;
+/* The situations: a column that scrolls on its own, on a hairline. */
+.practice-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  min-width: 0;
+  border-right: 1px solid var(--color-rule);
+  padding-right: 28px;
+  outline-offset: 8px;
 }
-.practice-page .progress-preferences {
-  margin: 18px 0 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  max-width: 72ch;
-  font-size: 14px;
+.practice-nav h1 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.05;
+}
+.practice-lead {
+  margin: 0;
   color: var(--color-chalk-muted);
+  font-size: 14px;
+  line-height: 1.5;
 }
-.practice-page .progress-preferences > summary {
+.practice-find {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.practice-find-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-yellow);
+}
+.practice-find-line input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 6px 2px;
+  border: 0;
+  background: transparent;
+  color: var(--color-chalk);
+  font-size: 18px;
+}
+.practice-find-line input::placeholder {
+  color: var(--color-chalk-faint);
+}
+/* Focus is the underline turning to yellow chalk; there is no box to ring. */
+.practice-find-line input:focus-visible {
+  outline: none;
+}
+.practice-underline {
+  display: block;
+  width: 100%;
+  height: 8px;
+}
+.practice-underline path {
+  fill: none;
+  stroke: var(--color-chalk);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.practice-find:has(input:focus-visible) .practice-underline path {
+  stroke: var(--color-yellow);
+  stroke-width: 4;
+}
+
+/* The level switch, as on the Controls rail: 44px words, the one in force under a stroke. */
+.practice-levels {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-chalk-dim);
+}
+.practice-levels-label {
+  margin-right: 8px;
+  font-weight: 400;
+}
+.practice-levels a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--color-chalk-dim);
+  text-decoration: none;
+}
+.practice-levels a[aria-current='true'] {
+  color: var(--color-chalk);
+}
+.practice-levels a:hover {
+  color: var(--color-yellow);
+}
+.practice-stroke {
+  width: 22px;
+  height: 5px;
+  visibility: hidden;
+}
+.practice-stroke path {
+  fill: none;
+  stroke: var(--color-yellow);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.practice-levels a[aria-current='true'] .practice-stroke {
+  visibility: visible;
+}
+.practice-count {
+  margin: 0;
+  color: var(--color-chalk-dim);
+  font-size: 12px;
+}
+
+/* The rows: a title and the control's ID on a hairline, the one running
+   under the yellow bar; the list scrolls under a fade. */
+.practice-list {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin: 0 -6px;
+  padding: 0 6px 56px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-padding-block: 8px 60px;
+  mask-image: linear-gradient(#000 calc(100% - 48px), transparent);
+}
+.practice-list ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.practice-situation {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 0;
+  border-top: 1px solid var(--color-rule-soft);
+  color: var(--color-chalk-muted);
+  text-decoration: none;
+}
+.practice-list li:first-child .practice-situation {
+  border-top: 0;
+}
+.practice-situation-title {
+  font-size: 15px;
+  line-height: 1.35;
+}
+.practice-situation-id {
+  flex: none;
+  color: var(--color-blue-dim, var(--color-blue));
+  font-size: 11px;
+}
+.practice-situation:hover .practice-situation-title {
+  color: var(--color-yellow);
+}
+.practice-situation[aria-current='page'] {
+  color: var(--color-chalk);
+}
+.practice-situation[aria-current='page']::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--color-yellow);
+}
+.practice-empty {
+  flex: 1;
+  padding-top: 8px;
+}
+.practice-empty p {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+.practice-show-all,
+.practice-keep-switch {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  border: 0;
   padding: 0;
+  background: none;
   color: var(--color-chalk-dim);
-  font-size: 14px;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
 }
-.practice-page .progress-preferences > summary:hover {
+.practice-show-all {
+  color: var(--color-yellow);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* The bottom line: saving, off or on, and once on, hiding what is finished. */
+.practice-keep {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 18px;
+  padding-bottom: 12px;
+}
+.practice-keep-switch:hover:not(:disabled) .practice-keep-state {
   color: var(--color-yellow);
 }
-.practice-page .page-note {
-  margin-top: 4px;
-  max-width: 72ch;
+.practice-keep-switch:disabled {
+  cursor: default;
+  opacity: 0.6;
 }
-.practice-result-count {
-  margin: 20px 0 8px;
+.practice-keep-state {
+  margin-left: 0.3em;
+  color: var(--color-chalk);
+}
+.practice-hide {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--color-chalk-dim);
+  font-size: 13px;
+  cursor: pointer;
+}
+.practice-hide input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--color-yellow);
+}
+.practice-keep-note {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--color-chalk-dim);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.practice-keep-note:empty {
+  display: none;
+}
+
+/* The situation running: its control, the question in hand, the choices,
+   the feedback under the one picked, where next, and the mix-up. */
+.practice-run {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  padding-bottom: 12px;
+}
+.practice-back {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44px;
+  margin-bottom: 4px;
   color: var(--color-chalk-dim);
   font-size: 14px;
+  text-decoration: none;
 }
-.practice-index > li {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 4px;
-  padding: 18px 0 20px;
+.practice-back:hover {
+  color: var(--color-yellow);
 }
-.practice-row-kicker,
-.practice-row-status {
-  margin: 0;
+.practice-run-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 16px;
   color: var(--color-chalk-dim);
   font-size: 13px;
 }
-.practice-index h2 {
-  margin: 0;
-  font-size: 26px;
-  line-height: 1.15;
+.practice-run-id {
+  color: var(--color-blue);
+  font-size: 15px;
 }
-.practice-index h2 a {
+.practice-run-progress {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+.practice-run-dashes {
+  height: 8px;
+}
+.practice-run-dashes rect {
+  fill: var(--color-chalk);
+  opacity: 0.3;
+}
+.practice-run-dashes rect.is-done {
+  opacity: 0.6;
+}
+.practice-run-dashes rect.is-current {
+  fill: var(--color-yellow);
+  opacity: 1;
+}
+.practice-run-title {
+  margin: 12px 0 0;
+  font-size: 36px;
+  line-height: 1.05;
+}
+.practice-run-title:focus-visible,
+.practice-run-prompt:focus-visible,
+.practice-run-feedback:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 6px;
+}
+.practice-run-prompt {
+  max-width: 760px;
+  margin: 18px 0 6px;
+  font-size: 23px;
+  line-height: 1.45;
+}
+.practice-run-choices {
+  max-width: 760px;
+  margin-top: 6px;
+}
+.practice-run-choice {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  border-top: 1px solid var(--color-rule-soft);
+  padding: 12px 0;
+  background: none;
+  color: var(--color-chalk-dim);
+  font: inherit;
+  font-size: 17px;
+  line-height: 1.45;
+  text-align: left;
+  cursor: pointer;
+}
+.practice-run-choice:hover:not(:disabled) {
   color: var(--color-chalk);
-  text-decoration: none;
 }
-.practice-index h2 a:hover {
-  color: var(--color-yellow);
+.practice-run-choice:disabled {
+  cursor: default;
 }
-.practice-row-goal {
-  margin: 2px 0 0;
-  max-width: 64ch;
+.practice-run-choice[aria-pressed='true'] {
+  color: var(--color-chalk);
+}
+.practice-run-choice:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+.practice-run-mark {
+  width: 26px;
+  height: 26px;
+  margin-top: 1px;
+}
+.practice-run-ring {
+  fill: none;
+  stroke: var(--color-chalk-dim);
+  stroke-width: 2;
+}
+.practice-run-choice[aria-pressed='true'] .practice-run-ring {
+  stroke: var(--color-yellow);
+  stroke-width: 2.4;
+}
+.practice-run-tick {
+  fill: none;
+  stroke: var(--color-yellow);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.practice-run-feedback {
+  margin: 0 0 10px 46px;
+  padding-left: 16px;
+  border-left: 2px solid var(--color-chalk);
   color: var(--color-chalk-muted);
   font-size: 15px;
   line-height: 1.5;
 }
-.practice-row-id {
-  margin-top: 4px;
-  color: var(--color-blue);
-  font-size: 13px;
+.practice-run-feedback p {
+  margin: 0;
 }
-.practice-row-actions {
+.practice-run-feedback strong {
+  color: var(--color-chalk);
+  font-weight: 500;
+}
+.practice-run-done {
+  margin: 14px 0 0;
+  color: var(--color-chalk);
+  font-size: 15px;
+}
+.practice-run-actions {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   gap: 0 28px;
+  margin-top: 14px;
+  font-size: 15px;
 }
-.practice-empty {
-  padding-top: 8px;
+.practice-run-next {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 6px;
+  min-height: 44px;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--color-yellow);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
 }
-.practice-empty h2 {
+.practice-run-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-chalk-dim);
+  text-decoration: none;
+}
+.practice-run-actions a:hover,
+.practice-run-next:hover {
+  color: var(--color-yellow);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.practice-run-mixup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 770px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-rule-soft);
+}
+.practice-run-mixup h3 {
   margin: 0;
-  font-size: 30px;
+  color: var(--color-yellow);
+  font-size: 21px;
+  line-height: 1;
 }
-.practice-empty p {
-  margin: 8px 0 0;
-  max-width: 64ch;
+.practice-run-claim {
+  margin: 0;
+  color: var(--color-chalk-dim);
+  font-size: 15px;
+  line-height: 1.45;
+}
+/* The claim struck through in chalk, on every line it wraps to. */
+.practice-run-claim s {
+  text-decoration: line-through;
+  text-decoration-color: var(--color-yellow);
+  text-decoration-thickness: 2px;
+}
+.practice-run-correction {
+  margin: 0;
+  color: var(--color-chalk-muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.practice-run-note {
+  margin: 10px 0 0;
+  color: var(--color-chalk-dim);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.practice-run-note a {
+  color: var(--color-chalk-dim);
+}
+.practice-unknown {
+  margin: 0;
   color: var(--color-chalk-muted);
 }
-@media (max-width: 1024px) {
-  .practice-filters {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+/* In the desktop frame (board.css) the situations and the one running scroll
+   on their own; the page around them stays put. */
+@media (min-width: 1024px) and (min-height: 640px) {
+  .board-main > .practice-page {
+    flex: 1 1 0;
+    min-height: 0;
   }
-  .practice-filters .line-field {
-    grid-column: 1 / -1;
+  .practice-run {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-padding-block: 16px 24px;
+  }
+}
+
+/* Below desktop widths the situations come first; a situation opens full
+   width with a way back. */
+@media (max-width: 1023px) {
+  .practice-page {
+    display: flex;
+    flex-direction: column;
+    padding-top: 14px;
+  }
+  .practice-nav {
+    border-right: 0;
+    padding-right: 0;
+  }
+  .practice-list {
+    flex: none;
+    overflow: visible;
+    mask-image: none;
+    padding-bottom: 8px;
+  }
+  .practice-situation[aria-current='page']::before {
+    left: -10px;
+  }
+  .practice-run-mixup {
+    margin-top: 24px;
   }
 }
 @media (max-width: 640px) {
-  .practice-filters {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 8px;
+  .practice-nav h1 {
+    font-size: 30px;
   }
-  .practice-index h2 {
-    font-size: 23px;
+  .practice-run-title {
+    font-size: 30px;
+  }
+  .practice-run-prompt {
+    font-size: 20px;
+  }
+  .practice-run-progress {
+    margin-left: 0;
+  }
+  .practice-run-feedback {
+    margin-left: 0;
+  }
+  .practice-run-choice {
+    font-size: 16px;
+  }
+}
+@media (forced-colors: active) {
+  .practice-run-dashes rect,
+  .practice-stroke path,
+  .practice-run-ring,
+  .practice-run-tick {
+    forced-color-adjust: none;
+  }
+  .practice-situation[aria-current='page']::before {
+    background: Highlight;
+  }
+  .practice-run-choice[aria-pressed='true'] {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+  .practice-find-line input:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+@media print {
+  .practice-nav,
+  .practice-back,
+  .practice-run-actions {
+    display: none;
   }
 }

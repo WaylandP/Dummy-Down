@@ -211,25 +211,36 @@ for (const width of [390, 1440]) {
       await capture(page, 'complete', width)
     })
 
-    await test.step('9. Find the completed activity through its revisit mark', async () => {
+    await test.step('9. Find the completed activity through its finished mark', async () => {
       await page
         .getByRole('button', { name: 'Revisit later', exact: true })
         .click()
       await page.getByRole('link', { name: 'Choose another situation' }).click()
-      await page
-        .getByRole('combobox', { name: 'Learning status' })
-        .selectOption('revisit')
-      await page.getByRole('button', { name: 'Find activities' }).click()
       await expect(
-        page.getByRole('status', { name: 'Activity results' }),
-      ).toHaveText('1 activity available')
-      await expect(page.locator('.practice-row-status')).toContainText(
-        'Practice complete',
-      )
-      await expect(page.locator('.practice-row-status')).toContainText(
-        '1 answer worth another look',
-      )
-      await page.getByRole('link', { name: /^Review reasoning\s*:/ }).click()
+        page.getByRole('button', {
+          name: /^Keep my progress on this browser/,
+        }),
+      ).toHaveAttribute('aria-pressed', 'true')
+      const count = page.getByRole('status', { name: 'Situation results' })
+      const hide = page.getByRole('checkbox', { name: 'Hide finished' })
+      await hide.check()
+      await expect(count).toHaveText('12 of 13 situations')
+      await expect(
+        page.getByRole('link', { name: /\(finished\)/ }),
+      ).toHaveCount(0)
+      await hide.uncheck()
+      await expect(count).toHaveText('13 situations')
+      await page
+        .getByRole('link', { name: /\(finished\) AC\.L1-b\.1\.i$/ })
+        .click()
+      await expect(
+        page.getByRole('heading', { name: 'Who and what can connect?' }),
+      ).toBeFocused()
+      const run = page.getByRole('article')
+      await expect(run).toContainText('Practice complete. Keep asking why.')
+      await run
+        .getByRole('link', { name: 'Watch the 40-second chalk talk' })
+        .click()
       await page
         .getByRole('button', { name: 'Start or return to questions' })
         .click()
@@ -238,6 +249,9 @@ for (const width of [390, 1440]) {
           name: 'Practice complete. Keep asking why.',
         }),
       ).toBeFocused()
+      await expect(
+        page.getByRole('button', { name: 'Marked to revisit', exact: true }),
+      ).toHaveAttribute('aria-pressed', 'true')
     })
 
     await test.step('10. Continue to another level and retain a usable reading surface', async () => {
@@ -246,18 +260,19 @@ for (const width of [390, 1440]) {
         .getByRole('link', { name: 'Practice', exact: true })
         .click()
       await page
-        .getByRole('searchbox', { name: 'Search activities' })
+        .getByRole('searchbox', { name: 'Find a situation' })
         .fill('IA.L2-3.5.3')
-      await page.getByRole('button', { name: 'Find activities' }).click()
       await expect(
-        page.getByRole('status', { name: 'Activity results' }),
-      ).toHaveText('1 activity available')
-      await page.getByRole('link', { name: /^Start questions\s*:/ }).click()
-      await expect(page).toHaveURL(/control=ia-l2-3-5-3(?:&|#|$)/)
-      await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+        page.getByRole('status', { name: 'Situation results' }),
+      ).toHaveText('1 of 13 situations')
+      await page.getByRole('link', { name: /IA\.L2-3\.5\.3$/ }).click()
+      await expect(page).toHaveURL(/activity=level-two-mfa-access-paths$/)
+      const run = page.getByRole('article')
       await expect(
-        page.getByText('Watch the idea · 40 seconds', { exact: true }),
-      ).toBeVisible()
+        run.getByRole('heading', {
+          name: 'Find the missing authentication factor',
+        }),
+      ).toBeFocused()
       expect(
         await page.evaluate(
           () => document.documentElement.scrollWidth <= innerWidth,
@@ -266,6 +281,15 @@ for (const width of [390, 1440]) {
       expect(
         (await new AxeBuilder({ page }).include('main').analyze()).violations,
       ).toEqual([])
+      await run.locator('.practice-run-choice').first().click()
+      await run
+        .getByRole('link', { name: 'Watch the 40-second chalk talk' })
+        .click()
+      await expect(page).toHaveURL(/control=ia-l2-3-5-3(?:&|#|$)/)
+      await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+      await expect(
+        page.getByText('Watch the idea · 40 seconds', { exact: true }),
+      ).toBeVisible()
       expect(errors).toEqual([])
     })
   })

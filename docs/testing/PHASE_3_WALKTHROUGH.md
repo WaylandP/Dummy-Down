@@ -24,9 +24,11 @@ Everything taught remains a visibly marked educational draft.
 8. If useful, open **Learning progress on this browser**, read what is stored and
    enable saving. Interrupt another attempt after checking an answer; reload and
    return to the questions. Unchecked choices are deliberately temporary.
-9. Mark a topic **Revisit later**. The **Practice** page can find marked, unfinished,
-   completed, or incorrectly answered activities when saving is on. **Delete
-   progress and stop saving** clears the record and returns to unsaved practice.
+9. Mark a topic **Revisit later**. When saving is on, the **Practice** page marks
+   finished situations and **Hide finished** takes them off its list. **Delete
+   progress and stop saving** in a lesson, or turning the Practice page's **Keep
+   my progress on this browser** line off, clears the record and returns to
+   unsaved practice.
 10. Browse another situation or level. Try the MFA and response-team examples below,
     keeping source quotations distinct from the fictional teaching scenario.
 
