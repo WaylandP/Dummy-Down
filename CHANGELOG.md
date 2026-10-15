@@ -93,6 +93,15 @@ analytics allowlist do not change.
   the column scrolling on its own in the desktop frame. The letters filter as
   before and keep their place in the address; `/glossary` alone is every
   word.
+- [PR #64](https://github.com/WaylandP/cipher-and-chalk/pull/64): practice
+  runs in place. The thirteen situations on the left (a find line, the level
+  switch, "Keep my progress on this browser" with "Hide finished" once on),
+  the one picked running on the right: the question, the choices as rows with
+  chalk circles, the feedback under the answer, "Next question", "Read the
+  requirement", the chalk talk where there is one, and "A common mix-up" after
+  the first answer. The address is `/practice?activity=<id>&q=<n>`; older
+  practice links keep working. On a phone the list comes first and a
+  situation opens full width with a way back.
 
 ## The Board's features — October 15, 2026
 
