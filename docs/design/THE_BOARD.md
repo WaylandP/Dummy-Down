@@ -165,8 +165,11 @@ request each; each line says whether it is built.
    row reads "Start with Level 1: fifteen basics, one control at a time, in
    plain words." with the count from the catalog. No page copy says the site
    covers only Level 2. The tray's legend shows on Home too, as drawn.
-4. **Glossary: All** (not built). An "All" button before A, selected by
-   default; every term under letter headings in the two-column flow.
+4. **Glossary: All** (built). An "All" button before A, pressed by default
+   (`aria-pressed`, a 44px target, in the tab order): every word under its
+   letter heading in the same two-column flow, the column scrolling on its
+   own in the desktop frame. The letters filter as before and live in the
+   address; `/glossary` alone is every word.
 5. **Practice runs in place** — `Practice.html` (not built). Pick a situation
    on the left; it runs on the right.
 6. **About: what's next** — `About.html` (not built). The "What's next on the

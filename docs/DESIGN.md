@@ -189,13 +189,17 @@ not establish it.
   three words print compact, and a control with long lists runs to a second
   page.
 - **Glossary `/glossary`:** the Board's Words page (`mockups/Glossary.html`).
-  Left: "Words", a search line, an A–Z row with the active letter on a yellow
-  block, and four groupings derived from each word's sources (the program,
-  scoping, the clauses, the lessons). Right: one letter of words in
-  two columns, each with its definition and its source in blue mono, linked.
-  The letter and the group live in the address (`?letter=`, `?group=`);
-  typing a search never touches history. Inline definitions still open inside
-  lessons without a page change.
+  Left: "Words", a search line, an "All" button before the A–Z row (pressed
+  by default; the active letter sits on a yellow block), and four groupings
+  derived from each word's sources (the program, scoping, the clauses, the
+  lessons). Right: by default every word under its letter heading in the same
+  two-column flow, the column scrolling on its own in the desktop frame; a
+  letter, a group or a search narrows it to one letter of words, a group or
+  the matches, each word with its definition and its source in blue mono,
+  linked. The letter and the group live in the address (`?letter=`,
+  `?group=`; `/glossary` alone is every word); typing a search never touches
+  history. Inline definitions still open inside lessons without a page
+  change.
 - **Coverage `/coverage`:** a separate source-to-explanation index on the
   Board's lines: one sentence, the counts on one rule, a search line with two
   quiet selects, paginated control disclosures and exact lesson links. Source
