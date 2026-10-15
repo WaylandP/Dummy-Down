@@ -67,6 +67,11 @@ source record under `docs/sources/`.
   publication is pinned in `docs/sources/nist-sp-800-171-r3-2026-10-15.md`;
   the data is `src/data/cmmc-rev3-map.json`. CMMC stays pinned to Rev 2; the
   view says so once.
+- [PR #46](https://github.com/WaylandP/cipher-and-chalk/pull/46): chalk
+  popovers. On the Explain view, the first mention of each word the lesson
+  lists carries its definition and source on hover, pinned by a tap, Enter or
+  Space with focus inside, closed by Escape with focus returned. Only the
+  words listed for the lesson are marked, and the explanation stays verbatim.
 
 ## Week 2 content and trust — October 14, 2026
 

@@ -161,6 +161,10 @@ official identifier remains display/search data. For example:
 Copy lesson link includes only that known lesson and learning mode. The app never
 reads the clipboard. If writing is unavailable, it shows a labeled selectable
 link; outdated asynchronous results do not report success for a different lesson.
+A link may name a chalk instead of a mode (`chalk=white|yellow|blue`): it opens
+Explain in that chalk unless it names a view, is rewritten to `mode=` and `tab=`
+once read and is never serialized; a colour the tray lacks shows the white chalk
+with a notice. Send this chalk copies such a link for the chalk in hand.
 
 Discovery state uses `view=discover` with optional `catalog`, `q`, `family`,
 `level`, `mode` and `collection=references`. Home does not open or track a selected

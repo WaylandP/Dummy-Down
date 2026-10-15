@@ -15,6 +15,7 @@ import {
   referenceControls,
 } from '../data/content'
 import {
+  createChalkUrl,
   createLessonUrl,
   effectiveCollection,
   lessonIdentity,
@@ -507,6 +508,11 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
             new URL(window.location.href),
             tab,
           )}
+          chalkUrl={createChalkUrl(
+            lessonIdentity(selected),
+            mode,
+            new URL(window.location.href),
+          )}
           excludedByFilters={resolution.excludedByFilters}
           onShowInResults={() => dispatch({ type: 'show-lesson-in-results' })}
           headingRef={(node) => {
@@ -621,6 +627,8 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
       )}
       {parsed.kind === 'ready' && parsed.notices.length > 0 && (
         <p className="explorer-notice" role="status">
+          {parsed.notices.includes('chalk-reset') &&
+            'That chalk is not in the tray; showing the white one. '}
           {parsed.notices.includes('mode-reset') &&
             'That learning mode is unavailable; showing Beginner. '}
           {parsed.notices.includes('family-reset') &&

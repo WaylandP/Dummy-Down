@@ -57,7 +57,7 @@ export type AddressError =
   | 'invalid-collection'
 
 export type NormalizationNotice =
-  'mode-reset' | 'tab-reset' | 'family-reset' | 'level-reset'
+  'mode-reset' | 'tab-reset' | 'chalk-reset' | 'family-reset' | 'level-reset'
 
 export type ParsedExplorerState =
   | {
@@ -113,6 +113,7 @@ const recognizedKeys = new Set([
   'level',
   'collection',
   'tab',
+  'chalk',
 ])
 const identitySlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const modes: readonly ExplanationMode[] = ['beginner', 'it-cyber', 'compliance']
@@ -315,12 +316,27 @@ export function parseExplorerSearch(
         ? controlCollection(resolved.control)
         : 'lessons'
   const rawMode = values.get('mode')
-  const mode = modes.find((item) => item === rawMode) ?? 'beginner'
   const notices: NormalizationNotice[] = []
-  if (values.has('mode') && rawMode !== mode) notices.push('mode-reset')
+  // A chalk in a lesson address owns the perspective and opens Explain unless
+  // the link names a view; it is read once and never written back. A colour
+  // the tray lacks shows the white chalk. Discovery ignores a chalk quietly.
+  const namesChalk = Boolean(identity) && values.has('chalk')
+  const rawChalk = values.get('chalk')
+  const chalk =
+    rawChalk && Object.hasOwn(chalkColours, rawChalk)
+      ? chalkColours[rawChalk as ChalkColour]
+      : null
+  const mode = namesChalk
+    ? (chalk ?? 'beginner')
+    : (modes.find((item) => item === rawMode) ?? 'beginner')
+  if (!namesChalk && values.has('mode') && rawMode !== mode)
+    notices.push('mode-reset')
+  if (namesChalk && !chalk) notices.push('chalk-reset')
   // A view only belongs to a lesson address; discovery ignores one quietly.
   const rawTab = identity ? values.get('tab') : null
-  const tab = controlTabs.find((item) => item === rawTab) ?? 'decode'
+  const tab =
+    controlTabs.find((item) => item === rawTab) ??
+    (namesChalk && !values.has('tab') ? 'explain' : 'decode')
   if (identity && values.has('tab') && rawTab !== tab) notices.push('tab-reset')
   const normalized = normalizeFilters(
     {
@@ -582,6 +598,43 @@ export function transitionExplorerState(
     history: intent.type === 'set-query' ? 'replace' : 'push',
     fragment,
   }
+}
+
+/** The three chalks are the three perspectives; a shared link may name the chalk. */
+export const chalkColours = {
+  white: 'beginner',
+  yellow: 'it-cyber',
+  blue: 'compliance',
+} as const satisfies Record<string, ExplanationMode>
+export type ChalkColour = keyof typeof chalkColours
+
+export function chalkColourOf(mode: ExplanationMode): ChalkColour {
+  return (Object.keys(chalkColours) as ChalkColour[]).find(
+    (colour) => chalkColours[colour] === mode,
+  )!
+}
+
+/** Whether an address names a chalk; the store rewrites such an address once it is read. */
+export function addressNamesChalk(search: string): boolean {
+  return new URLSearchParams(search).has('chalk')
+}
+
+/** A link that opens this control's explanation in one chalk: `chalk=` in place of `mode=`. */
+export function createChalkUrl(
+  identity: LessonIdentity,
+  mode: ExplanationMode,
+  location: URL,
+): string {
+  const url = new URL(location.href)
+  url.search = new URLSearchParams({
+    view: 'lesson',
+    framework: identity.frameworkId,
+    edition: identity.editionId,
+    control: identity.controlKey,
+    chalk: chalkColourOf(mode),
+  }).toString()
+  url.hash = 'explorer'
+  return url.href
 }
 
 /** A share URL contains the lesson, mode and view, never someone's discovery query. */

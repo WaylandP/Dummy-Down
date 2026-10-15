@@ -3,6 +3,7 @@ import {
   explorerResults,
   parseExplorerSearch,
   resolveLesson,
+  addressNamesChalk,
   serializeExplorerSearch,
   transitionExplorerState,
 } from './explorer-state'
@@ -108,7 +109,13 @@ function createExplorerStore(catalog: ExplorerCatalog) {
   }
 
   function normalize(next: BrowserSnapshot): BrowserSnapshot {
-    if (next.parsed.kind !== 'ready' || !next.parsed.notices.length) return next
+    if (next.parsed.kind !== 'ready') return next
+    // A chalk in the address is read once and never written back.
+    if (
+      !next.parsed.notices.length &&
+      !addressNamesChalk(window.location.search)
+    )
+      return next
     const canonical = serializeExplorerSearch(next.parsed.state)
     if (
       canonical === window.location.search ||

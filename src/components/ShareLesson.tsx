@@ -7,6 +7,9 @@ interface ShareLessonProps {
   url: string
   subject?: 'lesson' | 'reference'
   lesson?: LessonIdentity
+  /** The button's words and the copied thing's name, when not "Copy … link". */
+  label?: string
+  name?: string
 }
 
 type CopyPhase = 'idle' | 'pending' | 'copied' | 'fallback'
@@ -16,13 +19,17 @@ export function ShareLesson({
   url,
   subject = 'lesson',
   lesson,
+  label,
+  name,
 }: ShareLessonProps) {
   return (
     <ShareLessonSession
-      key={`${subject}:${url}`}
+      key={`${subject}:${label ?? ''}:${url}`}
       url={url}
       subject={subject}
       lesson={lesson}
+      label={label}
+      name={name}
     />
   )
 }
@@ -31,8 +38,10 @@ function ShareLessonSession({
   url,
   subject = 'lesson',
   lesson,
+  label,
+  name: givenName,
 }: ShareLessonProps) {
-  const name = subject === 'reference' ? 'Reference' : 'Lesson'
+  const name = givenName ?? (subject === 'reference' ? 'Reference' : 'Lesson')
   const prefix = useId()
   const [feedback, setFeedback] = useState<{ phase: CopyPhase }>({
     phase: 'idle',
@@ -103,7 +112,9 @@ function ShareLessonSession({
         ) : (
           <Link size={16} aria-hidden="true" />
         )}
-        {feedback.phase === 'pending' ? 'Copying…' : `Copy ${subject} link`}
+        {feedback.phase === 'pending'
+          ? 'Copying…'
+          : (label ?? `Copy ${subject} link`)}
       </button>
       <p className="share-feedback" role="status" aria-live="polite">
         {feedback.phase === 'copied' && `${name} link copied.`}

@@ -56,9 +56,10 @@ content-review milestone.
       bar, keys and print sheet. Routes, content identities, legacy links and
       the analytics allowlist did not change. The specification's remaining
       features follow one pull request each, in its order; the Decode clause
-      map deferred from the control page, the Rev 3 tab and chalk popovers for
-      the lesson's words on Explain are merged, and Send this chalk, the CedarPoint story, Erase, the
-      timeline, the assessor's three words and Dash follow.
+      map deferred from the control page, the Rev 3 tab, chalk popovers for
+      the lesson's words on Explain and Send this chalk are merged, and the
+      CedarPoint story, Erase, the timeline, the assessor's three words and
+      Dash follow.
 - [x] **Completed and merged into main** — Repair reproduced
       implementation issues and prepare a repeatable owner/learner acceptance packet
       in Increment 1 (PR #14). This does not record a completed human acceptance cycle.

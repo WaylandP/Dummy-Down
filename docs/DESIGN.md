@@ -74,7 +74,10 @@ not establish it.
   (`mockups/Decode.html`, `Explain.html` and the phone variants). The identifier
   is decoded on the first line from the catalog and the publication it names,
   the title is the heading, and the views follow as links in the address
-  (`tab=`; Decode is the default and never serialized): Decode shows the
+  (`tab=`; Decode is the default and never serialized; `chalk=white|yellow|blue`
+  opens Explain in that chalk unless the link names a view, and is rewritten to
+  `mode=` and `tab=` once read; analytics never carry a query, so the parameter
+  is never sent): Decode shows the
   requirement sentence verbatim with each mapped clause underlined in yellow
   chalk and the letters of the objectives it produces beside it (the map is
   data in `src/data/cmmc-clause-map.json`; a control with no clean map shows
@@ -91,8 +94,11 @@ not establish it.
   pinned to Rev 2. A footer line carries the citation or one sentence of
   provenance and
   Previous/Next within the current results. “Browse & filter controls” sits
-  under the page and reopens search, filters and results. Discovery and the
-  project's demo lesson keep their earlier layout until their own pass.
+  under the page and reopens search, filters and results. Print, Copy
+  reference link and Send this chalk are the actions, above the title (at the
+  foot of the page on a phone); the chalk link opens Explain in the chalk in
+  hand. Discovery and the project's demo lesson keep
+  their earlier layout until their own pass.
   With a control on the board the tray's three chalks are the perspective
   switch (a `Pick a chalk` navigation; the chalk in hand is pressed and
   lifted); on a phone the tray is the bottom bar, 72px, labelled, ending the
