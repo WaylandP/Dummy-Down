@@ -66,6 +66,7 @@ describe('The timeline', () => {
       'October 15, 2024',
       'December 16, 2024',
       'November 10, 2025',
+      'July 13, 2026',
       'November 10, 2026',
       'November 10, 2027',
       'November 10, 2028',
@@ -96,6 +97,48 @@ describe('The timeline', () => {
     expect(
       screen.getByRole('region', { name: timeline.rev3.title }),
     ).toHaveTextContent(timeline.rev3.text)
+  })
+
+  it('shows Phase 2 on hold since July 13, 2026, and the later phases as the original schedule', async () => {
+    const list = await openPage()
+    const items = [...list.querySelectorAll<HTMLElement>(':scope > li')]
+    const hold = items.find(
+      (item) =>
+        item.querySelector('time')?.getAttribute('dateTime') === '2026-07-13',
+    )!
+    expect(within(hold).getByRole('heading', { level: 3 })).toHaveTextContent(
+      'Phase 2 is put on hold',
+    )
+    expect(hold).toHaveTextContent('Department of War')
+    expect(hold).toHaveTextContent('Level 1 (Self) or Level 2 (Self)')
+    const entries = timeline.dates as readonly {
+      id: string
+      title: string
+      status?: string
+      citations: readonly { source: string }[]
+    }[]
+    const suspended = entries.filter((entry) => entry.status === 'suspended')
+    expect(suspended.map((entry) => entry.id)).toEqual([
+      'phase-2',
+      'phase-3',
+      'phase-4',
+    ])
+    for (const entry of suspended) expect(entry.title).toMatch(/was to begin$/)
+    expect(
+      entries
+        .find((entry) => entry.id === 'phase-2-on-hold')!
+        .citations.map((citation) => citation.source),
+    ).toEqual([
+      'cmmc-faq-2-3',
+      'cmmc-faq-2-3',
+      'cmmc-faq-2-3',
+      'dfars-deviation-2026-o0025-r3',
+      'dfars-deviation-2026-o0025-r3',
+      'dfars-deviation-2026-o0025-r3',
+    ])
+    expect(sources['cmmc-faq-2-3']!.version).toMatch(
+      /^Revision 2\.4, July 13, 2026/,
+    )
   })
 
   it('keeps every quotation under one Sources disclosure per section, each line named and each source linked to its official address', async () => {
@@ -175,7 +218,7 @@ describe('The timeline', () => {
       createHash('sha256')
         .update(JSON.stringify(lines.map((line) => line.citations)))
         .digest('hex'),
-    ).toBe('da5a1a1ce796b1efb3663fe5b6ee8a58370fed8750d64136169d1d5ca7924292')
+    ).toBe('364c5d514b7e5644812fad4f7e0e0c0ba7666e4a648bf32b1c81fe71454104c8')
   })
 
   it('says so and offers a reload when its chunk fails to load', async () => {

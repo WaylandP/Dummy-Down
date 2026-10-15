@@ -36,7 +36,7 @@
     },
     "cmmc-faq-2-3": {
       "title": "Cybersecurity Maturity Model Certification Program (CMMC) Frequently Asked Questions (Office of the Chief Information Officer, U.S. Department of War)",
-      "version": "Revision 2.3 (Excerpt), July 2026 (FAQsv6.pdf)",
+      "version": "Revision 2.4, July 13, 2026 (FAQsv6.pdf; its cover still reads Revision 2.3 (Excerpt), July 2026)",
       "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/FAQsv6.pdf",
       "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/2ef86f6d8ca8f3fe66eb127cccaa14dc7b86f473/raw/public/dod-cio/cmmc-faq/2.3/general/FAQsv6.pdf",
       "sha256": "b2563aabbfd3ad4013e2ade962641813cf9ff6976c07a446864a2b4f7ed44394",
@@ -56,6 +56,14 @@
       "officialUrl": "https://www.federalregister.gov/documents/2025/09/10/2025-17359/defense-federal-acquisition-regulation-supplement-assessing-contractor-implementation-of",
       "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/2ef86f6d8ca8f3fe66eb127cccaa14dc7b86f473/raw/public/federal-register/dfars-case-2019-d041/2025-09-10/regulation-html/REG-R03.html",
       "sha256": "a84a572d0ccc5af65bb4daba97471918906eb56bce570305068c41e6d271cdcb",
+      "retrievedDate": "2026-10-15"
+    },
+    "dfars-deviation-2026-o0025-r3": {
+      "title": "Class Deviation 2026-O0025, Revision 3: Revolutionary FAR Overhaul Part 40, DFARS Part 240, Information Security and Supply Chain Security",
+      "version": "Revision 3, signed September 3, 2026 (2026-O0025_Rev3_TAB_A_Deviation_Memo.pdf)",
+      "officialUrl": "https://www.acq.osd.mil/dpap/dars/classdev/DFARS_RFO/Part-240/2026-O0025_Rev3_TAB_A_Deviation_Memo.pdf",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/7fc9b1bf9492df6336d763b739e647544252e346/raw/public/dfars/class-deviation-2026-o0025/r3/general/2026-O0025_Rev3_TAB_A_Deviation_Memo.pdf",
+      "sha256": "c836278a672909d71c33b3f3e53ee0a951c30ff1f499890c0e96549bd64f230c",
       "retrievedDate": "2026-10-15"
     }
   },
@@ -125,10 +133,49 @@
       ]
     },
     {
+      "id": "phase-2-on-hold",
+      "date": "2026-07-13",
+      "title": "Phase 2 is put on hold",
+      "text": "DoD, now also called the Department of War, suspended the move to Phase 2 while it reviews the program. Solicitations can require Level 1 (Self) or Level 2 (Self); contracting officers are to remove or revise CMMC requirements in solicitations and contracts to match.",
+      "citations": [
+        {
+          "source": "cmmc-faq-2-3",
+          "where": "A-A1, printed page 1 (PDF page 5)",
+          "quote": "The DoW has suspended the transition to Phase 2 of the program."
+        },
+        {
+          "source": "cmmc-faq-2-3",
+          "where": "D-A1, printed page 8 (PDF page 12)",
+          "quote": "The first phase of CMMC implementation began on November 10, 2025 and the DoW has suspended implementation in this phase in order to conduct a review of the program."
+        },
+        {
+          "source": "cmmc-faq-2-3",
+          "where": "Document Revision History, version 2.4, 7/13/2026, printed page 13 (PDF page 17)",
+          "quote": "Updated to reflect the suspension of the program in Phase 1 of implementation."
+        },
+        {
+          "source": "dfars-deviation-2026-o0025-r3",
+          "where": "paragraph (b), PDF page 2",
+          "quote": "Collaborate with requiring activities to remove or revise the Cybersecurity Maturity Model Certification (CMMC) requirements in new and existing solicitations and contracts in accordance with the Department of War Chief Information Officer’s memorandum, Suspension of the Advancement to Cybersecurity Maturity Model Certification Phase 2 Requirements, dated July 13, 2026"
+        },
+        {
+          "source": "dfars-deviation-2026-o0025-r3",
+          "where": "paragraph (b), first bullet, PDF page 2",
+          "quote": "Permits requiring activities to include CMMC Level 1 (Self) or Level 2 (Self) assessments in all procurement requests and requirement documents"
+        },
+        {
+          "source": "dfars-deviation-2026-o0025-r3",
+          "where": "paragraph (b), third bullet, PDF page 2",
+          "quote": "Suspends the November 2026 CMMC Phase 2 transition"
+        }
+      ]
+    },
+    {
       "id": "phase-2",
       "date": "2026-11-10",
-      "title": "Phase 2 begins",
-      "text": "Level 2 (C3PAO) can be a condition of award, or wait for an option period; DoD may ask for Level 3 (DIBCAC).",
+      "status": "suspended",
+      "title": "Phase 2 was to begin",
+      "text": "Under the rule’s original schedule, Level 2 (C3PAO) would become a condition of award, or wait for an option period, and DoD could ask for Level 3 (DIBCAC).",
       "citations": [
         {
           "source": "cmmc-101-2025",
@@ -145,8 +192,9 @@
     {
       "id": "phase-3",
       "date": "2027-11-10",
-      "title": "Phase 3 begins",
-      "text": "Level 2 (C3PAO) for every applicable award, and for option periods on contracts awarded since the clause took effect; Level 3 (DIBCAC) can be a condition of award.",
+      "status": "suspended",
+      "title": "Phase 3 was to begin",
+      "text": "Under the rule’s original schedule: Level 2 (C3PAO) for every applicable award, and for option periods on contracts awarded since the clause took effect; Level 3 (DIBCAC) as a condition of award.",
       "citations": [
         {
           "source": "cmmc-101-2025",
@@ -163,8 +211,9 @@
     {
       "id": "phase-4",
       "date": "2028-11-10",
-      "title": "Phase 4: full implementation",
-      "text": "Every applicable solicitation and contract carries its CMMC requirement, including option periods on contracts awarded before this day.",
+      "status": "suspended",
+      "title": "Phase 4, full implementation, was to begin",
+      "text": "Under the rule’s original schedule, every applicable solicitation and contract would carry its CMMC requirement, including option periods on contracts awarded before then.",
       "citations": [
         {
           "source": "cmmc-101-2025",
