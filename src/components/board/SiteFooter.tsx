@@ -5,34 +5,20 @@ import { SmudgeSwitch } from './SmudgeSwitch'
 const repositoryUrl = 'https://github.com/WaylandP/cipher-and-chalk'
 
 /**
- * One line above the tray: the project's limits, and the pages that live off
- * the nav. Home carries the stranger's line instead: made by whom, the source,
- * and the privacy promise.
+ * One line directly above the tray on every page: the project's limits, and
+ * the pages and switches that live off the nav.
  */
 export function SiteFooter({ page }: { readonly page: SitePage }) {
-  if (page === 'home')
-    return (
-      <footer className="site-footer site-footer-home">
-        <p className="footer-note">
-          Made by one person, in the open.{' '}
-          <a href={repositoryUrl} target="_blank" rel="noopener noreferrer">
-            Source on GitHub
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>{' '}
-          · No account. Nothing you type is collected.
-        </p>
-      </footer>
-    )
   return (
     <footer className="site-footer">
       <p className="footer-note">
-        Independent and educational. Not legal advice; not affiliated with DoD,
-        NIST or any certification body.{' '}
+        Independent and educational. Not legal advice; not affiliated with DoD
+        or NIST.{' '}
         <a
           href="/disclaimer"
           aria-current={page === 'disclaimer' ? 'page' : undefined}
         >
-          Disclaimer &amp; terms of use
+          Disclaimer &amp; terms
         </a>
       </p>
       <div className="footer-links">

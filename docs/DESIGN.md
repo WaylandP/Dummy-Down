@@ -7,7 +7,7 @@ work follows that specification.
 ## What is live
 
 The app shell is the Board's: the slate ground with chalk dust, the Morse-C ring
-and lockup, the seven-item nav with a find line, the one-line footer and the
+and lockup, the six-item nav with a find line, the footer line above the tray and the
 wooden tray with Smudge on it, drawn from the tokens and fonts in `src/styles.css` and the
 components in `src/components/board/`. Walter Turncoat writes headings, Atkinson
 Hyperlegible Next the reading text, Martian Mono anything that is code; all three
@@ -73,12 +73,22 @@ not establish it.
   address that names no chalk opens in it from then on. Below: "Or just look
   something up:" and the search line (an input on a chalk underline, no box)
   that submits the same discovery address as the header's find line, and
-  "Last time" with the control opened last when optional saving is on. Home's
-  footer line is the made-by, the source link and the privacy promise; the
+  "Last time" with the control opened last when optional saving is on. The
   publication version lives on About. Home mounts no lesson and records
-  nothing. The header's nav is Home · Controls · Learn · Glossary · Practice ·
+  nothing. The header's nav is Home · Controls · Glossary · Practice ·
   Timeline · About, the one you are on under a yellow chalk stroke; Controls
-  and Learn share `/learn`, Learn lit while a control is on the board.
+  is lit for every `/learn` address, a control on the board included.
+- **The shell (October 15):** the footer line (the disclaimer and "Disclaimer
+  & terms", Assessment objectives, Usage & privacy, Smudge: on/off, Open
+  source · MIT) sits directly above the tray on every page. At desktop sizes
+  (1024 wide and 640 tall or more) the header, the footer line and the tray
+  stay put and only the content between them scrolls, with scroll padding so a
+  focused element is never hidden, and the scrolling keys reach the content
+  from a fresh load or the header; below that the tray is the bottom bar and
+  the footer line ends the content. The footer line's links are 44px targets
+  in their padding; where the line wraps they are rows of their own. The content ends above Smudge at every
+  size, so no text or control sits under him. The tray holds the three chalks
+  and Smudge; the fourth stub is gone.
 - **Controls `/learn?view=discover`:** the Board's discovery: "Controls" in
   chalk with one sentence, the search line with the quiet selects (family,
   level, collection, framework) on one row over a rule, then the fourteen
@@ -88,7 +98,7 @@ not establish it.
   title, family, "Practice available". One screen at 1280×800; the results
   scroll in place and page eight at a time. The project's demo lesson opens in
   the same frame beside the results, so the find row never remounts.
-- **Learn `/learn`:** a selected control is the Board's control page
+- **The control page `/learn`:** a selected control is the Board's control page
   (`mockups/Decode.html`, `Explain.html` and the phone variants). The identifier
   is decoded on the first line from the catalog and the publication it names,
   the title is the heading, and the views follow as links in the address
@@ -176,7 +186,7 @@ not establish it.
   on a yellow chalk line, how long each status stays current, and what DoD
   has said about Revision 3, each sentence paraphrased over its quoted source
   (`src/data/cmmc-timeline.json`), the sources one disclosure per section on
-  a row at the foot, open in print. On phones the seven places to go wrap to
+  a row at the foot, open in print. On phones the six places to go wrap to
   a further row.
 
 Native links support direct loads and normal browser navigation; Vercel rewrites

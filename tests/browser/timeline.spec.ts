@@ -8,9 +8,13 @@ test('the timeline is one screen at 1280×800, with its sources a disclosure awa
   await page.goto('/timeline')
   await expect(page.getByRole('list', { name: 'CMMC dates' })).toBeVisible()
   await page.evaluate(() => document.fonts.ready)
+  // One screen: the content fits its frame with nothing to scroll.
   expect(
-    await page.evaluate(() => document.documentElement.scrollHeight),
-  ).toBeLessThanOrEqual(800)
+    await page.evaluate(() => {
+      const main = document.getElementById('main')!
+      return main.scrollHeight - main.clientHeight
+    }),
+  ).toBeLessThanOrEqual(0)
   const first = page.locator('.timeline-sources').first()
   await first.locator('summary').focus()
   await page.keyboard.press('Enter')
@@ -20,7 +24,7 @@ test('the timeline is one screen at 1280×800, with its sources a disclosure awa
 })
 
 for (const width of [320, 390]) {
-  test(`at ${width}px the seven places to go are reachable and the timeline stacks`, async ({
+  test(`at ${width}px the six places to go are reachable and the timeline stacks`, async ({
     page,
   }) => {
     await page.setViewportSize({ width, height: 700 })
@@ -34,7 +38,6 @@ for (const width of [320, 390]) {
     for (const name of [
       'Home',
       'Controls',
-      'Learn',
       'Glossary',
       'Practice',
       'Timeline',

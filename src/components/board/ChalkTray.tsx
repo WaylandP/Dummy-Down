@@ -35,7 +35,6 @@ export function ChalkTray({
             className={`tray-stick tray-stick-${chalk.color}`}
           />
         ))}
-        <span className="tray-stub" />
         {text && <span className="tray-legend">{text}</span>}
         <Smudge />
       </div>
@@ -61,7 +60,6 @@ export function ChalkTray({
           </span>
         </button>
       ))}
-      <span className="tray-stub" aria-hidden="true" />
       {text && (
         <span className="tray-legend" aria-hidden="true">
           {text}

@@ -10,14 +10,17 @@ test('home asks who is reading on one screen at 1280×800, and a row picks the c
     page.getByRole('heading', { level: 1, name: 'Who’s reading?' }),
   ).toBeVisible()
   await page.evaluate(() => document.fonts.ready)
+  // One screen: the content fits its frame with nothing to scroll.
   expect(
-    await page.evaluate(() => document.documentElement.scrollHeight),
-  ).toBeLessThanOrEqual(800)
+    await page.evaluate(() => {
+      const main = document.getElementById('main')!
+      return main.scrollHeight - main.clientHeight
+    }),
+  ).toBeLessThanOrEqual(0)
   const nav = page.getByRole('navigation', { name: 'Main' })
   await expect(nav.getByRole('link')).toHaveText([
     'Home',
     'Controls',
-    'Learn',
     'Glossary',
     'Practice',
     'Timeline',
@@ -38,7 +41,7 @@ test('home asks who is reading on one screen at 1280×800, and a row picks the c
     Math.abs(go.y + go.height / 2 - (stick.y + stick.height / 2)),
   ).toBeLessThan(40)
   await expect(page.getByRole('contentinfo')).toContainText(
-    'Made by one person, in the open.',
+    'Independent and educational.',
   )
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
 
@@ -60,9 +63,13 @@ test('home asks who is reading on one screen at 1280×800, and a row picks the c
       localStorage.getItem('cipher-and-chalk:chalk:v1'),
     ),
   ).toBe('it-cyber')
+  // One screen: the content fits its frame with nothing to scroll.
   expect(
-    await page.evaluate(() => document.documentElement.scrollHeight),
-  ).toBeLessThanOrEqual(800)
+    await page.evaluate(() => {
+      const main = document.getElementById('main')!
+      return main.scrollHeight - main.clientHeight
+    }),
+  ).toBeLessThanOrEqual(0)
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
 
   // A family filters in place; the next control opens in the yellow chalk.
@@ -77,7 +84,7 @@ test('home asks who is reading on one screen at 1280×800, and a row picks the c
   await page.getByRole('button', { name: /MP\.L1-b\.1\.vii/ }).click()
   await expect(page).toHaveURL(/control=mp-l1-b-1-vii/)
   await expect(page).toHaveURL(/mode=it-cyber/)
-  await expect(nav.getByRole('link', { name: 'Learn' })).toHaveAttribute(
+  await expect(nav.getByRole('link', { name: 'Controls' })).toHaveAttribute(
     'aria-current',
     'page',
   )

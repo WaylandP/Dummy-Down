@@ -70,9 +70,9 @@ first, the active item under a yellow chalk stroke. The question in chalk:
 Three rows, one per chalk: "I'm new to this." / "I run the systems." / "I'm
 preparing for an assessment.", each with one sentence of where it starts you
 and a yellow link. Choosing a row also picks that chalk for the visitor. Below:
-"Or just look something up:" and the search line. Footer: made-by, source,
-privacy in one line. Smudge sits on the right end of the tray. The fourteen
-families move to the Controls page.
+"Or just look something up:" and the search line. The footer line is the
+site's (see October 15 fixes, 1). Smudge sits on the right end of the tray.
+The fourteen families move to the Controls page.
 
 **Control, Decode** — `mockups/Decode.html`. Top line: the ID in blue mono,
 then a chalk arrow, then the ID decoded (family, level, source requirement).
@@ -117,6 +117,40 @@ that stick up out of the tray. Click or tap him, or finish a practice item
 correctly: a sneeze of dust. A minute idle: he dozes, and any input wakes him.
 Never speaks. Off switch in the footer; a plain faceless eraser in print and
 under reduced motion.
+
+## October 15 fixes
+
+The owner's October 15 review, drawn in `mockups/2026-10-15/` (its README
+says what each screen changes). Where a mockup and the review's note disagree,
+the mockup wins on look and the note on behavior. Seven pieces, one pull
+request each; each line says whether it is built.
+
+1. **The shell** (built). The footer line (the disclaimer and "Disclaimer &
+   terms", Assessment objectives, Usage & privacy, Smudge: on/off, Open
+   source · MIT) sits directly above the tray on every page, in the wording of
+   the mockups; Home's own footer line is gone. At desktop sizes (1024 wide
+   and 640 tall or more) the header, the footer line and the tray stay put and
+   only the content between them scrolls, with scroll padding so a focused
+   element is never hidden under a band; below that the tray is the bottom bar
+   and the footer line ends the content. The nav is Home · Controls · Glossary
+   · Practice · Timeline · About; Controls is lit for every `/learn` address,
+   and every `/learn` link keeps working. The tray's fourth stub is gone (the
+   doodle chalk takes its place). Content keeps clear of Smudge at every size.
+2. **Controls with Learn merged in** — `Controls.html` (not built). A rail of
+   every control beside the control: a find line, "Start here" through the
+   fifteen Level 1 controls as a path in the address, the level switch, the
+   fourteen families with counts, collapsible. Phone: an "All controls" line
+   opens the rail as a sheet.
+3. **Home: what this is** — `Home.html` (not built). The "What this is"
+   column; copy covers all three levels; the frameworks being researched.
+4. **Glossary: All** (not built). An "All" button before A, selected by
+   default; every term under letter headings in the two-column flow.
+5. **Practice runs in place** — `Practice.html` (not built). Pick a situation
+   on the left; it runs on the right.
+6. **About: what's next** — `About.html` (not built). The "What's next on the
+   board" column: on the board, next, later. Directions, not dates.
+7. **The doodle chalk** — `Doodle.html` (not built). A chalk beside Smudge for
+   the reader's own marks, kept on this screen only.
 
 ## Features, in build order
 
