@@ -107,3 +107,37 @@ the report itself is the last pull request of the night.
   `docs/sources/cmmc-assessment-methods-2026-10-15.md`.
 - NIST SP 800-171 Revision 3: `docs/sources/nist-sp-800-171-r3-2026-10-15.md`.
 - The pinned catalog's verbatim objectives: `docs/sources/cmmc-clause-map-2026-10-15.md`.
+
+## Morning — October 15, 2026
+
+Both pull requests from the morning note are merged, each green in CI and
+squash-merged after its own review pass.
+
+| PR                                                          | What a visitor can do now                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [#55](https://github.com/WaylandP/cipher-and-chalk/pull/55) | Home for the stranger, from `mockups/Home.html`: "Who's reading?", three rows that start a newcomer at the first lesson, someone who runs the systems at the fourteen families and someone preparing for an assessment at the objectives, each remembering its chalk (`cipher-and-chalk:chalk:v1`) so the next control, a bare `/learn`, the objectives' and Practice's lesson links and a recovered link all open in it; the search line, "Last time", the one-line footer. The nav on every page is Home · Controls · Learn · Glossary · Practice · Timeline · About, then the find button, with the chalk stroke under the current item; the version string lives on About. The Controls page opens on the families with counts in two columns of 44px rows, filtering in place from real links (modifier clicks still open a new tab), the levels as one row that a second pick clears, and single-line results, on one screen at 1280×800; the demo lesson keeps its reader inside the frame. |
+| [#56](https://github.com/WaylandP/cipher-and-chalk/pull/56) | Smudge replaces Dash, from `mockups/Smudge.html`: the eraser on the right end of the tray on every screen and the phone bar; blinks, pupils toward a mouse pointer, a puff of dust about once a minute, the Erase's sweep across the board in its 400 ms, the chalk nudged up when picked, a sneeze at a click or a correct practice answer, a doze after a minute. Hidden from assistive technology, never focusable; the footer switch "Smudge: on/off" (`cipher-and-chalk:smudge:v1`), reduced motion and the off state leave the plain faceless eraser. Dash, Dot and the popover nod are retired.                                                                                                                                                                                                                                                                                                                                                                                             |
+
+### Left open from the morning
+
+- **Print and Smudge.** The note asked for the plain eraser in print; the
+  Board's print sheet has no tray at all, so he does not print. Say if you
+  want the eraser on the sheet.
+- **"Learn" while a control is on the board** is the current nav item but
+  links to the first lesson in the remembered chalk, since a link to "the
+  page you are on" would go stale as `j`/`k` move. Say if you would rather it
+  point nowhere, or at the control on screen.
+- **The nav on phones** wraps onto a second row at 390 (five then two), the
+  way the control tabs wrap; a scrolling row is the alternative.
+- **The find button on Home.** The mockup's header has it beside the nav, so
+  Home now carries it as every page does; `/` still focuses Home's own search
+  line.
+- **Superseded mockups** `Main.html` and `Dash.html` stay in
+  `docs/design/mockups/` as history; the docs no longer refer to them.
+- **The chalk preference** is a third key in the site's namespace, not
+  progress, so clearing saved practice leaves it; `docs/LOCAL_PROGRESS.md`
+  says so.
+- **Four lazy-chunk waits** in existing tests (App, control-tabs,
+  remember-control, Rev 3) now use the suite's five-second allowance; they
+  timed out only under full-suite load.
+- **Feature 5, the CedarPoint story**, remains untouched.
