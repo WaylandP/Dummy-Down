@@ -15,6 +15,7 @@ const routes = [
   ['Practice', '/practice'],
   ['About', '/about'],
   ['Disclaimer', '/disclaimer'],
+  ['Timeline', '/timeline'],
   ['Assessment objectives', '/coverage?control=SC.L3-3.13.4e'],
   ['AC.L1-b.1.i', reader],
   ['AC.L1-b.1.i Explain', `${reader}&tab=explain`, /AC\.L1-b\.1\.i/],
@@ -46,6 +47,10 @@ for (const width of [1440, 1024, 768, 640, 390, 320]) {
       if (path === '/practice')
         await expect(
           page.getByRole('heading', { name: 'Work through a situation.' }),
+        ).toBeVisible()
+      if (path === '/timeline')
+        await expect(
+          page.getByRole('list', { name: 'CMMC dates' }),
         ).toBeVisible()
       if (path.startsWith(reader))
         await expect(page.getByRole('heading', { level: 1 })).toHaveText(

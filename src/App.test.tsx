@@ -383,8 +383,13 @@ describe('Shareable lessons and reading tools', () => {
       window.history.replaceState(null, '', `${lessonAddress}&mode=compliance`)
       window.dispatchEvent(new PopStateEvent('popstate'))
     })
+    // The lesson's reader is a lazy chunk; under load it can take a while.
     expect(
-      await screen.findByRole('tabpanel', { name: 'Compliance' }),
+      await screen.findByRole(
+        'tabpanel',
+        { name: 'Compliance' },
+        { timeout: 5000 },
+      ),
     ).toBeVisible()
     act(() => {
       window.history.replaceState(

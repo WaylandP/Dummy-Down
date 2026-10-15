@@ -5,6 +5,7 @@
   <url><loc>https://cipherandchalk.vercel.app/practice</loc><priority>0.8</priority></url>
   <url><loc>https://cipherandchalk.vercel.app/glossary</loc><priority>0.7</priority></url>
   <url><loc>https://cipherandchalk.vercel.app/coverage</loc><priority>0.7</priority></url>
+  <url><loc>https://cipherandchalk.vercel.app/timeline</loc><priority>0.7</priority></url>
   <url><loc>https://cipherandchalk.vercel.app/about</loc><priority>0.5</priority></url>
   <url><loc>https://cipherandchalk.vercel.app/disclaimer</loc><priority>0.3</priority></url>
   <url><loc>https://cipherandchalk.vercel.app/learn?view=lesson&amp;framework=cmmc&amp;edition=cmmc-2-13-sep-2024&amp;control=ac-l1-b-1-i</loc><priority>0.6</priority></url>

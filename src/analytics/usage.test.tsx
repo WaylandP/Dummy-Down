@@ -194,6 +194,8 @@ describe('analytics URL sanitization', () => {
     '/practice',
     '/practice/',
     '/disclaimer',
+    '/timeline',
+    '/timeline/',
     '/learn/',
     '/glossary/',
   ])('allows only the public page path for %s', (path) => {

@@ -20,6 +20,7 @@ const links = [
     section: 'glossary',
   },
   { page: 'practice', href: '/practice', label: 'Practice' },
+  { page: 'timeline', href: '/timeline', label: 'Timeline' },
   { page: 'about', href: '/about', label: 'About' },
 ] as const satisfies readonly {
   page: SitePage
@@ -28,7 +29,7 @@ const links = [
   section?: 'explorer' | 'glossary'
 }[]
 
-/** The lockup, the four places to go, and a find line that opens on request. */
+/** The lockup, the five places to go, and a find line that opens on request. */
 export function SiteHeader({ page }: { readonly page: SitePage }) {
   // The line is open only on the page it was opened on, so a same-document
   // page change (history, a legacy hash) never leaves a form without its button.

@@ -14,6 +14,7 @@ import { PracticeRoute } from './components/PracticeRoute'
 import { Home } from './components/Home'
 import { AboutPage } from './components/AboutPage'
 import { DisclaimerPage } from './components/DisclaimerPage'
+import { TimelineRoute } from './components/TimelineRoute'
 import { LearningRoute } from './components/LearningRoute'
 import { UsageAnalytics } from './analytics/UsageAnalytics'
 import { LocalProgressProvider } from './progress/LocalProgressProvider'
@@ -87,6 +88,12 @@ function Application() {
             'Short fictional situations that check your understanding of specific CMMC controls, with explained answers.',
           canonicalPath: '/practice',
         },
+        timeline: {
+          title: 'Timeline',
+          description:
+            'The dates that matter for CMMC: when the program rule took effect, when the DFARS clause reaches contracts in four phases, how long each status stays current, and what DoD has said about NIST SP 800-171 Revision 3.',
+          canonicalPath: '/timeline',
+        },
         disclaimer: {
           title: 'Disclaimer & terms of use',
           description:
@@ -126,6 +133,7 @@ function Application() {
         {page === 'home' && <Home />}
         {page === 'coverage' && <CoverageRoute />}
         {page === 'disclaimer' && <DisclaimerPage />}
+        {page === 'timeline' && <TimelineRoute />}
         {page === 'practice' && <PracticeRoute />}
         {page === 'learn' && <LearningRoute />}
         {page === 'glossary' && <Glossary terms={glossaryTerms} />}

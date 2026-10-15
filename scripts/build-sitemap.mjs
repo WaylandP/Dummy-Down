@@ -20,6 +20,7 @@ const pages = [
   ['/practice', '0.8'],
   ['/glossary', '0.7'],
   ['/coverage', '0.7'],
+  ['/timeline', '0.7'],
   ['/about', '0.5'],
   ['/disclaimer', '0.3'],
 ]

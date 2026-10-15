@@ -41,7 +41,7 @@ describe('The Board shell', () => {
     )
   })
 
-  it('puts the lockup and the four places to go in the header', () => {
+  it('puts the lockup and the five places to go in the header', () => {
     render(<App />)
     expect(
       screen.getByRole('link', { name: 'Cipher & Chalk home' }),
@@ -59,6 +59,7 @@ describe('The Board shell', () => {
       ['Controls', '/learn?view=discover&collection=references', null],
       ['Glossary', '/glossary', 'page'],
       ['Practice', '/practice', null],
+      ['Timeline', '/timeline', null],
       ['About', '/about', null],
     ])
     expect(screen.queryByRole('link', { name: 'Coverage' })).toBeNull()

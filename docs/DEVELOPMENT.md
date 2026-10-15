@@ -17,19 +17,19 @@ remain pending. Accounts and a backend are outside this iteration.
 
 ## Page navigation
 
-Home (`/`), Learn (`/learn`), Glossary (`/glossary`), Coverage (`/coverage`), Practice (`/practice`) and
-About (`/about`) use native
+Home (`/`), Learn (`/learn`), Glossary (`/glossary`), Coverage (`/coverage`), Practice (`/practice`),
+Timeline (`/timeline`), About (`/about`) and Disclaimer (`/disclaimer`) use native
 links. `src/state/site-page.ts` resolves the page; only Learn mounts the Explorer
 controller and control-view tracking. Existing root query links and historical
 section hashes still resolve. The skip link canonicalizes legacy section paths.
-`vercel.json` explicitly rewrites the six non-root paths to the Vite entry document,
+`vercel.json` explicitly rewrites the seven non-root paths to the Vite entry document,
 so direct links and refreshes work on Vercel without rewriting asset URLs.
 
 The Explorer continues to own query/history state. Native page changes reload the
 document; practice is in memory by default, with optional version-bound local saving. Back restores the lesson
 address, but do not promise that a browser preserves its quiz state across pages.
 Inline definitions remain available without leaving a lesson. Analytics allowlists
-only the seven public paths and strips queries/fragments before submission.
+only the eight public paths and strips queries/fragments before submission.
 
 ## Start locally
 
@@ -90,6 +90,7 @@ their existing values; historical source URLs are preserved.
 | `src/components/Home.tsx`         | The question, the find line, the fourteen families and where the visitor left off.                                                                       |
 | `src/components/control/`         | The control page: the decoded ID, the title and the Decode, Explain, Evidence, Practice, Related and Rev 3 views; chalk popovers for the lesson's words. |
 | `src/components/Glossary.tsx`     | Words: one letter at a time, four groupings and a search line; `glossary/groups.ts` derives the groups from sources.                                     |
+| `src/components/TimelinePage.tsx` | The timeline: the dates that matter, each paraphrased over its quoted source from `src/data/cmmc-timeline.json`.                                         |
 | `src/types/content.ts`            | TypeScript definitions for frameworks, controls, learning modes, and content metadata.                                                                   |
 | `src/data/frameworks.ts`          | Framework metadata, including supported versus planned status.                                                                                           |
 | `src/data/controls.ts`            | Educational control examples and learning-mode definitions.                                                                                              |
@@ -403,7 +404,7 @@ statement and its mapping being deleted together without detection. Hashes estab
 unchanged bytes, not correct interpretations. Mapping review is narrower than the
 full three-perspective editorial audit recorded in Increment 4.
 
-The lazy `/coverage` route loads the report dataset separately from Home and Learn.
+The lazy `/coverage`, `/practice` and `/timeline` routes load their data separately from Home and Learn.
 Native GET forms preserve filters in browser history; exact known control IDs take
 precedence over substring search. Pagination shows 15 controls and focuses the
 results heading after navigation. Unknown controls/searches get a recovery action;
