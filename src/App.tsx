@@ -8,6 +8,7 @@ import { SiteFooter } from './components/board/SiteFooter'
 import { ChalkTray, TrayLegend } from './components/board/ChalkTray'
 import { useLiftedChalk, useTrayControl } from './components/board/tray-state'
 import { KeysHelp } from './components/board/KeysHelp'
+import { scrollContentWithKeys } from './components/board/scroll-keys'
 import { FIND_EVENT, keyIsFree } from './components/board/keys'
 import { CoverageRoute } from './components/CoverageRoute'
 import { PracticeRoute } from './components/PracticeRoute'
@@ -53,7 +54,11 @@ function Application() {
       }
     }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    window.addEventListener('keydown', scrollContentWithKeys)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      window.removeEventListener('keydown', scrollContentWithKeys)
+    }
   }, [])
   useEffect(() => {
     if (page !== 'learn') {

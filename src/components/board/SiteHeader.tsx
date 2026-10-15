@@ -2,8 +2,6 @@ import { useEffect, useId, useRef, useState } from 'react'
 import type { SitePage } from '../../state/site-page'
 import { trackUsage } from '../../analytics/usage'
 import { Lockup } from './Mark'
-import { learnUrl } from './learn-url'
-import { useTrayControl } from './tray-state'
 import {
   findControlAction,
   findControlFields,
@@ -16,7 +14,6 @@ export const browseUrl = '/learn?view=discover&collection=references'
 const links = [
   { page: 'home', href: '/', label: 'Home' },
   { page: 'learn', href: browseUrl, label: 'Controls', section: 'explorer' },
-  { page: 'learn', href: '', label: 'Learn', section: 'explorer' },
   {
     page: 'glossary',
     href: '/glossary',
@@ -34,12 +31,11 @@ const links = [
 }[]
 
 /**
- * The lockup, the seven places to go with a chalk stroke under the one you are
- * on, and a find line that opens on request. Controls and Learn share the
- * learn page: Learn is the one lit while a control is on the board.
+ * The lockup, the six places to go with a chalk stroke under the one you are
+ * on, and a find line that opens on request. Controls is lit for every learn
+ * address, a control on the board included.
  */
 export function SiteHeader({ page }: { readonly page: SitePage }) {
-  const onBoard = useTrayControl() !== null
   // The line is open only on the page it was opened on, so a same-document
   // page change (history, a legacy hash) never leaves a form without its button.
   const [findingOn, setFindingOn] = useState<SitePage | null>(null)
@@ -65,13 +61,11 @@ export function SiteHeader({ page }: { readonly page: SitePage }) {
       <Lockup />
       <nav aria-label="Main" className="site-nav">
         {links.map((link) => {
-          const current =
-            page === link.page &&
-            (link.page !== 'learn' || (link.label === 'Learn') === onBoard)
+          const current = page === link.page
           return (
             <a
               key={link.label}
-              href={link.label === 'Learn' ? learnUrl() : link.href}
+              href={link.href}
               aria-current={current ? 'page' : undefined}
               onClick={
                 'section' in link

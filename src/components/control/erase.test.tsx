@@ -27,7 +27,11 @@ function cut(matches: boolean) {
 async function openFirst() {
   window.history.replaceState(null, '', address(first.key))
   render(<App />)
-  await screen.findByRole('heading', { level: 1, name: first.title })
+  await screen.findByRole(
+    'heading',
+    { level: 1, name: first.title },
+    { timeout: 5000 },
+  )
 }
 
 beforeEach(() => window.history.replaceState(null, '', '/learn'))

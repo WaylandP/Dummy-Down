@@ -40,8 +40,8 @@ test('Smudge is the eraser on the right end of the tray: nothing to read or focu
   // He sits on the right end of the wood, sized as in Home.html.
   const tray = await box(page, '.chalk-tray')
   const him = await box(page, '.chalk-tray .smudge')
-  expect(him.width).toBe(140)
-  expect(him.height).toBe(90)
+  expect(him.width).toBe(132)
+  expect(him.height).toBe(85)
   expect(him.x + him.width).toBeLessThanOrEqual(tray.x + tray.width - 40)
   expect(him.x + him.width).toBeGreaterThan(tray.x + tray.width - 60)
   expect(him.y + him.height).toBeLessThanOrEqual(tray.y + tray.height)

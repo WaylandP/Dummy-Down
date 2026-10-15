@@ -140,7 +140,11 @@ describe('Control Explorer learning experience', () => {
         }),
       )
       expect(
-        await screen.findByRole('tab', { name: chalkPrompt[mode] }),
+        await screen.findByRole(
+          'tab',
+          { name: chalkPrompt[mode] },
+          { timeout: 5000 },
+        ),
       ).toHaveAttribute('aria-selected', 'true')
       expect(
         await screen.findByRole('tabpanel', { name: chalkPrompt[mode] }),

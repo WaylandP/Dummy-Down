@@ -63,6 +63,35 @@
     flex-direction: column;
     min-height: 0;
   }
+  /* Smudge rises above the footer line into the bottom-right corner; the
+     content's box ends above him, so nothing scrolls under him either. At
+     desktop widths the footer line is one or two lines and he rises 25px
+     above it; below them its rows are taller than he rises. */
+  @media (min-width: 641px) {
+    .board-main {
+      margin-bottom: 44px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .board-main {
+      margin-bottom: 28px;
+    }
+  }
+  /* Desktop: the header, the footer line and the tray stay put, and only the
+     content between them scrolls. */
+  @media (min-width: 1024px) and (min-height: 640px) {
+    .board-page {
+      height: 100vh;
+      height: 100dvh;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .board-main {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scroll-padding-block: 24px 56px;
+    }
+  }
   .section-shell {
     width: min(1344px, 100% - 2 * var(--gutter));
     margin-inline: auto;
@@ -88,10 +117,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 8px 24px;
-    padding: 24px var(--gutter) 0;
-  }
-  .page-home .site-header {
-    padding-top: 28px;
+    padding: 22px var(--gutter) 0;
   }
   .lockup {
     display: inline-flex;
@@ -111,18 +137,11 @@
     line-height: 1;
     font-synthesis: none;
   }
-  .page-home .lockup-mark {
-    width: 40px;
-    height: 40px;
-  }
-  .page-home .lockup-name {
-    font-size: 28px;
-  }
   .site-nav {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0 28px;
+    gap: 0 30px;
     margin-left: auto;
     font-size: 15px;
     font-weight: 500;
@@ -229,39 +248,38 @@
     stroke-linecap: round;
   }
 
-  /* Footer: one line above the tray. */
+  /* Footer: one line directly above the tray, on every page. The links keep
+     their 44px targets in their padding, so the line stays a text line. */
   .site-footer {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     justify-content: space-between;
-    gap: 4px 32px;
-    /* Smudge sits above the tray's right end; the links stop short of him. */
-    padding: 2px calc(var(--gutter) + 170px) 4px var(--gutter);
+    gap: 2px 24px;
+    /* Smudge rises above the tray's right end; the line stops short of him.
+       The 13px below the text is the links' padding, so their 44px boxes and
+       focus rings end at the tray and never under it. */
+    padding: 0 calc(var(--gutter) + 148px) 13px var(--gutter);
     color: var(--color-chalk-dim);
-    font-size: 13px;
+    font-size: 12.5px;
     line-height: 1.5;
   }
   .footer-note {
-    flex: 1 1 36ch;
-    text-wrap: pretty;
+    margin: 0;
   }
+  /* Each control is a 44px target in its padding, and the margins give the
+     padding back, so the footer stays a text line. */
   .footer-note a,
-  .footer-links a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
+  .footer-links a,
+  .footer-links summary,
+  .footer-links .smudge-switch {
+    display: inline-block;
+    margin: -13px 0;
+    padding: 13px 0;
     color: var(--color-chalk-muted);
     text-decoration: underline;
     text-decoration-color: var(--color-rule);
     text-underline-offset: 4px;
-  }
-  /* The note's link keeps its 44px target in its padding, so the line stays a
-     text line and the note can wrap without growing the footer. */
-  .footer-note a {
-    display: inline;
-    min-height: 0;
-    padding: 12px 0;
     white-space: nowrap;
   }
   .footer-note a:hover,
@@ -273,20 +291,45 @@
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    gap: 0 24px;
+    gap: 0 16px;
+  }
+  /* At desktop widths the links keep one row and the note gives way: where
+     the line is too short for both, it wraps beside them. */
+  @media (min-width: 1024px) {
+    .footer-note {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+    .footer-links {
+      flex: none;
+      flex-wrap: nowrap;
+    }
   }
   .footer-links a[aria-current='page'] {
     color: var(--color-yellow);
   }
+  /* Where the line wraps, each link is a 44px row of its own, so the rows
+     never cover one another; the note's link keeps its target in its padding
+     and the note stays a paragraph. */
+  @media (max-width: 1023px) {
+    .footer-links a,
+    .footer-links summary,
+    .footer-links .smudge-switch {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-note a {
+      display: inline;
+      margin: 0;
+      padding: 15px 0;
+    }
+  }
   .usage-preferences summary {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
     list-style: none;
-    color: var(--color-chalk-muted);
-    text-decoration: underline;
-    text-decoration-color: var(--color-rule);
-    text-underline-offset: 4px;
+    cursor: pointer;
   }
   .usage-preferences summary::-webkit-details-marker {
     display: none;
@@ -298,7 +341,7 @@
   .usage-panel {
     position: absolute;
     /* Flush with the footer links, clear of Smudge. */
-    right: calc(var(--gutter) + 170px);
+    right: calc(var(--gutter) + 148px);
     bottom: calc(100% - 6px);
     z-index: 2;
     width: min(64ch, 100% - 2 * var(--gutter));
@@ -333,7 +376,7 @@
     color: var(--color-yellow);
   }
 
-  /* The tray: wood, three chalks and a stub. */
+  /* The tray: wood and three chalks; Smudge on its right end. */
   .chalk-tray {
     position: relative;
     display: flex;
@@ -341,7 +384,7 @@
     gap: 14px;
     height: 34px;
     /* Smudge takes the right end; the legend stops short of him. */
-    padding: 0 calc(var(--gutter) + 170px) 0 var(--gutter);
+    padding: 0 calc(var(--gutter) + 148px) 0 var(--gutter);
     background: linear-gradient(
       var(--color-tray-top),
       var(--color-tray) 55%,
@@ -373,14 +416,6 @@
     opacity: 0.25;
     box-shadow: none;
   }
-  .tray-stub {
-    flex: none;
-    width: 14px;
-    height: 11px;
-    border-radius: 5px;
-    background: var(--color-chalk);
-    opacity: 0.6;
-  }
   .tray-legend {
     display: flex;
     gap: 18px;
@@ -389,6 +424,13 @@
     color: var(--color-tray-label);
     font-size: 12px;
     white-space: nowrap;
+  }
+  /* The legend ends 308px from the right edge, as every mockup draws it:
+     the doodle chalk (Doodle.html) takes the room between it and Smudge. */
+  @media (min-width: 1024px) {
+    .tray-legend {
+      margin-right: 112px;
+    }
   }
   /* With a control on the board the sticks are buttons: 44px tall over a 34px tray. */
   .tray-pick {
@@ -429,9 +471,9 @@
   .smudge {
     position: absolute;
     right: 44px;
-    bottom: 21px;
-    width: 140px;
-    height: 90px;
+    bottom: 19px;
+    width: 132px;
+    height: 85px;
     /* Only what is painted takes a click; the empty corners of his box let
        the page underneath keep its targets. */
     pointer-events: none;
@@ -681,17 +723,10 @@
   }
   /* The footer's Smudge switch reads like the links beside it. */
   .footer-links .smudge-switch {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
     border: 0;
-    padding: 0;
     background: none;
-    color: var(--color-chalk-muted);
     font: inherit;
-    text-decoration: underline;
-    text-decoration-color: var(--color-rule);
-    text-underline-offset: 4px;
+    line-height: 1.5;
     cursor: pointer;
   }
   .footer-links .smudge-switch:hover {
@@ -700,6 +735,16 @@
   .footer-links .smudge-switch:focus-visible {
     outline: var(--focus-ring);
     outline-offset: 3px;
+  }
+  /* On the one-line footer the boxes end at the tray, so the ring sits
+     inside them, where the wood cannot cover its bottom edge. */
+  @media (min-width: 1024px) {
+    .footer-note a:focus-visible,
+    .footer-links a:focus-visible,
+    .footer-links summary:focus-visible,
+    .footer-links .smudge-switch:focus-visible {
+      outline-offset: -3px;
+    }
   }
 
   /* The keys, on request ("?"). */
@@ -787,13 +832,11 @@
   .lockup {
     gap: 10px;
   }
-  .lockup-mark,
-  .page-home .lockup-mark {
+  .lockup-mark {
     width: 28px;
     height: 28px;
   }
-  .lockup-name,
-  .page-home .lockup-name {
+  .lockup-name {
     font-size: 20px;
   }
   /* Phone: lockup and find on the first row, the places to go on the second. */
@@ -883,7 +926,6 @@
     color: #fff;
     font-weight: 500;
   }
-  .chalk-tray.is-switch .tray-stub,
   .chalk-tray.is-switch .tray-legend {
     display: none;
   }
@@ -929,8 +971,7 @@
   .footer-links a[aria-current='page'] {
     text-decoration: underline;
   }
-  .tray-stick,
-  .tray-stub {
+  .tray-stick {
     forced-color-adjust: none;
   }
   .tray-pick {
@@ -988,24 +1029,26 @@
   }
   .board-page {
     display: block;
+    height: auto;
     min-height: 0;
+    overflow: visible;
+  }
+  .board-main {
+    overflow: visible;
   }
   .site-header {
     padding: 0 0 6pt;
     border-bottom: 1px solid #777;
   }
-  .lockup,
-  .page-home .lockup {
+  .lockup {
     gap: 8pt;
     min-height: 0;
   }
-  .lockup-mark,
-  .page-home .lockup-mark {
+  .lockup-mark {
     width: 20pt;
     height: 20pt;
   }
-  .lockup-name,
-  .page-home .lockup-name {
+  .lockup-name {
     font-size: 16pt;
   }
   .print-only {
