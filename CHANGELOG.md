@@ -46,6 +46,26 @@ analytics allowlist do not change.
   pick a chalk, `/` finds a control and `?` shows the keys. Print gives a
   one-page control sheet in black on white.
 
+## October 15 fixes — October 15, 2026
+
+The owner's October 15 review, drawn in `docs/design/mockups/2026-10-15/`
+and listed in `docs/design/THE_BOARD.md` ("October 15 fixes"): seven pieces,
+one pull request each. Routes, content identities, legacy links and the
+analytics allowlist do not change.
+
+- [PR #59](https://github.com/WaylandP/cipher-and-chalk/pull/59): the shell.
+  The footer line (the disclaimer and "Disclaimer & terms", Assessment
+  objectives, Usage & privacy, Smudge: on/off, Open source · MIT) sits
+  directly above the tray on every page in the mockups' wording, its links
+  44px targets, and Home's own footer line is gone. At desktop sizes (1024
+  wide and 640 tall or more) the header, the footer line and the tray stay
+  put and only the content between them scrolls, the scrolling keys reaching
+  it from a fresh load or the header; below that the tray stays the bottom
+  bar and the footer line ends the content. The nav is Home · Controls ·
+  Glossary · Practice · Timeline · About, with Controls lit for every `/learn`
+  address and every `/learn` link unchanged. The tray's fourth stub is gone,
+  Smudge is sized as drawn, and the content ends above him at every size.
+
 ## The Board's features — October 15, 2026
 
 The features the specification lists after the five Board pull requests, one
