@@ -16,6 +16,8 @@ import type {
 import type { CatalogControl, Framework } from '../types/content'
 import { trackUsage } from '../analytics/usage'
 import { readChalkPreference } from './chalk-preference'
+import { announceAddress } from './address'
+import { isInkFragment } from '../components/board/ink'
 
 function trackIntent(intent: ExplorerIntent, parsed: ParsedExplorerState) {
   if (parsed.kind !== 'ready') return
@@ -106,14 +108,20 @@ function createExplorerStore(catalog: ExplorerCatalog) {
     if (parsed.kind !== 'ready') return snapshot.historyStatus
     const url = new URL(window.location.href)
     url.search = serializeExplorerSearch(parsed.state)
+    // Chalk marks belong to the page they were drawn on: a new address
+    // starts without them, and the marks write their own fragment after. A
+    // replace keeps the same page, and its marks.
     if (fragment) url.hash = fragment
+    else if (history === 'push' && isInkFragment(url.hash)) url.hash = ''
     try {
       if (history === 'push') window.history.pushState(null, '', url)
-      else window.history.replaceState(null, '', url)
-      return 'ok'
+      // The same entry keeps its state: the chalk marks' own marker lives there.
+      else window.history.replaceState(window.history.state, '', url)
     } catch {
       return 'failed'
     }
+    announceAddress()
+    return 'ok'
   }
 
   function normalize(next: BrowserSnapshot): BrowserSnapshot {

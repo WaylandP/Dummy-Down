@@ -39,7 +39,7 @@ describe('The keys', () => {
     expect(close).toHaveFocus()
     expect(
       [...dialog.querySelectorAll('dt')].map((term) => term.textContent),
-    ).toEqual(['j', 'k', '123', '/', 'd', '?', 'Esc'])
+    ).toEqual(['j', 'k', '123', '/', 'd', 'e', '?', 'Esc'])
     expect(
       [...dialog.querySelectorAll('dd')].map((term) => term.textContent),
     ).toEqual([
@@ -48,6 +48,7 @@ describe('The keys', () => {
       'Pick a chalk: white, yellow, blue',
       'Find a control',
       'Pick up or put down the doodle chalk',
+      'Pick up or put down Smudge, the eraser',
       'Show these keys',
       'Close',
     ])

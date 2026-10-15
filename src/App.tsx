@@ -13,10 +13,14 @@ import { FIND_EVENT, keyIsFree, keyOf } from './components/board/keys'
 import { DoodleLayer } from './components/board/DoodleChalk'
 import {
   isDoodleUp,
+  isSmudgeUp,
   pickUpDoodle,
+  pickUpSmudge,
   putDownDoodle,
+  putDownHeld,
+  putDownSmudge,
   roomToDoodle,
-  useDoodleUp,
+  useDoodle,
 } from './components/board/doodle-state'
 import { CoverageRoute } from './components/CoverageRoute'
 import { PracticeRoute } from './components/PracticeRoute'
@@ -47,10 +51,11 @@ function Application() {
   const lifted = useLiftedChalk()
   const trayControl = useTrayControl()
   const [keysOpen, setKeysOpen] = useState(false)
-  const doodling = useDoodleUp()
-  // "/" finds a control, "?" shows the keys and "d" picks up the doodle
-  // chalk, anywhere a key is free; "d" again and Escape put it back in the
-  // tray, with focus on its slot.
+  const doodle = useDoodle()
+  const layered = doodle.up || doodle.eraser || doodle.marks.length > 0
+  // "/" finds a control, "?" shows the keys, "d" picks up the doodle chalk
+  // and "e" Smudge, anywhere a key is free; the same key again and Escape
+  // put it back in the tray, with focus on its place.
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (!keyIsFree(event)) return
@@ -66,9 +71,11 @@ function Application() {
         event.preventDefault()
         if (isDoodleUp()) putDownDoodle(true)
         else pickUpDoodle()
-      } else if (event.key === 'Escape' && isDoodleUp()) {
+      } else if (keyOf(event) === 'e') {
+        if (isSmudgeUp()) putDownSmudge(true)
+        else pickUpSmudge()
+      } else if (event.key === 'Escape' && putDownHeld(true)) {
         event.preventDefault()
-        putDownDoodle(true)
       }
     }
     window.addEventListener('keydown', onKey)
@@ -173,7 +180,7 @@ function Application() {
             </a>
           </section>
         )}
-        {doodling && <DoodleLayer page={page} />}
+        {layered && <DoodleLayer />}
       </main>
       <SiteFooter page={page} />
       <ChalkTray

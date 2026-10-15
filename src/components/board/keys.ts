@@ -5,6 +5,7 @@ export const boardKeys = [
   { keys: ['1', '2', '3'], does: 'Pick a chalk: white, yellow, blue' },
   { keys: ['/'], does: 'Find a control' },
   { keys: ['d'], does: 'Pick up or put down the doodle chalk' },
+  { keys: ['e'], does: 'Pick up or put down Smudge, the eraser' },
   { keys: ['?'], does: 'Show these keys' },
   { keys: ['Esc'], does: 'Close' },
 ] as const

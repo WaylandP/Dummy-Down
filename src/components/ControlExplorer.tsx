@@ -25,6 +25,7 @@ import { ControlResults } from './ControlResults'
 import { ControlPage } from './control/ControlPage'
 import { trackUsage } from '../analytics/usage'
 import { useSearchUsage } from '../analytics/useSearchUsage'
+import { useDoodleHash } from './board/doodle-state'
 import { CmmcLevels } from './CmmcLevels'
 import { ControlRail } from './controls/ControlRail'
 import { RailSheet } from './controls/RailSheet'
@@ -41,6 +42,14 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
   const desktop = useDesktop()
   const searchInput = useRef<HTMLInputElement>(null)
   const searchUsage = useSearchUsage('explorer')
+  // Copy link and Send this chalk carry the chalk marks on this page, if any.
+  const inkHash = useDoodleHash()
+  const withMarks = (href: string) => {
+    if (!inkHash) return href
+    const url = new URL(href)
+    url.hash = inkHash.slice(1)
+    return url.href
+  }
   const focusLesson = useRef(false)
   const lessonHeading = useRef<HTMLHeadingElement>(null)
   const focusRecoveredSearch = useRef(false)
@@ -362,16 +371,20 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
           }
           framework={resolution.framework}
           edition={resolution.edition}
-          shareUrl={createLessonUrl(
-            lessonIdentity(selected),
-            mode,
-            new URL(window.location.href),
-            tab,
+          shareUrl={withMarks(
+            createLessonUrl(
+              lessonIdentity(selected),
+              mode,
+              new URL(window.location.href),
+              tab,
+            ),
           )}
-          chalkUrl={createChalkUrl(
-            lessonIdentity(selected),
-            mode,
-            new URL(window.location.href),
+          chalkUrl={withMarks(
+            createChalkUrl(
+              lessonIdentity(selected),
+              mode,
+              new URL(window.location.href),
+            ),
           )}
           excludedByFilters={resolution.excludedByFilters}
           onShowInResults={() => dispatch({ type: 'show-lesson-in-results' })}

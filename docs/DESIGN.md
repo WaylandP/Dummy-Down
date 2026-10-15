@@ -112,12 +112,33 @@ not establish it.
   cursor is a chalk tip, and a layer over the content only takes the marks:
   chalk white at .9, about 3px, smoothed, with the chalk filter, anchored to
   the text so they scroll with it. The footer line says "Doodling. Your marks
-  stay on this screen only. Esc or the tray puts the chalk back. Click Smudge
-  to wipe them." while it is up. Smudge's eyes follow the tip, and his click
-  and a page change sweep the marks to dust (a cut under reduced motion); a
-  change of control keeps them; a resize that changes the content's width
-  clears them. Links under the layer are inert, the wheel still scrolls, one finger
-  draws and two scroll, print leaves the marks out, and they are never
+  stay on this page and go with its link. Esc or the tray puts the chalk
+  back. Pick up Smudge to erase." while it is up. Smudge's eyes follow the
+  tip. Links under the layer are inert while the chalk or Smudge is up, the
+  wheel still scrolls, one finger draws and two scroll, and print leaves the
+  marks out. The marks stay when the chalk goes down and belong to the page
+  they were drawn on: kept in memory, per canonical address, while the page
+  stays loaded (never in storage; a header link loads a fresh page, so Back,
+  Forward and the link itself bring them back there), shown again on the way
+  back by any route within it, and
+  carried in the page's link as the fragment `#ink=v1…` (never the query),
+  rewritten with replaceState as you draw, so a reload, Copy reference link
+  and Send this chalk keep them. The encoding is compact and versioned
+  (simplified strokes in whole pixels relative to the content area, deltas,
+  deflate where available, base64url), under about 2,000 characters for a
+  typical page and capped near 4,000, where the line reads "The board is
+  full. Erase something to keep drawing." The content width travels with
+  the marks: within about 15% they are drawn scaled; otherwise they are left
+  out and the line says "This link has chalk marks drawn on a different
+  screen size. Open it on a wider screen to see them." A link someone else
+  made shows its marks with "Chalk marks from the link you opened. They
+  aren't part of Cipher & Chalk. Pick up Smudge to erase them · Wipe all"
+  until they are wiped. Whenever the page shows marks Smudge is a button,
+  "Smudge, the eraser" (`e`, aria-pressed): in hand, the cursor is a small
+  eraser, rubbing removes each stroke it touches as dust, and the line reads
+  "Erasing. Esc or the tray puts Smudge back · Wipe all"; the chalk and
+  Smudge put each other down. Reduced motion and forced colours: no dust,
+  the marks just go. Analytics never see the fragment; the marks are never
   stored, sent or counted.
 - **Controls `/learn` (October 15, `mockups/2026-10-15/Controls.html`):** the
   Controls page and the control page are one screen with Learn merged in. A
@@ -187,7 +208,9 @@ not establish it.
   (pointer only, never on touch) and a small puff of dust rises about once a
   minute; asked to wipe, he sweeps (up off the tray, once across the board
   with his eyes closed in 400 ms, and back); he leans and nudges the
-  chalk that was picked up out of the tray; a click or tap on him, or a
+  chalk that was picked up out of the tray (while the page shows chalk
+  marks he is a button to pick up instead, "Smudge, the eraser", and his
+  place keeps a dashed outline while he is in hand); a click or tap on him, or a
   correct practice answer, is a sneeze of dust; after a minute with no input
   he dozes with two chalk z's and any key or pointer wakes him. Each gesture
   is one CSS animation, then he is still; clicking him does nothing else. The

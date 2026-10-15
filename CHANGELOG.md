@@ -145,6 +145,18 @@ analytics allowlist do not change.
   sweeps; the next control is on the board at once, focused and announced as
   before. Smudge sweeps only when asked. The doodle chalk's marks stay
   through a change of control.
+- [PR #72](https://github.com/WaylandP/cipher-and-chalk/pull/72): chalk
+  marks stay, travel with the link, and Smudge is the eraser (the owner's
+  October 15 feedback). Putting the chalk down keeps the marks; each page
+  keeps its own in memory for the tab, shown again on the way back by any
+  route; they go in the page's link as the fragment `#ink=v1…` (compact,
+  versioned, capped near 4,000 characters, with the width they were drawn
+  at so a screen within about 15% draws them scaled and any other says so),
+  which a reload, Copy reference link and Send this chalk keep; a link
+  someone else made shows its marks with a notice and Wipe all. Whenever
+  the page shows marks Smudge is a button to pick up, "Smudge, the eraser"
+  (`e`): rubbing removes each stroke it touches as dust, Wipe all sweeps
+  the rest. Never stored, never sent; analytics never see the fragment.
 
 ## The Board's features — October 15, 2026
 

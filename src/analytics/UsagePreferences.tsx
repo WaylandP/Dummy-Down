@@ -33,7 +33,9 @@ export function UsagePreferences() {
           learning interactions so we can improve Cipher &amp; Chalk.
           Interaction events use catalog identifiers and categories; search
           text, answer choices, and copied links are excluded. Page URLs have
-          their query and fragment removed.
+          their query and fragment removed. Chalk marks live only in your
+          browser tab and in links you choose to share; Cipher &amp; Chalk never
+          receives them.
         </p>
         <p>
           We respect Do Not Track and Global Privacy Control. Your preference
