@@ -102,7 +102,7 @@ test('the doodle chalk sits in the tray, draws over the content only, and goes b
   ).toBeVisible()
 })
 
-test('d picks the chalk up; Smudge sweeps the marks, as do the next control and a narrower screen', async ({
+test('d picks the chalk up; Smudge sweeps the marks; the next control keeps them and a narrower screen clears them', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 })
@@ -135,10 +135,10 @@ test('d picks the chalk up; Smudge sweeps the marks, as do the next control and 
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
     /Transaction/,
   )
-  await expect(marks(page)).toHaveCount(0)
-  await expect(page.locator('.doodle-layer')).toHaveCount(1)
-  await stroke(page, [main.x + 200, main.y + 200], [main.x + 300, main.y + 300])
+  // No Erase since October 15: the marks stay and Smudge stays still.
   await expect(marks(page)).toHaveCount(1)
+  await expect(page.locator('.doodle-layer')).toHaveCount(1)
+  await expect(page.locator('.smudge')).toHaveAttribute('data-pose', 'idle')
   await page.setViewportSize({ width: 1100, height: 800 })
   await expect(marks(page)).toHaveCount(0)
   await page.keyboard.press('d')

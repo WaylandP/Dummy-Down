@@ -139,6 +139,12 @@ analytics allowlist do not change.
   parameter ignored. Home's "I'm new to this" chalk opens Controls filtered
   to Level 1 with the first Level 1 control on the board in white; its line
   still reads "Level 1's fifteen basics first."
+- [PR #71](https://github.com/WaylandP/cipher-and-chalk/pull/71): the Erase
+  on control change is gone (the owner's October 15 feedback). Changing
+  control, or any page, no longer wipes the board and Smudge no longer
+  sweeps; the next control is on the board at once, focused and announced as
+  before. Smudge sweeps only when asked. The doodle chalk's marks stay
+  through a change of control.
 
 ## The Board's features — October 15, 2026
 

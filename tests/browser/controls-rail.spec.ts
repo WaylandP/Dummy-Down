@@ -22,6 +22,12 @@ test('on a desktop the rail stands beside the control and scrolls on its own', a
   const railBox = (await rail.boundingBox())!
   const article = (await page.locator('.control-page').boundingBox())!
   expect(railBox.x + railBox.width).toBeLessThanOrEqual(article.x)
+  // A short control page fills its column beside the rail, top to bottom.
+  const columnBox = (await page.locator('.controls-main').boundingBox())!
+  expect(Math.round(article.y)).toBe(Math.round(columnBox.y))
+  expect(Math.round(article.y + article.height)).toBe(
+    Math.round(columnBox.y + columnBox.height),
+  )
   // The family list scrolls inside the rail; the page around it stays put.
   const scroll = await page.evaluate(() => {
     const list = document.querySelector('.rail-list')!

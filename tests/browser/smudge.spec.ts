@@ -25,7 +25,7 @@ const box = async (page: Page, selector: string) => {
   return found
 }
 
-test('Smudge is the eraser on the right end of the tray: nothing to read or focus, a face that sweeps with the Erase and hands over a chalk, and a footer switch that is remembered', async ({
+test('Smudge is the eraser on the right end of the tray: nothing to read or focus, a face that stays still between controls and hands over a chalk, and a footer switch that is remembered', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 })
@@ -67,12 +67,12 @@ test('Smudge is the eraser on the right end of the tray: nothing to read or focu
   const before = await title.textContent()
   const next = page.getByRole('button', { name: /^Next: / })
   await next.click()
-  // The sweep is the Erase's: the next control is underneath at once, and
-  // focus stays where it was, on the button that was pressed.
+  // No Erase since October 15: the next control is on the board at once,
+  // focus stays on the button that was pressed, and he does not sweep.
   await expect(title).not.toHaveText(before ?? '')
   await expect(next).toBeFocused()
-  await expect.poll(() => poses(page)).toContain('sweep')
   await expect(smudge).toHaveAttribute('data-pose', 'idle')
+  expect(await poses(page)).toEqual([])
   await page
     .getByRole('navigation', { name: 'Pick a chalk' })
     .getByRole('button', { name: /yellow chalk/ })
@@ -105,7 +105,7 @@ test('Smudge is the eraser on the right end of the tray: nothing to read or focu
 
 test.describe('under reduced motion', () => {
   test.use({ reducedMotion: 'reduce' })
-  test('Smudge is the plain eraser: no face, no gesture, and the Erase is a cut', async ({
+  test('Smudge is the plain eraser: no face, no gesture, and the next control is on the board at once', async ({
     page,
   }) => {
     await page.setViewportSize({ width: 1280, height: 800 })

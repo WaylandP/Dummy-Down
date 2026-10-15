@@ -598,7 +598,7 @@
   .smudge[data-pose='hand'] .smudge-body {
     animation: smudge-lean 0.7s ease-out;
   }
-  /* The Erase's 400 ms: up off the tray, once across the board, and back. */
+  /* The sweep's 400 ms: up off the tray, once across the board, and back. */
   .smudge[data-pose='sweep'] .smudge-body {
     animation: smudge-sweep 0.4s ease-in-out;
   }
@@ -1140,7 +1140,7 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-/* Swept away: the marks go left as dust, as the Erase takes a control. */
+/* Swept away: the marks go left as dust when wiped, or with the page. */
 .doodle-dust {
   animation: doodle-dust 400ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
 }

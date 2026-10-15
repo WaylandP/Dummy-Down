@@ -172,7 +172,7 @@ describe('the doodle chalk', () => {
     expect(smudge()).toHaveAttribute('data-pose', 'sneeze')
   })
 
-  it('wipes the marks with the Erase when the control changes, and with the chalk going down', async () => {
+  it('keeps the marks when the control changes, and wipes them with the chalk going down', async () => {
     const first = referenceControls.find((item) => item.id === 'AC.L1-b.1.i')!
     window.history.replaceState(
       null,
@@ -193,10 +193,11 @@ describe('the doodle chalk', () => {
     expect(marks()).toHaveLength(1)
     await user.keyboard('j')
     await screen.findByRole('heading', { level: 1, name: /Transaction/ })
-    expect(marks()).toHaveLength(0)
-    expect(layer()).not.toBeNull()
-    draw([20, 20], [120, 90])
+    // No Erase since October 15: the marks and the layer stay, and Smudge
+    // stays still.
     expect(marks()).toHaveLength(1)
+    expect(layer()).not.toBeNull()
+    expect(smudge()).toHaveAttribute('data-pose', 'idle')
     await user.keyboard('{Escape}')
     expect(layer()).toBeNull()
     await user.keyboard('d')

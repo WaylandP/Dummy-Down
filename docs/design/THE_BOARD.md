@@ -29,7 +29,7 @@ assessment objectives it produces. The eraser on the tray is the mascot.
    disclaimers on elements; one line in the footer and the Disclaimer page.
 4. No cards, chips, pills, hero blocks, icon rows, gradient washes or numbered
    markers. Structure is lines, chalk strokes and space.
-5. Everything that moves is answering the visitor, except Erase (below).
+5. Everything that moves is answering the visitor.
 6. Keyboard first: `j`/`k` previous and next control, `1`/`2`/`3` pick a chalk,
    `/` find a control, `?` show these.
 
@@ -130,8 +130,11 @@ yellow tile with radius 22. Replace `public/brand/*` and the favicon with it.
 **Smudge** — `mockups/Smudge.html` (replaces Dash; built). The eraser on the right
 end of the tray, on every screen: a wooden back, a felt face with chalk dust in
 it, and eyes, brows and a mouth drawn on the wood in chalk. Idle: blinks, eyes
-drift toward the cursor, a puff of dust now and then. Erase: he leaps up and
-sweeps across the board; the old text goes to dust. Pick a chalk: he nudges
+drift toward the cursor, a puff of dust now and then. Sweep, only when asked
+(wiping chalk marks; erasing them and "Watch again" on the chalk talk come in
+later pull requests): he leaps up and sweeps across the board. The mockup's
+"Erases" panel describes the Erase between controls, since removed. Pick a
+chalk: he nudges
 that stick up out of the tray. Click or tap him, or finish a practice item
 correctly: a sneeze of dust. A minute idle: he dozes, and any input wakes him.
 Never speaks. Off switch in the footer; a plain faceless eraser in print and
@@ -217,9 +220,10 @@ request each; each line says whether it is built.
    smoothed, with the chalk filter; CanvasText under forced colors. The
    footer line reads "Doodling. Your marks stay on this screen only. Esc or
    the tray puts the chalk back. Click Smudge to wipe them.", once, politely.
-   Smudge's eyes follow the tip; his click sweeps the marks to dust, as do the
-   Erase between controls and a page change; a resize that changes the
-   content's width clears them; under reduced motion every wipe is a cut.
+   Smudge's eyes follow the tip; his click sweeps the marks to dust, as does
+   a page change (a change of control keeps them, since the Erase went); a
+   resize that changes the content's width clears them; under reduced motion
+   every wipe is a cut.
    Links under the layer are inert, the wheel still scrolls, one finger draws
    and two scroll, and print never includes the marks. The marks are memory
    only: never stored, never sent, never in analytics.
@@ -236,7 +240,12 @@ request each; each line says whether it is built.
 5. The CedarPoint story: one fictional company across all fourteen families'
    examples; review fingerprints refreshed with the same method as PR #35.
 6. Erase: the one page-load motion, on control change, 400 ms, chalk to dust.
-   `prefers-reduced-motion` turns it into a cut.
+   `prefers-reduced-motion` turns it into a cut. Built, then removed by the
+   owner on October 15: changing control, or any page, no longer wipes the
+   board and Smudge no longer sweeps; content changes instantly, with focus
+   and the announcements as before. Smudge sweeps only when someone asks him
+   to: wiping chalk marks today; erasing them and "Watch again" on the chalk
+   talk in later pull requests.
 7. The timeline, in chalk: one screen; every date sourced.
 8. The assessor's three words on the Evidence tab.
 9. Smudge: built (first as Dash, then replaced by the eraser; see above).

@@ -8,8 +8,9 @@ already merged into `main`. No completion percentage is implied.
   page, the phone bar, the print sheet and the keys ship in five pull
   requests. [THE_BOARD.md](docs/design/THE_BOARD.md) lists what comes next,
   one pull request each; the Decode clause map, the Rev 3 tab, chalk
-  popovers (for the lesson's words on Explain), Send this chalk, Erase, the
-  timeline, the assessor's three words, Home for the stranger (with the
+  popovers (for the lesson's words on Explain), Send this chalk, Erase (built,
+  then removed by the owner on October 15), the timeline, the assessor's three
+  words, Home for the stranger (with the
   Controls page's Board pass) and Smudge (first built as Dash) are in, and the
   CedarPoint story follows. The project's demo lesson keeps its earlier reader
   inside the Controls page. Anything that adds a fact lives in `src/data/`

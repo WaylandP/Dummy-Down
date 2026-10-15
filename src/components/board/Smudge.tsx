@@ -3,7 +3,7 @@ import { chalkFor } from './chalks'
 import { useDoodle } from './doodle-state'
 import { cueSmudge, useSmudgeCue, useSmudgeOn } from './tray-state'
 
-/** How long each gesture lasts; the sweep is the Erase's own 400 ms. */
+/** How long each gesture lasts; the sweep is once across the board, 400 ms. */
 const lengths = { sweep: 400, hand: 700, sneeze: 900 } as const
 /** A minute with no input and he dozes; a puff of dust about once a minute. */
 const dozeAfter = 60_000
@@ -65,8 +65,8 @@ const mouths: Record<Exclude<Pose, 'sneeze'>, string> = {
  * Smudge is the eraser on the right end of the tray, from mockups/Smudge.html:
  * a wooden back, a felt face with chalk dust in it, and eyes, brows and a
  * mouth drawn on the wood in chalk. Idle he blinks, his pupils drift toward
- * the cursor and a puff of dust rises now and then; he sweeps the board with
- * the Erase, nudges the chalk that was picked up out of the tray, sneezes
+ * the cursor and a puff of dust rises now and then; he sweeps the board only
+ * when asked, nudges the chalk that was picked up out of the tray, sneezes
  * when clicked or when a practice answer is right, and dozes after a minute
  * with nothing to do. With the doodle chalk up his eyes follow its tip, and
  * a click sweeps the marks away instead. He never speaks: the markup is
