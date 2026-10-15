@@ -9,7 +9,7 @@ import { ContextTerms } from './ContextTerms'
 import { glossaryTerms } from '../data/glossary'
 import { useActivityProgress } from '../progress/useLocalProgress'
 import { ActivityProgressTools } from '../progress/ActivityProgressTools'
-import { cueDash } from './board/tray-state'
+import { cueSmudge } from './board/tray-state'
 
 interface LearningPracticeProps {
   lesson: LessonIdentity
@@ -135,8 +135,6 @@ function KnowledgeCheck({
       lesson,
       action: finished ? 'complete' : 'next',
     })
-    // Dot visits once, when the activity is finished here.
-    if (finished) cueDash('dot')
     setSelection(null)
   }
 
@@ -294,6 +292,8 @@ function KnowledgeCheck({
                       lesson,
                       action: 'check',
                     })
+                    // A right answer gets a sneeze of dust from the tray.
+                    if (correct) cueSmudge('sneeze')
                   } else focusRequested.current = false
                 }
               }}

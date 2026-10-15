@@ -236,7 +236,8 @@
     align-items: baseline;
     justify-content: space-between;
     gap: 4px 32px;
-    padding: 2px var(--gutter) 4px;
+    /* Smudge sits above the tray's right end; the links stop short of him. */
+    padding: 2px calc(var(--gutter) + 170px) 4px var(--gutter);
     color: var(--color-chalk-dim);
     font-size: 13px;
     line-height: 1.5;
@@ -296,7 +297,8 @@
   /* The preference panel opens upward on a hairline so the footer stays one line. */
   .usage-panel {
     position: absolute;
-    right: var(--gutter);
+    /* Flush with the footer links, clear of Smudge. */
+    right: calc(var(--gutter) + 170px);
     bottom: calc(100% - 6px);
     z-index: 2;
     width: min(64ch, 100% - 2 * var(--gutter));
@@ -333,11 +335,13 @@
 
   /* The tray: wood, three chalks and a stub. */
   .chalk-tray {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 14px;
     height: 34px;
-    padding: 0 var(--gutter);
+    /* Smudge takes the right end; the legend stops short of him. */
+    padding: 0 calc(var(--gutter) + 170px) 0 var(--gutter);
     background: linear-gradient(
       var(--color-tray-top),
       var(--color-tray) 55%,
@@ -419,72 +423,147 @@
     clip: rect(0 0 0 0);
     white-space: nowrap;
   }
-  /* Dash: the white chalk in the tray, one stroke with two eyes. Every gesture
-     is one animation; off, it is a plain stub. */
-  .dash {
-    position: relative;
-    display: inline-block;
-    width: 64px;
-    height: 20px;
-    margin-top: -4px;
-    background: none;
-    box-shadow: none;
-    border-radius: 0;
+  /* Smudge: the eraser on the right end of the tray (mockups/Smudge.html).
+     Wood and felt are the object; the face is chalk. Every gesture is one
+     animation; off, under reduced motion and in print he has no face. */
+  .smudge {
+    position: absolute;
+    right: 44px;
+    bottom: 21px;
+    width: 140px;
+    height: 90px;
+    /* Only what is painted takes a click; the empty corners of his box let
+       the page underneath keep its targets. */
+    pointer-events: none;
   }
-  .dash-body {
+  .smudge-body * {
+    pointer-events: visiblePainted;
+  }
+  .smudge-body {
     display: block;
     width: 100%;
     height: 100%;
     overflow: visible;
-    transform-origin: 20% 60%;
+    transform-origin: 50% 85%;
   }
-  .dash-stroke {
+  .smudge-shadow {
+    fill: #000;
+    opacity: 0.3;
+  }
+  .smudge-wood {
+    fill: url('#smudge-wood');
+  }
+  .smudge-grain {
+    fill: #8c7455;
+    opacity: 0.7;
+  }
+  .smudge-felt {
+    fill: #b3b9b0;
+  }
+  .smudge-dust-lines {
     fill: none;
     stroke: var(--color-chalk);
-    stroke-width: 26;
+    stroke-width: 2;
+    stroke-linecap: round;
+    opacity: 0.7;
+  }
+  .smudge-edge {
+    fill: var(--color-chalk);
+    opacity: 0.85;
+  }
+  .smudge-face {
+    fill: none;
+    stroke: var(--color-chalk);
     stroke-linecap: round;
   }
-  .dash-eye {
-    fill: var(--color-tray-bottom);
+  .smudge-eyes {
     transform-box: fill-box;
     transform-origin: center;
-    animation: dash-blink 5.2s ease-in-out infinite;
+    animation: smudge-blink 5.2s ease-in-out infinite;
   }
-  .dash-eye + .dash-eye {
-    animation-delay: 0.08s;
+  .smudge-eye {
+    fill: var(--color-chalk);
+    stroke: none;
   }
-  .dash.is-still .dash-eye {
-    display: none;
+  /* The pupils drift toward the cursor: a style the pointer sets, nothing rendered. */
+  .smudge-pupil {
+    fill: var(--color-board);
+    stroke: none;
+    transform: translate(
+      calc(var(--look-x, 0) * 1px),
+      calc(var(--look-y, 0) * 1px)
+    );
+    transition: transform 0.15s ease-out;
   }
-  .dash[data-gesture='hand'] .dash-body {
-    animation: dash-hand 0.6s ease-out;
+  .smudge[data-pose='hand'] .smudge-pupil {
+    transform: translate(2px, -2px);
   }
-  .dash[data-gesture='sweep'] .dash-body {
-    animation: dash-sweep 0.4s ease-in-out;
+  .smudge-brows {
+    stroke-width: 3;
   }
-  .dash[data-gesture='sweep'] .dash-eye {
-    animation: none;
-    transform: scaleY(0.15);
+  .smudge-eyes-closed {
+    stroke-width: 3.5;
   }
-  .dash[data-gesture='nod'] .dash-body {
-    animation: dash-nod 0.5s ease-in-out;
+  .smudge-mouth {
+    stroke-width: 2.5;
   }
-  .dash-dot {
-    position: absolute;
-    top: -18px;
-    right: -14px;
-    width: 18px;
-    height: 18px;
-    overflow: visible;
-    animation: dash-dot 3s ease-in-out forwards;
+  /* The chalk he hands over rises from behind him. */
+  .smudge-stick {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: smudge-stick 0.7s ease-out both;
   }
-  .dash-dot-body {
+  .smudge-stick-white {
     fill: var(--color-chalk);
   }
-  .dash-dot-eye {
-    fill: var(--color-tray-bottom);
+  .smudge-stick-yellow {
+    fill: var(--color-yellow);
   }
-  @keyframes dash-blink {
+  .smudge-stick-blue {
+    fill: var(--color-blue);
+  }
+  .smudge-wake path {
+    fill: none;
+    stroke: var(--color-chalk);
+    stroke-width: 3;
+    stroke-linecap: round;
+    opacity: 0.5;
+  }
+  .smudge-wake circle,
+  .smudge-sneeze circle,
+  .smudge-puff circle {
+    fill: var(--color-chalk);
+    opacity: 0.3;
+  }
+  .smudge-sneeze circle {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: smudge-dust 0.9s ease-out both;
+  }
+  .smudge-puff circle {
+    animation: smudge-puff 1.6s ease-out both;
+  }
+  .smudge-zs {
+    fill: var(--color-chalk);
+    font-family: var(--font-hand);
+    font-size: 22px;
+    animation: smudge-z 2.6s ease-in-out infinite;
+  }
+  .smudge-z-far {
+    font-size: 16px;
+    opacity: 0.7;
+  }
+  .smudge[data-pose='hand'] .smudge-body {
+    animation: smudge-lean 0.7s ease-out;
+  }
+  /* The Erase's 400 ms: up off the tray, once across the board, and back. */
+  .smudge[data-pose='sweep'] .smudge-body {
+    animation: smudge-sweep 0.4s ease-in-out;
+  }
+  .smudge[data-pose='sneeze'] .smudge-body {
+    animation: smudge-sneeze 0.9s ease-out;
+  }
+  @keyframes smudge-blink {
     0%,
     93%,
     100% {
@@ -494,56 +573,114 @@
       transform: scaleY(0.1);
     }
   }
-  @keyframes dash-hand {
+  @keyframes smudge-lean {
+    0%,
+    100% {
+      transform: rotate(0) translateX(0);
+    }
+    35% {
+      transform: rotate(-8deg) translateX(-6px);
+    }
+    70% {
+      transform: rotate(-5deg) translateX(-3px);
+    }
+  }
+  @keyframes smudge-stick {
+    0% {
+      transform: rotate(18deg) translateY(26px);
+      opacity: 0;
+    }
+    40%,
+    80% {
+      transform: rotate(18deg) translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(18deg) translateY(0);
+      opacity: 0;
+    }
+  }
+  /* Up off the tray in an arc to the board's left edge, once across to the
+     right, and back down onto the tray. */
+  @keyframes smudge-sweep {
+    0% {
+      transform: translate(0, 0) rotate(0);
+    }
+    30% {
+      transform: translate(calc(140px - 100vw), -56vh) rotate(-10deg);
+    }
+    85% {
+      transform: translate(0, -48vh) rotate(-10deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(0);
+    }
+  }
+  @keyframes smudge-sneeze {
     0%,
     100% {
       transform: translateY(0) rotate(0);
     }
-    40% {
-      transform: translateY(-4px) rotate(-5deg);
+    20% {
+      transform: translateY(-5px) rotate(-3deg);
+    }
+    35% {
+      transform: translateY(3px) rotate(5deg);
+    }
+    60% {
+      transform: translateY(0) rotate(1deg);
     }
   }
-  @keyframes dash-sweep {
-    0%,
+  @keyframes smudge-dust {
+    0% {
+      transform: scale(0.3);
+      opacity: 0.5;
+    }
     100% {
-      transform: translate(0, 0);
-    }
-    50% {
-      transform: translate(44px, -12px) rotate(-6deg);
-    }
-  }
-  @keyframes dash-nod {
-    0%,
-    100% {
-      transform: rotate(0);
-    }
-    40% {
-      transform: rotate(7deg) translateY(1px);
-    }
-  }
-  @keyframes dash-dot {
-    0%,
-    100% {
+      transform: scale(1.6);
       opacity: 0;
-      transform: translateY(4px);
     }
-    15%,
-    80% {
-      opacity: 1;
+  }
+  @keyframes smudge-puff {
+    0% {
       transform: translateY(0);
+      opacity: 0.35;
+    }
+    100% {
+      transform: translateY(-16px);
+      opacity: 0;
+    }
+  }
+  @keyframes smudge-z {
+    0% {
+      transform: translateY(2px);
+      opacity: 0;
+    }
+    30%,
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-8px);
+      opacity: 0;
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .dash .dash-eye,
-    .dash-dot {
+    /* The plain eraser: no face, nothing moves. */
+    .smudge-face,
+    .smudge-stick,
+    .smudge-wake,
+    .smudge-sneeze,
+    .smudge-puff,
+    .smudge-zs {
       display: none;
     }
-    .dash[data-gesture] .dash-body {
+    .smudge[data-pose] .smudge-body {
       animation: none;
     }
   }
-  /* The footer's Dash switch reads like the links beside it. */
-  .footer-links .dash-switch {
+  /* The footer's Smudge switch reads like the links beside it. */
+  .footer-links .smudge-switch {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -557,10 +694,10 @@
     text-underline-offset: 4px;
     cursor: pointer;
   }
-  .footer-links .dash-switch:hover {
+  .footer-links .smudge-switch:hover {
     color: var(--color-yellow);
   }
-  .footer-links .dash-switch:focus-visible {
+  .footer-links .smudge-switch:focus-visible {
     outline: var(--focus-ring);
     outline-offset: 3px;
   }
@@ -681,6 +818,8 @@
   .site-footer {
     gap: 0 20px;
     padding-top: 8px;
+    /* On the plain tray he still rises into the footer band. */
+    padding-right: calc(var(--gutter) + 104px);
   }
   .footer-links {
     gap: 0 18px;
@@ -716,12 +855,15 @@
     opacity: 1;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
   }
-  /* Dash is taller than a stick; the negative margin keeps the three labels level. */
-  .chalk-tray.is-switch .dash {
-    width: 44px;
-    height: 14px;
-    margin: -2px 0;
-    box-shadow: none;
+  /* Smudge keeps the bar's right end; the buttons stop short of him. */
+  .chalk-tray.is-switch {
+    padding-right: 118px;
+  }
+  .smudge {
+    right: 8px;
+    bottom: 12px;
+    width: 100px;
+    height: 64px;
   }
   .chalk-tray.is-switch .tray-pick[aria-pressed='true'] .tray-stick {
     transform: translateY(-5px) rotate(-6deg);
@@ -744,6 +886,18 @@
   .chalk-tray.is-switch .tray-stub,
   .chalk-tray.is-switch .tray-legend {
     display: none;
+  }
+}
+@media (max-width: 360px) {
+  /* The narrowest bars: a smaller Smudge so the three labels keep their room. */
+  .chalk-tray.is-switch {
+    padding-right: 92px;
+  }
+  .smudge {
+    right: 6px;
+    bottom: 14px;
+    width: 80px;
+    height: 52px;
   }
 }
 @media (max-width: 380px) {

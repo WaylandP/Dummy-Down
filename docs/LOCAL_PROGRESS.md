@@ -26,7 +26,7 @@ Three localStorage keys use the existing project namespace:
 
 Three preference keys in the same namespace are not progress and are not
 removed with it: `cipher-and-chalk:usage-preference` (the Usage & privacy
-switch), `cipher-and-chalk:dash:v1` (the footer's Dash switch, which stores
+switch), `cipher-and-chalk:smudge:v1` (the footer's Smudge switch, which stores
 only `off`) and `cipher-and-chalk:chalk:v1` (the chalk picked on Home: one of
 `beginner`, `it-cyber` or `compliance`). No free text, search, organizational evidence, CUI,
 scores, timestamps, visitor identifiers or network synchronization are added. Progress is not passed to

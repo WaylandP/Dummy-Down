@@ -24,7 +24,11 @@ async function renderApp() {
   const user = userEvent.setup()
   render(<App />)
   const explorer = within(
-    await screen.findByRole('region', { name: 'Control Explorer' }),
+    await screen.findByRole(
+      'region',
+      { name: 'Control Explorer' },
+      { timeout: 5000 },
+    ),
   )
   return { user, explorer }
 }

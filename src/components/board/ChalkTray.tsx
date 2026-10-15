@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import type { ExplanationMode } from '../../types/content'
 import { chalkFor, chalks } from './chalks'
 import type { TrayControl } from './tray-state'
-import { Dash } from './Dash'
+import { Smudge } from './Smudge'
 
 interface ChalkTrayProps {
   /** The chalk in the visitor's hand, if a perspective is open. */
@@ -14,9 +14,9 @@ interface ChalkTrayProps {
 }
 
 /**
- * The wooden tray along the bottom of every screen. Dash is the white chalk.
- * Decorative until a control is on the board; then its three chalks pick the
- * perspective, and on a phone the tray is the bottom bar.
+ * The wooden tray along the bottom of every screen, with Smudge, the eraser,
+ * on its right end. Decorative until a control is on the board; then its three
+ * chalks pick the perspective, and on a phone the tray is the bottom bar.
  */
 export function ChalkTray({
   lifted = null,
@@ -29,18 +29,15 @@ export function ChalkTray({
   if (!control)
     return (
       <div className="chalk-tray" aria-hidden="true">
-        {chalks.map((chalk) =>
-          chalk.color === 'white' ? (
-            <Dash key={chalk.mode} />
-          ) : (
-            <span
-              key={chalk.mode}
-              className={`tray-stick tray-stick-${chalk.color}`}
-            />
-          ),
-        )}
+        {chalks.map((chalk) => (
+          <span
+            key={chalk.mode}
+            className={`tray-stick tray-stick-${chalk.color}`}
+          />
+        ))}
         <span className="tray-stub" />
         {text && <span className="tray-legend">{text}</span>}
+        <Smudge />
       </div>
     )
   return (
@@ -53,15 +50,11 @@ export function ChalkTray({
           aria-pressed={lifted === chalk.mode}
           onClick={() => control.pick(chalk.mode)}
         >
-          {chalk.color === 'white' ? (
-            <Dash lifted={lifted === chalk.mode} />
-          ) : (
-            <span
-              className={`tray-stick tray-stick-${chalk.color}`}
-              data-lifted={lifted === chalk.mode ? 'true' : undefined}
-              aria-hidden="true"
-            />
-          )}
+          <span
+            className={`tray-stick tray-stick-${chalk.color}`}
+            data-lifted={lifted === chalk.mode ? 'true' : undefined}
+            aria-hidden="true"
+          />
           <span className="tray-pick-label">
             <span className="sr-only">{chalk.color} chalk: </span>
             {chalk.short}
@@ -74,6 +67,7 @@ export function ChalkTray({
           {text}
         </span>
       )}
+      <Smudge />
     </nav>
   )
 }

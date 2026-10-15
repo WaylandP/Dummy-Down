@@ -8,7 +8,7 @@ work follows that specification.
 
 The app shell is the Board's: the slate ground with chalk dust, the Morse-C ring
 and lockup, the seven-item nav with a find line, the one-line footer and the
-wooden tray with Dash in it, drawn from the tokens and fonts in `src/styles.css` and the
+wooden tray with Smudge on it, drawn from the tokens and fonts in `src/styles.css` and the
 components in `src/components/board/`. Walter Turncoat writes headings, Atkinson
 Hyperlegible Next the reading text, Martian Mono anything that is code; all three
 are self-hosted from `public/fonts/` with licenses in `public/font-licenses/`.
@@ -122,15 +122,23 @@ not establish it.
   lifted); on a phone the tray is the bottom bar, 72px, labelled, ending the
   page rather than floating over it, so no tap target is covered
   (`mockups/Phone.html`, `PhoneExplain.html`); Explain keeps its own chalk
-  picker on phones because the bar is not fixed. Dash is the tray's white
-  chalk (`mockups/Dash.html`): one chalk stroke with two eyes, hidden from
-  assistive technology, that blinks every few seconds, lifts the chalk that
-  was picked, sweeps once when the board is erased, nods once when a chalk
-  popover opens, and is joined by Dot once when a practice activity is
-  finished here; it never speaks, and each gesture is one CSS animation. The
-  footer's "Dash" switch turns it into a plain stub of chalk and remembers
-  only `off`, under `cipher-and-chalk:dash:v1` in this browser; reduced motion
-  makes it a stub as well, and print hides the tray. Between controls (Previous and Next, the keys, a
+  picker on phones because the bar is not fixed. Smudge is the eraser on the
+  tray's right end on every screen, the phone bar included
+  (`mockups/Smudge.html`, sized as in `Home.html`): one SVG with a wooden
+  back, a felt face with dust in it, and eyes, brows and a mouth drawn in the
+  chalk filter, hidden from assistive technology and never focusable. Idle he
+  blinks every few seconds, his pupils drift a few pixels toward the cursor
+  (pointer only, never on touch) and a small puff of dust rises about once a
+  minute; he is the Erase's sweep (up off the tray, once across the board
+  with his eyes closed in the same 400 ms, and back); he leans and nudges the
+  chalk that was picked up out of the tray; a click or tap on him, or a
+  correct practice answer, is a sneeze of dust; after a minute with no input
+  he dozes with two chalk z's and any key or pointer wakes him. Each gesture
+  is one CSS animation, then he is still; clicking him does nothing else. The
+  footer's "Smudge" switch turns him into the plain faceless eraser and
+  remembers only `off`, under `cipher-and-chalk:smudge:v1` in this browser;
+  reduced motion shows the plain eraser as well, and print hides the tray.
+  Between controls (Previous and Next, the keys, a
   result, Back and Forward) the board is erased: the old chalk sweeps off as
   dust, left to right in 400 ms, over the new control, which is underneath with
   focus and the announcement exactly as before; it is the only page-change
