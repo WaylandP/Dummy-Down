@@ -64,13 +64,14 @@ describe('Smudge', () => {
     expect(document.querySelectorAll('.chalk-tray .tray-stick')).toHaveLength(3)
   })
 
-  it('sweeps with the Erase while the next control is focused and announced at once, then nudges the chalk that was picked', async () => {
+  it('stays still when the next control is focused and announced at once, then nudges the chalk that was picked', async () => {
     const user = userEvent.setup()
     await openFirst()
     await user.click(screen.getByRole('button', { name: `Next: ${second.id}` }))
-    expect(pose()).toBe('sweep')
-    expect(smudge().querySelector('.smudge-eyes-closed')).not.toBeNull()
-    // The sweep is the Erase's: the new control is already underneath.
+    // No sweep: the Erase went on October 15. The new control is on the
+    // board at once, focused and announced as before.
+    expect(pose()).toBe('idle')
+    expect(smudge().querySelector('.smudge-eyes-closed')).toBeNull()
     expect(
       screen.getByRole('heading', { level: 1, name: second.title }),
     ).toBeInTheDocument()
@@ -80,7 +81,6 @@ describe('Smudge', () => {
       }),
     ).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /^Next: / })).toHaveFocus()
-    await waitFor(() => expect(pose()).toBe('idle'), { timeout: 1500 })
     const picks = within(
       screen.getByRole('navigation', { name: 'Pick a chalk' }),
     ).getAllByRole('button')

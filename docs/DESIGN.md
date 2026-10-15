@@ -113,10 +113,10 @@ not establish it.
   chalk white at .9, about 3px, smoothed, with the chalk filter, anchored to
   the text so they scroll with it. The footer line says "Doodling. Your marks
   stay on this screen only. Esc or the tray puts the chalk back. Click Smudge
-  to wipe them." while it is up. Smudge's eyes follow the tip, and his click,
-  the Erase between controls and a page change sweep the marks to dust (a cut
-  under reduced motion); a resize that changes the content's width clears
-  them. Links under the layer are inert, the wheel still scrolls, one finger
+  to wipe them." while it is up. Smudge's eyes follow the tip, and his click
+  and a page change sweep the marks to dust (a cut under reduced motion); a
+  change of control keeps them; a resize that changes the content's width
+  clears them. Links under the layer are inert, the wheel still scrolls, one finger
   draws and two scroll, print leaves the marks out, and they are never
   stored, sent or counted.
 - **Controls `/learn` (October 15, `mockups/2026-10-15/Controls.html`):** the
@@ -185,8 +185,8 @@ not establish it.
   chalk filter, hidden from assistive technology and never focusable. Idle he
   blinks every few seconds, his pupils drift a few pixels toward the cursor
   (pointer only, never on touch) and a small puff of dust rises about once a
-  minute; he is the Erase's sweep (up off the tray, once across the board
-  with his eyes closed in the same 400 ms, and back); he leans and nudges the
+  minute; asked to wipe, he sweeps (up off the tray, once across the board
+  with his eyes closed in 400 ms, and back); he leans and nudges the
   chalk that was picked up out of the tray; a click or tap on him, or a
   correct practice answer, is a sneeze of dust; after a minute with no input
   he dozes with two chalk z's and any key or pointer wakes him. Each gesture
@@ -194,11 +194,11 @@ not establish it.
   footer's "Smudge" switch turns him into the plain faceless eraser and
   remembers only `off`, under `cipher-and-chalk:smudge:v1` in this browser;
   reduced motion shows the plain eraser as well, and print hides the tray.
-  Between controls (Previous and Next, the keys, a
-  result, Back and Forward) the board is erased: the old chalk sweeps off as
-  dust, left to right in 400 ms, over the new control, which is underneath with
-  focus and the announcement exactly as before; it is the only page-change
-  motion, and a cut under reduced motion, forced colours and print. Keys,
+  Between controls (Previous and Next, the keys, a result, Back and Forward)
+  the new control is on the board at once, with focus and the announcement
+  exactly as before; the Erase that swept the old chalk off as dust was
+  removed by the owner on October 15, so nothing moves on a change of
+  control. Keys,
   wherever nothing is being typed and no dialog is open: `j` and `k` step to
   the next and previous control within the current results and focus the
   title, `1`, `2`, `3` pick a chalk and open Explain, `/` opens the find line

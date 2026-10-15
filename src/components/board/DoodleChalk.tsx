@@ -89,7 +89,7 @@ interface Marks {
 /** Where the wipe would be a cut anyway, the marks go without dust. */
 const cut = '(prefers-reduced-motion: reduce), (forced-colors: active)'
 const cutNow = () => window.matchMedia?.(cut).matches ?? false
-/** The dust is gone after the Erase's own 400 ms. */
+/** The dust is gone after the sweep's 400 ms. */
 const dustLength = 400
 /** Points closer than this to the last one add nothing to the line. */
 const step = 2
@@ -99,9 +99,9 @@ const step = 2
  * of the content, anchored to it, so the marks scroll with the text. One
  * pointer draws; two fingers scroll; the wheel still scrolls; links under it
  * are out of reach. The marks live only here: never stored, never sent. A
- * sweep (Smudge clicked, or the Erase between controls), a page change and a
- * resize that changes the content's width take them away; the first two as
- * dust, unless motion is reduced.
+ * sweep (Smudge clicked), a page change and a resize that changes the
+ * content's width take them away; the first two as dust, unless motion is
+ * reduced. A change of control keeps them.
  */
 export function DoodleLayer({ page }: { readonly page: string }) {
   const layer = useRef<SVGSVGElement>(null)
@@ -185,7 +185,7 @@ export function DoodleLayer({ page }: { readonly page: string }) {
     window.addEventListener('resize', resized)
     return () => window.removeEventListener('resize', resized)
   }, [])
-  // Smudge's sweep: his click, or the Erase between controls.
+  // Smudge's sweep: his click.
   useEffect(
     () =>
       subscribeSmudgeCue((cue) => {

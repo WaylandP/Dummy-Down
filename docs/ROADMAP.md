@@ -58,7 +58,8 @@ content-review milestone.
       the analytics allowlist did not change. The specification's remaining
       features follow one pull request each, in its order; the Decode clause
       map deferred from the control page, the Rev 3 tab, chalk popovers for
-      the lesson's words on Explain, Send this chalk, Erase, the timeline, the
+      the lesson's words on Explain, Send this chalk, Erase (built, then removed
+      by the owner on October 15), the timeline, the
       assessor's three words, Home for the stranger (with the Controls
       page's Board pass) and Smudge (first built as Dash) are merged.
 - [ ] **Planned for future development** — The CedarPoint story: one fictional

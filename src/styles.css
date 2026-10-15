@@ -1792,8 +1792,8 @@
 
 /* The desktop frame (board.css): inside the scrolling main the content is
    never shorter than itself, so a long control page scrolls instead of
-   spilling over its tabs and foot, and the Erase sheet covers all of it; a
-   short page still fills the frame. Unlayered, after every page sheet. */
+   spilling over its tabs and foot; a short page still fills the frame.
+   Unlayered, after every page sheet. */
 @media (min-width: 1024px) and (min-height: 640px) {
   .board-main > *,
   .board-main > #explorer {
