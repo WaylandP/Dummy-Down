@@ -197,3 +197,47 @@ mid-round and every later branch was rebased onto it.
   the chalk labels keep one line; at 1024×640 Home scrolls inside the frame
   (nothing sits under Smudge); each chalk link's name is its label and its
   line. The README's Home screenshot is regenerated.
+
+### The owner's feedback, later on October 15
+
+Four more pull requests, in the order the feedback gave them, each green in
+CI and squash-merged after its own read-only review pass. Main was pulled
+first; each branch was rebased onto the one before it as it landed.
+
+| PR                                                          | What a visitor can do now                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [#70](https://github.com/WaylandP/cipher-and-chalk/pull/70) | "Start here" has left Controls: the block in the rail, the path in the address (`path=basics`), the "n of 15" dashes and "Next on the path" are gone, and the foot is plain Previous and Next. An old link that carries `path=basics` still opens its control, the parameter ignored. Home's "I'm new to this" chalk opens Controls filtered to Level 1 with the first Level 1 control on the board in white; its line still reads "Level 1's fifteen basics first."                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| [#71](https://github.com/WaylandP/cipher-and-chalk/pull/71) | The Erase on control change is gone: changing control, or any page, no longer wipes the board and Smudge no longer sweeps; the next control is on the board at once, focused and announced as before. Smudge sweeps only when asked (erasing marks, "Watch again"). The doodle chalk's marks stay through a change of control. `THE_BOARD.md` marks feature 6 as built, then removed by you on October 15.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [#72](https://github.com/WaylandP/cipher-and-chalk/pull/72) | Chalk marks stay, travel with the link, and Smudge is the eraser. Putting the chalk down keeps the marks; each page keeps its own in memory for the tab (never storage), shown again on the way back by any route; they go in the page's link as the fragment `#ink=v1…` (compact, versioned, capped near 4,000 characters, with the width they were drawn at, so a screen within about 15% draws them scaled and any other says so), which a reload, Copy reference link and Send this chalk keep; a link someone else made shows its marks with a notice and Wipe all. Whenever the page shows marks Smudge is a button to pick up, "Smudge, the eraser" (`e`): rubbing removes each stroke it touches as dust, Wipe all sweeps the rest. Analytics never see the fragment; Usage & privacy says so.                                                                                                                                                    |
+| [#73](https://github.com/WaylandP/cipher-and-chalk/pull/73) | "CMMC in sixty seconds", the chalk talk, from `HomeChalkTalk.html`: a column beside the hero (after the chalks and the search in the DOM, and below them on a phone) draws the program on the board in eight scenes of 7.5 seconds, each a caption of twenty words or fewer written over the pinned 32 CFR part 170, DFARS 252.204-7021 and FAR 52.204-21 texts with its section and paragraph beside it in `src/data/chalk-talk.ts`, the counts from the catalog, glossary words opening their popovers; a 44px play/pause button, a chalk dash per scene, the time in mono, the caption under the drawing; it plays once on a desktop (a background tab waits), pauses while the tab is hidden or a caption's word has focus, ends on "Watch again" with Smudge's sweep, waits for play on a phone, and stands finished with a stepped list under reduced motion. About and the roadmap move the first chalk talk onto the board. No scene was dropped. |
+
+### Decisions you may want to revisit, from the feedback
+
+- **The chalk talk's dashes.** Each scene's dash is 44px tall but 24 to 32px
+  wide: eight 44px targets do not fit beside the play button and the time in
+  the 430px column, nor across a phone, so they share the row (about 26px
+  each at desktop widths, as the mockup draws them). WCAG 2.5.8 is met; the
+  44px rule in `CLAUDE.md` is bent here on purpose.
+- **The chalk talk's order.** In the DOM the talk follows "Pick up a chalk to
+  start." and the search at every width, so Tab reaches the chalks first;
+  the grid puts it beside the hero at desktop widths. The review found the
+  grid's first row able to run the talk into the chalks on 1280×720 and
+  1024×768 frames; it now scrolls instead. Focus on a caption's word pauses
+  the talk, so a popover opened from the keyboard stays until play.
+- **Two captions were reworded** after the review read them against their
+  quotes: Level 3 now also rests on § 170.18(a) (a Final Level 2 status is
+  the prerequisite), and the status scene reads "Meeting the minimum score
+  earns a status, stored in SPRS, and an Affirming Official affirms
+  continuing compliance." over § 170.4(b) and § 170.22(a).
+- **The chalk marks' page.** For `/learn` a page is the explorer's canonical
+  address (in the chalk the visitor picked when the address names none), so
+  a rail click and a pasted link reach the same marks; the memory lives in
+  the loaded page, so a header link (a fresh page) loses it and Back, Forward
+  and the link itself bring the marks back. Whose marks a link carries is
+  kept in the history entry's state, never storage.
+- **The unit suite on a loaded runner.** PR #72's first CI run failed in a
+  test it did not touch (`App.test.tsx`, the lazy learning page), and main's
+  own CI had failed twice earlier in the day on two other timing-sensitive
+  tests. Three tests now wait for the lazy page and the address it tidies
+  after its first paint; the full suite passed pinned to two loaded cores.
+  No test was removed or skipped.
