@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
 
 const lesson =
-  '/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l1-b-1-i&mode=beginner'
+  '/learn?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l1-b-1-i&mode=beginner&tab=practice'
 
 for (const width of [320, 390, 768, 1024, 1440]) {
   test(`practice entry and reasoning review remain usable at ${width}px`, async ({

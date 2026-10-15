@@ -37,7 +37,9 @@ test('home defers the Explorer and a failed lesson chunk recovers the exact addr
   await page
     .getByRole('button', { name: 'Reload this lesson or search' })
     .click()
-  await expect(page.getByRole('tabpanel', { name: 'Compliance' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1 })).toContainText(
+    'Multifactor Authentication',
+  )
   await expect(page).toHaveTitle(/IA.L2-3.5.3/)
   expect(
     new URL(page.url()).pathname +

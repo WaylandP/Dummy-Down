@@ -192,7 +192,7 @@ const unfiltered: ExplorerFilters = {
 }
 
 function lesson(
-  overrides: Partial<Pick<ValidExplorerState, 'mode' | 'filters'>> = {},
+  overrides: Partial<Pick<ValidExplorerState, 'mode' | 'filters' | 'tab'>> = {},
   identity: LessonIdentity = sampleIdentity,
 ): ValidExplorerState {
   return {
@@ -1371,6 +1371,82 @@ describe('source-reference collections', () => {
           referenceIdentity,
         ),
       ),
+    )
+  })
+})
+
+describe('control views', () => {
+  it('reads a view from the address, leaves Decode implicit and resets unknown views visibly', () => {
+    expect(parseExplorerSearch(lessonSearch(), catalog)).toEqual(
+      ready(lesson()),
+    )
+    for (const tab of ['explain', 'evidence', 'practice', 'related'] as const) {
+      expect(
+        parseExplorerSearch(`${lessonSearch()}&tab=${tab}`, catalog),
+      ).toEqual(ready(lesson({ tab })))
+      expect(parameters(lesson({ tab })).get('tab')).toBe(tab)
+    }
+    expect(parameters(lesson()).has('tab')).toBe(false)
+    for (const tab of ['', 'decode', 'DECODE', 'notes']) {
+      const parsed = parseExplorerSearch(
+        `${lessonSearch()}&tab=${tab}`,
+        catalog,
+      )
+      expect(parsed).toEqual({
+        ...ready(lesson()),
+        notices: tab === 'decode' ? [] : ['tab-reset'],
+      })
+    }
+  })
+
+  it('changes the view without losing identity, chalk or filters, and never writes Decode', () => {
+    const filters = { ...unfiltered, query: 'accounts', family: 'AC' }
+    const opened = transitionExplorerState(
+      ready(lesson({ filters, mode: 'it-cyber' })),
+      { type: 'set-tab', tab: 'practice' },
+      catalog,
+    )
+    expect(opened).toMatchObject({
+      parsed: ready(lesson({ filters, mode: 'it-cyber', tab: 'practice' })),
+      history: 'push',
+    })
+    const back = transitionExplorerState(
+      opened.parsed,
+      { type: 'set-tab', tab: 'decode' },
+      catalog,
+    )
+    expect(back.history).toBe('push')
+    if (back.parsed.kind !== 'ready') throw new Error('Expected a view')
+    expect(back.parsed.state.tab).toBeUndefined()
+    expect(serializeExplorerSearch(back.parsed.state)).toBe(
+      serializeExplorerSearch(lesson({ filters, mode: 'it-cyber' })),
+    )
+    expect(
+      transitionExplorerState(
+        back.parsed,
+        { type: 'set-tab', tab: 'decode' },
+        catalog,
+      ).history,
+    ).toBe('none')
+  })
+
+  it('shares a view in the lesson address only when it is not Decode', () => {
+    const location = new URL('https://preview.example.com/learn')
+    expect(
+      new URL(
+        createLessonUrl(sampleIdentity, 'beginner', location, 'practice'),
+      ).searchParams.get('tab'),
+    ).toBe('practice')
+    expect(
+      new URL(
+        createLessonUrl(sampleIdentity, 'beginner', location, 'decode'),
+      ).searchParams.has('tab'),
+    ).toBe(false)
+    expect(
+      new URL(createLessonUrl(sampleIdentity, 'beginner', location)).search,
+    ).toBe(
+      new URL(createLessonUrl(sampleIdentity, 'beginner', location, 'decode'))
+        .search,
     )
   })
 })

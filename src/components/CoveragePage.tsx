@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { objectiveCoverage } from '../data/objective-coverage'
-import { createLessonUrl } from '../state/explorer-state'
+import { createLessonUrl, type ControlTab } from '../state/explorer-state'
 import type { ObjectiveCoverage } from '../types/coverage'
 
 const pageSize = 15
@@ -19,11 +19,13 @@ const counts = {
 function lessonUrl(
   row: ObjectiveCoverage,
   mode: keyof typeof modes = 'beginner',
+  tab: ControlTab = 'decode',
 ) {
   return createLessonUrl(
     row.lesson,
     mode,
     new URL('/learn', window.location.origin),
+    tab,
   )
 }
 
@@ -289,7 +291,7 @@ export default function CoveragePage() {
                                 <p>{excerpt.text}</p>
                                 <a
                                   className="text-link"
-                                  href={lessonUrl(row, excerpt.mode)}
+                                  href={lessonUrl(row, excerpt.mode, 'explain')}
                                 >
                                   Read {modes[excerpt.mode]} in the lesson
                                 </a>
@@ -299,7 +301,13 @@ export default function CoveragePage() {
                               {row.practice ? (
                                 <>
                                   Selected fictional example:{' '}
-                                  <a href={lessonUrl(row)}>
+                                  <a
+                                    href={lessonUrl(
+                                      row,
+                                      'beginner',
+                                      'practice',
+                                    )}
+                                  >
                                     {row.practice.title}
                                   </a>{' '}
                                   · {row.practice.step}.

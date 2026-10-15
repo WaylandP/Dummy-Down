@@ -26,6 +26,13 @@ analytics allowlist do not change.
   "Start here" or "Last time" beside the publication version. Optional saving
   now remembers the control opened last, under its own key, deleted with the
   rest. The study desk is retired.
+- [PR #41](https://github.com/WaylandP/cipher-and-chalk/pull/41): the control
+  page. The identifier decoded on the first line, the title as the heading and
+  five views carried in the address: Decode (the sentence and its assessment
+  objectives, verbatim), Explain (pick a chalk; the explanation in its colour,
+  the example in the margin), Evidence, Practice and Related, with a footer
+  line that holds the citation and Previous/Next within the current results.
+  The older reader and its stylesheet rules are retired.
 
 ## Week 2 content and trust — October 14, 2026
 

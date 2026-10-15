@@ -9,6 +9,7 @@ import { BoardDefs, BoardDust, BoardGround } from './components/board/BoardDefs'
 import { SiteHeader, browseUrl } from './components/board/SiteHeader'
 import { SiteFooter } from './components/board/SiteFooter'
 import { ChalkTray, TrayLegend } from './components/board/ChalkTray'
+import { useLiftedChalk } from './components/board/tray-state'
 import { CoverageRoute } from './components/CoverageRoute'
 import { PracticeRoute } from './components/PracticeRoute'
 import { Home } from './components/Home'
@@ -43,6 +44,7 @@ function sampleUrl(mode: ExplanationMode) {
     defaultLesson,
     mode,
     new URL('/learn', window.location.origin),
+    'explain',
   )
 }
 function subscribePage(listener: () => void) {
@@ -59,6 +61,7 @@ function currentPage() {
 
 function Application() {
   const page = useSyncExternalStore(subscribePage, currentPage)
+  const lifted = useLiftedChalk()
   useEffect(() => {
     if (page !== 'learn') {
       const meta = {
@@ -265,7 +268,10 @@ function Application() {
         )}
       </main>
       <SiteFooter page={page} />
-      <ChalkTray label={page === 'home' ? undefined : <TrayLegend />} />
+      <ChalkTray
+        lifted={lifted}
+        label={page === 'home' ? undefined : <TrayLegend />}
+      />
       <UsageAnalytics />
     </div>
   )

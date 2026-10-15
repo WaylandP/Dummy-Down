@@ -4,6 +4,13 @@ import { act, render as renderView } from '@testing-library/react'
 import { beforeEach, describe, expect, it } from 'vitest'
 import App from './App'
 import { followPageLink } from './test/page-navigation'
+import { chalkFor } from './components/board/chalks'
+
+const chalkPrompt = {
+  Beginner: chalkFor('beginner').prompt,
+  'IT & Cyber': chalkFor('it-cyber').prompt,
+  Compliance: chalkFor('compliance').prompt,
+} as const
 
 beforeEach(() =>
   window.history.replaceState(
@@ -114,8 +121,8 @@ describe('Control Explorer learning experience', () => {
     expect(explorer.getByRole('tabpanel', { name: 'Beginner' })).toBeVisible()
   })
 
-  it.each(['Beginner', 'IT & Cyber', 'Compliance'])(
-    'opens the %s perspective from its About page link',
+  it.each(['Beginner', 'IT & Cyber', 'Compliance'] as const)(
+    'opens the %s chalk from its About page link',
     async (mode) => {
       const { user, explorer } = await renderApp()
       await user.click(
@@ -131,12 +138,16 @@ describe('Control Explorer learning experience', () => {
           ),
         }),
       )
-      expect(await screen.findByRole('tab', { name: mode })).toHaveAttribute(
-        'aria-selected',
-        'true',
-      )
-      expect(await screen.findByRole('tabpanel', { name: mode })).toBeVisible()
+      expect(
+        await screen.findByRole('tab', { name: chalkPrompt[mode] }),
+      ).toHaveAttribute('aria-selected', 'true')
+      expect(
+        await screen.findByRole('tabpanel', { name: chalkPrompt[mode] }),
+      ).toBeVisible()
       expect(window.location.pathname).toBe('/learn')
+      expect(new URLSearchParams(window.location.search).get('tab')).toBe(
+        'explain',
+      )
     },
   )
 
@@ -350,7 +361,7 @@ describe('Shareable lessons and reading tools', () => {
         }),
       )
       expect(
-        await screen.findByRole('tabpanel', { name: 'Compliance' }),
+        await screen.findByRole('tabpanel', { name: chalkPrompt.Compliance }),
       ).toBeVisible()
       expect(window.location.hash).toBe('#explorer')
       expect(new URLSearchParams(window.location.search).get('control')).toBe(

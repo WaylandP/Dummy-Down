@@ -96,8 +96,7 @@
     font-size: 18px;
     font-weight: 500;
   }
-  .coverage-results-heading a,
-  .coverage-lesson-link a {
+  .coverage-results-heading a {
     display: inline-flex;
     align-items: center;
     min-height: 44px;

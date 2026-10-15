@@ -4,9 +4,14 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import App from '../App'
 import { referenceControls } from '../data/content'
 import { findCmmcPerspective } from '../data/cmmc-perspectives'
-import { ReferencePerspectives } from './ReferencePerspectives'
+import { chalkFor } from './board/chalks'
+import { ExplainTab } from './control/ExplainTab'
 
 beforeEach(() => window.history.replaceState(null, '', '/learn'))
+
+const newTo = chalkFor('beginner').prompt
+const runs = chalkFor('it-cyber').prompt
+const preparing = chalkFor('compliance').prompt
 
 function fixture(id: string) {
   const control = referenceControls.find((item) => item.id === id)
@@ -16,46 +21,51 @@ function fixture(id: string) {
   return { control, draft }
 }
 function address(key: string, mode = 'beginner') {
-  return `/?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=${key}&mode=${mode}`
+  return `/?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=${key}&mode=${mode}&tab=explain`
 }
 
 describe('Control-specific teaching perspectives', () => {
   it.each(['AC.L1-b.1.i', 'IA.L2-3.5.3', 'IR.L3-3.6.1e'])(
-    'explains %s in all three perspectives without changing its official text',
+    'explains %s in all three chalks without changing its official text',
     async (id) => {
       const { control, draft } = fixture(id)
       window.history.replaceState(null, '', address(control.key))
       const user = userEvent.setup()
       render(<App />)
-      await screen.findByRole('region', { name: 'Control Explorer' })
       const explorer = within(
         await screen.findByRole('region', { name: 'Control Explorer' }),
       )
-      const quote = explorer.getByText(control.requirement.text)
-      const beginner = await explorer.findByRole('tabpanel', {
-        name: 'Beginner',
-      })
+      const beginner = await explorer.findByRole('tabpanel', { name: newTo })
       expect(beginner).toHaveTextContent(draft.beginner.meaning)
       expect(beginner).toHaveTextContent(draft.beginner.example)
-      await user.click(explorer.getByRole('tab', { name: 'IT & Cyber' }))
-      const technical = explorer.getByRole('tabpanel', { name: 'IT & Cyber' })
+      await user.click(explorer.getByRole('tab', { name: runs }))
+      const technical = explorer.getByRole('tabpanel', { name: runs })
       expect(technical).toHaveTextContent(draft.technical.focus)
       expect(technical).toHaveTextContent(draft.technical.watchFor)
-      expect(quote).toBeVisible()
       await user.keyboard('{End}')
-      expect(explorer.getByRole('tab', { name: 'Compliance' })).toHaveFocus()
-      const compliance = explorer.getByRole('tabpanel', { name: 'Compliance' })
+      expect(explorer.getByRole('tab', { name: preparing })).toHaveFocus()
+      const compliance = explorer.getByRole('tabpanel', { name: preparing })
       expect(compliance).toHaveTextContent(draft.compliance.focus)
       expect(compliance).toHaveTextContent(draft.compliance.reviewQuestions[0]!)
-      await user.click(
-        within(compliance).getByText('Possible evidence to discuss'),
+      expect(
+        explorer.getByText(/Written by Cipher & Chalk from the cited guide/),
+      ).toBeVisible()
+      expect(new URLSearchParams(window.location.search).get('mode')).toBe(
+        'compliance',
       )
-      expect(compliance).toHaveTextContent(
-        draft.compliance.evidenceExamples[0]!,
+      const views = within(
+        explorer.getByRole('navigation', { name: 'Views of this control' }),
       )
-      expect(compliance).toHaveTextContent('not official assessment objectives')
-      expect(compliance).toHaveTextContent('Written by Cipher & Chalk')
-      expect(quote).toBeVisible()
+      await user.click(views.getByRole('link', { name: 'Evidence' }))
+      expect(
+        explorer.getByText(draft.compliance.evidenceExamples[0]!),
+      ).toBeVisible()
+      expect(
+        explorer.getByText(/not an evidence list or assessment objectives/),
+      ).toBeVisible()
+      await user.click(views.getByRole('link', { name: 'Decode' }))
+      expect(explorer.getByText(control.requirement.text)).toBeVisible()
+      await user.click(views.getByRole('link', { name: 'Practice' }))
       if (id === 'AC.L1-b.1.i' || id === 'IA.L2-3.5.3') {
         expect(explorer.getByText('Practice activity')).toBeVisible()
         expect(explorer.getByText(/^Fictional scenario:/)).toBeVisible()
@@ -63,27 +73,29 @@ describe('Control-specific teaching perspectives', () => {
         expect(
           explorer.queryByText('Practice activity'),
         ).not.toBeInTheDocument()
+        expect(
+          explorer.getByText('No practice for this control yet.'),
+        ).toBeVisible()
       }
-      expect(new URLSearchParams(window.location.search).get('mode')).toBe(
-        'compliance',
+      expect(explorer.getByText(control.requirement.text)).toBeInTheDocument()
+      expect(new URLSearchParams(window.location.search).get('tab')).toBe(
+        'practice',
       )
     },
   )
 
-  it('restores a perspective from history and resets reflection for another mode or control', async () => {
+  it('restores a chalk from history and resets reflection for another chalk or control', async () => {
     const first = fixture('AC.L1-b.1.i')
     const second = fixture('IR.L3-3.6.1e')
     window.history.replaceState(null, '', address(first.control.key))
     const user = userEvent.setup()
     render(<App />)
     await screen.findByRole('region', { name: 'Control Explorer' })
-    await screen.findByRole('tabpanel', { name: 'Beginner' })
+    await screen.findByRole('tabpanel', { name: newTo })
     await user.click(screen.getByRole('button', { name: 'Still unclear' }))
-    expect(screen.getByText(/Try another perspective above/)).toBeVisible()
-    await user.click(screen.getByRole('tab', { name: 'IT & Cyber' }))
-    expect(
-      screen.queryByText(/Try another perspective above/),
-    ).not.toBeInTheDocument()
+    expect(screen.getByText(/Try another chalk/)).toBeVisible()
+    await user.click(screen.getByRole('tab', { name: runs }))
+    expect(screen.queryByText(/Try another chalk/)).not.toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: 'Yes, it clicked' }))
     act(() => {
       window.history.replaceState(
@@ -93,27 +105,31 @@ describe('Control-specific teaching perspectives', () => {
       )
       window.dispatchEvent(new PopStateEvent('popstate'))
     })
-    expect(
-      screen.getByRole('tabpanel', { name: 'Compliance' }),
-    ).toHaveTextContent(second.draft.compliance.focus)
+    expect(screen.getByRole('tabpanel', { name: preparing })).toHaveTextContent(
+      second.draft.compliance.focus,
+    )
     expect(
       screen.getByRole('button', { name: 'Yes, it clicked' }),
     ).toHaveAttribute('aria-pressed', 'false')
-    expect(screen.getByText(second.control.requirement.text)).toBeVisible()
+    expect(
+      screen.getByText(second.control.requirement.text),
+    ).toBeInTheDocument()
   })
 
-  it('keeps unimplemented framework/edition perspectives explicitly pending', async () => {
+  it('keeps unimplemented framework/edition perspectives explicitly pending', () => {
     const { control } = fixture('AC.L1-b.1.i')
+    const stranger = { ...control, editionId: 'unknown-edition' }
+    expect(findCmmcPerspective(stranger)).toBeUndefined()
     render(
-      <ReferencePerspectives
-        control={{ ...control, editionId: 'unknown-edition' }}
+      <ExplainTab
+        control={stranger}
+        draft={{ status: 'pending' }}
         mode="beginner"
-        onChange={() => {}}
+        onModeChange={() => {}}
+        idPrefix="test"
       />,
     )
-    expect(
-      await screen.findByText('Teaching explanations are pending.'),
-    ).toBeVisible()
+    expect(screen.getByText('Teaching explanations are pending.')).toBeVisible()
     expect(screen.queryByRole('tab')).not.toBeInTheDocument()
   })
 

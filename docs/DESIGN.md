@@ -70,13 +70,20 @@ not establish it.
   link to filtered discovery. Bottom row: "Start here" with the default lesson,
   or "Last time" with the control opened last when optional saving is on, and
   the publication version. Home mounts no lesson and records nothing.
-- **Learn `/learn`:** existing control discovery, exact source quotations,
-  three perspectives and available draft practice. A selected control folds search,
-  filters and results away at every width. “Browse & filter controls” reopens them.
-  Discovery keeps them visible. An “On this page” outline in source references
-  links to Source and Explain it, plus Watch the idea and Practice only when
-  those exact lesson identities have matching content.
-  Sources, review limits and recovery remain present.
+- **Learn `/learn`:** a selected control is the Board's control page
+  (`mockups/Decode.html`, `Explain.html` and the phone variants). The identifier
+  is decoded on the first line from the catalog and the publication it names,
+  the title is the heading, and five views follow as links in the address
+  (`tab=`; Decode is the default and never serialized): Decode shows the
+  requirement sentence and its assessment objectives verbatim; Explain has the
+  chalk picker, the explanation in the chalk's colour and the example in the
+  margin; Evidence has the compliance questions and evidence examples; Practice
+  holds the existing activity and visual lesson; Related lists neighbours by
+  identifier and title, the words, the objectives index and the sources. A
+  footer line carries the citation or one sentence of provenance and
+  Previous/Next within the current results. “Browse & filter controls” sits
+  under the page and reopens search, filters and results. Discovery and the
+  project's demo lesson keep their earlier layout until their own pass.
 - **Glossary `/glossary`:** searchable definitions on their own page. Inline
   definitions still open inside lessons without a page change.
 - **Coverage `/coverage`:** a separate source-to-explanation index. Summary counts

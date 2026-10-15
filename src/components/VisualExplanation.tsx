@@ -124,7 +124,7 @@ function ExplanationPlayer({
       <div className="visual-explanation-heading">
         <div>
           <p className="instruction-eyebrow">See the idea unfold</p>
-          <h4 id={`${prefix}-heading`}>{explanation.title}</h4>
+          <h2 id={`${prefix}-heading`}>{explanation.title}</h2>
         </div>
         <span className="draft-label">Visual explanation</span>
       </div>
@@ -217,7 +217,7 @@ function ExplanationPlayer({
           <p className="small-label">
             {stageNames[stageIndex]} · {stageIndex + 1} of 4
           </p>
-          <h5>{stage.title}</h5>
+          <h3>{stage.title}</h3>
           {stage.kind === 'requirement' ? (
             <blockquote>{stage.text}</blockquote>
           ) : (
@@ -235,9 +235,9 @@ function ExplanationPlayer({
         <ol>
           {explanation.stages.map((item, index) => (
             <li key={item.kind}>
-              <h5>
+              <h3>
                 {stageNames[index]}: {item.title}
-              </h5>
+              </h3>
               {item.kind === 'requirement' ? (
                 <blockquote>{item.text}</blockquote>
               ) : (

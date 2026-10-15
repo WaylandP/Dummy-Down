@@ -6,6 +6,8 @@ interface ContextTermsProps {
   termIds: readonly string[]
   terms: readonly GlossaryTerm[]
   fallbackFocusId?: string
+  /** The heading level under the surface this sits on; a term's own title is one deeper. */
+  level?: 2 | 3 | 4 | 5
 }
 
 function sourceLabel(kind: SourceReference['kind']): string {
@@ -68,8 +70,11 @@ export function ContextTerms({
   termIds,
   terms,
   fallbackFocusId = 'control-title',
+  level = 2,
 }: ContextTermsProps) {
   const prefix = useId()
+  const Heading = `h${level}` as const
+  const TermHeading = ({ 2: 'h3', 3: 'h4', 4: 'h5', 5: 'h6' } as const)[level]
   const [openId, setOpenId] = useState<string | null>(null)
   const opener = useRef<HTMLButtonElement | null>(null)
   const referenced = [...new Set(termIds)].map((id) => ({
@@ -102,7 +107,7 @@ export function ContextTerms({
     >
       <div className="context-terms-heading">
         <span className="instruction-eyebrow">A little less jargon</span>
-        <h4 id={`${prefix}-heading`}>Terms in this lesson</h4>
+        <Heading id={`${prefix}-heading`}>Terms in this lesson</Heading>
       </div>
       <div className="term-triggers">
         {referenced.map(({ id, term }) =>
@@ -146,7 +151,7 @@ export function ContextTerms({
             <div className="context-definition-heading">
               <div>
                 <p className="instruction-eyebrow">In plain language</p>
-                <h4>{selected.title}</h4>
+                <TermHeading>{selected.title}</TermHeading>
               </div>
               <button
                 className="term-close"

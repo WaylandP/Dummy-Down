@@ -4,6 +4,7 @@ import { explorerCatalog } from '../data/content'
 import { lessonIdentity } from '../state/explorer-state'
 import { useExplorerState } from '../state/useExplorerState'
 import { LocalProgressContext } from '../progress/context'
+import { setLiftedChalk } from './board/tray-state'
 import { useControlView } from '../analytics/useControlView'
 import { ControlExplorer } from './ControlExplorer'
 
@@ -39,6 +40,16 @@ export default function LearningPage() {
     controller.parsed.kind === 'ready'
       ? controller.parsed.state.mode
       : 'beginner'
+  const tab =
+    controller.parsed.kind === 'ready'
+      ? (controller.parsed.state.tab ?? 'decode')
+      : 'decode'
+  const onBoard = lesson?.contentKind === 'official-reference'
+  // The tray lifts the chalk in hand while an explanation is on the board.
+  useEffect(() => {
+    setLiftedChalk(onBoard && tab === 'explain' ? mode : null)
+    return () => setLiftedChalk(null)
+  }, [onBoard, tab, mode])
   useControlView(
     controller.resolution?.kind === 'lesson'
       ? controller.resolution.control
@@ -47,7 +58,7 @@ export default function LearningPage() {
   )
   return (
     <>
-      <h1 className="sr-only">Learning workspace</h1>
+      {!onBoard && <h1 className="sr-only">Learning workspace</h1>}
       <ControlExplorer controller={controller} />
     </>
   )
