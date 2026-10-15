@@ -36,6 +36,10 @@ async function openFirst() {
     { level: 1, name: first.title },
     { timeout: 5000 },
   )
+  // The control page turns the tray into the chalk switch, which mounts Smudge
+  // afresh; wait for that tray and let its effects settle before poking him.
+  await screen.findByRole('navigation', { name: 'Pick a chalk' })
+  await act(async () => {})
 }
 
 beforeEach(() => {
