@@ -11,6 +11,7 @@ import {
 } from './model'
 import {
   createLocalProgressStore,
+  LAST_CONTROL_KEY,
   PROGRESS_CONSENT_KEY,
   PROGRESS_DATA_KEY,
   type ProgressPort,
@@ -321,6 +322,49 @@ describe('optional progress store', () => {
     },
   )
 
+  it('keeps another tab’s merged work when this tab writes right after reading', () => {
+    const env = harness()
+    const secondEnv = harness(env.shared)
+    const first = createLocalProgressStore(learningActivities, env.port)
+    const second = createLocalProgressStore(learningActivities, secondEnv.port)
+    first.connect()
+    second.connect()
+    first.checkAnswer(activity.id, question.id, question.correctChoiceId)
+    const otherQuestion = other.questions[0]!
+    second.checkAnswer(
+      other.id,
+      otherQuestion.id,
+      otherQuestion.correctChoiceId,
+    )
+    first.enable()
+    // The second tab joins saving (and writes its merge) between this tab's
+    // read and its write, as two browser tabs do when consent appears.
+    const read = env.port.get
+    let interposed = false
+    ;(env.port as { get: ProgressPort['get'] }).get = (key) => {
+      const value = read(key)
+      if (key === PROGRESS_DATA_KEY && !interposed) {
+        interposed = true
+        secondEnv.emit()
+      }
+      return value
+    }
+    expect(first.markRevisit(activity.id, true)).toBe(true)
+    expect(interposed).toBe(true)
+    const stored = decodeProgress(env.shared.get(PROGRESS_DATA_KEY)!, catalog)
+    expect(stored.valid && stored.entries[other.id]?.checkedAnswers).toEqual({
+      [otherQuestion.id]: otherQuestion.correctChoiceId,
+    })
+    expect(stored.valid && stored.entries[activity.id]?.revisit).toBe(true)
+    expect(first.getSnapshot().entries[other.id]).toBeDefined()
+    // A visit already recorded writes nothing at all.
+    const writes = (env.port.set as ReturnType<typeof vi.fn>).mock.calls.length
+    expect(first.visit(activity.id)).toBe(true)
+    expect((env.port.set as ReturnType<typeof vi.fn>).mock.calls.length).toBe(
+      writes,
+    )
+  })
+
   it('lets an external clear discard unsaved work even if another tab has already enabled again', () => {
     const env = harness()
     const secondEnv = harness(env.shared)
@@ -558,6 +602,41 @@ describe('optional progress store', () => {
       entries: {},
       deletionUnconfirmed: false,
     })
+  })
+
+  it('remembers the control opened last only while saving is on, and forgets it on delete', () => {
+    const env = harness()
+    const store = createLocalProgressStore(learningActivities, env.port)
+    store.connect()
+    const lesson = activity.lesson
+    expect(store.rememberControl(lesson)).toBe(false)
+    expect(env.shared.has(LAST_CONTROL_KEY)).toBe(false)
+    expect(store.getSnapshot().lastControl).toBeNull()
+
+    // Enabling later writes the control that is on screen.
+    expect(store.enable()).toBe(true)
+    expect(JSON.parse(env.shared.get(LAST_CONTROL_KEY)!)).toEqual(lesson)
+    expect(store.getSnapshot().lastControl).toEqual(lesson)
+
+    expect(store.rememberControl(other.lesson)).toBe(true)
+    expect(JSON.parse(env.shared.get(LAST_CONTROL_KEY)!)).toEqual(other.lesson)
+
+    // Another tab reads it back; a stranger or a malformed value is ignored.
+    const second = createLocalProgressStore(learningActivities, env.port)
+    second.connect()
+    expect(second.getSnapshot().lastControl).toEqual(other.lesson)
+    env.shared.set(LAST_CONTROL_KEY, '{"controlKey":"x","extra":1}')
+    env.emit()
+    expect(second.getSnapshot().lastControl).toBeNull()
+
+    expect(store.deleteAndDisable()).toBe(true)
+    expect(env.shared.has(LAST_CONTROL_KEY)).toBe(false)
+    expect(store.getSnapshot().lastControl).toBeNull()
+    // Without the consent marker the key is never read, even if it reappears.
+    env.shared.set(LAST_CONTROL_KEY, JSON.stringify(lesson))
+    env.emit()
+    expect(store.getSnapshot().lastControl).toBeNull()
+    expect(store.rememberControl(lesson)).toBe(false)
   })
 
   it('discloses failed deletion, clears memory, and refuses to reload stale data on focus', () => {

@@ -21,10 +21,10 @@ export function ProgressPreferences() {
       <summary>Learning progress on this browser</summary>
       <p>
         Saving is optional. It keeps visited activities, checked answer choices,
-        your current question, completion and “revisit” marks in this browser
-        profile. It stores catalog identifiers, content versions and flags, not
-        free text or visit times. Anyone using this profile can see the saved
-        practice.
+        your current question, completion and “revisit” marks, and the control
+        you opened last, in this browser profile. It stores catalog identifiers,
+        content versions and flags, not free text or visit times. Anyone using
+        this profile can see the saved practice.
       </p>
       <p>
         No account or synchronization is involved. The app does not send this

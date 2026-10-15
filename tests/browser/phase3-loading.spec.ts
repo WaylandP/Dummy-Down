@@ -9,7 +9,7 @@ test('home defers the Explorer and a failed lesson chunk recovers the exact addr
   })
   await page.goto('/')
   await expect(
-    page.getByRole('searchbox', { name: 'Search the control library' }),
+    page.getByRole('searchbox', { name: 'Find a control' }),
   ).toBeVisible()
   expect(scripts.some((url) => /\/LearningPage-/.test(url))).toBe(false)
   expect(scripts.some((url) => /\/VisualExplanation-/.test(url))).toBe(false)

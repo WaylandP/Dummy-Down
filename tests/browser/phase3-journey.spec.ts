@@ -31,9 +31,9 @@ for (const width of [390, 1440]) {
 
     await test.step('2. Search for and open the exact source control', async () => {
       await page
-        .getByRole('searchbox', { name: 'Search the control library' })
+        .getByRole('searchbox', { name: 'Find a control' })
         .fill('AC.L1-b.1.i')
-      await page.getByRole('button', { name: 'Search controls' }).click()
+      await page.getByRole('button', { name: 'Find', exact: true }).click()
       await page
         .getByRole('button', { name: /AC\.L1-b\.1\.i.*Authorized Access/ })
         .click()

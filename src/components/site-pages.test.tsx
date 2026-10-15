@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react'
+import { act, render, screen, within } from '@testing-library/react'
 import { describe, it, beforeEach, vi } from 'vitest'
 import App from '../App'
 import { followPageLink } from '../test/page-navigation'
@@ -18,16 +18,16 @@ describe('Separate blackboard pages', () => {
     )
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     expect(
-      screen.getByRole('searchbox', {
-        name: 'Search the control library',
-      }),
+      screen.getByRole('searchbox', { name: 'Find a control' }),
     ).toBeVisible()
     expect(
       screen.queryByRole('region', { name: 'Control Explorer' }),
     ).not.toBeInTheDocument()
     expect(
-      screen.getByRole('link', { name: /^Browse practice activities/ }),
-    ).toHaveAttribute('href', '/practice')
+      within(
+        screen.getByRole('navigation', { name: 'Control families' }),
+      ).getAllByRole('link'),
+    ).toHaveLength(14)
     expect(trackUsage).not.toHaveBeenCalled()
   })
   it('opens discovery without a preselected lesson and renders the shared sample from home', async () => {
@@ -38,7 +38,11 @@ describe('Separate blackboard pages', () => {
     ).toHaveTextContent('149 references found')
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     followPageLink(screen.getByRole('link', { name: 'Cipher & Chalk home' }))
-    followPageLink(screen.getByRole('link', { name: 'Try a short lesson' }))
+    followPageLink(
+      screen.getByRole('link', {
+        name: 'AC.L1-b.1.i Authorized Access Control [FCI Data]',
+      }),
+    )
     expect(
       await screen.findByRole('tabpanel', { name: 'Beginner' }),
     ).toBeVisible()

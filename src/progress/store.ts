@@ -1,6 +1,8 @@
 import type { LearningActivity } from '../types/learning'
+import type { LessonIdentity } from '../types/content'
 import {
   createProgressCatalog,
+  decodeLastControl,
   decodeProgress,
   emptyProgress,
   encodeProgress,
@@ -12,6 +14,7 @@ import {
 // by src/storage/migrate-legacy.ts.
 export const PROGRESS_CONSENT_KEY = 'cipher-and-chalk:learning-saving:v1'
 export const PROGRESS_DATA_KEY = 'cipher-and-chalk:learning-progress:v1'
+export const LAST_CONTROL_KEY = 'cipher-and-chalk:last-control:v1'
 
 export interface ProgressPort {
   readonly get: (key: string) => string | null
@@ -33,6 +36,8 @@ export interface ProgressSnapshot {
   readonly entries: ProgressEntries
   readonly discarded: boolean
   readonly deletionUnconfirmed: boolean
+  /** The control opened last; stored only while saving is on. */
+  readonly lastControl: LessonIdentity | null
   /** In-memory reset counter only; never persisted or sent anywhere. */
   readonly resetEpoch: number
 }
@@ -42,6 +47,7 @@ const initial: ProgressSnapshot = Object.freeze({
   entries: Object.freeze({}),
   discarded: false,
   deletionUnconfirmed: false,
+  lastControl: null,
   resetEpoch: 0,
 })
 
@@ -69,6 +75,8 @@ export function createLocalProgressStore(
   const listeners = new Set<() => void>()
   let snapshot = initial
   let locked = false
+  /** The control on screen, remembered in memory until saving allows a write. */
+  let current: LessonIdentity | null = null
 
   function publish(next: Partial<ProgressSnapshot>, reset = false) {
     const merged = {
@@ -110,7 +118,19 @@ export function createLocalProgressStore(
         /* report below */
       }
     }
-    return consentRemoved && dataRemoved
+    let lastRemoved = false
+    try {
+      port.remove(LAST_CONTROL_KEY)
+      lastRemoved = true
+    } catch {
+      try {
+        port.set(LAST_CONTROL_KEY, '')
+        lastRemoved = true
+      } catch {
+        /* report below */
+      }
+    }
+    return consentRemoved && dataRemoved && lastRemoved
   }
 
   function checkPrivacy() {
@@ -118,7 +138,11 @@ export function createLocalProgressStore(
       if (snapshot.mode !== 'browser-preference') {
         locked = true
         const cleared = eraseStored()
-        publish({ mode: 'browser-preference', deletionUnconfirmed: !cleared })
+        publish({
+          mode: 'browser-preference',
+          lastControl: null,
+          deletionUnconfirmed: !cleared,
+        })
       }
       return true
     }
@@ -132,7 +156,11 @@ export function createLocalProgressStore(
   function storageFailure() {
     locked = true
     const cleared = eraseStored()
-    publish({ mode: 'unavailable', deletionUnconfirmed: !cleared })
+    publish({
+      mode: 'unavailable',
+      lastControl: null,
+      deletionUnconfirmed: !cleared,
+    })
   }
 
   function readCurrent(event = { external: false, clearHint: false }) {
@@ -147,7 +175,10 @@ export function createLocalProgressStore(
     try {
       if (port.get(PROGRESS_CONSENT_KEY) !== 'on') {
         const reset = snapshot.mode === 'on' || event.clearHint
-        publish({ mode: 'off', ...(reset ? { entries: {} } : {}) }, reset)
+        publish(
+          { mode: 'off', lastControl: null, ...(reset ? { entries: {} } : {}) },
+          reset,
+        )
         // Never read orphaned answer data without an explicit opt-in marker.
         return
       }
@@ -184,11 +215,13 @@ export function createLocalProgressStore(
       const entries = { ...memoryOnly, ...parsed.entries }
       const changed =
         JSON.stringify(entries) !== JSON.stringify(snapshot.entries)
+      const wasOn = snapshot.mode === 'on'
       publish(
         {
           mode: 'on',
           entries,
           discarded: snapshot.discarded || parsed.discarded,
+          lastControl: decodeLastControl(port.get(LAST_CONTROL_KEY)),
         },
         event.clearHint || (event.external && changed),
       )
@@ -197,18 +230,37 @@ export function createLocalProgressStore(
         Object.values(memoryOnly).some((entry) => entry.contentVersion !== null)
       )
         writeCurrent()
+      // Saving just turned on here or in another tab: the control on screen
+      // is written once, on the transition, never on every refresh.
+      if (!wasOn) writeLastControl()
     } catch {
       if (event.clearHint) publish({ entries: {} }, true)
       storageFailure()
     }
   }
 
-  function writeCurrent() {
+  function writeCurrent(touched?: string) {
     if (checkPrivacy() || snapshot.mode !== 'on' || locked) return
     try {
       if (port.get(PROGRESS_CONSENT_KEY) !== 'on') {
         publish({ mode: 'off', entries: {} }, true)
         return
+      }
+      // Another tab can write between this page's last read and this write
+      // (it joins saving the moment consent appears). Read once more right
+      // before writing: its entries stay, disk wins for shared identities,
+      // and only the entry this action changed comes from this page.
+      if (touched && Object.hasOwn(snapshot.entries, touched)) {
+        const disk = decodeProgress(port.get(PROGRESS_DATA_KEY), catalog)
+        if (disk.valid) {
+          const entries = {
+            ...snapshot.entries,
+            ...disk.entries,
+            [touched]: snapshot.entries[touched]!,
+          }
+          if (JSON.stringify(entries) !== JSON.stringify(snapshot.entries))
+            publish({ entries })
+        }
       }
       port.set(PROGRESS_DATA_KEY, encodeProgress(snapshot.entries, catalog))
       // Close the revoke/write race: consent is separate and cannot be recreated here.
@@ -222,6 +274,38 @@ export function createLocalProgressStore(
       }
     } catch {
       storageFailure()
+    }
+  }
+
+  /** Write the control on screen once saving is on; consent is checked again first. */
+  function writeLastControl() {
+    if (!current || snapshot.mode !== 'on' || locked) return false
+    try {
+      if (port.get(PROGRESS_CONSENT_KEY) !== 'on') {
+        publish({ mode: 'off', entries: {}, lastControl: null }, true)
+        return false
+      }
+      port.set(LAST_CONTROL_KEY, JSON.stringify(current))
+      // Close the revoke/write race the same way writeCurrent does.
+      if (port.get(PROGRESS_CONSENT_KEY) !== 'on') {
+        const cleared = eraseStored()
+        locked = !cleared
+        publish(
+          {
+            mode: 'off',
+            entries: {},
+            lastControl: null,
+            deletionUnconfirmed: !cleared,
+          },
+          true,
+        )
+        return false
+      }
+      publish({ lastControl: current })
+      return true
+    } catch {
+      storageFailure()
+      return false
     }
   }
 
@@ -242,8 +326,11 @@ export function createLocalProgressStore(
       : emptyProgress(activity)
     const next = update(entry, activity)
     if (!next) return false
+    // Nothing changed (a visit already recorded): no write, so no chance of
+    // overwriting what another tab saved meanwhile.
+    if (JSON.stringify(next) === JSON.stringify(entry)) return true
     publish({ entries: { ...snapshot.entries, [activityId]: next } })
-    writeCurrent()
+    writeCurrent(activityId)
     return true
   }
 
@@ -308,7 +395,7 @@ export function createLocalProgressStore(
           discarded: !parsed.valid || parsed.discarded,
           deletionUnconfirmed: false,
         })
-        return true
+        return current ? writeLastControl() : true
       } catch {
         storageFailure()
         return false
@@ -328,10 +415,17 @@ export function createLocalProgressStore(
           entries: {},
           discarded: false,
           deletionUnconfirmed: !cleared,
+          lastControl: null,
         },
         true,
       )
       return cleared
+    },
+    /** Called by the control page; nothing is written until saving is on. */
+    rememberControl(lesson: LessonIdentity) {
+      current = lesson
+      if (snapshot.mode !== 'on' || locked || checkPrivacy()) return false
+      return writeLastControl()
     },
     visit: (id: string) => mutate(id, (entry) => ({ ...entry, visited: true })),
     markRevisit: (id: string, revisit: boolean) =>
@@ -408,7 +502,12 @@ export function browserProgressPort(): ProgressPort {
       const focus = () => listener({ external: true, clearHint: false })
       const storage = (event: StorageEvent) => {
         if (
-          ![null, PROGRESS_CONSENT_KEY, PROGRESS_DATA_KEY].includes(event.key)
+          ![
+            null,
+            PROGRESS_CONSENT_KEY,
+            PROGRESS_DATA_KEY,
+            LAST_CONTROL_KEY,
+          ].includes(event.key)
         )
           return
         try {
