@@ -59,47 +59,41 @@ test('on a desktop the rail stands beside the control and scrolls on its own', a
   ).toBe(0)
 })
 
-test('Start here walks the fifteen basics in order, and any other pick leaves the path', async ({
+test('the foot steps through the controls with Previous and Next, and an old Start here link still opens its control', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 })
-  await page.goto(controls)
-  await expect(
-    page.getByRole('heading', { level: 1, name: 'Controls' }),
-  ).toBeVisible()
+  // The Start here path went on October 15; a link that still carries it
+  // opens its control and the parameter is ignored.
+  await page.goto(`${reader}&path=basics`)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'Authorized Access Control [FCI Data]',
+  )
   const rail = page.getByRole('navigation', { name: 'All controls' })
-  const start = rail.getByRole('link', { name: /^Start here/ })
-  await expect(start).toContainText('The fifteen Level 1 basics, in order.')
-  await start.click()
-  await expect(page).toHaveURL(/path=basics/)
-  await expect(page).toHaveURL(/control=ac-l1-b-1-i(?:&|$)/)
-  await expect(page.getByRole('heading', { level: 1 })).toBeFocused()
-  await expect(start).toContainText('1 of 15')
-  await expect(start.locator('rect.is-current')).toHaveCount(1)
-  const next = page.getByRole('button', {
-    name: 'Next on the path: AC.L1-b.1.ii →',
-  })
-  await next.click()
-  await expect(page).toHaveURL(/path=basics/)
-  await expect(page).toHaveURL(/control=ac-l1-b-1-ii/)
-  await expect(start).toContainText('2 of 15')
-  await expect(
-    page.getByRole('button', { name: 'Next on the path: AC.L1-b.1.iii →' }),
-  ).toBeFocused()
-  // Back and forward keep the position on the path.
-  await page.goBack()
-  await expect(start).toContainText('1 of 15')
-  await page.goForward()
-  await expect(start).toContainText('2 of 15')
-  // Another control from the rail leaves the path.
-  await rail.getByRole('link', { name: /^AC\.L1-b\.1\.iv / }).click()
-  await expect(page).not.toHaveURL(/path=/)
-  await expect(start).not.toContainText('of 15')
+  await expect(rail.getByRole('link', { name: /^Start here/ })).toHaveCount(0)
+  await expect(page.getByText(/of 15/)).toHaveCount(0)
   await expect(
     page.getByRole('button', { name: /^Next on the path/ }),
   ).toHaveCount(0)
-  // Off the path the foot steps through the results instead.
-  await expect(page.getByRole('button', { name: /^Next: / })).toBeVisible()
+  await page.getByRole('button', { name: 'Next: AC.L1-b.1.ii' }).click()
+  await expect(page).toHaveURL(/control=ac-l1-b-1-ii/)
+  await expect(page).not.toHaveURL(/path=/)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'Transaction & Function Control [FCI Data]',
+  )
+  await expect(
+    page.getByRole('button', { name: 'Next: AC.L1-b.1.iii' }),
+  ).toBeFocused()
+  await page.getByRole('button', { name: 'Previous: AC.L1-b.1.i' }).click()
+  await expect(page).toHaveURL(/control=ac-l1-b-1-i(?:&|$)/)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'Authorized Access Control [FCI Data]',
+  )
+  // Back and forward step the same way.
+  await page.goBack()
+  await expect(page).toHaveURL(/control=ac-l1-b-1-ii/)
+  await page.goForward()
+  await expect(page).toHaveURL(/control=ac-l1-b-1-i(?:&|$)/)
 })
 
 test('the find line and the level switch narrow the rail and the results together', async ({
@@ -134,7 +128,7 @@ test('the find line and the level switch narrow the rail and the results togethe
   ).toHaveCount(0)
 })
 
-test('on a phone the rail is a sheet behind an All controls line, with Start here as one line', async ({
+test('on a phone the rail is a sheet behind an All controls line', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 })
@@ -146,8 +140,9 @@ test('on a phone the rail is a sheet behind an All controls line, with Start her
   const line = page.locator('.rail-line')
   await expect(line).toBeVisible()
   const open = page.getByRole('button', { name: 'All controls' })
-  const start = line.getByRole('link', { name: /^Start here/ })
-  await expect(start).toBeVisible()
+  await expect(open).toBeVisible()
+  // The line holds the opener alone: no Start here beside it.
+  await expect(line.getByRole('link')).toHaveCount(0)
   const lineBox = (await line.boundingBox())!
   expect(lineBox.height).toBeLessThanOrEqual(60)
   await expect(
@@ -170,8 +165,4 @@ test('on a phone the rail is a sheet behind an All controls line, with Start her
     'Transaction & Function Control [FCI Data]',
   )
   await expect(page.getByRole('heading', { level: 1 })).toBeFocused()
-  // Start here from the line puts the first basic on the board, on the path.
-  await start.click()
-  await expect(page).toHaveURL(/path=basics/)
-  await expect(start).toContainText('1 of 15')
 })

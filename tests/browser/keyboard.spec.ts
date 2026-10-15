@@ -87,9 +87,10 @@ test('on a phone the All controls sheet opens on its find line and closes back t
   await expect(search).toBeFocused()
   await page.keyboard.press('Tab')
   await expect(
-    page.getByRole('dialog', { name: 'All controls' }).getByRole('link', {
-      name: /^Start here/,
-    }),
+    page
+      .getByRole('dialog', { name: 'All controls' })
+      .getByRole('group', { name: 'Level' })
+      .getByRole('link', { name: 'All' }),
   ).toBeFocused()
   await page.keyboard.press('Escape')
   await expect(page.getByRole('dialog', { name: 'All controls' })).toBeHidden()

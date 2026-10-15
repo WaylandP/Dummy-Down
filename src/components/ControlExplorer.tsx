@@ -12,8 +12,6 @@ import {
   effectiveCollection,
   lessonIdentity,
   lessonIdentityKey,
-  pathControls,
-  pathIndex,
   serializeExplorerSearch,
   type ControlTab,
 } from '../state/explorer-state'
@@ -112,15 +110,6 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
   const selectedKey = selected
     ? lessonIdentityKey(lessonIdentity(selected))
     : null
-  // The Start here path: where the control on the board sits on it, and what follows.
-  const pathAt =
-    ready?.view === 'lesson' && ready.path
-      ? pathIndex('basics', ready.lesson, explorerCatalog)
-      : -1
-  const pathNext =
-    pathAt >= 0
-      ? (pathControls('basics', explorerCatalog)[pathAt + 1] ?? null)
-      : undefined
   const unavailable =
     parsed.kind === 'invalid' || resolution?.kind === 'not-found'
   const planned =
@@ -143,18 +132,6 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
     }
     focusLesson.current = true
     dispatch({ type: 'select-lesson', identity: lessonIdentity(control) })
-  }
-  // Along the path the focus stays on "Next on the path" while there is a
-  // next; at the last of the basics it moves to the title.
-  function followPath(control: CatalogControl) {
-    const path = pathControls('basics', explorerCatalog)
-    const at = pathIndex('basics', lessonIdentity(control), explorerCatalog)
-    focusLesson.current = at < 0 || at + 1 >= path.length || pathAt < 0
-    dispatch({
-      type: 'follow-path',
-      path: 'basics',
-      identity: lessonIdentity(control),
-    })
   }
   function clearFilters() {
     dispatch({ type: 'clear-filters' })
@@ -411,8 +388,6 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
             }}
             previous={neighbour(-1)}
             next={neighbour(1)}
-            pathNext={pathNext}
-            onFollowPath={followPath}
             onNeighbour={(control, direction) => {
               // Keep focus on the pressed button while it still has somewhere
               // to go; move to the title only when it is about to disappear.
@@ -468,7 +443,6 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
         selected={selected}
         dispatch={dispatch}
         onSelect={selectControl}
-        onFollowPath={followPath}
         searchRef={searchInput}
         searchUsage={searchUsage}
         resultCount={results.length}
@@ -479,7 +453,6 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
         selected={selected}
         dispatch={dispatch}
         onSelect={selectControl}
-        onFollowPath={followPath}
         searchRef={searchInput}
         searchUsage={searchUsage}
         resultCount={results.length}

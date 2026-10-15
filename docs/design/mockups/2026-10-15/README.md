@@ -12,8 +12,10 @@ a browser. They change the approved Board in these ways:
   "CMMC in sixty seconds", a chalk talk that draws itself beside the hero.
   The diagram in the mockup is one frame of it.
 - `Home.html`: superseded; kept for history.
-- `Controls.html`: Learn folds into Controls. A rail of every control (with
-  the Start here path through the fifteen Level 1 basics) beside the control.
+- `Controls.html`: Learn folds into Controls. A rail of every control beside
+  the control. The "Start here" path drawn in the rail was built and then
+  removed by the owner on October 15; Home's "I'm new to this" chalk opens
+  Controls filtered to Level 1 instead.
 - `Practice.html`: pick a situation on the left; it runs on the right.
 - `About.html`: a "What's next on the board" column.
 - `Doodle.html`: the doodle chalk beside Smudge, and the footer line that sits

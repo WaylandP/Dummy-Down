@@ -5,15 +5,12 @@ import {
   createLessonUrl,
   lessonIdentity,
   lessonIdentityKey,
-  pathControls,
-  pathIndex,
   serializeExplorerSearch,
   type ExplorerIntent,
   type ValidExplorerState,
 } from '../../state/explorer-state'
 import type { CatalogControl } from '../../types/content'
 import { families, familyUrl, plainClick, railFamilyName } from '../families'
-import { numberWord } from '../number-words'
 
 export interface ControlRailProps {
   readonly state: ValidExplorerState
@@ -21,8 +18,6 @@ export interface ControlRailProps {
   readonly dispatch: (intent: ExplorerIntent) => void
   /** A control was picked from the rail. */
   readonly onSelect: (control: CatalogControl) => void
-  /** "Start here" was picked: the path through the basics, from this control. */
-  readonly onFollowPath: (control: CatalogControl) => void
   /** Anything was picked: a sheet closes. */
   readonly onPick?: () => void
   readonly searchRef?: Ref<HTMLInputElement>
@@ -53,16 +48,14 @@ function lessonUrl(control: CatalogControl, state: ValidExplorerState) {
 
 /**
  * The rail of every control, beside the control on screen: a find line that
- * filters it, "Start here" through the fifteen Level 1 basics, the level
- * switch, and the fourteen families with their counts, the open one listing
- * its controls. Every count comes from the catalog.
+ * filters it, the level switch, and the fourteen families with their counts,
+ * the open one listing its controls. Every count comes from the catalog.
  */
 export function ControlRail({
   state,
   selected,
   dispatch,
   onSelect,
-  onFollowPath,
   onPick,
   searchRef,
   searchUsage,
@@ -100,20 +93,6 @@ export function ControlRail({
       ? toggled.family
       : selected.family
     : filters.family
-
-  const path = pathControls('basics', explorerCatalog)
-  const onPathAt =
-    state.view === 'lesson' && state.path
-      ? pathIndex('basics', state.lesson, explorerCatalog)
-      : -1
-  const pathStart = onPathAt >= 0 ? path[onPathAt]! : path[0]!
-  const pathHref = createLessonUrl(
-    lessonIdentity(pathStart),
-    mode,
-    new URL('/learn', window.location.origin),
-    'decode',
-    'basics',
-  ).replace(window.location.origin, '')
 
   const levelHref = (level: string) =>
     window.location.pathname +
@@ -174,49 +153,6 @@ export function ControlRail({
           <path d="M2 5c88-3 177-1 262-2" />
         </svg>
       </form>
-
-      <a
-        className="rail-path"
-        href={pathHref}
-        aria-current={onPathAt >= 0 ? 'true' : undefined}
-        onClick={(event) => {
-          if (!plainClick(event)) return
-          event.preventDefault()
-          onFollowPath(pathStart)
-          onPick?.()
-        }}
-      >
-        <span className="rail-path-head">
-          <span className="rail-path-title hand">Start here</span>
-          {onPathAt >= 0 && (
-            <span className="rail-path-count">
-              {' '}
-              {onPathAt + 1} of {path.length}
-            </span>
-          )}
-        </span>
-        <span className="rail-path-text">
-          The {numberWord(path.length)} Level 1 basics, in order.
-        </span>
-        <svg
-          className="rail-path-dashes chalk"
-          viewBox={`0 0 ${path.length * 15} 8`}
-          aria-hidden="true"
-          focusable="false"
-        >
-          {path.map((control, index) => (
-            <rect
-              key={control.key}
-              x={index * 15}
-              y="2"
-              width="11"
-              height="4"
-              rx="2"
-              className={index === onPathAt ? 'is-current' : undefined}
-            />
-          ))}
-        </svg>
-      </a>
 
       <div className="rail-levels" role="group" aria-label="Level">
         <span className="rail-levels-label">Level</span>

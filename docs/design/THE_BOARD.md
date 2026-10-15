@@ -77,9 +77,10 @@ official guide with its page, then explained three ways. More frameworks to
 come." (149 from the catalog); "Pick up a chalk to start." and the three
 chalks as the main action, each a large stick with a label in the chalk hand
 and one short line ("I'm new to this" / "Level 1's fifteen basics first." →
-the Start here path in white; "I run the systems" / "The fourteen families."
-→ the families in yellow; "I'm preparing for an assessment" / "Examine,
-interview, test." → the objectives in blue), grouped in a list labelled "Pick
+Controls filtered to Level 1 with the first basic on the board, in white; "I
+run the systems" / "The fourteen families." → the families in yellow; "I'm
+preparing for an assessment" / "Examine, interview, test." → the objectives
+in blue), grouped in a list labelled "Pick
 up a chalk to start.", each picking its chalk for the visitor, the stick
 lifting a few pixels under the pointer or keyboard focus (not under reduced
 motion; the focus ring always visible); then "Or find a control…", the search
@@ -156,22 +157,23 @@ request each; each line says whether it is built.
    doodle chalk takes its place). Content keeps clear of Smudge at every size.
 2. **Controls with Learn merged in** — `Controls.html` (built). A rail of
    every control beside the control, always visible at desktop widths and
-   scrolling on its own: a find line that filters it as you type, "Start
-   here" through the fifteen Level 1 controls in catalog order as a path in
-   the address (`path=basics`, "n of 15", fifteen chalk dashes with the
-   current one yellow), the level switch All · 1 · 2 · 3 on the existing
-   level filter, and the fourteen families with their counts for the level in
-   force, collapsible, the open one listing its controls with the current one
-   under the yellow bar; every count from the catalog. On the right the
-   control exactly as before, and with no control chosen the overview (the
-   results at full width beside the rail; below desktop widths, with the
-   families as before). Beside a control the family rows open in place. On
-   the path the foot reads "Next on the path: ‹id› →"; a control picked from
-   the rail leaves the path. The old "Browse & filter controls"
-   disclosure is gone. Phone: an "All controls" line at the top opens the rail
-   as a full-screen sheet, and "Start here" stays visible as one line. Home's
-   "I'm new to this" chalk opens the first control on the path with the white
-   chalk.
+   scrolling on its own: a find line that filters it as you type, the level
+   switch All · 1 · 2 · 3 on the existing level filter, and the fourteen
+   families with their counts for the level in force, collapsible, the open
+   one listing its controls with the current one under the yellow bar; every
+   count from the catalog. On the right the control exactly as before, and
+   with no control chosen the overview (the results at full width beside the
+   rail; below desktop widths, with the families as before). Beside a control
+   the family rows open in place. The foot steps through the results with
+   plain Previous and Next. The old "Browse & filter controls" disclosure is
+   gone. Phone: an "All controls" line at the top opens the rail as a
+   full-screen sheet. Home's "I'm new to this" chalk opens Controls filtered
+   to Level 1 with the first Level 1 control on the board in the white chalk.
+   The mockup's "Start here" block (the fifteen Level 1 basics in order as a
+   path in the address, `path=basics`, with "n of 15", the chalk dashes and
+   "Next on the path") was built and then removed by the owner on October 15;
+   an old link that still carries `path=basics` opens its control and the
+   parameter is ignored.
 3. **Home: what this is** — `Home.html` (built, then superseded by the Home
    hero, below). The sentence at the top right went; the "What this is"
    column stood beside the rows with the counts from the catalog and the

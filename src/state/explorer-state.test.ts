@@ -241,6 +241,30 @@ describe('parseExplorerSearch', () => {
     })
   })
 
+  // `path=basics` named the Start here path, removed on October 15. An old
+  // link opens its control and the parameter is ignored, however it comes,
+  // and it is never written back.
+  it.each([
+    '&path=basics',
+    '&path=basics&path=basics',
+    '&path=%E2%9C%93odd',
+    '&path',
+    '&path=%E0%A4%A',
+  ])('ignores the retired path parameter on a lesson address (%s)', (path) => {
+    const parsed = parseExplorerSearch(`${lessonSearch()}${path}`, catalog)
+    expect(parsed).toEqual(ready(lesson()))
+    expect(parameters(lesson()).has('path')).toBe(false)
+  })
+
+  it('ignores the retired path parameter ahead of the lesson too', () => {
+    expect(
+      parseExplorerSearch(
+        `?path=basics&${lessonSearch().slice(1)}&mode=compliance`,
+        catalog,
+      ),
+    ).toEqual(ready(lesson({ mode: 'compliance' })))
+  })
+
   it.each([
     '?mode=beginner',
     '?catalog=cmmc',

@@ -103,6 +103,55 @@ test('home puts one thing first on one screen at 1280×800, and a chalk picks th
   ).toHaveAttribute('aria-selected', 'true')
 })
 
+test('“I’m new to this” opens Controls filtered to Level 1, the first basic on the board in white', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 })
+  await page.goto('/')
+  await page
+    .getByRole('list', { name: pick })
+    .getByRole('link', { name: /^I’m new to this/ })
+    .click()
+  await expect(page).toHaveURL(/view=lesson/)
+  await expect(page).toHaveURL(/control=ac-l1-b-1-i(?:&|$)/)
+  await expect(page).toHaveURL(/mode=beginner/)
+  await expect(page).toHaveURL(/level=Level\+1/)
+  await expect(page).not.toHaveURL(/path=/)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'Authorized Access Control [FCI Data]',
+  )
+  const rail = page.getByRole('navigation', { name: 'All controls' })
+  await expect(
+    rail
+      .getByRole('group', { name: 'Level' })
+      .getByRole('link', { name: '1', exact: true }),
+  ).toHaveAttribute('aria-current', 'true')
+  await expect(
+    rail.getByRole('link', { name: /^AC Access Control 4$/ }),
+  ).toBeVisible()
+  await expect(rail.getByRole('link', { name: /^AT / })).toContainText('0')
+  await expect(rail.getByRole('link', { name: /^Start here/ })).toHaveCount(0)
+  // The foot walks the fifteen basics in order, in the white chalk.
+  await expect(page.getByRole('button', { name: /^Previous/ })).toHaveCount(0)
+  await expect(
+    page.getByRole('button', { name: 'Next: AC.L1-b.1.ii' }),
+  ).toBeVisible()
+  expect(
+    await page.evaluate(() =>
+      localStorage.getItem('cipher-and-chalk:chalk:v1'),
+    ),
+  ).toBe('beginner')
+  // Explain opens in the white chalk, and the level filter stays.
+  await page
+    .getByRole('navigation', { name: 'Views of this control' })
+    .getByRole('link', { name: 'Explain', exact: true })
+    .click()
+  await expect(
+    page.getByRole('tab', { name: 'I’m new to this' }),
+  ).toHaveAttribute('aria-selected', 'true')
+  await expect(page).toHaveURL(/level=Level\+1/)
+})
+
 test('the search line finds a control from Home', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 })
   await page.goto('/')

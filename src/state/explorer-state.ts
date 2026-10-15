@@ -36,21 +36,13 @@ export interface ExplorerFilters {
   readonly collection?: ExplorerCollection
 }
 
-/** The one guided path: the Level 1 controls in catalog order. */
-export type ExplorerPath = 'basics'
-
 export type ValidExplorerState = {
   readonly mode: ExplanationMode
   readonly filters: ExplorerFilters
   /** Absent means Decode; never serialized as the default. */
   readonly tab?: ControlTab
 } & (
-  | {
-      readonly view: 'lesson'
-      readonly lesson: LessonIdentity
-      /** Set while the visitor follows a path; choosing a control off it drops it. */
-      readonly path?: ExplorerPath
-    }
+  | { readonly view: 'lesson'; readonly lesson: LessonIdentity }
   | { readonly view: 'discover' }
 )
 
@@ -88,12 +80,6 @@ export type LessonResolution =
 
 export type ExplorerIntent =
   | { readonly type: 'select-lesson'; readonly identity: LessonIdentity }
-  /** The next control on a path: the lesson changes and the path stays. */
-  | {
-      readonly type: 'follow-path'
-      readonly path: ExplorerPath
-      readonly identity: LessonIdentity
-    }
   | { readonly type: 'change-mode'; readonly mode: ExplanationMode }
   /** A chalk from the tray or the keys: the mode and the Explain view in one step. */
   | { readonly type: 'pick-chalk'; readonly mode: ExplanationMode }
@@ -128,8 +114,10 @@ const recognizedKeys = new Set([
   'collection',
   'tab',
   'chalk',
-  'path',
 ])
+// `path=basics` named the Start here path, removed on October 15. It is not
+// recognized on purpose: an old link opens its control and the parameter is
+// ignored, like any other unrelated query data.
 const identitySlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const modes: readonly ExplanationMode[] = ['beginner', 'it-cyber', 'compliance']
 
@@ -384,58 +372,12 @@ export function parseExplorerSearch(
     filters: normalized.filters,
     ...(tab === 'decode' ? {} : { tab }),
   }
-  // A path only belongs to a lesson that is on it; anything else is quietly off it.
-  const path =
-    identity &&
-    values.get('path') === 'basics' &&
-    onPath('basics', identity, catalog)
-      ? ('basics' as const)
-      : undefined
   return ready(
     identity
-      ? {
-          ...shared,
-          view: 'lesson',
-          lesson: identity,
-          ...(path ? { path } : {}),
-        }
+      ? { ...shared, view: 'lesson', lesson: identity }
       : { ...shared, view: 'discover' },
     notices,
   )
-}
-
-/** The controls of a path, in catalog order: the fifteen Level 1 basics. */
-export function pathControls(
-  path: ExplorerPath,
-  catalog: ExplorerCatalog,
-): CatalogControl[] {
-  if (path !== 'basics') return []
-  return catalog.controls.filter(
-    (control) =>
-      control.contentKind === 'official-reference' &&
-      control.frameworkId === 'cmmc' &&
-      control.level === 'Level 1',
-  )
-}
-
-/** Where a lesson sits on a path, from 0; -1 when it is not on it. */
-export function pathIndex(
-  path: ExplorerPath,
-  identity: LessonIdentity,
-  catalog: ExplorerCatalog,
-): number {
-  const key = lessonIdentityKey(identity)
-  return pathControls(path, catalog).findIndex(
-    (control) => lessonIdentityKey(lessonIdentity(control)) === key,
-  )
-}
-
-function onPath(
-  path: ExplorerPath,
-  identity: LessonIdentity,
-  catalog: ExplorerCatalog,
-): boolean {
-  return pathIndex(path, identity, catalog) >= 0
 }
 
 export function serializeExplorerSearch(state: ValidExplorerState): string {
@@ -447,7 +389,6 @@ export function serializeExplorerSearch(state: ValidExplorerState): string {
   }
   params.set('mode', state.mode)
   if (state.tab && state.tab !== 'decode') params.set('tab', state.tab)
-  if (state.view === 'lesson' && state.path) params.set('path', state.path)
   // The implicit lesson catalog may be an unknown framework in a not-found URL.
   // Emitting it explicitly would turn that exact address into a catalog error.
   if (
@@ -581,7 +522,6 @@ export function transitionExplorerState(
           }
         }
         if (resolution.kind === 'lesson' && !resolution.excludedByFilters)
-          // Any control chosen on its own leaves the path.
           next = ready({
             mode: state.mode,
             filters,
@@ -589,38 +529,6 @@ export function transitionExplorerState(
             view: 'lesson',
             lesson: intent.identity,
           })
-        break
-      }
-      case 'follow-path': {
-        if (!onPath(intent.path, intent.identity, catalog)) break
-        // The path lists controls whatever the filters say; the collection
-        // follows the control, and a query, family or level that would hide
-        // it is cleared.
-        const resolution = resolveLesson(
-          intent.identity,
-          {
-            ...state.filters,
-            collection: 'references',
-            query: '',
-            family: '',
-            level: '',
-          },
-          catalog,
-        )
-        if (resolution.kind !== 'lesson') break
-        next = ready({
-          ...state,
-          filters: {
-            ...state.filters,
-            collection: 'references',
-            query: '',
-            family: '',
-            level: '',
-          },
-          view: 'lesson',
-          lesson: intent.identity,
-          path: intent.path,
-        })
         break
       }
       case 'change-mode':
@@ -779,7 +687,6 @@ export function createLessonUrl(
   mode: ExplanationMode,
   location: URL,
   tab: ControlTab = 'decode',
-  path?: ExplorerPath,
 ): string {
   const url = new URL(location.href)
   const params = new URLSearchParams({
@@ -790,7 +697,6 @@ export function createLessonUrl(
     mode,
   })
   if (tab !== 'decode') params.set('tab', tab)
-  if (path) params.set('path', path)
   url.search = params.toString()
   url.hash = 'explorer'
   return url.href

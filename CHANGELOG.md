@@ -131,6 +131,14 @@ analytics allowlist do not change.
   and the decode example are gone. The headline names CMMC on purpose and is
   reworded when a second framework ships. The discover unit test now awaits
   its result counts.
+- [PR #70](https://github.com/WaylandP/cipher-and-chalk/pull/70): "Start
+  here" leaves Controls (the owner's October 15 feedback). The block in the
+  rail, the path in the address (`path=basics`), the "n of 15" dashes and
+  "Next on the path" are gone; the foot is plain Previous and Next again.
+  An old link that carries `path=basics` still opens its control, the
+  parameter ignored. Home's "I'm new to this" chalk opens Controls filtered
+  to Level 1 with the first Level 1 control on the board in white; its line
+  still reads "Level 1's fifteen basics first."
 
 ## The Board's features — October 15, 2026
 

@@ -75,8 +75,9 @@ not establish it.
   start." and the three chalks as the main action, in a list of that name:
   large sticks (20px tall) with a label in the chalk hand and one short line,
   "I'm new to this" ("Level 1's fifteen basics first.", the count from the
-  catalog) to the first control on the Start here path in white, "I run the
-  systems" ("The fourteen families.") to the Controls page in yellow, "I'm
+  catalog) to Controls filtered to Level 1 with the first Level 1 control on
+  the board in white, "I run the systems" ("The fourteen families.") to the
+  Controls page in yellow, "I'm
   preparing for an assessment" ("Examine, interview, test.") to the
   assessment objectives in blue; the stick lifts a few pixels under the
   pointer or keyboard focus (not under reduced motion; the focus ring stays).
@@ -122,10 +123,8 @@ not establish it.
   Controls page and the control page are one screen with Learn merged in. A
   rail of every control stands on the left, always visible at desktop widths
   and scrolling on its own: a find line that filters the rail as you type
-  (the same `q` as the results); "Start here", the fifteen Level 1 controls in
-  catalog order as a path in the address (`path=basics`), with "n of 15" and
-  fifteen chalk dashes, the current one yellow, while a reader is on it; the
-  level switch All · 1 · 2 · 3 (the existing `level` filter); then the fourteen
+  (the same `q` as the results); the level switch All · 1 · 2 · 3 (the
+  existing `level` filter); then the fourteen
   families with their counts for the level in force, collapsible, the open one
   listing its control IDs and titles five at a time, the current one with the
   yellow bar. Every count comes from the catalog. On the right stands the
@@ -138,12 +137,13 @@ not establish it.
   control the family rows open in place and the control stays; in the
   overview they also filter the results. A pick from the rail that the
   filters would hide brings the collection, framework, family, level or query
-  along with it. On the path the foot reads "Next on the path: ‹id› →" and
-  keeps the path; a control picked from the rail leaves it. Below 1024px the
-  rail is a sheet: an "All controls" line at the top of the page opens it
-  full screen on its find line, and "Start here" stays visible as one line.
-  Home's "I'm new to this." row opens the first control on the path with the
-  white chalk.
+  along with it. The foot steps through the results with Previous and Next.
+  Below 1024px the rail is a sheet: an "All controls" line at the top of the
+  page opens it full screen on its find line. Home's "I'm new to this" row
+  opens Controls filtered to Level 1 with the first Level 1 control on the
+  board in the white chalk. The "Start here" path (`path=basics`, "n of 15",
+  "Next on the path") was removed on October 15; an old link that carries it
+  opens its control and the parameter is ignored.
 - **The control page `/learn`:** a selected control is the Board's control page
   (`mockups/Decode.html`, `Explain.html` and the phone variants). The identifier
   is decoded on the first line from the catalog and the publication it names,
@@ -167,8 +167,8 @@ not establish it.
   what changed (`src/data/cmmc-rev3-map.json`) and says once that CMMC is
   pinned to Rev 2. A footer line carries the citation or one sentence of
   provenance and
-  Previous/Next within the current results. “Browse & filter controls” sits
-  under the page and reopens search, filters and results. Print, Copy
+  Previous/Next within the current results (the old “Browse & filter
+  controls” disclosure is gone; the rail is the navigator). Print, Copy
   reference link and Send this chalk are the actions, above the title (at the
   foot of the page on a phone); the chalk link opens Explain in the chalk in
   hand. Discovery and the project's demo lesson keep
