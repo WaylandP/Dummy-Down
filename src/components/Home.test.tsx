@@ -1,7 +1,8 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { Home } from './Home'
-import { explorerCatalog } from '../data/content'
+import { later, laterFrameworks } from './home-later'
+import { referenceControls, explorerCatalog } from '../data/content'
 import { learningActivities } from '../data/learning'
 import {
   explorerResults,
@@ -98,17 +99,13 @@ describe('Home', () => {
     expect(
       screen.getByRole('heading', { level: 1, name: 'Who’s reading?' }),
     ).toBeVisible()
-    expect(
-      screen.getByText(
-        'A reference desk for CMMC Level 2. The 149 controls, quoted and cited, then explained for the person in front of the board.',
-      ),
-    ).toBeVisible()
+    expect(screen.queryByText(/reference desk for CMMC Level 2/)).toBeNull()
     const rows = within(
       screen.getByRole('navigation', { name: 'Who’s reading?' }),
     ).getAllByRole('link') as HTMLAnchorElement[]
     expect(rows.map((row) => row.textContent)).toEqual([
-      'I’m new to this.Start with what CUI is and why the DoD cares, then one control at a time in plain words.Start here →',
-      'I run the systems.Start with the fourteen families and what each one actually asks of your network.The families →',
+      'I’m new to this.Start with Level 1: fifteen basics, one control at a time, in plain words.Start here →',
+      'I run the systems.Start with the fourteen families and what each one asks of your systems.The families →',
       'I’m preparing for an assessment.Start with the objectives: what gets examined, who gets interviewed, what gets tested.The objectives →',
     ])
     expect(
@@ -149,6 +146,71 @@ describe('Home', () => {
 
     // Blue chalk: the assessment objectives.
     expect(new URL(rows[2]!.href).pathname).toBe('/coverage')
+    expect(trackUsage).not.toHaveBeenCalled()
+  })
+
+  it('says what this is beside the rows, with every count from the catalog', () => {
+    renderWithProgress(<Home />)
+    const aside = within(
+      screen.getByRole('complementary', { name: 'What this is' }),
+    )
+    expect(
+      aside.getByText(
+        'Cybersecurity requirements, decoded. The official sentence stays on the board word for word, cited to its page. Then it is explained in plain language, three ways.',
+      ),
+    ).toBeVisible()
+    expect(aside.getByText('AC.L2-3.1.1')).toBeVisible()
+    // The example decoded: each piece beside its meaning, in order.
+    const pieces = [...aside.getAllByRole('term')].map((node) => [
+      node.textContent,
+      node.nextElementSibling?.textContent,
+    ])
+    expect(pieces.slice(0, 3)).toEqual([
+      ['AC', 'Access Control, one of fourteen families'],
+      ['L2', 'Level 2'],
+      ['3.1.1', 'its NIST SP 800-171 requirement'],
+    ])
+    expect(
+      aside
+        .getAllByRole('heading', { level: 3 })
+        .map((node) => node.textContent),
+    ).toEqual(['On the board now', 'Later'])
+    // On the board now: each level's controls, counted, and the three sum to the catalog.
+    const counts = aside
+      .getAllByRole('definition')
+      .filter((node) => node.classList.contains('home-level-count'))
+      .map((node) => Number(node.textContent))
+    expect(counts).toEqual(
+      ['Level 1', 'Level 2', 'Level 3'].map(
+        (level) =>
+          referenceControls.filter((control) => control.level === level).length,
+      ),
+    )
+    expect(counts.reduce((sum, count) => sum + count, 0)).toBe(
+      referenceControls.length,
+    )
+    expect(
+      aside.getByText('the basics, for contract information'),
+    ).toBeVisible()
+    expect(aside.getByText('for CUI')).toBeVisible()
+    expect(aside.getByText('enhanced requirements')).toBeVisible()
+    // Later: every framework the catalog lists as planned, and only a promise of research.
+    const laterLine = aside.getByText(later)
+    expect(laterLine).toBeVisible()
+    for (const framework of laterFrameworks)
+      expect(
+        later.includes(framework.shortName) || later.includes(framework.name),
+        `${framework.name} is being researched`,
+      ).toBe(true)
+    // ...and names no more than the catalog lists as planned.
+    const named = later
+      .slice(later.indexOf(':') + 1, later.indexOf('.', later.indexOf(':')))
+      .split(',')
+    expect(named).toHaveLength(laterFrameworks.length)
+    expect(later).toMatch(/Being researched; not here yet\.$/)
+    expect(
+      aside.getByText('Free. No account. Made by one person, in the open.'),
+    ).toBeVisible()
     expect(trackUsage).not.toHaveBeenCalled()
   })
 

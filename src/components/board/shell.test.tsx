@@ -187,7 +187,7 @@ describe('The Board shell', () => {
     expect(screen.queryByRole('search', { name: 'Find a control' })).toBeNull()
   })
 
-  it('keeps the find button on Home beside its own search line, the one footer line, and drops the tray legend there', () => {
+  it('keeps the find button on Home beside its own search line, the one footer line, and the tray legend as the mockup draws it', () => {
     window.history.replaceState(null, '', '/')
     render(<App />)
     expect(
@@ -200,8 +200,8 @@ describe('The Board shell', () => {
     expect(
       screen.getByRole('search', { name: 'Find a control' }),
     ).toHaveAttribute('action', '/learn')
-    expect(document.querySelector('.chalk-tray')).not.toHaveTextContent(
-      'new to this',
+    expect(document.querySelector('.chalk-tray')).toHaveTextContent(
+      'white: new to this',
     )
     expect(trackUsage).not.toHaveBeenCalled()
   })

@@ -63,12 +63,20 @@ not establish it.
 
 ## One main task per page
 
-- **Home `/`:** the Board's `mockups/Home.html`, written for the stranger who
-  arrives from a shared link. "Who's reading?" in chalk with one sentence at
-  the right saying what the site is; then three rows between rules, one per
-  chalk, each a link: "I'm new to this." to the first lesson in white,
-  "I run the systems." to the Controls page in yellow, "I'm preparing for an
-  assessment." to the assessment objectives in blue. Choosing a row remembers
+- **Home `/`:** the Board's `mockups/Home.html` and, since October 15,
+  `mockups/2026-10-15/Home.html`, written for the stranger who arrives from a
+  shared link. "Who's reading?" in chalk; then three rows between rules, one
+  per chalk, each a link: "I'm new to this." ("Start with Level 1: fifteen
+  basics, one control at a time, in plain words.", the count from the
+  catalog) to the first control on the Start here path in white, "I run the
+  systems." to the Controls page in yellow, "I'm preparing for an
+  assessment." to the assessment objectives in blue. Beside them, on a
+  hairline, the "What this is" column: one paragraph, the AC.L2-3.1.1
+  example decoded (family, level, requirement), "On the board now" with the
+  three levels and their counts from the catalog, "Later" with the frameworks
+  being researched (the Phase 4 list in `docs/ROADMAP.md`, "not here yet"),
+  and "Free. No account. Made by one person, in the open." Below desktop
+  widths the column follows the search. Choosing a row remembers
   that chalk under `cipher-and-chalk:chalk:v1` in this browser, and an
   address that names no chalk opens in it from then on. Below: "Or just look
   something up:" and the search line (an input on a chalk underline, no box)

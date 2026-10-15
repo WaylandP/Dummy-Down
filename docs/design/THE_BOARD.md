@@ -63,11 +63,13 @@ none. Both live once in the app shell, not per component.
 
 ## Screens
 
-**Home** — `mockups/Home.html` (supersedes `Main.html`). Written for the
+**Home** — `mockups/Home.html` (supersedes `Main.html`; redrawn in
+`mockups/2026-10-15/Home.html`, see October 15 fixes, 3). Written for the
 stranger who arrives from a shared link. Header: the lockup and the nav, Home
 first, the active item under a yellow chalk stroke. The question in chalk:
-"Who's reading?", with one sentence at the right saying what the site is.
-Three rows, one per chalk: "I'm new to this." / "I run the systems." / "I'm
+"Who's reading?", with the "What this is" column at the right (October 15
+fixes, 3; before it, one sentence saying what the site is). Three rows, one
+per chalk: "I'm new to this." / "I run the systems." / "I'm
 preparing for an assessment.", each with one sentence of where it starts you
 and a yellow link. Choosing a row also picks that chalk for the visitor. Below:
 "Or just look something up:" and the search line. The footer line is the
@@ -154,8 +156,15 @@ request each; each line says whether it is built.
    as a full-screen sheet, and "Start here" stays visible as one line. Home's
    "I'm new to this." row opens the first control on the path with the white
    chalk.
-3. **Home: what this is** — `Home.html` (not built). The "What this is"
-   column; copy covers all three levels; the frameworks being researched.
+3. **Home: what this is** — `Home.html` (built). The sentence at the top
+   right is gone; the "What this is" column stands beside the rows: one
+   paragraph, the AC.L2-3.1.1 example decoded, "On the board now" with the
+   three levels and their counts from the catalog, "Later" with exactly the
+   Phase 4 research list from `docs/ROADMAP.md` ("Being researched; not here
+   yet."), and "Free. No account. Made by one person, in the open." The first
+   row reads "Start with Level 1: fifteen basics, one control at a time, in
+   plain words." with the count from the catalog. No page copy says the site
+   covers only Level 2. The tray's legend shows on Home too, as drawn.
 4. **Glossary: All** (not built). An "All" button before A, selected by
    default; every term under letter headings in the two-column flow.
 5. **Practice runs in place** — `Practice.html` (not built). Pick a situation

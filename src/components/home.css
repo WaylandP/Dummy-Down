@@ -1,14 +1,124 @@
-/* Home: who's reading, three chalk rows, a search line, and where you left off. */
+/* Home: who's reading, three chalk rows, a search line, where you left off,
+   and beside them what this is (mockups/2026-10-15/Home.html). */
 @layer components {
   .home {
     position: relative;
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 0 56px;
     min-height: 0;
     padding: 0 var(--gutter);
     /* The glow may run past the right edge; it never widens the page. */
     overflow-x: clip;
+  }
+  .home-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+  }
+  /* What this is: a column on a hairline, read from the top. */
+  .home-what {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+    margin-top: 26px;
+    border-left: 1px solid var(--color-rule);
+    padding: 6px 0 20px 36px;
+  }
+  .home-what h2 {
+    margin: 0;
+    color: var(--color-yellow);
+    font-size: 26px;
+    line-height: 1;
+  }
+  .home-what-lead {
+    margin: 0;
+    color: var(--color-chalk);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .home-decode {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 4px 0;
+  }
+  .home-decode-id {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    color: var(--color-blue);
+    font-size: 18px;
+    line-height: 1.25;
+  }
+  .home-decode-id svg {
+    width: 28px;
+    height: 16px;
+  }
+  .home-decode-id path {
+    fill: none;
+    stroke: var(--color-yellow);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .home-decode-pieces {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 3px 10px;
+    margin: 0;
+    color: var(--color-chalk-muted);
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .home-decode-pieces dt {
+    color: var(--color-blue);
+  }
+  .home-decode-pieces dd {
+    margin: 0;
+  }
+  .home-what h3 {
+    margin: 0 0 6px;
+    font-size: 20px;
+    line-height: 1.1;
+  }
+  .home-levels {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    gap: 4px 14px;
+    align-items: baseline;
+    margin: 0;
+    color: var(--color-chalk-muted);
+    font-size: 14px;
+    line-height: 1.3;
+  }
+  .home-levels dd {
+    margin: 0;
+  }
+  .home-level-count {
+    color: var(--color-blue);
+    font-size: 12px;
+  }
+  .home-level-note {
+    color: var(--color-chalk-dim);
+    font-size: 13px;
+  }
+  .home-later {
+    margin: 0;
+    color: var(--color-chalk-muted);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .home-what-note {
+    margin: 0;
+    color: var(--color-chalk-dim);
+    font-size: 13px;
+    line-height: 1.4;
   }
   /* The wiped-smudge glow, a soft ellipse off to the right. */
   .home-glow {
@@ -26,23 +136,12 @@
   }
   .home-head {
     position: relative;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 40px;
-    padding-top: 28px;
+    padding-top: 26px;
   }
   .home-head h1 {
     margin: 0;
     font-size: 52px;
     line-height: 1;
-  }
-  .home-lead {
-    margin: 0;
-    max-width: 420px;
-    color: var(--color-chalk-muted);
-    font-size: 15px;
-    line-height: 1.5;
   }
   /* The rows share the leftover height and sit between rules, like the mockup. */
   .home-chalks {
@@ -51,16 +150,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 980px;
     min-height: 0;
   }
   .home-row {
     display: grid;
-    grid-template-columns: 90px minmax(0, 1fr) auto;
+    grid-template-columns: 82px minmax(0, 1fr) auto;
     align-items: center;
-    gap: 28px;
+    gap: 24px;
     min-height: 44px;
-    padding: 22px 0;
+    padding: 19px 0;
     border-top: 1px solid var(--color-rule);
     color: var(--color-chalk);
   }
@@ -76,17 +174,17 @@
     outline-offset: 4px;
   }
   .home-row .home-stick {
-    width: 72px;
+    width: 66px;
     height: 12px;
   }
   .home-row-line {
     display: block;
-    font-size: 30px;
+    font-size: 27px;
     line-height: 1.1;
   }
   .home-row-text {
     display: block;
-    margin-top: 6px;
+    margin-top: 5px;
     color: var(--color-chalk-muted);
     font-size: 15px;
     line-height: 1.5;
@@ -101,7 +199,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 24px;
     padding: 16px 0 6px;
   }
   .home-lookup-label {
@@ -177,6 +275,19 @@
     color: var(--color-yellow);
   }
 }
+@media (max-width: 1023px) {
+  /* One column: what this is follows the search, on a hairline. */
+  .home {
+    display: flex;
+    flex-direction: column;
+  }
+  .home-what {
+    margin-top: 8px;
+    border-left: 0;
+    border-top: 1px solid var(--color-rule);
+    padding: 20px 0 24px;
+  }
+}
 @media (max-width: 1024px) {
   .home-glow {
     display: none;
@@ -186,11 +297,8 @@
   }
 }
 @media (max-width: 640px) {
-  /* Phone: the sentence under the question, the stick above its line. */
+  /* Phone: the stick above its line. */
   .home-head {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
     padding-top: 20px;
   }
   .home-head h1 {
