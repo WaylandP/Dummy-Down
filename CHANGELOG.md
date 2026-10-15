@@ -78,6 +78,15 @@ analytics allowlist do not change.
   "All controls" line opens the rail as a full-screen sheet. The old "Browse
   & filter controls" disclosure is gone; Home's first row opens the first
   control on the path.
+- [PR #61](https://github.com/WaylandP/cipher-and-chalk/pull/61): Home says
+  what this is. The sentence at the top right is gone; beside the rows, on a
+  hairline, the "What this is" column: one paragraph, the AC.L2-3.1.1 example
+  decoded, "On the board now" with the three CMMC levels and their control
+  counts from the catalog, "Later" with the Phase 4 research list from
+  `docs/ROADMAP.md` ("Being researched; not here yet."), and "Free. No
+  account. Made by one person, in the open." The first row reads "Start with
+  Level 1: fifteen basics, one control at a time, in plain words."; the tray's
+  legend shows on Home too; the README's screenshots are regenerated.
 
 ## The Board's features — October 15, 2026
 

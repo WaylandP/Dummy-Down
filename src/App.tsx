@@ -159,7 +159,7 @@ function Application() {
       <SiteFooter page={page} />
       <ChalkTray
         lifted={lifted}
-        label={page === 'home' ? undefined : <TrayLegend />}
+        label={<TrayLegend />}
         control={page === 'learn' ? trayControl : null}
       />
       {keysOpen && <KeysHelp onClose={() => setKeysOpen(false)} />}

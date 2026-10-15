@@ -43,6 +43,14 @@ test('home asks who is reading on one screen at 1280×800, and a row picks the c
   await expect(page.getByRole('contentinfo')).toContainText(
     'Independent and educational.',
   )
+  // What this is stands beside the rows, on a hairline, on the same screen.
+  const column = (await page.locator('.home-what').boundingBox())!
+  const rowsBox = (await rows.boundingBox())!
+  expect(column.x).toBeGreaterThanOrEqual(rowsBox.x + rowsBox.width)
+  expect(column.y).toBeLessThan(rowsBox.y + rowsBox.height)
+  await expect(
+    page.getByRole('complementary', { name: 'What this is' }),
+  ).toContainText('Being researched; not here yet.')
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
 
   // "I run the systems." opens the Controls page in yellow and remembers it.
@@ -131,4 +139,11 @@ test('on a phone the rows stack with the stick above the line, and the tray is t
     ),
   ).toBe(height)
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
+  // What this is follows the search, in one column.
+  const search = (await page.locator('.home-search').boundingBox())!
+  await page.locator('.home-what').scrollIntoViewIfNeeded()
+  const column = (await page.locator('.home-what').boundingBox())!
+  const searchAgain = (await page.locator('.home-search').boundingBox())!
+  expect(column.y - searchAgain.y).toBeGreaterThan(search.height)
+  expect(column.width).toBeLessThanOrEqual(390)
 })
