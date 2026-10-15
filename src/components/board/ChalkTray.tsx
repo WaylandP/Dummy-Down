@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import type { ExplanationMode } from '../../types/content'
 import { chalkFor, chalks } from './chalks'
 import type { TrayControl } from './tray-state'
+import { DoodleStick } from './DoodleChalk'
 import { Smudge } from './Smudge'
 
 interface ChalkTrayProps {
@@ -14,9 +15,10 @@ interface ChalkTrayProps {
 }
 
 /**
- * The wooden tray along the bottom of every screen, with Smudge, the eraser,
- * on its right end. Decorative until a control is on the board; then its three
- * chalks pick the perspective, and on a phone the tray is the bottom bar.
+ * The wooden tray along the bottom of every screen, with the doodle chalk and
+ * Smudge, the eraser, on its right end. Its three chalks are decorative until
+ * a control is on the board; then they pick the perspective, and on a phone
+ * the tray is the bottom bar.
  */
 export function ChalkTray({
   lifted = null,
@@ -28,14 +30,20 @@ export function ChalkTray({
     : label
   if (!control)
     return (
-      <div className="chalk-tray" aria-hidden="true">
+      <div className="chalk-tray">
         {chalks.map((chalk) => (
           <span
             key={chalk.mode}
             className={`tray-stick tray-stick-${chalk.color}`}
+            aria-hidden="true"
           />
         ))}
-        {text && <span className="tray-legend">{text}</span>}
+        {text && (
+          <span className="tray-legend" aria-hidden="true">
+            {text}
+          </span>
+        )}
+        <DoodleStick />
         <Smudge />
       </div>
     )
@@ -65,6 +73,7 @@ export function ChalkTray({
           {text}
         </span>
       )}
+      <DoodleStick />
       <Smudge />
     </nav>
   )

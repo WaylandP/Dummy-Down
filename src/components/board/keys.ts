@@ -4,6 +4,7 @@ export const boardKeys = [
   { keys: ['k'], does: 'Previous control' },
   { keys: ['1', '2', '3'], does: 'Pick a chalk: white, yellow, blue' },
   { keys: ['/'], does: 'Find a control' },
+  { keys: ['d'], does: 'Pick up or put down the doodle chalk' },
   { keys: ['?'], does: 'Show these keys' },
   { keys: ['Esc'], does: 'Close' },
 ] as const
@@ -20,7 +21,10 @@ export function keyOf(event: KeyboardEvent): string {
 export function keyIsFree(event: KeyboardEvent): boolean {
   if (event.defaultPrevented || event.repeat || event.isComposing) return false
   if (event.altKey || event.ctrlKey || event.metaKey) return false
-  if (document.querySelector('[role="dialog"][aria-modal="true"]')) return false
+  if (
+    document.querySelector('dialog[open], [role="dialog"][aria-modal="true"]')
+  )
+    return false
   const target = event.target
   if (!(target instanceof Element)) return true
   if (target.closest('input, textarea, select, [contenteditable]')) return false

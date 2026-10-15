@@ -9,7 +9,15 @@ import { ChalkTray, TrayLegend } from './components/board/ChalkTray'
 import { useLiftedChalk, useTrayControl } from './components/board/tray-state'
 import { KeysHelp } from './components/board/KeysHelp'
 import { scrollContentWithKeys } from './components/board/scroll-keys'
-import { FIND_EVENT, keyIsFree } from './components/board/keys'
+import { FIND_EVENT, keyIsFree, keyOf } from './components/board/keys'
+import { DoodleLayer } from './components/board/DoodleChalk'
+import {
+  isDoodleUp,
+  pickUpDoodle,
+  putDownDoodle,
+  roomToDoodle,
+  useDoodleUp,
+} from './components/board/doodle-state'
 import { CoverageRoute } from './components/CoverageRoute'
 import { PracticeRoute } from './components/PracticeRoute'
 import { Home } from './components/Home'
@@ -39,7 +47,10 @@ function Application() {
   const lifted = useLiftedChalk()
   const trayControl = useTrayControl()
   const [keysOpen, setKeysOpen] = useState(false)
-  // "/" finds a control and "?" shows the keys, anywhere a key is free.
+  const doodling = useDoodleUp()
+  // "/" finds a control, "?" shows the keys and "d" picks up the doodle
+  // chalk, anywhere a key is free; "d" again and Escape put it back in the
+  // tray, with focus on its slot.
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (!keyIsFree(event)) return
@@ -51,6 +62,13 @@ function Application() {
         const home = document.getElementById('home-q')
         if (home instanceof HTMLInputElement) home.focus()
         else window.dispatchEvent(new Event(FIND_EVENT))
+      } else if (keyOf(event) === 'd' && roomToDoodle()) {
+        event.preventDefault()
+        if (isDoodleUp()) putDownDoodle(true)
+        else pickUpDoodle()
+      } else if (event.key === 'Escape' && isDoodleUp()) {
+        event.preventDefault()
+        putDownDoodle(true)
       }
     }
     window.addEventListener('keydown', onKey)
@@ -155,6 +173,7 @@ function Application() {
             </a>
           </section>
         )}
+        {doodling && <DoodleLayer page={page} />}
       </main>
       <SiteFooter page={page} />
       <ChalkTray

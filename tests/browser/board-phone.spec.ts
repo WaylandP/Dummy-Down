@@ -99,6 +99,7 @@ test('the keys: ? shows them, j and k step, 1 2 3 pick a chalk, / finds', async 
     '2',
     '3',
     '/',
+    'd',
     '?',
     'Esc',
   ])

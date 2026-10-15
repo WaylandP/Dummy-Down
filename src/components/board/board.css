@@ -1058,3 +1058,165 @@
     color: #000;
   }
 }
+
+/* The doodle chalk (mockups/2026-10-15/Doodle.html): a fat white stick with
+   a kraft-paper sleeve in the tray, just left of Smudge, on screens with
+   room for it. Picked up, its slot keeps a dashed outline, the cursor is its
+   tip, and a layer over the content takes the marks: chalk white, about 3px,
+   smoothed, with the chalk filter. */
+.tray-doodle {
+  position: absolute;
+  right: calc(var(--gutter) + 142px);
+  bottom: 0;
+  display: inline-flex;
+  align-items: flex-end;
+  min-width: 62px;
+  min-height: 44px;
+  border: 0;
+  padding: 0 0 7px;
+  background: none;
+  color: var(--color-tray-label);
+  cursor: pointer;
+}
+.tray-doodle:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+.tray-doodle-stick {
+  display: block;
+  width: 62px;
+  height: 22px;
+  transition: transform 0.15s;
+}
+.tray-doodle:hover[aria-pressed='false'] .tray-doodle-stick {
+  transform: translateY(-2px);
+}
+.tray-doodle-shadow {
+  fill: #000;
+  opacity: 0.3;
+}
+.tray-doodle-chalk {
+  fill: var(--color-chalk);
+}
+.tray-doodle-sleeve {
+  fill: var(--color-tray-label);
+}
+.tray-doodle-lines {
+  fill: none;
+  stroke: #9c8a6a;
+  stroke-width: 1;
+}
+.tray-doodle-slot {
+  fill: none;
+  stroke: var(--color-tray-label);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  opacity: 0.5;
+}
+@media not all and (min-width: 768px) {
+  .tray-doodle {
+    display: none;
+  }
+}
+
+.doodle-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  min-height: 100%;
+  touch-action: none;
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='translate(3 29) rotate(-38)'%3E%3Crect x='0' y='-5' width='30' height='10' rx='5' fill='%23EDE9DD'/%3E%3Crect x='13' y='-5' width='17' height='10' rx='3' fill='%23C9B795'/%3E%3C/g%3E%3C/svg%3E")
+      3 29,
+    crosshair;
+}
+.doodle-marks {
+  fill: none;
+  stroke: var(--color-chalk);
+  stroke-opacity: 0.9;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Swept away: the marks go left as dust, as the Erase takes a control. */
+.doodle-dust {
+  animation: doodle-dust 400ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+@keyframes doodle-dust {
+  to {
+    opacity: 0;
+    transform: translateX(-28px);
+    filter: blur(2px);
+  }
+}
+
+/* While the chalk is up the footer line says so, once; the line's links
+   wait under it. The status is in the page at every moment, so it reads. */
+.footer-doodling {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.site-footer.is-doodling .footer-doodling {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  color: var(--color-chalk-muted);
+  font-size: 13px;
+}
+.footer-doodling .hand {
+  margin-right: 10px;
+  color: var(--color-yellow);
+  font-size: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tray-doodle-stick {
+    transition: none;
+  }
+  .doodle-dust {
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .tray-doodle {
+    border: 2px solid transparent;
+  }
+  .tray-doodle[aria-pressed='true'] {
+    border-color: Highlight;
+  }
+  .tray-doodle-chalk,
+  .tray-doodle-sleeve,
+  .tray-doodle-shadow {
+    fill: CanvasText;
+  }
+  .tray-doodle-slot {
+    stroke: CanvasText;
+    opacity: 1;
+  }
+  .doodle-marks {
+    stroke: CanvasText;
+    filter: none;
+  }
+  .doodle-layer {
+    cursor: crosshair;
+  }
+}
+@media print {
+  .tray-doodle,
+  .doodle-layer {
+    display: none;
+  }
+}

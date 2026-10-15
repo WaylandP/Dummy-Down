@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { chalkFor } from './chalks'
+import { useDoodle } from './doodle-state'
 import { cueSmudge, useSmudgeCue, useSmudgeOn } from './tray-state'
 
 /** How long each gesture lasts; the sweep is the Erase's own 400 ms. */
@@ -67,13 +68,16 @@ const mouths: Record<Exclude<Pose, 'sneeze'>, string> = {
  * the cursor and a puff of dust rises now and then; he sweeps the board with
  * the Erase, nudges the chalk that was picked up out of the tray, sneezes
  * when clicked or when a practice answer is right, and dozes after a minute
- * with nothing to do. He never speaks: the markup is hidden from assistive
- * technology, nothing in it takes focus, and the footer switch is the only
- * control. Off, under reduced motion and in print he is a plain eraser.
+ * with nothing to do. With the doodle chalk up his eyes follow its tip, and
+ * a click sweeps the marks away instead. He never speaks: the markup is
+ * hidden from assistive technology, nothing in it takes focus, and the
+ * footer switch is the only control. Off, under reduced motion and in print
+ * he is a plain eraser, though he still wipes.
  */
 export function Smudge() {
   const on = useSmudgeOn()
   const cue = useSmudgeCue()
+  const { up: doodling, marks } = useDoodle()
   const body = useRef<SVGSVGElement | null>(null)
   // A cue from before this Smudge was mounted is already spent: nothing replays.
   const [spent, setSpent] = useState(() => cue?.at ?? 0)
@@ -87,13 +91,14 @@ export function Smudge() {
     return () => window.clearTimeout(timer)
   }, [cue])
 
-  // Pointer only: his pupils follow a mouse, never a finger. The look is a
-  // style on the svg, so following the cursor renders nothing.
+  // Pointer only: his pupils follow a mouse, never a finger, except the one
+  // drawing with the doodle chalk. The look is a style on the svg, so
+  // following the cursor renders nothing.
   useEffect(() => {
     if (!on || window.matchMedia?.(still).matches) return
     const look = (event: PointerEvent) => {
       const svg = body.current
-      if (!svg || event.pointerType !== 'mouse') return
+      if (!svg || (event.pointerType !== 'mouse' && !doodling)) return
       const box = svg.getBoundingClientRect()
       const dx = event.clientX - (box.left + box.width / 2)
       const dy = event.clientY - (box.top + box.height * 0.44)
@@ -104,7 +109,7 @@ export function Smudge() {
     }
     window.addEventListener('pointermove', look, { passive: true })
     return () => window.removeEventListener('pointermove', look)
-  }, [on])
+  }, [on, doodling])
 
   // A minute with no input and he dozes; any key or pointer wakes him.
   useEffect(() => {
@@ -154,7 +159,11 @@ export function Smudge() {
       className={`smudge${on ? '' : ' is-off'}`}
       data-pose={on ? pose : undefined}
       aria-hidden="true"
-      onClick={on ? () => cueSmudge('sneeze') : undefined}
+      onClick={() => {
+        // Doodle marks go with his sweep, face or no face; otherwise a sneeze.
+        if (marks) cueSmudge('sweep')
+        else if (on) cueSmudge('sneeze')
+      }}
     >
       <svg
         ref={body}

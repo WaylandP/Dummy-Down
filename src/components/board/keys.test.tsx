@@ -39,7 +39,7 @@ describe('The keys', () => {
     expect(close).toHaveFocus()
     expect(
       [...dialog.querySelectorAll('dt')].map((term) => term.textContent),
-    ).toEqual(['j', 'k', '123', '/', '?', 'Esc'])
+    ).toEqual(['j', 'k', '123', '/', 'd', '?', 'Esc'])
     expect(
       [...dialog.querySelectorAll('dd')].map((term) => term.textContent),
     ).toEqual([
@@ -47,6 +47,7 @@ describe('The keys', () => {
       'Previous control',
       'Pick a chalk: white, yellow, blue',
       'Find a control',
+      'Pick up or put down the doodle chalk',
       'Show these keys',
       'Close',
     ])
@@ -183,8 +184,10 @@ describe('The tray with a control on the board', () => {
       'white chalk: new to this',
       'yellow chalk: runs systems',
       'blue chalk: assessment',
+      'Doodle chalk',
     ])
     expect(picks.map((pick) => pick.getAttribute('aria-pressed'))).toEqual([
+      'false',
       'false',
       'false',
       'false',
@@ -212,14 +215,19 @@ describe('The tray with a control on the board', () => {
     expect(tray.querySelector('[data-lifted]')).toBeNull()
   })
 
-  it('stays decorative on pages without a control', () => {
+  it('stays decorative on pages without a control, but for the doodle chalk', () => {
     render(<App />)
     expect(
       screen.queryByRole('navigation', { name: 'Pick a chalk' }),
     ).toBeNull()
-    expect(document.querySelector('.chalk-tray')).toHaveAttribute(
-      'aria-hidden',
-      'true',
-    )
+    const tray = document.querySelector('.chalk-tray')!
+    for (const decoration of tray.querySelectorAll(
+      '.tray-stick, .tray-legend, .smudge',
+    ))
+      expect(decoration).toHaveAttribute('aria-hidden', 'true')
+    expect(within(tray as HTMLElement).getAllByRole('button')).toHaveLength(1)
+    expect(
+      within(tray as HTMLElement).getByRole('button', { name: 'Doodle chalk' }),
+    ).toHaveAttribute('aria-pressed', 'false')
   })
 })

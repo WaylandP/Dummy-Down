@@ -187,8 +187,22 @@ request each; each line says whether it is built.
    the board (ticked, counted from the data), next and later, in the
    roadmap's words; "Directions, not dates." and a link to suggest something
    on GitHub.
-7. **The doodle chalk** — `Doodle.html` (not built). A chalk beside Smudge for
-   the reader's own marks, kept on this screen only.
+7. **The doodle chalk** — `Doodle.html` (built). A fat white stick with a
+   kraft-paper sleeve in the tray, just left of Smudge, on screens 768 wide
+   or more: a button, "Doodle chalk", pressed while the chalk is up; `d`
+   picks it up and puts it down, Esc and the slot put it down. Up, the stick
+   leaves the tray (its slot keeps a dashed outline), the cursor is a chalk
+   tip, and a drawing layer covers the content only, anchored to it, so the
+   marks scroll with the text. Strokes are chalk white at .9, about 3px,
+   smoothed, with the chalk filter; CanvasText under forced colors. The
+   footer line reads "Doodling. Your marks stay on this screen only. Esc or
+   the tray puts the chalk back. Click Smudge to wipe them.", once, politely.
+   Smudge's eyes follow the tip; his click sweeps the marks to dust, as do the
+   Erase between controls and a page change; a resize that changes the
+   content's width clears them; under reduced motion every wipe is a cut.
+   Links under the layer are inert, the wheel still scrolls, one finger draws
+   and two scroll, and print never includes the marks. The marks are memory
+   only: never stored, never sent, never in analytics.
 
 ## Features, in build order
 

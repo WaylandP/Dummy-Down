@@ -133,6 +133,9 @@ The Practice page adds only `/practice` to that same allowlist. Its situation,
 question, level and search queries are removed; question choices and feedback
 are not collected.
 
+The doodle chalk's marks are drawn in memory on the page and nowhere else: not
+stored, not sent, not counted. No event records that the chalk was picked up.
+
 Optional learning progress is a separate local feature. Its opt-in stores public
 catalog and checked-choice identifiers on this origin; it never sends those
 records to usage measurement. Progress permission and analytics permission do not

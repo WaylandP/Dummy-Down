@@ -125,7 +125,7 @@ test('coverage is lazy and has recoverable chunk failure', async ({ page }) => {
     .getByRole('navigation', { name: 'Who’s reading?' })
     .getByRole('link', { name: /^I’m preparing for an assessment\./ })
     .click()
-  await expect(page.getByRole('status')).toHaveText(
+  await expect(page.locator('#main').getByRole('status')).toHaveText(
     /coverage report could not load/,
   )
   await expect(page.getByRole('link', { name: 'Browse lessons' })).toBeVisible()
