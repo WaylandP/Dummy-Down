@@ -141,3 +141,59 @@ squash-merged after its own review pass.
   remember-control, Rev 3) now use the suite's five-second allowance; they
   timed out only under full-suite load.
 - **Feature 5, the CedarPoint story**, remains untouched.
+
+## October 15 fixes
+
+The seven pull requests from the owner's review are merged, each green in CI
+and squash-merged after its own review pass, in the order the note gave them,
+and the Home hero asked for afterwards followed as an eighth. Main was pulled
+first; PR #63 (the approved Home hero mockup, from another session) landed
+mid-round and every later branch was rebased onto it.
+
+| PR                                                          | What a visitor can do now                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [#59](https://github.com/WaylandP/cipher-and-chalk/pull/59) | The shell. The footer line (disclaimer, Disclaimer & terms, Assessment objectives, Usage & privacy, Smudge: on/off, Open source · MIT) sits directly above the tray on every page; at 1024×640 and up the header, the footer line and the tray stay put and only the content scrolls, with scroll padding so a focused element is never under a band and the scrolling keys reaching the content from a fresh load; the nav is Home · Controls · Glossary · Practice · Timeline · About with Controls lit for every `/learn` address; the tray's fourth stub is gone; the content ends above Smudge at every size.                                             |
+| [#60](https://github.com/WaylandP/cipher-and-chalk/pull/60) | Controls with Learn merged in, from `Controls.html`: a rail of every control beside the control at desktop widths (a find line, "Start here" through the fifteen Level 1 basics as `path=basics` with "n of 15" and the dashes, the level switch, the fourteen families with their counts, collapsible, the open one listing its controls); the overview when nothing is chosen; a phone sheet "All controls" with "Start here" as one line; Home's first row opens the first control on the path in white chalk.                                                                                                                                              |
+| [#61](https://github.com/WaylandP/cipher-and-chalk/pull/61) | Home says what this is, from `Home.html`: the "What this is" column with the counts from the catalog, "Later" as the roadmap's Phase 4 list ("Being researched; not here yet."), the first row "Start with Level 1: fifteen basics, one control at a time, in plain words.", and no copy that claims only Level 2.                                                                                                                                                                                                                                                                                                                                             |
+| [#62](https://github.com/WaylandP/cipher-and-chalk/pull/62) | The Glossary shows every word: an "All" button before A, pressed by default, every word under its letter heading in the two-column flow, the column scrolling on its own in the desktop frame; the letters filter as before and keep their place in the address.                                                                                                                                                                                                                                                                                                                                                                                               |
+| [#64](https://github.com/WaylandP/cipher-and-chalk/pull/64) | Practice runs in place, from `Practice.html`: the thirteen situations on the left (a find line, the level switch, "Keep my progress on this browser: off/on" with "Hide finished" once on), the one picked running on the right with "Question n of m", the choices as rows with chalk circles, the feedback under the answer, "Next question →", "Read the requirement", the chalk talk where there is one and "A common mix-up" struck through in chalk. `/practice?activity=<id>&q=<n>`; older links keep working; a phone shows the list first and a situation full width with a way back.                                                                 |
+| [#65](https://github.com/WaylandP/cipher-and-chalk/pull/65) | About says what's next, from `About.html`: the "What's next on the board" column (On the board ticked with the counts from the data; Next: the CedarPoint story and review by qualified CMMC professionals; Later: more frameworks with the Phase 4 list, animated chalk talks, flashcards, two controls side by side), "Directions, not dates." and a link to a new issue; `docs/ROADMAP.md` carries the same directions and nothing more.                                                                                                                                                                                                                    |
+| [#66](https://github.com/WaylandP/cipher-and-chalk/pull/66) | The doodle chalk, from `Doodle.html`: a stick with a kraft-paper sleeve just left of Smudge on screens 768 wide or more; a button "Doodle chalk" (`d`, Esc, the slot); up, the slot keeps a dashed outline, the cursor is a chalk tip and a layer over the content only takes smoothed chalk strokes that scroll with the text and live in memory only; the footer line says "Doodling. …"; Smudge's eyes follow the tip and his click, the Erase and a page change sweep the marks to dust (a cut under reduced motion); a resize that changes the width clears them; links under it are inert, the wheel scrolls, two fingers scroll, print leaves them out. |
+| [#67](https://github.com/WaylandP/cipher-and-chalk/pull/67) | The Home hero, from `HomeHero.html` (your note after the queue): a yellow kicker, the one headline "CMMC, in plain words." at 112px, one line with the count from the catalog, "Pick up a chalk to start." with the three chalks as the main action (each sets its chalk; the stick lifts under the pointer or focus, not under reduced motion), then the search line; the "What this is" column, "Who's reading?" and the decode example are gone; the headline names CMMC on purpose and `THE_BOARD.md` says it is reworded when a second framework ships. The discover unit test now awaits its result counts instead of reading them in the click's tick.  |
+
+### Skipped, and why
+
+- Nothing from the note was skipped. Where a mockup and the note disagreed,
+  the mockup won on look and the note on behavior, as asked.
+- One thing from the Home hero note could not be done as written: "the
+  headline drops to about 56px and stays two lines" on a phone. In the chalk
+  hand "in plain words." is 7.04em wide, so 56px is 394px against the 350px
+  between a 390 phone's gutters, and it wrapped to three lines. Two lines
+  won: the headline is sized from the content's width (about 50px at 390,
+  56px from 414 up).
+
+### Decisions you may want to revisit
+
+- **Practice.** The old index's revisit marks and status filters are not on
+  the new page (the control page's Practice tab keeps them); its "Activity
+  results" status is "Situation results"; the address may look back at an
+  answered question, never ahead; the project's example sits seventh, where
+  its control's ID falls in the catalog, as the mockup lists it; the struck
+  claim is a line-through in chalk yellow, so a wrapped claim is struck on
+  every line.
+- **About.** The column scrolls with the page rather than sticking, so
+  nothing is cut off at 1024×640; the page says the review status once, in
+  the column, so the "How the explanations are made." paragraph no longer
+  repeats it; `docs/ROADMAP.md` gained three Phase 4 lines and a CedarPoint
+  line, all "Planned for future development", and counts the glossary at 54.
+- **The doodle chalk.** Putting the chalk down takes the marks with it (the
+  note's "no drawing layer while the chalk is down"); the layer takes every
+  touch and scrolls the content itself under two fingers; the marks stay
+  through a tab or chalk change on the same control; Smudge wipes even with
+  his face off; the tray is no longer hidden from assistive technology as a
+  whole, only its sticks, legend and Smudge, and the doodle chalk stands in
+  the "Pick a chalk" navigation on a control page.
+- **The Home hero.** Up to 1100 wide the search takes a row of its own so
+  the chalk labels keep one line; at 1024×640 Home scrolls inside the frame
+  (nothing sits under Smudge); each chalk link's name is its label and its
+  line. The README's Home screenshot is regenerated.
