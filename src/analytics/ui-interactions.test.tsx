@@ -1,4 +1,4 @@
-import { act, render, screen, within } from '@testing-library/react'
+import { act, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from '../App'
@@ -20,15 +20,18 @@ describe('Usage interaction wiring', () => {
     const user = userEvent.setup()
     render(<App />)
     await screen.findByRole('region', { name: 'Control Explorer' })
-    expect(trackUsage).toHaveBeenCalledWith({
-      name: 'control_view',
-      lesson: {
-        frameworkId: 'cmmc',
-        editionId: 'readme-example',
-        controlKey: 'authorized-access',
-      },
-      mode: 'beginner',
-    })
+    // The view is counted once the lazy page subscribes to the address.
+    await waitFor(() =>
+      expect(trackUsage).toHaveBeenCalledWith({
+        name: 'control_view',
+        lesson: {
+          frameworkId: 'cmmc',
+          editionId: 'readme-example',
+          controlKey: 'authorized-access',
+        },
+        mode: 'beginner',
+      }),
+    )
     vi.mocked(trackUsage).mockClear()
     await user.click(screen.getByRole('tab', { name: 'Beginner' }))
     expect(trackUsage).not.toHaveBeenCalled()

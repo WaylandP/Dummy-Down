@@ -60,6 +60,13 @@ source record under `docs/sources/`.
   and nothing else, is locked by tests to the pinned text and is recorded in
   `docs/sources/cmmc-clause-map-2026-10-15.md`; 118 of the 149 controls are
   mapped and the rest show the sentence plain.
+- [PR #45](https://github.com/WaylandP/cipher-and-chalk/pull/45): the Rev 3
+  view. On every Level 2 control, the pinned Rev 2 requirement beside its NIST
+  SP 800-171 Revision 3 counterpart, both verbatim, with one sentence in chalk
+  on what changed and a link to where a withdrawn requirement went. The
+  publication is pinned in `docs/sources/nist-sp-800-171-r3-2026-10-15.md`;
+  the data is `src/data/cmmc-rev3-map.json`. CMMC stays pinned to Rev 2; the
+  view says so once.
 
 ## Week 2 content and trust — October 14, 2026
 

@@ -1,6 +1,10 @@
 import type { ExplanationMode, ReferenceControl } from '../../types/content'
 import { lessonIdentity } from '../../state/explorer-state'
+import { glossaryTerms } from '../../data/content'
+import { getLevelOneTermIds } from '../../data/level-one-terms'
 import { chalkFor } from '../board/chalks'
+import { ChalkText } from './ChalkTerm'
+import { markBlocks } from './term-matching'
 import { ChalkPicker } from './ChalkPicker'
 import { Reflection } from './Reflection'
 import type { PerspectiveDraftState } from './usePerspectiveDraft'
@@ -30,6 +34,24 @@ export function ExplainTab({
         <PerspectiveState state={draft} />
       </div>
     )
+  // Only the words listed for the lesson are marked; free text is never linked.
+  const words = getLevelOneTermIds(control).flatMap((id) => {
+    const term = glossaryTerms.find((item) => item.id === id)
+    return term ? [term] : []
+  })
+  // The view's blocks in reading order; a word is marked at its first mention.
+  const text = draft.draft
+  const blocks =
+    mode === 'beginner'
+      ? [text.beginner.meaning, text.beginner.example]
+      : mode === 'it-cyber'
+        ? [
+            text.technical.focus,
+            text.technical.example,
+            text.technical.watchFor,
+          ]
+        : [text.compliance.focus, ...text.compliance.reviewQuestions]
+  const marked = markBlocks(blocks, words)
   return (
     <div className="explain">
       <ChalkPicker value={mode} onChange={onModeChange} idPrefix={idPrefix} />
@@ -42,11 +64,7 @@ export function ExplainTab({
         style={{ color: chalk.cssColor }}
       >
         <p className="explain-text">
-          {mode === 'beginner'
-            ? draft.draft.beginner.meaning
-            : mode === 'it-cyber'
-              ? draft.draft.technical.focus
-              : draft.draft.compliance.focus}
+          <ChalkText runs={marked[0]!} />
         </p>
         <div className="explain-margin">
           <svg
@@ -61,21 +79,29 @@ export function ExplainTab({
           {mode === 'beginner' ? (
             <>
               <h2>At work</h2>
-              <p>{draft.draft.beginner.example}</p>
+              <p>
+                <ChalkText runs={marked[1]!} />
+              </p>
             </>
           ) : mode === 'it-cyber' ? (
             <>
               <h2>One way to do it</h2>
-              <p>{draft.draft.technical.example}</p>
+              <p>
+                <ChalkText runs={marked[1]!} />
+              </p>
               <h2>Watch for</h2>
-              <p>{draft.draft.technical.watchFor}</p>
+              <p>
+                <ChalkText runs={marked[2]!} />
+              </p>
             </>
           ) : (
             <>
               <h2>Ask</h2>
               <ul>
-                {draft.draft.compliance.reviewQuestions.map((question) => (
-                  <li key={question}>{question}</li>
+                {text.compliance.reviewQuestions.map((question, index) => (
+                  <li key={question}>
+                    <ChalkText runs={marked[index + 1]!} />
+                  </li>
                 ))}
               </ul>
             </>
