@@ -19,6 +19,13 @@ analytics allowlist do not change.
   self-hosted; the favicon, app icon and social card regenerated from the mark;
   Changa One, Barlow, Kalam, IBM Plex Sans and Space Grotesk retired. Page
   layouts keep their previous structure inside the shell until their own PRs.
+- [PR #40](https://github.com/WaylandP/cipher-and-chalk/pull/40): Home. The
+  question in chalk, a search line on a chalk underline that submits the same
+  discovery address as the header's find line, the fourteen families with
+  their catalog counts as links to filtered discovery, and a bottom row with
+  "Start here" or "Last time" beside the publication version. Optional saving
+  now remembers the control opened last, under its own key, deleted with the
+  rest. The study desk is retired.
 
 ## Week 2 content and trust — October 14, 2026
 
