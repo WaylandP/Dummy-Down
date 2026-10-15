@@ -4,6 +4,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 import PracticePage from './PracticePage'
 import { learningActivities } from '../data/learning'
 import { sitePage } from '../state/site-page'
+import { CHALK_PREFERENCE_KEY } from '../state/chalk-preference'
 
 afterEach(() => window.history.replaceState(null, '', '/'))
 
@@ -78,5 +79,16 @@ describe('practice index', () => {
     expect(
       screen.getByRole('link', { name: 'Browse all activities' }),
     ).toHaveAttribute('href', '/practice')
+  })
+
+  it('opens each activity in the chalk picked on Home, when one is remembered', () => {
+    window.localStorage.setItem(CHALK_PREFERENCE_KEY, 'compliance')
+    window.history.replaceState(null, '', '/practice')
+    render(<PracticePage />)
+    for (const activity of learningActivities)
+      expect(
+        screen.getByRole('link', { name: activity.title }),
+      ).toHaveAttribute('href', expect.stringContaining('mode=compliance'))
+    window.localStorage.removeItem(CHALK_PREFERENCE_KEY)
   })
 })

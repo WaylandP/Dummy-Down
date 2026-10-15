@@ -2,6 +2,7 @@ import { fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from '../../App'
+import { learnUrl } from './learn-url'
 import { explorerCatalog, referenceControls } from '../../data/content'
 import { filterControls } from '../../data/control-search'
 import {
@@ -41,7 +42,7 @@ describe('The Board shell', () => {
     )
   })
 
-  it('puts the lockup and the five places to go in the header', () => {
+  it('puts the lockup and the seven places to go in the header, the one you are on under a chalk stroke', () => {
     render(<App />)
     expect(
       screen.getByRole('link', { name: 'Cipher & Chalk home' }),
@@ -56,12 +57,20 @@ describe('The Board shell', () => {
           link.getAttribute('aria-current'),
         ]),
     ).toEqual([
+      ['Home', '/', null],
       ['Controls', '/learn?view=discover&collection=references', null],
+      ['Learn', learnUrl(), null],
       ['Glossary', '/glossary', 'page'],
       ['Practice', '/practice', null],
       ['Timeline', '/timeline', null],
       ['About', '/about', null],
     ])
+    expect(learnUrl()).toContain('control=ac-l1-b-1-i')
+    expect(learnUrl()).toContain('mode=beginner')
+    const strokes = nav
+      .getAllByRole('link')
+      .map((link) => link.querySelector('.nav-stroke') !== null)
+    expect(strokes).toEqual([true, true, true, true, true, true, true])
     expect(screen.queryByRole('link', { name: 'Coverage' })).toBeNull()
   })
 
@@ -157,10 +166,15 @@ describe('The Board shell', () => {
     expect(screen.queryByRole('search', { name: 'Find a control' })).toBeNull()
   })
 
-  it('leaves finding to the search line on Home and drops the tray legend there', () => {
+  it('keeps the find button on Home beside its own search line, and drops the tray legend there', () => {
     window.history.replaceState(null, '', '/')
     render(<App />)
-    expect(screen.queryByRole('button', { name: 'Find a control' })).toBeNull()
+    expect(
+      screen.getByRole('button', { name: 'Find a control' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('search', { name: 'Find a control' }),
+    ).toHaveAttribute('action', '/learn')
     expect(document.querySelector('.chalk-tray')).not.toHaveTextContent(
       'new to this',
     )

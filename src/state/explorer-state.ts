@@ -91,7 +91,7 @@ export type ExplorerIntent =
   | { readonly type: 'set-level'; readonly level: string }
   | { readonly type: 'clear-filters' }
   | { readonly type: 'back-to-discovery' }
-  | { readonly type: 'recover-discovery' }
+  | { readonly type: 'recover-discovery'; readonly mode?: ExplanationMode }
   | { readonly type: 'open-example'; readonly mode: ExplanationMode }
   | { readonly type: 'show-lesson-in-results' }
 
@@ -241,9 +241,15 @@ function normalizeFilters(
  * location.search -> strict raw decoding -> explicit state -> exact local lesson.
  * Intent transitions alone may clear a selection; history replay never does.
  */
+export interface ParseOptions {
+  /** The chalk for an address that names none; white when absent. */
+  readonly defaultMode?: ExplanationMode
+}
+
 export function parseExplorerSearch(
   search: string,
   catalog: ExplorerCatalog,
+  options: ParseOptions = {},
 ): ParsedExplorerState {
   const values = new Map<string, string>()
   for (const pair of search.replace(/^\?/, '').split('&')) {
@@ -266,7 +272,11 @@ export function parseExplorerSearch(
       return invalid('malformed-encoding')
     }
   }
-  if (!values.size) return ready(defaultState(catalog))
+  if (!values.size)
+    return ready({
+      ...defaultState(catalog),
+      mode: options.defaultMode ?? 'beginner',
+    })
 
   const view = values.get('view')
   if (view !== 'lesson' && view !== 'discover') return invalid('invalid-view')
@@ -326,9 +336,12 @@ export function parseExplorerSearch(
     rawChalk && Object.hasOwn(chalkColours, rawChalk)
       ? chalkColours[rawChalk as ChalkColour]
       : null
+  // An address without a mode opens in the chalk the visitor picked on Home.
   const mode = namesChalk
     ? (chalk ?? 'beginner')
-    : (modes.find((item) => item === rawMode) ?? 'beginner')
+    : (modes.find((item) => item === rawMode) ??
+      options.defaultMode ??
+      'beginner')
   if (!namesChalk && values.has('mode') && rawMode !== mode)
     notices.push('mode-reset')
   if (namesChalk && !chalk) notices.push('chalk-reset')
@@ -469,7 +482,7 @@ export function transitionExplorerState(
   if (intent.type === 'recover-discovery') {
     next = ready({
       view: 'discover',
-      mode: 'beginner',
+      mode: intent.mode ?? 'beginner',
       filters: emptyFilters(defaultCatalog(catalog)),
     })
   } else if (intent.type === 'open-example') {

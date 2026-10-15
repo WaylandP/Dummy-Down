@@ -2,6 +2,7 @@ import { defaultLesson, referenceControls } from '../data/content'
 import { createLessonUrl } from '../state/explorer-state'
 import type { ExplanationMode } from '../types/content'
 import { chalkFor } from './board/chalks'
+import { publicationLabel } from './publication-label'
 
 const repositoryUrl = 'https://github.com/WaylandP/cipher-and-chalk'
 const perspectives = [
@@ -47,10 +48,10 @@ export function AboutPage() {
         </p>
         <p>
           This independent, open-source project covers all{' '}
-          {referenceControls.length} CMMC controls from the September 2024 v2.13
-          publications. Each one carries the official requirement, quoted word
-          for word with its page citation, and three perspectives written to
-          explain it.
+          {referenceControls.length} CMMC controls, pinned to{' '}
+          {publicationLabel()}. Each one carries the official requirement,
+          quoted word for word with its page citation, and three perspectives
+          written to explain it.
         </p>
       </section>
       <section id="what-cmmc-is" aria-labelledby="cmmc-title">

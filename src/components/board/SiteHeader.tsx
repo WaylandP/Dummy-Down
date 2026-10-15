@@ -2,6 +2,8 @@ import { useEffect, useId, useRef, useState } from 'react'
 import type { SitePage } from '../../state/site-page'
 import { trackUsage } from '../../analytics/usage'
 import { Lockup } from './Mark'
+import { learnUrl } from './learn-url'
+import { useTrayControl } from './tray-state'
 import {
   findControlAction,
   findControlFields,
@@ -12,7 +14,9 @@ import { FIND_EVENT } from './keys'
 export const browseUrl = '/learn?view=discover&collection=references'
 
 const links = [
+  { page: 'home', href: '/', label: 'Home' },
   { page: 'learn', href: browseUrl, label: 'Controls', section: 'explorer' },
+  { page: 'learn', href: '', label: 'Learn', section: 'explorer' },
   {
     page: 'glossary',
     href: '/glossary',
@@ -29,12 +33,17 @@ const links = [
   section?: 'explorer' | 'glossary'
 }[]
 
-/** The lockup, the five places to go, and a find line that opens on request. */
+/**
+ * The lockup, the seven places to go with a chalk stroke under the one you are
+ * on, and a find line that opens on request. Controls and Learn share the
+ * learn page: Learn is the one lit while a control is on the board.
+ */
 export function SiteHeader({ page }: { readonly page: SitePage }) {
+  const onBoard = useTrayControl() !== null
   // The line is open only on the page it was opened on, so a same-document
   // page change (history, a legacy hash) never leaves a form without its button.
   const [findingOn, setFindingOn] = useState<SitePage | null>(null)
-  const finding = findingOn === page && page !== 'home'
+  const finding = findingOn === page
   const toggle = useRef<HTMLButtonElement>(null)
   const input = useRef<HTMLInputElement>(null)
   const formId = useId()
@@ -55,23 +64,40 @@ export function SiteHeader({ page }: { readonly page: SitePage }) {
     <header className="site-header">
       <Lockup />
       <nav aria-label="Main" className="site-nav">
-        {links.map((link) => (
-          <a
-            key={link.page}
-            href={link.href}
-            aria-current={page === link.page ? 'page' : undefined}
-            onClick={
-              'section' in link
-                ? () =>
-                    trackUsage({ name: 'section_open', section: link.section })
-                : undefined
-            }
-          >
-            {link.label}
-          </a>
-        ))}
+        {links.map((link) => {
+          const current =
+            page === link.page &&
+            (link.page !== 'learn' || (link.label === 'Learn') === onBoard)
+          return (
+            <a
+              key={link.label}
+              href={link.label === 'Learn' ? learnUrl() : link.href}
+              aria-current={current ? 'page' : undefined}
+              onClick={
+                'section' in link
+                  ? () =>
+                      trackUsage({
+                        name: 'section_open',
+                        section: link.section,
+                      })
+                  : undefined
+              }
+            >
+              {link.label}
+              <svg
+                className="nav-stroke chalk"
+                viewBox="0 0 44 5"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M1 3c14-2 28 0 42-1" />
+              </svg>
+            </a>
+          )
+        })}
       </nav>
-      {page !== 'home' && (
+      {
         <button
           ref={toggle}
           type="button"
@@ -96,7 +122,7 @@ export function SiteHeader({ page }: { readonly page: SitePage }) {
             <path d="m20 20-3.5-3.5" />
           </svg>
         </button>
-      )}
+      }
       {finding && (
         <form
           id={formId}

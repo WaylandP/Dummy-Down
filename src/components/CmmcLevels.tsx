@@ -3,6 +3,7 @@ import { referenceControls } from '../data/content'
 import { serializeExplorerSearch } from '../state/explorer-state'
 import type { ExplanationMode } from '../types/content'
 import { trackUsage } from '../analytics/usage'
+import { plainClick } from './families'
 
 const levels = [
   { name: 'Level 1', description: 'Foundational safeguards' },
@@ -10,7 +11,15 @@ const levels = [
   { name: 'Level 3', description: 'Selected enhanced requirements' },
 ]
 
-export function CmmcLevels({ mode }: { mode: ExplanationMode }) {
+interface CmmcLevelsProps {
+  readonly mode: ExplanationMode
+  /** The level filter in force, so the row can mark it. */
+  readonly active?: string
+  /** On the Controls page the links filter in place instead of reloading. */
+  readonly onPick?: (level: string) => void
+}
+
+export function CmmcLevels({ mode, active = '', onPick }: CmmcLevelsProps) {
   return (
     <div id="explorer-levels" className="cmmc-levels">
       <nav aria-label="CMMC levels" className="level-paths">
@@ -18,7 +27,15 @@ export function CmmcLevels({ mode }: { mode: ExplanationMode }) {
           <a
             key={level.name}
             href={`/${serializeExplorerSearch({ view: 'discover', mode, filters: { catalog: 'cmmc', collection: 'references', query: '', family: '', level: level.name } })}#explorer`}
-            onClick={() => {
+            aria-current={active === level.name ? 'true' : undefined}
+            onClick={(event) => {
+              // In place, the explorer's own dispatch reports the filter change.
+              if (onPick) {
+                if (!plainClick(event)) return
+                event.preventDefault()
+                onPick(active === level.name ? '' : level.name)
+                return
+              }
               trackUsage({ name: 'section_open', section: 'explorer' })
               trackUsage({
                 name: 'filter_change',
@@ -38,7 +55,7 @@ export function CmmcLevels({ mode }: { mode: ExplanationMode }) {
                   (control) => control.level === level.name,
                 ).length
               }{' '}
-              source references
+              <span className="level-path-noun">source references</span>
             </span>
           </a>
         ))}

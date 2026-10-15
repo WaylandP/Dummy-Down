@@ -113,10 +113,5 @@ export default function LearningPage() {
       : null,
     mode,
   )
-  return (
-    <>
-      {!onBoard && <h1 className="sr-only">Learning workspace</h1>}
-      <ControlExplorer controller={controller} />
-    </>
-  )
+  return <ControlExplorer controller={controller} />
 }

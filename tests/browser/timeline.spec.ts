@@ -20,7 +20,7 @@ test('the timeline is one screen at 1280×800, with its sources a disclosure awa
 })
 
 for (const width of [320, 390]) {
-  test(`at ${width}px the five places to go are reachable and the timeline stacks`, async ({
+  test(`at ${width}px the seven places to go are reachable and the timeline stacks`, async ({
     page,
   }) => {
     await page.setViewportSize({ width, height: 700 })
@@ -32,16 +32,17 @@ for (const width of [320, 390]) {
     ).toBeLessThanOrEqual(width)
     const nav = page.getByRole('navigation', { name: 'Main' })
     for (const name of [
+      'Home',
       'Controls',
+      'Learn',
       'Glossary',
       'Practice',
       'Timeline',
       'About',
     ])
       await expect(nav.getByRole('link', { name })).toBeVisible()
-    if (width >= 390) {
-      const box = (await nav.boundingBox())!
-      expect(box.height).toBeLessThanOrEqual(48)
-    }
+    // On a phone the places wrap onto a second row, as the control page's tabs do.
+    const box = (await nav.boundingBox())!
+    expect(box.height).toBeLessThanOrEqual(96)
   })
 }

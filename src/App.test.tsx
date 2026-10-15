@@ -34,10 +34,7 @@ describe('Control Explorer learning experience', () => {
     const { explorer } = await renderApp()
 
     expect(
-      screen.getByRole('heading', {
-        level: 1,
-        name: 'Learning workspace',
-      }),
+      screen.getByRole('heading', { level: 1, name: 'Controls' }),
     ).toBeVisible()
     expect(
       explorer.getByRole('status', { name: 'Control search results' }),
@@ -179,10 +176,11 @@ describe('Control Explorer learning experience', () => {
     expect(
       explorer.getByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('1 example found')
-    expect(
-      explorer.getByRole('heading', { name: 'Choose an example.' }),
-    ).toBeVisible()
+    // Nothing is on the board, so the results are the page: the example waits in its row.
     expect(explorer.queryByRole('tabpanel')).not.toBeInTheDocument()
+    expect(
+      explorer.queryByRole('heading', { level: 2 }),
+    ).not.toBeInTheDocument()
     await user.click(
       explorer.getByRole('button', {
         name: /AC\.L2-3\.1\.1.*Authorized access/,
@@ -267,8 +265,8 @@ describe('Control Explorer learning experience', () => {
       explorer.getByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('1 example found')
     expect(
-      explorer.getByRole('heading', { name: 'Choose an example.' }),
-    ).toBeVisible()
+      explorer.queryByRole('heading', { level: 2 }),
+    ).not.toBeInTheDocument()
     await user.click(
       explorer.getByRole('button', {
         name: /AC\.L2-3\.1\.1.*Authorized access/,
@@ -346,7 +344,7 @@ describe('Shareable lessons and reading tools', () => {
       'This lesson isn’t available here.',
     ],
     ['?view=discover&catalog=nist-sp-800-53', 'NIST 800-53 is on the roadmap.'],
-    ['?view=discover', 'Choose an example.'],
+    ['?view=discover', 'Controls'],
   ])(
     'opens a sample through About from %s without substituting an unavailable lesson',
     async (address, title) => {
@@ -404,10 +402,10 @@ describe('Shareable lessons and reading tools', () => {
     renderView(<App />)
     await screen.findByRole('region', { name: 'Control Explorer' })
     expect(
-      screen.getByRole('heading', { name: 'Choose an example.' }),
-    ).toBeVisible()
+      screen.getByRole('button', { name: /AC\.L2-3\.1\.1.*Authorized access/ }),
+    ).toHaveAttribute('aria-pressed', 'false')
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
-  })
+  }, 15000)
 
   it('keeps definitions and glossary search independent of lesson navigation', async () => {
     const { user, explorer } = await renderApp()

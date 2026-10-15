@@ -8,7 +8,7 @@ export function LessonDiagram({
 }: {
   diagram: LearningDiagram
   /** The heading level under the practice title. */
-  level?: 3 | 5
+  level?: 3 | 4 | 5
 }) {
   const prefix = useId()
   const Heading = `h${level}` as const

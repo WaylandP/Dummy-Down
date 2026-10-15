@@ -7,6 +7,7 @@ import { hasVisualExplanation } from '../data/visual-lesson-index'
 import { useLocalProgress } from '../progress/useLocalProgress'
 import { ProgressPreferences } from '../progress/ProgressPreferences'
 import { questionsToRevisit } from '../progress/model'
+import { readChalkPreference } from '../state/chalk-preference'
 
 /** An index of actual activities; never mount or track hidden lessons here. */
 export default function PracticePage() {
@@ -173,7 +174,7 @@ export default function PracticePage() {
             const saved = progress[activity.id]
             const destination = createLessonUrl(
               activity.lesson,
-              'beginner',
+              readChalkPreference() ?? 'beginner',
               new URL('/learn', window.location.origin),
               'practice',
             )

@@ -24,7 +24,7 @@ for (const width of [390, 1440]) {
       await page.goto('/')
       await expect(
         page.getByRole('heading', {
-          name: 'What are you trying to understand?',
+          name: 'Who’s reading?',
         }),
       ).toBeVisible()
       await capture(page, 'home', width)

@@ -106,6 +106,20 @@ source record under `docs/sources/`.
   a practice activity is finished. It never speaks and is hidden from
   assistive technology; a footer switch turns it into a plain stub (remembered
   in this browser only), as reduced motion and print do.
+- [PR #55](https://github.com/WaylandP/cipher-and-chalk/pull/55): Home for
+  the stranger and the Controls page. Home follows `mockups/Home.html`
+  (approved in [PR #53](https://github.com/WaylandP/cipher-and-chalk/pull/53)):
+  "Who's reading?", three rows, one per chalk, that start a newcomer at the
+  first lesson, someone who runs the systems at the fourteen families and
+  someone preparing for an assessment at the objectives, and remember that
+  chalk (`cipher-and-chalk:chalk:v1`) so any address that names no mode opens
+  in it; the search line, "Last time" and a one-line footer. The nav on every
+  page is Home · Controls · Learn · Glossary · Practice · Timeline · About
+  with the chalk stroke under the current item; the version string is on
+  About. The Controls page opens on the families with their counts, filtering
+  in place from real links, the result count with the levels as one row and
+  single-line results, on one screen at 1280×800, with 44px targets; the demo
+  lesson keeps its reader inside the same frame.
 
 ## Week 2 content and trust — October 14, 2026
 

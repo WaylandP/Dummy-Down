@@ -15,6 +15,7 @@ import type {
 } from './explorer-state'
 import type { CatalogControl, Framework } from '../types/content'
 import { trackUsage } from '../analytics/usage'
+import { readChalkPreference } from './chalk-preference'
 
 function trackIntent(intent: ExplorerIntent, parsed: ParsedExplorerState) {
   if (parsed.kind !== 'ready') return
@@ -77,9 +78,16 @@ interface BrowserSnapshot {
  * popstate -> whole-address parse -> optional canonical replace -> publish
  * Neither React rendering nor an updater function writes browser history.
  */
+/** The address, read with the chalk the visitor picked on Home as the default. */
+function parseAddress(catalog: ExplorerCatalog) {
+  return parseExplorerSearch(window.location.search, catalog, {
+    defaultMode: readChalkPreference() ?? undefined,
+  })
+}
+
 function createExplorerStore(catalog: ExplorerCatalog) {
   let snapshot: BrowserSnapshot = {
-    parsed: parseExplorerSearch(window.location.search, catalog),
+    parsed: parseAddress(catalog),
     historyStatus: 'ok',
   }
   let normalizationAttempt: string | null = null
@@ -130,7 +138,7 @@ function createExplorerStore(catalog: ExplorerCatalog) {
     normalizationAttempt = null
     publish(
       normalize({
-        parsed: parseExplorerSearch(window.location.search, catalog),
+        parsed: parseAddress(catalog),
         historyStatus: 'ok',
       }),
     )

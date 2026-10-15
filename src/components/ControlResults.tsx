@@ -71,9 +71,11 @@ export function ControlResults({
               </span>
               <span className="control-item-meta">
                 {control.familyName} <span>·</span>{' '}
-                {control.contentKind === 'educational-example'
-                  ? 'Teaching example'
-                  : 'Source reference'}
+                <span className="control-item-kind">
+                  {control.contentKind === 'educational-example'
+                    ? 'Teaching example'
+                    : 'Source reference'}
+                </span>
               </span>
               {findLearningActivity(lessonIdentity(control)) && (
                 <span className="control-item-practice">
