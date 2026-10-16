@@ -1,0 +1,41 @@
+# Run by hand from the Actions tab. Deletes the branches of merged pull
+# requests whose tips haven't moved since the merge, so nothing unmerged is
+# lost. main, archive/ai-review-records and screenshots (which holds the
+# images pull requests show) are always kept.
+name: Delete merged branches
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: List the branches without deleting them
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete the branches of merged pull requests
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          kept=0; deleted=0
+          gh api "repos/$REPO/pulls?state=closed&per_page=100" --paginate \
+            --jq '.[] | select(.merged_at) | .head.ref + " " + .head.sha' | sort -u > merged.txt
+          while read -r ref sha; do
+            case "$ref" in main|archive/ai-review-records|screenshots) continue ;; esac
+            tip=$(gh api "repos/$REPO/git/ref/heads/$ref" --jq .object.sha 2>/dev/null || true)
+            [ -z "$tip" ] && continue
+            if [ "$tip" != "$sha" ]; then echo "kept (changed since its merge): $ref"; kept=$((kept + 1)); continue; fi
+            if [ "$DRY_RUN" = "true" ]; then echo "would delete: $ref"; else gh api -X DELETE "repos/$REPO/git/refs/heads/$ref" --silent && echo "deleted: $ref"; fi
+            deleted=$((deleted + 1))
+          done < merged.txt
+          echo "### ${deleted} merged branches $([ "$DRY_RUN" = "true" ] && echo 'would be ' || true)deleted, ${kept} kept" >> "$GITHUB_STEP_SUMMARY"
