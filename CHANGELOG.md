@@ -307,6 +307,12 @@ analytics allowlist do not change.
   "That control isn’t on the board." with an "All controls" link, and the
   "CMMC v2.13 · September 2024 snapshot" label leaves the levels row and
   Coverage where it only labelled; every citation keeps its version.
+- [PR #103](https://github.com/WaylandP/cipher-and-chalk/pull/103): Practice
+  keeps "Next question" in view. After an answer the feedback takes focus
+  and the run (on a phone, the page) scrolls only as far as it takes to show
+  the button under it, smoothly or at once under reduced motion; a button
+  already in view stays put. At 1280×800 eight of the 117 answers had pushed
+  it up to 65px below the run, and on a phone four by up to 200px.
 
 ## The Board's features — October 15, 2026
 

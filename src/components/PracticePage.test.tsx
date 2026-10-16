@@ -258,6 +258,71 @@ describe('practice runs in place', () => {
     ).toHaveAttribute('href', expect.stringContaining('mode=compliance'))
   })
 
+  it('after an answer keeps focus on the feedback and scrolls only as far as it takes to show Next question, at once under reduced motion', async () => {
+    // jsdom has no layout: a 768px-tall page, the feedback at 500px and the
+    // button's bottom at the given height.
+    const scroll = vi.fn()
+    const realRect = Element.prototype.getBoundingClientRect
+    let buttonBottom = 904
+    Element.prototype.scrollBy = scroll
+    Element.prototype.getBoundingClientRect = function (this: Element) {
+      const at = (top: number, bottom: number) =>
+        ({
+          top,
+          bottom,
+          left: 0,
+          right: 0,
+          width: 0,
+          height: bottom - top,
+          x: 0,
+          y: top,
+          toJSON() {},
+        }) as DOMRect
+      if (this.classList.contains('practice-run-next'))
+        return at(buttonBottom - 44, buttonBottom)
+      if (this.classList.contains('practice-run-feedback')) return at(500, 600)
+      return realRect.call(this)
+    }
+    Object.defineProperty(document.documentElement, 'clientHeight', {
+      configurable: true,
+      value: 768,
+    })
+    try {
+      for (const [reduced, bottom, expected] of [
+        [false, 904, 136],
+        [true, 904, 136],
+        // Already in view: the page stays where it is.
+        [false, 700, null],
+      ] as const) {
+        vi.stubGlobal('matchMedia', (query: string) => ({
+          // A desktop, with or without a request for less motion.
+          matches: query.includes('reduce') ? reduced : true,
+          media: query,
+          addEventListener() {},
+          removeEventListener() {},
+        }))
+        buttonBottom = bottom
+        scroll.mockClear()
+        const { user, run, choice, unmount } = open()
+        const question = first.questions[0]!
+        await user.click(choice(question.choices[0]!.label))
+        // The feedback takes focus without the browser's own scroll.
+        expect(run().getByRole('status')).toHaveFocus()
+        if (expected === null) expect(scroll).not.toHaveBeenCalled()
+        else
+          expect(scroll).toHaveBeenCalledExactlyOnceWith({
+            top: expected,
+            behavior: reduced ? 'instant' : 'smooth',
+          })
+        unmount()
+      }
+    } finally {
+      delete (Element.prototype as Partial<Element>).scrollBy
+      Element.prototype.getBoundingClientRect = realRect
+      Reflect.deleteProperty(document.documentElement, 'clientHeight')
+    }
+  })
+
   it('finishes a situation and offers it again from the first question', async () => {
     const { user, run, address, choice } = open(
       `/practice?activity=${first.id}`,

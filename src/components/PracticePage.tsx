@@ -427,6 +427,7 @@ function PracticeRun({
   const prompt = useRef<HTMLParagraphElement>(null)
   const feedback = useRef<HTMLDivElement>(null)
   const done = useRef<HTMLParagraphElement>(null)
+  const onward = useRef<HTMLButtonElement>(null)
   const focusNext = useRef<'prompt' | 'feedback' | 'done' | null>(null)
   // The mix-up's heading sits one level under the title.
   const Sub = Title === 'h1' ? 'h2' : 'h3'
@@ -454,10 +455,20 @@ function PracticeRun({
   const anyAnswered = Object.keys(entry.checkedAnswers).length > 0
 
   useEffect(() => {
-    if (focusNext.current === 'prompt') prompt.current?.focus()
-    if (focusNext.current === 'feedback') feedback.current?.focus()
-    if (focusNext.current === 'done') done.current?.focus()
+    const target = focusNext.current
     focusNext.current = null
+    if (target === 'prompt') prompt.current?.focus()
+    // After an answer, and after the last one, focus goes to the line that
+    // says so, and the button that goes on stays in view under it.
+    const line =
+      target === 'feedback'
+        ? feedback.current
+        : target === 'done'
+          ? done.current
+          : null
+    if (!line) return
+    line.focus({ preventScroll: true })
+    revealThrough(line, onward.current)
   }, [shown, answered, entry.completed])
 
   function choose(choiceId: string) {
@@ -659,6 +670,7 @@ function PracticeRun({
             <div className="practice-run-actions">
               {entry.completed ? (
                 <button
+                  ref={onward}
                   type="button"
                   className="practice-run-next"
                   onClick={again}
@@ -667,6 +679,7 @@ function PracticeRun({
                 </button>
               ) : (
                 <button
+                  ref={onward}
                   type="button"
                   className="practice-run-next"
                   onClick={next}
@@ -712,6 +725,53 @@ function PracticeRun({
       </div>
     </article>
   )
+}
+
+/** What scrolls `element`: the run on a desktop, the page below that. */
+function scrollerOf(element: HTMLElement): HTMLElement {
+  for (let node = element.parentElement; node; node = node.parentElement) {
+    const { overflowY } = getComputedStyle(node)
+    if (
+      (overflowY === 'auto' || overflowY === 'scroll') &&
+      node.scrollHeight > node.clientHeight
+    )
+      return node
+  }
+  return (document.scrollingElement ?? document.documentElement) as HTMLElement
+}
+
+/**
+ * Scrolls the least amount that shows `to` (the button that goes on) under
+ * `from` (the line that says how it went): not at all when `to` is already in
+ * view, and never so far that `from` leaves the top. It keeps the scroller's
+ * own scroll padding from the edge, and moves instantly when the visitor
+ * asked for less motion.
+ */
+function revealThrough(from: HTMLElement, to: HTMLElement | null) {
+  if (!to) return
+  const scroller = scrollerOf(to)
+  const page = scroller === document.scrollingElement
+  const top = page
+    ? 0
+    : scroller.getBoundingClientRect().top + scroller.clientTop
+  const height = page
+    ? document.documentElement.clientHeight
+    : scroller.clientHeight
+  const below = to.getBoundingClientRect().bottom - (top + height)
+  if (below <= 0 || typeof scroller.scrollBy !== 'function') return
+  const style = getComputedStyle(scroller)
+  const room = parseFloat(style.scrollPaddingBottom) || 0
+  const headroom =
+    from.getBoundingClientRect().top -
+    (top + (parseFloat(style.scrollPaddingTop) || 0))
+  const by = Math.ceil(Math.min(below + room, headroom))
+  if (by <= 0) return
+  scroller.scrollBy({
+    top: by,
+    behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+      ? 'instant'
+      : 'smooth',
+  })
 }
 
 /** The scenario's steps, each its title and what happens, compact. */
