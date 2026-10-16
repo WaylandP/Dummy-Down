@@ -78,7 +78,7 @@ not establish it.
   catalog) to Controls filtered to Level 1 with the first Level 1 control on
   the board in white, "I run the systems" ("The fourteen families.") to the
   Controls page in yellow, "I'm
-  preparing for an assessment" ("Examine, interview, test.") to the
+  preparing for an assessment" ("Every objective, quoted.") to the
   assessment objectives in blue; the stick lifts a few pixels under the
   pointer or keyboard focus (not under reduced motion; the focus ring stays).
   At the end of that row, "Or find a control…", the search line (an input on
@@ -88,23 +88,23 @@ not establish it.
   reading?", no decode example. The headline names CMMC on purpose; it is
   reworded when a second framework ships. Beside the hero, from the kicker
   down to just above "Pick up a chalk to start." with a hairline rule on its
-  left (`mockups/2026-10-15/HomeChalkTalk.html`), the chalk talk "CMMC in
-  sixty seconds": eight scenes of 7.5 seconds from `src/data/chalk-talk.ts`,
-  each a caption of twenty words or fewer with its pinned sources, drawing
-  one diagram part by part (strokes along their length, lettering left to
-  right, chalk with yellow arrows and level labels); a 44px play/pause
-  button, a chalk dash per scene that jumps to it (44px tall, 24 to 32px
-  wide, sharing the row), the time in mono, the caption under the drawing,
-  glossary words in it opening their popovers. In the DOM the talk follows
-  the chalks and the search, as on a phone's screen. It plays once on a
-  desktop, pauses while the tab is hidden or a caption's word has focus,
-  never loops,
-  and ends on "Watch again", which has Smudge sweep the board before it
-  starts over; under reduced motion the finished drawing stands with the
-  captions stepped by Previous and Next; the drawing is aria-hidden and the
-  captions are an ordered list in a region of that name, the current one
-  marked; on a phone it follows the chalks and the search and waits for
-  play. No audio, no analytics events. Choosing a chalk remembers it under
+  left (`mockups/2026-10-15/SixtySeconds.html`), "CMMC in sixty seconds": a
+  still of the drawing's finished clock, cropped to the dial, under the
+  title in yellow chalk (an `h2` naming the region), every word on it 11px or
+  more, then a 44px play button, "1:00" and "Three years of CMMC Level 2,
+  drawn in one minute."; in the DOM it follows the chalks and the search, as
+  on a phone's screen, and nothing plays on its own. Play, or a click on the
+  still, opens the whole drawing in a modal dialog from 0:00: the 960×600
+  board (Level 2 as a three-year clock with SPRS at its hub beside the notes,
+  eight chapters drawn stroke by stroke with a chalk stick at the tip), the
+  player (play/pause/replay, a chaptered scrub bar, the time in mono, the
+  speed), the caption with its glossary popovers and a note on Phase 2 with
+  a link to the timeline, sized to fit without scrolling at 1024×768 and
+  larger and a full-screen sheet on a phone with the player docked; Escape
+  and Close return focus to the play button, its keys work only inside it
+  and the site's keys wait; reduced motion shows each chapter finished;
+  Smudge sweeps when it reaches 1:00. No audio, no analytics events, no
+  third-party requests. Choosing a chalk remembers it under
   `cipher-and-chalk:chalk:v1` in this browser, and an address that names no
   chalk opens in it from then on. "Last time" shows the control opened last
   when optional saving is on. The publication version lives on About. Home

@@ -139,7 +139,7 @@ describe('Home', () => {
     expect(links.map((link) => link.textContent)).toEqual([
       'I’m new to thisLevel 1’s fifteen basics first.',
       'I run the systemsThe fourteen families.',
-      'I’m preparing for an assessmentExamine, interview, test.',
+      'I’m preparing for an assessmentEvery objective, quoted.',
     ])
     expect(
       links.map((link) => link.querySelector('.tray-stick')?.className),

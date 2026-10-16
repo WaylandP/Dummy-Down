@@ -175,6 +175,24 @@ analytics allowlist do not change.
   width. On a phone they fit at 390 (13px, 10px gaps) and scroll sideways at 320 with a soft fade at the edge that
   hides more, never wrapping "About" or "Rev 3" onto a line of their own; the
   active chalk stroke and the 44px targets stay.
+- [PR #89](https://github.com/WaylandP/cipher-and-chalk/pull/89): "CMMC
+  in sixty seconds", the owner's approved animation
+  (`mockups/2026-10-15/SixtySeconds.html`), in place of the chalk talk. Home
+  shows a still of the finished clock under the title, with a 44px play
+  button, "1:00" and "Three years of CMMC Level 2, drawn in one minute.";
+  nothing plays on its own, and Home still fits one screen at 1280×800 and
+  1366×768. Play, or a click on the still, opens the drawing in a modal
+  dialog from 0:00: Level 2 as a three-year clock with SPRS at its hub beside
+  a column of notes, drawn in eight chapters with a chalk stick at the tip in
+  the site's own faces and tokens; the player (play/pause/replay, a chaptered
+  scrub bar, the time, the speed, every target 44px); the caption with its
+  glossary popovers; and a note on Phase 2 with a link to the timeline. It
+  fits without scrolling at 1024×768 and larger and is a full-screen sheet on
+  a phone with the player docked at its foot; Escape and Close return focus
+  to the play button; its keys work only inside it and the site's keys wait;
+  reduced motion shows each chapter finished; Smudge sweeps at 1:00. No
+  analytics events, no third-party requests. Also on Home, the search line
+  is 44px tall and the blue chalk reads "Every objective, quoted."
 
 ## The Board's features — October 15, 2026
 

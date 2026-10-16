@@ -1,0 +1,518 @@
+/* "CMMC in sixty seconds" (mockups/2026-10-15/SixtySeconds.html): on Home,
+   the title in yellow chalk, a still of the finished clock and a play row;
+   in the dialog, the board, the player, the caption and the note, with the
+   mockup's look in the site's own tokens and faces: the chalk hand on the
+   board, the site sans for the interface, the mono for the time. */
+
+/* ---- Home: the still and the play row ---- */
+.sixty {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.sixty-title {
+  margin: 0;
+  color: var(--color-yellow);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+.sixty-still {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+/* The still takes the room the frame leaves the column at desktop sizes
+   (the shell, Home's padding, the chalks and the search, the title and the
+   play row come to 482px), never shorter than keeps every word on it 11px
+   (16 viewBox units at 288px tall) and never wider than the column. */
+.sixty-board.sixty-still-art {
+  height: clamp(288px, calc(100vh - 482px), 372px);
+  width: auto;
+  max-width: 100%;
+}
+.sixty-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+}
+.sixty-play {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid var(--color-chalk);
+  border-radius: 50%;
+  background: none;
+  color: var(--color-chalk);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+}
+.sixty-play svg {
+  width: 20px;
+  height: 20px;
+  overflow: visible;
+  fill: currentColor;
+}
+.sixty-play .sixty-icon-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sixty-play:hover {
+  border-color: var(--color-yellow);
+  color: var(--color-yellow);
+}
+.sixty-length {
+  flex: none;
+  color: var(--color-chalk-dim);
+  font-size: 13px;
+}
+.sixty-blurb {
+  margin: 0;
+  color: var(--color-chalk-muted);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* ---- The board ---- */
+.sixty-board {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.sixty-board text {
+  font-family: var(--font-hand);
+  fill: var(--color-chalk);
+}
+.sixty-board .y {
+  fill: var(--color-yellow);
+}
+.sixty-board .dim {
+  fill: var(--color-chalk-dim);
+}
+.sixty-board .ln {
+  fill: none;
+  stroke: var(--color-chalk);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sixty-board .ln.y {
+  stroke: var(--color-yellow);
+}
+.sixty-board .ln.dim {
+  stroke: var(--color-chalk-dim);
+  stroke-width: 2;
+}
+.sixty-board .ln.tick {
+  stroke-width: 1.5;
+}
+.sixty-board .ln.hand {
+  stroke-width: 3.4;
+}
+.sixty-board .dash {
+  stroke-dasharray: 6 7;
+}
+.sixty-wedge {
+  fill: var(--color-chalk);
+  fill-opacity: 0.06;
+  opacity: 0;
+}
+.sixty-glow {
+  fill: none;
+  stroke: var(--color-yellow);
+  stroke-width: 6;
+  opacity: 0;
+}
+.sixty-hand,
+.sixty-stick {
+  opacity: 0;
+}
+.sixty-hand.is-still {
+  opacity: 1;
+}
+.sixty-stick-body {
+  fill: var(--color-chalk);
+}
+.sixty-stick-shade {
+  fill: rgba(0, 0, 0, 0.12);
+}
+/* Stacked, the clock's own caption shows and the arrow to it goes. */
+.sixty-board[data-narrow='true'] .lo,
+.sixty-board:not([data-narrow='true']) .po {
+  visibility: hidden;
+}
+
+/* ---- The dialog ---- */
+.sixty-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: radial-gradient(
+      120% 90% at 30% 20%,
+      var(--color-board-lift) 0%,
+      var(--color-board) 60%,
+      var(--color-board-edge) 100%
+    )
+    fixed;
+  color: var(--color-chalk);
+}
+.sixty-dialog::backdrop {
+  background: var(--color-board);
+}
+/* The page behind stays where it is while the dialog is open. */
+html:has(.sixty-dialog[open]) body,
+html:has(.sixty-dialog[open]) .board-main {
+  overflow: hidden;
+}
+/* The stage: as wide as a thousand pixels, 92% of the screen, or what the
+   height leaves for the board once the Close row, the player, the caption
+   and the note (about 300px together) have theirs, so nothing scrolls at
+   1024×768 and larger. Centred when there is room, from the top when not. */
+.sixty-stage {
+  --sixty-chrome: 300px;
+  --sixty-board: min(1000px, 92vw, calc((100vh - var(--sixty-chrome)) * 1.6));
+  width: var(--sixty-board);
+  max-width: 100%;
+  margin: auto 0;
+  padding: 12px 0;
+}
+.sixty-head {
+  display: flex;
+  justify-content: flex-end;
+}
+.sixty-close {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 8px;
+  border: 0;
+  background: none;
+  color: var(--color-chalk-muted);
+  font: inherit;
+  font-size: 15px;
+  text-decoration: underline;
+  text-decoration-color: var(--color-rule);
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.sixty-close:hover {
+  color: var(--color-yellow);
+}
+.sixty-screen {
+  margin-top: 4px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---- The player ---- */
+.sixty-player {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2.4vw, 22px);
+  margin-top: 12px;
+}
+.sixty-player .sixty-play {
+  width: 56px;
+  height: 56px;
+  border-width: 3px;
+}
+.sixty-player .sixty-play svg {
+  width: 42%;
+  height: 42%;
+}
+/* The bar is a 44px target around a 6px track; the labels under it name the parts. */
+.sixty-scrub {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  touch-action: none;
+}
+.sixty-track {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  align-items: center;
+  height: 16px;
+}
+.sixty-seg {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-rule);
+  overflow: hidden;
+}
+.sixty-seg i {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--color-yellow);
+}
+.sixty-knob {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--color-chalk);
+  box-shadow: 0 0 0 3px var(--color-board);
+  pointer-events: none;
+}
+.sixty-scrub:hover .sixty-knob,
+.sixty-scrub:focus-visible .sixty-knob {
+  background: var(--color-yellow);
+}
+.sixty-labels {
+  display: grid;
+  gap: 6px;
+  margin-top: 6px;
+}
+.sixty-labels span {
+  overflow: hidden;
+  color: var(--color-chalk-dim);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.sixty-labels span.is-on {
+  color: var(--color-yellow);
+}
+.sixty-time {
+  flex: none;
+  color: var(--color-chalk-dim);
+  font-size: clamp(14px, 2vw, 17px);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+/* The speed: a small pill with a 44px target around it. */
+.sixty-speed {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-chalk-dim);
+  cursor: pointer;
+}
+.sixty-speed-pill {
+  display: inline-block;
+  min-width: 3.6em;
+  padding: 4px 10px;
+  border: 1.5px solid var(--color-rule);
+  border-radius: 999px;
+  font-size: 13px;
+  text-align: center;
+}
+.sixty-speed:hover .sixty-speed-pill {
+  color: var(--color-yellow);
+  border-color: var(--color-yellow);
+}
+.sixty-play:focus-visible,
+.sixty-speed:focus-visible,
+.sixty-scrub:focus-visible,
+.sixty-close:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* ---- The caption and the note ---- */
+.sixty-cap {
+  margin-top: 12px;
+}
+.sixty-eyebrow {
+  margin: 0;
+  color: var(--color-yellow);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.sixty-caption {
+  max-width: 60ch;
+  min-height: 4.5em;
+  margin: 6px 0 0;
+  color: var(--color-chalk);
+  font-size: 17px;
+  line-height: 1.5;
+}
+.sixty-note {
+  margin: 10px 0 0;
+  color: var(--color-chalk-dim);
+  font-size: 13px;
+  line-height: 1.5;
+}
+/* A 44px target without moving the line: the hit area grows into the margins. */
+.sixty-note a {
+  display: inline-block;
+  padding-block: 12px;
+  margin-block: -12px;
+  color: var(--color-chalk-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--color-rule);
+  text-underline-offset: 4px;
+}
+.sixty-note a:hover {
+  color: var(--color-yellow);
+}
+
+/* ---- Narrower screens ---- */
+@media (max-width: 1023px) {
+  /* Home's one column: the still sized by the width. */
+  .sixty-board.sixty-still-art {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+  /* A tablet: the stage reaches nearer the edges, so the smallest labels keep 11px. */
+  .sixty-stage {
+    --sixty-board: min(
+      1000px,
+      calc(100vw - 24px),
+      calc((100vh - var(--sixty-chrome)) * 1.6)
+    );
+  }
+}
+@media (max-width: 640px) {
+  /* A phone: a full-screen sheet, the clock above the notes, the sheet
+     scrolling with the player and the caption docked at its foot. */
+  .sixty-stage {
+    width: 100%;
+    margin: 0;
+    padding: 4px 12px 16px;
+  }
+  .sixty-dock {
+    position: sticky;
+    bottom: 0;
+    padding: 8px 0 10px;
+    background: var(--color-board);
+  }
+  .sixty-player {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin-top: 0;
+  }
+  .sixty-scrub {
+    order: 3;
+    flex-basis: 100%;
+  }
+  .sixty-labels {
+    display: none;
+  }
+  .sixty-time {
+    margin-left: auto;
+  }
+  .sixty-cap {
+    margin-top: 6px;
+  }
+  .sixty-caption {
+    min-height: 0;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sixty-play {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .sixty-board text {
+    fill: CanvasText;
+  }
+  .sixty-board .y {
+    fill: Highlight;
+  }
+  .sixty-board .ln {
+    stroke: CanvasText;
+  }
+  .sixty-board .ln.y {
+    stroke: Highlight;
+  }
+  .sixty-wedge,
+  .sixty-glow {
+    display: none;
+  }
+  .sixty-stick-body {
+    fill: CanvasText;
+  }
+  .sixty-stick-shade {
+    fill: Canvas;
+  }
+  .sixty-dialog,
+  .sixty-dialog::backdrop,
+  .sixty-dock {
+    background: Canvas;
+    color: CanvasText;
+  }
+  .sixty-seg {
+    background: GrayText;
+  }
+  .sixty-seg i {
+    background: Highlight;
+  }
+  .sixty-knob {
+    background: CanvasText;
+    box-shadow: 0 0 0 3px Canvas;
+  }
+  .sixty-labels span.is-on,
+  .sixty-eyebrow {
+    color: Highlight;
+  }
+  .sixty-play,
+  .sixty-speed-pill {
+    border-color: ButtonText;
+    color: ButtonText;
+  }
+  .sixty-play:focus-visible,
+  .sixty-speed:focus-visible,
+  .sixty-scrub:focus-visible,
+  .sixty-close:focus-visible {
+    outline: 2px solid Highlight;
+  }
+}
+@media print {
+  .sixty-row,
+  .sixty-dialog {
+    display: none;
+  }
+}
