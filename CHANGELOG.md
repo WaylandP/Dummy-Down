@@ -247,6 +247,12 @@ analytics allowlist do not change.
   an open disclosure above it on a phone, from the same activity data the
   control page's Practice tab shows, unchanged; the prompts' "the assigned
   employee" and "the stated scenario" now have something to point at.
+- [PR #94](https://github.com/WaylandP/cipher-and-chalk/pull/94): a real
+  404, and `/controls`. The build now writes `dist/404.html`, a copy of the
+  entry document, so an unknown path such as `/nope` gets the app's own "This
+  board is blank." page with a 404 status instead of the host's plain page;
+  `/controls` redirects to the Controls page (`vercel.json`, and the app
+  itself on any host). Unknown paths never reach analytics (asserted).
 
 ## The Board's features — October 15, 2026
 

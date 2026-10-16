@@ -43,5 +43,12 @@
       "source": "/timeline",
       "destination": "/index.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/controls",
+      "destination": "/learn?view=discover&collection=references",
+      "permanent": true
+    }
   ]
 }
