@@ -93,9 +93,9 @@ left, 44px tall) and the search follows them. The footer line is the site's
 (see October 15 fixes, 1). Smudge sits on the right end of the tray. The
 fourteen families live on the Controls page. Beside the hero, from the kicker
 down to just above "Pick up a chalk to start." with a hairline rule on its
-left, "CMMC in sixty seconds" (see October 15 fixes, 9): a still of its
-finished clock with a play button that opens the drawing in a dialog; the
-headline is sized from the hero's own width, about 100px beside it at 1280.
+left, "CMMC in sixty seconds" (see October 15 fixes, 9), playing in its own
+397px panel, resting on its finished clock; the headline is sized from the
+hero's own width, about 100px beside it at 1280.
 
 **Control, Decode** — `mockups/Decode.html`. Top line: the ID in blue mono,
 then a chalk arrow, then the ID decoded (family, level, source requirement).
@@ -269,37 +269,64 @@ says whether it is built.
    (asserted). A resize keeps the marks: scaled within 15%, waiting beyond.
 9. **CMMC in sixty seconds** — `SixtySeconds.html` and
    `SixtySeconds-HANDOFF.md` (built; the owner's approved animation, which
-   replaced the chalk talk from `HomeChalkTalk.html`). Sixty seconds of chalk:
-   Level 2 as a three-year clock with SPRS at its hub beside a column of
-   notes, in eight chapters (Who, Levels, The clock, Certify, Every year, Big
-   change, Repeat, Bottom line), every stroke and label timed by `data-t`,
-   drawn along its length under the chalk filter with a chalk stick at the
-   tip, in the site's own faces and tokens; the captions are the owner's,
-   their glossary words (FCI, CUI, SPRS, C3PAO) opening the chalk popovers.
-   It is drawn for a stage a thousand pixels wide, so Home shows a still of
-   the finished clock, cropped to the dial, under the title in yellow chalk
-   (an `h2` that names the region), every word on it 11px or more, with a
-   44px play button, "1:00" and "Three years of CMMC Level 2, drawn in one
-   minute."; Home still fits one screen at 1280×800 and 1366×768, and
-   nothing plays on its own. Play, or a click on the still, opens the drawing
-   in a modal dialog from 0:00, sized so the board, the player, the caption
-   and the note fit without scrolling at 1024×768 and larger (the board is
-   the smallest of 1000px, 92% of the width and 1.6 times the height left
-   for it); Escape and Close return focus to the play button; on a phone it
-   is a full-screen sheet with the clock above the notes and the player and
-   caption docked at its foot, no board text under 11px at 390. The player:
-   play/pause/replay, a chaptered scrub bar (a slider whose value names the
-   part), the time in mono and the speed (1×, 0.75×, 0.5×, 1.5×), every
-   target 44px; Space, K, the arrows, Home, End, Page Up and Page Down work
-   only inside the dialog, and the site's own keys wait while it is open.
-   Reduced motion shows each chapter's finished state as the time runs, with
-   no stick, sector or pulse. Under the player: "Shown: the Level 2 (C3PAO)
-   cycle. Phase 2, which would require it, has been on hold since July 13,
-   2026." with a link to the timeline. When the drawing reaches 1:00 Smudge
-   sweeps. No analytics events; no request leaves the site. The piece lives
-   in `src/components/sixty/`. About keeps "the first chalk talk, CMMC in
-   sixty seconds" on the board and "More chalk talks for visual learners"
-   under Later.
+   replaced the chalk talk from `HomeChalkTalk.html`; rebuilt on October 16
+   to play in its panel). Sixty seconds of chalk in eight chapters (Who,
+   Levels, The clock, Certify, Every year, Big change, Repeat, Bottom line),
+   every stroke and label timed by `data-t`, drawn along its length under
+   the chalk filter with a chalk stick at the tip, in the site's own faces
+   and tokens; the captions are the owner's, their glossary words (FCI, CUI,
+   SPRS, C3PAO) opening the chalk popovers. It plays on Home inside its own
+   panel, beside the hero from the kicker down to just above "Pick up a
+   chalk to start." (397px wide; the width under the search on a tablet,
+   capped at 560px; the width of the page on a phone): the title in yellow
+   chalk (an `h2` that names the region), the board, the player row, then
+   the caption with the Phase 2 note under it. The same panel rests and
+   plays, so nothing moves when Play is pressed and the address does not
+   change, and Home still fits one screen at 1280×800 and 1366×768 with the
+   chalks and the search in view. Resting, the board shows the finished
+   clock, the time reads "1:00" and the caption slot reads "Three years of
+   CMMC Level 2, drawn in one minute."; nothing plays on its own. Play,
+   Replay or a click on the board clears the board with a quick pass of
+   Smudge (half a second before 0:00; at once under reduced motion), then
+   draws in place; at 1:00 the finished clock stays, which is the resting
+   board again, and Smudge sweeps. The board is drawn for the panel, two
+   scenes on one slate. Scene 1, Who and Levels, done by 0:15: DoD, an arrow
+   with "shares information" over it, your company; FCI → Level 1 over "15
+   rules · self-assess yearly"; CUI → Level 2 over "110 rules · NIST SP
+   800-171"; critical CUI → Level 3 over "Level 2 + 24 more · DIBCAC"; then
+   Level 2 is circled, 0:15.0 to 0:15.6. Between 0:15.7 and 0:16.9 Smudge,
+   as drawn in the tray, wipes it off in three overlapping strokes and
+   leaves the faint haze an erased board keeps (under reduced motion it
+   simply clears). Scene 2 from 0:17.0, at the original times from the dial
+   (0:17.6) on: "Level 2 runs on this clock", the dial with its month ticks,
+   SPRS at the hub with "current", year 1, year 2, year 3, the C3PAO star
+   with "C3PAO", the hand and its swept sector (still until 0:26, three
+   years from 0:26 to 0:56), the lines carrying each result into SPRS as the
+   hub glows, the year checks with "self-assess + affirm" beside the first,
+   "significant change" and "reassess now" with the lightning, "3 yrs:
+   recertify" with its arrow, and "no current status = no contract" in its
+   box. The drawn title and the legend lines are off the board, since the
+   heading and the captions say them; no other words change and nothing is
+   added; the board stays an image with a title and a description of both
+   scenes. Two arrangements, picked by the board's width: wide (520×235
+   units, the clock on the left and its words on the right, no word under
+   14.5 units) beside the hero and on a tablet; narrow (300×366 units, scene
+   1 stacked, the clock above the bottom line, no word under 12 units) on a
+   phone, under 395px; every word renders at 11px or more at 320, 390, 768,
+   1024, 1280, 1366, 1440 and 1920. The player row: play/pause/replay
+   (44px), the chaptered scrub bar with no labels under it (the caption's
+   eyebrow names the part), the time in mono (the elapsed time alone where
+   space is short; under 340px it drops out, and the slider keeps its value
+   text), the speed (1×, 0.75×, 0.5×, 1.5×), every target 44px; Space, K,
+   the arrows, Home, End, Page Up and Page Down work only while focus is in
+   the panel and never reach the site's own keys. Reduced motion shows each
+   chapter's finished state as the time runs, with no stick, sector or
+   pulse. Under the caption: "Shown: the Level 2 (C3PAO) cycle. Phase 2,
+   which would require it, has been on hold since July 13, 2026." with a
+   link to the timeline. No analytics events; no request leaves the site.
+   The piece lives in `src/components/sixty/`. About keeps "the first chalk
+   talk, CMMC in sixty seconds" on the board and "More chalk talks for
+   visual learners" under Later.
 
 ## Features, in build order
 

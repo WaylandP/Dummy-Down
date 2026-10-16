@@ -1,15 +1,18 @@
-/* "CMMC in sixty seconds" (mockups/2026-10-15/SixtySeconds.html): on Home,
-   the title in yellow chalk, a still of the finished clock and a play row;
-   in the dialog, the board, the player, the caption and the note, with the
-   mockup's look in the site's own tokens and faces: the chalk hand on the
-   board, the site sans for the interface, the mono for the time. */
+/* "CMMC in sixty seconds" (mockups/2026-10-15/SixtySeconds.html), playing
+   in its own panel on Home: the title in yellow chalk, the board, the
+   player row, the caption and the note, in the site's own tokens and faces:
+   the chalk hand on the board, the site sans for the interface, the mono
+   for the time. Beside the hero the panel is 397px wide and the board,
+   520×235 units, about 180px tall; on a tablet the panel is capped at
+   560px; on a phone it is the width of the page and the board stacks. */
 
-/* ---- Home: the still and the play row ---- */
+/* ---- The panel ---- */
 .sixty {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 3px;
   min-width: 0;
+  container-type: inline-size;
 }
 .sixty-title {
   margin: 0;
@@ -18,68 +21,11 @@
   font-weight: 400;
   line-height: 1.1;
 }
-.sixty-still {
+.sixty-screen {
   cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
-}
-/* The still takes the room the frame leaves the column at desktop sizes
-   (the shell, Home's padding, the chalks and the search, the title and the
-   play row come to 482px), never shorter than keeps every word on it 11px
-   (16 viewBox units at 288px tall) and never wider than the column. */
-.sixty-board.sixty-still-art {
-  height: clamp(288px, calc(100vh - 482px), 372px);
-  width: auto;
-  max-width: 100%;
-}
-.sixty-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 44px;
-}
-.sixty-play {
-  flex: none;
-  display: inline-grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 2px solid var(--color-chalk);
-  border-radius: 50%;
-  background: none;
-  color: var(--color-chalk);
-  cursor: pointer;
-  transition:
-    border-color 0.15s,
-    color 0.15s;
-}
-.sixty-play svg {
-  width: 20px;
-  height: 20px;
-  overflow: visible;
-  fill: currentColor;
-}
-.sixty-play .sixty-icon-line {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.sixty-play:hover {
-  border-color: var(--color-yellow);
-  color: var(--color-yellow);
-}
-.sixty-length {
-  flex: none;
-  color: var(--color-chalk-dim);
-  font-size: 13px;
-}
-.sixty-blurb {
-  margin: 0;
-  color: var(--color-chalk-muted);
-  font-size: 15px;
-  line-height: 1.4;
 }
 
 /* ---- The board ---- */
@@ -130,15 +76,20 @@
 .sixty-glow {
   fill: none;
   stroke: var(--color-yellow);
-  stroke-width: 6;
+  stroke-width: 5;
   opacity: 0;
 }
 .sixty-hand,
-.sixty-stick {
+.sixty-stick,
+.sixty-eraser {
   opacity: 0;
 }
-.sixty-hand.is-still {
-  opacity: 1;
+/* The haze an erased board keeps: Smudge's strokes, softened, under the clock. */
+.sixty-haze {
+  fill: none;
+  stroke: var(--color-chalk);
+  stroke-linecap: round;
+  opacity: 0.04;
 }
 .sixty-stick-body {
   fill: var(--color-chalk);
@@ -146,105 +97,48 @@
 .sixty-stick-shade {
   fill: rgba(0, 0, 0, 0.12);
 }
-/* Stacked, the clock's own caption shows and the arrow to it goes. */
-.sixty-board[data-narrow='true'] .lo,
-.sixty-board:not([data-narrow='true']) .po {
-  visibility: hidden;
-}
 
-/* ---- The dialog ---- */
-.sixty-dialog {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: auto;
-  overscroll-behavior: contain;
-  background: radial-gradient(
-      120% 90% at 30% 20%,
-      var(--color-board-lift) 0%,
-      var(--color-board) 60%,
-      var(--color-board-edge) 100%
-    )
-    fixed;
-  color: var(--color-chalk);
-}
-.sixty-dialog::backdrop {
-  background: var(--color-board);
-}
-/* The page behind stays where it is while the dialog is open. */
-html:has(.sixty-dialog[open]) body,
-html:has(.sixty-dialog[open]) .board-main {
-  overflow: hidden;
-}
-/* The stage: as wide as a thousand pixels, 92% of the screen, or what the
-   height leaves for the board once the Close row, the player, the caption
-   and the note (about 300px together) have theirs, so nothing scrolls at
-   1024×768 and larger. Centred when there is room, from the top when not. */
-.sixty-stage {
-  --sixty-chrome: 300px;
-  --sixty-board: min(1000px, 92vw, calc((100vh - var(--sixty-chrome)) * 1.6));
-  width: var(--sixty-board);
-  max-width: 100%;
-  margin: auto 0;
-  padding: 12px 0;
-}
-.sixty-head {
-  display: flex;
-  justify-content: flex-end;
-}
-.sixty-close {
-  display: inline-flex;
-  align-items: center;
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0 8px;
-  border: 0;
-  background: none;
-  color: var(--color-chalk-muted);
-  font: inherit;
-  font-size: 15px;
-  text-decoration: underline;
-  text-decoration-color: var(--color-rule);
-  text-underline-offset: 4px;
-  cursor: pointer;
-}
-.sixty-close:hover {
-  color: var(--color-yellow);
-}
-.sixty-screen {
-  margin-top: 4px;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* ---- The player ---- */
+/* ---- The player row ---- */
 .sixty-player {
   display: flex;
   align-items: center;
-  gap: clamp(12px, 2.4vw, 22px);
-  margin-top: 12px;
+  gap: 8px;
+  min-height: 44px;
 }
-.sixty-player .sixty-play {
-  width: 56px;
-  height: 56px;
-  border-width: 3px;
+.sixty-play {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid var(--color-chalk);
+  border-radius: 50%;
+  background: none;
+  color: var(--color-chalk);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
 }
-.sixty-player .sixty-play svg {
-  width: 42%;
-  height: 42%;
+.sixty-play svg {
+  width: 20px;
+  height: 20px;
+  overflow: visible;
+  fill: currentColor;
 }
-/* The bar is a 44px target around a 6px track; the labels under it name the parts. */
+.sixty-play .sixty-icon-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sixty-play:hover {
+  border-color: var(--color-yellow);
+  color: var(--color-yellow);
+}
+/* The bar is a 44px target around a 6px track; the caption's eyebrow names the part. */
 .sixty-scrub {
   flex: 1 1 auto;
   display: flex;
@@ -260,7 +154,7 @@ html:has(.sixty-dialog[open]) .board-main {
 .sixty-track {
   position: relative;
   display: grid;
-  gap: 6px;
+  gap: 5px;
   align-items: center;
   height: 16px;
 }
@@ -294,28 +188,10 @@ html:has(.sixty-dialog[open]) .board-main {
 .sixty-scrub:focus-visible .sixty-knob {
   background: var(--color-yellow);
 }
-.sixty-labels {
-  display: grid;
-  gap: 6px;
-  margin-top: 6px;
-}
-.sixty-labels span {
-  overflow: hidden;
-  color: var(--color-chalk-dim);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.sixty-labels span.is-on {
-  color: var(--color-yellow);
-}
 .sixty-time {
   flex: none;
   color: var(--color-chalk-dim);
-  font-size: clamp(14px, 2vw, 17px);
+  font-size: 13px;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -334,11 +210,11 @@ html:has(.sixty-dialog[open]) .board-main {
 }
 .sixty-speed-pill {
   display: inline-block;
-  min-width: 3.6em;
-  padding: 4px 10px;
+  min-width: 3.2em;
+  padding: 4px 8px;
   border: 1.5px solid var(--color-rule);
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 12px;
   text-align: center;
 }
 .sixty-speed:hover .sixty-speed-pill {
@@ -347,44 +223,57 @@ html:has(.sixty-dialog[open]) .board-main {
 }
 .sixty-play:focus-visible,
 .sixty-speed:focus-visible,
-.sixty-scrub:focus-visible,
-.sixty-close:focus-visible {
+.sixty-scrub:focus-visible {
   outline: var(--focus-ring);
   outline-offset: 3px;
 }
 
 /* ---- The caption and the note ---- */
 .sixty-cap {
-  margin-top: 12px;
+  margin-top: 1px;
 }
 .sixty-eyebrow {
   margin: 0;
   color: var(--color-yellow);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: 0.12em;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+/* The slot holds every caption in one cell, the shown one on top, so it is
+   as tall as the longest at this width and the panel never changes height. */
+.sixty-captions {
+  display: grid;
+  margin-top: 2px;
+}
+.sixty-captions > * {
+  grid-area: 1 / 1;
+}
+.sixty-caption-sizer {
+  display: grid;
+  visibility: hidden;
+}
+.sixty-caption-sizer > p {
+  grid-area: 1 / 1;
+}
 .sixty-caption {
-  max-width: 60ch;
-  min-height: 4.5em;
-  margin: 6px 0 0;
+  margin: 0;
   color: var(--color-chalk);
-  font-size: 17px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.4;
 }
 .sixty-note {
-  margin: 10px 0 0;
+  margin: 1px 0 0;
   color: var(--color-chalk-dim);
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.35;
 }
 /* A 44px target without moving the line: the hit area grows into the margins. */
 .sixty-note a {
   display: inline-block;
-  padding-block: 12px;
-  margin-block: -12px;
+  padding-block: 13px;
+  margin-block: -13px;
   color: var(--color-chalk-muted);
   text-decoration: underline;
   text-decoration-color: var(--color-rule);
@@ -394,59 +283,23 @@ html:has(.sixty-dialog[open]) .board-main {
   color: var(--color-yellow);
 }
 
-/* ---- Narrower screens ---- */
-@media (max-width: 1023px) {
-  /* Home's one column: the still sized by the width. */
-  .sixty-board.sixty-still-art {
-    width: 100%;
-    max-width: 420px;
-    height: auto;
-  }
-  /* A tablet: the stage reaches nearer the edges, so the smallest labels keep 11px. */
-  .sixty-stage {
-    --sixty-board: min(
-      1000px,
-      calc(100vw - 24px),
-      calc((100vh - var(--sixty-chrome)) * 1.6)
-    );
-  }
-}
-@media (max-width: 640px) {
-  /* A phone: a full-screen sheet, the clock above the notes, the sheet
-     scrolling with the player and the caption docked at its foot. */
-  .sixty-stage {
-    width: 100%;
-    margin: 0;
-    padding: 4px 12px 16px;
-  }
-  .sixty-dock {
-    position: sticky;
-    bottom: 0;
-    padding: 8px 0 10px;
-    background: var(--color-board);
-  }
-  .sixty-player {
-    flex-wrap: wrap;
-    gap: 8px 12px;
-    margin-top: 0;
-  }
-  .sixty-scrub {
-    order: 3;
-    flex-basis: 100%;
-  }
-  .sixty-labels {
+/* ---- Where the panel is narrow ---- */
+/* The time keeps only the elapsed part until the panel has room for the
+   length too, and under 340px it drops out; the slider keeps its value text. */
+@container (max-width: 479px) {
+  .sixty-time-length {
     display: none;
   }
+}
+@container (max-width: 339px) {
   .sixty-time {
-    margin-left: auto;
+    display: none;
   }
-  .sixty-cap {
-    margin-top: 6px;
-  }
-  .sixty-caption {
-    min-height: 0;
-    font-size: 15px;
-    line-height: 1.45;
+}
+@media (max-width: 1023px) {
+  /* A tablet: the panel takes the width under the search, capped at 560px. */
+  .sixty {
+    max-width: 560px;
   }
 }
 
@@ -469,7 +322,9 @@ html:has(.sixty-dialog[open]) .board-main {
     stroke: Highlight;
   }
   .sixty-wedge,
-  .sixty-glow {
+  .sixty-glow,
+  .sixty-haze,
+  .sixty-eraser {
     display: none;
   }
   .sixty-stick-body {
@@ -477,12 +332,6 @@ html:has(.sixty-dialog[open]) .board-main {
   }
   .sixty-stick-shade {
     fill: Canvas;
-  }
-  .sixty-dialog,
-  .sixty-dialog::backdrop,
-  .sixty-dock {
-    background: Canvas;
-    color: CanvasText;
   }
   .sixty-seg {
     background: GrayText;
@@ -494,7 +343,6 @@ html:has(.sixty-dialog[open]) .board-main {
     background: CanvasText;
     box-shadow: 0 0 0 3px Canvas;
   }
-  .sixty-labels span.is-on,
   .sixty-eyebrow {
     color: Highlight;
   }
@@ -505,14 +353,14 @@ html:has(.sixty-dialog[open]) .board-main {
   }
   .sixty-play:focus-visible,
   .sixty-speed:focus-visible,
-  .sixty-scrub:focus-visible,
-  .sixty-close:focus-visible {
+  .sixty-scrub:focus-visible {
     outline: 2px solid Highlight;
   }
 }
 @media print {
-  .sixty-row,
-  .sixty-dialog {
+  .sixty-player,
+  .sixty-eraser,
+  .sixty-stick {
     display: none;
   }
 }

@@ -5,6 +5,32 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## CMMC in sixty seconds, in its panel — October 16, 2026
+
+The owner's October 16 review of "CMMC in sixty seconds" before the launch
+post: three pieces, one pull request each.
+
+- [PR #107](https://github.com/WaylandP/cipher-and-chalk/pull/107): it plays
+  in its panel. The dialog, the phone sheet, Close and the still are gone;
+  the panel beside the hero is the player: the title, the board, the player
+  row (play/pause/replay, the chaptered scrub bar without labels, the
+  elapsed time, the speed), then the caption with the Phase 2 note under
+  it. The same panel rests and plays, so nothing moves on Play and the
+  address does not change. Resting, the board shows the finished clock;
+  Play, Replay or a click on the board clears it with a quick pass of
+  Smudge (half a second before 0:00; at once under reduced motion), then
+  draws in place; at 1:00 the finished clock stays. The board is drawn for
+  the panel instead of shrinking the 960×600 one: scene 1 (DoD → your
+  company, the three levels and their rules, Level 2 circled by 0:15.6)
+  across the board, wiped off by Smudge between 0:15.7 and 0:16.9 with the
+  haze an erased board keeps, then the clock from 0:17 at its original
+  times, the clock on the left and its words on the right; on a phone a
+  narrow arrangement stacks scene 1 and puts the clock above the bottom
+  line. Every word renders at 11px or more at 320, 390, 768, 1024, 1280,
+  1366, 1440 and 1920. The keys work only with focus in the panel and never
+  reach the site's own; Home still fits one screen at 1280×800 and
+  1366×768.
+
 ## Vercel settings for the launch — October 16, 2026
 
 - Every response sends security headers (HSTS, `nosniff`, a strict referrer policy,

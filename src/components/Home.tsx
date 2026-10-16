@@ -93,9 +93,9 @@ const chalks = [
  * and a place to begin; then the search line; and where the visitor left
  * off, when saving remembers it. Beside the hero, from the kicker down to
  * just above "Pick up a chalk to start.", "CMMC in sixty seconds"
- * (mockups/2026-10-15/SixtySeconds.html): a still of its finished clock
- * with a play button that opens the drawing in a dialog; on a phone it
- * follows the chalks and the search. Nothing plays on its own.
+ * (mockups/2026-10-15/SixtySeconds.html) plays in its own panel, resting
+ * on its finished clock; on a phone it follows the chalks and the search.
+ * Nothing plays on its own.
  */
 export function Home() {
   const { lastControl } = useLocalProgress()

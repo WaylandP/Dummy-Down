@@ -30,7 +30,8 @@
     container-type: inline-size;
   }
   /* "CMMC in sixty seconds" beside the hero, from the kicker down to just
-     above "Pick up a chalk to start.", a hairline rule on its left. */
+     above "Pick up a chalk to start.", a hairline rule on its left: a
+     397px panel that plays in place. */
   .home-talk {
     grid-area: talk;
     position: relative;

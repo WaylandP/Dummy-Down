@@ -8,12 +8,14 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from 'react'
 import {
-  CX,
-  CY,
+  CLEAR_SECONDS,
+  ERASE_END,
+  ERASE_START,
   HAND_END,
   HAND_START,
-  NARROW_WIDTH,
+  NARROW_BELOW,
   PULSES,
+  boards,
   clamp,
   handAngle,
   sectorPath,
@@ -34,10 +36,6 @@ interface Item {
   readonly el: SVGGraphicsElement
   readonly start: number
   readonly seconds: number
-  /** Landscape only: hidden when the clock stacks above the notes. */
-  readonly lo: boolean
-  /** Portrait only. */
-  readonly po: boolean
   /** A stroke: its length, drawn along it with a dash offset. */
   readonly length?: number
   /** A dashed stroke draws through a mask, so the dashes keep their pattern. */
@@ -48,6 +46,12 @@ interface Item {
   drawn: 'none' | 'part' | 'done' | ''
 }
 
+/** A wiping stroke: its path, its length, and the figure that rides it. */
+interface Wipe {
+  readonly path: SVGPathElement
+  readonly length: number
+}
+
 /** The elements the frames write, found once inside the player's root. */
 interface Nodes {
   readonly svg: SVGSVGElement
@@ -56,16 +60,23 @@ interface Nodes {
   readonly wedge: SVGPathElement | null
   readonly glow: SVGCircleElement | null
   readonly stick: SVGGElement | null
+  readonly eraser: SVGGElement | null
+  readonly erase: Wipe | null
+  readonly haze: SVGPathElement | null
+  readonly clear: Wipe | null
   readonly segments: readonly HTMLElement[]
   readonly knob: HTMLElement | null
 }
 
 interface Engine {
+  /** Seconds into the drawing; negative while Smudge clears the board before 0:00. */
   t: number
   playing: boolean
   last: number
   speed: number
   narrow: boolean
+  /** Once the visitor has played or scrubbed; resting, the board stands finished. */
+  started: boolean
   dragging: boolean
   wasPlaying: boolean
   nodes: Nodes | null
@@ -83,7 +94,7 @@ export interface SixtyPlayerOptions {
 
 /** What the player's controls need: the state that changes seldom, and the actions. */
 export interface SixtyPlayerApi {
-  /** Unique to this player: the board's title, description and glow filter ids. */
+  /** Unique to this player: the board's title, description, masks and filter ids. */
   readonly id: string
   readonly playing: boolean
   /** Whole seconds into the drawing. */
@@ -91,8 +102,12 @@ export interface SixtyPlayerApi {
   readonly chapter: number
   /** Index into sixtySpeeds. */
   readonly speed: number
-  /** The clock above the notes, where the board is narrower than 640px. */
+  /** The narrow arrangement: the board is narrower than NARROW_BELOW pixels. */
   readonly narrow: boolean
+  /** False while the board rests, finished, before anyone has played or scrubbed. */
+  readonly started: boolean
+  /** The drawing has reached 1:00 and stopped there. */
+  readonly ended: boolean
   readonly toggle: () => void
   readonly seek: (seconds: number) => void
   readonly cycleSpeed: () => void
@@ -102,30 +117,39 @@ export interface SixtyPlayerApi {
   readonly onKeyDown: (event: ReactKeyboardEvent) => void
 }
 
+/** A path's length, or one where the browser cannot measure (jsdom). */
+function lengthOf(path: SVGPathElement): number {
+  return typeof path.getTotalLength === 'function' ? path.getTotalLength() : 1
+}
+
 /**
- * The mockup's player, scoped to one board: a requestAnimationFrame loop
- * that reads every `data-t` element once the fonts are in (paths by their
- * length, labels by their box) and, each frame, sets how much of each is on
- * the board, moves the chalk stick to the tip of the current stroke, turns
- * the hand, fills the swept sector, pulses the hub, and fills the chaptered
- * scrub bar. It starts from 0:00 as soon as it is ready. Under reduced
- * motion each element stands finished from its start time, and there is no
- * stick, sector or pulse. Only the second, the chapter, playing and the
- * speed are React state; the frames write the DOM directly, inside the
- * element the returned ref is given.
+ * The player, scoped to one board in its panel: a requestAnimationFrame
+ * loop that reads every `data-t` element once the fonts are in (paths by
+ * their length, labels by their box) and, each frame, sets how much of
+ * each is on the board, moves the chalk stick to the tip of the current
+ * stroke, wipes scene 1 off with Smudge, turns the hand, fills the swept
+ * sector, pulses the hub, and fills the chaptered scrub bar. It never
+ * plays on its own: resting, the board stands finished, and Play, Replay
+ * or a click on the board clears it with a quick pass of Smudge, then
+ * draws from 0:00. Under reduced motion each element stands finished from
+ * its start time, the erase is a cut, and there is no stick, sector or
+ * pulse. Only the second, the chapter, playing, started, ended, the speed
+ * and the arrangement are React state; the frames write the DOM directly,
+ * inside the element the returned ref is given.
  */
 export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
-  readonly root: React.RefObject<HTMLDivElement | null>
+  readonly root: React.RefObject<HTMLElement | null>
   readonly player: SixtyPlayerApi
 } {
   const id = useId()
-  const root = useRef<HTMLDivElement>(null)
+  const root = useRef<HTMLElement>(null)
   const engine = useRef<Engine>({
-    t: 0,
+    t: sixtyLength,
     playing: false,
     last: 0,
     speed: 0,
     narrow: false,
+    started: false,
     dragging: false,
     wasPlaying: false,
     nodes: null,
@@ -142,6 +166,8 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
   const [chapter, setChapter] = useState(0)
   const [speed, setSpeed] = useState(0)
   const [narrow, setNarrow] = useState(false)
+  const [started, setStarted] = useState(false)
+  const [ended, setEnded] = useState(false)
 
   const render = useCallback(() => {
     const e = engine.current
@@ -149,19 +175,22 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
     if (!nodes) return
     const { reduced } = latest.current
     const t = e.t
+    // Before 0:00 the finished board stands while Smudge clears it.
+    const clearing = t < 0
     let tip: readonly [SVGGraphicsElement, number, number] | null = null
     for (const item of e.items) {
-      const p = reduced
-        ? t >= item.start
-          ? 1
-          : 0
-        : clamp((t - item.start) / item.seconds)
-      const shownNow = !(item.lo && e.narrow) && !(item.po && !e.narrow)
+      const p = clearing
+        ? 1
+        : reduced
+          ? t >= item.start
+            ? 1
+            : 0
+          : clamp(Math.round(((t - item.start) / item.seconds) * 1e6) / 1e6)
       if (item.length != null) {
         ;(item.mask ?? item.el).style.strokeDashoffset = String(
           item.length * (1 - p),
         )
-        if (p > 0 && p < 1 && shownNow && 'getPointAtLength' in item.el) {
+        if (p > 0 && p < 1 && 'getPointAtLength' in item.el) {
           const at = (item.el as SVGPathElement).getPointAtLength(
             item.length * p,
           )
@@ -172,7 +201,7 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
           'width',
           String(Math.max(0, (item.box.width + 8) * p)),
         )
-        if (p > 0 && p < 1 && shownNow)
+        if (p > 0 && p < 1)
           tip = [
             item.el,
             item.box.x + item.box.width * p,
@@ -212,56 +241,104 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
       nodes.stick.style.opacity = placed ? '1' : '0'
     }
 
+    // Smudge wipes scene 1 off, then the haze stays; before 0:00 he clears
+    // the finished board. Under reduced motion both are cuts and he stays
+    // in the tray.
+    const erased = clearing
+      ? 1
+      : reduced
+        ? t >= ERASE_START
+          ? 1
+          : 0
+        : clamp((t - ERASE_START) / (ERASE_END - ERASE_START))
+    const cleared = clearing ? clamp((t + CLEAR_SECONDS) / CLEAR_SECONDS) : 0
+    if (nodes.erase)
+      nodes.erase.path.style.strokeDashoffset = String(
+        nodes.erase.length * (1 - erased),
+      )
+    if (nodes.haze)
+      nodes.haze.style.strokeDashoffset = String(
+        (nodes.erase?.length ?? 1) * (1 - erased),
+      )
+    if (nodes.clear)
+      nodes.clear.path.style.strokeDashoffset = String(
+        nodes.clear.length * (1 - cleared),
+      )
+    if (nodes.eraser) {
+      const wipe = clearing ? nodes.clear : nodes.erase
+      const along = clearing ? cleared : erased
+      const shown = !reduced && wipe != null && along > 0 && along < 1
+      if (shown && wipe && typeof wipe.path.getPointAtLength === 'function') {
+        const point = wipe.path.getPointAtLength(wipe.length * along)
+        nodes.eraser.setAttribute(
+          'transform',
+          `translate(${point.x.toFixed(1)} ${point.y.toFixed(1)}) rotate(-6)`,
+        )
+      }
+      nodes.eraser.style.opacity = shown ? '1' : '0'
+    }
+
     // The clock hand: still until day one, then three years in thirty seconds.
-    const angle = handAngle(t, reduced)
+    const dial = boards[e.narrow ? 'narrow' : 'wide'].dial
+    const angle = clearing ? 360 : handAngle(t, reduced)
     if (nodes.hand) {
       nodes.hand.setAttribute(
         'transform',
-        `rotate(${angle.toFixed(2)} ${CX} ${CY})`,
+        `rotate(${angle.toFixed(2)} ${dial.cx} ${dial.cy})`,
       )
-      nodes.hand.style.opacity = clamp((t - 22.9) / 0.5).toFixed(2)
+      nodes.hand.style.opacity = clearing
+        ? '1'
+        : clamp((t - 22.9) / 0.5).toFixed(2)
     }
-    const swept = reduced
-      ? 0
-      : t < HAND_START
+    const swept =
+      reduced || clearing
         ? 0
-        : t < HAND_END
-          ? 1
-          : 1 - clamp((t - HAND_END) / 1.5)
+        : t < HAND_START
+          ? 0
+          : t < HAND_END
+            ? 1
+            : 1 - clamp((t - HAND_END) / 1.5)
     if (nodes.wedge) {
       nodes.wedge.style.opacity = String(swept)
-      if (swept > 0) nodes.wedge.setAttribute('d', sectorPath(angle))
+      if (swept > 0) nodes.wedge.setAttribute('d', sectorPath(dial, angle))
     }
     let pulse = 0
-    if (!reduced)
+    if (!reduced && !clearing)
       for (const at of PULSES)
         pulse = Math.max(pulse, 1 - Math.abs(t - at) / 0.9)
     if (nodes.glow) nodes.glow.style.opacity = (pulse * 0.6).toFixed(3)
 
-    // The scrub bar: each chapter's segment fills, the knob rides the current one.
-    const index = chapterAt(t)
+    // The scrub bar: each chapter's segment fills, the knob rides the
+    // current one; resting, the bar is empty.
+    const shown = e.started ? Math.max(0, t) : 0
+    const index = chapterAt(shown)
     if (nodes.segments.length === sixtyChapters.length) {
       sixtyChapters.forEach((ch, i) => {
         const fill = nodes.segments[i]!.firstElementChild as HTMLElement | null
         if (fill)
-          fill.style.width = `${clamp((t - ch.start) / (ch.end - ch.start)) * 100}%`
+          fill.style.width = `${clamp((shown - ch.start) / (ch.end - ch.start)) * 100}%`
       })
       const current = nodes.segments[index]!
       const ch = sixtyChapters[index]!
-      const fraction = clamp((t - ch.start) / (ch.end - ch.start))
+      const fraction = clamp((shown - ch.start) / (ch.end - ch.start))
       if (nodes.knob)
         nodes.knob.style.left = `${current.offsetLeft + fraction * current.offsetWidth}px`
     }
-    setSecond(Math.floor(t))
+    setSecond(Math.floor(shown))
     setChapter(index)
+    setStarted(e.started)
+    setEnded(e.started && !e.playing && e.t >= sixtyLength)
   }, [])
 
   const play = useCallback(() => {
     const e = engine.current
-    if (e.t >= sixtyLength) {
-      e.t = 0
+    // From rest or the end, Smudge clears the board first (at once under
+    // reduced motion), and the drawing starts from 0:00.
+    if (!e.started || e.t >= sixtyLength) {
+      e.t = latest.current.reduced ? 0 : -CLEAR_SECONDS
       e.cued = false
     }
+    e.started = true
     e.playing = true
     e.last = performance.now()
     setPlaying(true)
@@ -271,7 +348,9 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
       if (!e.playing) return
       const dt = Math.min(0.1, (now - e.last) / 1000)
       e.last = now
-      e.t += dt * sixtySpeeds[e.speed]!
+      // To the microsecond, so a frame that lands on a mark's start or end
+      // is not a hair short of it.
+      e.t = Math.round((e.t + dt * sixtySpeeds[e.speed]!) * 1e6) / 1e6
       if (e.t >= sixtyLength) {
         e.t = sixtyLength
         e.playing = false
@@ -306,6 +385,7 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
     (seconds: number) => {
       const e = engine.current
       e.t = Math.max(0, Math.min(sixtyLength, seconds))
+      e.started = true
       e.last = performance.now()
       render()
     },
@@ -318,8 +398,9 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
     setSpeed(e.speed)
   }, [])
 
-  // The board is read once the fonts are in and it is on the screen, then
-  // it plays from 0:00. Unmounting stops the frames and drops what was built.
+  // The board is read once the fonts are in and it is on the screen, and
+  // again when its arrangement changes; it stands at the time in hand
+  // (finished, at rest). Unmounting stops the frames and drops what was built.
   useEffect(() => {
     const rootEl = root.current
     const svg = rootEl?.querySelector<SVGSVGElement>('svg.sixty-board')
@@ -336,14 +417,9 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
         const [start = 0, seconds = 0] = (el.getAttribute('data-t') ?? '')
           .split(',')
           .map(Number)
-        const lo = el.classList.contains('lo')
-        const po = el.classList.contains('po')
         if (el.tagName.toLowerCase() === 'path') {
           const path = el as SVGPathElement
-          const length =
-            typeof path.getTotalLength === 'function'
-              ? path.getTotalLength()
-              : 1
+          const length = lengthOf(path)
           if (el.classList.contains('dash')) {
             const mask = document.createElementNS(ns, 'mask')
             const maskId = `${id}m${n++}`
@@ -363,15 +439,13 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
               el,
               start,
               seconds,
-              lo,
-              po,
               length,
               mask: stroke,
               drawn: '',
             })
           } else {
             el.style.strokeDasharray = String(length)
-            items.push({ el, start, seconds, lo, po, length, drawn: '' })
+            items.push({ el, start, seconds, length, drawn: '' })
           }
           return
         }
@@ -395,13 +469,21 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
           el,
           start,
           seconds,
-          lo,
-          po,
           rect,
           box: { x: box.x, y: box.y, width: box.width, height: box.height },
           drawn: '',
         })
       })
+      const wipeOf = (selector: string): Wipe | null => {
+        const path = svg.querySelector<SVGPathElement>(selector)
+        if (!path) return null
+        const length = lengthOf(path)
+        path.style.strokeDasharray = String(length)
+        return { path, length }
+      }
+      const erase = wipeOf('path.sixty-erase-stroke')
+      const haze = svg.querySelector<SVGPathElement>('path.sixty-haze')
+      if (haze && erase) haze.style.strokeDasharray = String(erase.length)
       e.items = items
       e.nodes = {
         svg,
@@ -410,34 +492,46 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
         wedge: svg.querySelector('path.sixty-wedge'),
         glow: svg.querySelector('circle.sixty-glow'),
         stick: svg.querySelector('g.sixty-stick'),
+        eraser: svg.querySelector('g.sixty-eraser'),
+        erase,
+        haze,
+        clear: wipeOf('path.sixty-clear-stroke'),
         segments: Array.from(
           rootEl.querySelectorAll<HTMLElement>('.sixty-track .sixty-seg'),
         ),
         knob: rootEl.querySelector<HTMLElement>('.sixty-knob'),
       }
-      play()
+      render()
     })
     return () => {
       gone = true
-      e.playing = false
       e.nodes = null
       e.items = []
-      cancelAnimationFrame(e.frame)
       defs.replaceChildren()
     }
-  }, [id, play])
+  }, [id, narrow, render])
 
-  // Narrower than 640px the clock stacks above the notes.
+  // Unmounting stops the frames.
+  useEffect(() => {
+    const e = engine.current
+    return () => {
+      e.playing = false
+      cancelAnimationFrame(e.frame)
+    }
+  }, [])
+
+  // Narrower than NARROW_BELOW pixels the board takes the narrow arrangement.
   useEffect(() => {
     const screen = root.current?.querySelector<HTMLElement>('.sixty-screen')
     if (!screen) return
     const e = engine.current
     const layout = () => {
-      const next = screen.clientWidth < NARROW_WIDTH
+      const width = screen.clientWidth
+      // A width the browser cannot measure (jsdom) keeps the wide arrangement.
+      const next = width > 0 && width < NARROW_BELOW
       if (next === e.narrow) return
       e.narrow = next
       setNarrow(next)
-      render()
     }
     layout()
     if (typeof ResizeObserver === 'function') {
@@ -447,7 +541,7 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
     }
     window.addEventListener('resize', layout)
     return () => window.removeEventListener('resize', layout)
-  }, [render])
+  }, [])
 
   // A change of the motion preference redraws the board in the new way.
   useEffect(() => {
@@ -505,9 +599,11 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
   }, [play, render])
 
   /**
-   * The player's keys, for the dialog they live in: Space or K plays and
+   * The player's keys, for the panel they live in: Space or K plays and
    * pauses, the arrows skip five seconds, Home and End go to either end,
-   * Page Up and Page Down change part. A button keeps Space and Enter.
+   * Page Up and Page Down change part. They answer only while focus is in
+   * the player, and a key the player takes never reaches the site's own
+   * keys. A button or a link keeps Space and Enter.
    */
   const onKeyDown = useCallback(
     (event: ReactKeyboardEvent) => {
@@ -521,12 +617,13 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
       )
         return
       const e = engine.current
-      const index = chapterAt(e.t)
+      const now = Math.max(0, e.t)
+      const index = chapterAt(now)
       const current = sixtyChapters[index]!
       let act: (() => void) | null = null
       if (key === ' ' || key === 'k' || key === 'K') act = toggle
-      else if (key === 'ArrowLeft') act = () => seek(e.t - skip)
-      else if (key === 'ArrowRight') act = () => seek(e.t + skip)
+      else if (key === 'ArrowLeft') act = () => seek(now - skip)
+      else if (key === 'ArrowRight') act = () => seek(now + skip)
       else if (key === 'Home') act = () => seek(0)
       else if (key === 'End') act = () => seek(sixtyLength)
       else if (key === 'PageDown')
@@ -539,7 +636,7 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
       else if (key === 'PageUp')
         act = () =>
           seek(
-            e.t - current.start > 1.5
+            now - current.start > 1.5
               ? current.start
               : sixtyChapters[Math.max(0, index - 1)]!.start,
           )
@@ -560,6 +657,8 @@ export function useSixtyPlayer({ reduced, onEnded }: SixtyPlayerOptions): {
       chapter,
       speed,
       narrow,
+      started,
+      ended,
       toggle,
       seek,
       cycleSpeed,

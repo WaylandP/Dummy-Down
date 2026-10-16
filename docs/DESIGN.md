@@ -88,22 +88,22 @@ not establish it.
   reading?", no decode example. The headline names CMMC on purpose; it is
   reworded when a second framework ships. Beside the hero, from the kicker
   down to just above "Pick up a chalk to start." with a hairline rule on its
-  left (`mockups/2026-10-15/SixtySeconds.html`), "CMMC in sixty seconds": a
-  still of the drawing's finished clock, cropped to the dial, under the
-  title in yellow chalk (an `h2` naming the region), every word on it 11px or
-  more, then a 44px play button, "1:00" and "Three years of CMMC Level 2,
-  drawn in one minute."; in the DOM it follows the chalks and the search, as
-  on a phone's screen, and nothing plays on its own. Play, or a click on the
-  still, opens the whole drawing in a modal dialog from 0:00: the 960×600
-  board (Level 2 as a three-year clock with SPRS at its hub beside the notes,
-  eight chapters drawn stroke by stroke with a chalk stick at the tip), the
-  player (play/pause/replay, a chaptered scrub bar, the time in mono, the
-  speed), the caption with its glossary popovers and a note on Phase 2 with
-  a link to the timeline, sized to fit without scrolling at 1024×768 and
-  larger and a full-screen sheet on a phone with the player docked; Escape
-  and Close return focus to the play button, its keys work only inside it
-  and the site's keys wait; reduced motion shows each chapter finished;
-  Smudge sweeps when it reaches 1:00. No audio, no analytics events, no
+  left (`mockups/2026-10-15/SixtySeconds.html`), "CMMC in sixty seconds"
+  plays in its own 397px panel: the title in yellow chalk (an `h2` naming
+  the region), the board, the player row (play/pause/replay, a chaptered
+  scrub bar, the time in mono, the speed), the caption with its glossary
+  popovers and the note on Phase 2 with a link to the timeline; in the DOM
+  it follows the chalks and the search, as on a phone's screen. Resting, the
+  board shows the finished clock and nothing plays on its own; Play, Replay
+  or a click on the board clears it with a quick pass of Smudge and draws in
+  place, the panel keeping its box and the address unchanged: scene 1 (Who
+  and Levels) across the board, wiped off by Smudge at 0:15.7, then Level 2
+  as a three-year clock with SPRS at its hub and its words beside it, drawn
+  stroke by stroke with a chalk stick at the tip; on a phone the board
+  stacks. Every word on the board is 11px or more at every width. Its keys
+  work only with focus in the panel; reduced motion shows each chapter
+  finished; Smudge sweeps when it reaches 1:00. No audio, no analytics
+  events, no
   third-party requests. Choosing a chalk remembers it under
   `cipher-and-chalk:chalk:v1` in this browser, and an address that names no
   chalk opens in it from then on. "Last time" shows the control opened last
