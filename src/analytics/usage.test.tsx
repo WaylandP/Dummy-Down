@@ -238,6 +238,22 @@ describe('analytics URL sanitization', () => {
   ])('rejects unrecognized URLs: %s', (url) => {
     expect(sanitizeUsageUrl(url, window.location.origin)).toBeNull()
   })
+
+  it('never reports an unknown path, the blank board or the /controls alias', () => {
+    for (const path of [
+      '/nope',
+      '/controls',
+      '/404.html',
+      '/learn/x',
+      '/index.html',
+    ])
+      expect(
+        sanitizeUsageUrl(
+          `${window.location.origin}${path}`,
+          window.location.origin,
+        ),
+      ).toBeNull()
+  })
 })
 
 describe('bounded interaction metadata', () => {

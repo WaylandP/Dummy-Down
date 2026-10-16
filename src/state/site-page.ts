@@ -1,4 +1,15 @@
 /** Native page links keep routing small; legacy root lesson URLs still resolve. */
+export const controlsPath = '/learn?view=discover&collection=references'
+
+/**
+ * `/controls` is the Controls page. Vercel redirects it (vercel.json); on
+ * any other host, or before that redirect existed, the app does the same.
+ */
+export function aliasOf(url: URL): string | null {
+  const path = url.pathname.replace(/\/$/, '') || '/'
+  return path === '/controls' ? controlsPath : null
+}
+
 export type SitePage =
   | 'home'
   | 'learn'

@@ -23,7 +23,10 @@ links. `src/state/site-page.ts` resolves the page; only Learn mounts the Explore
 controller and control-view tracking. Existing root query links and historical
 section hashes still resolve. The skip link canonicalizes legacy section paths.
 `vercel.json` explicitly rewrites the seven non-root paths to the Vite entry document,
-so direct links and refreshes work on Vercel without rewriting asset URLs.
+so direct links and refreshes work on Vercel without rewriting asset URLs. It also
+redirects `/controls` to the Controls page (the app does the same on any other host),
+and the build copies the entry document to `dist/404.html`, which Vercel serves with a
+404 status for every other path, so the app's own blank board appears there.
 
 The Explorer continues to own query/history state. Native page changes reload the
 document; practice is in memory by default, with optional version-bound local saving. Back restores the lesson
