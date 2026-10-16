@@ -421,3 +421,14 @@
 .home-talk .sixty-title {
   font-size: clamp(22px, 5.54cqw, 30px);
 }
+/* The scrubber's knob is centred on the track's start, so at 0:00 it hung
+   half outside the bar, 2px from the play button, and the play button's
+   focus ring ran into it. The bar keeps room for its knob (half the knob and
+   its 3px ring) and the row's gaps are wider. Seeking reads the segments, not
+   the bar's padding. */
+.home-talk .sixty-player {
+  gap: clamp(12px, 2.6cqw, 18px);
+}
+.home-talk .sixty-scrub {
+  padding-inline: calc(var(--sixty-knob) / 2 + 3px);
+}

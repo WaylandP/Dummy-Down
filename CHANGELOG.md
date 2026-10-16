@@ -5,6 +5,13 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## The player row breathes — October 16, 2026
+
+- At 0:00 the scrubber's knob hung half outside its bar, 2px from the play
+  button, so the play button's focus ring ran into it. The bar now keeps room
+  for its knob and the row's gaps are wider: the knob sits at least 12px from
+  the play button at every size, checked in `home-fill.spec.ts`.
+
 ## Home on big screens, calmer — October 16, 2026
 
 - #110 scaled Home's type with the window's height, so on a 16" MacBook Pro the
