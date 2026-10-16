@@ -263,6 +263,12 @@ analytics allowlist do not change.
   targets. A control's Print button is at least 44px wide (it was 29), each
   glossary source link takes a 44px-tall tap without moving its line, and the
   tabs' 44px minimum width from the one-row change covers "Rev 3" on a phone.
+- [PR #97](https://github.com/WaylandP/cipher-and-chalk/pull/97): long
+  explanations fit. The explanation is set at 28px; past about 220
+  characters it steps down to 24px, past 330 to 21px and past 400 to 19px
+  (23, 20, 18 and 17 on a phone), so the longest, IA.L2-3.5.3 in the white
+  chalk at 426 characters, no longer runs to nineteen lines that scroll
+  inside its column at 1280×800.
 
 ## The Board's features — October 15, 2026
 

@@ -29,16 +29,26 @@ test('on a desktop a chalk popover sits under the word, above it at the foot of 
   await page.mouse.move(0, 0)
   await expect(popover).toBeHidden()
   // With the word at the foot of the screen it goes above the word instead.
+  // A frame this short lays the page out again and scrolls it, so the word
+  // is brought to the foot (at once, not smoothly) and measured there before
+  // the click.
   await page.setViewportSize({
     width: 1280,
     height: Math.round(wordBox.y + wordBox.height + 40),
   })
+  await word.evaluate((node) =>
+    node.scrollIntoView({ block: 'end', behavior: 'instant' }),
+  )
+  const footBox = (await word.boundingBox())!
+  expect(footBox.y + footBox.height).toBeLessThanOrEqual(
+    await page.evaluate(() => innerHeight),
+  )
   await word.click()
   await expect(popover).toBeVisible()
   await expect(popover).toBeFocused()
   box = (await popover.boundingBox())!
   expect(box.y).toBeGreaterThanOrEqual(0)
-  expect(box.y + box.height).toBeLessThanOrEqual(wordBox.y)
+  expect(box.y + box.height).toBeLessThanOrEqual(footBox.y)
   await expect(popover).toHaveAttribute('data-side', 'above')
   const results = await new AxeBuilder({ page }).analyze()
   expect(results.violations).toEqual([])
