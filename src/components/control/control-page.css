@@ -397,6 +397,19 @@
   line-height: 1.45;
   letter-spacing: -0.01em;
 }
+/* A longer explanation steps down (ExplainTab sets data-size from its length). */
+.explain-text[data-size='m'] {
+  font-size: 24px;
+  line-height: 1.42;
+}
+.explain-text[data-size='s'] {
+  font-size: 21px;
+  line-height: 1.4;
+}
+.explain-text[data-size='xs'] {
+  font-size: 19px;
+  line-height: 1.38;
+}
 .explain-margin {
   position: relative;
   display: flex;
@@ -839,6 +852,15 @@
   .explain-text {
     font-size: 23px;
     line-height: 1.4;
+  }
+  .explain-text[data-size='m'] {
+    font-size: 20px;
+  }
+  .explain-text[data-size='s'] {
+    font-size: 18px;
+  }
+  .explain-text[data-size='xs'] {
+    font-size: 17px;
   }
   .explain-margin {
     padding-left: 22px;

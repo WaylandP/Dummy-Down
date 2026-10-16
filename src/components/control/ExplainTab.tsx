@@ -52,6 +52,12 @@ export function ExplainTab({
           ]
         : [text.compliance.focus, ...text.compliance.reviewQuestions]
   const marked = markBlocks(blocks, words)
+  // The explanation is set at 28px; a longer one steps down so that it fits
+  // its column on one screen (about 220 characters at 28px, 330 at 24px, 400
+  // at 21px), with room for a renderer that wraps a line sooner.
+  const length = blocks[0]?.length ?? 0
+  const size =
+    length > 400 ? 'xs' : length > 330 ? 's' : length > 220 ? 'm' : undefined
   return (
     <div className="explain">
       <ChalkPicker value={mode} onChange={onModeChange} idPrefix={idPrefix} />
@@ -63,7 +69,7 @@ export function ExplainTab({
         className="explain-panel"
         style={{ color: chalk.cssColor }}
       >
-        <p className="explain-text">
+        <p className="explain-text" data-size={size}>
           <ChalkText runs={marked[0]!} />
         </p>
         <div className="explain-margin">
