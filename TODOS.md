@@ -49,10 +49,17 @@ already merged into `main`. No completion percentage is implied.
   [#98](https://github.com/WaylandP/cipher-and-chalk/pull/98) the site's own
   words; with [#93](https://github.com/WaylandP/cipher-and-chalk/pull/93) and
   [#101](https://github.com/WaylandP/cipher-and-chalk/pull/101), the unit
-  tests' longer waits for a lazy page and a replayed first step. Left for
-  later: the old reader's rules in `src/styles.css` and the `set-catalog` /
-  `back-to-discovery` intents nothing dispatches, and the frameworks file's
-  "simplified teaching example" description, which renders nowhere.
+  tests' longer waits for a lazy page and a replayed first step. Two
+  follow-ups the same day:
+  [#103](https://github.com/WaylandP/cipher-and-chalk/pull/103) "Next
+  question" stays in view after an answer, and
+  [#104](https://github.com/WaylandP/cipher-and-chalk/pull/104) a control's
+  views are 44px targets at every width ("Rev 3" had been 38px wide from
+  1024 up); [#105](https://github.com/WaylandP/cipher-and-chalk/pull/105)
+  brought the README in line with the site. Left for later: the old reader's
+  rules in `src/styles.css` and the `set-catalog` / `back-to-discovery`
+  intents nothing dispatches, and the frameworks file's "simplified teaching
+  example" description, which renders nowhere.
 - **Phase 3 engineering is shipped.** All five scoped increments are merged with
   successful exact-head CI and automatic production deployments. The
   [execution log](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-3-execution-2026-10-14.md) records evidence;
