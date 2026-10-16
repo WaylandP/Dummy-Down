@@ -220,13 +220,13 @@ export function ControlExplorer({ controller }: ControlExplorerProps) {
           </div>
           {resolution.excludedByFilters && (
             <div className="lesson-mismatch">
-              <p>This lesson is outside the current results.</p>
+              <p>This control is outside the current results.</p>
               <button
                 type="button"
                 className="inline-action"
                 onClick={() => dispatch({ type: 'show-lesson-in-results' })}
               >
-                Show this lesson in results
+                Show this control in results
               </button>
             </div>
           )}

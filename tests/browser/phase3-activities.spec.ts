@@ -100,7 +100,7 @@ test('practice situations narrow by level in the address and by typing, recover,
   await page.reload()
   await expect(
     page.getByText(
-      'The practice index could not load. Your lessons are still available.',
+      'The practice index could not load. The controls are still available.',
     ),
   ).toBeVisible()
   await page.unroute('**/assets/PracticePage-*.js')

@@ -27,7 +27,7 @@ export function PracticeRoute() {
       <h1 className="chalk">Work through a situation.</h1>
       <p role="status" aria-busy={!failed}>
         {failed
-          ? 'The practice index could not load. Your lessons are still available.'
+          ? 'The practice index could not load. The controls are still available.'
           : 'Loading practice activities…'}
       </p>
       {failed && (

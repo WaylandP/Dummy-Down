@@ -9,8 +9,8 @@ export const glossaryGroups: readonly {
 }[] = [
   { id: 'program', label: 'The program: statuses, roles, SPRS' },
   { id: 'scoping', label: 'Scoping: what’s in, what’s out' },
-  { id: 'clauses', label: 'Clauses: 7012, 7019, 7020, 7021' },
-  { id: 'lessons', label: 'From the lessons' },
+  { id: 'clauses', label: 'Contract clauses' },
+  { id: 'lessons', label: 'Everyday security terms' },
 ]
 
 export function isGlossaryGroup(

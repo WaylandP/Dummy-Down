@@ -107,7 +107,7 @@ export function ContextTerms({
     >
       <div className="context-terms-heading">
         <span className="instruction-eyebrow">A little less jargon</span>
-        <Heading id={`${prefix}-heading`}>Terms in this lesson</Heading>
+        <Heading id={`${prefix}-heading`}>Terms on this page</Heading>
       </div>
       <div className="term-triggers">
         {referenced.map(({ id, term }) =>

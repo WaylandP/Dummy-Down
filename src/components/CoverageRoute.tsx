@@ -28,7 +28,7 @@ export function CoverageRoute() {
       <h1>Assessment coverage</h1>
       <p role="status" aria-busy={!failed}>
         {failed
-          ? 'The coverage report could not load. Your lessons are still available.'
+          ? 'The coverage report could not load. The controls are still available.'
           : 'Loading the coverage report…'}
       </p>
       {failed && (

@@ -95,7 +95,7 @@ describe('Versioned CMMC reference catalog', () => {
       )
       const { user, explorer } = await setup()
       expect(
-        explorer.queryByText('This lesson is outside the current results.'),
+        explorer.queryByText('This control is outside the current results.'),
       ).not.toBeInTheDocument()
       expect(
         explorer.getByText(
@@ -152,23 +152,23 @@ describe('Versioned CMMC reference catalog', () => {
     )
     const { user, explorer } = await setup()
     expect(
-      explorer.getByText('This lesson is outside the current results.'),
+      explorer.getByText('This control is outside the current results.'),
     ).toBeVisible()
     await user.click(
-      explorer.getByRole('button', { name: 'Show this lesson in results' }),
+      explorer.getByRole('button', { name: 'Show this control in results' }),
     )
     expect(
       new URLSearchParams(window.location.search).get('collection'),
     ).not.toBe('lessons')
     expect(
-      explorer.queryByText('This lesson is outside the current results.'),
+      explorer.queryByText('This control is outside the current results.'),
     ).not.toBeInTheDocument()
     expect(
       explorer.getByText(quotation(reference('AC.L2-3.1.1').requirement.text)),
     ).toBeVisible()
     replay(`${address('AC.L2-3.1.1')}&collection=lessons`)
     expect(
-      explorer.getByText('This lesson is outside the current results.'),
+      explorer.getByText('This control is outside the current results.'),
     ).toBeVisible()
   })
 

@@ -67,7 +67,7 @@ test('source details lead to the exact perspective and coverage return link', as
   ).toBeVisible()
   await expect(objective.getByText(/Selected fictional example/)).toBeVisible()
   await objective
-    .getByRole('link', { name: 'Read IT & Cyber in the lesson' })
+    .getByRole('link', { name: 'Read the IT & Cyber explanation' })
     .click()
   await expect(
     page.getByRole('tab', { name: chalkFor('it-cyber').prompt, exact: true }),
