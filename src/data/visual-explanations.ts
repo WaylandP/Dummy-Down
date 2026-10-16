@@ -64,14 +64,14 @@ const sequences: readonly TeachingSequence[] = [
         title: 'Check every access path the rule names.',
         text: 'A fictional team checks MFA for privileged local access, privileged network access, and non-privileged network access. Protecting only its VPN would leave other covered paths unchecked.',
         diagramDescription:
-          'Three separate paths are traced to MFA: privileged local, privileged network, and non-privileged network access. Each path must be considered; one working MFA screen does not prove the others are covered.',
+          'Three separate paths are traced to MFA: privileged local, privileged network, and non-privileged network access. Each path must be considered; one working MFA screen does not prove the others are covered. Privileged accounts include more than administrator accounts.',
       },
       {
         kind: 'takeaway',
         title: 'Different factors, with the right coverage.',
         text: 'Verify the actual factors and the named access paths. This requirement does not say that every local non-privileged login must use MFA.',
         diagramDescription:
-          'All three named access paths remain visible with MFA checks. No local ordinary-user path is added to the requirement. The diagram is a teaching illustration, not evidence of deployment.',
+          'All three named access paths remain visible with MFA checks. No local ordinary-user path is added to the requirement. Privileged accounts include more than administrator accounts. The diagram is a teaching illustration, not evidence of deployment.',
       },
     ],
   },
@@ -146,7 +146,7 @@ export const visualExplanations: readonly VisualExplanationContent[] =
         ...sequence.teaching,
       ],
       source,
-      sourceLabel: `${control.id} · September 2024 v2.13 · PDF page ${control.requirement.pdfPage}`,
+      sourceLabel: `${control.id} · CMMC Assessment Guide – ${control.level}, v2.13 (September 2024) · PDF page ${control.requirement.pdfPage}`,
       disclaimer:
         'A teaching interpretation with fictional examples. This walkthrough does not demonstrate organizational compliance or replace the full assessment guidance.',
     }

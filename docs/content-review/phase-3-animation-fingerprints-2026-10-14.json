@@ -1,8 +1,8 @@
 {
   "algorithm": "SHA256(JSON.stringify(parsed runtime object)); raw files use SHA256(bytes)",
-  "runtimeArrayFingerprint": "e6e3c7a481178126db40ae0a62c7c6efa75952a8a925dee4ab5e6dc1585d0785",
+  "runtimeArrayFingerprint": "c9b8b18cfef4e3c866f50a058a13b74c4382a1b982957a2c17171090120f1ea0",
   "files": {
-    "src/data/visual-explanations.ts": "248b12d281820993a3f056b1f490da3bb1b612557e6ece84594930955870307d",
+    "src/data/visual-explanations.ts": "2eb662d5bedf70aa7788a84d99e8e382e7cadce813973b57a4d7a93ec777c440",
     "src/components/TeachingScene.tsx": "f1e8eb803bd3195bb3455b864df01832f394020f7f4a0e0c07bce47e4885f259",
     "src/components/VisualExplanation.tsx": "6e2a830bce868c9f20518d2b733cac574e1f49e9b6391997964fcc73bb5438ec",
     "src/types/visual-explanation.ts": "cc66a4c0fa1f187f7bd50aa48af0634998155647ae2929b05025df3ba266b2d5"
@@ -15,13 +15,13 @@
       "printedPage": 12,
       "objectiveLabels": ["a", "b", "c", "d", "e", "f"],
       "officialRequirementExact": true,
-      "runtimeFingerprint": "257d4335573159e9cc308486de6b7edd0fff5e7c257902e2b639ee0707cd8db0",
+      "runtimeFingerprint": "e4d0a5b9034dfc5e9e3a68ce91798d84ea82964477f74a9167434b5dba1dbd8a",
       "objectiveFingerprint": "7c5efe2b6b31c27c5a82ea94f8b55e5b80ae0bf5e3ab46a8aa464d383158159c",
       "launchAuditCorrection": {
         "appliedAt": "2026-10-15",
         "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
         "humanReview": "pending",
-        "summary": "The requirement diagram and example no longer say a process needs its own authorization decision: users and devices are authorized; a process acting for a user is identified and tied to that user (objectives [b] and [e]; Further Discussion: automatic processes \"should be associated with the user who initiated (authorized) the process\")."
+        "summary": "The requirement diagram and example no longer say a process needs its own authorization decision: users and devices are authorized; a process acting for a user is identified and tied to that user (objectives [b] and [e]; Further Discussion: automatic processes \"should be associated with the user who initiated (authorized) the process\"). The source label names the publication: \"CMMC Assessment Guide – Level N, v2.13 (September 2024)\" (2026-10-15)."
       }
     },
     {
@@ -31,8 +31,14 @@
       "printedPage": 117,
       "objectiveLabels": ["a", "b", "c", "d"],
       "officialRequirementExact": true,
-      "runtimeFingerprint": "996d4ce1025b5403f8a611dbfb60dc3a0650f998739bc461dee718526020bd67",
-      "objectiveFingerprint": "6ada330d85be76c72403fe0e2be68c829d22a9109edc636dd1b14d2b8196fee5"
+      "runtimeFingerprint": "1d0d76f5c9ec77b2be814664c6b06fe65d432ebfdde69cbe02a1f976a6a92a42",
+      "objectiveFingerprint": "6ada330d85be76c72403fe0e2be68c829d22a9109edc636dd1b14d2b8196fee5",
+      "launchAuditCorrection": {
+        "appliedAt": "2026-10-15",
+        "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+        "humanReview": "pending",
+        "summary": "The diagram descriptions now carry the drawing's own label, \"Privileged accounts include more than administrator accounts\", so the text equivalent says everything the picture does. The source label names the publication: \"CMMC Assessment Guide – Level N, v2.13 (September 2024)\" (2026-10-15)."
+      }
     },
     {
       "id": "visual-ir-l3-3-6-2e",
@@ -41,13 +47,13 @@
       "printedPage": 43,
       "objectiveLabels": ["a", "b", "c"],
       "officialRequirementExact": true,
-      "runtimeFingerprint": "b36176fcb464767c849f6758ec09c9aec5d78081c1feffef072bbd4365dcd271",
+      "runtimeFingerprint": "ee684f2b2123f73a2849a135198cca9307e2f3c001395ad97c0f1f141e9451e3",
       "objectiveFingerprint": "c2275c410830976c191618d4066187597602abf9d60aa5568c257e9f7c0820fd",
       "launchAuditCorrection": {
         "appliedAt": "2026-10-15",
         "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
         "humanReview": "pending",
-        "summary": "The example says a physically isolated site needs responders there in person and that the 24 hours applies to deploying them there too (Further Discussion: \"a team must be physically present at the remote facility\"; objective [b]). The takeaway description drops \"contractual clock-start event\"."
+        "summary": "The example says a physically isolated site needs responders there in person and that the 24 hours applies to deploying them there too (Further Discussion: \"a team must be physically present at the remote facility\"; objective [b]). The takeaway description drops \"contractual clock-start event\". The source label names the publication: \"CMMC Assessment Guide – Level N, v2.13 (September 2024)\" (2026-10-15)."
       }
     }
   ]

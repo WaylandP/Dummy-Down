@@ -144,10 +144,16 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "a5b7d43a6182e9622f4bbbf94b57bfcdaff32aac08993df6b0d275977bd1cd35",
+        "activityFingerprint": "52a18475d0732ddde71d81e3e69b8fe1713c28cae9ceceb54db524bbdd0b6c1d",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "d75193a76f4e489fc849e6bc6ebe4c1a0bc87902864b36733fa140d90619fbf5",
-        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
+        "launchAuditCorrection": {
+          "appliedAt": "2026-10-15",
+          "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+          "humanReview": "pending",
+          "summary": "Plain words on 2026-10-15: the guide or the requirement for \"the source\", \"assessment objective\" for \"determination\", no \"[ODP1]\" or \"snapshot\", US spelling, and fewer \"fictional\" hedges; the answer key is unchanged."
+        }
       }
     },
     {
@@ -277,7 +283,7 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "e62e41634a86888b62aefb4763ccdca41392a117295aa7762cb198ce9f847d27",
+        "activityFingerprint": "91415773f1f0971f3fa0a26a03ba5ec6f74c266ee48efa56c245fdc505071a9e",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "edc369ddd36a56e90e439906ecdae268b97763b08814ab9dd98fd7907eaa11aa",
         "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
@@ -285,7 +291,7 @@
           "appliedAt": "2026-10-15",
           "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
           "humanReview": "pending",
-          "summary": "Removed the \"device\" term from this lesson: here \"physical access devices\" are keys, locks, combinations and card readers (Discussion), not the IT device the glossary entry defines."
+          "summary": "Removed the \"device\" term from this lesson: here \"physical access devices\" are keys, locks, combinations and card readers (Discussion), not the IT device the glossary entry defines. Plain words on 2026-10-15: the guide or the requirement for \"the source\", \"assessment objective\" for \"determination\", no \"[ODP1]\" or \"snapshot\", US spelling, and fewer \"fictional\" hedges; the answer key is unchanged. The introduction and the scenario tell one story (a key returned after a role change)."
         }
       }
     },
@@ -374,10 +380,16 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "f663dbb56c6c2ae243bfff144a947a3fce119b23d476e9674daec7dbc0cd88cf",
+        "activityFingerprint": "79e6755ae1da2df03dc445e78e3bbb741cd64b48255ebbc457a1bf1450f8d8a0",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "c9b523591790d23cb74d93d765a03d60fbc23f0ca8e68d43a7b602c417d819ee",
-        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
+        "launchAuditCorrection": {
+          "appliedAt": "2026-10-15",
+          "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+          "humanReview": "pending",
+          "summary": "Plain words on 2026-10-15: the guide or the requirement for \"the source\", \"assessment objective\" for \"determination\", no \"[ODP1]\" or \"snapshot\", US spelling, and fewer \"fictional\" hedges; the answer key is unchanged. The boundary step now says the guide recommends blocking access from the public zone by default."
+        }
       }
     },
     {
@@ -485,10 +497,16 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "9cbc190cfd57440c20895bcd9d202001ce1c15b826cb700bc902539485bb1cb1",
+        "activityFingerprint": "25579aea2d064ebf4573e2ef90f98f41c9b5561b19a2117e2aa3962a6d95d81e",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "6ada330d85be76c72403fe0e2be68c829d22a9109edc636dd1b14d2b8196fee5",
-        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
+        "launchAuditCorrection": {
+          "appliedAt": "2026-10-15",
+          "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+          "humanReview": "pending",
+          "summary": "Plain words on 2026-10-15: the guide or the requirement for \"the source\", \"assessment objective\" for \"determination\", no \"[ODP1]\" or \"snapshot\", US spelling, and fewer \"fictional\" hedges; the answer key is unchanged. Cedar Lab now identifies all its privileged accounts, not only administrator accounts."
+        }
       }
     },
     {
@@ -588,10 +606,16 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "18a72e77831f0dbfe608c93dd9b266a3fb6a72f65dae21a48e5313e1a7d5e120",
+        "activityFingerprint": "07462858d88256bdadceacbb1b2a92bee3083a4d5209460aef7b4625f81e9bbd",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "3c343b3a57f3b2817fbdee21fe39839869e6c06f5b0521c6cae000dc051a6a0f",
-        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
+        "launchAuditCorrection": {
+          "appliedAt": "2026-10-15",
+          "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+          "humanReview": "pending",
+          "summary": "Plain words on 2026-10-15: the guide or the requirement for \"the source\", \"assessment objective\" for \"determination\", no \"[ODP1]\" or \"snapshot\", US spelling, and fewer \"fictional\" hedges; the answer key is unchanged. The policies are named in the requirement's own terms (blacklisting, whitelisting), and either is allowed."
+        }
       }
     },
     {
@@ -689,7 +713,7 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "fbe6ee5d9fbedecff5a12ad55691f1ddab4bb80e262c82f6fded0e428e40b0a7",
+        "activityFingerprint": "6b8c21b7fff65c0698402ad57540cdfa7a0b726762081fe49ddccd98d155524c",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "bec395922d28e3c5f991caf2f50f595bc30a859131a25c9d4e33a431c24930a9",
         "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
@@ -697,7 +721,7 @@
           "appliedAt": "2026-10-15",
           "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
           "humanReview": "pending",
-          "summary": "Removed the \"system boundary\" term: this lesson never uses it."
+          "summary": "Removed the \"system boundary\" term: this lesson never uses it. Plain words on 2026-10-15: the guide or the requirement for \"the source\", \"assessment objective\" for \"determination\", no \"[ODP1]\" or \"snapshot\", US spelling, and fewer \"fictional\" hedges; the answer key is unchanged. The alert question asks plainly who hears about a logging failure."
         }
       }
     },
@@ -816,10 +840,16 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "28b7b794409d2c7364af09f8b137f5cb9cd5969d4e2e5d78ed94fc65634784f0",
+        "activityFingerprint": "0b157a2f3f84f72ff5ef02798c7b68c5e33ea4bd18723701081b8624cc53b6a4",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "fc7834ffebcb98e043a1df8c3d89b3ee761dc5266eb0dd99b26418945adf4172",
-        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
+        "launchAuditCorrection": {
+          "appliedAt": "2026-10-15",
+          "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+          "humanReview": "pending",
+          "summary": "Plain words on 2026-10-15: the guide or the requirement for \"the source\", \"assessment objective\" for \"determination\", no \"[ODP1]\" or \"snapshot\", US spelling, and fewer \"fictional\" hedges; the answer key is unchanged."
+        }
       }
     },
     {
@@ -917,7 +947,7 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "98928b5788de7c94569676777fa4e802304105aadca772bc050ea3487ff718f5",
+        "activityFingerprint": "1ac460d64839c892455469dfe269816cb1bcc2ef68b2d01650c8df99661ff8a1",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "c2275c410830976c191618d4066187597602abf9d60aa5568c257e9f7c0820fd",
         "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
@@ -925,7 +955,7 @@
           "appliedAt": "2026-10-15",
           "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
           "humanReview": "pending",
-          "summary": "The isolated-site step, its question and the correct answer now keep the 24 hours for physical deployment too (requirement and objective [b]; Further Discussion: \"a team must be physically present at the remote facility to perform the duties required\"). Removed the unused \"system boundary\" and \"assessment scope\" terms. Plainer wording for the misunderstanding, the first question, one distractor, the team-maintenance step and the timing feedback."
+          "summary": "The isolated-site step, its question and the correct answer now keep the 24 hours for physical deployment too (requirement and objective [b]; Further Discussion: \"a team must be physically present at the remote facility to perform the duties required\"). Removed the unused \"system boundary\" and \"assessment scope\" terms. Plainer wording for the misunderstanding, the first question, one distractor, the team-maintenance step and the timing feedback. Plain words on 2026-10-15: the guide or the requirement for \"the source\", \"assessment objective\" for \"determination\", no \"[ODP1]\" or \"snapshot\", US spelling, and fewer \"fictional\" hedges; the answer key is unchanged."
         }
       }
     },
@@ -1027,10 +1057,16 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "e0545cb0566d5d7e6c5e7dc985c98cdcc8d1ffab593948fc1b9efbc3fc1521c7",
+        "activityFingerprint": "346e37ba22c735b5327d73024468b4c36d6f5494e37604fa199520186daea62f",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "8e355d15993d5dee937cb86ae74ef06cf8f29f9e4bab27a1bda7d44e93380f41",
-        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
+        "launchAuditCorrection": {
+          "appliedAt": "2026-10-15",
+          "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+          "humanReview": "pending",
+          "summary": "Plain words on 2026-10-15: the guide or the requirement for \"the source\", \"assessment objective\" for \"determination\", no \"[ODP1]\" or \"snapshot\", US spelling, and fewer \"fictional\" hedges; the answer key is unchanged."
+        }
       }
     }
   ],

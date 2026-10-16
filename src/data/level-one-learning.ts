@@ -15,7 +15,7 @@ function guideSource(controlId: string): SourceReference {
 
 const editionId = 'cmmc-2-13-sep-2024'
 const disclaimer =
-  'A fictional practice activity written from the September 2024 v2.13 snapshot. ' +
+  'A fictional practice activity written from the CMMC Assessment Guide – Level 1, version 2.13 (September 2024). ' +
   'Its examples illustrate selected assessment objectives; they do not prescribe a ' +
   'product, prove evidence sufficiency, or cover an entire assessment.'
 
@@ -162,7 +162,7 @@ export const levelOneLearningActivities: readonly LearningActivity[] = [
             label:
               'Keep a list of approved identities, without restricting access.',
             feedback:
-              'Identification matters, but the objectives also ask whether system access is limited to authorized users, user-acting processes, and devices. A list alone does not demonstrate enforcement.',
+              'Identification matters, but the objectives also ask whether system access is limited to authorized users, the processes acting for them, and devices. A list alone does not demonstrate enforcement.',
           },
           {
             id: 'identify-and-limit',
@@ -188,7 +188,7 @@ export const levelOneLearningActivities: readonly LearningActivity[] = [
     id: 'level-one-public-information',
     contentVersion: '2026-10-14.1',
     learningObjective:
-      'Recognize authorized public posting and processing, pre-release checks and inappropriate-content removal.',
+      'Recognize authorized public posting and processing, pre-release checks, and removal of improperly posted FCI.',
     lesson: {
       frameworkId: 'cmmc',
       editionId,
@@ -203,7 +203,7 @@ export const levelOneLearningActivities: readonly LearningActivity[] = [
     commonMisunderstanding: {
       claim: '“My manager approved the post, so its FCI can be made public.”',
       correction:
-        'Approval to publish a company post does not make its FCI public information. The guide says, “Only government officials can be authorized to publicly release FCI.” This does not say a company editor may publish FCI after a manager or official approves the post. Keep FCI out of the company’s public posting and processing.',
+        'Approval to publish a company post does not make its FCI public information. The guide says, “Only government officials can be authorized to publicly release FCI.” A company manager’s approval cannot authorize it. Keep FCI out of the company’s public posting and processing.',
     },
     diagram: {
       title: 'Public content needs review before and after posting',
@@ -295,7 +295,7 @@ export const levelOneLearningActivities: readonly LearningActivity[] = [
       {
         id: 'existing-content',
         prompt:
-          'A later review finds FCI in a publicly reachable attachment. Which response matches the idea?',
+          'A later review finds FCI in a publicly reachable attachment. Which response does this requirement call for?',
         correctChoiceId: 'remove-and-address',
         choices: [
           {
@@ -406,13 +406,13 @@ export const levelOneLearningActivities: readonly LearningActivity[] = [
       textEquivalent:
         'For system media containing FCI, first identify the media and its destination. If releasing it for reuse, sanitize it before release. If disposing of it, sanitize or destroy it before disposal. Both digital and non-digital media are included, and the appropriate technique depends on the media and information.',
     },
-    scenarioTitle: 'A retired scanner and a box of contract printouts',
+    scenarioTitle: 'A reused scanner and a box of contract printouts',
     scenario: [
       {
         id: 'find-media',
         title: 'Look beyond laptop drives',
         description:
-          'Fictional Harbor Workshop clears an office. A retired scanner contains stored contract scans with FCI, and a box contains paper contract printouts with FCI. Both are media the team needs to handle.',
+          'Fictional Harbor Workshop clears an office. A scanner being passed to another team contains stored contract scans with FCI, and a box contains paper contract printouts with FCI. Both are media the team needs to handle.',
       },
       {
         id: 'reuse-scanner',
@@ -498,7 +498,8 @@ export const levelOneLearningActivities: readonly LearningActivity[] = [
         choices: [
           {
             id: 'laptops-only',
-            label: 'Only laptop drives; scanner storage is outside the idea.',
+            label:
+              'Only laptop drives; scanner storage is outside this requirement.',
             feedback:
               'Digital media can be found in devices such as scanners, copiers, printers, and mobile devices as well as computers. The FCI-bearing scanner storage belongs in this decision.',
           },
