@@ -43,7 +43,7 @@ describe('Words groupings', () => {
   })
 
   it('shorten a source to the text it names and file words by their first letter', () => {
-    expect(sourceLabel(term('cmmc').sources[0]!)).toBe('32 CFR § 170.4')
+    expect(sourceLabel(term('cmmc').sources[0]!)).toBe('32 CFR § 170.1')
     expect(sourceLabel(term('account').sources[0]!)).toBe(
       'CMMC Assessment Guide – Level 1',
     )
@@ -56,7 +56,7 @@ describe('Words groupings', () => {
     expect(new Set(labels).size).toBe(labels.length)
     expect(labels.every((label) => label.includes(', '))).toBe(true)
     expect(sourceLabels(term('cmmc').sources)).toEqual([
-      '32 CFR § 170.4',
+      '32 CFR § 170.1',
       'DFARS 252.204-7021',
       'Executive Order 14347',
     ])
