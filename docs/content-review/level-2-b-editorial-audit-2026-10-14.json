@@ -283,12 +283,26 @@
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
           "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.focus",
+          "issue": "An internal editorial note a visitor cannot act on.",
+          "proposedText": "Connect the equipment's off-site maintenance release to the handling of every relevant CUI-bearing component. The objective speaks of equipment to be removed from organizational spaces, so sanitization happens before it leaves.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 156 / printed 148 section; [a] equipment to be removed from organizational spaces for off-site maintenance is sanitized of any CUI.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 156,
+            "printedPage": 148,
+            "quotedBasis": "[a] equipment to be removed from organizational spaces for off-site maintenance is sanitized of any CUI."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "editorial-consistency-only",
       "reviewNote": "Sanitization precedes off-site maintenance release, including embedded CUI-bearing storage; trusted vendor or file deletion is not substituted for sanitization.",
       "humanReview": "pending",
-      "reviewedFingerprint": "d700438fa7759f7b106e16a64f3412ff3dcaedaeee7e26a7374c270f64dd8de9"
+      "reviewedFingerprint": "32842265b39b877fe04f321a78824a87bd6edf08ffbb727f97adb1df1f19ff8e"
     },
     {
       "id": "MA.L2-3.7.4",
@@ -394,12 +408,26 @@
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
           "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.focus",
+          "issue": "Could be read as saying escorting is irrelevant; the guide asks about escorting and supervising these personnel.",
+          "proposedText": "Explore how authorization status determines supervision during maintenance. Escorting can be part of supervising maintenance personnel, but general physical-access and visitor-escort rules do not by themselves show that maintenance activities were supervised.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 163 / printed 155 section; Are there processes for escorting and supervising maintenance personnel without required access authorization",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 163,
+            "printedPage": 155,
+            "quotedBasis": "Are there processes for escorting and supervising maintenance personnel without required access authorization"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "editorial-consistency-only",
       "reviewNote": "Workers without required authorization are supervised; temporary credentials remain controlled and the distinction from physical visitor access is preserved.",
       "humanReview": "pending",
-      "reviewedFingerprint": "4ec69167201fb226db71fa67d6c60b6e8e0b1beb15103323b0a6c54bdfc8de43"
+      "reviewedFingerprint": "bd6e5de4451b5da41901b612a6fdc463bef69e156cb13ec492ac678f657d7db7"
     },
     {
       "id": "MP.L2-3.8.1",
@@ -510,16 +538,16 @@
         {
           "field": "technical.focus",
           "issue": "Select sanitization or destruction before release leaves the destination distinction implicit. Preserve both objective branches in the technical explanation too.",
-          "proposedText": "Choose methods suited to the media and its destination: sanitize or destroy before disposal, and sanitize before release for reuse. Verify the result before release. Consider embedded storage in printers and network equipment, as well as familiar drives and paper records.",
+          "proposedText": "Choose methods suited to the media and its destination: sanitize or destroy before disposal, and sanitize before release for reuse. The guide points to NIST SP 800-88 for sanitization methods. Consider embedded storage in printers and network equipment, as well as familiar drives and paper records.",
           "sourceSupport": "PDF169/printed161 objectives[a,b] and Discussion cover all digital and non-digital media, including scanners, copiers, printers and network components; PDF170/printed162 distinguishes disposal and reuse.",
-          "resolution": "Applied after coordinating comparison of the cited complete guide section; associated objective mappings re-compared and preserved."
+          "resolution": "Applied after coordinating comparison of the cited complete guide section; associated objective mappings re-compared and preserved. Later edited on 2026-10-15 for one company name (CedarPoint); see the separate finding."
         },
         {
           "field": "compliance.reviewQuestions[1]",
           "issue": "The question joins sanitization or destruction with disposal or reuse, obscuring the distinction accurately stated in compliance.focus.",
-          "proposedText": "How is sanitization or destruction checked before disposal, and sanitization checked before release for reuse?",
+          "proposedText": "How does the organization make sure media is sanitized or destroyed before disposal, and sanitized before release for reuse?",
           "sourceSupport": "PDF169/printed161 objectives[a,b]; PDF170/printed162 Further Discussion and Potential Assessment Considerations address whether usable data remains retrievable.",
-          "resolution": "Applied after coordinating comparison of the cited complete guide section; associated objective mappings re-compared and preserved."
+          "resolution": "Applied after coordinating comparison of the cited complete guide section; associated objective mappings re-compared and preserved. Later edited on 2026-10-15 for one company name (CedarPoint); see the separate finding."
         },
         {
           "field": "beginner.example",
@@ -528,12 +556,40 @@
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
           "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "technical.focus",
+          "issue": "Stated verification as a requirement; it is not an assessment objective. The guide points to SP 800-88 for methods.",
+          "proposedText": "Choose methods suited to the media and its destination: sanitize or destroy before disposal, and sanitize before release for reuse. The guide points to NIST SP 800-88 for sanitization methods. Consider embedded storage in printers and network equipment, as well as familiar drives and paper records.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 169 / printed 161 section; NIST SP 800-88 provides guidance on media sanitization.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 169,
+            "printedPage": 161,
+            "quotedBasis": "NIST SP 800-88 provides guidance on media sanitization."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.reviewQuestions[1]",
+          "issue": "Asked how the result is \"checked\", as if verification were an objective.",
+          "proposedText": "How does the organization make sure media is sanitized or destroyed before disposal, and sanitized before release for reuse?",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 169 / printed 161 section; Sanitize or destroy system media containing CUI before disposal or release for reuse.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 169,
+            "printedPage": 161,
+            "quotedBasis": "Sanitize or destroy system media containing CUI before disposal or release for reuse."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Compliance focus preserves the two objective branches, but Beginner meaning, technical focus and the second review question can imply destruction prepares media for reuse; clarify all three.",
       "humanReview": "pending",
-      "reviewedFingerprint": "7261d09f0d2f43c7cfc870f6057728edfd774c99c88f81e1e83906a2c1260467"
+      "reviewedFingerprint": "ef943fbdbd846e6a06f5a84d8bbc3ad1936cb56b05c9869d39acf2be387d58b5"
     },
     {
       "id": "MP.L2-3.8.4",
@@ -895,16 +951,44 @@
         {
           "field": "beginner.example",
           "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
-          "proposedText": "At fictional CedarPoint, the designated personnel team completes the applicable screening process before an engineer receives authorized access to a system containing CUI. Creating the account first would reverse that sequence.",
+          "proposedText": "At fictional CedarPoint, the designated personnel team completes the applicable screening process before an engineer receives authorized access to a system containing CUI. Granting the access first would reverse that sequence.",
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending. Later edited on 2026-10-15 for one company name (CedarPoint); see the separate finding."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Screening comes before authorizing access, not before creating an account.",
+          "proposedText": "At fictional CedarPoint, the designated personnel team completes the applicable screening process before an engineer receives authorized access to a system containing CUI. Granting the access first would reverse that sequence.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 183 / printed 175 section; Screen individuals prior to authorizing access to organizational systems containing CUI.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 183,
+            "printedPage": 175,
+            "quotedBasis": "Screen individuals prior to authorizing access to organizational systems containing CUI."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "technical.focus",
+          "issue": "\"An invented universal investigation type\" read like a note to writers.",
+          "proposedText": "Connect personnel screening status to access authorization and provisioning. The screening criteria must reflect applicable rules and the access required for the position, not one investigation type applied to everyone.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 183 / printed 175 section; Screen individuals prior to authorizing access to organizational systems containing CUI.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 183,
+            "printedPage": 175,
+            "quotedBasis": "Screen individuals prior to authorizing access to organizational systems containing CUI."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "editorial-consistency-only",
       "reviewNote": "Screening precedes authorization, reflects role and applicable rules, and does not invent universal clearances, products or disclosure of sensitive screening details.",
       "humanReview": "pending",
-      "reviewedFingerprint": "f8a998d43016041cf77d6b1eb7e4d38df278861aaf7181d5fc9c13112d9bd03d"
+      "reviewedFingerprint": "864108b42be3c145e49c06dc651ad4604fba274918afe7137a07980479f5038a"
     },
     {
       "id": "PS.L2-3.9.2",
@@ -932,16 +1016,44 @@
         {
           "field": "beginner.example",
           "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
-          "proposedText": "At fictional CedarPoint, Sam transfers off a CUI project. The company adjusts system access and credentials and retrieves relevant property as appropriate, so Sam's former role does not retain unnecessary access.",
+          "proposedText": "At fictional CedarPoint, Sam transfers off a CUI project. The company adjusts system access and credentials and retrieves relevant property as appropriate, so Sam does not keep access from the former role that is no longer needed.",
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending. Later edited on 2026-10-15 for one company name (CedarPoint); see the separate finding."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "A role does not retain access; Sam does.",
+          "proposedText": "At fictional CedarPoint, Sam transfers off a CUI project. The company adjusts system access and credentials and retrieves relevant property as appropriate, so Sam does not keep access from the former role that is no longer needed.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 185 / printed 177 section; [b] system access and credentials are terminated consistent with personnel actions such as termination or transfer",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 185,
+            "printedPage": 177,
+            "quotedBasis": "[b] system access and credentials are terminated consistent with personnel actions such as termination or transfer"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.focus",
+          "issue": "An internal editorial note a visitor cannot act on.",
+          "proposedText": "Trace personnel actions to the system protections they trigger. Objectives [a] and [b] cover ending system access and credentials with terminations and transfers; [c] looks at protecting the system during and after transfers.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 185 / printed 177 section; [c] the system is protected during and after personnel transfer actions.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 185,
+            "printedPage": 177,
+            "quotedBasis": "[c] the system is protected during and after personnel transfer actions."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "editorial-consistency-only",
       "reviewNote": "Protection during and after termination or extended/permanent transfer includes affected access, credentials and property; transfer actions are not forced to be identical to departure actions.",
       "humanReview": "pending",
-      "reviewedFingerprint": "f20aee0e3896245e0de410cca3e679bd8b171977819b63c67668a2c944ef6b3d"
+      "reviewedFingerprint": "44445e5c0490ac29c3d45f9abe36187b4fecdbaab57a896ad6591913d8112581"
     },
     {
       "id": "PE.L2-3.10.1",
@@ -1284,12 +1396,26 @@
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
           "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.reviewQuestions[1]",
+          "issue": "Covered only completed fixes; the guide also tracks vulnerabilities the organization decides not to remediate.",
+          "proposedText": "How does the organization show that selected remediation actions were completed, and how are vulnerabilities it decided not to remediate tracked and revisited?",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 206 / printed 198 section; Track all vulnerability remediation to ensure completion; also track vulnerabilities that you have determined not to remediate.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 206,
+            "printedPage": 198,
+            "quotedBasis": "Track all vulnerability remediation to ensure completion; also track vulnerabilities that you have determined not to remediate."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Identification and risk-based remediation remain explicit; documented risk acceptance is not automatically remediation or permission for a CMMC deficiency. Guide discussion of deferred risks is not converted to blanket approval.",
       "humanReview": "pending",
-      "reviewedFingerprint": "851377f6b80b1377b1070ddeea952126c2abbdf6d2a5aefdd8a24ca8369e0632"
+      "reviewedFingerprint": "6ec1453383a5d654750417b881d97abc10c9581f5a12d9b1687043ff2a625370"
     },
     {
       "id": "CA.L2-3.12.1",
@@ -1321,12 +1447,26 @@
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
           "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "technical.watchFor",
+          "issue": "\"Need not cover every safeguard\" could be read as permission to narrow scanning.",
+          "proposedText": "A product configuration screenshot alone may not show effectiveness; vulnerability scanning is useful but does not assess every safeguard, so it cannot replace the control assessment.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 208 / printed 200 section; Periodically assess the security controls in organizational systems to determine if the controls are effective in their application.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 208,
+            "printedPage": 200,
+            "quotedBasis": "Periodically assess the security controls in organizational systems to determine if the controls are effective in their application."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "editorial-consistency-only",
       "reviewNote": "Defined periodic assessment checks effectiveness, with examination/interview/testing as possible methods; the annual question is accurately attributed to assessment considerations.",
       "humanReview": "pending",
-      "reviewedFingerprint": "02da8057429cd4654c574ae435505f7fcf99bc2cd73ff69433e21af0653a7b4b"
+      "reviewedFingerprint": "82b3dc681d75cfff3453fdc52b440c44cb79a1612879dc53ec45b2e4a6ba448f"
     },
     {
       "id": "CA.L2-3.12.2",
@@ -1395,12 +1535,26 @@
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
           "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.focus",
+          "issue": "An authoring note a visitor cannot act on.",
+          "proposedText": "Review how monitoring supports continued control effectiveness, and distinguish ongoing monitoring from a single periodic assessment.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 214 / printed 206 section; Monitor security controls on an ongoing basis to ensure the continued effectiveness of the controls.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 214,
+            "printedPage": 206,
+            "quotedBasis": "Monitor security controls on an ongoing basis to ensure the continued effectiveness of the controls."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "editorial-consistency-only",
       "reviewNote": "Ongoing monitoring supports risk decisions and continued control effectiveness; continuous does not universally mean uninterrupted collection, and passive dashboards are insufficient without review.",
       "humanReview": "pending",
-      "reviewedFingerprint": "ac7f7aac5c711407c18667d5cdf6aa485097fc9fc2b06464d5dfb66d84079a70"
+      "reviewedFingerprint": "2780b9737e98795aa8eb7cad5fe7361e74d540a27a7152c467ba4add72d6b62a"
     },
     {
       "id": "CA.L2-3.12.4",
@@ -1428,16 +1582,44 @@
         {
           "field": "beginner.example",
           "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
-          "proposedText": "Fictional CedarPoint documents which services handle CUI, how safeguards are implemented, and which outside services connect to the system. When the environment changes, the team updates the plan through its defined process.",
+          "proposedText": "Fictional CedarPoint documents which services handle CUI, how safeguards are implemented, and which outside services connect to the system. The team reviews and updates the plan on its defined schedule, at least once a year, and also when the environment changes.",
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending. Later edited on 2026-10-15 for one company name (CedarPoint); see the separate finding."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Showed only change-driven updates; objectives [g] and [h] are about a defined frequency, at least annually.",
+          "proposedText": "Fictional CedarPoint documents which services handle CUI, how safeguards are implemented, and which outside services connect to the system. The team reviews and updates the plan on its defined schedule, at least once a year, and also when the environment changes.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 216 / printed 208 section; Defined Frequency of Updates: at least annually.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 216,
+            "printedPage": 208,
+            "quotedBasis": "Defined Frequency of Updates: at least annually."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.reviewQuestions[0]",
+          "issue": "Left out objective [d], requirements approved as non-applicable.",
+          "proposedText": "Does the plan describe boundaries, environment, implementation, system relationships, and the requirements approved as not applicable?",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 216 / printed 208 section; the security requirements identified and approved by the designated authority as non-applicable are identified",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 216,
+            "printedPage": 208,
+            "quotedBasis": "the security requirements identified and approved by the designated authority as non-applicable are identified"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "editorial-consistency-only",
       "reviewNote": "System boundaries, operating environment, implementation, relationships, defined updates and non-applicable-designated-authority caveat are preserved; annual updates are attributed to the pinned Further Discussion.",
       "humanReview": "pending",
-      "reviewedFingerprint": "694d59c111dfcbd5cc1eff7bbfd0deb63118c50ed77c961044056bddea055f4c"
+      "reviewedFingerprint": "8125572d985153372bc42fdc35a5edf91c9911fecffb7d3b9c9bac5b8cc6628d"
     },
     {
       "id": "SC.L2-3.13.1",
@@ -1469,12 +1651,26 @@
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
           "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.focus",
+          "issue": "An unexplained note about wording a visitor cannot act on.",
+          "proposedText": "Review identified boundaries and all three communication functions at them: monitoring, control and protection.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 219 / printed 211 section; Monitor, control, and protect communications",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 219,
+            "printedPage": 211,
+            "quotedBasis": "Monitor, control, and protect communications"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "editorial-consistency-only",
       "reviewNote": "External/key internal boundaries and monitoring/control/protection are all retained; an internet firewall or traffic logs alone do not fulfill all functions.",
       "humanReview": "pending",
-      "reviewedFingerprint": "aa857fe61eaef5dc940285bec8765e65d79b21aec828ffb76dbac88b0cb617eb"
+      "reviewedFingerprint": "7dbb82d8d50377ad8733febeb950f89d085f6abcca8865b717d9fc48d7254e40"
     },
     {
       "id": "SC.L2-3.13.2",
@@ -1610,12 +1806,26 @@
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
           "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.meaning",
+          "issue": "Left out unauthorized transfer; the requirement covers \"unauthorized and unintended\" transfer.",
+          "proposedText": "Prevent information from passing between users or processes through reused shared system resources, whether by accident or through unauthorized access. A resource handed to its next user should not expose information from the previous user.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 227 / printed 219 section; Prevent unauthorized and unintended information transfer via shared system resources.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 227,
+            "printedPage": 219,
+            "quotedBasis": "Prevent unauthorized and unintended information transfer via shared system resources."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Shared-resource reuse, residual information and encrypted representations are addressed; deleted-data remnants and covert channels remain excluded as in the source Discussion.",
       "humanReview": "pending",
-      "reviewedFingerprint": "795ca1c0fe05ad8e12de4a6b720340f64beafe127a38eee03e665ecb7be989dc"
+      "reviewedFingerprint": "5665717a91f47e847cce00a6da834ea5cc0a9adc68c9a1e013b46d4391f79b84"
     },
     {
       "id": "SC.L2-3.13.5",
@@ -1735,12 +1945,40 @@
           "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
           "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "technical.focus",
+          "issue": "Offered detection as an alternative to prohibiting the connection; the guide does both.",
+          "proposedText": "Control remote-device routing and connection configuration to prevent split tunneling. The guide discusses disabling split-tunnel settings, preventing users from readily changing them, and detecting split tunneling (or settings that allow it) and refusing the connection when it is present.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 233 / printed 225 section; by the detection of split tunneling (or of configuration settings that allow split tunneling) in the remote device, and by prohibiting the connection if the remote device is using split tunneling.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 233,
+            "printedPage": 225,
+            "quotedBasis": "by the detection of split tunneling (or of configuration settings that allow split tunneling) in the remote device, and by prohibiting the connection if the remote device is using split tunneling."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.reviewQuestions[1]",
+          "issue": "Offered detection as an alternative to blocking.",
+          "proposedText": "How are prohibited settings or connection behavior detected and blocked?",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 233 / printed 225 section; and by prohibiting the connection if the remote device is using split tunneling.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 233,
+            "printedPage": 225,
+            "quotedBasis": "and by prohibiting the connection if the remote device is using split tunneling."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Technical/compliance fields accurately describe remote routing and overriding controls; Beginner meaning/example obscure the concept with circular arrangement wording and need a concrete two-path explanation.",
       "humanReview": "pending",
-      "reviewedFingerprint": "8e5dc7e62f426a6c707b0f61f9274127dfd77fb1c20348cb46ca395153498915"
+      "reviewedFingerprint": "46115649b515f3024ffee3f026cb64aa37e57841b950da65c43ea46cad2cdff2"
     },
     {
       "id": "SC.L2-3.13.8",

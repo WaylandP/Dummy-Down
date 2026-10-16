@@ -29,7 +29,7 @@
       "example": "At CedarPoint, a reviewer can read contract records but cannot delete them. An approved records manager has a different set of permissions for that work."
     },
     "technical": {
-      "focus": "Define permitted transactions and functions, then enforce them at the application or data layer. Role-based access can group permissions, but the mapping must reflect actual responsibilities.",
+      "focus": "Define permitted transactions and functions, then enforce them wherever access is decided: which systems and applications a user can open, and what they can do inside them. Role-based access can group permissions, but the mapping must reflect actual responsibilities.",
       "example": "A document application could assign separate read, edit and delete permissions to named roles, with tests showing that a reviewer cannot perform a deletion through its API, the interface other software uses to send requests.",
       "watchFor": "Hiding a button is insufficient if the server still accepts the forbidden action."
     },
@@ -95,7 +95,7 @@
     "id": "IA.L1-b.1.v",
     "beginner": {
       "meaning": "Give users, software acting for users, and devices recognizable identities. Identification answers “which one is this?” It supplies the names that access decisions and identity checks can work with.",
-      "example": "CedarPoint gives its employee and backup software recognizable account names. It also links the printer’s identifier used during connection to its equipment record, so the team can tell which device is accessing the system."
+      "example": "CedarPoint gives each employee and its backup software a unique, recognizable account name. It also links the printer’s identifier used during connection to its equipment record, so the team can tell which device is accessing the system."
     },
     "technical": {
       "focus": "Keep identities distinguishable across people, delegated processes and devices. Directory entries, service identities and device identifiers should map back to the entity they represent.",
@@ -141,7 +141,7 @@
     "id": "MP.L1-b.1.vii",
     "beginner": {
       "meaning": "Before disposing of media containing Federal Contract Information, sanitize it or destroy it. Sanitizing means removing the information so it cannot be retrieved or reconstructed. Before releasing media for reuse, sanitize it. Media includes paper and digital storage, not only laptop drives.",
-      "example": "CedarPoint retires a USB drive used for Federal Contract Information. It follows its selected sanitization process and checks the result before considering the drive available for reuse."
+      "example": "CedarPoint reassigns a USB drive that held Federal Contract Information. It sanitizes the drive with its selected process before making it available for reuse."
     },
     "technical": {
       "focus": "Identify media containing FCI and choose a sanitization or destruction method suited to the media and intended disposition. Recording the method and outcome is one practical way to show it happened.",
@@ -186,7 +186,7 @@
   {
     "id": "PE.L1-b.1.ix",
     "beginner": {
-      "meaning": "Keep visitors accompanied and their activity monitored, retain records of physical access, and know who holds access devices such as keys and badges. These activities help control entry after a lock is installed.",
+      "meaning": "Keep visitors accompanied and their activity monitored, retain records of physical access, and identify, control and manage physical access devices such as keys, badges, locks and combinations. These activities help control entry after a lock is installed.",
       "example": "At CedarPoint, a technician signs in, receives a visitor badge and is escorted to the printer. When an employee leaves, their assigned access card is recovered or disabled."
     },
     "technical": {
@@ -195,7 +195,7 @@
       "watchFor": "A visitor log alone does not demonstrate escorting, and an issued badge must still be managed."
     },
     "compliance": {
-      "focus": "The assessment objectives cover escorting, monitoring, access logs, and identifying, controlling and managing access devices. The guide distinguishes visitors from people with permanent physical-access credentials. Retain access records for the organization’s defined period; its one-year example is not a universal deadline.",
+      "focus": "The assessment objectives cover escorting, monitoring, access logs, and identifying, controlling and managing access devices. The guide distinguishes visitors from people with permanent physical-access credentials. Retain access records for the organization’s defined period; the guide’s one-year example is not a universal deadline.",
       "reviewQuestions": [
         "How are visitors escorted and their activity monitored in practice?",
         "How are access records retained and keys or badges controlled as personnel change?"
@@ -347,7 +347,7 @@
   {
     "id": "AC.L3-3.1.2e",
     "beginner": {
-      "meaning": "For this Level 3 requirement, resources accessing systems must be owned, provisioned or issued by the organization. Provisioned means the organization exercises control; outright ownership is not the only permitted relationship.",
+      "meaning": "For this Level 3 requirement, resources accessing systems must be owned, provisioned or issued by the organization. Provisioned means the organization sets the resource's configuration, directly or through policy or agreement; outright ownership is not the only permitted relationship.",
       "example": "CedarPoint permits access from a laptop it configures under an approved agreement. An employee’s unrelated personal laptop is not treated as equivalent simply because the employee has a valid password."
     },
     "technical": {
@@ -417,7 +417,7 @@
     "id": "AT.L3-3.2.2e",
     "beginner": {
       "meaning": "People learn by practicing realistic situations, not only watching a presentation. This Level 3 requirement includes exercises for all users, shaped by their roles, and feedback for participants and their supervisors.",
-      "example": "CedarPoint gives office staff a suspicious-message exercise and administrators a scenario involving misuse of privileged access. Each group receives feedback on its decisions and supervisors learn where support is needed."
+      "example": "CedarPoint gives office staff a suspicious-message exercise and administrators a scenario involving misuse of privileged access. Each participant receives feedback on their decisions, and supervisors learn where support is needed."
     },
     "technical": {
       "focus": "Connect practical exercises to current threats and the responsibilities of general, specialized and privileged users. Plan feedback so results improve skills rather than becoming unexplained scores.",
@@ -623,7 +623,7 @@
   {
     "id": "RA.L3-3.11.1e",
     "beginner": {
-      "meaning": "Threat intelligence is information about attackers and their methods. Use it in risk assessment to shape systems, defenses, monitoring, hunting and recovery rather than collecting reports that never change decisions.",
+      "meaning": "Threat intelligence is information about attackers and their methods. Use it in risk assessment to shape systems, defenses, monitoring, hunting, response and recovery rather than collecting reports that never change decisions.",
       "example": "CedarPoint learns how a relevant attacker targets remote access. The team uses that knowledge to reassess its architecture and detection strategy, not just forward an advisory email."
     },
     "technical": {
@@ -784,7 +784,7 @@
   {
     "id": "CA.L3-3.12.1e",
     "beginner": {
-      "meaning": "Penetration testing checks how an attacker could exploit weaknesses in an authorized environment. This Level 3 requirement calls for testing at least annually or when significant security changes occur, using scanning tools and expert-led ad hoc tests.",
+      "meaning": "Penetration testing is an authorized test of how an attacker could exploit weaknesses in the system. This Level 3 requirement calls for testing at least annually or when significant security changes occur, using scanning tools and expert-led ad hoc tests.",
       "example": "CedarPoint authorizes a test after a significant security architecture change. Qualified testers work within agreed limits and report findings the organization can use to improve defenses."
     },
     "technical": {

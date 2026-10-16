@@ -52,8 +52,23 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "An account cannot be \"nearby\"; the point is that unapproved devices stay out.",
+          "proposedText": "CedarPoint approves Maya's account, the automated job working for her team, and a company laptop. A visitor's laptop and an unapproved printer cannot connect simply because they are nearby.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 22 / printed 14 section; system access is limited to authorized devices (including other systems)",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 22,
+            "printedPage": 14,
+            "quotedBasis": "system access is limited to authorized devices (including other systems)"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [22, 24],
@@ -77,7 +92,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "5fbb31ad6792d043d36e47c7a9ff3d1dec2a341b208a846aac2b9c61d04171d5",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "5fbb31ad6792d043d36e47c7a9ff3d1dec2a341b208a846aac2b9c61d04171d5"
+      "reviewedFingerprint": "1767b8cbb00d13041f638bef0929ddca6582936cb4a7c7eb73ee6398c798614d"
     },
     {
       "id": "AC.L2-3.1.2",
@@ -404,8 +419,23 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "technical.focus",
+          "issue": "Left out the guide's question about notices where paper-based CUI is stored and processed.",
+          "proposedText": "Identify the applicable notice requirements and display appropriate notices at relevant human logon interfaces. The guide discusses banners and, where necessary, printed notices; it does not require a human-facing banner for interfaces with no human logon. It also asks whether appropriate notices are displayed where paper-based CUI is stored and processed.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 42 / printed 34 section; Are appropriate notices displayed in areas where paper-based CUI is stored and processed [b]?",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 42,
+            "printedPage": 34,
+            "quotedBasis": "Are appropriate notices displayed in areas where paper-based CUI is stored and processed [b]?"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [42, 43],
@@ -429,7 +459,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "aedb95d7c7e100ab08cedfddc321f7e9d65d759c5feb2ef91662cc9d501f30db",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "aedb95d7c7e100ab08cedfddc321f7e9d65d759c5feb2ef91662cc9d501f30db"
+      "reviewedFingerprint": "7e40c447ec999116461cb93cd1995ab2d36b8c899b00e9f3927bc265986b356e"
     },
     {
       "id": "AC.L2-3.1.10",
@@ -492,8 +522,23 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "compliance.focus",
+          "issue": "Did not say where the guide points for minimum values.",
+          "proposedText": "Trace defined termination conditions to demonstrated automatic behavior. Keep this separate from the inactivity lock requirement and avoid inventing a universal duration; for minimum values the guide points to the DoD Cybersecurity FAQ (Q53.2).",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 46 / printed 38 section; Review DoD Cybersecurity FAQ Q53.2 for information on minimum values.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 46,
+            "printedPage": 38,
+            "quotedBasis": "Review DoD Cybersecurity FAQ Q53.2 for information on minimum values."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [46, 47],
@@ -517,7 +562,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "69ea1e8c0bfd70d7c6ecd904b0a5696bc22a21d35e10adefd653e303484b9673",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "69ea1e8c0bfd70d7c6ecd904b0a5696bc22a21d35e10adefd653e303484b9673"
+      "reviewedFingerprint": "58245dd2aa3e4254783ded50cfe36c9ca4042835d3e22893f9c7b120dbd5df43"
     },
     {
       "id": "AC.L2-3.1.12",
@@ -802,6 +847,20 @@
             "quotedBasis": "the module (software and/or hardware) used to implement the algorithm must be separately validated under FIPS 140"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.meaning",
+          "issue": "Said an open or unencrypted network \"misses an important protection\"; it fails the requirement.",
+          "proposedText": "Protect wireless access in two ways: verify who or what is connecting, and encrypt the connection. A wireless network that asks for no proof of identity, or one that sends readable information over the air, does not meet this requirement; the guide says open authentication must not be used.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 60 / printed 52 section; Open authentication must not be used because it authenticates any user and lacks security capabilities.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 60,
+            "printedPage": 52,
+            "quotedBasis": "Open authentication must not be used because it authenticates any user and lacks security capabilities."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
@@ -828,7 +887,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "628b83c6bbe8f0c5947505e5d8a017db5391f438f9853235fd10ff118212004d",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "21575688dbb4d5239702a17ec46fedc3cae3ef1e9d5e6d1c0d1ee4d6c41bd2d5"
+      "reviewedFingerprint": "84afa077b0e079a80ba8a7261df931e60a9b9be4abccaf2d7ab0d027701dbd6e"
     },
     {
       "id": "AC.L2-3.1.18",
@@ -1598,8 +1657,23 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.meaning",
+          "issue": "\"Audit records\" is narrower than the requirement's audit information.",
+          "proposedText": "Protect audit information, such as audit records, log settings and reports, and the tools that create or manage it from unauthorized access, changes and deletion. An attacker who can alter the record of their actions can make an investigation much harder, even if logging originally worked.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 95 / printed 87 section; Audit information includes all information (e.g., audit records, audit log settings, and audit reports) needed to successfully audit system activity.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 95,
+            "printedPage": 87,
+            "quotedBasis": "Audit information includes all information (e.g., audit records, audit log settings, and audit reports) needed to successfully audit system activity."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [95, 96],
@@ -1623,7 +1697,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "3385427aaa0481125193124e756bf8a5acaa631cdc4890d5559d88f277e1e74a",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "3385427aaa0481125193124e756bf8a5acaa631cdc4890d5559d88f277e1e74a"
+      "reviewedFingerprint": "a57c5930461ada38b7a49580baca1d97430f769c897090ea9702684977548d5c"
     },
     {
       "id": "AU.L2-3.3.9",
@@ -1760,8 +1834,23 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Left out approval of deviations.",
+          "proposedText": "CedarPoint defines approved workstation security settings and applies them to its project devices. If one application needs a deviation, the team reviews, documents and approves it instead of quietly weakening settings for everyone.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 102 / printed 94 section; Any required deviations from the baseline are reviewed, documented, and approved.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 102,
+            "printedPage": 94,
+            "quotedBasis": "Any required deviations from the baseline are reviewed, documented, and approved."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [102, 103],
@@ -1785,7 +1874,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "cbad2b396fb2407b523ca7d16c87859ff4bbc416a1c6891f169505e9b93d12a6",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "cbad2b396fb2407b523ca7d16c87859ff4bbc416a1c6891f169505e9b93d12a6"
+      "reviewedFingerprint": "29e88ea46f7ebbf6bf5f79f366654260d406b715841bf7a730b295dd01c1a381"
     },
     {
       "id": "CM.L2-3.4.3",
@@ -2040,8 +2129,23 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.meaning",
+          "issue": "Read as a note to writers and left out that the guide calls whitelisting the stronger policy.",
+          "proposedText": "Choose and enforce a policy for which software can run. One approach allows software except specifically denied items; another denies software except specifically approved items. The requirement accepts either; the guide calls the second, whitelisting, the stronger of the two.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 116 / printed 108 section; Whitelisting is the stronger of the two policies for restricting software program execution.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 116,
+            "printedPage": 108,
+            "quotedBasis": "Whitelisting is the stronger of the two policies for restricting software program execution."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [116, 117],
@@ -2065,7 +2169,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "17de270f6dfb8ec7ae09b79994e9f0f1a7f8cd56bcd569f10932d4c741d53d39",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "17de270f6dfb8ec7ae09b79994e9f0f1a7f8cd56bcd569f10932d4c741d53d39"
+      "reviewedFingerprint": "b1ea458402d2cae2104f067ae37817fe21786b99559e261d64d74784a943e83a"
     },
     {
       "id": "CM.L2-3.4.9",
@@ -2128,8 +2232,23 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "compliance.evidenceExamples[0]",
+          "issue": "Said \"sanitized\" evidence; on this site sanitize means removing information so it cannot be retrieved, which the MP pages call redacting.",
+          "proposedText": "Redacted user, delegated-process, and device identity records.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 120 / printed 112 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 120,
+            "printedPage": 112,
+            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [120, 121],
@@ -2153,7 +2272,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "59d6f51600126b961d815847ea34b28e393c85e4b53cccb36a381dc0ec1f4e99",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "59d6f51600126b961d815847ea34b28e393c85e4b53cccb36a381dc0ec1f4e99"
+      "reviewedFingerprint": "96d0c2da813608b715b3ef60c542b9edc20b7f56101947729c6547e721d026f9"
     },
     {
       "id": "IA.L2-3.5.2",
@@ -2322,6 +2441,20 @@
             "quotedBasis": "Your use of MFA to protect remote access also confers some replay resistance"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.evidenceExamples[1]",
+          "issue": "Said \"sanitized\" evidence; on this site sanitize means removing information so it cannot be retrieved, which the MP pages call redacting.",
+          "proposedText": "A redacted design review or controlled replay-resistance demonstration with test credentials.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 128 / printed 120 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 128,
+            "printedPage": 120,
+            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
@@ -2348,7 +2481,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "9a9da6cd2361ef409c39fdc957249de2374fa5a1fc7dbb44698ac95fed83021e",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "9be9273f97d6303df4a8d72c05f769d45b7a737692e784b2445c8ca314992dff"
+      "reviewedFingerprint": "10fbebcc9839ab6a54c14922a8246378794f086dc1af902caa054f8f3cb14f03"
     },
     {
       "id": "IA.L2-3.5.5",
@@ -2367,8 +2500,23 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "compliance.evidenceExamples[0]",
+          "issue": "Said \"sanitized\" evidence; on this site sanitize means removing information so it cannot be retrieved, which the MP pages call redacting.",
+          "proposedText": "Identifier-assignment rules and redacted reservation or retirement records.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 130 / printed 122 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 130,
+            "printedPage": 122,
+            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [130, 131],
@@ -2392,7 +2540,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "ee8c926dc83c152dc9f5e0bbd22dc8df73215710bc448d91eb1c5ad60e4993ee",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "ee8c926dc83c152dc9f5e0bbd22dc8df73215710bc448d91eb1c5ad60e4993ee"
+      "reviewedFingerprint": "c14b9948c4e90f0f06a8e1727df9a9ae2cc7f77bda4aba2ce142f87029e0025f"
     },
     {
       "id": "IA.L2-3.5.6",
@@ -2411,8 +2559,23 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "compliance.evidenceExamples[1]",
+          "issue": "Said \"sanitized\" evidence; on this site sanitize means removing information so it cannot be retrieved, which the MP pages call redacting.",
+          "proposedText": "Redacted inactivity findings and corresponding identifier-disable records.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 132 / printed 124 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 132,
+            "printedPage": 124,
+            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [132, 133],
@@ -2436,7 +2599,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "8a9cbd96a28055496d2ef6af2d00dce827b53c70c502f2b0f3a5d83065937d8b",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "8a9cbd96a28055496d2ef6af2d00dce827b53c70c502f2b0f3a5d83065937d8b"
+      "reviewedFingerprint": "268c0528d057ab901e0f4930e3fc172be03881200b9b5222fd7a916c65323246"
     },
     {
       "id": "IA.L2-3.5.7",
@@ -2636,6 +2799,20 @@
             "interpretationNote": "This source-edition storage clarification is explicitly attributed to the guide and its assessment considerations; it neither claims that transmitting reusable hashes is safe nor rewrites the source requirement."
           },
           "resolution": "Applied after coordinating source comparison; final independent delta found no content issue. Affected objective mappings re-compared and preserved."
+        },
+        {
+          "field": "compliance.evidenceExamples[0]",
+          "issue": "Said \"sanitized\" evidence; on this site sanitize means removing information so it cannot be retrieved, which the MP pages call redacting.",
+          "proposedText": "Redacted credential-storage design and relevant protection settings.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 140 / printed 132 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 140,
+            "printedPage": 132,
+            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
@@ -2675,7 +2852,7 @@
         ],
         "humanReview": "pending"
       },
-      "reviewedFingerprint": "97ed5ae835b576cd37f568d2c447474651752c57924768b8cae4383e98f9d54b"
+      "reviewedFingerprint": "51c829b83fb6b11576e24b12639e8cf2c6d2b9b6ba67e7c79e95bc8be084f232"
     },
     {
       "id": "IA.L2-3.5.11",
@@ -2694,8 +2871,23 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "compliance.evidenceExamples[1]",
+          "issue": "Said \"sanitized\" evidence; on this site sanitize means removing information so it cannot be retrieved, which the MP pages call redacting.",
+          "proposedText": "Interface demonstrations using nonsensitive test authentication information.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 142 / printed 134 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 142,
+            "printedPage": 134,
+            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [142, 143],
@@ -2719,7 +2911,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "fa8977cdab25fdfe98c5a1522f50c14c5243f06d666c0e19b8462f5523ad0ac4",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "fa8977cdab25fdfe98c5a1522f50c14c5243f06d666c0e19b8462f5523ad0ac4"
+      "reviewedFingerprint": "40fbf75b697dd4bdcd5f02f90eb24579faed16e1fea818c50bb6aa71adb8290b"
     }
   ],
   "finalDeltaReview": {
