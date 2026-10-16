@@ -158,7 +158,7 @@ export const levelOneGlossaryTerms: readonly GlossaryTerm[] = [
     id: 'media-sanitization',
     title: 'Media sanitization',
     definition:
-      'Treating recorded information so it cannot be recovered or reconstructed from the media being released for reuse or disposal. The suitable method depends on the media and intended next use; deleting a file or using an ordinary format does not, by itself, establish this outcome.',
+      'Removing information from media so it cannot be retrieved or reconstructed, by clearing, purging, cryptographic erase or destruction, chosen to fit the media and whether it will be reused or disposed of.',
     reviewStatus: 'draft',
     versionContext: snapshotContext,
     sources: [media, mediaDiscussion],
