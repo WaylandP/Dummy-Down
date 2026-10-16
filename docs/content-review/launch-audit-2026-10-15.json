@@ -14,11 +14,12 @@
     "polish": 117
   },
   "statusCounts": {
-    "applied": 50,
-    "open": 99,
-    "revised": 19
+    "applied": 108,
+    "declined": 8,
+    "open": 32,
+    "revised": 20
   },
-  "statusNote": "\"applied\": the suggested change, or one with the same effect, is in the linked pull request. \"revised\": the quoted site text was rewritten in the linked pull request while fixing the same subject. \"open\": not changed yet; some are assigned. Statuses were set on 2026-10-15 and are not a human review.",
+  "statusNote": "\"applied\": the suggested change, or one with the same effect, is in the linked pull request. \"revised\": the quoted site text was rewritten in the linked pull request while fixing the same subject. \"declined\": kept on purpose, with the reason in \"note\". \"open\": not changed yet; some are assigned. Statuses were set on 2026-10-15 and are not a human review.",
   "findings": [
     {
       "area": "explanations",
@@ -65,7 +66,8 @@
       "problem": "Objective [c], which covers identifying the designated sources and destinations of CUI, is not mapped to any span. Every other non-empty AC clause map covers all of its objectives.",
       "guideEvidence": "Objective: '[c] designated sources and destinations (e.g., networks, individuals, and devices) for CUI within the system and between interconnected systems are identified;' Discussion: 'Information flow control regulates where information can travel within a system and between systems (versus who can access the information)...'",
       "suggestedFix": "Map 'Control the flow of CUI' -> [a, b, c], since a flow implies its designated sources and destinations.",
-      "status": "open"
+      "status": "declined",
+      "note": "Kept by design: the clause-map record maps a clause only to an objective that restates it, one axis per sentence, and leaves whole-sentence or elaborating objectives unmarked (docs/sources/cmmc-clause-map-2026-10-15.md)."
     },
     {
       "area": "explanations",
@@ -76,7 +78,8 @@
       "problem": "None of objectives [a]-[e] is tied to the requirement text. Of the 28 AC controls, only this one, AC.L2-3.1.8 and AC.L2-3.1.22 have no map. AC.L2-3.1.4 shows that a single span can carry every letter, so the empty map looks like an omission rather than a design choice.",
       "guideEvidence": "Requirement: 'Control information posted or processed on publicly accessible information systems.' Objectives [a] individuals authorized to post or process ... are identified; [b] procedures to ensure [FCI] is not posted or processed ... are identified; [c] a review process is in place prior to posting ...; [d] content ... is reviewed ...; [e] mechanisms are in place to remove and address improper posting of [FCI].",
       "suggestedFix": "Map 'Control' -> [b, c, d, e] and 'posted or processed on publicly accessible information systems' -> [a].",
-      "status": "open"
+      "status": "declined",
+      "note": "Kept by design: the clause-map record maps a clause only to an objective that restates it, one axis per sentence, and leaves whole-sentence or elaborating objectives unmarked (docs/sources/cmmc-clause-map-2026-10-15.md)."
     },
     {
       "area": "explanations",
@@ -87,7 +90,8 @@
       "problem": "Neither objective is tied to the requirement text. This is one of only three AC controls with no map; the others map every objective, including AC.L2-3.1.4, where a single span carries all letters.",
       "guideEvidence": "Requirement: 'Limit unsuccessful logon attempts.' Objectives: '[a] the means of limiting unsuccessful logon attempts is defined; and [b] the defined means of limiting unsuccessful logon attempts is implemented.'",
       "suggestedFix": "Map 'Limit unsuccessful logon attempts' -> [a, b].",
-      "status": "open"
+      "status": "declined",
+      "note": "Kept by design: the clause-map record maps a clause only to an objective that restates it, one axis per sentence, and leaves whole-sentence or elaborating objectives unmarked (docs/sources/cmmc-clause-map-2026-10-15.md)."
     },
     {
       "area": "explanations",
@@ -98,7 +102,8 @@
       "problem": "None of objectives [a]-[e] is tied to the requirement text. This matches the empty map on its Level 1 counterpart, AC.L1-b.1.iv; every other AC control maps all of its objectives.",
       "guideEvidence": "Requirement: 'Control CUI posted or processed on publicly accessible systems.' Objectives [a]-[e] as listed: authorized posters identified; procedures to keep CUI off public systems; pre-posting review; review of content; mechanisms to remove and address improper posting of CUI.",
       "suggestedFix": "Map 'Control' -> [b, c, d, e] and 'posted or processed on publicly accessible systems' -> [a].",
-      "status": "open"
+      "status": "declined",
+      "note": "Kept by design: the clause-map record maps a clause only to an objective that restates it, one axis per sentence, and leaves whole-sentence or elaborating objectives unmarked (docs/sources/cmmc-clause-map-2026-10-15.md)."
     },
     {
       "area": "explanations",
@@ -157,7 +162,8 @@
       "problem": "This understates the point. Missing authentication fails objective [a] and missing encryption fails [b]; neither merely weakens protection. The guide says open authentication must not be used.",
       "guideEvidence": "Objectives: '[a] wireless access to the system is protected using authentication; and [b] wireless access to the system is protected using encryption.' Further Discussion: 'Open authentication must not be used because it authenticates any user and lacks security capabilities.'",
       "suggestedFix": "A wireless network that asks for no proof of identity, or one that sends readable information over the air, does not meet this requirement; the guide says open authentication must not be used.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -168,7 +174,8 @@
       "problem": "This frames display around logon interfaces only. Under objective [b], the guide also asks whether notices are displayed where paper-based CUI is stored and processed, and no perspective mentions that. The 'printed notices' the site cites are a substitute for a system banner, which is a different point.",
       "guideEvidence": "Potential Assessment Considerations: 'Are appropriate notices displayed in areas where paper-based CUI is stored and processed [b]?' Discussion: 'Where necessary, posters or other printed materials may be used in lieu of an automated system banner.'",
       "suggestedFix": "Add: 'The guide also asks whether appropriate notices are displayed in areas where paper-based CUI is stored and processed.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -179,7 +186,8 @@
       "problem": "The definition is looser than the guide's. The guide says provisioned means the organization sets the resource's configuration, by technical means or by policy or agreement, and it treats GFE as provisioned. 'Exercises control' is broader and could be read to cover loose oversight of a device whose configuration the organization does not set.",
       "guideEvidence": "Further Discussion: 'Provisioned includes setting configuration, whether through direct technical means or by policy or agreement. For purposes of this requirement, GFE can be considered provisioned by the OSA.'",
       "suggestedFix": "Provisioned means the organization sets the resource's configuration, directly or through policy or agreement; outright ownership is not the only permitted relationship.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -190,7 +198,8 @@
       "problem": "This is narrower than the guide. The guide also limits users to the information systems and applications their role needs, for example keeping a word-processing user out of developer tools. That is often enforced at the operating-system or endpoint level, not inside an application or its data.",
       "guideEvidence": "Further Discussion: 'Limit users to only the information systems, roles, or applications they are permitted to use and require for their roles and responsibilities.' Potential Assessment Considerations: 'Is access for authorized users restricted to those parts of the system they are explicitly permitted to use, that is, is access denied by default and allowed by exception (e.g., a person who only performs word-processing cannot access developer tools) [b]?'",
       "suggestedFix": "Define permitted transactions and functions, then enforce them wherever access is decided: which systems and applications a user can open, and what they can do inside them.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -201,7 +210,8 @@
       "problem": "The sentence is accurate, but the guide footnotes its one-hour example with a pointer to DoD guidance on minimum values. Without that pointer, readers may conclude there is no outside reference for the duration at all.",
       "guideEvidence": "Further Discussion: 'Examples are inactivity (end the session after a specified duration (e.g., one hour [footnote 33]) of inactivity)...' Footnote 33: 'Review DoD Cybersecurity FAQ Q53.2 for information on minimum values.'",
       "suggestedFix": "Keep this separate from the inactivity lock requirement and avoid inventing a universal duration; the guide points to DoD Cybersecurity FAQ Q53.2 for information on minimum values.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -212,7 +222,8 @@
       "problem": "This is a naming inconsistency across the whole batch. The same fictional company is 'Cedar Point Design' in all four L1 and both L3 AC controls, but 'CedarPoint' in 21 of the 22 L2 AC controls (3.1.2 names only Maya). Only AC.L1-b.1.i labels the company 'fictional', so a visitor who lands directly on an L2 page never sees that label.",
       "guideEvidence": "n/a (site consistency). Compare AC.L1-b.1.i beginner.example: 'At fictional Cedar Point Design, an employee requests a new network printer.'",
       "suggestedFix": "Use one form everywhere, e.g. 'Cedar Point Design', with 'Cedar Point' acceptable after the first mention on a page, across AC.L2-3.1.1 and 3.1.3 through 3.1.22.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -223,7 +234,8 @@
       "problem": "An account cannot be 'nearby', and if CedarPoint gave the visitor an account, a reader will wonder why it is unapproved. The intended point, that unapproved people and devices are kept out, gets muddled.",
       "guideEvidence": "Example 2: 'the company controls system and device access to the network and will prevent network access by unauthorized systems and devices [c].'",
       "suggestedFix": "A visitor's laptop and an unapproved printer cannot connect simply because they are nearby.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -282,7 +294,8 @@
       "problem": "Leaves out approval. The guide says required deviations are reviewed, documented, and approved, and the compliance view on this page refers to 'approved deviations'.",
       "guideEvidence": "FURTHER DISCUSSION: \"Any required deviations from the baseline are reviewed, documented, and approved.\"",
       "suggestedFix": "\"If one application needs a deviation, the team reviews, documents, and approves it instead of quietly weakening settings for everyone.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -293,7 +306,8 @@
       "problem": "Missing letter. The word 'only' produces objective [b] (configured to provide only the defined essential capabilities), but the span is mapped to [a] alone. The clause that most directly produces [a], 'Employ the principle of least functionality', is not mapped at all.",
       "guideEvidence": "\"[a] essential system capabilities are defined based on the principle of least functionality; and [b] the system is configured to provide only the defined essential capabilities.\"",
       "suggestedFix": "Map \"Employ the principle of least functionality\" -> [a] and \"configuring organizational systems to provide only essential capabilities\" -> [b], or at least change \"only essential capabilities\" to [a, b].",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/87"
     },
     {
       "area": "explanations",
@@ -304,7 +318,8 @@
       "problem": "The second half reads as an instruction to writers ('should not be presented as the same design'), not an explanation for a beginner. It also leaves out the useful point that either approach is acceptable and allow-listing is the stronger one.",
       "guideEvidence": "Objective: \"[a] a policy specifying whether whitelisting or blacklisting is to be implemented is specified\". DISCUSSION: \"Whitelisting is the stronger of the two policies for restricting software program execution.\"",
       "suggestedFix": "\"The requirement accepts either approach; the guide calls the deny-all, permit-by-exception (allow-list) approach the stronger of the two.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -327,7 +342,8 @@
       "problem": "Internal editorial note shown to readers. A visitor can't act on it, and it doesn't say what the wording difference is (the requirement says 'equipment removed'; the objective says 'equipment to be removed from organizational spaces').",
       "guideEvidence": "Requirement: \"Ensure equipment removed for off-site maintenance is sanitized of any CUI.\" Objective: \"[a] equipment to be removed from organizational spaces for off-site maintenance is sanitized of any CUI.\"",
       "suggestedFix": "Delete the sentence, or replace it with: \"The objective's wording, 'equipment to be removed', makes clear that sanitization happens before the equipment leaves.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -338,7 +354,8 @@
       "problem": "Can be read as saying escorting is irrelevant here, but the guide's assessment consideration asks specifically about processes for escorting and supervising these personnel. The point to keep is that a general visitor-escort rule alone does not show that maintenance was supervised.",
       "guideEvidence": "Potential Assessment Considerations: \"Are there processes for escorting and supervising maintenance personnel without required access authorization (e.g., vendor support personnel, short-term maintenance contractors) during system maintenance [a]?\" DISCUSSION: \"This requirement applies to individuals who are performing hardware or software maintenance on organizational systems, while PE.L2-3.10.1 addresses physical access for individuals whose maintenance duties place them within the physical protection perimeter of the systems (e.g., custodial staff, physical plant maintenance personnel).\"",
       "suggestedFix": "\"Escorting can be part of supervising maintenance personnel, but general physical-access and visitor-escort rules do not by themselves show that maintenance activities were supervised.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -361,7 +378,8 @@
       "problem": "The requirement puts screening before authorizing access, not before account creation. Equating the two can suggest that pre-staging a disabled account is noncompliant. It also differs from the technical example on the same page, which ties screening to approval of CUI-system access.",
       "guideEvidence": "Requirement: \"Screen individuals prior to authorizing access to organizational systems containing CUI.\" FURTHER DISCUSSION: \"Ensure all employees who need access to CUI undergo organization-defined screening before being granted access.\"",
       "suggestedFix": "\"Granting the account access first would reverse that sequence.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -372,7 +390,8 @@
       "problem": "'An invented universal investigation type' reads like a note to writers; readers can't tell who invented what. The intended meaning, that no single investigation type applies to everyone, should be said directly.",
       "guideEvidence": "DISCUSSION: \"The screening activities reflect applicable federal laws, Executive Orders, directives, policies, regulations, and specific criteria established for the level of access required for assigned positions.\" FURTHER DISCUSSION: \"Base the types of screening on the requirements for a given position and role.\"",
       "suggestedFix": "\"The screening criteria must reflect applicable rules and the access required for the position rather than one investigation type applied to every individual.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -383,7 +402,8 @@
       "problem": "Logic slip: a role does not retain access; Sam does. As written, it says Sam's former role keeps access.",
       "guideEvidence": "Example 2: \"IT implements the rights for the new position and revokes the access for the prior position on the official date of the transfer [c].\"",
       "suggestedFix": "\"...so Sam does not keep access from the former role that is no longer needed.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -394,7 +414,8 @@
       "problem": "Internal editorial note shown to readers. It mentions a 'wording difference' without saying what it is, and a visitor can't act on it.",
       "guideEvidence": "Requirement: \"Ensure that organizational systems containing CUI are protected during and after personnel actions such as terminations and transfers.\" Objectives: \"[b] system access and credentials are terminated consistent with personnel actions such as termination or transfer; and [c] the system is protected during and after personnel transfer actions.\"",
       "suggestedFix": "Delete the sentence, or replace it with a plain statement such as: \"Objectives [a] and [b] cover ending access and credentials for terminations and transfers; objective [c] looks specifically at protection during and after transfers.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -489,7 +510,8 @@
       "problem": "\"Its employee\" (singular) reads as if the company has one employee, or as a dropped word. The guide's point is that each user gets an individual, unique identifier.",
       "guideEvidence": "Further discussion: \"Individual, unique identifiers (e.g., user names) should be assigned to all users and processes that access company systems.\" Example: \"You assign each employee a unique user ID, which they use to log on to the system [a].\"",
       "suggestedFix": "\"Cedar Point Design gives each employee and its backup software a unique, recognizable account name.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -560,7 +582,8 @@
       "problem": "On this site, \"sanitize\" is a defined term from the MP pages: removing information so it cannot be retrieved or reconstructed. \"Sanitized\" evidence therefore reads as evidence with its content destroyed. The MP pages use \"redacted\" for the same idea. The same wording appears in IA.L2-3.5.1, 3.5.4, 3.5.5, 3.5.6, 3.5.10 and 3.5.11.",
       "guideEvidence": "MP.L2-3.8.3 discussion: \"The sanitization process removes information from the media such that the information cannot be retrieved or reconstructed.\"",
       "suggestedFix": "\"Redacted user, delegated-process, and device identity records.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -571,7 +594,8 @@
       "problem": "On this site, \"sanitize\" is a defined term from the MP pages: removing information so it cannot be retrieved or reconstructed. \"Sanitized\" evidence therefore reads as evidence with its content destroyed. The MP pages use \"redacted\" for the same idea. The same wording appears in IA.L2-3.5.1, 3.5.4, 3.5.5, 3.5.6, 3.5.10 and 3.5.11.",
       "guideEvidence": "MP.L2-3.8.3 discussion: \"The sanitization process removes information from the media such that the information cannot be retrieved or reconstructed.\"",
       "suggestedFix": "\"A redacted design review or controlled replay-resistance demonstration with test credentials.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -582,7 +606,8 @@
       "problem": "On this site, \"sanitize\" is a defined term from the MP pages: removing information so it cannot be retrieved or reconstructed. \"Sanitized\" evidence therefore reads as evidence with its content destroyed. The MP pages use \"redacted\" for the same idea. The same wording appears in IA.L2-3.5.1, 3.5.4, 3.5.5, 3.5.6, 3.5.10 and 3.5.11.",
       "guideEvidence": "MP.L2-3.8.3 discussion: \"The sanitization process removes information from the media such that the information cannot be retrieved or reconstructed.\"",
       "suggestedFix": "\"Identifier-assignment rules and redacted reservation or retirement records.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -593,7 +618,8 @@
       "problem": "On this site, \"sanitize\" is a defined term from the MP pages: removing information so it cannot be retrieved or reconstructed. \"Sanitized\" evidence therefore reads as evidence with its content destroyed. The MP pages use \"redacted\" for the same idea. The same wording appears in IA.L2-3.5.1, 3.5.4, 3.5.5, 3.5.6, 3.5.10 and 3.5.11.",
       "guideEvidence": "MP.L2-3.8.3 discussion: \"The sanitization process removes information from the media such that the information cannot be retrieved or reconstructed.\"",
       "suggestedFix": "\"Redacted inactivity findings and corresponding identifier-disable records.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -604,7 +630,8 @@
       "problem": "On this site, \"sanitize\" is a defined term from the MP pages: removing information so it cannot be retrieved or reconstructed. \"Sanitized\" evidence therefore reads as evidence with its content destroyed. The MP pages use \"redacted\" for the same idea. The same wording appears in IA.L2-3.5.1, 3.5.4, 3.5.5, 3.5.6, 3.5.10 and 3.5.11.",
       "guideEvidence": "MP.L2-3.8.3 discussion: \"The sanitization process removes information from the media such that the information cannot be retrieved or reconstructed.\"",
       "suggestedFix": "\"Redacted credential-storage design and relevant protection settings.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -615,7 +642,8 @@
       "problem": "On this site, \"sanitize\" is a defined term from the MP pages: removing information so it cannot be retrieved or reconstructed. \"Sanitized\" evidence therefore reads as evidence with its content destroyed. The MP pages use \"redacted\" for the same idea. The same wording appears in IA.L2-3.5.1, 3.5.4, 3.5.5, 3.5.6, 3.5.10 and 3.5.11.",
       "guideEvidence": "MP.L2-3.8.3 discussion: \"The sanitization process removes information from the media such that the information cannot be retrieved or reconstructed.\"",
       "suggestedFix": "\"Interface demonstrations using nonsensitive test authentication information.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -626,7 +654,8 @@
       "problem": "\"Retires\" suggests disposal, but the example ends in reuse. The mixed signal blurs the disposal-versus-reuse distinction that the compliance perspective draws.",
       "guideEvidence": "Objectives: \"[a] system media containing [FCI] is sanitized or destroyed before disposal; and [b] system media containing [FCI] is sanitized before it is released for reuse.\" Further discussion: \"clean or purge the information, if you want to reuse the device.\"",
       "suggestedFix": "\"Cedar Point Design reassigns a USB drive that held Federal Contract Information. It sanitizes the drive with its selected process before making it available for reuse.\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -637,7 +666,8 @@
       "problem": "Verification is sound practice from NIST SP 800-88, which the guide cites, but it is not an assessment objective. As written, the imperative and the question read as a stated requirement.",
       "guideEvidence": "Objectives: \"[a] system media containing CUI is sanitized or destroyed before disposal; and [b] system media containing CUI is sanitized before it is released for reuse.\" Discussion: \"NIST SP 800-88 provides guidance on media sanitization.\"",
       "suggestedFix": "technical.focus: \"NIST SP 800-88, which the guide cites, recommends verifying the result before release.\" reviewQuestions[1]: \"How does the organization make sure media is sanitized or destroyed before disposal, and sanitized before release for reuse?\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -744,7 +774,8 @@
       "problem": "The requirement says to control and manage physical access devices (objectives [d] identified, [e] controlled, [f] managed). The meaning reduces this to knowing who holds them, and implies devices are only things people carry. The guide's definition also includes locks, combinations and card readers. The example partly covers management by recovering or disabling a card.",
       "guideEvidence": "Objectives: \"[d] physical access devices are identified; [e] physical access devices are controlled; and [f] physical access devices are managed.\" Discussion: \"Physical access devices include keys, locks, combinations, and card readers.\" Assessment consideration: \"Are physical access devices managed (e.g., revoking key card access when necessary, changing locks as needed, maintaining access control devices and systems) [f]?\"",
       "suggestedFix": "Keep visitors accompanied and their activity monitored, retain records of physical access, and identify, control and manage physical access devices such as keys, badges, locks and combinations, for example by knowing who holds them, recovering or disabling them, and changing locks when needed.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -755,7 +786,8 @@
       "problem": "The requirement covers \"unauthorized and unintended\" transfer. \"Unintentionally\" alone leaves out deliberate unauthorized access, which is what the guide's example addresses: attackers exploiting processor flaws. The technical and compliance perspectives on this page include \"unauthorized\".",
       "guideEvidence": "Requirement: \"Prevent unauthorized and unintended information transfer via shared system resources.\" Example: \"You ensure that the computer baselines include software patches to prevent attackers from exploiting flaws in the processor architecture to read data (e.g., the Meltdown and Spectre exploits).\"",
       "suggestedFix": "Prevent information from passing between users or processes through reused shared system resources, whether by accident or through unauthorized access.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -766,7 +798,8 @@
       "problem": "The guide describes detection followed by prohibiting the connection, not detection as an alternative to prohibiting. Detection alone does not \"prevent\" split tunneling, yet the \"or\" in both places attributes that alternative to the guide. The technical example (\"reject devices with disallowed settings\") is correct.",
       "guideEvidence": "Discussion: \"This requirement is implemented in the system by the detection of split tunneling (or of configuration settings that allow split tunneling) in the remote device, and by prohibiting the connection if the remote device is using split tunneling.\"",
       "suggestedFix": "Focus: \"...preventing users from readily changing them, and detecting split tunneling (or settings that allow it) and refusing the connection when it is present.\" Review question: \"How are prohibited settings or connection behavior detected and blocked?\"",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -789,7 +822,8 @@
       "problem": "[ODP1] (selecting physical, logical or both) isn't mapped to any span, although the clause \"physical isolation techniques or logical isolation techniques or both\" produces it. The other three mappings are correct.",
       "guideEvidence": "Objectives: \"[ODP1] One or more of the following is/are selected: physical isolation techniques; logical isolation techniques; [ODP2] Physical isolation techniques are defined (if selected); [ODP3] Logical isolation techniques are defined (if selected);\"",
       "suggestedFix": "Add ODP1 to both technique spans (ODP1+ODP2 and ODP1+ODP3), or add a span on \"or both\" mapped to ODP1.",
-      "status": "open"
+      "status": "declined",
+      "note": "Kept by design: the clause-map record maps a clause only to an objective that restates it, one axis per sentence, and leaves whole-sentence or elaborating objectives unmarked (docs/sources/cmmc-clause-map-2026-10-15.md)."
     },
     {
       "area": "explanations",
@@ -800,7 +834,8 @@
       "problem": "Unexplained meta-statement that reads like a maintainer note. For this control the guide's requirement text matches the official requirement on the page, so a reader can't tell what differs or why it matters.",
       "guideEvidence": "Guide requirement text, identical to officialRequirement: \"Monitor, control, and protect communications (i.e., information transmitted or received by organizational systems) at the external boundaries and key internal boundaries of organizational systems.\"",
       "suggestedFix": "Delete the sentence, or say concretely what differs and where (for example, if it refers to the Level 1 FAR wording \"organizational information systems\", name it).",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -811,7 +846,8 @@
       "problem": "\"Its\" grammatically refers to \"the organization\", but the one-year retention comes from the guide's Example 2.",
       "guideEvidence": "Further Discussion: \"Whatever means you use, you need to retain the access records for the time period that your company has defined.\" Example 2: \"You retain those paper sign-in sheets in a locked filing cabinet for one year.\"",
       "suggestedFix": "Retain access records for the organization’s defined period; the guide's one-year example is not a universal deadline.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -858,7 +894,8 @@
       "problem": "The compliance view covers only fixes that were completed; its focus also asks whether corrective actions 'were actually implemented'. It leaves out the vulnerabilities the organization decides not to remediate. The guide says those are tracked too and handled by acceptance, avoidance or transference under [b].",
       "guideEvidence": "Further Discussion: \"Track all vulnerability remediation to ensure completion; also track vulnerabilities that you have determined not to remediate.\" Potential Assessment Considerations: \"For any given vulnerability is action taken for remediation, acceptance, avoidance, or transference of the vulnerability risk [b]?\"",
       "suggestedFix": "Add a question: 'How are vulnerabilities the organization decided to defer or accept justified against the risk assessment, tracked, and revisited?'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -881,7 +918,8 @@
       "problem": "Objective [a] is about identifying the deficiencies and vulnerabilities. The verbs in this span ('correct', 'reduce or eliminate') state the plan's purpose, which belongs to [b] (a plan developed to correct...) and [c] (a plan implemented to correct...). A reader hovering the span sees only the identification objective.",
       "guideEvidence": "\"[a] deficiencies and vulnerabilities to be addressed by the plan of action are identified; [b] a plan of action is developed to correct identified deficiencies and reduce or eliminate identified vulnerabilities; and [c] the plan of action is implemented to correct identified deficiencies and reduce or eliminate identified vulnerabilities.\"",
       "suggestedFix": "Split the span into 'deficiencies' -> [a] and 'vulnerabilities' -> [a], or tag the existing span [a, b, c].",
-      "status": "open"
+      "status": "declined",
+      "note": "Kept by design: the clause-map record maps a clause only to an objective that restates it, one axis per sentence, and leaves whole-sentence or elaborating objectives unmarked (docs/sources/cmmc-clause-map-2026-10-15.md)."
     },
     {
       "area": "explanations",
@@ -892,7 +930,8 @@
       "problem": "The event-trigger clause is the source of objectives [d] and [e], but it is not underlined, so readers can't see which words create the 'scan when new vulnerabilities are identified' objectives. The periodic trigger is mapped, so leaving the event trigger unmapped is inconsistent.",
       "guideEvidence": "\"[d] vulnerability scans are performed on organizational systems when new vulnerabilities are identified; and [e] vulnerability scans are performed on applications when new vulnerabilities are identified.\"",
       "suggestedFix": "Add the span 'when new vulnerabilities affecting those systems and applications are identified' -> [d, e].",
-      "status": "open"
+      "status": "declined",
+      "note": "Kept by design: the clause-map record maps a clause only to an objective that restates it, one axis per sentence, and leaves whole-sentence or elaborating objectives unmarked (docs/sources/cmmc-clause-map-2026-10-15.md)."
     },
     {
       "area": "explanations",
@@ -903,7 +942,8 @@
       "problem": "Objective [d] (requirements approved as non-applicable are identified) has no anchor in the clause map. The guide's own example tags the SSP's description of how CUI is handled and protected as [d,e], which makes the implementation clause the natural anchor.",
       "guideEvidence": "\"[d] the security requirements identified and approved by the designated authority as non-applicable are identified;\" Example: \"The SSP explains how your organization handles CUI and defines how that data is stored, transmitted, and protected [d,e].\"",
       "suggestedFix": "Tag 'how security requirements are implemented' -> [d, e].",
-      "status": "open"
+      "status": "declined",
+      "note": "Kept by design: the clause-map record maps a clause only to an objective that restates it, one axis per sentence, and leaves whole-sentence or elaborating objectives unmarked (docs/sources/cmmc-clause-map-2026-10-15.md)."
     },
     {
       "area": "explanations",
@@ -914,7 +954,8 @@
       "problem": "The compliance view leaves out objective [d] and the 'Identified and Approved Security Requirements' item in the guide's minimum SSP content. Only technical.watchFor mentions designated-authority approval of non-applicable requirements.",
       "guideEvidence": "\"[d] the security requirements identified and approved by the designated authority as non-applicable are identified;\" Further Discussion, minimum SSP content: \"Identified and Approved Security Requirements: requirements levied on an information system...\" Potential Assessment Considerations: \"Are security requirements identified and approved by the designated authority as non-applicable documented [d]?\"",
       "suggestedFix": "Add a question: 'Which requirements does the plan identify as non-applicable, and where is the designated authority's approval recorded?'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -925,7 +966,8 @@
       "problem": "The example shows only updates triggered by change. Objectives [g] and [h] are about a defined update frequency, and the guide's minimum is at least annually. A beginner could take change-driven updates as enough.",
       "guideEvidence": "\"[g] the frequency to update the system security plan is defined; and [h] system security plan is updated with the defined frequency.\" Further Discussion: \"Defined Frequency of Updates: at least annually.\" Example: \"you establish a policy that requires a formal review and update of the SSP each year [g,h].\"",
       "suggestedFix": "The team reviews and updates the plan on its defined schedule, at least annually, and also when the environment changes.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -936,7 +978,8 @@
       "problem": "'Need not cover every safeguard' says scanning is not required to cover everything, which is not the intended caution. It can also be misread as permission to narrow scan coverage, which conflicts with RA.L2-3.11.2. The intended point is that a scan does not assess every control, so it cannot replace a control assessment.",
       "guideEvidence": "\"By assessing the implemented security controls, organizations determine if the security safeguards or countermeasures are in place and operating as intended.\" / \"Organizations can choose to use other types of assessment activities such as vulnerability scanning and system monitoring to maintain the security posture of systems during the system life cycle.\" (RA.L2-3.11.2 Further Discussion: \"All assets that are within the scope of the CMMC assessment must be scanned\".)",
       "suggestedFix": "A product configuration screenshot alone may not show effectiveness; vulnerability scanning is useful but does not assess every safeguard, so it cannot replace the control assessment.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -947,7 +990,8 @@
       "problem": "This reads like an authoring note and does not tell the reader what the difference is. In the packet, the guide's requirement text matches officialRequirement word for word and the model wording is not shown, so a reader cannot act on the sentence. The audit's verify-sources.json does list CA.L2-3.12.3 under model-vs-guide-differs, so a difference exists; the page just doesn't explain it.",
       "guideEvidence": "Guide requirement text: \"Monitor security controls on an ongoing basis to ensure the continued effectiveness of the controls.\" (identical to the site's officialRequirement).",
       "suggestedFix": "Either say in one plain sentence what differs between the CMMC model statement and the assessment guide, or drop the clause and rely on the page's official-source comparison. Keep: 'Distinguish ongoing monitoring from a single periodic assessment.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -958,7 +1002,8 @@
       "problem": "'In an authorized environment' makes the environment the authorized thing, not the test, so the sentence reads as if the attacker exploits an authorized environment. The intended point is that the test runs with authorization under agreed rules of engagement.",
       "guideEvidence": "\"Penetration testing is a specialized type of assessment conducted on systems or individual system components to identify vulnerabilities that could be exploited by adversaries.\" / \"All parties agree to the specified rules of engagement before the commencement of penetration testing.\"",
       "suggestedFix": "Penetration testing is an authorized test of how an attacker could exploit weaknesses in the system.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -969,7 +1014,8 @@
       "problem": "This drops 'response' from 'response and recovery activities' (objective [f]). The technical and compliance views include it.",
       "guideEvidence": "\"[f] Threat intelligence, at a minimum from open or commercial sources, and any DoD-provided sources, are employed as part of a risk assessment to guide and inform response and recovery activities.\" Example: \"To manage the escalation process for identified incidents, handling specific events, and performing recovery actions [f]\".",
       "suggestedFix": "Use it in risk assessment to shape systems, defenses, monitoring, hunting, response and recovery rather than collecting reports that never change decisions.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -992,7 +1038,8 @@
       "problem": "Understatement. 'Audit records' is narrower than the requirement's 'audit information', which the guide defines as including audit log settings and audit reports, so a beginner could leave settings or reports unprotected. The technical and compliance perspectives correctly say 'audit information'. 'Reading' also undersells unauthorized 'access' to the tools, which the discussion frames as accessing and executing them.",
       "guideEvidence": "DISCUSSION: 'Audit information includes all information (e.g., audit records, audit log settings, and audit reports) needed to successfully audit system activity. ... This requirement focuses on the technical protection of audit information and limits the ability to access and execute audit logging tools to authorized individuals.'",
       "suggestedFix": "Protect audit information (records, log settings and reports) and the tools that create or manage it from unauthorized access, changes and deletion.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -1039,7 +1086,8 @@
       "problem": "The requirement calls for feedback to the INDIVIDUALS involved in the training and to their supervisors. As worded, the example could suggest that group-level feedback is enough.",
       "guideEvidence": "Requirement: '...provide feedback to individuals involved in the training and their supervisors.' Objective [e]: 'Feedback is provided to individuals involved in the training and their supervisors.' Example: 'you notify the individuals, informing them they failed the training and identifying the area(s) of concern [e].'",
       "suggestedFix": "Each participant receives feedback on their decisions, and supervisors learn where support is needed.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/86"
     },
     {
       "area": "explanations",
@@ -1050,7 +1098,8 @@
       "problem": "Inconsistent company naming across the batch. All seven SI Level 2 examples (3.14.1 to 3.14.6 open with 'Fictional Cedar Point Design'; 3.14.7 says 'At fictional Cedar Point Design') add a 'Fictional' label. The SI Level 1 and Level 3 examples say 'Cedar Point Design' with no label, and every AT/AU Level 2 example says 'CedarPoint'. A reader moving between pages sees three forms of the same company.",
       "guideEvidence": "Not applicable: site naming consistency. The guide's examples use 'you' and 'your company' and name no company.",
       "suggestedFix": "Use one company name everywhere and one way of marking it fictional (for example a single site-wide note), and remove the per-example 'Fictional' prefix from SI.L2-3.14.1 through SI.L2-3.14.7.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/84"
     },
     {
       "area": "glossary-and-site-copy",
@@ -1741,7 +1790,8 @@
       "problem": "Access is limited to the users, processes and devices that are authorized, not to 'categories'. The visual also drops 'other systems' and the word 'authorized' before 'user'.",
       "guideEvidence": "Requirement: 'Limit information system access to authorized users, processes acting on behalf of authorized users, or devices (including other information systems).'",
       "suggestedFix": "'Then limit actual access to the users, processes and devices that are authorized.' Visual: 'a user, a process acting for an authorized user, and a device or other system.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/83"
     },
     {
       "area": "practice",
@@ -1752,7 +1802,8 @@
       "problem": "Objective [e] is about removing and addressing improper posting of FCI. 'Inappropriate-content removal' sounds like general content moderation.",
       "guideEvidence": "'[e] mechanisms are in place to remove and address improper posting of [FCI].'",
       "suggestedFix": "'...pre-release checks, and removal of improperly posted FCI.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1763,7 +1814,8 @@
       "problem": "The sentence is hard to follow. It says what the guide does not say, and 'official' could mean a government official, which muddies who can authorize release. The sentences around it already make the point.",
       "guideEvidence": "Further Discussion: 'Only government officials can be authorized to publicly release FCI. Do not allow FCI to become public...'",
       "suggestedFix": "Delete it, or write: 'A company manager’s approval cannot authorize the public release of FCI.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1786,7 +1838,8 @@
       "problem": "'Retired' suggests the scanner is being taken out of use, which conflicts with releasing it for reuse.",
       "guideEvidence": "Objective '[b] system media containing [FCI] is sanitized before it is released for reuse.'",
       "suggestedFix": "'A scanner being passed to another team contains stored contract scans with FCI...'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1797,7 +1850,8 @@
       "problem": "The introduction and scenario disagree: departing worker versus changing roles, and keys versus one key.",
       "guideEvidence": "Further Discussion: '...updating the badge access system as personnel change roles.'",
       "suggestedFix": "Use one story in both places, e.g. 'the return of a worker’s key after a role change'.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1808,7 +1862,8 @@
       "problem": "'In this example' understates it: the guide recommends default blocking in general. The second sentence is passive and doesn't say what is compared with what.",
       "guideEvidence": "Further Discussion: 'Internal systems should not be placed on the same network as publicly accessible systems, and access by default from DMZ networks to internal networks should be blocked.'",
       "suggestedFix": "'As the guide recommends, access from the public zone to the internal network is blocked by default.' / 'The team compares the network drawing with the actual configuration and tests the boundary.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1819,7 +1874,8 @@
       "problem": "The scenario treats privileged accounts as administrator accounts only, while the visual says privileged includes more than admin accounts. The SVG line is aria-hidden and missing from 'Diagram in words' and the transcript, which are meant to carry the full meaning.",
       "guideEvidence": "Objective '[a] privileged accounts are identified'. The guide's example covers 'system administrator accounts used to patch and manage servers' as one case.",
       "suggestedFix": "'Fictional Cedar Lab identifies its privileged accounts: administrator accounts and any others with special permissions.' Add 'Privileged accounts include more than administrator accounts' to the stage 3 and 4 diagramDescription.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1830,7 +1886,8 @@
       "problem": "'Allow-by-exception' is Rev 3 wording; the requirement and the rest of the activity say 'deny-all, permit-by-exception'. The activity also never connects these to the requirement's own terms, 'whitelisting' and 'blacklisting'. 'Maintains the software allowed' reads as maintaining the software itself, and the mandate clause is awkward.",
       "guideEvidence": "Requirement: 'Apply deny-by-exception (blacklisting) policy ... or deny-all, permit-by-exception (whitelisting) policy...'",
       "suggestedFix": "Use the requirement's terms and give the mapping once ('permit-by-exception, also called allow-listing or whitelisting'). Write 'maintains a list of the software allowed under that policy', and cut the mandate clause or write 'Either policy is allowed; this is Cedar Lab’s choice.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1841,7 +1898,8 @@
       "problem": "The prompt is jargon-heavy, and the distractor is awkward to read.",
       "guideEvidence": "Objectives '[a] personnel or roles to be alerted ... are identified' and '[c] identified personnel or roles are alerted...'",
       "suggestedFix": "'Which alert setup makes sure the right people hear about a logging failure?' / 'Show a warning on a screen nobody is assigned to watch.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1852,7 +1910,8 @@
       "problem": "This activity uses British spellings (practise, practised), while the other activities use US spelling (behavior, organization). The closing clause about training data is a statement about the site's privacy practices placed inside the fictional story, which reads oddly.",
       "guideEvidence": "n/a (style)",
       "suggestedFix": "Use 'practice' and 'practiced'. Delete '; no real training data is collected in this activity' (the disclaimer already says no real information is needed).",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1863,7 +1922,8 @@
       "problem": "'Must already be over' is unclear without the 24-hour context. The Q1 prompt is hard to parse. Two choices begin with 'No', and the distractor is half right. 'Its owners' and 'its intended capability' are vague.",
       "guideEvidence": "Further Discussion: 'The deployment of a team does not necessarily mean they are “physically deployed.”'",
       "suggestedFix": "Claim: '“Deploying within 24 hours means every responder must travel on site and the incident must be resolved by then.”' Prompt: 'Does deployment have to mean travelling on site?' Distractor: 'Sending an acknowledgement without response capability counts as deployment.' Scenario: 'The team’s leads keep roles, contacts, tools and procedures current; a name on an old roster is not a deployable team.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/83"
     },
     {
       "area": "practice",
@@ -1874,7 +1934,8 @@
       "problem": "These are the site's internal editorial rules ('must remain in the learning explanation'), which mean nothing to a learner.",
       "guideEvidence": "Objective '[b] The cyber incident response team can be deployed by the organization within 24 hours'.",
       "suggestedFix": "'The 24 hours is part of the requirement’s own text and assessment objective [b]; it is not just an example.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/83"
     },
     {
       "area": "practice",
@@ -1885,7 +1946,8 @@
       "problem": "'Contractual clock-start event' is jargon added as a hedge, and it will confuse beginners.",
       "guideEvidence": "n/a (wording)",
       "suggestedFix": "'The deployment window shows the 24-hour deployment capability.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/83"
     },
     {
       "area": "practice",
@@ -1896,7 +1958,8 @@
       "problem": "In a question about an untrusted download page, 'the source' most naturally means the download source, not the CMMC guide, so the correct answer is confusing.",
       "guideEvidence": "Requirement: 'Verify the integrity of security critical and essential software using root of trust mechanisms or cryptographic signatures.'",
       "suggestedFix": "'The match alone does not establish the trusted integrity check this requirement calls for.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1907,7 +1970,8 @@
       "problem": "This is dense jargon ('[ODP1]', 'verification context') with grammar slips. A value is compared with a process. 'As critical software changes' reads as if signatures were software changes.",
       "guideEvidence": "Objective '[ODP1] Security critical or essential software is defined'. Further Discussion: 'As critical software is updated, the integrity of any configuration data and the software must result in updated signatures and an ongoing verification process.'",
       "suggestedFix": "'Which step decides which software counts as security-critical or essential?' / 'The organization defines this (an organization-defined parameter in the guide).' / 'A matching value from an untrusted source does not prove integrity.' / 'The guide calls for updated signatures and ongoing verification when critical software is updated.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1918,7 +1982,8 @@
       "problem": "Reviewer vocabulary appears in learner-facing text. Visitors don't know 'determination', 'ODP' or 'the source', and the rest of the site says 'assessment objective'.",
       "guideEvidence": "The guide labels these 'ASSESSMENT OBJECTIVES ... Determine if: [a] ...'.",
       "suggestedFix": "Say 'assessment objective [b]' for 'determination [b]', 'the guide' for 'the source', 'the guide’s Further Discussion section' on first use, and 'processes acting for users' for 'user-acting processes'.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1929,7 +1994,8 @@
       "problem": "Nearly every step and feedback item repeats 'fictional' or 'not prescribed', which makes the explanations long and tentative. The scenario is already labelled 'Fictional scenario:', and each activity has a disclaimer. 'Fictional guide example' also mislabels the guide's own hypothetical example.",
       "guideEvidence": "n/a (style). Project rule in CLAUDE.md: 'Write explanations in a plain, confident voice.'",
       "suggestedFix": "Keep the 'Fictional scenario:' label and the disclaimer. Remove the per-sentence hedges unless one corrects a specific likely misreading. Write 'One year appears in one of the guide’s examples.'",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1940,7 +2006,8 @@
       "problem": "'Snapshot' is project jargon. The Level 1 disclaimer doesn't name the publication, and the visual's quotation pin names neither the publication nor its level.",
       "guideEvidence": "Packets: 'CMMC Assessment Guide – Level 1 | Version 2.13' (likewise Level 2 and Level 3). CLAUDE.md: quotations stay 'pinned to a publication, version and page'.",
       "suggestedFix": "'Written from the CMMC Assessment Guide – Level 1, version 2.13 (September 2024).' Visual: 'Quoted from CMMC Assessment Guide – Level 1, v2.13 (September 2024), PDF page 16'.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/88"
     },
     {
       "area": "practice",
@@ -1951,7 +2018,8 @@
       "problem": "Internal project history ('README', 'this draft', 'official-host access was blocked') appears inside activities based on the official guides when a visitor opens a term.",
       "guideEvidence": "n/a (internal-history wording)",
       "suggestedFix": "Rewrite these four terms' context and source lines without README or draft references (e.g. 'Plain-language teaching definition; not an official definition.'), and shorten the source-verification note to the publication, version and page.",
-      "status": "open"
+      "status": "revised",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/77"
     }
   ]
 }
