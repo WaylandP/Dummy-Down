@@ -23,7 +23,8 @@ const wakeEvents = [
   'touchstart',
 ] as const
 
-type Pose = 'idle' | 'doze' | 'sweep' | 'hand' | 'sneeze'
+export type SmudgePose = 'idle' | 'doze' | 'sweep' | 'hand' | 'sneeze'
+type Pose = SmudgePose
 
 /** The eyes open: whites, pupils that can look, and the brows of the moment. */
 function Eyes({ pose }: { pose: Pose }) {
@@ -62,6 +63,76 @@ const mouths: Record<Exclude<Pose, 'sneeze'>, string> = {
   doze: 'M80 61h10',
   sweep: 'M76 60c5 4 13 4 18 0',
   hand: 'M78 59c4 4 10 4 14 0',
+}
+
+interface SmudgeFigureProps {
+  readonly pose: SmudgePose
+  /** Off, under reduced motion and in print he has no face. */
+  readonly face?: boolean
+  /** The wood's fill; the tray's gradient unless the figure is drawn elsewhere. */
+  readonly wood?: string
+}
+
+/**
+ * Smudge himself, as drawn in the tray (mockups/Smudge.html): a wooden
+ * back with its grain, a felt face with chalk dust in it, the chalk edge,
+ * and the face of the moment. In his own 170×110 drawing; the felt's centre
+ * is at (85, 81). The sixty-seconds board borrows him to wipe its first
+ * scene off.
+ */
+export function SmudgeFigure({ pose, face = true, wood }: SmudgeFigureProps) {
+  return (
+    <>
+      <rect
+        className="smudge-wood"
+        style={wood ? { fill: wood } : undefined}
+        x="12"
+        y="24"
+        width="146"
+        height="46"
+        rx="7"
+      />
+      <rect
+        className="smudge-grain"
+        x="18"
+        y="27"
+        width="134"
+        height="4"
+        rx="2"
+      />
+      <rect
+        className="smudge-felt"
+        x="12"
+        y="66"
+        width="146"
+        height="30"
+        rx="6"
+      />
+      <path
+        className="smudge-dust-lines"
+        d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0"
+      />
+      <rect
+        className="smudge-edge"
+        x="12"
+        y="90"
+        width="146"
+        height="6"
+        rx="3"
+      />
+      {face && (
+        <g className="smudge-face chalk">
+          <Eyes pose={pose} />
+          {brows[pose] && <path className="smudge-brows" d={brows[pose]} />}
+          {pose === 'sneeze' ? (
+            <circle className="smudge-mouth" cx="85" cy="61" r="4" />
+          ) : (
+            <path className="smudge-mouth" d={mouths[pose]} />
+          )}
+        </g>
+      )}
+    </>
+  )
 }
 
 /**
@@ -239,53 +310,7 @@ export function Smudge() {
         </g>
       )}
       <ellipse className="smudge-shadow" cx="85" cy="100" rx="70" ry="5" />
-      <rect
-        className="smudge-wood"
-        x="12"
-        y="24"
-        width="146"
-        height="46"
-        rx="7"
-      />
-      <rect
-        className="smudge-grain"
-        x="18"
-        y="27"
-        width="134"
-        height="4"
-        rx="2"
-      />
-      <rect
-        className="smudge-felt"
-        x="12"
-        y="66"
-        width="146"
-        height="30"
-        rx="6"
-      />
-      <path
-        className="smudge-dust-lines"
-        d="M24 74c20 4 40-2 60 2s40-3 62 1M30 84c24 3 48-3 72 1s30-2 50 0"
-      />
-      <rect
-        className="smudge-edge"
-        x="12"
-        y="90"
-        width="146"
-        height="6"
-        rx="3"
-      />
-      {on && (
-        <g className="smudge-face chalk">
-          <Eyes pose={pose} />
-          {brows[pose] && <path className="smudge-brows" d={brows[pose]} />}
-          {pose === 'sneeze' ? (
-            <circle className="smudge-mouth" cx="85" cy="61" r="4" />
-          ) : (
-            <path className="smudge-mouth" d={mouths[pose]} />
-          )}
-        </g>
-      )}
+      <SmudgeFigure pose={pose} face={on} />
     </svg>
   )
   if (pickable)
