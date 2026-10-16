@@ -144,7 +144,7 @@
       "example": "Cedar Point Design retires a USB drive used for Federal Contract Information. It follows its selected sanitization process and checks the result before considering the drive available for reuse."
     },
     "technical": {
-      "focus": "Identify media containing FCI and choose a sanitization or destruction method suited to the media and intended disposition. Track the operation and its outcome through disposal or reuse.",
+      "focus": "Identify media containing FCI and choose a sanitization or destruction method suited to the media and intended disposition. Recording the method and outcome is one practical way to show it happened.",
       "example": "A retirement workflow could record a drive’s identifier, the approved method, verification of the result and the authorized destination after processing.",
       "watchFor": "Deleting a file or performing an ordinary format may leave recoverable information; the method depends on the media."
     },
@@ -152,7 +152,7 @@
       "focus": "The guide distinguishes disposal from release for reuse: media containing FCI is sanitized or destroyed before disposal, and sanitized before release for reuse. Consider how the organization prevents FCI from remaining when media changes custody or purpose.",
       "reviewQuestions": [
         "How is media containing FCI identified before disposal or reuse?",
-        "How is the sanitization or destruction outcome checked and recorded?"
+        "How does the organization make sure FCI media is sanitized or destroyed before disposal, and sanitized before reuse?"
       ],
       "evidenceExamples": [
         "Media disposition procedures and an inventory of affected storage.",
@@ -692,7 +692,7 @@
   {
     "id": "RA.L3-3.11.4e",
     "beginner": {
-      "meaning": "Explain why a security solution was chosen, what it is and how its risks were determined. Put that reasoning in the system security plan, or reference it there, so future decisions have a traceable starting point.",
+      "meaning": "Record which security solution was chosen, why, and the risk determination behind the choice: the assessed risk it is meant to address. Put that reasoning in the system security plan, or reference it there, so future decisions have a traceable starting point.",
       "example": "Cedar Point Design chooses an isolation design for a sensitive environment. Its plan records the selected approach, the threat it addresses and the risk determination instead of only naming a firewall product."
     },
     "technical": {
@@ -859,7 +859,7 @@
     "technical": {
       "focus": "Apply this requirement together with Level 3 scoping guidance. Inventory specialized assets, document their SSP treatment and network relationships, and evaluate purpose-specific separation or suitable intermediary protections.",
       "example": "The team could use a controlled intermediary for a constrained device and document which protections it supplies, with tests of the device’s permitted network paths.",
-      "watchFor": "The requirement and further discussion describe inclusion under the specified enhanced protections or purpose-specific segregation, but the guide’s assessment statements [a] and [b] use inconsistent wording. Their interpretation remains unresolved and needs qualified scoping review. The model wording also differs; do not infer an automatic exemption."
+      "watchFor": "The requirement says specialized assets are included in the scope of the specified enhanced security requirements or segregated in purpose-specific networks. The guide's further discussion says they must be assessed against all CMMC security requirements or separated into purpose-specific networks, and objective [b] is worded differently again. Settle scope through qualified scoping review; do not infer an automatic exemption."
     },
     "compliance": {
       "focus": "The guide discusses specialized assets, assessment or purpose-specific segregation, documented mitigations and network diagrams. Device limitations require explicit treatment; examples here do not determine assessment scope.",
