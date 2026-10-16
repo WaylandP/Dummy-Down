@@ -5,6 +5,13 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Branch cleanup button — October 16, 2026
+
+- A "Delete merged branches" workflow, run by hand from the Actions tab, deletes
+  the branches of merged pull requests whose tips haven't moved since the merge.
+  `main`, `archive/ai-review-records` and `screenshots` are always kept, and a
+  dry-run option lists the branches first.
+
 ## CMMC in sixty seconds, in its panel — October 16, 2026
 
 The owner's October 16 review of "CMMC in sixty seconds" before the launch
