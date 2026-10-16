@@ -465,3 +465,93 @@ test('the keys work only with focus in the player, and the captions are the chap
   await page.keyboard.press('?')
   await expect(page.getByRole('dialog', { name: 'Keys' })).toBeVisible()
 })
+
+test('/?play=sixty opens Home with the panel in view and plays from 0:00, the address kept; Share copies that link, offers the download, and gives focus back', async ({
+  page,
+  context,
+}) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write'])
+  await page.clock.install()
+  await page.setViewportSize({ width: 1280, height: 800 })
+  // The clock stands before the page loads, so the drawing waits for the test.
+  await page.clock.pauseAt(Date.now() + 10_000)
+  await page.goto('/?play=sixty')
+  await page.evaluate(() => document.fonts.ready)
+  const talk = page.getByRole('region', { name: sixty })
+  await expect(talk).toBeInViewport()
+  // Playing, from the clearing pass; the address keeps the parameter.
+  await expect(talk.getByRole('button', { name: 'Pause' })).toBeVisible()
+  await expect(talk.locator('.sixty-time-now')).toHaveText('0:00')
+  expect(new URL(page.url()).search).toBe('?play=sixty')
+  await page.clock.runFor(500 + 3200)
+  await expect(talk.locator('.sixty-time-now')).toHaveText(/^0:0[34]$/)
+  await expect(talk.locator('.sixty-word[data-text="DoD"]')).toHaveAttribute(
+    'data-drawn',
+    'done',
+  )
+  // Share: a 44px button at the end of the row; its menu, in the chalk
+  // popover's style, with the link and the download (no file sharing on a
+  // desktop browser); Escape gives focus back.
+  const share = talk.getByRole('button', { name: 'Share' })
+  const box = (await share.boundingBox())!
+  expect(box.width).toBeGreaterThanOrEqual(44)
+  expect(box.height).toBeGreaterThanOrEqual(44)
+  await share.click()
+  const menu = talk.getByRole('menu', { name: 'Share' })
+  await expect(menu).toBeVisible()
+  await expect(menu.getByRole('menuitem')).toHaveText([
+    'Copy link',
+    /Download the video/,
+  ])
+  await expect(menu.getByRole('menuitem', { name: 'Copy link' })).toBeFocused()
+  const download = menu.getByRole('menuitem', { name: /Download the video/ })
+  await expect(download).toHaveAttribute(
+    'href',
+    '/media/cmmc-in-sixty-seconds.mp4',
+  )
+  await expect(download).toHaveAttribute(
+    'download',
+    'cmmc-in-sixty-seconds.mp4',
+  )
+  await expect(download).toContainText('MP4 · 1:00')
+  // The file is on the site.
+  const head = await page.request.head('/media/cmmc-in-sixty-seconds.mp4')
+  expect(head.ok()).toBe(true)
+  await menu.getByRole('menuitem', { name: 'Copy link' }).click()
+  await expect(menu.getByRole('status')).toHaveText('Link copied')
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
+    `${new URL(page.url()).origin}/?play=sixty`,
+  )
+  await page.keyboard.press('Escape')
+  await expect(menu).toHaveCount(0)
+  await expect(share).toBeFocused()
+  // A click outside closes it too, and focus comes back.
+  await share.click()
+  await expect(talk.getByRole('menu', { name: 'Share' })).toBeVisible()
+  await page.getByRole('heading', { level: 1 }).click()
+  await expect(talk.getByRole('menu', { name: 'Share' })).toHaveCount(0)
+  await expect(share).toBeFocused()
+  // Still playing underneath; nothing else moved.
+  await expect(talk.getByRole('button', { name: 'Pause' })).toBeVisible()
+})
+
+test.describe('the deep link under reduced motion', () => {
+  test.use({ reducedMotion: 'reduce' })
+  test('shows the finished board instead of playing', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 })
+    await page.goto('/?play=sixty')
+    await page.evaluate(() => document.fonts.ready)
+    const talk = page.getByRole('region', { name: sixty })
+    await expect(talk).toBeInViewport()
+    await expect(
+      talk.getByRole('button', { name: 'Play', exact: true }),
+    ).toBeVisible()
+    await expect(talk.locator('.sixty-time-now')).toHaveText('1:00')
+    expect(
+      (await drawn(talk.locator('svg.sixty-board'))).every(
+        (item) => item.drawn === 'done',
+      ),
+    ).toBe(true)
+    await expect(talk.locator('.sixty-stick')).toHaveCSS('opacity', '0')
+  })
+})

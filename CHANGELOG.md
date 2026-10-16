@@ -5,6 +5,24 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Share "CMMC in sixty seconds" — October 16, 2026
+
+- [PR #111](https://github.com/WaylandP/cipher-and-chalk/pull/111): Share, at
+  the end of the player row, opens a small menu: "Send the video…" where the
+  browser can share an MP4 as a file (the file is fetched when the menu opens,
+  so the share runs straight from the tap), "Copy link" (`/?play=sixty`, with
+  "Link copied" in a status region, or the link selected in a read-only field
+  if the clipboard is refused) and "Download the video" (MP4 · 1:00). Escape
+  and a click outside close it and give focus back; nothing about sharing is
+  logged or counted. `/?play=sixty` opens Home with the panel in view and
+  plays from 0:00, the only time the drawing starts by itself (under reduced
+  motion it shows the finished board); analytics still record only `/`. About
+  links "The first chalk talk, CMMC in sixty seconds" to it. The video itself,
+  `public/media/cmmc-in-sixty-seconds.mp4` (1920×1080, 30 fps, H.264, under
+  6 MB) with its poster, is rendered by `npm run sixty:video` from the drawing
+  with Playwright's clock and ffmpeg; a fingerprint of the drawing's sources
+  next to it makes a test fail when the video is stale.
+
 ## Home fills big screens — October 16, 2026
 
 - [PR #110](https://github.com/WaylandP/cipher-and-chalk/pull/110): the hero

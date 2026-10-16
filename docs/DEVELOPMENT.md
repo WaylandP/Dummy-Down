@@ -350,7 +350,13 @@ npm run build
 Rerun `npm run sixty:glyphs` after changing the hand font or the words on the
 sixty-seconds board: it rewrites `src/components/sixty/sixty-glyphs.json` (the
 letter outlines and the pen skeletons the drawing is written with), which is
-committed, and a unit test fails while the file is stale.
+committed, and a unit test fails while the file is stale. Rerun
+`npm run build && npm run sixty:video` after changing the drawing itself (the
+board, the script, the glyph data: `src/components/sixty/sixty-sources.ts`
+lists the files): it renders `public/media/cmmc-in-sixty-seconds.mp4` and its
+poster with Playwright's Chromium and the system ffmpeg (or ffmpeg-static,
+fetched by npx for that run only; it is not a dependency) and records a
+SHA-256 of those files next to the video, which a unit test checks.
 
 - **Typecheck** validates TypeScript without producing application files.
 - **Lint** checks code conventions and common programming mistakes.

@@ -259,9 +259,106 @@
 }
 .sixty-play:focus-visible,
 .sixty-speed:focus-visible,
+.sixty-share:focus-visible,
 .sixty-scrub:focus-visible {
   outline: var(--focus-ring);
   outline-offset: 3px;
+}
+/* Share, at the end of the row: a 44px button; its menu opens above it, in
+   the style of the chalk popovers, inside the panel (the panel is a layout
+   container, so the menu is placed within it). */
+.sixty-share-wrap {
+  position: relative;
+  flex: none;
+}
+.sixty-share {
+  display: inline-grid;
+  place-items: center;
+  width: var(--sixty-target);
+  height: var(--sixty-target);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--color-chalk-dim);
+  cursor: pointer;
+}
+.sixty-share svg {
+  width: clamp(20px, 5cqw, 28px);
+  height: clamp(20px, 5cqw, 28px);
+}
+.sixty-share:hover,
+.sixty-share[aria-expanded='true'] {
+  color: var(--color-yellow);
+}
+.sixty-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 6px);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: min(260px, 80cqw);
+  padding: 6px;
+  border: 1px solid var(--color-rule);
+  border-radius: 8px;
+  background: var(--color-board-lift);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+  color: var(--color-chalk);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: left;
+}
+.sixty-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 44px;
+  padding: 10px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.sixty-menu-item:hover,
+.sixty-menu-item:focus-visible {
+  color: var(--color-yellow);
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+}
+.sixty-menu-item:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--color-yellow);
+}
+.sixty-menu-note {
+  color: var(--color-chalk-muted);
+  font-size: 12px;
+}
+.sixty-share-status {
+  margin: 0;
+  min-height: 0;
+  padding: 0 10px;
+  color: var(--color-yellow);
+  font-size: 13px;
+}
+.sixty-share-status:empty {
+  display: none;
+}
+.sixty-share-field {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 4px 0 2px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-rule);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-chalk);
+  font-size: 13px;
 }
 
 /* ---- The caption and the note ---- */
@@ -386,12 +483,22 @@
     color: Highlight;
   }
   .sixty-play,
-  .sixty-speed-pill {
+  .sixty-speed-pill,
+  .sixty-menu,
+  .sixty-share-field {
     border-color: ButtonText;
     color: ButtonText;
   }
+  .sixty-share {
+    color: ButtonText;
+  }
+  .sixty-menu-item:focus-visible {
+    outline: 2px solid Highlight;
+    box-shadow: none;
+  }
   .sixty-play:focus-visible,
   .sixty-speed:focus-visible,
+  .sixty-share:focus-visible,
   .sixty-scrub:focus-visible {
     outline: 2px solid Highlight;
   }
@@ -399,7 +506,8 @@
 @media print {
   .sixty-player,
   .sixty-eraser,
-  .sixty-stick {
+  .sixty-stick,
+  .sixty-dust {
     display: none;
   }
 }
