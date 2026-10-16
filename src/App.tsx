@@ -130,7 +130,7 @@ function Application() {
         timeline: {
           title: 'Timeline',
           description:
-            'The dates that matter for CMMC: when the program rule took effect, when the DFARS clause reaches contracts in four phases, how long each status stays current, and what DoD has said about NIST SP 800-171 Revision 3.',
+            'The dates that matter for CMMC: when the program rule took effect, when the DFARS clause reached contracts, the Phase 2 hold since July 13, 2026, how long each status stays current, and what DoD has said about NIST SP 800-171 Revision 3.',
           canonicalPath: '/timeline',
         },
         disclaimer: {

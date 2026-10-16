@@ -12,6 +12,18 @@ interface SourcedLine {
   readonly name: string
   readonly citations: readonly Citation[]
 }
+interface TimelineDate {
+  readonly id: string
+  readonly date: string
+  readonly title: string
+  readonly text: string
+  /** DoD suspended this part of the schedule: the line shows struck, marked "On hold". */
+  readonly status?: 'suspended'
+  readonly citations: readonly Citation[]
+}
+const dates = timeline.dates as readonly TimelineDate[]
+/** The day DoD put Phase 2 on hold, for the foot. */
+const hold = dates.find((entry) => entry.id === 'phase-2-on-hold')
 const sources = timeline.sources as Readonly<
   Record<
     string,
@@ -125,15 +137,33 @@ export default function TimelinePage() {
           The dates
         </h2>
         <ol className="timeline" role="list" aria-label="CMMC dates">
-          {timeline.dates.map((entry) => (
-            <li className="timeline-date" key={entry.id}>
-              <time className="mono timeline-when" dateTime={entry.date}>
-                {longDate(entry.date)}
-              </time>
-              <h3 className="hand">{entry.title}</h3>
-              <p>{entry.text}</p>
-            </li>
-          ))}
+          {dates.map((entry) => {
+            const held = entry.status === 'suspended'
+            return (
+              <li
+                className="timeline-date"
+                key={entry.id}
+                data-status={entry.status}
+              >
+                <time className="mono timeline-when" dateTime={entry.date}>
+                  {longDate(entry.date)}
+                </time>
+                {/* A suspended line is struck, and the mark is part of the
+                    heading, so a screen reader hears "On hold" with it. */}
+                <h3 className="hand">
+                  {held ? (
+                    <>
+                      <s>{entry.title}</s>{' '}
+                      <span className="timeline-hold">On hold</span>
+                    </>
+                  ) : (
+                    entry.title
+                  )}
+                </h3>
+                <p>{entry.text}</p>
+              </li>
+            )
+          })}
         </ol>
       </section>
       <section className="timeline-section" aria-labelledby="timeline-statuses">
@@ -171,7 +201,7 @@ export default function TimelinePage() {
         </h2>
         <Sources
           label="the dates"
-          lines={timeline.dates.map((entry) => ({
+          lines={dates.map((entry) => ({
             key: entry.id,
             name: `${longDate(entry.date)}: ${entry.title}`,
             citations: entry.citations,
@@ -198,8 +228,9 @@ export default function TimelinePage() {
       </section>
       <p className="page-foot">
         <span>
-          Dates after today are DoD’s stated plan, not a promise; the sources
-          control wherever a line and a source differ. Read on{' '}
+          {hold &&
+            `Phases 2–4 show the rule’s original schedule, which DoD suspended on ${longDate(hold.date)}. `}
+          Where a line and a source differ, the source controls. Read on{' '}
           {longDate(timeline.comparedOn)}.
         </span>
       </p>
