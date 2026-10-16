@@ -839,13 +839,57 @@
   .lockup-name {
     font-size: 20px;
   }
-  /* Phone: lockup and find on the first row, the places to go on the second. */
+  /* Phone: lockup and find on the first row, the six places on the second,
+     always one row: they fit at 390 and scroll sideways at 320, with a soft
+     fade at the edge that hides more (data-fade, from useScrollFade). */
   .site-nav {
     order: 1;
     flex-basis: 100%;
-    gap: 0 16px;
+    flex-wrap: nowrap;
+    gap: 0 10px;
     margin-left: 0;
-    font-size: 14px;
+    font-size: 13px;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .site-nav a {
+    flex: none;
+    min-width: 44px;
+  }
+  .site-nav[data-fade='end'],
+  .control-tabs[data-fade='end'] {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      #000 calc(100% - 28px),
+      transparent
+    );
+    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+  }
+  .site-nav[data-fade='start'],
+  .control-tabs[data-fade='start'] {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 28px);
+    mask-image: linear-gradient(to right, transparent, #000 28px);
+  }
+  .site-nav[data-fade='both'],
+  .control-tabs[data-fade='both'] {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 28px,
+      #000 calc(100% - 28px),
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 28px,
+      #000 calc(100% - 28px),
+      transparent
+    );
   }
   .find-toggle {
     margin-left: auto;
@@ -940,12 +984,6 @@
     bottom: 14px;
     width: 80px;
     height: 52px;
-  }
-}
-@media (max-width: 380px) {
-  .site-nav {
-    gap: 0 12px;
-    font-size: 13px;
   }
 }
 
