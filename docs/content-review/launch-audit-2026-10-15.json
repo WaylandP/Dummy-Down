@@ -14,9 +14,9 @@
     "polish": 117
   },
   "statusCounts": {
-    "applied": 108,
+    "applied": 118,
     "declined": 8,
-    "open": 32,
+    "open": 22,
     "revised": 20
   },
   "statusNote": "\"applied\": the suggested change, or one with the same effect, is in the linked pull request. \"revised\": the quoted site text was rewritten in the linked pull request while fixing the same subject. \"declined\": kept on purpose, with the reason in \"note\". \"open\": not changed yet; some are assigned. Statuses were set on 2026-10-15 and are not a human review.",
@@ -1362,7 +1362,8 @@
       "problem": "Wrong or weak section citations. §170.4(b) defines none of CMMC, SPRS or enclave. The contracting-officer check comes from DFARS 204.7503, not the cited clauses. The Scoping Guide page was not available offline to this review, while an on-disk official passage supports the enclave definition. The 180-day closeout is in §170.21(b), not (a).",
       "sourceEvidence": "DFARS 252.204-7021(b): \"The Cybersecurity Maturity Model Certification (CMMC) is a framework for assessing a contractor's compliance with applicable information security protections (see 32 CFR part 170).\" DFARS 204.7503(b) (90 FR 43560, Sept 10, 2025): \"Contracting officers shall check SPRS and not award a contract, task order, or delivery order to an offeror that does not have a current CMMC status posted in SPRS at the CMMC level … required by the solicitation, or higher, for each CMMC UID provided by the offeror.\" 89 FR 83141 (CMMC final rule preamble, Oct 15, 2024): \"An enclave may be able to leverage some elements of the enterprise assessment by inheriting some requirements from the enterprise network, but it cannot inherit the enterprise certification. … Within the enclave, the OSA determines which requirements are implemented and which requirements are inherited; all requirements must be MET.\" 32 CFR 170.21(b): \"The closing of a POA&M must be confirmed by a POA&M closeout assessment within 180-days of the Conditional CMMC Status Date.\"",
       "suggestedFix": "CMMC → cite §170.1 and DFARS 252.204-7021(b). SPRS → cite §170.15(a)(1)(i), §170.22(b) and DFARS 204.7503(b). Enclave → replace §170.4 with 89 FR 83141 and §170.19(e). POA&M → cite §170.21(a) and (b).",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/91"
     },
     {
       "area": "glossary-and-site-copy",
@@ -1373,7 +1374,8 @@
       "problem": "The rule says every applicable objective (N/A counts as met). The entry uses 'assessment objective' for single statements, unlike the glossary's own 'Assessment objective' entry. Visitors will run into Revision 3 (May 2024) and the entry doesn't say why CMMC still uses Revision 2.",
       "sourceEvidence": "32 CFR 170.4(b): \"Successful implementation of the corresponding CMMC security requirement requires meeting all applicable assessment objectives\". §170.24(b)(3): \"an assessment objective assessed as N/A is equivalent to the same assessment objective being assessed as MET.\" CMMC FAQ (Office of the DoW CIO, July 2026, FAQsv6.pdf; same file the site pins, SHA-256 b2563aab…), B-A3, PDF p.6: \"Yes, the Department will incorporate Revision 3 with future rulemaking. In the interim, the Department has issued a class deviation to Defense Federal Acquisition Regulation Supplement clause 252.204-7012 to maintain Revision 2 as the standard against which defense industrial base companies will be assessed\". NIST SP 800-171r3 cover: \"May 2024\".",
       "suggestedFix": "“NIST SP 800-171 Revision 2 lists the 110 security requirements for protecting CUI in nonfederal systems and is CMMC Level 2. Its companion, SP 800-171A, gives each requirement lettered determination statements; every applicable one must be met (N/A counts as met). NIST published Revision 3 in May 2024, but CMMC assessments stay on Revision 2 until DoD adopts Revision 3 by rulemaking.”",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/91"
     },
     {
       "area": "glossary-and-site-copy",
@@ -1384,7 +1386,8 @@
       "problem": "Neither claim is in the only cited source (§170.4); both come from §170.8–170.9. 'Independent' is a gloss; the rule's concrete test is a three-year bar on assessing former consulting clients.",
       "sourceEvidence": "32 CFR 170.9(b)(6): \"Undergo a Level 2 certification assessment meeting all requirements for a Final Level 2 (C3PAO) … (i) The assessment will be conducted by DCMA DIBCAC.\" §170.8(b)(17)(ii)(G): \"Prohibit CMMC Ecosystem members from participating in the Level 2 certification assessment process for an assessment in which they previously served as a consultant to prepare the organization for any CMMC assessment within 3 years.\"",
       "suggestedFix": "“…Its own systems must pass a DIBCAC Level 2 assessment before it is authorized, and its people may not assess an organization they consulted for in the past three years.” Add §170.8 and §170.9 as sources.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/91"
     },
     {
       "area": "glossary-and-site-copy",
@@ -1395,7 +1398,8 @@
       "problem": "Also required after every assessment, including a POA&M closeout. §170.22, where the rule sets this out, isn't cited.",
       "sourceEvidence": "32 CFR 170.22(a): \"An Affirming Official from each OSA, whether a prime or subcontractor, must affirm the continuing compliance of their respective organizations with the specified security requirement after every assessment, including POA&M closeout, and annually thereafter. Affirmations are entered electronically in SPRS.\"",
       "suggestedFix": "“…The affirmation is entered in SPRS after every assessment (including a POA&M closeout) and every year after; contracts require it to be no more than a year old.” Add §170.22 as a source.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/91"
     },
     {
       "area": "glossary-and-site-copy",
@@ -1406,7 +1410,8 @@
       "problem": "'Plan of action' is ambiguous next to the POA&M and operational-plan-of-action entries; the rule says no operational plan of action. 'Not expected to become feasible' isn't in the source. The key consequence (scored MET when documented with mitigations) is missing.",
       "sourceEvidence": "32 CFR 170.4(b): \"Enduring Exception means a special circumstance or system where remediation and full compliance with CMMC security requirements is not feasible. Examples include systems required to replicate the configuration of 'fielded' systems, medical devices, test equipment, OT, and IoT. No operational plan of action is required but the circumstance must be documented within a system security plan.\" §170.24(b)(1)(i): \"Enduring exceptions when described, along with any mitigations, in the system security plan shall be assessed as MET.\"",
       "suggestedFix": "“A circumstance or system where fully meeting a requirement isn’t feasible, such as a system that must mirror fielded equipment, a medical device, test equipment, OT or IoT. It needs no operational plan of action; described in the SSP with its mitigations, it is scored MET.”",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/91"
     },
     {
       "area": "glossary-and-site-copy",
@@ -1417,7 +1422,8 @@
       "problem": "Turns a necessary condition into a sufficient one: an ESP must also provide IT or cybersecurity services on the organization's behalf. The entry cites only §170.4, so it files under 'The program' instead of Scoping.",
       "sourceEvidence": "32 CFR 170.4(b): \"External Service Provider (ESP) means external people, technology, or facilities that an organization utilizes for provision and management of IT and/or cybersecurity services on behalf of the organization. In the CMMC Program, CUI or Security Protection Data (e.g., log data, configuration data), must be processed, stored, or transmitted on the ESP assets to be considered an ESP.\"",
       "suggestedFix": "“…An outside IT or security provider that processes, stores or transmits SPD on its own assets is an External Service Provider, and its services are assessed as Security Protection Assets.” Add §170.19 as a source.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/91"
     },
     {
       "area": "glossary-and-site-copy",
@@ -1440,7 +1446,8 @@
       "problem": "The rule calls it a 'formal artifact', not a running list; 'kept continuously' isn't in the source.",
       "sourceEvidence": "32 CFR 170.4(b): \"Operational plan of action as used in security requirement CA.L2-3.12.2, means the formal artifact which identifies temporary vulnerabilities and temporary deficiencies (e.g., necessary information system updates, patches, or reconfiguration as threats evolve) in implementation of requirements and documents how they will be mitigated, corrected, or eliminated. The OSA defines the format … An operational plan of action does not identify a timeline for remediation and is not the same as a POA&M\".",
       "suggestedFix": "“The formal record, in a format the organization chooses, of temporary vulnerabilities and deficiencies (a needed patch, update or reconfiguration) and how each will be fixed. It is the ‘plan of action’ in CA.L2-3.12.2. Unlike a POA&M, it has no deadline and isn’t tied to an assessment.”",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/91"
     },
     {
       "area": "glossary-and-site-copy",
@@ -1487,7 +1494,8 @@
       "problem": "The 'ordinary format' sentence isn't in the source, which names the actual techniques instead.",
       "sourceEvidence": "CMMC Assessment Guide – Level 1, v2.13 (Sept 2024), MP.L1-b.1.vii, PDF p.31 (printed p.27): \"The sanitization process removes information from the media such that the information cannot be retrieved or reconstructed. Sanitization techniques, including clearing, purging, cryptographic erase, and destruction, prevent the disclosure of information to unauthorized individuals when such media is released for reuse or disposal.\"",
       "suggestedFix": "“Removing information from media so it can’t be retrieved or reconstructed, by clearing, purging, cryptographic erase or destruction, chosen to fit the media and whether it will be reused.”",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/91"
     },
     {
       "area": "glossary-and-site-copy",
@@ -1509,7 +1517,8 @@
       "problem": "The links open the live eCFR while the definitions were written from the Dec 16, 2024 text, and the Timeline links to the point-in-time version. If Part 170 is amended, link and definition drift apart silently.",
       "sourceEvidence": "src/data/cmmc-timeline.json, source 'cfr-32-170': officialUrl \"https://www.ecfr.gov/on/2024-12-16/title-32/subtitle-A/chapter-I/subchapter-D/part-170\".",
       "suggestedFix": "Use point-in-time links (https://www.ecfr.gov/on/2024-12-16/title-32/section-170.N) or say “current text” in the note.",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/91"
     },
     {
       "area": "glossary-and-site-copy",
@@ -1602,7 +1611,8 @@
       "problem": "The glossary separates the POA&M from the 'operational plan of action'; this line uses the wrong one's name.",
       "sourceEvidence": "32 CFR 170.21(b): \"The closing of a POA&M must be confirmed by a POA&M closeout assessment within 180-days of the Conditional CMMC Status Date.\"",
       "suggestedFix": "“Expires unless the POA&M is closed, and confirmed by a closeout assessment, within 180 days of the status date.”",
-      "status": "open"
+      "status": "applied",
+      "pullRequest": "https://github.com/WaylandP/cipher-and-chalk/pull/76"
     },
     {
       "area": "glossary-and-site-copy",

@@ -117,6 +117,13 @@ finished.
       across 13 controls and tested per-control review fingerprints. Final CI passed;
       the owner-approved merge was verified at `81cee95` on October 14.
       Qualified-human approval is separate.
+- [x] **Completed and merged into main** — The launch audit of October 15
+      compared all 447 explanations, 13 practice activities, three visual
+      explanations, 54 glossary entries and the site copy with the pinned
+      sources: 4 errors, 47 risks and 117 polish notes. The errors and risks are
+      fixed or assigned, and each content change is a finding in the editorial
+      audits ([record](content-review/launch-audit-2026-10-15.md)). AI-assisted;
+      qualified human approval is separate.
 - [ ] **Blocked by external dependencies** — Obtain qualified review of objective
       interpretations, including the `SI.L3-3.14.3e` source wording/scoping conflict.
       All source and teaching fingerprints must match the reviewed content.

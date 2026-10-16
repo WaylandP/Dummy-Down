@@ -4,6 +4,17 @@ The [detailed roadmap](docs/ROADMAP.md) is the milestone source of truth. This f
 keeps the next actionable priorities; the [changelog](CHANGELOG.md) records work
 already merged into `main`. No completion percentage is implied.
 
+- **After the launch (October 15).** The launch audit's errors and risks are
+  fixed or assigned; [its record](docs/content-review/launch-audit-2026-10-15.md)
+  lists every finding with its status. Still to do: qualified human review of
+  the October 15 content corrections (each is a finding in the editorial
+  audits, human review pending); the open polish notes in that record (site
+  copy, the practice activities' fictional company names); the GitHub
+  settings in the launch report (description, Wiki and Projects off,
+  automatic branch deletion, private vulnerability reporting, which the new
+  security policy and issue forms point to); and bringing Vercel preview
+  deployments back by deleting the `git` block in `vercel.json` once the
+  daily allowance is no longer at risk.
 - **The Board's remaining features follow in build order.** The shell, every
   page, the phone bar, the print sheet and the keys ship in five pull
   requests. [THE_BOARD.md](docs/design/THE_BOARD.md) lists what comes next,
