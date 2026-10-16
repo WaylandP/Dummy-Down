@@ -84,6 +84,54 @@ test('on a desktop the first situation runs beside the list, an answer shows its
   await expect(run).toContainText('IR.L3-3.6.2e')
 })
 
+test('after any answer the feedback keeps focus and Next question stays inside the run at 1280×800, at once under reduced motion', async ({
+  browser,
+}) => {
+  // The tallest question: every one of its answers used to push the button
+  // up to 65px below the run.
+  const address = '/practice?activity=level-one-authorized-access'
+  for (const reducedMotion of ['no-preference', 'reduce'] as const) {
+    const context = await browser.newContext({
+      viewport: { width: 1280, height: 800 },
+      reducedMotion,
+    })
+    const probe = await context.newPage()
+    await probe.goto(address)
+    await probe.locator('.practice-run-choice').first().waitFor()
+    const count = await probe.locator('.practice-run-choice').count()
+    expect(count).toBeGreaterThan(1)
+    await probe.close()
+    for (let index = 0; index < count; index += 1) {
+      // A fresh tab per answer: the question is answered once.
+      const page = await context.newPage()
+      await page.goto(address)
+      const run = page.getByRole('article')
+      await expect(run.locator('.practice-run-choice').first()).toBeVisible()
+      await page.evaluate(() => document.fonts.ready)
+      await run.locator('.practice-run-choice').nth(index).click()
+      const next = run.getByRole('button', { name: /Next question/ })
+      await expect(next).toBeVisible()
+      await expect(run.getByRole('status')).toBeFocused()
+      const inside = async () => {
+        const box = (await run.boundingBox())!
+        const button = (await next.boundingBox())!
+        return button.y + button.height <= box.y + box.height
+      }
+      // Smoothly by default; under reduced motion the scroll is instant.
+      await expect
+        .poll(inside, { timeout: reducedMotion === 'reduce' ? 250 : 3000 })
+        .toBe(true)
+      // The feedback is still in view above it.
+      const feedback = (await run.getByRole('status').boundingBox())!
+      expect(feedback.y).toBeGreaterThanOrEqual(
+        (await run.boundingBox())!.y - 1,
+      )
+      await page.close()
+    }
+    await context.close()
+  }
+})
+
 test('finishing a situation moves focus to the completion line', async ({
   page,
 }) => {

@@ -204,7 +204,9 @@ says whether it is built.
    chalk circles, the feedback under the answer, then "Next question →",
    "Read the requirement" and "Watch the 40-second chalk talk" where there is
    one, and after the first answer "A common mix-up" struck through in chalk
-   with its correction. The address is `/practice?activity=<id>&q=<n>`;
+   with its correction. After an answer the feedback takes focus and the run
+   scrolls only as far as it takes to keep "Next question" in view under it
+   (at once under reduced motion). The address is `/practice?activity=<id>&q=<n>`;
    older practice links keep working; the first situation runs by default.
    Phone: the list first; a situation opens full width with a way back.
 6. **About: what's next** — `About.html` (built). The "What's next on the
