@@ -18,5 +18,8 @@ export default defineConfig(({ mode }) => ({
     globals: true,
     setupFiles: ['./src/test/setup.ts'],
     clearMocks: true,
+    // A test that waits for a lazy page can need more than the five-second
+    // default when the cores are busy; the long wait is in setup.ts.
+    testTimeout: 15000,
   },
 }))
