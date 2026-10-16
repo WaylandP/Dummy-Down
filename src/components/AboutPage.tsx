@@ -44,6 +44,8 @@ interface NextItem {
   readonly text: string
   /** A smaller line under the item. */
   readonly note?: string
+  /** Where the item leads, when it does. */
+  readonly href?: string
 }
 
 /**
@@ -58,7 +60,7 @@ const onTheBoard: readonly NextItem[] = [
     text: `${capitalize(numberWord(chalks.length))} chalks for ${numberWord(chalks.length)} readers`,
   },
   { text: 'Decode, the Rev 3 view and the timeline' },
-  { text: 'The first chalk talk, CMMC in sixty seconds' },
+  { text: 'The first chalk talk, CMMC in sixty seconds', href: '/?play=sixty' },
   {
     text: `${capitalize(numberWord(learningActivities.length))} practice situations and ${glossaryTerms.length} glossary words`,
   },
@@ -111,7 +113,9 @@ function NextGroup({
               />
               {done && <path className="about-next-tick" d="M5 9.5l3 3 6-7" />}
             </svg>
-            <span className="about-next-text">{item.text}</span>
+            <span className="about-next-text">
+              {item.href ? <a href={item.href}>{item.text}</a> : item.text}
+            </span>
             {item.note && <span className="about-next-sub">{item.note}</span>}
           </li>
         ))}

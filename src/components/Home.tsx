@@ -15,6 +15,7 @@ import type {
   LessonIdentity,
 } from '../types/content'
 import { browseUrl } from './board/SiteHeader'
+import { playRequest } from '../state/play'
 import { SixtySeconds } from './sixty/SixtySeconds'
 import { families } from './families'
 import { numberWord } from '../data/number-words'
@@ -232,7 +233,9 @@ export function Home() {
           so Tab reaches the page's main action before the play button; the
           grid puts it beside the hero at desktop widths. */}
       <div className="home-talk">
-        <SixtySeconds />
+        <SixtySeconds
+          autoplay={playRequest(new URL(window.location.href)) === 'sixty'}
+        />
       </div>
     </div>
   )

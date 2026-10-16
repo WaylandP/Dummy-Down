@@ -60,6 +60,27 @@ already merged into `main`. No completion percentage is implied.
   rules in `src/styles.css` and the `set-catalog` / `back-to-discovery`
   intents nothing dispatches, and the frameworks file's "simplified teaching
   example" description, which renders nowhere.
+- **"CMMC in sixty seconds" before the post (October 16).** Four pull
+  requests, each from the latest `main`, squash-merged on green CI:
+  [#107](https://github.com/WaylandP/cipher-and-chalk/pull/107) it plays on
+  Home inside its own panel (no dialog, no sheet; the board drawn for the
+  panel in two scenes and two arrangements),
+  [#109](https://github.com/WaylandP/cipher-and-chalk/pull/109) the chalk
+  draws (letters written through masks along glyph skeletons made at build
+  time by `npm run sixty:glyphs`; eased, wobbled strokes; the stick a hand
+  with dust; the frames measure nothing),
+  [#110](https://github.com/WaylandP/cipher-and-chalk/pull/110) Home fills
+  big screens (the panel's column from the frame's height, the hero sharing
+  its column's height, nine sizes tested) and
+  [#111](https://github.com/WaylandP/cipher-and-chalk/pull/111) Share (the
+  file where the browser can, the `/?play=sixty` link, the download), the
+  deep link, and the video rendered by `npm run sixty:video` with its
+  fingerprint test. Left for later: a real phone's share sheet (the file
+  path is unit-tested, not tried on a device); the chalk filter's cost per
+  paint at large sizes, which makes the render take half an hour and would
+  show on a slow laptop at 2560 wide (a filter per mark instead of per
+  scene would cut it); and trimming the glyph outlines further if the main
+  chunk needs it (they add 40 KB gzipped).
 - **Phase 3 engineering is shipped.** All five scoped increments are merged with
   successful exact-head CI and automatic production deployments. The
   [execution log](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-3-execution-2026-10-14.md) records evidence;

@@ -1,8 +1,17 @@
-import { Fragment, useEffect, useId, useState, type ReactNode } from 'react'
+import {
+  Fragment,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react'
 import { glossaryTerms } from '../../data/content'
+import { playUrl } from '../../state/play'
 import { cueSmudge } from '../board/tray-state'
 import { ChalkTerm } from '../control/ChalkTerm'
 import { SixtyBoard } from './SixtyBoard'
+import { SixtyShare } from './SixtyShare'
 import {
   formatTime,
   sixtyBlurb,
@@ -89,9 +98,12 @@ function Caption({ chapter }: { readonly chapter: SixtyChapter }) {
  * the board clears it with a quick pass of Smudge, then draws in place;
  * at 1:00 the finished clock stays, and Smudge sweeps. The keys (Space, K,
  * the arrows, Home, End, Page Up, Page Down) work only while focus is in
- * the panel. Nothing plays on its own.
+ * the panel. Nothing plays on its own, except from `/?play=sixty`, which
+ * opens Home with the panel in view and plays from 0:00 (under reduced
+ * motion it shows the finished board instead). Share, at the end of the
+ * player row, sends the video, copies that address or downloads the MP4.
  */
-export function SixtySeconds() {
+export function SixtySeconds({ autoplay = false }: { autoplay?: boolean }) {
   const reduced = useReducedMotion()
   const { root, player } = useSixtyPlayer({
     reduced,
@@ -100,6 +112,16 @@ export function SixtySeconds() {
   const titleId = useId()
   const { playing, second, chapter, speed, narrow, started, ended } = player
   const current = sixtyChapters[chapter]!
+  // The deep link: once, on arrival, the panel comes into view and plays.
+  const arrival = useRef({ autoplay, reduced, toggle: player.toggle })
+  useEffect(() => {
+    const { autoplay, reduced, toggle } = arrival.current
+    if (!autoplay) return
+    const panel = root.current
+    if (panel && typeof panel.scrollIntoView === 'function')
+      panel.scrollIntoView({ block: 'start' })
+    if (!reduced) toggle()
+  }, [root])
   return (
     <section
       ref={root}
@@ -187,6 +209,10 @@ export function SixtySeconds() {
         >
           <span className="sixty-speed-pill mono">{sixtySpeeds[speed]}×</span>
         </button>
+        <SixtyShare
+          video="/media/cmmc-in-sixty-seconds.mp4"
+          link={playUrl(window.location.origin)}
+        />
       </div>
       <div className="sixty-cap">
         <p className="sixty-eyebrow">

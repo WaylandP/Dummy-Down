@@ -1,0 +1,24 @@
+{
+  "file": "cmmc-in-sixty-seconds.mp4",
+  "poster": "cmmc-in-sixty-seconds.jpg",
+  "sha256": "031be264d988931f987931d7a48c8ae1c1a6e553662bf947a3dd7e7e7ffa8b3d",
+  "sources": [
+    "src/components/sixty/SixtyBoard.tsx",
+    "src/components/sixty/sixty-drawing.ts",
+    "src/components/sixty/sixty-glyphs.json",
+    "src/components/sixty/sixty-layout.ts",
+    "src/components/sixty/sixty-model.ts",
+    "src/components/sixty/sixty-script.ts",
+    "src/components/sixty/sixty-strokes.ts",
+    "src/components/sixty/sixty-words.ts",
+    "src/components/sixty/sixty.css",
+    "src/components/sixty/useSixtyPlayer.ts"
+  ],
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "frames": 1860,
+  "seconds": 62,
+  "bytes": 5823006,
+  "renderedAt": "2026-10-16T16:27:48.039Z"
+}

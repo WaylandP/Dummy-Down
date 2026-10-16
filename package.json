@@ -32,6 +32,7 @@
     "typecheck": "tsc --noEmit",
     "check:content": "node scripts/check-content-summary.mjs && node --test scripts/check-content-summary.test.mjs",
     "sixty:glyphs": "node --experimental-strip-types scripts/sixty-glyphs.mjs",
+    "sixty:video": "node --experimental-strip-types scripts/sixty-video.mjs",
     "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
     "test:browser": "playwright test",

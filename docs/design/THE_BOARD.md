@@ -392,6 +392,32 @@ says whether it is built.
    measure, and they stop while the tab is hidden or the panel is out of
    view.
 
+   Sharing it (October 16, item 3). Share, a 44px button at the end of the
+   player row, opens a small menu in the style of the chalk popovers: "Send
+   the video…", shown only where `navigator.canShare` accepts the MP4 as a
+   file, shares the file itself (fetched when the menu opens, so the share
+   call runs straight from the tap); "Copy link" copies `{origin}/?play=sixty`
+   and says "Link copied" in a status region (if the clipboard is refused,
+   the link appears selected in a read-only field); "Download the video"
+   (MP4 · 1:00) downloads it. Escape and a click outside close the menu and
+   return focus to Share. Nothing about sharing is logged or counted.
+   `/?play=sixty` opens Home with the panel in view and plays from 0:00: the
+   only time the drawing starts by itself; under reduced motion it shows the
+   finished board instead. The parameter is read with the other URL state
+   (`src/state/play.ts`); analytics still record only `/` (asserted). On
+   About, "The first chalk talk, CMMC in sixty seconds" links to it. The
+   video, `public/media/cmmc-in-sixty-seconds.mp4` (H.264, yuv420p,
+   faststart, 1920×1080, 30 frames a second on the 1× timeline, 6 MB or
+   less) with its poster JPG, is rendered by `npm run sixty:video`
+   (`scripts/sixty-video.mjs`: Playwright's clock steps the drawing a
+   thirtieth of a second at a time; the yellow title above, the wide board
+   large and centred, each chapter's caption under it as the player shows
+   it, and the last two seconds holding the finished board with
+   cipherandchalk.vercel.app under it; the system ffmpeg, or npx
+   ffmpeg-static if there is none, encodes it). A SHA-256 of the drawing's
+   sources sits next to the video (`cmmc-in-sixty-seconds.json`), and a test
+   fails when they change and the video was not rendered again.
+
 ## Features, in build order
 
 1. The Board: tokens, shell (dust, filter, tray), every page, phone bar, keys.
