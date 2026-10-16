@@ -69,10 +69,10 @@
   },
   "dates": [
     {
-      "id": "program-rule-published",
-      "date": "2024-10-15",
-      "title": "The program rule is published",
-      "text": "32 CFR part 170, the CMMC Program rule, appears in the Federal Register.",
+      "id": "program-rule-effective",
+      "date": "2024-12-16",
+      "title": "32 CFR part 170 takes effect",
+      "text": "The CMMC Program rule, published October 15, 2024, is in force from this day, with its requirements for defense contractors and subcontractors.",
       "citations": [
         {
           "source": "cfr-32-170",
@@ -83,15 +83,7 @@
           "source": "fr-2024-22905",
           "where": "closing line, printed page 83237",
           "quote": "FR Doc. 2024-22905 Filed 10-11-24; 8:45 am"
-        }
-      ]
-    },
-    {
-      "id": "program-rule-effective",
-      "date": "2024-12-16",
-      "title": "32 CFR part 170 takes effect",
-      "text": "The program rule is in force from this day, with its requirements for defense contractors and subcontractors.",
-      "citations": [
+        },
         {
           "source": "fr-2024-22905",
           "where": "DATES",
@@ -136,7 +128,7 @@
       "id": "phase-2-on-hold",
       "date": "2026-07-13",
       "title": "Phase 2 is put on hold",
-      "text": "DoD, now also called the Department of War, suspended the move to Phase 2 while it reviews the program. Solicitations can require Level 1 (Self) or Level 2 (Self); contracting officers are to remove or revise CMMC requirements in solicitations and contracts to match.",
+      "text": "Suspended while DoD, now also called the Department of War, reviews the program. Solicitations can still require Level 1 (Self) or Level 2 (Self).",
       "citations": [
         {
           "source": "cmmc-faq-2-3",
@@ -175,7 +167,7 @@
       "date": "2026-11-10",
       "status": "suspended",
       "title": "Phase 2 was to begin",
-      "text": "Under the rule’s original schedule, Level 2 (C3PAO) would become a condition of award, or wait for an option period, and DoD could ask for Level 3 (DIBCAC).",
+      "text": "Level 2 (C3PAO) would become a condition of award, or wait for an option period; DoD could ask for Level 3 (DIBCAC).",
       "citations": [
         {
           "source": "cmmc-101-2025",
@@ -194,7 +186,7 @@
       "date": "2027-11-10",
       "status": "suspended",
       "title": "Phase 3 was to begin",
-      "text": "Under the rule’s original schedule: Level 2 (C3PAO) for every applicable award, and for option periods on contracts awarded since the clause took effect; Level 3 (DIBCAC) as a condition of award.",
+      "text": "Level 2 (C3PAO) for every applicable award and for option periods on contracts awarded since Phase 1; Level 3 (DIBCAC) at award.",
       "citations": [
         {
           "source": "cmmc-101-2025",
@@ -212,8 +204,8 @@
       "id": "phase-4",
       "date": "2028-11-10",
       "status": "suspended",
-      "title": "Phase 4, full implementation, was to begin",
-      "text": "Under the rule’s original schedule, every applicable solicitation and contract would carry its CMMC requirement, including option periods on contracts awarded before then.",
+      "title": "Phase 4 was to begin",
+      "text": "Full implementation: CMMC in every applicable solicitation and contract, including option periods on contracts awarded before then.",
       "citations": [
         {
           "source": "cmmc-101-2025",

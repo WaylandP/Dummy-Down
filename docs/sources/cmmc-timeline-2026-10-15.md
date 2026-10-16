@@ -56,12 +56,13 @@ are the slide's, which names the department "DoW".
 
 ## What each line rests on
 
-- **October 15, 2024**: the eCFR Source note for part 170 ("89 FR 83214,
-  Oct. 15, 2024") and the Federal Register address; the mirrored HTML carries
-  no publication-date line, so the document's closing line is quoted for its
-  identity.
-- **December 16, 2024**: the rule's DATES line ("This rule is effective
-  December 16, 2024."), read with § 170.1(a) for what the part establishes.
+- **December 16, 2024 (published October 15, 2024)**: the eCFR Source note
+  for part 170 ("89 FR 83214, Oct. 15, 2024") and the Federal Register
+  address, whose mirrored HTML carries no publication-date line, so the
+  document's closing line is quoted for its identity; then the rule's DATES
+  line ("This rule is effective December 16, 2024."), read with § 170.1(a)
+  for what the part establishes. The publication date shares this entry so
+  the dates stay on one screen with the July 13, 2026 entry.
 - **November 10, 2025 and the four phases**: the acquisition rule's DATES line
   ("This rule is effective November 10, 2025."), the CMMC 101 briefing's
   statement of the clause's effective date (PDF page 6) and its phase slide
@@ -92,7 +93,7 @@ are the slide's, which names the department "DoW".
   page says so rather than guessing.
 
 `src/components/timeline-page.test.tsx` locks the citations as serialized
-(SHA-256 `364c5d514b7e5644812fad4f7e0e0c0ba7666e4a648bf32b1c81fe71454104c8`
+(SHA-256 `f8898110f7cba93412410b28f960f101ed36bc0a02a4c80786b22060271f1260`
 over the dates', statuses' and Rev 3 line's citation arrays in page order),
 so a change to any quotation, pin or source key fails a test until this
 record is revisited.

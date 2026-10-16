@@ -63,7 +63,6 @@ describe('The timeline', () => {
     expect(
       dates.map((item) => item.querySelector('time')?.textContent),
     ).toEqual([
-      'October 15, 2024',
       'December 16, 2024',
       'November 10, 2025',
       'July 13, 2026',
@@ -218,7 +217,7 @@ describe('The timeline', () => {
       createHash('sha256')
         .update(JSON.stringify(lines.map((line) => line.citations)))
         .digest('hex'),
-    ).toBe('364c5d514b7e5644812fad4f7e0e0c0ba7666e4a648bf32b1c81fe71454104c8')
+    ).toBe('f8898110f7cba93412410b28f960f101ed36bc0a02a4c80786b22060271f1260')
   })
 
   it('says so and offers a reload when its chunk fails to load', async () => {
