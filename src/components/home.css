@@ -20,48 +20,41 @@
     padding: 26px var(--gutter) 0;
     /* The glow may run past the right edge; it never widens the page. */
     overflow-x: clip;
-    /* The chalk talk's column fills the height above "Pick up a chalk to
-       start.". The row above the chalks is the frame's height less the
-       header, the footer, the page's own padding and the chalks row (202px
-       while the third chalk's label wraps, 175px from 1500px); the panel
-       should end 58px above "Pick up a chalk", as it does at 1280×800, so
-       it is as wide as a board, player row, caption and note that tall need
-       (the panel's height grows 0.91 times its width to about 650px wide,
-       0.77 times to about 900px, 0.57 times beyond, as its type reaches its
-       caps). Never narrower than the 397px panel, never wider than 45% of
-       the frame or 1100px. */
+    /* Big screens get room, not shouting. The chalk talk's column grows
+       with the window's width, from the 397px panel (430px with its rule and
+       padding) to a 587px one; the headline stops at 120px, the lead at
+       22px. The top half then sits centred in the height above the chalks:
+       the room the panel doesn't need goes half above it and half below it
+       (counting the 26px of padding over it and the 58px under it),
+       and the hero is as tall as the panel, so the kicker lines up with the
+       panel's title and the lead with its note. The row above the chalks is
+       the frame less the header, the footer, the page's padding and the
+       chalks row (202px while the third chalk's label wraps, 175px from
+       1500px); the panel's height is about 0.912 times its width plus 10px. */
     --home-start: 202px;
     --home-row: calc(100dvh - 184px - var(--home-start));
     --home-panel: calc(var(--home-row) - 42px);
-    --home-talk: clamp(
-      430px,
-      min(
-        calc(
-          max(
-              calc((var(--home-panel) - 10px) / 0.912),
-              calc((var(--home-panel) - 103px) / 0.768),
-              calc((var(--home-panel) - 283px) / 0.567)
-            ) +
-            33px
-        ),
-        45vw
-      ),
-      1133px
+    --home-talk: clamp(430px, 30vw, 620px);
+    --home-panel-h: calc((var(--home-talk) - 33px) * 0.912 + 10px);
+    --home-lift: max(
+      0px,
+      calc((var(--home-panel) - var(--home-panel-h) + 32px) / 2)
     );
   }
   /* The hero: what this is. The headline is sized from the hero's real
      width (cqw), beside the chalk talk or alone, never the viewport. The
-     kicker, the headline and the lead share the column's height: the room
+     kicker, the headline and the lead share the panel's height: the room
      left over goes two fifths above the headline and three fifths below
-     it, and the lead ends 32px above the chalks row (52px above "Pick up a
-     chalk to start.", about where the panel ends). */
+     it, so the lead ends about where the panel's note does. */
   .home-hero {
     grid-area: hero;
     position: relative;
     display: grid;
     grid-template-rows: auto minmax(10px, 2fr) auto minmax(18px, 3fr) auto;
+    align-self: start;
     min-width: 0;
-    padding-bottom: 32px;
+    min-height: var(--home-panel-h);
+    margin-top: var(--home-lift);
     container-type: inline-size;
   }
   /* "CMMC in sixty seconds" beside the hero, from the kicker down to just
@@ -70,7 +63,9 @@
   .home-talk {
     grid-area: talk;
     position: relative;
+    align-self: start;
     min-width: 0;
+    margin-top: var(--home-lift);
     padding: 2px 0 0 32px;
     border-left: 1px solid var(--color-rule);
   }
@@ -93,21 +88,21 @@
     position: relative;
     margin: 0;
     color: var(--color-yellow);
-    font-size: clamp(22px, 2.4cqw, 32px);
+    font-size: 22px;
     line-height: 1.2;
   }
   /* The one headline, two lines as large as the hero's width allows ("in
      plain words." is 7.04em wide in the chalk hand, so a hair under a
      seventh of the column keeps it one line everywhere): about 100px beside
-     the chalk talk at 1280, 112px at 1366, 128px at 1728×980, 200px at most. */
+     the chalk talk at 1280, 112px at 1366, 120px at most. */
   .home-title {
     grid-row: 3;
     position: relative;
     margin: 0;
-    font-size: clamp(36px, calc(100cqw / 7.14), 200px);
+    font-size: clamp(36px, calc(100cqw / 7.14), 120px);
     line-height: 0.95;
   }
-  /* The lead grows with its column, 20px to 36px, on a measure of about 70
+  /* The lead grows with its column, 20px to 22px, on a measure of about 70
      characters (36em) and never under the 780px it has beside the 397px
      panel. */
   .home-lead {
@@ -116,7 +111,7 @@
     max-width: max(780px, 36em);
     margin: 0;
     color: var(--color-chalk-muted);
-    font-size: clamp(20px, 2.6cqw, 36px);
+    font-size: clamp(20px, 1.6cqw, 22px);
     line-height: 1.5;
   }
   /* The chalks and the search sit at the foot of the screen, as drawn. */
@@ -305,6 +300,8 @@
   /* One column: the hero's lines sit as they read, with no room to share. */
   .home-hero {
     display: block;
+    min-height: 0;
+    margin-top: 0;
     padding-bottom: 0;
   }
   .home-title {
@@ -314,6 +311,7 @@
     margin-top: 18px;
   }
   .home-talk {
+    margin-top: 0;
     padding: 28px 0 32px;
     border-left: 0;
     border-top: 1px solid var(--color-rule);

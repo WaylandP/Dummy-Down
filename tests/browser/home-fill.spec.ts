@@ -14,7 +14,7 @@ const targets = [
   [2560, 1300],
 ] as const
 
-test('Home fills big screens: the hero and the panel scale with the window, both ending 24 to 64px above "Pick up a chalk to start.", nothing to scroll, nothing overlapping, the headline on two lines and every board word 11px or more', async ({
+test('Home on big screens: calm sizes, the top half centred above the chalks, kicker and lead lined up with the panel, nothing to scroll or overlap, the headline on two lines and every board word 11px or more', async ({
   page,
 }) => {
   for (const [width, height] of targets) {
@@ -56,6 +56,7 @@ test('Home fills big screens: the hero and the panel scale with the window, both
         board: box('svg.sixty-board'),
         pick: box('.home-pick'),
         start: box('.home-start'),
+        home: box('.home'),
         titleSize,
         leadSize: parseFloat(
           getComputedStyle(document.querySelector('.home-lead')!).fontSize,
@@ -71,15 +72,17 @@ test('Home fills big screens: the hero and the panel scale with the window, both
     // Nothing to scroll, nothing wider than the window.
     expect(m.scroll, at).toBeLessThanOrEqual(0)
     expect(m.wide, at).toBeLessThanOrEqual(width)
-    // The panel and the lead both end 24 to 64px above "Pick up a chalk to
-    // start.", at about the same height.
-    const gapPanel = m.pick.y - m.panel.bottom
-    const gapLead = m.pick.y - m.lead.bottom
-    expect(gapPanel, `${at} under the panel`).toBeGreaterThanOrEqual(24)
-    expect(gapPanel, `${at} under the panel`).toBeLessThanOrEqual(64)
-    expect(gapLead, `${at} under the lead`).toBeGreaterThanOrEqual(24)
-    expect(gapLead, `${at} under the lead`).toBeLessThanOrEqual(64)
-    expect(Math.abs(m.panel.bottom - m.lead.bottom), at).toBeLessThanOrEqual(40)
+    // The top half sits centred above the chalks: the room over the panel
+    // (with the page's 26px padding) and under it, to "Pick up a chalk to
+    // start.", are within 24px of each other, and there is always 24px
+    // under it. The kicker lines up with the panel's title, the lead with its
+    // note.
+    const above = m.panel.y - m.home.y
+    const below = m.pick.y - m.panel.bottom
+    expect(below, `${at} under the panel`).toBeGreaterThanOrEqual(24)
+    expect(Math.abs(above - below), `${at} centred`).toBeLessThanOrEqual(24)
+    expect(Math.abs(m.kicker.y - m.panel.y), at).toBeLessThanOrEqual(8)
+    expect(Math.abs(m.panel.bottom - m.lead.bottom), at).toBeLessThanOrEqual(16)
     // Nothing overlaps or clips: the kicker, the headline and the lead in
     // order in their column, the panel beside them in its own, the board
     // inside the panel, the chalks row below both.
@@ -93,15 +96,17 @@ test('Home fills big screens: the hero and the panel scale with the window, both
     expect(m.board.right, at).toBeLessThanOrEqual(m.panel.right + 1)
     expect(m.panel.bottom, at).toBeLessThanOrEqual(m.start.y + 1)
     expect(m.lead.bottom, at).toBeLessThanOrEqual(m.start.y + 1)
-    // The headline stays on two lines, sized from its column; the panel
-    // grows from 397px, its board with it; the lead from 20px.
+    // The headline stays on two lines, sized from its column and never past
+    // 120px; the panel grows from 397px to about 587px, its board with it;
+    // the lead stays 20 to 22px.
     expect(m.lines, at).toBe(2)
     expect(m.titleSize, at).toBeGreaterThanOrEqual(96)
-    expect(m.titleSize, at).toBeLessThanOrEqual(200)
+    expect(m.titleSize, at).toBeLessThanOrEqual(120)
     expect(m.panel.width, at).toBeGreaterThanOrEqual(396)
-    expect(m.panel.width, at).toBeLessThanOrEqual(1100)
+    expect(m.panel.width, at).toBeLessThanOrEqual(590)
     expect(Math.abs(m.board.width - m.panel.width), at).toBeLessThanOrEqual(1)
     expect(m.leadSize, at).toBeGreaterThanOrEqual(20)
+    expect(m.leadSize, at).toBeLessThanOrEqual(22)
     // Every board word is 11px or more, and grows with the board.
     expect(m.words, at).toBe(24)
     expect(m.smallest, at).toBeGreaterThanOrEqual(11)
@@ -109,8 +114,8 @@ test('Home fills big screens: the hero and the panel scale with the window, both
       (11.1 * m.board.width) / 397 - 0.2,
     )
   }
-  // The guide: at 1728×980 a panel about 640px wide, a headline around
-  // 130px, a lead around 24px.
+  // A 16" MacBook Pro (1728×980): a panel about 485px wide, a 120px
+  // headline, a 20px lead.
   await page.setViewportSize({ width: 1728, height: 980 })
   await page.goto('/')
   await page.evaluate(() => document.fonts.ready)
@@ -123,10 +128,10 @@ test('Home fills big screens: the hero and the panel scale with the window, both
       getComputedStyle(document.querySelector('.home-lead')!).fontSize,
     ),
   }))
-  expect(guide.panel).toBeGreaterThanOrEqual(600)
-  expect(guide.panel).toBeLessThanOrEqual(680)
-  expect(guide.title).toBeGreaterThanOrEqual(124)
-  expect(guide.title).toBeLessThanOrEqual(140)
-  expect(guide.lead).toBeGreaterThanOrEqual(23)
-  expect(guide.lead).toBeLessThanOrEqual(26)
+  expect(guide.panel).toBeGreaterThanOrEqual(460)
+  expect(guide.panel).toBeLessThanOrEqual(520)
+  expect(guide.title).toBeGreaterThanOrEqual(112)
+  expect(guide.title).toBeLessThanOrEqual(120)
+  expect(guide.lead).toBeGreaterThanOrEqual(20)
+  expect(guide.lead).toBeLessThanOrEqual(22)
 })

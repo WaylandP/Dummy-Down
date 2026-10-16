@@ -97,28 +97,21 @@ left, "CMMC in sixty seconds" (see October 15 fixes, 9), playing in its own
 panel, resting on its finished clock; the headline is sized from the hero's
 own width, about 100px beside it at 1280.
 
-Home fills big screens (October 16). The hero and the panel scale with the
-window's width and height together, so the top half fills the space above
-"Pick up a chalk to start." on every screen, with nothing to scroll. The
-panel's column is sized from the frame's height: the row above the chalks
-(the frame less the header, the footer, the page's padding and the chalks
-row) sets how tall a panel can be, and the panel is as wide as a board,
-player row, caption and note that tall need, ending about 56px above "Pick
-up a chalk" (as at 1280×800): 397px at 1280×800 and 1366×768 as before,
-about 510px at 1440×900 and 1512×860, 624px at 1728×980 (a 624×282 board, a
-132px headline, a 24px lead), 750px at 1920×1080, 1086px at 2560×1300, never
-wider than 45% of the frame or 1100px. Everything in the panel is sized from
-its width (container query units): the title, the board, the player row
-(44px targets growing to 72px), the time, the speed, the caption and the
-note, and every board word grows with the board, from 11px. The hero is a
-grid of its column's height: the kicker, the headline (two lines, sized from
-the column as before, up to 200px) and the lead (20px to 36px, on a measure
-of about 70 characters), the room left over going two fifths above the
-headline and three fifths below it, so the lead ends 52px above "Pick up a
-chalk", about where the panel ends. Tablets and phones are as they were. No
-JavaScript lays anything out: `clamp()`, `min()`, `max()`, `dvh`, `vw` and
-`cqw` do it (`home.css`, `sixty.css`); `tests/browser/home-fill.spec.ts`
-checks the fit, the gaps, the overlaps, the two lines and the 11px floor at
+Home on big screens (October 16, revised the same day after the owner saw it
+on a 16" MacBook Pro: scaling everything to fill the height made the page
+shout). Big screens get room, not bigger type. The panel's column grows with
+the window's width, 30% of it, from the 397px panel to a 587px one (about
+485px on a 16" MacBook Pro), and everything in it is sized from its width
+(container query units), every board word from 11px up; its play button and
+other targets stop at 52px and its title at 30px. The headline is sized from
+its column as before and stops at 120px; the lead is 20px to 22px. The top
+half sits centred in the height above "Pick up a chalk to start.": the room
+the panel doesn't need goes half above it and half below it, and the hero is
+as tall as the panel, its leftover room two fifths above the headline and
+three fifths below it, so the kicker lines up with the panel's title and the
+lead with its note. Tablets and phones are as they were. No JavaScript lays
+anything out (`home.css`, `sixty.css`); `tests/browser/home-fill.spec.ts`
+checks the fit, the centring, the alignment, the caps and the 11px floor at
 1280×800, 1366×768, 1440×900, 1470×830, 1512×860, 1536×864, 1728×980,
 1920×1080 and 2560×1300.
 

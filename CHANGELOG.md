@@ -5,6 +5,15 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Home on big screens, calmer — October 16, 2026
+
+- #110 scaled Home's type with the window's height, so on a 16" MacBook Pro the
+  headline reached about 130px, the lead 24px and the panel's buttons 66px,
+  which read as crowded. Big screens now get room instead: the headline stops
+  at 120px, the lead at 22px, the panel at 587px wide (about 485px on a 16"
+  MacBook Pro) with 52px buttons, and the top half sits centred above "Pick up
+  a chalk to start." with the kicker and lead lined up with the panel.
+
 ## Share "CMMC in sixty seconds" — October 16, 2026
 
 - [PR #111](https://github.com/WaylandP/cipher-and-chalk/pull/111): Share, at
