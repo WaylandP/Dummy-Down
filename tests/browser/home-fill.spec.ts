@@ -57,6 +57,8 @@ test('Home on big screens: calm sizes, the top half centred above the chalks, ki
         pick: box('.home-pick'),
         start: box('.home-start'),
         home: box('.home'),
+        play: box('.sixty-play'),
+        knob: box('.sixty-knob'),
         titleSize,
         leadSize: parseFloat(
           getComputedStyle(document.querySelector('.home-lead')!).fontSize,
@@ -96,6 +98,12 @@ test('Home on big screens: calm sizes, the top half centred above the chalks, ki
     expect(m.board.right, at).toBeLessThanOrEqual(m.panel.right + 1)
     expect(m.panel.bottom, at).toBeLessThanOrEqual(m.start.y + 1)
     expect(m.lead.bottom, at).toBeLessThanOrEqual(m.start.y + 1)
+    // The scrubber's knob, at 0:00, keeps clear of the play button and the
+    // focus ring drawn 3px outside it.
+    expect(
+      m.knob.x - m.play.right,
+      `${at} play to knob`,
+    ).toBeGreaterThanOrEqual(12)
     // The headline stays on two lines, sized from its column and never past
     // 120px; the panel grows from 397px to about 587px, its board with it;
     // the lead stays 20 to 22px.
