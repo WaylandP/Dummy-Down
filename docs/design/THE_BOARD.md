@@ -94,8 +94,33 @@ left, 44px tall) and the search follows them. The footer line is the site's
 fourteen families live on the Controls page. Beside the hero, from the kicker
 down to just above "Pick up a chalk to start." with a hairline rule on its
 left, "CMMC in sixty seconds" (see October 15 fixes, 9), playing in its own
-397px panel, resting on its finished clock; the headline is sized from the
-hero's own width, about 100px beside it at 1280.
+panel, resting on its finished clock; the headline is sized from the hero's
+own width, about 100px beside it at 1280.
+
+Home fills big screens (October 16). The hero and the panel scale with the
+window's width and height together, so the top half fills the space above
+"Pick up a chalk to start." on every screen, with nothing to scroll. The
+panel's column is sized from the frame's height: the row above the chalks
+(the frame less the header, the footer, the page's padding and the chalks
+row) sets how tall a panel can be, and the panel is as wide as a board,
+player row, caption and note that tall need, ending about 56px above "Pick
+up a chalk" (as at 1280×800): 397px at 1280×800 and 1366×768 as before,
+about 510px at 1440×900 and 1512×860, 624px at 1728×980 (a 624×282 board, a
+132px headline, a 24px lead), 750px at 1920×1080, 1086px at 2560×1300, never
+wider than 45% of the frame or 1100px. Everything in the panel is sized from
+its width (container query units): the title, the board, the player row
+(44px targets growing to 72px), the time, the speed, the caption and the
+note, and every board word grows with the board, from 11px. The hero is a
+grid of its column's height: the kicker, the headline (two lines, sized from
+the column as before, up to 200px) and the lead (20px to 36px, on a measure
+of about 70 characters), the room left over going two fifths above the
+headline and three fifths below it, so the lead ends 52px above "Pick up a
+chalk", about where the panel ends. Tablets and phones are as they were. No
+JavaScript lays anything out: `clamp()`, `min()`, `max()`, `dvh`, `vw` and
+`cqw` do it (`home.css`, `sixty.css`); `tests/browser/home-fill.spec.ts`
+checks the fit, the gaps, the overlaps, the two lines and the 11px floor at
+1280×800, 1366×768, 1440×900, 1470×830, 1512×860, 1536×864, 1728×980,
+1920×1080 and 2560×1300.
 
 **Control, Decode** — `mockups/Decode.html`. Top line: the ID in blue mono,
 then a chalk arrow, then the ID decoded (family, level, source requirement).
@@ -277,7 +302,8 @@ says whether it is built.
    the captions are the owner's, their glossary words (FCI, CUI, SPRS,
    C3PAO) opening the chalk popovers. It plays on Home inside its own
    panel, beside the hero from the kicker down to just above "Pick up a
-   chalk to start." (397px wide; the width under the search on a tablet,
+   chalk to start." (397px wide at 1280×800 and 1366×768, wider on bigger
+   screens, see Home above; the width under the search on a tablet,
    capped at 560px; the width of the page on a phone): the title in yellow
    chalk (an `h2` that names the region), the board, the player row, then
    the caption with the Phase 2 note under it. The same panel rests and
