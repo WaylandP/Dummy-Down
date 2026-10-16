@@ -313,6 +313,13 @@ analytics allowlist do not change.
   the button under it, smoothly or at once under reduced motion; a button
   already in view stays put. At 1280×800 eight of the 117 answers had pushed
   it up to 65px below the run, and on a phone four by up to 200px.
+- [PR #104](https://github.com/WaylandP/cipher-and-chalk/pull/104): a
+  control's views are 44px targets at every width. "Rev 3", the shortest
+  word, had its 44px minimum only on a phone and was 40px wide at 768 and
+  38px from 1024 up; the minimum now holds everywhere, as room after the
+  word, and nothing else on the row moves. Measured again at 320, 390, 768,
+  1024, 1280 and 1440: Print is 44 by 44 and every glossary source link at
+  least 48px tall, as since PR #96; their words stay 29px wide and 14px tall.
 
 ## The Board's features — October 15, 2026
 
