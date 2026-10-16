@@ -1,0 +1,35 @@
+name: Content correction
+description: Something on the site says more, less or other than its official source.
+title: 'Correction: '
+labels: ['content']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Corrections are the most useful thing anyone can send. Please don't include Controlled Unclassified Information, real evidence, credentials or personal data.
+  - type: input
+    id: where
+    attributes:
+      label: Where on the site
+      description: The page address, or a control ID and view (for example AC.L2-3.1.1, Explain, yellow chalk).
+    validations:
+      required: true
+  - type: textarea
+    id: says
+    attributes:
+      label: What the site says
+      description: Quote it.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: What the source says
+      description: Quote the official text and name the publication, version and page (for example CMMC Assessment Guide – Level 2, v2.13, PDF page 22).
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: Optional. How a reader could get it wrong.

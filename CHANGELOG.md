@@ -5,6 +5,49 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Launch fixes — October 15, 2026
+
+The launch audit of October 15 compared every explanation, practice activity,
+visual explanation, glossary entry and the site copy with the pinned sources
+([record](docs/content-review/launch-audit-2026-10-15.md)). The content fixes
+below are AI-assisted comparisons with human review pending; the interface
+fixes from the same report are listed under "October 15 fixes".
+
+- [PR #76](https://github.com/WaylandP/cipher-and-chalk/pull/76): the
+  Timeline shows Phase 2 on hold since July 13, 2026, quoting the CMMC FAQ
+  (Revision 2.4) and DFARS Class Deviation 2026-O0025 Rev. 3, and marks
+  Phases 2–4 as the rule's suspended schedule.
+- [PR #77](https://github.com/WaylandP/cipher-and-chalk/pull/77) and
+  [PR #91](https://github.com/WaylandP/cipher-and-chalk/pull/91): glossary
+  definitions match their sources: the 2026 clause overhaul (252.240-7997),
+  three contradictions fixed, the six terms that cited the archived README
+  now cite the guides and 32 CFR 170, the Department of War named once, and
+  links that open the December 16, 2024 text. Popovers name a shared
+  publication once.
+- [PR #78](https://github.com/WaylandP/cipher-and-chalk/pull/78) and
+  [PR #86](https://github.com/WaylandP/cipher-and-chalk/pull/86): explanations
+  say what the guide requires: FIPS-validated cryptography on seven controls,
+  and 56 more fields across 41 controls.
+- [PR #80](https://github.com/WaylandP/cipher-and-chalk/pull/80): Rev 3 notes
+  say what Rev 3 drops as well as what it adds.
+- [PR #81](https://github.com/WaylandP/cipher-and-chalk/pull/81): the share
+  card and README say "CMMC, in plain words."
+- [PR #83](https://github.com/WaylandP/cipher-and-chalk/pull/83) and
+  [PR #88](https://github.com/WaylandP/cipher-and-chalk/pull/88): practice
+  answers a careful reader can't dispute, in plain words.
+- [PR #84](https://github.com/WaylandP/cipher-and-chalk/pull/84): one name
+  for the fictional company in every explanation, CedarPoint.
+- [PR #87](https://github.com/WaylandP/cipher-and-chalk/pull/87): CM.L2-3.4.6's
+  clause map.
+- [PR #82](https://github.com/WaylandP/cipher-and-chalk/pull/82) and
+  [PR #85](https://github.com/WaylandP/cipher-and-chalk/pull/85): browser-test
+  failures show as annotations on the pull request, and feature branches no
+  longer use Vercel preview deployments (the Hobby plan's 100 a day ran out on
+  launch night; delete the `git` block in `vercel.json` to bring them back).
+- This pull request: `SECURITY.md`, `CODE_OF_CONDUCT.md`, issue forms for
+  content corrections and bugs, package metadata, the launch audit record and
+  the README's new screenshots.
+
 ## The Board — October 14, 2026
 
 The visual direction approved on October 14 ([specification](docs/design/THE_BOARD.md),

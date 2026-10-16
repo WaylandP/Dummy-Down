@@ -1,6 +1,23 @@
 {
   "name": "cipher-and-chalk",
   "version": "0.1.0",
+  "description": "CMMC in plain words: all 149 controls quoted from the official guides and explained three ways.",
+  "homepage": "https://cipherandchalk.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WaylandP/cipher-and-chalk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WaylandP/cipher-and-chalk/issues"
+  },
+  "keywords": [
+    "cmmc",
+    "nist-800-171",
+    "cybersecurity",
+    "compliance",
+    "education",
+    "accessibility"
+  ],
   "private": true,
   "type": "module",
   "license": "MIT",

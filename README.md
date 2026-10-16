@@ -8,7 +8,7 @@
 
 **[Open the site →](https://cipherandchalk.vercel.app)**
 
-![Cipher & Chalk home page: a chalkboard with a small yellow line, "A free reference desk for cybersecurity compliance", the headline "CMMC, in plain words.", one line saying all 149 controls are quoted and explained three ways, then "Pick up a chalk to start." with three chalks for someone new, someone who runs the systems and someone preparing for an assessment, and a search line](docs/screenshots/board/home-1280.jpg)
+![Cipher & Chalk home page: a chalkboard with the headline "CMMC, in plain words.", one line saying all 149 controls are quoted from the official guide with their page and explained three ways, "CMMC in sixty seconds" beside it with a chalk clock of the three-year Level 2 cycle and a play button, then "Pick up a chalk to start." with three chalks for someone new, someone who runs the systems and someone preparing for an assessment, and a search line](docs/screenshots/board/home-1280.jpg)
 
 ## What it is
 
@@ -22,19 +22,20 @@ can't tell what they're being asked to do.
 
 ## What's inside
 
-| Feature                       | Detail                                                                                                                                                 |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **149 controls**              | The full CMMC v2.13 catalog across Levels 1, 2 and 3, each with its requirement quoted from the assessment guide and cited to the page.                |
-| **Three chalks per control**  | The same requirement explained for someone new to it, for the people who run the systems, and for someone preparing for assessment.                    |
-| **Decode**                    | Each identifier read in plain words (family, level, number), and the requirement with its assessment objectives, verbatim.                             |
-| **468 assessment objectives** | Every lettered determination statement from the Level 1–3 assessment guides, searchable and mapped to the explanation that covers it.                  |
-| **Rev 3 view**                | The 110 Level 2 controls beside their NIST SP 800-171 Revision 3 text, with a note on what changed. CMMC still assesses against Revision 2.            |
-| **Timeline**                  | The dates that matter, from the program rule to the DFARS clause's phases (on hold at Phase 1 since July 13, 2026), each line with its sources quoted. |
-| **13 practice activities**    | Short fictional scenarios with 39 explained questions. Wrong answers get a reason, not a buzzer.                                                       |
-| **3 visual explanations**     | 40-second animated walkthroughs of authorized access, MFA, and response-team deployment, with transcripts and reduced-motion stills.                   |
-| **Glossary**                  | 54 terms, each linked to its official source. On Level 1 controls and in practice activities, a term opens right where it is used.                     |
-| **Chalk marks**               | On screens 768px and wider, draw on a page with the doodle chalk and share the link: the marks travel in it and are never stored on a server.          |
-| **Private by design**         | No accounts, no backend. Progress is optional and stays in your browser. Analytics are allowlisted, production-only, and honor DNT and GPC.            |
+| Feature                       | Detail                                                                                                                                                                                     |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **149 controls**              | The full CMMC v2.13 catalog across Levels 1, 2 and 3, each with its requirement quoted from the assessment guide and cited to the page.                                                    |
+| **Three chalks per control**  | The same requirement explained for someone new to it, for the people who run the systems, and for someone preparing for assessment.                                                        |
+| **Decode**                    | Each identifier read in plain words (family, level, number), and the requirement with its assessment objectives, verbatim.                                                                 |
+| **468 assessment objectives** | Every lettered determination statement from the Level 1–3 assessment guides, searchable and mapped to the explanation that covers it.                                                      |
+| **Rev 3 view**                | The 110 Level 2 controls beside their NIST SP 800-171 Revision 3 text, with a note on what changed. CMMC still assesses against Revision 2.                                                |
+| **CMMC in sixty seconds**     | On Home, the three levels and Level 2's three-year cycle (C3PAO, the yearly affirmation in SPRS, a new assessment after a significant change) drawn in chalk in one minute, with captions. |
+| **Timeline**                  | The dates that matter, from the program rule to the DFARS clause's phases (on hold at Phase 1 since July 13, 2026), each line with its sources quoted.                                     |
+| **13 practice activities**    | Short fictional scenarios with 39 explained questions. Wrong answers get a reason, not a buzzer.                                                                                           |
+| **3 visual explanations**     | 40-second animated walkthroughs of authorized access, MFA, and response-team deployment, with transcripts and reduced-motion stills.                                                       |
+| **Glossary**                  | 54 terms, each linked to its official source. On Level 1 controls and in practice activities, a term opens right where it is used.                                                         |
+| **Chalk marks**               | On screens 768px and wider, draw on a page with the doodle chalk and share the link: the marks travel in it and are never stored on a server.                                              |
+| **Private by design**         | No accounts, no backend. Progress is optional and stays in your browser. Analytics are allowlisted, production-only, and honor DNT and GPC.                                                |
 
 ## Who it's for
 
