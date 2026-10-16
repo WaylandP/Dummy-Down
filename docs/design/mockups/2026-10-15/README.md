@@ -1,6 +1,6 @@
 # October 15 fixes
 
-Five screens from the owner's October 15 review, drawn at 1280×800. Open them in
+Screens from the owner's October 15 review, drawn at 1280×800. Open them in
 a browser. They change the approved Board in these ways:
 
 - `HomeHero.html`: the approved Home (owner, October 15, after review).
@@ -8,9 +8,18 @@ a browser. They change the approved Board in these ways:
   is (a kicker and a 112px headline), one supporting line, then "Pick up a
   chalk to start." with the three chalks as the main action, then search.
   The headline names CMMC; reword it when a second framework ships.
-- `HomeChalkTalk.html`: the approved right side of Home (owner, October 15;
-  built): "CMMC in sixty seconds", a chalk talk that draws itself beside the
-  hero. The diagram in the mockup is one frame of it.
+- `SixtySeconds.html`: the approved "CMMC in sixty seconds" (owner, October 15,
+  evening), replacing the chalk talk below. A 60-second chalk animation that
+  draws CMMC Level 2 as a three-year clock with SPRS at its hub, in eight
+  parts, with a chaptered player. `SixtySeconds-HANDOFF.md` is its design
+  handoff: content rules, timing, player and integration notes. It is drawn
+  for a stage about 1000px wide, so on Home it shows as a still of the clock
+  in the right column that opens the full player. The build edits four
+  captions for accuracy (what DoD shares, Level 3, the lapsed affirmation,
+  which awards check SPRS) and adds the Phase 2 note the handoff asks for.
+- `HomeChalkTalk.html`: superseded by `SixtySeconds.html`; kept for history.
+  It was the first right side of Home (owner, October 15; built and replaced
+  the same day).
 - `Home.html`: superseded; kept for history.
 - `Controls.html`: Learn folds into Controls. A rail of every control beside
   the control. The "Start here" path drawn in the rail was built and then
