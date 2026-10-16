@@ -3,7 +3,7 @@
     "id": "IR.L2-3.6.1",
     "beginner": {
       "meaning": "Have a working way to handle a security incident, from getting ready before trouble starts to spotting it, understanding it, limiting the damage, recovering, and helping users respond.",
-      "example": "At fictional Cedar Point Design, Maya reports a suspicious login. A responder investigates, isolates the affected laptop, restores safe access, and tells Maya what to do next. The team already knows who coordinates those steps."
+      "example": "At fictional CedarPoint, Maya reports a suspicious login. A responder investigates, isolates the affected laptop, restores safe access, and tells Maya what to do next. The team already knows who coordinates those steps."
     },
     "technical": {
       "focus": "Connect detection sources, responder responsibilities, containment options, recovery procedures, and user reporting into an operational workflow. Include incident-response training appropriate to each role and assistance for users responding to incidents. Preparation and analysis matter alongside the tools used during an incident.",
@@ -26,7 +26,7 @@
     "id": "IR.L2-3.6.2",
     "beginner": {
       "meaning": "Keep a record of security incidents and tell the designated people or authorities who need to know. Handling the problem and reporting it are related but different jobs.",
-      "example": "At fictional Cedar Point Design, a responder records a compromised account, updates its status, and follows the company's reporting instructions. The instructions identify internal contacts and any applicable external reporting authorities."
+      "example": "At fictional CedarPoint, a responder records a compromised account, updates its status, and follows the company's reporting instructions. The instructions identify internal contacts and any applicable external reporting authorities."
     },
     "technical": {
       "focus": "Use an incident tracking process that preserves event details, investigation status, actions, and notifications. Map applicable reporting obligations to designated contacts rather than assuming every incident has the same recipients or deadline.",
@@ -49,7 +49,7 @@
     "id": "IR.L2-3.6.3",
     "beginner": {
       "meaning": "Practice the organization's response to a security incident so people can discover weaknesses before a real emergency. Reading a response plan alone does not show how the capability works.",
-      "example": "Fictional Cedar Point Design runs a pretend ransomware exercise. Staff work through whom to call, who can isolate a computer, and how recovery decisions are made, then identify steps that were unclear."
+      "example": "Fictional CedarPoint runs a pretend ransomware exercise. Staff work through whom to call, who can isolate a computer, and how recovery decisions are made, then identify steps that were unclear."
     },
     "technical": {
       "focus": "Choose a test approach appropriate to the capability being exercised: a walkthrough, tabletop, simulation, or broader exercise can reveal different response gaps and operational effects.",
@@ -72,7 +72,7 @@
     "id": "MA.L2-3.7.1",
     "beginner": {
       "meaning": "Maintain organizational systems so their hardware, software, and firmware keep working as intended. This includes less obvious equipment, such as printers and scanners, as well as computers and servers.",
-      "example": "At fictional Cedar Point Design, a technician services a failing server and updates a copier's firmware through the maintenance process. Both devices belong to the systems the organization needs to maintain."
+      "example": "At fictional CedarPoint, a technician services a failing server and updates a copier's firmware through the maintenance process. Both devices belong to the systems the organization needs to maintain."
     },
     "technical": {
       "focus": "Identify maintenance responsibilities and activities across relevant system components. Local and remote maintenance, vendor service, hardware repair, application work, and firmware servicing can all affect system security.",
@@ -95,7 +95,7 @@
     "id": "MA.L2-3.7.2",
     "beginner": {
       "meaning": "Keep repair work under control: control who performs maintenance and the tools, methods and mechanisms (such as automated maintenance scripts) they use. A helpful repair tool can also introduce an unwanted risk.",
-      "example": "At fictional Cedar Point Design, a vendor wants to connect a diagnostic laptop to a server. Staff check the technician's authorization and the proposed tool and method before allowing the maintenance work."
+      "example": "At fictional CedarPoint, a vendor wants to connect a diagnostic laptop to a server. Staff check the technician's authorization and the proposed tool and method before allowing the maintenance work."
     },
     "technical": {
       "focus": "Establish controls for maintenance tools, techniques, mechanisms, and personnel. Diagnostic hardware, software, firmware utilities, and packet-capture tools can carry code or expose information even when they are outside the normal system boundary.",
@@ -118,7 +118,7 @@
     "id": "MA.L2-3.7.3",
     "beginner": {
       "meaning": "Before equipment leaves for off-site maintenance, remove any CUI through an appropriate sanitization process. Sending a device to a trusted repair company does not remove the information stored inside it.",
-      "example": "Fictional Cedar Point Design prepares a copier for an off-site repair. Staff account for its internal storage and sanitize CUI before the equipment leaves, rather than checking only the paper tray."
+      "example": "Fictional CedarPoint prepares a copier for an off-site repair. Staff account for its internal storage and sanitize CUI before the equipment leaves, rather than checking only the paper tray."
     },
     "technical": {
       "focus": "Identify CUI-bearing storage in equipment being removed for off-site maintenance and apply an appropriate sanitization method before release. Consider embedded drives, flash storage, and other components that retain information.",
@@ -141,7 +141,7 @@
     "id": "MA.L2-3.7.4",
     "beginner": {
       "meaning": "Check media that carries diagnostic or test programs for malicious code before using it on organizational systems. Tools intended to fix a problem can still bring harmful software with them.",
-      "example": "A technician at fictional Cedar Point Design brings a USB drive containing a hardware test utility. Staff check the media for malicious code before running its programs on the company's system."
+      "example": "A technician at fictional CedarPoint brings a USB drive containing a hardware test utility. Staff check the media for malicious code before running its programs on the company's system."
     },
     "technical": {
       "focus": "Build a pre-use malicious-code check into the maintenance workflow for media containing diagnostic and test programs. Tie the check to the actual media to be used, not just the reputation of the tool vendor.",
@@ -164,7 +164,7 @@
     "id": "MA.L2-3.7.5",
     "beginner": {
       "meaning": "For maintenance performed through an external network connection, require more than one authentication factor to start the session and close the connection when the maintenance work is finished.",
-      "example": "A remote vendor at fictional Cedar Point Design signs in using a password and a separate authentication factor. When the repair ends, the maintenance connection is terminated instead of being left available for later use."
+      "example": "A remote vendor at fictional CedarPoint signs in using a password and a separate authentication factor. When the repair ends, the maintenance connection is terminated instead of being left available for later use."
     },
     "technical": {
       "focus": "Apply multifactor authentication to the establishment of nonlocal maintenance sessions through external networks, and ensure those connections end when maintenance is complete. Account for the actual remote-support path and any persistent support agents.",
@@ -187,7 +187,7 @@
     "id": "MA.L2-3.7.6",
     "beginner": {
       "meaning": "Supervise maintenance workers who do not have the required access authorization. Being invited to repair something does not automatically give someone independent access to the organization's systems.",
-      "example": "At fictional Cedar Point Design, a visiting repair technician lacks authorization to work alone on a system. An authorized employee supervises the maintenance activity and keeps the work within its approved scope."
+      "example": "At fictional CedarPoint, a visiting repair technician lacks authorization to work alone on a system. An authorized employee supervises the maintenance activity and keeps the work within its approved scope."
     },
     "technical": {
       "focus": "Determine which maintenance personnel have the required authorization and arrange supervision for those who do not. Apply this to hardware and software service, including unexpected vendor support that may need elevated access.",
@@ -210,7 +210,7 @@
     "id": "MP.L2-3.8.1",
     "beginner": {
       "meaning": "Keep physical control of media containing CUI and store it securely. Media includes paper as well as digital storage, so a printed drawing and a backup drive both need attention.",
-      "example": "At fictional Cedar Point Design, staff return printed CUI drawings to a controlled cabinet and place CUI-bearing backup drives in secure storage. They do not leave either item unattended on a shared desk."
+      "example": "At fictional CedarPoint, staff return printed CUI drawings to a controlled cabinet and place CUI-bearing backup drives in secure storage. They do not leave either item unattended on a shared desk."
     },
     "technical": {
       "focus": "Identify relevant paper and digital media, then implement physical handling and secure-storage controls for both. Inventories, controlled storage areas, and check-out procedures are possible ways to maintain custody.",
@@ -233,7 +233,7 @@
     "id": "MP.L2-3.8.2",
     "beginner": {
       "meaning": "Only authorized users should be able to access CUI held on system media. Possessing a disk or being near a filing cabinet should not automatically mean someone may read its contents.",
-      "example": "At fictional Cedar Point Design, only approved project staff can retrieve CUI drawings from a controlled media store. A coworker from another project does not gain access simply because they work in the same building."
+      "example": "At fictional CedarPoint, only approved project staff can retrieve CUI drawings from a controlled media store. A coworker from another project does not gain access simply because they work in the same building."
     },
     "technical": {
       "focus": "Connect media access to an authorization decision. Physical controls over storage and checkout, together with suitable access restrictions for digital contents, can support limiting access to authorized users.",
@@ -256,7 +256,7 @@
     "id": "MP.L2-3.8.3",
     "beginner": {
       "meaning": "Before disposing of media containing CUI, sanitize it or destroy it. Sanitizing removes the information so it cannot be recovered. Before releasing media for reuse, sanitize it; simply deleting a file does not necessarily remove the information.",
-      "example": "Fictional Cedar Point Design retires a storage drive and disposes of printed CUI records. Staff use suitable sanitization or destruction methods for each type of media before either leaves the controlled process."
+      "example": "Fictional CedarPoint retires a storage drive and disposes of printed CUI records. Staff use suitable sanitization or destruction methods for each type of media before either leaves the controlled process."
     },
     "technical": {
       "focus": "Choose methods suited to the media and its destination: sanitize or destroy before disposal, and sanitize before release for reuse. Verify the result before release. Consider embedded storage in printers and network equipment, as well as familiar drives and paper records.",
@@ -279,7 +279,7 @@
     "id": "MP.L2-3.8.4",
     "beginner": {
       "meaning": "Mark media containing CUI with the necessary CUI markings and distribution limitations. The markings help people recognize how to handle the information and who may receive it.",
-      "example": "At fictional Cedar Point Design, staff prepare a CUI document package using the markings and distribution limitations that apply to that information. They do not invent their own label based only on how sensitive it feels."
+      "example": "At fictional CedarPoint, staff prepare a CUI document package using the markings and distribution limitations that apply to that information. They do not invent their own label based only on how sensitive it feels."
     },
     "technical": {
       "focus": "Integrate applicable marking rules into paper and digital media workflows. Determine the relevant CUI markings and distribution limitations from authoritative handling guidance rather than a generic sensitivity-tagging habit.",
@@ -302,7 +302,7 @@
     "id": "MP.L2-3.8.5",
     "beginner": {
       "meaning": "Control who can access media containing CUI. When it travels outside controlled areas, keep track of its custody: knowing who sent it is only the beginning of knowing where it went.",
-      "example": "Fictional Cedar Point Design transports a CUI-bearing drive between facilities. An authorized person releases it, a controlled transport process carries it, and the receiving facility confirms custody rather than assuming delivery."
+      "example": "Fictional CedarPoint transports a CUI-bearing drive between facilities. An authorized person releases it, a controlled transport process carries it, and the receiving facility confirms custody rather than assuming delivery."
     },
     "technical": {
       "focus": "Control access to CUI media, and maintain accountability throughout release, transport, and receipt. Suitable packaging, authorized handlers, transport records, and confirmation of delivery can support the process for paper or digital media.",
@@ -325,7 +325,7 @@
     "id": "MP.L2-3.8.6",
     "beginner": {
       "meaning": "Protect CUI stored on digital media while it is being transported. Use cryptographic protection unless alternative physical safeguards protect its confidentiality throughout the trip.",
-      "example": "Fictional Cedar Point Design sends a removable drive between offices using an approved encryption approach. Another protected transport arrangement would need its alternative physical safeguards considered, rather than being assumed safe because the trip is short."
+      "example": "Fictional CedarPoint sends a removable drive between offices using an approved encryption approach. Another protected transport arrangement would need its alternative physical safeguards considered, rather than being assumed safe because the trip is short."
     },
     "technical": {
       "focus": "Identify transported digital media and its confidentiality protection. Where cryptography protects CUI confidentiality, it must also meet SC.L2-3.13.11 (FIPS-validated cryptography). Manage keys so the transport package does not undermine the protection.",
@@ -348,7 +348,7 @@
     "id": "MP.L2-3.8.7",
     "beginner": {
       "meaning": "Control when and how removable media may be used on system components. A drive being available does not mean it should be plugged into any computer without an approved purpose.",
-      "example": "At fictional Cedar Point Design, staff may use approved removable drives for a defined transfer process. An employee's personal drive is handled according to the organization's restrictions rather than automatically accepted."
+      "example": "At fictional CedarPoint, staff may use approved removable drives for a defined transfer process. An employee's personal drive is handled according to the organization's restrictions rather than automatically accepted."
     },
     "technical": {
       "focus": "Choose technical and procedural controls for removable-media use, such as device restrictions, read/write limitations, approval workflows, or restrictions on particular media types. Match the controls to the systems and authorized use cases.",
@@ -371,7 +371,7 @@
     "id": "MP.L2-3.8.8",
     "beginner": {
       "meaning": "Do not use portable storage devices when their owner cannot be identified. An owner may be a person, an organization, or a project; the goal is accountability, not simply a name written on a sticker.",
-      "example": "At fictional Cedar Point Design, an employee finds an unclaimed USB drive. Because its owner is unknown, they do not use it on a company system and follow the organization's handling procedure."
+      "example": "At fictional CedarPoint, an employee finds an unclaimed USB drive. Because its owner is unknown, they do not use it on a company system and follow the organization's handling procedure."
     },
     "technical": {
       "focus": "Connect portable-device ownership to the process that permits use. An inventory, assignment record, or other identifiable ownership mechanism can support accountability, together with enforcement of the prohibition on unknown-owner devices.",
@@ -394,7 +394,7 @@
     "id": "MP.L2-3.8.9",
     "beginner": {
       "meaning": "Protect the confidentiality of CUI in backups wherever those backups are stored. Making a backup creates another copy of the information, not a copy that can safely receive weaker protection.",
-      "example": "Fictional Cedar Point Design keeps a backup of a CUI project in a controlled storage location. The team considers who can access that backup, including copies held off-site, rather than protecting only the live project folder."
+      "example": "Fictional CedarPoint keeps a backup of a CUI project in a controlled storage location. The team considers who can access that backup, including copies held off-site, rather than protecting only the live project folder."
     },
     "technical": {
       "focus": "Identify backup copies and storage locations, then apply confidentiality protections appropriate to those locations. Cryptographic mechanisms or alternative physical controls can protect backups; where cryptography protects CUI, it must be FIPS-validated (SC.L2-3.13.11).",
@@ -417,7 +417,7 @@
     "id": "PS.L2-3.9.1",
     "beginner": {
       "meaning": "Screen individuals before authorizing their access to organizational systems containing CUI. This is a personnel decision about appropriate trust and access, not a technical password-strength check.",
-      "example": "At fictional Cedar Point Design, the designated personnel team completes the applicable screening process before an engineer receives authorized access to a system containing CUI. Creating the account first would reverse that sequence."
+      "example": "At fictional CedarPoint, the designated personnel team completes the applicable screening process before an engineer receives authorized access to a system containing CUI. Creating the account first would reverse that sequence."
     },
     "technical": {
       "focus": "Connect personnel screening status to access authorization and provisioning. The screening criteria must reflect applicable rules and the access required for the position rather than an invented universal investigation type.",
@@ -440,7 +440,7 @@
     "id": "PS.L2-3.9.2",
     "beginner": {
       "meaning": "Protect systems containing CUI during and after personnel changes, including departures and transfers. A person moving to another role may need different access even though they remain employed.",
-      "example": "At fictional Cedar Point Design, Sam transfers off a CUI project. The company adjusts system access and credentials and retrieves relevant property as appropriate, so Sam's former role does not retain unnecessary access."
+      "example": "At fictional CedarPoint, Sam transfers off a CUI project. The company adjusts system access and credentials and retrieves relevant property as appropriate, so Sam's former role does not retain unnecessary access."
     },
     "technical": {
       "focus": "Coordinate personnel notifications with changes to accounts, credentials, privileges, and system-related property. Address protection during the transition and afterward, including permanent or extended reassignments as described in the guide.",
@@ -463,7 +463,7 @@
     "id": "PE.L2-3.10.1",
     "beginner": {
       "meaning": "Limit physical access to organizational systems, equipment, and their operating environments to authorized people. An account password cannot stop someone who can walk up to an exposed system or storage device.",
-      "example": "At fictional Cedar Point Design, only authorized individuals enter the restricted equipment room. Printers and workstations in protected work areas are included in the physical-access process, not only the server rack."
+      "example": "At fictional CedarPoint, only authorized individuals enter the restricted equipment room. Printers and workstations in protected work areas are included in the physical-access process, not only the server rack."
     },
     "technical": {
       "focus": "Identify authorized individuals and control access to relevant systems, equipment, and nonpublic operating areas. Locks, controlled rooms, monitored equipment placement, and suitable credentials are possible approaches within the guide's scope.",
@@ -486,7 +486,7 @@
     "id": "PE.L2-3.10.2",
     "beginner": {
       "meaning": "Protect and monitor the facility and the infrastructure that supports organizational systems. Wiring, power, and other supporting infrastructure can affect security even though they are not the computers people use directly.",
-      "example": "At fictional Cedar Point Design, a protected wiring closet houses network connections and power equipment. The team considers how unauthorized entry or tampering would be noticed instead of relying only on the office's front-door lock."
+      "example": "At fictional CedarPoint, a protected wiring closet houses network connections and power equipment. The team considers how unauthorized entry or tampering would be noticed instead of relying only on the office's front-door lock."
     },
     "technical": {
       "focus": "Identify facility and support-infrastructure protection and monitoring needs. The guide includes distribution, transmission, and power lines, with possible safeguards such as controlled wiring closets, protected cabling, sensors, guards, or surveillance.",
@@ -509,7 +509,7 @@
     "id": "PE.L2-3.10.3",
     "beginner": {
       "meaning": "Escort visitors and monitor their activity. Being signed in at reception does not mean a visitor can move around protected areas without someone responsible for their presence.",
-      "example": "At fictional Cedar Point Design, an employee meets a visiting equipment specialist, accompanies them to the permitted work area, and monitors the visit. The employee does not simply issue a visitor badge and disappear."
+      "example": "At fictional CedarPoint, an employee meets a visiting equipment specialist, accompanies them to the permitted work area, and monitors the visit. The employee does not simply issue a visitor badge and disappear."
     },
     "technical": {
       "focus": "Define who counts as a visitor and connect visitor handling to escort responsibilities and activity monitoring. The guide distinguishes visitors from individuals who hold permanent physical-access authorization credentials.",
@@ -532,7 +532,7 @@
     "id": "PE.L2-3.10.4",
     "beginner": {
       "meaning": "Maintain records of physical access so the organization can understand access to its facilities or protected equipment areas. These records may be written, automated, or a combination.",
-      "example": "Fictional Cedar Point Design maintains a written record for one protected area and badge-access records for another. The team can locate the records when investigating physical access rather than assuming a door lock creates a log."
+      "example": "Fictional CedarPoint maintains a written record for one protected area and badge-access records for another. The team can locate the records when investigating physical access rather than assuming a door lock creates a log."
     },
     "technical": {
       "focus": "Identify the physical access points being logged and maintain usable audit records. The guide allows procedural logs, automated credential records, or combined approaches rather than mandating a particular badge system.",
@@ -555,7 +555,7 @@
     "id": "PE.L2-3.10.5",
     "beginner": {
       "meaning": "Control and manage the things that grant physical access, such as keys, locks, combinations, and card readers. A secure door loses value when nobody knows who still has a working key.",
-      "example": "At fictional Cedar Point Design, issued keys are associated with authorized holders. When an employee's access changes, staff handle the key or badge and affected access permissions through the physical-access process."
+      "example": "At fictional CedarPoint, issued keys are associated with authorized holders. When an employee's access changes, staff handle the key or badge and affected access permissions through the physical-access process."
     },
     "technical": {
       "focus": "Identify physical-access devices and manage their issuance, use, changes, and loss. Include mechanical and electronic devices rather than reducing the scope to digital badges alone.",
@@ -578,7 +578,7 @@
     "id": "PE.L2-3.10.6",
     "beginner": {
       "meaning": "Apply and enforce safeguards for CUI when work happens at alternate sites. Working from home or another location does not make the information less sensitive or remove its protection needs.",
-      "example": "At fictional Cedar Point Design, an approved home-working arrangement defines how an employee protects CUI documents and equipment. The employee follows those safeguards rather than assuming that a private home is automatically a controlled work area."
+      "example": "At fictional CedarPoint, an approved home-working arrangement defines how an employee protects CUI documents and equipment. The employee follows those safeguards rather than assuming that a private home is automatically a controlled work area."
     },
     "technical": {
       "focus": "Identify alternate-work scenarios and define suitable CUI safeguarding measures for them. Different locations and activities can require different measures, including physical handling and environmental protections as well as technical access controls.",
@@ -601,7 +601,7 @@
     "id": "RA.L2-3.11.1",
     "beginner": {
       "meaning": "Periodically consider what could go wrong when systems process, store, or transmit CUI and what harm that could cause to the organization, its assets, or people. Risk is about consequences as well as technical weaknesses.",
-      "example": "Fictional Cedar Point Design considers a supplier outage and unauthorized access to project information. The team examines possible harm to its work, equipment, reputation, and people instead of counting only missing software patches."
+      "example": "Fictional CedarPoint considers a supplier outage and unauthorized access to project information. The team examines possible harm to its work, equipment, reputation, and people instead of counting only missing software patches."
     },
     "technical": {
       "focus": "Define the relevant system boundary and assess threats, vulnerabilities, likelihood, and impact. Include organizational operations, assets, individuals, and relevant external dependencies. Establish the organization's assessment frequency rather than assuming a universal schedule.",
@@ -624,7 +624,7 @@
     "id": "RA.L2-3.11.2",
     "beginner": {
       "meaning": "Look for vulnerabilities in systems and applications periodically and when newly identified vulnerabilities affect them. Waiting for the next routine scan can miss a newly disclosed weakness in software the organization already uses.",
-      "example": "Fictional Cedar Point Design follows its defined scan schedule. When a new vulnerability affects its document application, the team also scans the relevant application and systems rather than waiting for the next scheduled run."
+      "example": "Fictional CedarPoint follows its defined scan schedule. When a new vulnerability affects its document application, the team also scans the relevant application and systems rather than waiting for the next scheduled run."
     },
     "technical": {
       "focus": "Cover organizational systems and applications with appropriate vulnerability scanning. Define periodic scanning and an event-driven process for newly identified applicable vulnerabilities; update scan capabilities and consider less obvious components such as printers.",
@@ -647,7 +647,7 @@
     "id": "RA.L2-3.11.3",
     "beginner": {
       "meaning": "Fix vulnerabilities in a way that follows the organization's risk assessments. A weakness that exposes important CUI may need different attention from one with limited impact in a less exposed system.",
-      "example": "Fictional Cedar Point Design prioritizes a vulnerability on an exposed project service after reviewing its risk. The team carries out a suitable fix and checks the result instead of sorting every issue by its discovery date."
+      "example": "Fictional CedarPoint prioritizes a vulnerability on an exposed project service after reviewing its risk. The team carries out a suitable fix and checks the result instead of sorting every issue by its discovery date."
     },
     "technical": {
       "focus": "Connect identified vulnerabilities to assessed risk, remediation priorities, and corrective work. Risk considerations can influence both urgency and the effort needed for an appropriate treatment, rather than relying solely on a scanner's severity label.",
@@ -670,7 +670,7 @@
     "id": "CA.L2-3.12.1",
     "beginner": {
       "meaning": "Periodically check whether the security safeguards on organizational systems work as intended. Having a policy or installed product is different from knowing that the protection is effective where it is used.",
-      "example": "Fictional Cedar Point Design checks whether its access restrictions actually block unauthorized users. The team examines the implemented safeguard instead of treating the existence of an access policy as proof that it works."
+      "example": "Fictional CedarPoint checks whether its access restrictions actually block unauthorized users. The team examines the implemented safeguard instead of treating the existence of an access policy as proof that it works."
     },
     "technical": {
       "focus": "Assess implemented controls against their intended purpose within the system and operating environment. Define an assessment frequency, suitable methods, and how results inform risk decisions and corrective work.",
@@ -693,7 +693,7 @@
     "id": "CA.L2-3.12.2",
     "beginner": {
       "meaning": "Make and carry out plans to correct security deficiencies and reduce or eliminate vulnerabilities. Listing a problem in a spreadsheet is useful only if there is a real path toward addressing it.",
-      "example": "Fictional Cedar Point Design identifies a missing safeguard, records the work needed to correct it, assigns responsibility, and implements the plan. It does not describe the planned fix as though the safeguard already works."
+      "example": "Fictional CedarPoint identifies a missing safeguard, records the work needed to correct it, assigns responsibility, and implements the plan. It does not describe the planned fix as though the safeguard already works."
     },
     "technical": {
       "focus": "Link identified deficiencies and vulnerabilities to actionable corrective work. A plan can describe the needed changes, dependencies, ownership, and progress, but implementation must follow the planning step.",
@@ -716,7 +716,7 @@
     "id": "CA.L2-3.12.3",
     "beginner": {
       "meaning": "Keep watching security safeguards so the organization can tell whether they remain effective over time. A safeguard that worked once can stop working after a change, an expired setting, or a new threat.",
-      "example": "Fictional Cedar Point Design notices that a device-management change weakened an access safeguard. Ongoing monitoring brings the issue to the responsible team before the old assessment result is mistaken for current protection."
+      "example": "Fictional CedarPoint notices that a device-management change weakened an access safeguard. Ongoing monitoring brings the issue to the responsible team before the old assessment result is mistaken for current protection."
     },
     "technical": {
       "focus": "Use ongoing observations and analysis to maintain awareness of control effectiveness and support risk decisions. The guide explains that ongoing or continuous monitoring uses a frequency sufficient for risk-based decisions, not necessarily uninterrupted collection for every control.",
@@ -739,7 +739,7 @@
     "id": "CA.L2-3.12.4",
     "beginner": {
       "meaning": "Create, document, and periodically update a system security plan explaining the system's boundaries, operating environment, safeguards, and connections to other systems. The plan should describe the actual system rather than an ideal future version.",
-      "example": "Fictional Cedar Point Design documents which services handle CUI, how safeguards are implemented, and which outside services connect to the system. When the environment changes, the team updates the plan through its defined process."
+      "example": "Fictional CedarPoint documents which services handle CUI, how safeguards are implemented, and which outside services connect to the system. When the environment changes, the team updates the plan through its defined process."
     },
     "technical": {
       "focus": "Maintain a system-level description that connects boundaries, environment, requirement implementation, and system relationships. Supporting documents may be referenced rather than copying every technical detail into one large file.",
@@ -762,7 +762,7 @@
     "id": "SC.L2-3.13.1",
     "beginner": {
       "meaning": "Monitor, control, and protect communications at the system's outside boundary and important boundaries inside it. Internal traffic matters too when it crosses a boundary between parts of the system with different protection needs.",
-      "example": "Fictional Cedar Point Design controls internet traffic at its external gateway and protects traffic crossing into its CUI project environment. Staff monitor both places instead of assuming everything inside the office network is equally trusted."
+      "example": "Fictional CedarPoint controls internet traffic at its external gateway and protects traffic crossing into its CUI project environment. Staff monitor both places instead of assuming everything inside the office network is equally trusted."
     },
     "technical": {
       "focus": "Define external and key internal boundaries, then apply monitoring, control, and protection to communications at each. Gateways, firewalls, managed interfaces, and protected tunnels are possible components of the architecture.",
@@ -785,7 +785,7 @@
     "id": "SC.L2-3.13.2",
     "beginner": {
       "meaning": "Build security into system design, software development, and engineering decisions. Adding a security product after a system is finished cannot replace thinking about safe behavior while the system is being built or changed.",
-      "example": "Fictional Cedar Point Design designs a new project service with protected interfaces and limited privileges, reviews likely threats, and checks secure coding decisions before release rather than leaving every security question until the end."
+      "example": "Fictional CedarPoint designs a new project service with protected interfaces and limited privileges, reviews likely threats, and checks secure coding decisions before release rather than leaving every security question until the end."
     },
     "technical": {
       "focus": "Identify and employ architectural designs, development techniques, and systems engineering principles that promote effective security. The discussion includes layered protections, security boundaries, lifecycle integration, developer preparation, and threat modeling as examples.",
@@ -808,7 +808,7 @@
     "id": "SC.L2-3.13.3",
     "beginner": {
       "meaning": "Keep everyday user functions separate from functions used to manage the system. The controls for reading a project document should not quietly provide the power to change the system that stores it.",
-      "example": "At fictional Cedar Point Design, employees use a normal project interface while administrators use a separately controlled management interface. A user cannot reach administration features merely by discovering their web address."
+      "example": "At fictional CedarPoint, employees use a normal project interface while administrators use a separately controlled management interface. A user cannot reach administration features merely by discovering their web address."
     },
     "technical": {
       "focus": "Identify user and system-management functionality, then separate them physically or logically. Separate management interfaces, network addresses, operating-system instances, or authentication paths are possible techniques described in the guide.",
@@ -831,7 +831,7 @@
     "id": "SC.L2-3.13.4",
     "beginner": {
       "meaning": "Prevent one user or process from receiving another's information unintentionally through reused shared system resources. A resource handed to its next user should not expose information from the previous user.",
-      "example": "Fictional Cedar Point Design uses a service that reassigns temporary storage to different work processes. Its design prevents a new process from reading data belonging to the process that previously used that shared resource."
+      "example": "Fictional CedarPoint uses a service that reassigns temporary storage to different work processes. Its design prevents a new process from reading data belonging to the process that previously used that shared resource."
     },
     "technical": {
       "focus": "Address object reuse and residual information in shared resources such as memory, caches, registers, and allocated storage. Consider how the platform prevents unauthorized information transfer when resources are released and reassigned.",
@@ -854,7 +854,7 @@
     "id": "SC.L2-3.13.5",
     "beginner": {
       "meaning": "Place publicly accessible system components in subnetworks separated from internal networks. A service the public can reach should not have the same unrestricted position as the organization's internal systems.",
-      "example": "Fictional Cedar Point Design places its public information website in a separated network area. Connections to internal services are specifically controlled instead of placing the public server alongside internal CUI workstations."
+      "example": "Fictional CedarPoint places its public information website in a separated network area. Connections to internal services are specifically controlled instead of placing the public server alongside internal CUI workstations."
     },
     "technical": {
       "focus": "Identify public-facing components and implement physical or logical subnetwork separation from internal networks. A DMZ, virtual network segmentation, or a suitably separated cloud architecture can support this design.",
@@ -877,7 +877,7 @@
     "id": "SC.L2-3.13.6",
     "beginner": {
       "meaning": "Start by denying network communications and allow specific exceptions for needed traffic. The safer starting point is an explicit permission decision rather than allowing everything until someone identifies a problem.",
-      "example": "Fictional Cedar Point Design allows its project service to use the specific connections it needs. Other traffic is denied by the applicable rules, instead of leaving an unrestricted allow-all rule underneath a few blocked ports."
+      "example": "Fictional CedarPoint allows its project service to use the specific connections it needs. Other traffic is denied by the applicable rules, instead of leaving an unrestricted allow-all rule underneath a few blocked ports."
     },
     "technical": {
       "focus": "Apply deny-by-default, permit-by-exception behavior to inbound and outbound communications at the system boundary and identified internal points. Define the authorized flows and verify the effective rule order and default behavior.",
@@ -900,7 +900,7 @@
     "id": "SC.L2-3.13.7",
     "beginner": {
       "meaning": "When a remote device connects to the organization’s systems, prevent it from also reaching outside networks through a separate path. This is called split tunneling: one path reaches work systems while another bypasses that path to reach the internet or other outside resources.",
-      "example": "At fictional Cedar Point Design, a remote-work laptop sends both company-system traffic and internet traffic through the company VPN while connected. The employee cannot change its settings to send internet traffic through a separate simultaneous path."
+      "example": "At fictional CedarPoint, a remote-work laptop sends both company-system traffic and internet traffic through the company VPN while connected. The employee cannot change its settings to send internet traffic through a separate simultaneous path."
     },
     "technical": {
       "focus": "Control remote-device routing and connection configuration to prevent split tunneling. The guide discusses disabling split-tunnel settings, preventing users from readily changing them, and detecting or prohibiting connections that permit the prohibited behavior.",
@@ -923,7 +923,7 @@
     "id": "SC.L2-3.13.8",
     "beginner": {
       "meaning": "Prevent unauthorized disclosure of CUI while it is being transmitted, using cryptographic protection unless alternative physical safeguards provide that protection. Moving information inside an office does not automatically make its transmission safe.",
-      "example": "Fictional Cedar Point Design protects a CUI file transfer between systems using an approved encrypted path. If a different path relies on physical safeguards, the team evaluates those safeguards rather than assuming that an internal cable is enough."
+      "example": "Fictional CedarPoint protects a CUI file transfer between systems using an approved encrypted path. If a different path relies on physical safeguards, the team evaluates those safeguards rather than assuming that an internal cable is enough."
     },
     "technical": {
       "focus": "Map CUI transmission paths across internal and external networks and relevant devices. Identify the cryptographic mechanism or alternative physical safeguard that prevents disclosure. Where cryptography provides that protection, it must meet SC.L2-3.13.11 (FIPS-validated cryptography).",
@@ -946,7 +946,7 @@
     "id": "SC.L2-3.13.9",
     "beginner": {
       "meaning": "End network connections associated with communications sessions when the session ends or after a defined period of inactivity. An unused connection should not stay open indefinitely simply because the user stopped interacting with it.",
-      "example": "At fictional Cedar Point Design, a remote communications session closes its network connection when the session finishes. If the session is inactive, the organization's defined inactivity setting also triggers termination."
+      "example": "At fictional CedarPoint, a remote communications session closes its network connection when the session finishes. If the session is inactive, the organization's defined inactivity setting also triggers termination."
     },
     "technical": {
       "focus": "Define applicable inactivity periods and enforce connection termination at session end or after those periods. Consider internal and external communications and the application or operating-system layer that manages the connection.",
@@ -969,7 +969,7 @@
     "id": "SC.L2-3.13.10",
     "beginner": {
       "meaning": "Establish and manage the keys used by cryptography in organizational systems. Encryption depends on those keys: losing them can block legitimate access, while exposing them can undermine confidentiality.",
-      "example": "Fictional Cedar Point Design controls who can manage a backup-encryption key and how the key is handled. Staff do not leave the key beside the protected backup where the same unauthorized person could obtain both."
+      "example": "Fictional CedarPoint controls who can manage a backup-encryption key and how the key is handled. Staff do not leave the key beside the protected backup where the same unauthorized person could obtain both."
     },
     "technical": {
       "focus": "Address key establishment and ongoing management wherever cryptography is employed. Select appropriate handling for generation or acquisition, access, distribution, storage, change, and retirement according to applicable key-management requirements.",
@@ -992,7 +992,7 @@
     "id": "SC.L2-3.13.11",
     "beginner": {
       "meaning": "When cryptography is used to protect CUI confidentiality, use FIPS-validated cryptography. A strong-sounding algorithm or a vendor saying encryption is approved is not the same as validation of the cryptographic module.",
-      "example": "Fictional Cedar Point Design checks the validation information for the module protecting a CUI transfer. The team verifies its deployed version and operating conditions instead of accepting the statement that the product uses AES."
+      "example": "Fictional CedarPoint checks the validation information for the module protecting a CUI transfer. The team verifies its deployed version and operating conditions instead of accepting the statement that the product uses AES."
     },
     "technical": {
       "focus": "Map CUI-confidentiality cryptography to the applicable validated modules and their permitted configurations. Review the validation certificate, module version, security policy, operational environment, and relevant approved-mode conditions for the deployed use.",
@@ -1015,7 +1015,7 @@
     "id": "SC.L2-3.13.12",
     "beginner": {
       "meaning": "For covered collaborative computing devices, prevent remote activation and make it clear to nearby users when a device is in use. Cameras, microphones, and networked whiteboards can reveal information without someone noticing.",
-      "example": "Fictional Cedar Point Design configures a covered collaboration device so a remote party cannot activate it. People present can see its in-use indication rather than needing to guess whether it is listening or displaying information."
+      "example": "Fictional CedarPoint configures a covered collaboration device so a remote party cannot activate it. People present can see its in-use indication rather than needing to guess whether it is listening or displaying information."
     },
     "technical": {
       "focus": "Identify collaborative devices, prohibit their remote activation, and provide visible or otherwise suitable indications of use to users present. The guide excludes dedicated video-conferencing systems that require a participant to call or connect to activate the conference.",
@@ -1038,7 +1038,7 @@
     "id": "SC.L2-3.13.13",
     "beginner": {
       "meaning": "Control and monitor mobile code: code that moves between systems and runs, such as scripts or active document content. Here mobile means transferable code, not just software on a phone.",
-      "example": "Fictional Cedar Point Design defines which active document content employees may use and monitors relevant execution activity. A downloaded document does not receive permission to run code merely because it looks like an ordinary file."
+      "example": "Fictional CedarPoint defines which active document content employees may use and monitors relevant execution activity. A downloaded document does not receive permission to run code merely because it looks like an ordinary file."
     },
     "technical": {
       "focus": "Identify relevant mobile-code technologies and establish usage restrictions with monitoring. The discussion includes scripts and active content on servers, workstations, and other devices; controls should reflect the risks of malicious code execution.",
@@ -1061,7 +1061,7 @@
     "id": "SC.L2-3.13.14",
     "beginner": {
       "meaning": "Control and monitor the use of Voice over Internet Protocol (VoIP), phone service carried over IP networks: who may use it, how it is set up, and whether unapproved VoIP tools or unauthorized uses appear.",
-      "example": "Fictional Cedar Point Design uses an approved network calling service with defined access and monitoring. Staff do not assume that calling traffic is outside the security process because the interface resembles a telephone."
+      "example": "Fictional CedarPoint uses an approved network calling service with defined access and monitoring. Staff do not assume that calling traffic is outside the security process because the interface resembles a telephone."
     },
     "technical": {
       "focus": "Identify VoIP uses and apply suitable usage restrictions and monitoring. Consider how the selected technology interacts with organizational systems, its interfaces, administration, and relevant signals of unexpected or unauthorized activity.",
@@ -1084,7 +1084,7 @@
     "id": "SC.L2-3.13.15",
     "beginner": {
       "meaning": "Protect confidence that a communications session is with the intended party and that an attacker has not taken it over or inserted false information. Hiding the contents and confirming the session's authenticity are different protections.",
-      "example": "At fictional Cedar Point Design, a project application verifies the identity of the service it connects to. An unexpected certificate is investigated rather than bypassed so the application can continue talking to an unverified endpoint."
+      "example": "At fictional CedarPoint, a project application verifies the identity of the service it connects to. An unexpected certificate is investigated rather than bypassed so the application can continue talking to an unverified endpoint."
     },
     "technical": {
       "focus": "Address session authenticity threats such as man-in-the-middle attacks, hijacking, and injected information. Suitable session protocols, identity verification, and session protections should support confidence in the parties and ongoing communications.",
@@ -1107,7 +1107,7 @@
     "id": "SC.L2-3.13.16",
     "beginner": {
       "meaning": "Protect the confidentiality of CUI while it is stored rather than being processed or transmitted. Information sitting on a drive or in a repository still needs protection from unauthorized disclosure.",
-      "example": "Fictional Cedar Point Design protects stored project files and associated local copies. The team does not assume that protecting the network transfer also protects every place where the information remains afterward."
+      "example": "Fictional CedarPoint protects stored project files and associated local copies. The team does not assume that protecting the network transfer also protects every place where the information remains afterward."
     },
     "technical": {
       "focus": "Identify where CUI is at rest and select mechanisms that protect its confidentiality. The guide discusses cryptographic and other protections; where cryptography protects CUI, it must meet SC.L2-3.13.11 (FIPS-validated cryptography).",
@@ -1130,7 +1130,7 @@
     "id": "SI.L2-3.14.1",
     "beginner": {
       "meaning": "Identify, report, and correct system flaws in a timely way. Discovering a weakness is only the first step; the right people must learn about it and the organization must address it.",
-      "example": "Fictional Cedar Point Design learns that a deployed application has a security flaw. Staff identify the affected systems, report the issue to the responsible team, and correct it within the organization's defined time expectations."
+      "example": "Fictional CedarPoint learns that a deployed application has a security flaw. Staff identify the affected systems, report the issue to the responsible team, and correct it within the organization's defined time expectations."
     },
     "technical": {
       "focus": "Define time expectations for identifying, reporting, and correcting flaws, then operate the workflow against them. Software and firmware issues can be discovered through advisories, assessments, monitoring, incident handling, or system errors.",
@@ -1153,7 +1153,7 @@
     "id": "SI.L2-3.14.2",
     "beginner": {
       "meaning": "Provide protection against malicious code at designated locations in organizational systems. Harmful software can arrive through different routes, so the organization needs to decide where protections are needed and provide them there.",
-      "example": "Fictional Cedar Point Design identifies its email service and relevant workstations as locations needing malicious-code protection. Staff verify that protection is actually operating instead of assuming the purchased subscription covers every system."
+      "example": "Fictional CedarPoint identifies its email service and relevant workstations as locations needing malicious-code protection. Staff verify that protection is actually operating instead of assuming the purchased subscription covers every system."
     },
     "technical": {
       "focus": "Identify designated protection locations and deploy suitable mechanisms there. The discussion includes entry and exit points and devices such as mail servers, workstations, gateways, and mobile devices, with multiple possible protection technologies.",
@@ -1176,7 +1176,7 @@
     "id": "SI.L2-3.14.3",
     "beginner": {
       "meaning": "Pay attention to system security alerts and advisories and take appropriate action in response. Receiving a warning email is not the same as understanding whether it affects the organization and responding to it.",
-      "example": "Fictional Cedar Point Design receives a vendor advisory about a deployed service. The responsible team checks applicability and takes the identified response action instead of allowing the message to sit unread in a shared mailbox."
+      "example": "Fictional CedarPoint receives a vendor advisory about a deployed service. The responsible team checks applicability and takes the identified response action instead of allowing the message to sit unread in a shared mailbox."
     },
     "technical": {
       "focus": "Establish relevant alert and advisory sources, define response actions, and operate a monitoring and action workflow. Sources can include vendors, government notices, industry sharing groups, and other appropriate services.",
@@ -1199,7 +1199,7 @@
     "id": "SI.L2-3.14.4",
     "beginner": {
       "meaning": "Update malicious-code protection mechanisms when new releases are available. Protection installed long ago can become less useful if its detection information or other relevant components are not kept current.",
-      "example": "Fictional Cedar Point Design monitors updates for its protection mechanisms and resolves failed updates on a workstation. The team does not treat an installed but outdated protection agent as equivalent to a current one."
+      "example": "Fictional CedarPoint monitors updates for its protection mechanisms and resolves failed updates on a workstation. The team does not treat an installed but outdated protection agent as equivalent to a current one."
     },
     "technical": {
       "focus": "Operate an update process for the malicious-code protection mechanisms in use and verify that relevant releases reach the protected locations. The discussion includes signature and reputation-based technologies and recognizes limitations of traditional detection.",
@@ -1222,7 +1222,7 @@
     "id": "SI.L2-3.14.5",
     "beginner": {
       "meaning": "Scan organizational systems periodically and scan files from outside sources in real time as they are downloaded, opened, or executed. Scheduled system scans and checks at those file-handling moments serve different purposes.",
-      "example": "Fictional Cedar Point Design runs system scans at its defined frequency. Its protection also checks an externally received file when it is handled, rather than leaving that file unchecked until the next scheduled system scan."
+      "example": "Fictional CedarPoint runs system scans at its defined frequency. Its protection also checks an externally received file when it is handled, rather than leaving that file unchecked until the next scheduled system scan."
     },
     "technical": {
       "focus": "Define periodic malicious-code scan frequency and enable real-time scanning of externally sourced files as they are downloaded, opened, or executed. Verify coverage and actual execution for files received through web or email routes and files copied from removable media such as USB drives.",
@@ -1245,7 +1245,7 @@
     "id": "SI.L2-3.14.6",
     "beginner": {
       "meaning": "Monitor organizational systems and both incoming and outgoing communications to detect attacks or signs that an attack may be developing. A suspicious connection leaving the network can matter as much as one arriving.",
-      "example": "Fictional Cedar Point Design investigates unusual outbound traffic from a workstation alongside incoming attack alerts. The team does not assume that a quiet internet gateway means no compromised system is communicating outward."
+      "example": "Fictional CedarPoint investigates unusual outbound traffic from a workstation alongside incoming attack alerts. The team does not assume that a quiet internet gateway means no compromised system is communicating outward."
     },
     "technical": {
       "focus": "Select system and communications monitoring appropriate to detecting attacks and potential attack indicators. Include internal system observations as well as inbound and outbound traffic; logs, network monitoring, and detection tools can contribute.",
@@ -1268,7 +1268,7 @@
     "id": "SI.L2-3.14.7",
     "beginner": {
       "meaning": "Define authorized system use and identify use that falls outside it. A valid account can still be used in an unauthorized way, so this is more than checking whether someone successfully signed in.",
-      "example": "At fictional Cedar Point Design, a system is intended for approved project work. Monitoring identifies activity that sends project information through an unauthorized channel even though it came from an employee's working account."
+      "example": "At fictional CedarPoint, a system is intended for approved project work. Monitoring identifies activity that sends project information through an unauthorized channel even though it came from an employee's working account."
     },
     "technical": {
       "focus": "Establish what authorized use means for the relevant system, then use monitoring and review to identify unauthorized activity. Consider misuse of legitimate access, unexpected access patterns, and prohibited information transfers.",
