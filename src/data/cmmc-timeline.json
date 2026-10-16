@@ -36,7 +36,7 @@
     },
     "cmmc-faq-2-3": {
       "title": "Cybersecurity Maturity Model Certification Program (CMMC) Frequently Asked Questions (Office of the Chief Information Officer, U.S. Department of War)",
-      "version": "Revision 2.3 (Excerpt), July 2026 (FAQsv6.pdf)",
+      "version": "Revision 2.4, July 13, 2026 (FAQsv6.pdf; its cover still reads Revision 2.3 (Excerpt), July 2026)",
       "officialUrl": "https://dodcio.defense.gov/Portals/0/Documents/CMMC/FAQsv6.pdf",
       "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/2ef86f6d8ca8f3fe66eb127cccaa14dc7b86f473/raw/public/dod-cio/cmmc-faq/2.3/general/FAQsv6.pdf",
       "sha256": "b2563aabbfd3ad4013e2ade962641813cf9ff6976c07a446864a2b4f7ed44394",
@@ -57,14 +57,22 @@
       "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/2ef86f6d8ca8f3fe66eb127cccaa14dc7b86f473/raw/public/federal-register/dfars-case-2019-d041/2025-09-10/regulation-html/REG-R03.html",
       "sha256": "a84a572d0ccc5af65bb4daba97471918906eb56bce570305068c41e6d271cdcb",
       "retrievedDate": "2026-10-15"
+    },
+    "dfars-deviation-2026-o0025-r3": {
+      "title": "Class Deviation 2026-O0025, Revision 3: Revolutionary FAR Overhaul Part 40, DFARS Part 240, Information Security and Supply Chain Security",
+      "version": "Revision 3, signed September 3, 2026 (2026-O0025_Rev3_TAB_A_Deviation_Memo.pdf)",
+      "officialUrl": "https://www.acq.osd.mil/dpap/dars/classdev/DFARS_RFO/Part-240/2026-O0025_Rev3_TAB_A_Deviation_Memo.pdf",
+      "retrievedFrom": "https://raw.githubusercontent.com/gamestuf/cairn-corpus/7fc9b1bf9492df6336d763b739e647544252e346/raw/public/dfars/class-deviation-2026-o0025/r3/general/2026-O0025_Rev3_TAB_A_Deviation_Memo.pdf",
+      "sha256": "c836278a672909d71c33b3f3e53ee0a951c30ff1f499890c0e96549bd64f230c",
+      "retrievedDate": "2026-10-15"
     }
   },
   "dates": [
     {
-      "id": "program-rule-published",
-      "date": "2024-10-15",
-      "title": "The program rule is published",
-      "text": "32 CFR part 170, the CMMC Program rule, appears in the Federal Register.",
+      "id": "program-rule-effective",
+      "date": "2024-12-16",
+      "title": "32 CFR part 170 takes effect",
+      "text": "The CMMC Program rule, published October 15, 2024, applies to defense contractors and subcontractors.",
       "citations": [
         {
           "source": "cfr-32-170",
@@ -75,15 +83,7 @@
           "source": "fr-2024-22905",
           "where": "closing line, printed page 83237",
           "quote": "FR Doc. 2024-22905 Filed 10-11-24; 8:45 am"
-        }
-      ]
-    },
-    {
-      "id": "program-rule-effective",
-      "date": "2024-12-16",
-      "title": "32 CFR part 170 takes effect",
-      "text": "The program rule is in force from this day, with its requirements for defense contractors and subcontractors.",
-      "citations": [
+        },
         {
           "source": "fr-2024-22905",
           "where": "DATES",
@@ -99,7 +99,7 @@
     {
       "id": "phase-1",
       "date": "2025-11-10",
-      "title": "The clause takes effect; Phase 1 begins",
+      "title": "The clause and Phase 1 begin",
       "text": "Awards can require Level 1 (Self) or Level 2 (Self); DoD may ask for Level 2 (C3PAO) instead.",
       "citations": [
         {
@@ -125,10 +125,49 @@
       ]
     },
     {
+      "id": "phase-2-on-hold",
+      "date": "2026-07-13",
+      "title": "Phase 2 is put on hold",
+      "text": "Suspended for a Department of War (DoD) review. Level 1 (Self) or Level 2 (Self) can still be required.",
+      "citations": [
+        {
+          "source": "cmmc-faq-2-3",
+          "where": "A-A1, printed page 1 (PDF page 5)",
+          "quote": "The DoW has suspended the transition to Phase 2 of the program."
+        },
+        {
+          "source": "cmmc-faq-2-3",
+          "where": "D-A1, printed page 8 (PDF page 12)",
+          "quote": "The first phase of CMMC implementation began on November 10, 2025 and the DoW has suspended implementation in this phase in order to conduct a review of the program."
+        },
+        {
+          "source": "cmmc-faq-2-3",
+          "where": "Document Revision History, version 2.4, 7/13/2026, printed page 13 (PDF page 17)",
+          "quote": "Updated to reflect the suspension of the program in Phase 1 of implementation."
+        },
+        {
+          "source": "dfars-deviation-2026-o0025-r3",
+          "where": "paragraph (b), PDF page 2",
+          "quote": "Collaborate with requiring activities to remove or revise the Cybersecurity Maturity Model Certification (CMMC) requirements in new and existing solicitations and contracts in accordance with the Department of War Chief Information Officer’s memorandum, Suspension of the Advancement to Cybersecurity Maturity Model Certification Phase 2 Requirements, dated July 13, 2026"
+        },
+        {
+          "source": "dfars-deviation-2026-o0025-r3",
+          "where": "paragraph (b), first bullet, PDF page 2",
+          "quote": "Permits requiring activities to include CMMC Level 1 (Self) or Level 2 (Self) assessments in all procurement requests and requirement documents"
+        },
+        {
+          "source": "dfars-deviation-2026-o0025-r3",
+          "where": "paragraph (b), third bullet, PDF page 2",
+          "quote": "Suspends the November 2026 CMMC Phase 2 transition"
+        }
+      ]
+    },
+    {
       "id": "phase-2",
       "date": "2026-11-10",
-      "title": "Phase 2 begins",
-      "text": "Level 2 (C3PAO) can be a condition of award, or wait for an option period; DoD may ask for Level 3 (DIBCAC).",
+      "status": "suspended",
+      "title": "Phase 2 was to begin",
+      "text": "Level 2 (C3PAO) would be a condition of award, or of an option period; DoD could ask for Level 3 (DIBCAC).",
       "citations": [
         {
           "source": "cmmc-101-2025",
@@ -145,8 +184,9 @@
     {
       "id": "phase-3",
       "date": "2027-11-10",
-      "title": "Phase 3 begins",
-      "text": "Level 2 (C3PAO) for every applicable award, and for option periods on contracts awarded since the clause took effect; Level 3 (DIBCAC) can be a condition of award.",
+      "status": "suspended",
+      "title": "Phase 3 was to begin",
+      "text": "Level 2 (C3PAO) at award and at options on contracts since Phase 1; Level 3 (DIBCAC) at award.",
       "citations": [
         {
           "source": "cmmc-101-2025",
@@ -163,8 +203,9 @@
     {
       "id": "phase-4",
       "date": "2028-11-10",
-      "title": "Phase 4: full implementation",
-      "text": "Every applicable solicitation and contract carries its CMMC requirement, including option periods on contracts awarded before this day.",
+      "status": "suspended",
+      "title": "Phase 4 was to begin",
+      "text": "Full implementation: CMMC in every applicable solicitation and contract, options on older contracts included.",
       "citations": [
         {
           "source": "cmmc-101-2025",
@@ -202,7 +243,7 @@
       "id": "level-2-self",
       "status": "Final Level 2 (Self)",
       "lasts": "3 years",
-      "text": "Repeated every three years, within three years of the status date.",
+      "text": "Repeated within three years of the status date.",
       "citations": [
         {
           "source": "dfars-252-204-7021",
@@ -238,7 +279,7 @@
       "id": "level-3-dibcac",
       "status": "Final Level 3 (DIBCAC)",
       "lasts": "3 years",
-      "text": "Every three years, and the Level 2 (C3PAO) assessment under it too.",
+      "text": "Every three years, with Level 2 (C3PAO) too.",
       "citations": [
         {
           "source": "dfars-252-204-7021",
@@ -256,7 +297,7 @@
       "id": "conditional",
       "status": "Conditional status",
       "lasts": "180 days",
-      "text": "Expires unless the plan of action is closed out within 180 days of the status date.",
+      "text": "Ends unless the POA&M is closed out within 180 days.",
       "citations": [
         {
           "source": "dfars-252-204-7021",
@@ -277,7 +318,7 @@
     },
     {
       "id": "affirmation",
-      "status": "Affirmation of continuous compliance",
+      "status": "Affirmation",
       "lasts": "1 year",
       "text": "After every assessment, and every year after.",
       "citations": [
