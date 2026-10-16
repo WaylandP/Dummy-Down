@@ -317,7 +317,10 @@ says whether it is built.
    and the announcements as before. Smudge sweeps only when someone asks him
    to: wiping chalk marks, and when "CMMC in sixty seconds" reaches its
    end.
-7. The timeline, in chalk: one screen; every date sourced.
+7. The timeline, in chalk: one screen; every date sourced. The phases DoD
+   suspended on July 13, 2026 are struck and marked "On hold" in yellow, the
+   mark in the heading so a screen reader hears it, kept under forced colours
+   and in print; the foot says the lines show the rule's original schedule.
 8. The assessor's three words on the Evidence tab.
 9. Smudge: built (first as Dash, then replaced by the eraser; see above).
 10. Home for the stranger: `mockups/Home.html`.

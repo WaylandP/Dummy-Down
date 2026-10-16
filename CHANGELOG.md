@@ -280,6 +280,13 @@ analytics allowlist do not change.
   the Beginner explanation", "Terms on this page", "Reading an explanation",
   "This control is outside the current results"); the glossary's groups are
   "Contract clauses" and "Everyday security terms".
+- [PR #99](https://github.com/WaylandP/cipher-and-chalk/pull/99): the
+  Timeline shows what is on hold. The phases DoD suspended on July 13, 2026
+  (Phases 2, 3 and 4, from the content session's PR #76) are struck through
+  with a yellow "On hold" mark in their headings, which a screen reader hears
+  and which keeps under forced colours and in print; the foot says the lines
+  show the rule's original schedule, and the page's description names the
+  hold.
 
 ## The Board's features — October 15, 2026
 

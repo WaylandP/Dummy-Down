@@ -140,6 +140,31 @@ describe('The timeline', () => {
     )
   })
 
+  it('strikes the suspended phases with an "On hold" mark in their headings, and the foot says the lines show the original schedule', async () => {
+    const list = await openPage()
+    const items = [...list.querySelectorAll<HTMLElement>(':scope > li')]
+    const held = items.filter((item) => item.dataset.status === 'suspended')
+    expect(
+      held.map((item) => item.querySelector('time')?.getAttribute('dateTime')),
+    ).toEqual(['2026-11-10', '2027-11-10', '2028-11-10'])
+    for (const item of held) {
+      const heading = within(item).getByRole('heading', { level: 3 })
+      expect(heading.querySelector('s')).toHaveTextContent(/was to begin$/)
+      // The mark is part of the heading's name, so it is announced with it.
+      expect(heading).toHaveAccessibleName(/was to begin On hold$/)
+      expect(within(heading).getByText('On hold')).toHaveClass('timeline-hold')
+    }
+    for (const item of items.filter((item) => !held.includes(item))) {
+      expect(item.querySelector('s')).toBeNull()
+      expect(within(item).queryByText('On hold')).toBeNull()
+    }
+    expect(
+      screen.getByText(
+        /^Phases 2–4 show the rule’s original schedule, which DoD suspended on July 13, 2026\. Where a line and a source differ, the source controls\. Read on October \d+, 2026\.$/,
+      ),
+    ).toBeVisible()
+  })
+
   it('keeps every quotation under one Sources disclosure per section, each line named and each source linked to its official address', async () => {
     await openPage()
     const disclosures = [

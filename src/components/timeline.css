@@ -170,6 +170,51 @@
   line-height: 1.5;
   color: var(--color-chalk-muted);
 }
+/* A phase DoD suspended: its title struck in yellow with "On hold" beside it
+   in the heading, its words dimmed. The mark is a bordered word, so it keeps
+   under forced colours and in print, where the strike stays. */
+.timeline-date[data-status='suspended'] > h3 {
+  color: var(--color-chalk-muted);
+}
+.timeline-date[data-status='suspended'] > h3 > s {
+  text-decoration: line-through;
+  text-decoration-color: var(--color-yellow);
+  text-decoration-thickness: 2px;
+}
+.timeline-date[data-status='suspended'] > p {
+  color: var(--color-chalk-dim);
+}
+.timeline-hold {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 6px;
+  border: 1.5px solid var(--color-yellow);
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-yellow);
+  vertical-align: 3px;
+  white-space: nowrap;
+  transform: rotate(-3deg);
+}
+@media (forced-colors: active) {
+  .timeline-hold {
+    border-color: CanvasText;
+  }
+  .timeline-date[data-status='suspended'] > h3 > s {
+    text-decoration-color: CanvasText;
+  }
+}
+@media print {
+  .timeline-hold {
+    border-color: #000;
+    color: #000;
+    transform: none;
+  }
+  .timeline-date[data-status='suspended'] > h3 > s {
+    text-decoration-color: #000;
+  }
+}
 @media (max-width: 1024px) {
   .timeline,
   .timeline-statuses {
