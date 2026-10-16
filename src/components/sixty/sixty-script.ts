@@ -3,7 +3,7 @@
  * chapters of the one-minute drawing, when each runs, its caption in the
  * owner's words, and the words in it that open the glossary. The drawing's
  * own labels live in the board (SixtyBoard.tsx, in the order of
- * sixty-words.ts); the timing of every stroke is its `data-t` there.
+ * sixty-words.ts); when each mark is drawn is scheduled in sixty-model.ts.
  */
 
 export const sixtyTitle = 'CMMC in sixty seconds'

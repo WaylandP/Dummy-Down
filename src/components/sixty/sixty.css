@@ -1,10 +1,11 @@
 /* "CMMC in sixty seconds" (mockups/2026-10-15/SixtySeconds.html), playing
    in its own panel on Home: the title in yellow chalk, the board, the
    player row, the caption and the note, in the site's own tokens and faces:
-   the chalk hand on the board, the site sans for the interface, the mono
-   for the time. Beside the hero the panel is 397px wide and the board,
-   520×235 units, about 180px tall; on a tablet the panel is capped at
-   560px; on a phone it is the width of the page and the board stacks. */
+   the chalk hand for the title and, as outlines written stroke by stroke,
+   for the words on the board; the site sans for the interface, the mono for
+   the time. Beside the hero the panel is 397px wide and the board, 520×235
+   units, about 180px tall; on a tablet the panel is capped at 560px; on a
+   phone it is the width of the page and the board stacks. */
 
 /* ---- The panel ---- */
 .sixty {
@@ -17,6 +18,7 @@
 .sixty-title {
   margin: 0;
   color: var(--color-yellow);
+  font-family: var(--font-hand);
   font-size: 22px;
   font-weight: 400;
   line-height: 1.1;
@@ -35,15 +37,21 @@
   height: auto;
   overflow: visible;
 }
-.sixty-board text {
-  font-family: var(--font-hand);
+/* A word: its letters' outlines, written through a mask of pen strokes. */
+.sixty-glyph {
   fill: var(--color-chalk);
 }
-.sixty-board .y {
+.sixty-word.y .sixty-glyph {
   fill: var(--color-yellow);
 }
-.sixty-board .dim {
+.sixty-word.dim .sixty-glyph {
   fill: var(--color-chalk-dim);
+}
+.sixty-pen {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .sixty-board .ln {
   fill: none;
@@ -81,8 +89,22 @@
 }
 .sixty-hand,
 .sixty-stick,
-.sixty-eraser {
+.sixty-eraser,
+.sixty-fresh,
+.sixty-dust circle {
   opacity: 0;
+}
+/* The newest few units of the stroke under the chalk, a touch brighter. */
+.sixty-fresh {
+  fill: none;
+  stroke: #fff;
+  stroke-opacity: 0.38;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+.sixty-dust circle {
+  fill: var(--color-chalk);
 }
 /* The haze an erased board keeps: Smudge's strokes, softened, under the clock. */
 .sixty-haze {
@@ -91,11 +113,15 @@
   stroke-linecap: round;
   opacity: 0.04;
 }
-.sixty-stick-body {
+.sixty-stick-chalk {
   fill: var(--color-chalk);
 }
 .sixty-stick-shade {
   fill: rgba(0, 0, 0, 0.12);
+}
+.sixty-stick-shadow {
+  fill: #000;
+  opacity: 0.34;
 }
 
 /* ---- The player row ---- */
@@ -309,10 +335,10 @@
   }
 }
 @media (forced-colors: active) {
-  .sixty-board text {
+  .sixty-glyph {
     fill: CanvasText;
   }
-  .sixty-board .y {
+  .sixty-word.y .sixty-glyph {
     fill: Highlight;
   }
   .sixty-board .ln {
@@ -324,10 +350,13 @@
   .sixty-wedge,
   .sixty-glow,
   .sixty-haze,
-  .sixty-eraser {
+  .sixty-eraser,
+  .sixty-fresh,
+  .sixty-dust,
+  .sixty-stick-shadow {
     display: none;
   }
-  .sixty-stick-body {
+  .sixty-stick-chalk {
     fill: CanvasText;
   }
   .sixty-stick-shade {

@@ -22,6 +22,8 @@ export const CLEAR_SECONDS = 0.5
 /** Scene 1 is wiped off between these seconds, in three overlapping strokes. */
 export const ERASE_START = 15.7
 export const ERASE_END = 16.9
+/** The clock is drawn from here, once Smudge has gone. */
+export const SCENE_TWO = 17
 
 export interface Dial {
   readonly cx: number

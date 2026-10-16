@@ -26,7 +26,7 @@ export interface SixtyGlyphBox {
 export interface SixtyGlyph {
   /** How far the pen moves on to the next glyph, before kerning. */
   readonly advance: number
-  /** The outline as SVG path data, nonzero fill, in font units. */
+  /** The outline as SVG path data (relative commands, whole font units), nonzero fill. */
   readonly path: string
   /** The outline's extent, in the same units. */
   readonly bbox: SixtyGlyphBox

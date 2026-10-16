@@ -1,11 +1,77 @@
 #!/usr/bin/env node
 /**
+ * Path data a third the size: every coordinate rounded to a whole font unit
+ * (under a hundredth of a pixel on the board) and every command relative to
+ * the point before it, so the numbers are short. The outline is unchanged
+ * to the eye and still fills nonzero.
+ */
+function compactPath(absolute) {
+  let out = ''
+  let last = ''
+  let pen = [0, 0]
+  const emit = (cmd, values) => {
+    let text = ''
+    for (const [index, value] of values.entries()) {
+      const number = String(Math.round(value))
+      text += index > 0 && !number.startsWith('-') ? ` ${number}` : number
+    }
+    if (cmd !== last) out += cmd
+    else if (!text.startsWith('-')) out += ' '
+    out += text
+    last = cmd
+  }
+  const re = /([MLQCZ])([^MLQCZ]*)/g
+  let match
+  while ((match = re.exec(absolute))) {
+    const cmd = match[1]
+    const a = (match[2].match(/-?\d*\.?\d+/g) ?? []).map(Number)
+    const to = (x, y) => {
+      const p = [Math.round(x), Math.round(y)]
+      const d = [p[0] - pen[0], p[1] - pen[1]]
+      return { p, d }
+    }
+    if (cmd === 'M') {
+      const { p, d } = to(a[0], a[1])
+      // The first move is absolute (from the origin, the numbers are the same).
+      emit(out === '' ? 'M' : 'm', d)
+      pen = p
+    } else if (cmd === 'L') {
+      for (let i = 0; i + 1 < a.length; i += 2) {
+        const { p, d } = to(a[i], a[i + 1])
+        emit('l', d)
+        pen = p
+      }
+    } else if (cmd === 'Q') {
+      for (let i = 0; i + 3 < a.length; i += 4) {
+        const c = to(a[i], a[i + 1])
+        const { p, d } = to(a[i + 2], a[i + 3])
+        emit('q', [...c.d, ...d])
+        pen = p
+      }
+    } else if (cmd === 'C') {
+      for (let i = 0; i + 5 < a.length; i += 6) {
+        const c1 = to(a[i], a[i + 1])
+        const c2 = to(a[i + 2], a[i + 3])
+        const { p, d } = to(a[i + 4], a[i + 5])
+        emit('c', [...c1.d, ...c2.d, ...d])
+        pen = p
+      }
+    } else if (cmd === 'Z') {
+      out += 'z'
+      last = 'z'
+    }
+  }
+  return out
+}
+
+/**
  * Glyph outlines and stroke skeletons for "CMMC in sixty seconds".
  *
  * `npm run sixty:glyphs` reads the board's words (src/components/sixty/
  * sixty-words.ts) and the site's hand font (public/fonts/walter-turncoat-
  * latin-400.woff) and writes src/components/sixty/sixty-glyphs.json, which is
- * committed: for every character the words use, its outline as SVG path data,
+ * committed: for every character the words use, its outline as SVG path data
+ * (relative commands, whole font units: a third the size of the absolute form),
  * its advance, bounding box, stroke thickness and an ordered stroke skeleton,
  * plus every word laid out with the font's own advances and kerning. All
  * coordinates are font units with y pointing down and the baseline at y=0, so
@@ -1502,7 +1568,7 @@ function main() {
     const bbox = raster.bbox
     glyphs[char] = {
       advance: glyph.advanceWidth,
-      path: path.toPathData(1),
+      path: compactPath(path.toPathData(1)),
       bbox: {
         x1: round1(bbox.x1),
         y1: round1(bbox.y1),

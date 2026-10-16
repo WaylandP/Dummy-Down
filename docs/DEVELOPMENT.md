@@ -95,7 +95,7 @@ their existing values; historical source URLs are preserved.
 | `src/App.tsx`                     | Assembles the page and coordinates the interactive experience.                                                                                                                                                                                                               |
 | `src/components/`                 | Reusable interface pieces, including the Control Explorer.                                                                                                                                                                                                                   |
 | `src/components/board/`           | The Board shell: chalk filter and dust, the lockup, header with its find line, footer, the tray (the phone bar) with the doodle chalk and Smudge on it, the chalk marks (`doodle-state.ts` keeps them per page in memory; `ink.ts` is the `#ink=v1` fragment), and the keys. |
-| `src/components/sixty/`           | "CMMC in sixty seconds" on Home: the panel (`SixtySeconds.tsx`), the board in two arrangements, each stroke timed by `data-t` (`SixtyBoard.tsx`, `sixty-drawing.ts`), the frame loop (`useSixtyPlayer.ts`), the chapters (`sixty-script.ts`), the words (`sixty-words.ts`).  |
+| `src/components/sixty/`           | "CMMC in sixty seconds" on Home: the panel (`SixtySeconds.tsx`), the board (`SixtyBoard.tsx`) from scheduled marks (`sixty-model.ts`; letter outlines and skeletons from `npm run sixty:glyphs`), the frames (`useSixtyPlayer.ts`), the chapters (`sixty-script.ts`).        |
 | `src/components/Home.tsx`         | The Home hero: a kicker, the one headline, one line, "Pick up a chalk to start." with the three chalks that each pick a chalk and a place to start, the search line and where the visitor left off.                                                                          |
 | `src/components/control/`         | The control page: the decoded ID, the title and the Decode, Explain, Evidence, Practice, Related and Rev 3 views; chalk popovers for the lesson's words.                                                                                                                     |
 | `src/components/Glossary.tsx`     | Words: every word under its letter by default, or one letter at a time, four groupings and a search line; `glossary/groups.ts` derives the groups from sources.                                                                                                              |
@@ -346,6 +346,11 @@ npm run format:check
 npm test
 npm run build
 ```
+
+Rerun `npm run sixty:glyphs` after changing the hand font or the words on the
+sixty-seconds board: it rewrites `src/components/sixty/sixty-glyphs.json` (the
+letter outlines and the pen skeletons the drawing is written with), which is
+committed, and a unit test fails while the file is stale.
 
 - **Typecheck** validates TypeScript without producing application files.
 - **Lint** checks code conventions and common programming mistakes.

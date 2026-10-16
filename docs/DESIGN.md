@@ -98,9 +98,13 @@ not establish it.
   or a click on the board clears it with a quick pass of Smudge and draws in
   place, the panel keeping its box and the address unchanged: scene 1 (Who
   and Levels) across the board, wiped off by Smudge at 0:15.7, then Level 2
-  as a three-year clock with SPRS at its hub and its words beside it, drawn
-  stroke by stroke with a chalk stick at the tip; on a phone the board
-  stacks. Every word on the board is 11px or more at every width. Its keys
+  as a three-year clock with SPRS at its hub and its words beside it. The
+  chalk draws: each word is written letter by letter, its glyph outlines
+  (from the hand face, at build time) showing through a mask drawn along
+  each letter's strokes; each line is eased along its length with a hand's
+  wobble; the chalk stick is a hand that travels between marks, rests
+  while the script waits, leans the way it goes and sheds a little dust; on
+  a phone the board stacks. Every word on the board is 11px or more at every width. Its keys
   work only with focus in the panel; reduced motion shows each chapter
   finished; Smudge sweeps when it reaches 1:00. No audio, no analytics
   events, no
