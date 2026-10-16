@@ -5,6 +5,16 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Vercel settings for the launch — October 16, 2026
+
+- Every response sends security headers (HSTS, `nosniff`, a strict referrer policy,
+  no framing, opener isolation and a Permissions-Policy for unused device features).
+  The Content-Security-Policy only forbids framing, plugins and foreign form targets,
+  so nothing the pages load can be blocked by it.
+- The `screenshots` and `archive/*` branches no longer start Vercel builds. They
+  hold pull-request images and records, not the site, so every push to them failed
+  a build and used one of the Hobby plan's 100 daily deployments.
+
 ## Launch fixes — October 15, 2026
 
 The launch audit of October 15 compared every explanation, practice activity,
