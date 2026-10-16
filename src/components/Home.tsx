@@ -15,8 +15,7 @@ import type {
   LessonIdentity,
 } from '../types/content'
 import { browseUrl } from './board/SiteHeader'
-import { ChalkTalk } from './ChalkTalk'
-import { useDesktop } from './controls/useDesktop'
+import { SixtySeconds } from './sixty/SixtySeconds'
 import { families } from './families'
 import { numberWord } from '../data/number-words'
 import {
@@ -74,7 +73,7 @@ const chalks = [
     mode: 'compliance',
     colour: 'blue',
     line: 'I’m preparing for an assessment',
-    text: 'Examine, interview, test.',
+    text: 'Every objective, quoted.',
     href: () => '/coverage',
   },
 ] as const satisfies readonly {
@@ -93,15 +92,14 @@ const chalks = [
  * start." with the three chalks as the main action, each picking its chalk
  * and a place to begin; then the search line; and where the visitor left
  * off, when saving remembers it. Beside the hero, from the kicker down to
- * just above "Pick up a chalk to start.", the chalk talk "CMMC in sixty
- * seconds" (mockups/2026-10-15/HomeChalkTalk.html), which plays once on a
- * desktop; on a phone it follows the chalks and the search and waits for
- * play.
+ * just above "Pick up a chalk to start.", "CMMC in sixty seconds"
+ * (mockups/2026-10-15/SixtySeconds.html): a still of its finished clock
+ * with a play button that opens the drawing in a dialog; on a phone it
+ * follows the chalks and the search. Nothing plays on its own.
  */
 export function Home() {
   const { lastControl } = useLocalProgress()
   const remembered = findControl(lastControl)
-  const desktop = useDesktop()
   return (
     <div className="home">
       <svg
@@ -231,10 +229,10 @@ export function Home() {
         )}
       </div>
       {/* After the chalks and the search in the DOM, as on a phone's screen,
-          so Tab reaches the page's main action before the talk's controls;
-          the grid puts it beside the hero at desktop widths. */}
+          so Tab reaches the page's main action before the play button; the
+          grid puts it beside the hero at desktop widths. */}
       <div className="home-talk">
-        <ChalkTalk autoplay={desktop} />
+        <SixtySeconds />
       </div>
     </div>
   )

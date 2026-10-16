@@ -1,8 +1,8 @@
-/* Home (mockups/2026-10-15/HomeHero.html and HomeChalkTalk.html): one
+/* Home (mockups/2026-10-15/HomeHero.html and SixtySeconds.html): one
    thing first, then second, then third. The kicker, the headline, one
-   supporting line, with the chalk talk beside them in a column of its own;
-   then "Pick up a chalk to start." with the three chalks and the search
-   line, across the width. */
+   supporting line, with "CMMC in sixty seconds" beside them in a column of
+   its own; then "Pick up a chalk to start." with the three chalks and the
+   search line, across the width. */
 @layer components {
   .home {
     position: relative;
@@ -29,8 +29,8 @@
     min-width: 0;
     container-type: inline-size;
   }
-  /* The chalk talk beside the hero, from the kicker down to just above
-     "Pick up a chalk to start.", a hairline rule on its left. */
+  /* "CMMC in sixty seconds" beside the hero, from the kicker down to just
+     above "Pick up a chalk to start.", a hairline rule on its left. */
   .home-talk {
     grid-area: talk;
     position: relative;
@@ -166,9 +166,11 @@
     align-items: center;
     gap: 10px;
   }
+  /* A 44px line: tall enough to tap, still just text on a chalk underline. */
   .home-search-line input {
     flex: 1;
     min-width: 0;
+    min-height: 44px;
     padding: 6px 2px;
     border: 0;
     background: transparent;
@@ -240,8 +242,8 @@
   }
 }
 @media (max-width: 1023px) {
-  /* One column: the hero, the chalks and the search, then the chalk talk
-     across the width, under a hairline. */
+  /* One column: the hero, the chalks and the search, then "CMMC in sixty
+     seconds" across the width, under a hairline. */
   .home {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto auto auto;

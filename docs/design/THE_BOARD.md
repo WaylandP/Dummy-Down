@@ -79,7 +79,7 @@ chalks as the main action, each a large stick with a label in the chalk hand
 and one short line ("I'm new to this" / "Level 1's fifteen basics first." →
 Controls filtered to Level 1 with the first basic on the board, in white; "I
 run the systems" / "The fourteen families." → the families in yellow; "I'm
-preparing for an assessment" / "Examine, interview, test." → the objectives
+preparing for an assessment" / "Every objective, quoted." → the objectives
 in blue), grouped in a list labelled "Pick
 up a chalk to start.", each picking its chalk for the visitor, the stick
 lifting a few pixels under the pointer or keyboard focus (not under reduced
@@ -93,7 +93,8 @@ left, 44px tall) and the search follows them. The footer line is the site's
 (see October 15 fixes, 1). Smudge sits on the right end of the tray. The
 fourteen families live on the Controls page. Beside the hero, from the kicker
 down to just above "Pick up a chalk to start." with a hairline rule on its
-left, the chalk talk "CMMC in sixty seconds" (see October 15 fixes, 9); the
+left, "CMMC in sixty seconds" (see October 15 fixes, 9): a still of its
+finished clock with a play button that opens the drawing in a dialog; the
 headline is sized from the hero's own width, about 100px beside it at 1280.
 
 **Control, Decode** — `mockups/Decode.html`. Top line: the ID in blue mono,
@@ -134,8 +135,8 @@ yellow tile with radius 22. Replace `public/brand/*` and the favicon with it.
 end of the tray, on every screen: a wooden back, a felt face with chalk dust in
 it, and eyes, brows and a mouth drawn on the wood in chalk. Idle: blinks, eyes
 drift toward the cursor, a puff of dust now and then. Sweep, only when asked
-(wiping chalk marks; erasing them and "Watch again" on the chalk talk come in
-later pull requests): he leaps up and sweeps across the board. The mockup's
+(wiping chalk marks, and when "CMMC in sixty seconds" reaches its end): he
+leaps up and sweeps across the board. The mockup's
 "Erases" panel describes the Erase between controls, since removed. Pick a
 chalk: he nudges
 that stick up out of the tray. Click or tap him, or finish a practice item
@@ -261,51 +262,39 @@ says whether it is built.
    decorative and not focusable. Reduced motion and forced colors: no dust
    or sweep, the marks just go; CanvasText. Analytics never see the fragment
    (asserted). A resize keeps the marks: scaled within 15%, waiting beyond.
-9. **CMMC in sixty seconds** — `HomeChalkTalk.html` (built; the owner's
-   approved right side of Home). A column beside the hero, from the kicker
-   down to just above "Pick up a chalk to start.", a hairline rule on its
-   left; the hero keeps its hierarchy (one `h1`, nothing in the column larger
-   than it; the headline is about 100px beside it at 1280). The title "CMMC
-   in sixty seconds" in the chalk hand, yellow, an `h2` that names the
-   region. The script lives in
-   `src/data/chalk-talk.ts`: eight scenes, each one caption of twenty words
-   or fewer, the parts of the drawing it adds, and its sources (publication,
-   section, paragraph, the words relied on), all from the pinned 32 CFR
-   part 170, DFARS 252.204-7021 and FAR 52.204-21 records the glossary and
-   the timeline cite; the counts come from the catalog; the last scene is
-   about this site and rests on nothing but it. Glossary words in the
-   captions (FCI, CUI, C3PAO, SPRS, DIBCAC, Affirming Official, DFARS
-   252.204-7021) open the chalk popovers. One SVG, as drawn: a DoD box, an
-   arrow "shares information", a contractor box, FCI → Level 1, CUI →
-   Level 2, a dashed Level 3 line, the dashed "assessed" line to "status in
-   SPRS", then "current" under it; each scene adds its parts and earlier
-   parts stay; strokes draw on along their length under the chalk filter and
-   the lettering appears left to right; chalk, yellow for arrows and level
-   labels, no blue. Eight scenes of 7.5 seconds, a minute in all. A 44px
-   play/pause button whose label toggles; eight chalk dashes, each a button
-   ("Scene 3: …") that jumps to its scene, the drawn ones yellow (44px tall
-   and 24 to 32px wide: they share the row with the button and the time,
-   where eight 44px targets would not fit); the time in mono ("0:22 /
-   1:00"); the caption always under the drawing; no audio. Desktop: it plays
-   once when Home loads (a background tab waits until it shows), pause
-   always visible, never loops, ends on the full drawing with "Watch again",
-   which has Smudge sweep the board clean before it plays from the start;
-   it pauses while the tab is hidden and while a caption's word has focus,
-   so a popover opened from the keyboard stays. A jump while paused shows
-   that scene drawn, and play goes on from there. Before the first play on
-   a phone the finished drawing shows faintly. Reduced motion: no drawing;
-   the finished drawing stands with the captions stepped one at a time by
-   Previous and Next (at either end the button stays focusable and does
-   nothing). Screen readers: the drawing is aria-hidden; the eight captions
-   are an ordered list in the DOM inside the region the title names, only
-   the current one shown (aria-current="step") with its words and links
-   live, the rest plain text off the screen; nothing is announced as it
-   plays. In the DOM the talk follows "Pick up a chalk to start." and the
-   search, as on a phone's screen, so Tab reaches the chalks first. Phone:
-   the talk follows the three chalks and the search, full width under a
-   hairline, and never autoplays. No analytics events. About moves "the
-   first chalk talk, CMMC in sixty seconds" onto the board and keeps "More
-   chalk talks for visual learners" under Later.
+9. **CMMC in sixty seconds** — `SixtySeconds.html` and
+   `SixtySeconds-HANDOFF.md` (built; the owner's approved animation, which
+   replaced the chalk talk from `HomeChalkTalk.html`). Sixty seconds of chalk:
+   Level 2 as a three-year clock with SPRS at its hub beside a column of
+   notes, in eight chapters (Who, Levels, The clock, Certify, Every year, Big
+   change, Repeat, Bottom line), every stroke and label timed by `data-t`,
+   drawn along its length under the chalk filter with a chalk stick at the
+   tip, in the site's own faces and tokens; the captions are the owner's,
+   their glossary words (FCI, CUI, SPRS, C3PAO) opening the chalk popovers.
+   It is drawn for a stage a thousand pixels wide, so Home shows a still of
+   the finished clock, cropped to the dial, under the title in yellow chalk
+   (an `h2` that names the region), every word on it 11px or more, with a
+   44px play button, "1:00" and "Three years of CMMC Level 2, drawn in one
+   minute."; Home still fits one screen at 1280×800 and 1366×768, and
+   nothing plays on its own. Play, or a click on the still, opens the drawing
+   in a modal dialog from 0:00, sized so the board, the player, the caption
+   and the note fit without scrolling at 1024×768 and larger (the board is
+   the smallest of 1000px, 92% of the width and 1.6 times the height left
+   for it); Escape and Close return focus to the play button; on a phone it
+   is a full-screen sheet with the clock above the notes and the player and
+   caption docked at its foot, no board text under 11px at 390. The player:
+   play/pause/replay, a chaptered scrub bar (a slider whose value names the
+   part), the time in mono and the speed (1×, 0.75×, 0.5×, 1.5×), every
+   target 44px; Space, K, the arrows, Home, End, Page Up and Page Down work
+   only inside the dialog, and the site's own keys wait while it is open.
+   Reduced motion shows each chapter's finished state as the time runs, with
+   no stick, sector or pulse. Under the player: "Shown: the Level 2 (C3PAO)
+   cycle. Phase 2, which would require it, has been on hold since July 13,
+   2026." with a link to the timeline. When the drawing reaches 1:00 Smudge
+   sweeps. No analytics events; no request leaves the site. The piece lives
+   in `src/components/sixty/`. About keeps "the first chalk talk, CMMC in
+   sixty seconds" on the board and "More chalk talks for visual learners"
+   under Later.
 
 ## Features, in build order
 
@@ -323,8 +312,8 @@ says whether it is built.
    owner on October 15: changing control, or any page, no longer wipes the
    board and Smudge no longer sweeps; content changes instantly, with focus
    and the announcements as before. Smudge sweeps only when someone asks him
-   to: wiping chalk marks today; erasing them and "Watch again" on the chalk
-   talk in later pull requests.
+   to: wiping chalk marks, and when "CMMC in sixty seconds" reaches its
+   end.
 7. The timeline, in chalk: one screen; every date sourced.
 8. The assessor's three words on the Evidence tab.
 9. Smudge: built (first as Dash, then replaced by the eraser; see above).
