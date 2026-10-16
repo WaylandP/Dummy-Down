@@ -412,3 +412,12 @@
     forced-color-adjust: none;
   }
 }
+/* On Home the panel stops growing its controls before its board: the play
+   button and the other targets at 52px, the title at 30px, however wide the
+   column gets. Outside the layer, like sixty.css, so it applies over it. */
+.home-talk .sixty {
+  --sixty-target: clamp(44px, 11.1cqw, 52px);
+}
+.home-talk .sixty-title {
+  font-size: clamp(22px, 5.54cqw, 30px);
+}
