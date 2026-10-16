@@ -253,6 +253,12 @@ analytics allowlist do not change.
   board is blank." page with a 404 status instead of the host's plain page;
   `/controls` redirects to the Controls page (`vercel.json`, and the app
   itself on any host). Unknown paths never reach analytics (asserted).
+- [PR #95](https://github.com/WaylandP/cipher-and-chalk/pull/95): "Skip
+  to the explanation". On a control page "Skip to content" landed on main
+  before the rail, so the Decode and Explain views were about 28 Tabs away
+  (the find line, the level filters, the families, the controls). A second
+  skip link, shown on focus like the first, goes straight to the control's
+  heading, with its views one Tab away; the rail stays where it is.
 
 ## The Board's features — October 15, 2026
 

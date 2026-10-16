@@ -1,6 +1,7 @@
 import { useEffect, useState, useSyncExternalStore } from 'react'
 import { glossaryTerms } from './data/content'
 import { sitePage } from './state/site-page'
+import { subscribeAddress } from './state/address'
 import { Glossary } from './components/Glossary'
 import { BoardDefs, BoardDust, BoardGround } from './components/board/BoardDefs'
 import { SiteHeader, browseUrl } from './components/board/SiteHeader'
@@ -45,9 +46,17 @@ function subscribePage(listener: () => void) {
 function currentPage() {
   return sitePage(new URL(window.location.href))
 }
+/** Whether a control is on the board: a learn address that is not discovery. */
+function controlOnBoard() {
+  return (
+    sitePage(new URL(window.location.href)) === 'learn' &&
+    new URLSearchParams(window.location.search).get('view') !== 'discover'
+  )
+}
 
 function Application() {
   const page = useSyncExternalStore(subscribePage, currentPage)
+  const onBoard = useSyncExternalStore(subscribeAddress, controlOnBoard)
   const lifted = useLiftedChalk()
   const trayControl = useTrayControl()
   const [keysOpen, setKeysOpen] = useState(false)
@@ -158,6 +167,14 @@ function Application() {
       >
         Skip to content
       </a>
+      {/* A control page: the rail of every control comes before the control
+          itself, so a second skip goes straight to its heading, with the
+          views a Tab away; the rail stays where it is. */}
+      {onBoard && (
+        <a className="skip-link" href="#control-title">
+          Skip to the explanation
+        </a>
+      )}
       <SiteHeader page={page} />
       <main id="main" className="board-main" tabIndex={-1}>
         {page === 'home' && <Home />}
