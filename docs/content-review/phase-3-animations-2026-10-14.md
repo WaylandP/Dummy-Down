@@ -76,3 +76,23 @@ The companion [machine-readable record](phase-3-animation-fingerprints-2026-10-1
 Qualified human content approval and current official-host/applicability verification remain pending. This is not a guarantee of 100% accuracy or organizational readiness. The source provides no universal incident contractual timer trigger; the integrated diagram deliberately does not decide one. The animations remain teaching illustrations rather than formal assessment diagrams or exhaustive objective mappings.
 
 This reviewer did not perform final browser playback, screenshot comparisons, native zoom, actual screen-reader/Safari/iOS acceptance or real learner testing. The prototype’s font fallback and early viewport result do not constitute final design acceptance. Coordinator browser/QA evidence must refer to the actual integrated assets and final commit. No repository files were edited by this reviewer.
+
+## Corrections after the launch audit (2026-10-15)
+
+AI-assisted comparison with the complete guide sections; human review pending.
+
+- **Authorized access:** the requirement diagram said all three paths "need an
+  authorization decision". Users and devices do; a process acting for a user
+  is identified and tied to the authorized user who initiated it (objectives
+  [b] and [e] and the Further Discussion). The example's "approved export
+  process" is now "an export identified as acting for Robin".
+- **Response team:** the example said an isolated site "may require on-site
+  arrangements". The guide says a team "must be physically present", and the
+  24 hours still applies, so the example says both. The takeaway's description
+  drops "contractual clock-start event".
+
+The runtime fingerprints of these two records, the runtime-array fingerprint
+and the file hash of `src/data/visual-explanations.ts` in the
+[machine-readable record](phase-3-animation-fingerprints-2026-10-14.json) are
+recomputed for the corrected text; `src/data/visual-review.test.ts` pins the
+new file hash.

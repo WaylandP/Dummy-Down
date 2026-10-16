@@ -72,3 +72,27 @@ Proposal JSON SHA-256: `f692cdba788e276841fc39fea3aec911a65af38dd109f74aafda0adc
 ## Coordinator integration comparison
 
 Codex `/root` read all nine final drafts, questions and choice explanations against their formal requirements and source determinations on October 14, 2026. Complete PDF sections for IR.L3-3.6.2e and SI.L3-3.14.1e were additionally read directly. The other complete guide sections were read by the source author; this is not a claim of a second full-section reading for those controls. No correction was identified. Fingerprints now bind the integrated content to this record; substantive edits require renewed review. Functional and browser results are recorded separately in the [Phase 3 execution log](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-3-execution-2026-10-14.md). All content remains draft, with qualified human approval pending.
+
+## Corrections after the launch audit (2026-10-15)
+
+An AI-assisted comparison of every activity with its complete guide section
+(human review pending) led to these changes. Each changed expanded activity
+carries a `launchAuditCorrection` note and a new `activityFingerprint` in the
+[machine-readable record](phase-3-activities-2026-10-14.json).
+
+- **AC.L1-b.1.i** (`level-one-authorized-access`): the activity said a process
+  acting for Robin needs its own authorization decision. The guide asks for
+  processes acting on behalf of authorized users to be identified [b] and for
+  access to be limited to them [e], and says automatic processes "should be
+  associated with the user who initiated (authorized) the process". The
+  process step, the question, its correct answer and feedback, the
+  misunderstanding and the plain-English summary now say that.
+- **IR.L3-3.6.2e** (`level-three-response-team-deployment`): the isolated-site
+  step and its correct answer tied the 24 hours only to remote response. They
+  now keep it where "a team must be physically present at the remote facility".
+  The misunderstanding, the first question, one distractor, the
+  team-maintenance step and the timing feedback are in plainer words.
+- **Terms in this lesson:** PE.L1-b.1.ix no longer lists "device" (its devices
+  are keys, locks, combinations and card readers); AU.L2-3.3.4 and IR.L3-3.6.2e
+  no longer list terms the lessons never use ("system boundary", "assessment
+  scope").
