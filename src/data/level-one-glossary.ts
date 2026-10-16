@@ -4,11 +4,13 @@ import { cmmcSourceDocuments } from './cmmc-references'
 const snapshotContext =
   'Teaching definition written for the September 2024 CMMC 2.13 snapshot, not an official definition.'
 
-function guideSource(
+/** A page of a pinned assessment guide, as the glossary cites it. */
+export function guideSource(
   level: 1 | 2,
   pdfPage: number,
   printedPage: number,
   section: string,
+  checkedOn = '2026-10-13',
 ): SourceReference {
   const document = cmmcSourceDocuments.find(
     (source) => source.id === `cmmc-assessment-l${level}-213`,
@@ -22,7 +24,7 @@ function guideSource(
     kind: 'official-publication',
     versionContext:
       `Version ${document.version}, September 2024; PDF page ${pdfPage} ` +
-      `(printed page ${printedPage}). Source checked on 2026-10-13 from the ` +
+      `(printed page ${printedPage}). Source checked on ${checkedOn} from the ` +
       'pinned public PDF mirror. Direct official-host access was blocked; the latest ' +
       'edition and current applicability have not been independently verified.',
   }
@@ -65,6 +67,13 @@ const mediaDiscussion = guideSource(
   28,
   'MP.L1-b.1.vii: Discussion and Further Discussion',
 )
+const publicComponents = guideSource(
+  1,
+  42,
+  38,
+  'SC.L1-b.1.xi: Potential Assessment Considerations',
+  '2026-10-15',
+)
 const boundary = guideSource(1, 38, 34, 'SC.L1-b.1.x')
 const boundaryDiscussion = guideSource(
   1,
@@ -95,7 +104,7 @@ export const levelOneGlossaryTerms: readonly GlossaryTerm[] = [
     id: 'cui',
     title: 'Controlled Unclassified Information (CUI)',
     definition:
-      'Information the Government creates or possesses, or that others create or possess for or on its behalf, where law, regulation or government-wide policy requires or allows an agency to apply safeguards or limits on sharing. CUI excludes classified information and unrelated private information without the government connection described by the rule. These Level 1 examples address Federal Contract Information, a different defined category; Level 1 explanations do not establish that CUI requirements are met.',
+      'Information the Government creates or possesses, or that others create or possess for or on its behalf, that a law, regulation or Government-wide policy requires or permits an agency to handle with safeguarding or dissemination controls. CUI never includes classified information, or a company’s own information that did not come from or for a federal agency. Levels 2 and 3 protect CUI; Level 1 covers Federal Contract Information, a different category.',
     reviewStatus: 'draft',
     versionContext: snapshotContext,
     sources: [cui, introduction],
@@ -131,10 +140,10 @@ export const levelOneGlossaryTerms: readonly GlossaryTerm[] = [
     id: 'publicly-accessible-system',
     title: 'Publicly accessible system',
     definition:
-      'A system the public can reach and use, typically without proving identity, such as a company’s public website. For this control, the concern is company-controlled systems used to post or process information; being online alone does not make every system public.',
+      'A system the public can reach and use, typically without proving identity, such as a company’s public website. AC.L1-b.1.iv is about what a company posts or processes on such systems; SC.L1-b.1.xi asks for every component the public can reach, such as a web server or VPN gateway, to sit on a subnetwork apart from internal networks. Being online alone does not make every system public.',
     reviewStatus: 'draft',
     versionContext: snapshotContext,
-    sources: [publicInformation, publicInformationDiscussion],
+    sources: [publicInformation, publicInformationDiscussion, publicComponents],
   },
   {
     id: 'media',
@@ -185,7 +194,7 @@ export const levelOneGlossaryTerms: readonly GlossaryTerm[] = [
     id: 'assessment-scope',
     title: 'Assessment scope',
     definition:
-      'The systems and other resources included in an assessment. In this Level 1 guide, resources that process, store or transmit Federal Contract Information are in scope. Scope is established for the organization’s environment; the examples in this app do not determine it.',
+      'The systems and other resources included in an assessment, set before it starts. At Level 1, the systems that process, store or transmit Federal Contract Information are in scope. Levels 2 and 3 sort assets into categories; see CMMC Assessment Scope.',
     reviewStatus: 'draft',
     versionContext: snapshotContext,
     sources: [scope],
@@ -203,7 +212,7 @@ export const levelOneGlossaryTerms: readonly GlossaryTerm[] = [
     id: 'system-boundary',
     title: 'System boundary',
     definition:
-      'The division between a system and what is outside it, or between important parts inside it. Communications cross these boundaries. The Level 1 requirement covers external and key internal boundaries, not only the internet connection.',
+      'The division between a system and what is outside it, or between important parts inside it. Communications cross these boundaries. SC.L1-b.1.x covers external and key internal boundaries, not only the internet connection.',
     reviewStatus: 'draft',
     versionContext: snapshotContext,
     sources: [boundary, boundaryDiscussion],

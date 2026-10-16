@@ -45,3 +45,41 @@ Files and SHA-256 digests:
   reachable from the authoring environment to confirm.
 - Definitions are teaching aids written by the project. They are not legal
   interpretations and have not been reviewed by a qualified assessor or counsel.
+
+## Corrections, October 15, 2026
+
+A line-by-line comparison with the texts above found definitions that said
+more or less than their sources. Each was rewritten from the cited text; the
+term identifiers did not change.
+
+| Term                                    | What changed                                                                                                                   | Text it now follows                                                                         |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| Temporary deficiency                    | Said "temporarily not met"; handled in an operational plan of action it is scored MET. Adds the roll-out case.                 | § 170.4(b); § 170.24(b)(1)(ii)                                                              |
+| Specialized Assets                      | Gave the Level 2 treatment as universal. Now gives Levels 1, 2 and 3.                                                          | § 170.19(b)(2)(ii); tables 3 and 5 to § 170.19                                              |
+| SSP                                     | "Assessors use it as the starting point for every assessment" overreached. Required at Levels 2 and 3; recommended at Level 1. | § 170.4(b); Level 2 guide, CA.L2-3.12.4 (PDF p. 217); Level 1 guide, footnote 4 (PDF p. 16) |
+| NIST SP 800-171 DoD Assessment          | Adds that new solicitations and contracts use 252.240-7997 under the 2026 FAR overhaul class deviation.                        | Class Deviation 2026-O0025, Rev. 3, 240.370-5(d)                                            |
+| DIBCAC, SPRS                            | Name the new clause; SPRS cites § 170.22 (affirmations in SPRS) and the award check.                                           | § 170.22(a); Class Deviation 2026-O0025, Rev. 3, 240.371-4(b)                               |
+| CMMC Assessment Scope, Assessment scope | Made consistent: Level 1 is FCI systems; the five categories are Level 2; Level 3 has no CRMA category.                        | § 170.4(b); § 170.19(b)–(d); Level 1 guide, Assessment Scope                                |
+| Contractor Risk Managed Assets          | A Level 2 category that "can, but is not intended to" handle CUI; at Level 3 these are CUI Assets.                             | Tables 3 and 5 to § 170.19                                                                  |
+| ESP                                     | Adds Security Protection Data-only providers (assessed as SPA) and cloud providers holding CUI (FedRAMP via 7012).             | Table 4 to § 170.19(c)(2)(i)                                                                |
+| CMMC Status                             | Adds Final Level 3 and Conditional periods, and that a failed assessment gives no status.                                      | § 170.4(b); DFARS 252.204-7021(a) "Current"                                                 |
+| Self-assessment                         | Adds that Level 1 is repeated every year and that help from a third party is still a self-assessment.                          | § 170.15(a)(1); Level 1 guide, Assessment Scope (PDF p. 6)                                  |
+| DFARS 252.204-7021                      | Systems used on the contract, at the level or higher, and FCI or CUI only on those systems.                                    | DFARS 252.204-7021(d)(1)(i) and (d)(2)                                                      |
+| Where FCI and CUI are defined           | Adds "or dissemination controls", the exclusion for a company's own information, and FAR 4.1901; cites § 170.4(b) first.       | § 170.4(b); FAR 52.204-21(a); 32 CFR 2002.4(h)                                              |
+| CMMC                                    | Names the Department of War, the secondary title newer CMMC documents use.                                                     | Executive Order 14347, sections 1 and 2 (90 FR, September 10, 2025)                         |
+
+The six terms of the first teaching example (access review, account,
+authorized user, device, offboarding, process, in `src/data/glossary.ts`) cited
+only the project's archived README. They now cite the Level 1 guide
+(AC.L1-b.1.i, IA.L1-b.1.v, IA.L1-b.1.vi), the Level 2 guide (PS.L2-3.9.2) and
+the definition of User in § 170.4(b). In `src/data/level-one-glossary.ts`, CUI,
+publicly accessible system and system boundary no longer speak as if every
+reader were on one Level 1 control.
+
+The class deviation was read from the corpus mirror at commit
+`7fc9b1bf9492df6336d763b739e647544252e346`
+(`raw/public/dfars/class-deviation-2026-o0025/r3/general/2026-O0025_Rev3_TAB_A_Deviation_Memo.pdf`,
+SHA-256 `c836278a672909d71c33b3f3e53ee0a951c30ff1f499890c0e96549bd64f230c`).
+Executive Order 14347 was read in the Federal Register text edition on
+2026-10-15. These corrections are AI-assisted and have not been reviewed by a
+qualified assessor.
