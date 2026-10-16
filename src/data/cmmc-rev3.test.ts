@@ -55,6 +55,12 @@ describe('The Rev. 3 map', () => {
       if (row.change === 'withdrawn') {
         expect(row.rev3Title).toBe('Withdrawn')
         expect(row.note).toMatch(/^Withdrawn/)
+        // Where it went, in Rev 3's own words: "incorporated into", "addressed by".
+        const went = row.rev3Text.match(/^(Incorporated into|Addressed by) /)
+        if (went)
+          expect(
+            row.note.startsWith(`Withdrawn; ${went[1]!.toLowerCase()} `),
+          ).toBe(true)
         for (const target of row.into ?? []) {
           expect(row.rev3Text).toContain(target)
           const named = inventory.requirements.find(
