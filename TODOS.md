@@ -23,9 +23,36 @@ already merged into `main`. No completion percentage is implied.
   then removed by the owner on October 15), the timeline, the assessor's three
   words, Home for the stranger (with the
   Controls page's Board pass) and Smudge (first built as Dash) are in, and the
-  CedarPoint story follows. The project's demo lesson keeps its earlier reader
-  inside the Controls page. Anything that adds a fact lives in `src/data/`
-  with a source record under `docs/sources/`.
+  CedarPoint story follows. The first version's demo lesson is gone: its
+  activity is AC.L2-3.1.1's, and its old links open that control. Anything
+  that adds a fact lives in `src/data/` with a source record under
+  `docs/sources/`.
+- **The October 16 audit shipped before the launch.** Ten items, one pull
+  request each, all squash-merged on green CI:
+  [#79](https://github.com/WaylandP/cipher-and-chalk/pull/79) the phone menu
+  and the control tabs on one line,
+  [#90](https://github.com/WaylandP/cipher-and-chalk/pull/90) Practice shows
+  the situation,
+  [#100](https://github.com/WaylandP/cipher-and-chalk/pull/100) the first
+  version's leftovers removed,
+  [#94](https://github.com/WaylandP/cipher-and-chalk/pull/94) a real 404 and
+  `/controls`,
+  [#89](https://github.com/WaylandP/cipher-and-chalk/pull/89) "CMMC in sixty
+  seconds" on Home,
+  [#99](https://github.com/WaylandP/cipher-and-chalk/pull/99) the Timeline
+  shows what is on hold,
+  [#95](https://github.com/WaylandP/cipher-and-chalk/pull/95) "Skip to the
+  explanation",
+  [#96](https://github.com/WaylandP/cipher-and-chalk/pull/96) 44px targets,
+  [#97](https://github.com/WaylandP/cipher-and-chalk/pull/97) long
+  explanations fit at 1280×800 and
+  [#98](https://github.com/WaylandP/cipher-and-chalk/pull/98) the site's own
+  words; with [#93](https://github.com/WaylandP/cipher-and-chalk/pull/93) and
+  [#101](https://github.com/WaylandP/cipher-and-chalk/pull/101), the unit
+  tests' longer waits for a lazy page and a replayed first step. Left for
+  later: the old reader's rules in `src/styles.css` and the `set-catalog` /
+  `back-to-discovery` intents nothing dispatches, and the frameworks file's
+  "simplified teaching example" description, which renders nowhere.
 - **Phase 3 engineering is shipped.** All five scoped increments are merged with
   successful exact-head CI and automatic production deployments. The
   [execution log](https://github.com/WaylandP/cipher-and-chalk/blob/archive/ai-review-records/docs/reviews/phase-3-execution-2026-10-14.md) records evidence;
@@ -80,8 +107,9 @@ already merged into `main`. No completion percentage is implied.
 - **P2: review the earlier focused learning milestone.** Three Level 1 activities now
   cover authorized access, public information and media disposal with fictional
   scenarios, common misunderstandings, nine explained questions and three
-  accessible diagrams. The original demo adds three questions; 14 sourced
-  vocabulary additions bring the glossary to 20 draft terms. Seek qualified review
+  accessible diagrams. AC.L2-3.1.1's activity, once the demo, adds three
+  questions; 14 sourced vocabulary additions bring the glossary to 20 draft
+  terms. Seek qualified review
   and real learner feedback before expanding. These drafts do not establish
   catalog-wide practice coverage; do not introduce compliance scores or real evidence.
 - **P2: assessment-objective review and learner feedback.** Review the
