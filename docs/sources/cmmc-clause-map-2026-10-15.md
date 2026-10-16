@@ -56,6 +56,19 @@ table published by DoD. The rule applied to every control:
 
 118 controls are mapped.
 
+## Corrections after the launch audit (2026-10-15)
+
+`CM.L2-3.4.6` had its letters on the wrong halves of the sentence: "only
+essential capabilities" carried [a] and "configuring organizational systems"
+[b]. Objective [a] restates "the principle of least functionality" and [b]
+"configuring … to provide only essential capabilities", so those two clauses
+now carry them. The audit's other clause-map notes (`AC.L1-b.1.iv`,
+`AC.L2-3.1.3`, `AC.L2-3.1.8`, `AC.L2-3.1.22`, `CA.L2-3.12.2`, `CA.L2-3.12.4`,
+`RA.L2-3.11.2`, `SC.L3-3.13.4e`) ask for readings this record's rules decline
+on purpose: no guessed clause for an objective that elaborates beyond the
+sentence, one axis per sentence, and no underline for a whole-sentence
+clause. They stay as they are.
+
 ## Limits
 
 - The map is a teaching aid. It does not change, reorder or interpret any

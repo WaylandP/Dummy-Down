@@ -106,4 +106,18 @@ describe('The clause map', () => {
       },
     ])
   })
+
+  it('gives each objective the clause it restates', () => {
+    // [a] essential capabilities defined on the principle of least
+    // functionality; [b] configured to provide only those capabilities.
+    expect(
+      clauseMapFor(pinned.find((control) => control.id === 'CM.L2-3.4.6')!),
+    ).toEqual([
+      { text: 'Employ the principle of least functionality', letters: ['a'] },
+      {
+        text: 'configuring organizational systems to provide only essential capabilities',
+        letters: ['b'],
+      },
+    ])
+  })
 })
