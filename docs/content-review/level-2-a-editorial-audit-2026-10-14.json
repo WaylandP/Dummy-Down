@@ -59,12 +59,6 @@
           "proposedText": "CedarPoint approves Maya's account, the automated job working for her team, and a company laptop. A visitor's laptop and an unapproved printer cannot connect simply because they are nearby.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 22 / printed 14 section; system access is limited to authorized devices (including other systems)",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 22,
-            "printedPage": 14,
-            "quotedBasis": "system access is limited to authorized devices (including other systems)"
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -426,12 +420,6 @@
           "proposedText": "Identify the applicable notice requirements and display appropriate notices at relevant human logon interfaces. The guide discusses banners and, where necessary, printed notices; it does not require a human-facing banner for interfaces with no human logon. It also asks whether appropriate notices are displayed where paper-based CUI is stored and processed.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 42 / printed 34 section; Are appropriate notices displayed in areas where paper-based CUI is stored and processed [b]?",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 42,
-            "printedPage": 34,
-            "quotedBasis": "Are appropriate notices displayed in areas where paper-based CUI is stored and processed [b]?"
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -529,12 +517,6 @@
           "proposedText": "Trace defined termination conditions to demonstrated automatic behavior. Keep this separate from the inactivity lock requirement and avoid inventing a universal duration; for minimum values the guide points to the DoD Cybersecurity FAQ (Q53.2).",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 46 / printed 38 section; Review DoD Cybersecurity FAQ Q53.2 for information on minimum values.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 46,
-            "printedPage": 38,
-            "quotedBasis": "Review DoD Cybersecurity FAQ Q53.2 for information on minimum values."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -854,12 +836,6 @@
           "proposedText": "Protect wireless access in two ways: verify who or what is connecting, and encrypt the connection. A wireless network that asks for no proof of identity, or one that sends readable information over the air, does not meet this requirement; the guide says open authentication must not be used.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 60 / printed 52 section; Open authentication must not be used because it authenticates any user and lacks security capabilities.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 60,
-            "printedPage": 52,
-            "quotedBasis": "Open authentication must not be used because it authenticates any user and lacks security capabilities."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -1664,12 +1640,6 @@
           "proposedText": "Protect audit information, such as audit records, log settings and reports, and the tools that create or manage it from unauthorized access, changes and deletion. An attacker who can alter the record of their actions can make an investigation much harder, even if logging originally worked.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 95 / printed 87 section; Audit information includes all information (e.g., audit records, audit log settings, and audit reports) needed to successfully audit system activity.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 95,
-            "printedPage": 87,
-            "quotedBasis": "Audit information includes all information (e.g., audit records, audit log settings, and audit reports) needed to successfully audit system activity."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -1841,12 +1811,6 @@
           "proposedText": "CedarPoint defines approved workstation security settings and applies them to its project devices. If one application needs a deviation, the team reviews, documents and approves it instead of quietly weakening settings for everyone.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 102 / printed 94 section; Any required deviations from the baseline are reviewed, documented, and approved.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 102,
-            "printedPage": 94,
-            "quotedBasis": "Any required deviations from the baseline are reviewed, documented, and approved."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -2136,12 +2100,6 @@
           "proposedText": "Choose and enforce a policy for which software can run. One approach allows software except specifically denied items; another denies software except specifically approved items. The requirement accepts either; the guide calls the second, whitelisting, the stronger of the two.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 116 / printed 108 section; Whitelisting is the stronger of the two policies for restricting software program execution.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 116,
-            "printedPage": 108,
-            "quotedBasis": "Whitelisting is the stronger of the two policies for restricting software program execution."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -2239,12 +2197,6 @@
           "proposedText": "Redacted user, delegated-process, and device identity records.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 120 / printed 112 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 120,
-            "printedPage": 112,
-            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -2448,12 +2400,6 @@
           "proposedText": "A redacted design review or controlled replay-resistance demonstration with test credentials.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 128 / printed 120 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 128,
-            "printedPage": 120,
-            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -2507,12 +2453,6 @@
           "proposedText": "Identifier-assignment rules and redacted reservation or retirement records.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 130 / printed 122 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 130,
-            "printedPage": 122,
-            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -2566,12 +2506,6 @@
           "proposedText": "Redacted inactivity findings and corresponding identifier-disable records.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 132 / printed 124 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 132,
-            "printedPage": 124,
-            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -2806,12 +2740,6 @@
           "proposedText": "Redacted credential-storage design and relevant protection settings.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 140 / printed 132 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 140,
-            "printedPage": 132,
-            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -2878,12 +2806,6 @@
           "proposedText": "Interface demonstrations using nonsensitive test authentication information.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 142 / printed 134 section; Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 142,
-            "printedPage": 134,
-            "quotedBasis": "Editorial: the MP explanations use \"redacted\" for evidence with sensitive parts removed."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],

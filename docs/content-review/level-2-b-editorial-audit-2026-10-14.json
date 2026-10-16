@@ -290,12 +290,6 @@
           "proposedText": "Connect the equipment's off-site maintenance release to the handling of every relevant CUI-bearing component. The objective speaks of equipment to be removed from organizational spaces, so sanitization happens before it leaves.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 156 / printed 148 section; [a] equipment to be removed from organizational spaces for off-site maintenance is sanitized of any CUI.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 156,
-            "printedPage": 148,
-            "quotedBasis": "[a] equipment to be removed from organizational spaces for off-site maintenance is sanitized of any CUI."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -415,12 +409,6 @@
           "proposedText": "Explore how authorization status determines supervision during maintenance. Escorting can be part of supervising maintenance personnel, but general physical-access and visitor-escort rules do not by themselves show that maintenance activities were supervised.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 163 / printed 155 section; Are there processes for escorting and supervising maintenance personnel without required access authorization",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 163,
-            "printedPage": 155,
-            "quotedBasis": "Are there processes for escorting and supervising maintenance personnel without required access authorization"
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -563,12 +551,6 @@
           "proposedText": "Choose methods suited to the media and its destination: sanitize or destroy before disposal, and sanitize before release for reuse. The guide points to NIST SP 800-88 for sanitization methods. Consider embedded storage in printers and network equipment, as well as familiar drives and paper records.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 169 / printed 161 section; NIST SP 800-88 provides guidance on media sanitization.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 169,
-            "printedPage": 161,
-            "quotedBasis": "NIST SP 800-88 provides guidance on media sanitization."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         },
         {
@@ -577,12 +559,6 @@
           "proposedText": "How does the organization make sure media is sanitized or destroyed before disposal, and sanitized before release for reuse?",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 169 / printed 161 section; Sanitize or destroy system media containing CUI before disposal or release for reuse.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 169,
-            "printedPage": 161,
-            "quotedBasis": "Sanitize or destroy system media containing CUI before disposal or release for reuse."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -962,12 +938,6 @@
           "proposedText": "At fictional CedarPoint, the designated personnel team completes the applicable screening process before an engineer receives authorized access to a system containing CUI. Granting the access first would reverse that sequence.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 183 / printed 175 section; Screen individuals prior to authorizing access to organizational systems containing CUI.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 183,
-            "printedPage": 175,
-            "quotedBasis": "Screen individuals prior to authorizing access to organizational systems containing CUI."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         },
         {
@@ -976,12 +946,6 @@
           "proposedText": "Connect personnel screening status to access authorization and provisioning. The screening criteria must reflect applicable rules and the access required for the position, not one investigation type applied to everyone.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 183 / printed 175 section; Screen individuals prior to authorizing access to organizational systems containing CUI.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 183,
-            "printedPage": 175,
-            "quotedBasis": "Screen individuals prior to authorizing access to organizational systems containing CUI."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -1027,12 +991,6 @@
           "proposedText": "At fictional CedarPoint, Sam transfers off a CUI project. The company adjusts system access and credentials and retrieves relevant property as appropriate, so Sam does not keep access from the former role that is no longer needed.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 185 / printed 177 section; [b] system access and credentials are terminated consistent with personnel actions such as termination or transfer",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 185,
-            "printedPage": 177,
-            "quotedBasis": "[b] system access and credentials are terminated consistent with personnel actions such as termination or transfer"
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         },
         {
@@ -1041,12 +999,6 @@
           "proposedText": "Trace personnel actions to the system protections they trigger. Objectives [a] and [b] cover ending system access and credentials with terminations and transfers; [c] looks at protecting the system during and after transfers.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 185 / printed 177 section; [c] the system is protected during and after personnel transfer actions.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 185,
-            "printedPage": 177,
-            "quotedBasis": "[c] the system is protected during and after personnel transfer actions."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -1403,12 +1355,6 @@
           "proposedText": "How does the organization show that selected remediation actions were completed, and how are vulnerabilities it decided not to remediate tracked and revisited?",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 206 / printed 198 section; Track all vulnerability remediation to ensure completion; also track vulnerabilities that you have determined not to remediate.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 206,
-            "printedPage": 198,
-            "quotedBasis": "Track all vulnerability remediation to ensure completion; also track vulnerabilities that you have determined not to remediate."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -1454,12 +1400,6 @@
           "proposedText": "A product configuration screenshot alone may not show effectiveness; vulnerability scanning is useful but does not assess every safeguard, so it cannot replace the control assessment.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 208 / printed 200 section; Periodically assess the security controls in organizational systems to determine if the controls are effective in their application.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 208,
-            "printedPage": 200,
-            "quotedBasis": "Periodically assess the security controls in organizational systems to determine if the controls are effective in their application."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -1542,12 +1482,6 @@
           "proposedText": "Review how monitoring supports continued control effectiveness, and distinguish ongoing monitoring from a single periodic assessment.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 214 / printed 206 section; Monitor security controls on an ongoing basis to ensure the continued effectiveness of the controls.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 214,
-            "printedPage": 206,
-            "quotedBasis": "Monitor security controls on an ongoing basis to ensure the continued effectiveness of the controls."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -1593,12 +1527,6 @@
           "proposedText": "Fictional CedarPoint documents which services handle CUI, how safeguards are implemented, and which outside services connect to the system. The team reviews and updates the plan on its defined schedule, at least once a year, and also when the environment changes.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 216 / printed 208 section; Defined Frequency of Updates: at least annually.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 216,
-            "printedPage": 208,
-            "quotedBasis": "Defined Frequency of Updates: at least annually."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         },
         {
@@ -1607,12 +1535,6 @@
           "proposedText": "Does the plan describe boundaries, environment, implementation, system relationships, and the requirements approved as not applicable?",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 216 / printed 208 section; the security requirements identified and approved by the designated authority as non-applicable are identified",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 216,
-            "printedPage": 208,
-            "quotedBasis": "the security requirements identified and approved by the designated authority as non-applicable are identified"
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -1658,12 +1580,6 @@
           "proposedText": "Review identified boundaries and all three communication functions at them: monitoring, control and protection.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 219 / printed 211 section; Monitor, control, and protect communications",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 219,
-            "printedPage": 211,
-            "quotedBasis": "Monitor, control, and protect communications"
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -1813,12 +1729,6 @@
           "proposedText": "Prevent information from passing between users or processes through reused shared system resources, whether by accident or through unauthorized access. A resource handed to its next user should not expose information from the previous user.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 227 / printed 219 section; Prevent unauthorized and unintended information transfer via shared system resources.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 227,
-            "printedPage": 219,
-            "quotedBasis": "Prevent unauthorized and unintended information transfer via shared system resources."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
@@ -1952,12 +1862,6 @@
           "proposedText": "Control remote-device routing and connection configuration to prevent split tunneling. The guide discusses disabling split-tunnel settings, preventing users from readily changing them, and detecting split tunneling (or settings that allow it) and refusing the connection when it is present.",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 233 / printed 225 section; by the detection of split tunneling (or of configuration settings that allow split tunneling) in the remote device, and by prohibiting the connection if the remote device is using split tunneling.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 233,
-            "printedPage": 225,
-            "quotedBasis": "by the detection of split tunneling (or of configuration settings that allow split tunneling) in the remote device, and by prohibiting the connection if the remote device is using split tunneling."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         },
         {
@@ -1966,12 +1870,6 @@
           "proposedText": "How are prohibited settings or connection behavior detected and blocked?",
           "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 233 / printed 225 section; and by prohibiting the connection if the remote device is using split tunneling.",
           "implementationStatus": "applied-2026-10-15-launch-audit",
-          "sourceCitation": {
-            "sourceId": "cmmc-assessment-l2-213",
-            "pdfPage": 233,
-            "printedPage": 225,
-            "quotedBasis": "and by prohibiting the connection if the remote device is using split tunneling."
-          },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
