@@ -3,7 +3,7 @@
     "id": "AC.L1-b.1.i",
     "beginner": {
       "meaning": "Identify the people, software acting for them, and devices allowed into a system, then limit access to those approved users, processes and devices. A list of approved names helps, but the system must also keep unapproved access out.",
-      "example": "At fictional Cedar Point Design, an employee requests a new network printer. IT records the approved printer before allowing it to connect, just as it records an approved employee account."
+      "example": "At fictional CedarPoint, an employee requests a new network printer. IT records the approved printer before allowing it to connect, just as it records an approved employee account."
     },
     "technical": {
       "focus": "Map approved user, process and device identities to enforced access decisions. Directory accounts cover people; service identities and device admission controls address other paths into the system.",
@@ -26,7 +26,7 @@
     "id": "AC.L1-b.1.ii",
     "beginner": {
       "meaning": "Getting into a system and being allowed to do something inside it are different decisions. Give people only the actions their approved role permits, such as reading a document or changing a record.",
-      "example": "At Cedar Point Design, a reviewer can read contract records but cannot delete them. An approved records manager has a different set of permissions for that work."
+      "example": "At CedarPoint, a reviewer can read contract records but cannot delete them. An approved records manager has a different set of permissions for that work."
     },
     "technical": {
       "focus": "Define permitted transactions and functions, then enforce them at the application or data layer. Role-based access can group permissions, but the mapping must reflect actual responsibilities.",
@@ -49,7 +49,7 @@
     "id": "AC.L1-b.1.iii",
     "beginner": {
       "meaning": "Know which outside systems your organization connects to or uses, verify those connections and uses, and set limits on them. Outside can mean a personal laptop, a cloud service, or even another company-owned network beyond this system’s defined scope.",
-      "example": "Cedar Point Design approves one collaboration service for contract work. A teammate’s personal file-sharing account is not automatically approved just because it is convenient."
+      "example": "CedarPoint approves one collaboration service for contract work. A teammate’s personal file-sharing account is not automatically approved just because it is convenient."
     },
     "technical": {
       "focus": "Inventory external connections and uses, verify their authorization, and apply restrictions appropriate to each relationship. Network filtering, service configuration and device policies can address different connection paths.",
@@ -72,7 +72,7 @@
     "id": "AC.L1-b.1.iv",
     "beginner": {
       "meaning": "Public websites and other publicly accessible systems need controls that keep nonpublic government contract information from being posted or processed there. Know who can publish or process material, review it before posting, check existing content, and remove and address improper postings.",
-      "example": "Before Cedar Point Design publishes a project announcement, an approved reviewer checks the draft for Federal Contract Information. The website editor publishes only the cleared material."
+      "example": "Before CedarPoint publishes a project announcement, an approved reviewer checks the draft for Federal Contract Information. The website editor publishes only the cleared material."
     },
     "technical": {
       "focus": "Limit permissions to post or process information on publicly accessible systems and build content review into release workflows. Also check already published content and define removal and escalation steps when protected information appears.",
@@ -95,7 +95,7 @@
     "id": "IA.L1-b.1.v",
     "beginner": {
       "meaning": "Give users, software acting for users, and devices recognizable identities. Identification answers “which one is this?” It supplies the names that access decisions and identity checks can work with.",
-      "example": "Cedar Point Design gives its employee and backup software recognizable account names. It also links the printer’s identifier used during connection to its equipment record, so the team can tell which device is accessing the system."
+      "example": "CedarPoint gives its employee and backup software recognizable account names. It also links the printer’s identifier used during connection to its equipment record, so the team can tell which device is accessing the system."
     },
     "technical": {
       "focus": "Keep identities distinguishable across people, delegated processes and devices. Directory entries, service identities and device identifiers should map back to the entity they represent.",
@@ -118,7 +118,7 @@
     "id": "IA.L1-b.1.vi",
     "beginner": {
       "meaning": "Check that a person, process or device is who it claims to be before giving it system access. A username is a claim; authentication is the check supporting that claim.",
-      "example": "Cedar Point Design verifies its printer’s identity before letting it connect to the company system. The administrator also signs in before changing printer settings; that sign-in verifies the person, not the printer."
+      "example": "CedarPoint verifies its printer’s identity before letting it connect to the company system. The administrator also signs in before changing printer settings; that sign-in verifies the person, not the printer."
     },
     "technical": {
       "focus": "Identify the authentication mechanism for each access path, including service and device connections. Passwords, certificates and other mechanisms serve different contexts; verify that checks occur before access.",
@@ -141,7 +141,7 @@
     "id": "MP.L1-b.1.vii",
     "beginner": {
       "meaning": "Before disposing of media containing Federal Contract Information, sanitize it or destroy it. Sanitizing means removing the information so it cannot be retrieved or reconstructed. Before releasing media for reuse, sanitize it. Media includes paper and digital storage, not only laptop drives.",
-      "example": "Cedar Point Design retires a USB drive used for Federal Contract Information. It follows its selected sanitization process and checks the result before considering the drive available for reuse."
+      "example": "CedarPoint retires a USB drive used for Federal Contract Information. It follows its selected sanitization process and checks the result before considering the drive available for reuse."
     },
     "technical": {
       "focus": "Identify media containing FCI and choose a sanitization or destruction method suited to the media and intended disposition. Recording the method and outcome is one practical way to show it happened.",
@@ -164,7 +164,7 @@
     "id": "PE.L1-b.1.viii",
     "beginner": {
       "meaning": "In facility areas not designated for public access, limit physical access to systems, equipment and the spaces where they operate to approved people. A network password cannot protect a printer tray, server cabinet or workstation someone can physically reach.",
-      "example": "Cedar Point Design places its contract printer inside a staff-only work area and keeps the equipment room locked. Staff permissions identify who may enter each area."
+      "example": "CedarPoint places its contract printer inside a staff-only work area and keeps the equipment room locked. Staff permissions identify who may enter each area."
     },
     "technical": {
       "focus": "Define authorized individuals and apply physical controls appropriate to systems, equipment and operating environments. The guide applies this requirement to facility areas not designated publicly accessible. Badges, keys and equipment placement address different ways someone could reach information or hardware.",
@@ -187,7 +187,7 @@
     "id": "PE.L1-b.1.ix",
     "beginner": {
       "meaning": "Keep visitors accompanied and their activity monitored, retain records of physical access, and know who holds access devices such as keys and badges. These activities help control entry after a lock is installed.",
-      "example": "At Cedar Point Design, a technician signs in, receives a visitor badge and is escorted to the printer. When an employee leaves, their assigned access card is recovered or disabled."
+      "example": "At CedarPoint, a technician signs in, receives a visitor badge and is escorted to the printer. When an employee leaves, their assigned access card is recovered or disabled."
     },
     "technical": {
       "focus": "Combine visitor handling, physical-access logging and access-device lifecycle management. Manual logs or electronic systems can support these functions when they reflect how the facility actually operates.",
@@ -210,7 +210,7 @@
     "id": "SC.L1-b.1.x",
     "beginner": {
       "meaning": "Know where communications cross into, out of, and between important parts of your systems. At those boundaries, watch the traffic, limit it and protect it rather than letting everything communicate freely.",
-      "example": "Cedar Point Design controls internet traffic at its network edge and separately restricts traffic between its contract-work network and its development lab. Both boundaries matter."
+      "example": "CedarPoint controls internet traffic at its network edge and separately restricts traffic between its contract-work network and its development lab. Both boundaries matter."
     },
     "technical": {
       "focus": "Define external and key internal boundaries, then map monitoring, control and protection mechanisms to each. Firewalls, proxies and segmentation controls are possible tools, depending on the architecture.",
@@ -233,7 +233,7 @@
     "id": "SC.L1-b.1.xi",
     "beginner": {
       "meaning": "Put publicly reachable systems on networks separated from the internal environment. The public-facing website should not provide an easy path into the systems where employees do their private work.",
-      "example": "Cedar Point Design hosts its public site in a separate network segment. A compromise of that site should not automatically grant a connection to the internal contract file server."
+      "example": "CedarPoint hosts its public site in a separate network segment. A compromise of that site should not automatically grant a connection to the internal contract file server."
     },
     "technical": {
       "focus": "Identify public components and separate their subnetworks physically or logically from internal networks. A demilitarized zone (DMZ) is a separated network area for public-facing services; separated cloud infrastructure can also support this architecture.",
@@ -256,7 +256,7 @@
     "id": "SI.L1-b.1.xii",
     "beginner": {
       "meaning": "Find system flaws, report them to the responsible people, and correct them within defined time frames for each step. This includes ordinary software and firmware, the software built into equipment such as a router. Finding a problem is not the same as fixing it.",
-      "example": "Cedar Point Design learns that its router has a security flaw. The team records it, reports it to the owner and schedules a tested fix within its defined correction time frame."
+      "example": "CedarPoint learns that its router has a security flaw. The team records it, reports it to the owner and schedules a tested fix within its defined correction time frame."
     },
     "technical": {
       "focus": "Build a flaw-management process covering identification, reporting and correction. Vendor notices, vulnerability detection, patch testing and remediation tracking can support those stages without being interchangeable.",
@@ -279,7 +279,7 @@
     "id": "SI.L1-b.1.xiii",
     "beginner": {
       "meaning": "Place protection against malicious software where it can reduce the threat to your systems. Malicious code includes software that steals information, damages files or locks them for ransom.",
-      "example": "Cedar Point Design protects its managed workstations and examines where emailed files enter its environment. It chooses protection locations based on those paths rather than assuming one protected laptop covers everything."
+      "example": "CedarPoint protects its managed workstations and examines where emailed files enter its environment. It chooses protection locations based on those paths rather than assuming one protected laptop covers everything."
     },
     "technical": {
       "focus": "Identify appropriate protection locations and deploy mechanisms suited to the platforms and entry points. Endpoint anti-malware and gateway protection are examples; their coverage and operating state need attention.",
@@ -302,7 +302,7 @@
     "id": "SI.L1-b.1.xiv",
     "beginner": {
       "meaning": "Keep malicious-software protection current when new releases become available. Protection that never receives updates may miss threats it was not prepared to recognize or handle.",
-      "example": "Cedar Point Design’s security tool normally updates automatically. An administrator notices a laptop has missed updates while offline and resolves the problem before treating its protection as current."
+      "example": "CedarPoint’s security tool normally updates automatically. An administrator notices a laptop has missed updates while offline and resolves the problem before treating its protection as current."
     },
     "technical": {
       "focus": "Manage updates to malicious-code protection mechanisms, including the applicable detection content and software releases. Monitor update failures rather than relying only on an enabled automatic-update setting.",
@@ -325,7 +325,7 @@
     "id": "SI.L1-b.1.xv",
     "beginner": {
       "meaning": "Scan systems periodically for malicious software, and check files arriving from outside as they are downloaded, opened or run. Outside sources include USB drives as well as internet downloads. A scheduled scan and an immediate file check serve different purposes.",
-      "example": "Cedar Point Design schedules regular workstation scans. When an employee downloads an external file, real-time protection checks it at the point of use instead of waiting for the next scheduled scan."
+      "example": "CedarPoint schedules regular workstation scans. When an employee downloads an external file, real-time protection checks it at the point of use instead of waiting for the next scheduled scan."
     },
     "technical": {
       "focus": "Define the frequency of periodic malicious-code scans and configure real-time inspection for external-source files. Confirm these capabilities operate on relevant systems rather than confusing them with vulnerability scanning.",
@@ -348,7 +348,7 @@
     "id": "AC.L3-3.1.2e",
     "beginner": {
       "meaning": "For this Level 3 requirement, resources accessing systems must be owned, provisioned or issued by the organization. Provisioned means the organization exercises control; outright ownership is not the only permitted relationship.",
-      "example": "Cedar Point Design permits access from a laptop it configures under an approved agreement. An employee’s unrelated personal laptop is not treated as equivalent simply because the employee has a valid password."
+      "example": "CedarPoint permits access from a laptop it configures under an approved agreement. An employee’s unrelated personal laptop is not treated as equivalent simply because the employee has a valid password."
     },
     "technical": {
       "focus": "Identify the organization-controlled information resources and enforce that boundary in access paths. Device management, provisioning records and access policies can connect a resource’s status to its permitted use.",
@@ -371,7 +371,7 @@
     "id": "AC.L3-3.1.3e",
     "beginner": {
       "meaning": "A security domain is an area with its own protection rules. When information moves between connected domains, use a controlled transfer solution so that the connection does not bypass those rules.",
-      "example": "Cedar Point Design uses an approved transfer gateway between its protected work environment and another business network. Staff do not replace that route with an unrestricted shared folder."
+      "example": "CedarPoint uses an approved transfer gateway between its protected work environment and another business network. Staff do not replace that route with an unrestricted shared folder."
     },
     "technical": {
       "focus": "Identify inter-domain information flows and define secure transfer solutions for them. Configure allowed directions, destinations and content handling according to the organization’s security-domain design.",
@@ -394,7 +394,7 @@
     "id": "AT.L3-3.2.1e",
     "beginner": {
       "meaning": "This Level 3 training goes beyond naming common scams. People learn to recognize and respond to manipulation, persistent attackers, breaches and suspicious behavior, with training at hire, after a significant cyber event and at least annually.",
-      "example": "Cedar Point Design updates its training after a significant account compromise. Staff practice recognizing the new warning signs and learn where to report them instead of relying on last year’s slides."
+      "example": "CedarPoint updates its training after a significant account compromise. Staff practice recognizing the new warning signs and learn where to report them instead of relying on last year’s slides."
     },
     "technical": {
       "focus": "Build training around the specified threat categories and reporting or response actions. Track delivery triggers and revise content at least annually or when significant threat changes occur.",
@@ -417,7 +417,7 @@
     "id": "AT.L3-3.2.2e",
     "beginner": {
       "meaning": "People learn by practicing realistic situations, not only watching a presentation. This Level 3 requirement includes exercises for all users, shaped by their roles, and feedback for participants and their supervisors.",
-      "example": "Cedar Point Design gives office staff a suspicious-message exercise and administrators a scenario involving misuse of privileged access. Each group receives feedback on its decisions and supervisors learn where support is needed."
+      "example": "CedarPoint gives office staff a suspicious-message exercise and administrators a scenario involving misuse of privileged access. Each group receives feedback on its decisions and supervisors learn where support is needed."
     },
     "technical": {
       "focus": "Connect practical exercises to current threats and the responsibilities of general, specialized and privileged users. Plan feedback so results improve skills rather than becoming unexplained scores.",
@@ -440,7 +440,7 @@
     "id": "CM.L3-3.4.1e",
     "beginner": {
       "meaning": "Have a trusted place and source for the system components the organization approves and actually uses. It should support knowing where a component came from and who is accountable for it.",
-      "example": "Cedar Point Design deploys software from its controlled repository instead of a teammate’s downloaded copy. The repository records the approved version and its trusted origin before deployment."
+      "example": "CedarPoint deploys software from its controlled repository instead of a teammate’s downloaded copy. The repository records the approved version and its trusted origin before deployment."
     },
     "technical": {
       "focus": "Establish and maintain an authoritative source and repository for approved and implemented components. Integrity checks, controlled changes and traceable handling help keep that source trustworthy over time.",
@@ -463,7 +463,7 @@
     "id": "CM.L3-3.4.2e",
     "beginner": {
       "meaning": "Use automated checks to spot components that are unauthorized or configured incorrectly. After detection, remove them or restrict them in a quarantine or remediation network while the problem is addressed.",
-      "example": "Cedar Point Design’s checks detect a laptop with an unexpected configuration. Its access is restricted to a repair environment while the administrator investigates and restores the approved setup."
+      "example": "CedarPoint’s checks detect a laptop with an unexpected configuration. Its access is restricted to a repair environment while the administrator investigates and restores the approved setup."
     },
     "technical": {
       "focus": "Deploy automated detection against approved configuration and component expectations. Define the subsequent removal, quarantine or remediation action; detection can be automated while some corrective work remains manual.",
@@ -486,7 +486,7 @@
     "id": "CM.L3-3.4.3e",
     "beginner": {
       "meaning": "Use automated tools to discover and manage the components in your systems. The inventory needs to stay current, complete, accurate and available to the people who use it, rather than becoming an old spreadsheet.",
-      "example": "Cedar Point Design’s inventory tools notice a newly connected server and its installed software. IT reconciles that finding with the approved deployment instead of waiting for the next manual list update."
+      "example": "CedarPoint’s inventory tools notice a newly connected server and its installed software. IT reconciles that finding with the approved deployment instead of waiting for the next manual list update."
     },
     "technical": {
       "focus": "Combine discovery and management capabilities with inventory reconciliation. Agents, network observations and management platforms can expose different component attributes and coverage gaps.",
@@ -509,7 +509,7 @@
     "id": "IA.L3-3.5.1e",
     "beginner": {
       "meaning": "Where possible, systems should verify each other before connecting, using cryptographic checks that resist reuse of a captured exchange. Both sides checking identity is different from only checking the server.",
-      "example": "Cedar Point Design configures a service connection so the client and server each present trusted credentials. An attacker cannot obtain a new accepted connection simply by replaying an old exchange."
+      "example": "CedarPoint configures a service connection so the client and server each present trusted credentials. An attacker cannot obtain a new accepted connection simply by replaying an old exchange."
     },
     "technical": {
       "focus": "Define the systems and components involved and select bidirectional, cryptographically based, replay-resistant authentication. Mutual TLS or appropriately configured network authentication can be possible approaches.",
@@ -532,7 +532,7 @@
     "id": "IA.L3-3.5.3e",
     "beginner": {
       "meaning": "Do not let an unknown or untrusted component connect without a recognized basis for trust. The requirement names being known, authenticated, properly configured or in a trust profile as possible conditions.",
-      "example": "Cedar Point Design restricts a newly discovered device until its admission checks establish an accepted trust condition. A network socket alone does not make the device welcome."
+      "example": "CedarPoint restricts a newly discovered device until its admission checks establish an accepted trust condition. A network socket alone does not make the device welcome."
     },
     "technical": {
       "focus": "Identify components meeting the stated trust conditions and the mechanisms that prohibit other connections. Automated posture checks, conditional access and manual procedures are possible approaches.",
@@ -555,7 +555,7 @@
     "id": "IR.L3-3.6.1e",
     "beginner": {
       "meaning": "A security operations center is a capability for watching and responding to suspicious activity. This Level 3 requirement calls for it to operate 24/7, while allowing remote or on-call staff.",
-      "example": "Cedar Point Design uses a provider for overnight monitoring and a documented on-call arrangement for its own team. An alert at midnight has an available responder rather than waiting for the next office day."
+      "example": "CedarPoint uses a provider for overnight monitoring and a documented on-call arrangement for its own team. An alert at midnight has an available responder rather than waiting for the next office day."
     },
     "technical": {
       "focus": "Establish and maintain continuous security operations coverage, including detection, notification and available response staff. Physical, virtual, internal and provider-supported arrangements can be appropriate designs.",
@@ -578,7 +578,7 @@
     "id": "IR.L3-3.6.2e",
     "beginner": {
       "meaning": "Have an established incident response team that the organization can deploy within 24 hours. Deployment means making the team able to act; it can involve remote access when that supports the response.",
-      "example": "When Cedar Point Design discovers a serious incident, its response coordinator activates the team. A remote responder can investigate immediately, while a physically isolated site has a plan for on-site access."
+      "example": "When CedarPoint discovers a serious incident, its response coordinator activates the team. A remote responder can investigate immediately, while a physically isolated site has a plan for on-site access."
     },
     "technical": {
       "focus": "Maintain a deployable response capability with defined roles, contact paths, access and equipment. Plan remote and physical deployment around the environments the team must handle.",
@@ -601,7 +601,7 @@
     "id": "PS.L3-3.9.2e",
     "beginner": {
       "meaning": "When information raises concerns about someone’s ability to safeguard protected information, protect the systems they can access. The response should follow a defined organizational process rather than treating a rumor as an automatic verdict.",
-      "example": "Cedar Point Design receives a credible report of unauthorized disclosure. Appropriate personnel review the concern, identify the affected access and apply protective measures under the organization’s policy."
+      "example": "CedarPoint receives a credible report of unauthorized disclosure. Appropriate personnel review the concern, identify the affected access and apply protective measures under the organization’s policy."
     },
     "technical": {
       "focus": "Define adverse information, identify people with CUI access and map their system access. Establish coordinated review and protective actions such as increased monitoring or access restriction where appropriate.",
@@ -624,7 +624,7 @@
     "id": "RA.L3-3.11.1e",
     "beginner": {
       "meaning": "Threat intelligence is information about attackers and their methods. Use it in risk assessment to shape systems, defenses, monitoring, hunting and recovery rather than collecting reports that never change decisions.",
-      "example": "Cedar Point Design learns how a relevant attacker targets remote access. The team uses that knowledge to reassess its architecture and detection strategy, not just forward an advisory email."
+      "example": "CedarPoint learns how a relevant attacker targets remote access. The team uses that knowledge to reassess its architecture and detection strategy, not just forward an advisory email."
     },
     "technical": {
       "focus": "Apply defined threat-intelligence sources through the risk-assessment methodology. The requirement specifies open or commercial sources at minimum; any DoD-provided sources must also be used across the named security activities.",
@@ -647,7 +647,7 @@
     "id": "RA.L3-3.11.2e",
     "beginner": {
       "meaning": "Threat hunting means actively looking for attackers that existing defenses might have missed. This Level 3 requirement calls for ongoing aperiodic hunts or hunts when indications warrant, rather than waiting only for automated alarms.",
-      "example": "Cedar Point Design receives a report about a relevant attack technique. Its analysts search retained endpoint and authentication activity for the pattern even though no existing alert has fired."
+      "example": "CedarPoint receives a report about a relevant attack technique. Its analysts search retained endpoint and authentication activity for the pattern even though no existing alert has fired."
     },
     "technical": {
       "focus": "Define systems to hunt, identify indicators and combine ongoing data collection with analyst-led searches. Aperiodic means activities need not follow a fixed repeating pattern; context can trigger a hunt.",
@@ -670,7 +670,7 @@
     "id": "RA.L3-3.11.3e",
     "beginner": {
       "meaning": "Help analysts predict and identify risks with advanced automation and analysis. The aim is to make large amounts of security data useful to people who assess risk, not to replace their judgment with an unexplained score.",
-      "example": "Cedar Point Design correlates unusual account activity with device and network observations. An analyst investigates the combined pattern instead of reviewing each isolated event without context."
+      "example": "CedarPoint correlates unusual account activity with device and network observations. An analyst investigates the combined pattern instead of reviewing each isolated event without context."
     },
     "technical": {
       "focus": "Identify the analysts and analytics capabilities used to predict and identify organizational, system and component risks. Correlation and automated enrichment can reduce data overload and support timely analysis.",
@@ -693,7 +693,7 @@
     "id": "RA.L3-3.11.4e",
     "beginner": {
       "meaning": "Record which security solution was chosen, why, and the risk determination behind the choice: the assessed risk it is meant to address. Put that reasoning in the system security plan, or reference it there, so future decisions have a traceable starting point.",
-      "example": "Cedar Point Design chooses an isolation design for a sensitive environment. Its plan records the selected approach, the threat it addresses and the risk determination instead of only naming a firewall product."
+      "example": "CedarPoint chooses an isolation design for a sensitive environment. Its plan records the selected approach, the threat it addresses and the risk determination instead of only naming a firewall product."
     },
     "technical": {
       "focus": "Connect enhanced security solutions to the assessed threat and risk-based selection rationale. Document or reference the solution, reasoning and risk determination in the system security plan.",
@@ -716,7 +716,7 @@
     "id": "RA.L3-3.11.5e",
     "beginner": {
       "meaning": "Check whether security solutions still work against the risks you expect. For this Level 3 requirement, assess effectiveness at least annually or when relevant threat information arrives, or in response to a relevant cyber incident.",
-      "example": "Cedar Point Design learns that an attacker bypasses a detection method it uses. The team examines its deployed settings and response coverage instead of relying on the product’s old capability brochure."
+      "example": "CedarPoint learns that an attacker bypasses a detection method it uses. The team examines its deployed settings and response coverage instead of relying on the product’s old capability brochure."
     },
     "technical": {
       "focus": "Identify solutions, relevant current and accumulated intelligence, and anticipated risks. Assess operational effectiveness, including actual configuration, against those risks under the specified time and event conditions.",
@@ -739,7 +739,7 @@
     "id": "RA.L3-3.11.6e",
     "beginner": {
       "meaning": "Systems depend on suppliers, products and services that can introduce risks. Identify and assess those supply-chain risks, respond to them and keep watching for changes rather than stopping after a vendor is selected.",
-      "example": "Cedar Point Design learns that a software supplier’s update process has been compromised. The team evaluates exposure, changes its acceptance checks and monitors later updates from that supplier."
+      "example": "CedarPoint learns that a software supplier’s update process has been compromised. The team evaluates exposure, changes its acceptance checks and monitors later updates from that supplier."
     },
     "technical": {
       "focus": "Apply a repeatable process to risks affecting system components and their supply chains. Responses can include changes to acquisition, supplier relationships, component validation or monitoring, depending on the identified risk.",
@@ -762,7 +762,7 @@
     "id": "RA.L3-3.11.7e",
     "beginner": {
       "meaning": "Have a plan for managing risks from the products and services your systems depend on. This Level 3 plan must be updated at least annually, and upon relevant threat information or in response to a relevant incident.",
-      "example": "Cedar Point Design’s plan covers a managed service provider and software suppliers. After a supplier incident, the team revisits the affected dependencies and updates responsibilities and planned responses."
+      "example": "CedarPoint’s plan covers a managed service provider and software suppliers. After a supplier incident, the team revisits the affected dependencies and updates responsibilities and planned responses."
     },
     "technical": {
       "focus": "Define the systems, components and supply-chain risks covered by the plan. Include relevant operational dependencies, identify accountable actions and maintain updates under the stated annual and event conditions.",
@@ -785,7 +785,7 @@
     "id": "CA.L3-3.12.1e",
     "beginner": {
       "meaning": "Penetration testing checks how an attacker could exploit weaknesses in an authorized environment. This Level 3 requirement calls for testing at least annually or when significant security changes occur, using scanning tools and expert-led ad hoc tests.",
-      "example": "Cedar Point Design authorizes a test after a significant security architecture change. Qualified testers work within agreed limits and report findings the organization can use to improve defenses."
+      "example": "CedarPoint authorizes a test after a significant security architecture change. Qualified testers work within agreed limits and report findings the organization can use to improve defenses."
     },
     "technical": {
       "focus": "Build a repeatable, authorized testing capability combining automated scanning and subject-matter expertise. Set scope, rules of engagement and operational safeguards before testing, then use findings to inform improvements.",
@@ -808,7 +808,7 @@
     "id": "SC.L3-3.13.4e",
     "beginner": {
       "meaning": "Isolation keeps selected systems or components apart through physical separation, logical separation or both. The appropriate design depends on what needs to be separated and which connections, if any, remain permitted.",
-      "example": "Cedar Point Design isolates a sensitive work environment in a dedicated network zone. Its engineers document the permitted interfaces and verify that unrelated office devices cannot connect directly."
+      "example": "CedarPoint isolates a sensitive work environment in a dedicated network zone. Its engineers document the permitted interfaces and verify that unrelated office devices cannot connect directly."
     },
     "technical": {
       "focus": "Select, define and implement the physical or logical isolation techniques. Communications across managed interfaces between security domains count as remote access even within the organization, including administration; apply the relevant remote-access safeguards.",
@@ -831,7 +831,7 @@
     "id": "SI.L3-3.14.1e",
     "beginner": {
       "meaning": "Check that important security and essential software has not been altered, using a trusted starting point or cryptographic signatures. Integrity is about trustworthy software contents, not simply whether an application launches successfully.",
-      "example": "Cedar Point Design’s device validates its boot chain and checks signed software before execution. An unexpected change causes verification to fail rather than being accepted as the approved version."
+      "example": "CedarPoint’s device validates its boot chain and checks signed software before execution. An unexpected change causes verification to fail rather than being accepted as the approved version."
     },
     "technical": {
       "focus": "Define security-critical and essential software and implement integrity verification using root-of-trust mechanisms or signatures. Manage trusted keys and verification behavior as software and configuration change.",
@@ -854,7 +854,7 @@
     "id": "SI.L3-3.14.3e",
     "beginner": {
       "meaning": "Specialized equipment still creates security risk, even if ordinary endpoint tools do not fit it. This requirement addresses including these assets under the specified enhanced protections or segregating them in purpose-specific networks.",
-      "example": "Cedar Point Design operates a manufacturing controller that cannot run its standard security agent. Engineers document the asset, its connections and the selected protection or separation approach instead of treating it as invisible."
+      "example": "CedarPoint operates a manufacturing controller that cannot run its standard security agent. Engineers document the asset, its connections and the selected protection or separation approach instead of treating it as invisible."
     },
     "technical": {
       "focus": "Apply this requirement together with Level 3 scoping guidance. Inventory specialized assets, document their SSP treatment and network relationships, and evaluate purpose-specific separation or suitable intermediary protections.",
@@ -877,7 +877,7 @@
     "id": "SI.L3-3.14.6e",
     "beginner": {
       "meaning": "Turn information about attacker indicators and effective defenses into better detection and hunting. A suspicious address or behavior is useful only when your team can apply it to the environment and decide what to do.",
-      "example": "Cedar Point Design receives a relevant threat indicator, searches endpoint and log data for it, and checks whether its detection and response playbook can handle the associated activity."
+      "example": "CedarPoint receives a relevant threat indicator, searches endpoint and log data for it, and checks whether its detection and response playbook can handle the associated activity."
     },
     "technical": {
       "focus": "Define threat-information sources and integrate relevant indicators and mitigations into intrusion detection and hunts. The requirement includes at least open or commercial sources and any DoD-provided sources.",

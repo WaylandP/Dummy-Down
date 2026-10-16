@@ -60,12 +60,20 @@
           "proposedText": "Connect detection sources, responder responsibilities, containment options, recovery procedures, and user reporting into an operational workflow. Include incident-response training appropriate to each role and assistance for users responding to incidents. Preparation and analysis matter alongside the tools used during an incident.",
           "sourceSupport": "CMMC Assessment Guide Level2 v2.13 PDF144/printed136 objective[g]; PDF145/printed137 Discussion: user-response training is linked to assigned roles and responsibilities; user-response assistance may include help desk support, assistance groups and specialist services.",
           "resolution": "Applied after coordinating comparison of the cited complete guide section; associated objective mappings re-compared and preserved."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, Maya reports a suspicious login. A responder investigates, isolates the affected laptop, restores safe access, and tells Maya what to do next. The team already knows who coordinates those steps.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "All seven incident-handling elements remain present; clarify the Discussion’s explicit role-appropriate training and assistance within user response.",
       "humanReview": "pending",
-      "reviewedFingerprint": "cd0523b0b06f264bf15705f6f5ffb5073e45379d0f51d44c6bb27847e014aebd"
+      "reviewedFingerprint": "6b8c8b09addb049b1d456e02f909b2f3cbd7685081441202cb2c296a5e9a5723"
     },
     {
       "id": "IR.L2-3.6.2",
@@ -89,11 +97,20 @@
       "inputFingerprint": "06553525af727091b1ed138e555b3826c774991321f1317f33e6df3f8cd10085",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "6dd649ed1be9053d85c922d612a231669c4f1f62a07feb56ad627bbc2aa8f12b",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, a responder records a compromised account, updates its status, and follows the company's reporting instructions. The instructions identify internal contacts and any applicable external reporting authorities.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Tracking, documenting, identifying internal/external recipients and notifying them remain distinct; no invented reporting deadline or universal recipients.",
       "humanReview": "pending",
-      "reviewedFingerprint": "06553525af727091b1ed138e555b3826c774991321f1317f33e6df3f8cd10085"
+      "reviewedFingerprint": "d2b97e88cacb867e9736b8371d059ac127a4a69bf3549fa475bbb77a5ea633d9"
     },
     {
       "id": "IR.L2-3.6.3",
@@ -132,12 +149,20 @@
             "quotedBasis": "requirements for regular incident response plan testing"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint runs a pretend ransomware exercise. Staff work through whom to call, who can isolate a computer, and how recovery decisions are made, then identify steps that were unclear.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Tests may use walkthroughs, tabletop exercises, simulations or comprehensive exercises; discussion-only exercise is not proof of every technical mechanism; no invented numeric frequency.",
       "humanReview": "pending",
-      "reviewedFingerprint": "bb8c418fd87412bd9c7505be428ef761df635e0807aa658d59815564d213512c"
+      "reviewedFingerprint": "817c8fa510da7e43c9922b7e5b0d16fc5fddc1218b6b17f07aa320af57526b71"
     },
     {
       "id": "MA.L2-3.7.1",
@@ -161,11 +186,20 @@
       "inputFingerprint": "0dc422abd4363f13043f340f463b8f25a41c9cfd1e80c07c08e555ef5ca248b1",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "b86b96f3d1f32dc1fc0975f85348f1e210197b5015ba289567cba27c69c16678",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, a technician services a failing server and updates a copier's firmware through the maintenance process. Both devices belong to the systems the organization needs to maintain.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Hardware, software, firmware, local/nonlocal work and peripheral equipment remain in scope; maintenance is not reduced to patching.",
       "humanReview": "pending",
-      "reviewedFingerprint": "0dc422abd4363f13043f340f463b8f25a41c9cfd1e80c07c08e555ef5ca248b1"
+      "reviewedFingerprint": "e5995bf603c50027be7cff8576020f1bb9d7420e09f19ebebeb61d7f2a12fed3"
     },
     {
       "id": "MA.L2-3.7.2",
@@ -204,12 +238,20 @@
             "quotedBasis": "mechanisms used to conduct system maintenance are controlled"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, a vendor wants to connect a diagnostic laptop to a server. Staff check the technician's authorization and the proposed tool and method before allowing the maintenance work.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Tools, techniques, mechanisms and personnel are all addressed; diagnostic-tool approval does not substitute for personnel authorization.",
       "humanReview": "pending",
-      "reviewedFingerprint": "0686b24c568a49ef8eb0a6c328d66de8e5e4d4e8d6d26e2b79f1cd234ff13957"
+      "reviewedFingerprint": "b70b0c57a2611958fe27f3c15cbbc3a1a22e1a67a57227adb3fb8c88341bf504"
     },
     {
       "id": "MA.L2-3.7.3",
@@ -233,11 +275,20 @@
       "inputFingerprint": "ec29c9cbc4f83627544ef069cb0595c9fa2fac69faa9bd7b330bf1689834098c",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "2365ba9cbc9cb4ab95b6d943e4916d0d31131f1577d6f6aefd835b8d8e8b4044",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint prepares a copier for an off-site repair. Staff account for its internal storage and sanitize CUI before the equipment leaves, rather than checking only the paper tray.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Sanitization precedes off-site maintenance release, including embedded CUI-bearing storage; trusted vendor or file deletion is not substituted for sanitization.",
       "humanReview": "pending",
-      "reviewedFingerprint": "ec29c9cbc4f83627544ef069cb0595c9fa2fac69faa9bd7b330bf1689834098c"
+      "reviewedFingerprint": "d700438fa7759f7b106e16a64f3412ff3dcaedaeee7e26a7374c270f64dd8de9"
     },
     {
       "id": "MA.L2-3.7.4",
@@ -261,11 +312,20 @@
       "inputFingerprint": "08ae65b24e62ba25b46105c8e61f789b8ee2d12c654c955721258ca5754846b2",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "0d228b82959b9082664b2ea8e67479c70f2aacbb4146c584722a12a2d1b7598f",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "A technician at fictional CedarPoint brings a USB drive containing a hardware test utility. Staff check the media for malicious code before running its programs on the company's system.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Diagnostic/test media are checked before use; detected malicious code follows incident handling; no universal scanning product is mandated.",
       "humanReview": "pending",
-      "reviewedFingerprint": "08ae65b24e62ba25b46105c8e61f789b8ee2d12c654c955721258ca5754846b2"
+      "reviewedFingerprint": "6a20c773d6dc78ca8ed0a276464cfe99ddc7a39f07abdbf6aacd1151f78e0c12"
     },
     {
       "id": "MA.L2-3.7.5",
@@ -289,11 +349,20 @@
       "inputFingerprint": "94b9e0d8710854e15db38336c5690edcb3a97f32493da703f5b8d753ecb0b595",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "50949ac7175035147f85ac7be1b26e58a4776e688ba9a401fb3d177cbdd6a1ae",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "A remote vendor at fictional CedarPoint signs in using a password and a separate authentication factor. When the repair ends, the maintenance connection is terminated instead of being left available for later use.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "MFA at establishment of external nonlocal maintenance and termination afterward both retained; separate browser logout may not terminate the maintenance connection.",
       "humanReview": "pending",
-      "reviewedFingerprint": "94b9e0d8710854e15db38336c5690edcb3a97f32493da703f5b8d753ecb0b595"
+      "reviewedFingerprint": "aedb8496ef5248ffc32e2e57588a12f4d96808caf2b9e7b97994e7fdc54183ce"
     },
     {
       "id": "MA.L2-3.7.6",
@@ -317,11 +386,20 @@
       "inputFingerprint": "6156e6d127a32f368c3f31ff0645949d905fc8aff2f02bc154feb3c3b044acb0",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "aa12ddfdf534b53f2ddaf73aed587e42db2111a1fbe6b680885ccec35bbd2a17",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, a visiting repair technician lacks authorization to work alone on a system. An authorized employee supervises the maintenance activity and keeps the work within its approved scope.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Workers without required authorization are supervised; temporary credentials remain controlled and the distinction from physical visitor access is preserved.",
       "humanReview": "pending",
-      "reviewedFingerprint": "6156e6d127a32f368c3f31ff0645949d905fc8aff2f02bc154feb3c3b044acb0"
+      "reviewedFingerprint": "4ec69167201fb226db71fa67d6c60b6e8e0b1beb15103323b0a6c54bdfc8de43"
     },
     {
       "id": "MP.L2-3.8.1",
@@ -345,11 +423,20 @@
       "inputFingerprint": "5257408b178b64ffed6d481b681189f28d6a15bcb572b1c9722711b909879402",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "89819f10abe79bde76ca71238e4487414447615e25c849660b6edfc9949003a2",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, staff return printed CUI drawings to a controlled cabinet and place CUI-bearing backup drives in secure storage. They do not leave either item unattended on a shared desk.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Paper and digital media both require physical control and secure storage; encryption does not replace physical accountability. The source Further Discussion’s anomalous hardcopy examples are not copied.",
       "humanReview": "pending",
-      "reviewedFingerprint": "5257408b178b64ffed6d481b681189f28d6a15bcb572b1c9722711b909879402"
+      "reviewedFingerprint": "9637f2b9a02ae4bf1f849d57ef0bb8a8176454556a665096f581d5375ce8b8af"
     },
     {
       "id": "MP.L2-3.8.2",
@@ -373,11 +460,20 @@
       "inputFingerprint": "c67c85f155f868304e06492a836923d7bb9aaed11b007a75ed5a34f0d1c36218",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "a24e51c5a8810b1192957e83fe7a8baebe20add4ec576e74b3535cb69180a2e9",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, only approved project staff can retrieve CUI drawings from a controlled media store. A coworker from another project does not gain access simply because they work in the same building.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Authorization to access CUI on media is distinguished from knowing its storage location; physical checkout and digital restrictions are possible mechanisms.",
       "humanReview": "pending",
-      "reviewedFingerprint": "c67c85f155f868304e06492a836923d7bb9aaed11b007a75ed5a34f0d1c36218"
+      "reviewedFingerprint": "28adad26ce630ef6ae4a87ab69884526bedf99b785aed21d6ce3489c2afc757a"
     },
     {
       "id": "MP.L2-3.8.3",
@@ -424,12 +520,20 @@
           "proposedText": "How is sanitization or destruction checked before disposal, and sanitization checked before release for reuse?",
           "sourceSupport": "PDF169/printed161 objectives[a,b]; PDF170/printed162 Further Discussion and Potential Assessment Considerations address whether usable data remains retrievable.",
           "resolution": "Applied after coordinating comparison of the cited complete guide section; associated objective mappings re-compared and preserved."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint retires a storage drive and disposes of printed CUI records. Staff use suitable sanitization or destruction methods for each type of media before either leaves the controlled process.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Compliance focus preserves the two objective branches, but Beginner meaning, technical focus and the second review question can imply destruction prepares media for reuse; clarify all three.",
       "humanReview": "pending",
-      "reviewedFingerprint": "4f6d6bc7a428af62d45af645047dce51ca682781b04a8c0bc9b0bfbeac115514"
+      "reviewedFingerprint": "7261d09f0d2f43c7cfc870f6057728edfd774c99c88f81e1e83906a2c1260467"
     },
     {
       "id": "MP.L2-3.8.4",
@@ -483,12 +587,20 @@
             "quotedBasis": "media containing CUI is marked with applicable CUI markings"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, staff prepare a CUI document package using the markings and distribution limitations that apply to that information. They do not invent their own label based only on how sensitive it feels.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Applicable CUI markings and distribution limitations are both retained; generic confidentiality labels and access enforcement are correctly distinguished from markings.",
       "humanReview": "pending",
-      "reviewedFingerprint": "a26f966d662b7bec522976beeee517b4e79abd8eff3b4503ce7cb701390ba662"
+      "reviewedFingerprint": "749c9e4d5bd6999ec5408c56a10fa8d1303cea8f940a1e7aa2600d1e41f0b883"
     },
     {
       "id": "MP.L2-3.8.5",
@@ -557,12 +669,20 @@
             "quotedBasis": "Do only approved individuals have access to media containing CUI"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint transports a CUI-bearing drive between facilities. An authorized person releases it, a controlled transport process carries it, and the receiving facility confirms custody rather than assuming delivery.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Access control and transport accountability include release, authorized handlers, handoffs and receipt; encryption alone is not a custody record.",
       "humanReview": "pending",
-      "reviewedFingerprint": "74903c39abea5f1d608b5ab95c9b7db7c16c12c90f35c55e5e916feb68468482"
+      "reviewedFingerprint": "dcdaef564b253f6f334c701d9c0e7c790103293decb4b9d3580d908469cb6242"
     },
     {
       "id": "MP.L2-3.8.6",
@@ -608,12 +728,20 @@
             "quotedBasis": "the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint sends a removable drive between offices using an approved encryption approach. Another protected transport arrangement would need its alternative physical safeguards considered, rather than being assumed safe because the trip is short.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Cryptography or alternative physical safeguards and the digital-media transport scope are preserved; remove the author-facing instruction about not losing an exception from Beginner meaning.",
       "humanReview": "pending",
-      "reviewedFingerprint": "43adb446cb4a4b091e79374670ce858da09031a65575f85dca30d37055b934c3"
+      "reviewedFingerprint": "f88fb7d9771c385e363000c0cb5a8d514169515f044b650d886dc4f27a187243"
     },
     {
       "id": "MP.L2-3.8.7",
@@ -637,11 +765,20 @@
       "inputFingerprint": "43da9e367923541459e61f8df5665d6c9d5e1a85fa80b01b6f5ff70d64849bc4",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "465ed056041b98031b457014efad707f3aefe1a8a356942b957c59e80b1b8a37",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, staff may use approved removable drives for a defined transfer process. An employee's personal drive is handled according to the organization's restrictions rather than automatically accepted.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Controls may be technical or procedural and restrict device classes/read-write behavior; draft correctly avoids a universal ban on all removable devices.",
       "humanReview": "pending",
-      "reviewedFingerprint": "43da9e367923541459e61f8df5665d6c9d5e1a85fa80b01b6f5ff70d64849bc4"
+      "reviewedFingerprint": "6caedfe358f51155e925b4b9276b6e7c78f70a0b6353bc9d6875037a4a425fc2"
     },
     {
       "id": "MP.L2-3.8.8",
@@ -665,11 +802,20 @@
       "inputFingerprint": "53260c2a002aa602f95b85adc07f15169db6daf862f4d2f8bf9c2efe90dee842",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "83939691e1e6cd1584e001be6c63982f358ef7add3db775f6ed5ec6f5b5209c2",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, an employee finds an unclaimed USB drive. Because its owner is unknown, they do not use it on a company system and follow the organization's handling procedure.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Identifiable owner can be an individual, organization or project; malware scanning alone does not establish ownership.",
       "humanReview": "pending",
-      "reviewedFingerprint": "53260c2a002aa602f95b85adc07f15169db6daf862f4d2f8bf9c2efe90dee842"
+      "reviewedFingerprint": "7630fe063fd7029206e6919dd355cf3af5d109481383ab8fcf949bb4890777ab"
     },
     {
       "id": "MP.L2-3.8.9",
@@ -708,12 +854,20 @@
             "quotedBasis": "Are cryptographic mechanisms FIPS validated"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint keeps a backup of a CUI project in a controlled storage location. The team considers who can access that backup, including copies held off-site, rather than protecting only the live project folder.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Backup confidentiality applies at storage locations; cryptographic or alternative physical controls remain options and backup success is distinguished from confidentiality.",
       "humanReview": "pending",
-      "reviewedFingerprint": "40e21fc1a575134cb8bbb472290e958da8bec91dd0d24569517c2bb3be35c1e1"
+      "reviewedFingerprint": "213dc41e07a6640e2e50ff0f6dd0d79c0ff2fa5792bcee95a8260cf1d19bbbca"
     },
     {
       "id": "PS.L2-3.9.1",
@@ -737,11 +891,20 @@
       "inputFingerprint": "9e79ae67b340b3755a4b4e3037082432cc66931f0972e637f7d6ecfc4d27a178",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "0871e87a98a173b8ca3df6d63e9a8f1558c9ff3f22b4871523be8a4e0c5dafb2",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, the designated personnel team completes the applicable screening process before an engineer receives authorized access to a system containing CUI. Creating the account first would reverse that sequence.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Screening precedes authorization, reflects role and applicable rules, and does not invent universal clearances, products or disclosure of sensitive screening details.",
       "humanReview": "pending",
-      "reviewedFingerprint": "9e79ae67b340b3755a4b4e3037082432cc66931f0972e637f7d6ecfc4d27a178"
+      "reviewedFingerprint": "f8a998d43016041cf77d6b1eb7e4d38df278861aaf7181d5fc9c13112d9bd03d"
     },
     {
       "id": "PS.L2-3.9.2",
@@ -765,11 +928,20 @@
       "inputFingerprint": "4fa8ee803e78de5ca970226dd86b2f0b2d0a668ee5c4c406b30de89f466093a8",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "d600487cb82acb31f24d2c32f6d2769146228647306da754bd73f624ef28456a",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, Sam transfers off a CUI project. The company adjusts system access and credentials and retrieves relevant property as appropriate, so Sam's former role does not retain unnecessary access.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Protection during and after termination or extended/permanent transfer includes affected access, credentials and property; transfer actions are not forced to be identical to departure actions.",
       "humanReview": "pending",
-      "reviewedFingerprint": "4fa8ee803e78de5ca970226dd86b2f0b2d0a668ee5c4c406b30de89f466093a8"
+      "reviewedFingerprint": "f20aee0e3896245e0de410cca3e679bd8b171977819b63c67668a2c944ef6b3d"
     },
     {
       "id": "PE.L2-3.10.1",
@@ -793,11 +965,20 @@
       "inputFingerprint": "aab4594542d7ede11b291768f20e366bafdc731db66e8cf4a85c56c4975f40d6",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "efe2343b4b2f16ccf82628a55f3fb6aa58fd4b47e5e2045eb93392bcc7becc32",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, only authorized individuals enter the restricted equipment room. Printers and workstations in protected work areas are included in the physical-access process, not only the server rack.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Authorization and restrictions cover systems, equipment and operating areas; technical/compliance fields retain the nonpublic-area qualification and equipment placement concerns.",
       "humanReview": "pending",
-      "reviewedFingerprint": "aab4594542d7ede11b291768f20e366bafdc731db66e8cf4a85c56c4975f40d6"
+      "reviewedFingerprint": "b35fe9cf85e4f75482d6ecb0323ad766a41c0d693672c06c6779934be5b32b33"
     },
     {
       "id": "PE.L2-3.10.2",
@@ -821,11 +1002,20 @@
       "inputFingerprint": "53d1ffa2238531249808f8c178149df844b7ae4c9afe43ae886347b862f3c6a6",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "a5add488a3e5a92231a6cc8130fc0e1bb2fc02ad58ee123efe4bdca81a6bab8c",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, a protected wiring closet houses network connections and power equipment. The team considers how unauthorized entry or tampering would be noticed instead of relying only on the office's front-door lock.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Both facility and support infrastructure must be protected and monitored; public-access monitoring and wiring/power infrastructure are retained without mandating cameras.",
       "humanReview": "pending",
-      "reviewedFingerprint": "53d1ffa2238531249808f8c178149df844b7ae4c9afe43ae886347b862f3c6a6"
+      "reviewedFingerprint": "edb30fd56ddaeee7476a2ff695fc4280a065267e6a0d552a5cae1f33c0f2dedb"
     },
     {
       "id": "PE.L2-3.10.3",
@@ -849,11 +1039,20 @@
       "inputFingerprint": "77ad5ce8a333335c64a1ab495405bd2c5c1f7fd407bf55f890643f9ce554e4a9",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "6426af5aa8d6ec2052180c2b0697aadea9b6eda641ae4da87045f40018ff60a6",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, an employee meets a visiting equipment specialist, accompanies them to the permitted work area, and monitors the visit. The employee does not simply issue a visitor badge and disappear.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Escorting and monitoring visitors remain separate; permanent access credential holders are distinguished from visitors, and a sign-in log alone does not demonstrate escorting.",
       "humanReview": "pending",
-      "reviewedFingerprint": "77ad5ce8a333335c64a1ab495405bd2c5c1f7fd407bf55f890643f9ce554e4a9"
+      "reviewedFingerprint": "6cf6109c573953dc64a477f83be5606fa1bad37f04bd7c24940ac372dd595366"
     },
     {
       "id": "PE.L2-3.10.4",
@@ -877,11 +1076,20 @@
       "inputFingerprint": "12dbff48c85051fd15dd8de1701cddffb36dda5a232ff38bcf2e5edbf5d78508",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "3a6ccbc9cbe2f0f220b33f19176c3b04dc8c3a8ff488e4a12494e72cf94f704d",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint maintains a written record for one protected area and badge-access records for another. The team can locate the records when investigating physical access rather than assuming a door lock creates a log.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Written, automated or combined physical-access records are allowed; no universal retention duration is invented from the guide’s one-year example.",
       "humanReview": "pending",
-      "reviewedFingerprint": "12dbff48c85051fd15dd8de1701cddffb36dda5a232ff38bcf2e5edbf5d78508"
+      "reviewedFingerprint": "63bb565f6d8be52f4b394b342083d539ab0e7e1121e0b9e2c32b228f8f83b420"
     },
     {
       "id": "PE.L2-3.10.5",
@@ -905,11 +1113,20 @@
       "inputFingerprint": "1ccdeca7010a2f7323586ea4dcd2989b8871fe34337b2828663d8f3d1e7c2a08",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "e228178b6bf1f3137e4308c215a4f9387594c33461787d540ab59c28c91a63d0",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, issued keys are associated with authorized holders. When an employee's access changes, staff handle the key or badge and affected access permissions through the physical-access process.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Identification, control and management include mechanical and electronic devices, locks and combinations; records alone are not treated as working access control.",
       "humanReview": "pending",
-      "reviewedFingerprint": "1ccdeca7010a2f7323586ea4dcd2989b8871fe34337b2828663d8f3d1e7c2a08"
+      "reviewedFingerprint": "3f23526b84dd69f7118df56b0e44078142db1018ce473bfd3704e94429a61253"
     },
     {
       "id": "PE.L2-3.10.6",
@@ -933,11 +1150,20 @@
       "inputFingerprint": "6793ccd6a86481300f4bfa9344350984dc9d724a48ceb54e56ca5b8d92ae78e7",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "f4db1e4c81ac36933c73d932eccb3a43ea510503035fccf4111da5f6fab29ecf",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, an approved home-working arrangement defines how an employee protects CUI documents and equipment. The employee follows those safeguards rather than assuming that a private home is automatically a controlled work area.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Alternate-work safeguards must be defined and enforced; location-specific measures are permitted and VPN provision alone is not complete safeguarding.",
       "humanReview": "pending",
-      "reviewedFingerprint": "6793ccd6a86481300f4bfa9344350984dc9d724a48ceb54e56ca5b8d92ae78e7"
+      "reviewedFingerprint": "8cf397785ff2b40077fb972d73c7547917f3805a31236b0924455af3529620bd"
     },
     {
       "id": "RA.L2-3.11.1",
@@ -961,11 +1187,20 @@
       "inputFingerprint": "56281288df495fe47722cdb60e7eb9539c532dace168c03063ed9eadbf885890",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "2dd88cf82f2a3a2c06d4b497d38d81784a816d6c14094a2daae8a487339a99e0",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint considers a supplier outage and unauthorized access to project information. The team examines possible harm to its work, equipment, reputation, and people instead of counting only missing software patches.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Risk includes operations, assets and individuals, defined frequency, boundaries, likelihood/impact and dependencies; scanning is only an input, not the whole assessment.",
       "humanReview": "pending",
-      "reviewedFingerprint": "56281288df495fe47722cdb60e7eb9539c532dace168c03063ed9eadbf885890"
+      "reviewedFingerprint": "e189d612d08d3aab93314f762bc46bab36a99ab9e5295910830ee3848e63d20a"
     },
     {
       "id": "RA.L2-3.11.2",
@@ -989,11 +1224,20 @@
       "inputFingerprint": "0ae690dfbb3fe4edf9ab15a8da8fe20dcbbe2b313dacf6e4f91a8c59fc36fdb2",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "c9a43c990b67e08a5333bf28fe15e48c004a2290a9fe9c903ba1e59cd9eee723",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint follows its defined scan schedule. When a new vulnerability affects its document application, the team also scans the relevant application and systems rather than waiting for the next scheduled run.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Periodic and newly identified applicable-vulnerability triggers cover systems and applications; no universal weekly/monthly interval or scanner-brand mandate is invented.",
       "humanReview": "pending",
-      "reviewedFingerprint": "0ae690dfbb3fe4edf9ab15a8da8fe20dcbbe2b313dacf6e4f91a8c59fc36fdb2"
+      "reviewedFingerprint": "36eb910127d30c13d2b8e53dba00a998596ee47dc482593af699d775157b62b4"
     },
     {
       "id": "RA.L2-3.11.3",
@@ -1032,12 +1276,20 @@
             "quotedBasis": "You document the reasoning behind accepting the risk of the unremediated flaws"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint prioritizes a vulnerability on an exposed project service after reviewing its risk. The team carries out a suitable fix and checks the result instead of sorting every issue by its discovery date.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Identification and risk-based remediation remain explicit; documented risk acceptance is not automatically remediation or permission for a CMMC deficiency. Guide discussion of deferred risks is not converted to blanket approval.",
       "humanReview": "pending",
-      "reviewedFingerprint": "29119ba9dd626c4e2a286e12432d8eddb6b8a199862034373b86def1187e85cf"
+      "reviewedFingerprint": "851377f6b80b1377b1070ddeea952126c2abbdf6d2a5aefdd8a24ca8369e0632"
     },
     {
       "id": "CA.L2-3.12.1",
@@ -1061,11 +1313,20 @@
       "inputFingerprint": "9bcce96f6fe6b313c0edce72a28c87531a1de215a39c380452b1313abcab178f",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "f716a8e5124a34385074b005eccc49a5661db97bbe25254358f4dd00ddf13261",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint checks whether its access restrictions actually block unauthorized users. The team examines the implemented safeguard instead of treating the existence of an access policy as proof that it works.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Defined periodic assessment checks effectiveness, with examination/interview/testing as possible methods; the annual question is accurately attributed to assessment considerations.",
       "humanReview": "pending",
-      "reviewedFingerprint": "9bcce96f6fe6b313c0edce72a28c87531a1de215a39c380452b1313abcab178f"
+      "reviewedFingerprint": "02da8057429cd4654c574ae435505f7fcf99bc2cd73ff69433e21af0653a7b4b"
     },
     {
       "id": "CA.L2-3.12.2",
@@ -1089,11 +1350,20 @@
       "inputFingerprint": "59aab2c983809c13dfa4eb34b0590cc999e1661c193829ccfb134462b46a1987",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "f4f6e71f69966042c7919ce2aa65d1a397ea3302259c107a39818343eaa88f79",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint identifies a missing safeguard, records the work needed to correct it, assigns responsibility, and implements the plan. It does not describe the planned fix as though the safeguard already works.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Identification, plan development and implementation remain distinct; operational plans are correctly distinguished from assessment POA&Ms and their 180-day rule.",
       "humanReview": "pending",
-      "reviewedFingerprint": "59aab2c983809c13dfa4eb34b0590cc999e1661c193829ccfb134462b46a1987"
+      "reviewedFingerprint": "0ede2d18d376b0146e939446b801751d4c92f9f76cbfc2a57ba67334b27c417f"
     },
     {
       "id": "CA.L2-3.12.3",
@@ -1117,11 +1387,20 @@
       "inputFingerprint": "426e8f5ef4fc5f44e06a27ce3f217305b1a518f0f621cd893b118ea93ef46d1d",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "f86fd24f0626bbbb6506b6c6b7ddf46d2dbfdd4d9a86689bc8d00c864a111b82",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint notices that a device-management change weakened an access safeguard. Ongoing monitoring brings the issue to the responsible team before the old assessment result is mistaken for current protection.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Ongoing monitoring supports risk decisions and continued control effectiveness; continuous does not universally mean uninterrupted collection, and passive dashboards are insufficient without review.",
       "humanReview": "pending",
-      "reviewedFingerprint": "426e8f5ef4fc5f44e06a27ce3f217305b1a518f0f621cd893b118ea93ef46d1d"
+      "reviewedFingerprint": "ac7f7aac5c711407c18667d5cdf6aa485097fc9fc2b06464d5dfb66d84079a70"
     },
     {
       "id": "CA.L2-3.12.4",
@@ -1145,11 +1424,20 @@
       "inputFingerprint": "fccf8af438bdf157ab8d17a284031291c12f782cf971b4a66773057894cbe41f",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "8a1faa6d64d707d7d53f15019aa0bfbfe96d4a0bc03cca091ea6823fd249e697",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint documents which services handle CUI, how safeguards are implemented, and which outside services connect to the system. When the environment changes, the team updates the plan through its defined process.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "System boundaries, operating environment, implementation, relationships, defined updates and non-applicable-designated-authority caveat are preserved; annual updates are attributed to the pinned Further Discussion.",
       "humanReview": "pending",
-      "reviewedFingerprint": "fccf8af438bdf157ab8d17a284031291c12f782cf971b4a66773057894cbe41f"
+      "reviewedFingerprint": "694d59c111dfcbd5cc1eff7bbfd0deb63118c50ed77c961044056bddea055f4c"
     },
     {
       "id": "SC.L2-3.13.1",
@@ -1173,11 +1461,20 @@
       "inputFingerprint": "cd7651b9ed7c240b633bf5dddfc5d6ea8e21758e105a29790f4e92d341973bf8",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "7188658b69ee2d94f6a806a8d52e275c188fe94bd1a52e6cf7c3d7fca61dac18",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint controls internet traffic at its external gateway and protects traffic crossing into its CUI project environment. Staff monitor both places instead of assuming everything inside the office network is equally trusted.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "External/key internal boundaries and monitoring/control/protection are all retained; an internet firewall or traffic logs alone do not fulfill all functions.",
       "humanReview": "pending",
-      "reviewedFingerprint": "cd7651b9ed7c240b633bf5dddfc5d6ea8e21758e105a29790f4e92d341973bf8"
+      "reviewedFingerprint": "aa857fe61eaef5dc940285bec8765e65d79b21aec828ffb76dbac88b0cb617eb"
     },
     {
       "id": "SC.L2-3.13.2",
@@ -1201,11 +1498,20 @@
       "inputFingerprint": "2e54a60805464eaa8346d772aa4ff2621a593e9eb985b60878e8be156b9fa849",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "871f62844054d71b69b90b5d83e23095903a7d420985c08d9d1428ac66b40ce2",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint designs a new project service with protected interfaces and limited privileges, reviews likely threats, and checks secure coding decisions before release rather than leaving every security question until the end.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Identification and employment of architecture, development techniques and engineering principles are retained; feasible legacy-system application and lifecycle scope remain visible.",
       "humanReview": "pending",
-      "reviewedFingerprint": "2e54a60805464eaa8346d772aa4ff2621a593e9eb985b60878e8be156b9fa849"
+      "reviewedFingerprint": "69613fc7cbf0a4e216583b3bc4d5ca841f7f99c82c8a90c3b1a2070b8abce39f"
     },
     {
       "id": "SC.L2-3.13.3",
@@ -1244,12 +1550,20 @@
             "quotedBasis": "general users are not permitted to perform system administration functions"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, employees use a normal project interface while administrators use a separately controlled management interface. A user cannot reach administration features merely by discovering their web address.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Physical/logical separation of user and management functions is preserved and distinguished from staff duties and individual privileges; menu hiding is not separation.",
       "humanReview": "pending",
-      "reviewedFingerprint": "e49c81e4152024c69bf8773a062f14a176a54632d34e273405ae544aa5512a9c"
+      "reviewedFingerprint": "a3d3703b27e3b6450c1ec29d764190e73e8f991e227cbd2c4d2c32b59730302c"
     },
     {
       "id": "SC.L2-3.13.4",
@@ -1288,12 +1602,20 @@
             "quotedBasis": "the computer operating system is configured to prevent users from accessing other users"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint uses a service that reassigns temporary storage to different work processes. Its design prevents a new process from reading data belonging to the process that previously used that shared resource.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Shared-resource reuse, residual information and encrypted representations are addressed; deleted-data remnants and covert channels remain excluded as in the source Discussion.",
       "humanReview": "pending",
-      "reviewedFingerprint": "15e1630fbcf0a35378cf0f216190e0107988651db524c188e5dc11bfab07a661"
+      "reviewedFingerprint": "795ca1c0fe05ad8e12de4a6b720340f64beafe127a38eee03e665ecb7be989dc"
     },
     {
       "id": "SC.L2-3.13.5",
@@ -1317,11 +1639,20 @@
       "inputFingerprint": "1cd98d53074905228a8cb2f4f07745ec929ece1caa4a536180640cbe021b84c4",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "4a484cdc55a944cdf2598a59c1326829509078f82001c8a82aa0b2d811b1a780",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint places its public information website in a separated network area. Connections to internal services are specifically controlled instead of placing the public server alongside internal CUI workstations.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Public components require physically/logically separated subnetworks; DMZ/cloud segmentation are examples and a different hostname alone is not adequate separation.",
       "humanReview": "pending",
-      "reviewedFingerprint": "1cd98d53074905228a8cb2f4f07745ec929ece1caa4a536180640cbe021b84c4"
+      "reviewedFingerprint": "b9b682889958f72121580ecc7e7b5aff08c7b3f19e798f0319d3063d312268d2"
     },
     {
       "id": "SC.L2-3.13.6",
@@ -1345,11 +1676,20 @@
       "inputFingerprint": "273fac4613e23314c33112c280d9fb000094eb10fc4df9a8f3ffbd747660381f",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "5a2ac1387d1353d2a40c84c130f91611981a2ef44f558f7a35056965385cc8c8",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint allows its project service to use the specific connections it needs. Other traffic is denied by the applicable rules, instead of leaving an unrestricted allow-all rule underneath a few blocked ports.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Deny-by-default/permit-by-exception covers inbound/outbound boundary and identified internal traffic; selective blocking on a default-allow policy is correctly distinguished.",
       "humanReview": "pending",
-      "reviewedFingerprint": "273fac4613e23314c33112c280d9fb000094eb10fc4df9a8f3ffbd747660381f"
+      "reviewedFingerprint": "cc0262fa58734e36de469b4eeb43d7f4fb8a221c79b6e85b2cc193675c77c237"
     },
     {
       "id": "SC.L2-3.13.7",
@@ -1384,15 +1724,23 @@
         {
           "field": "beginner.example",
           "issue": "The required connection arrangement is unnamed, so the example repeats the abstraction rather than demonstrating the source distinction.",
-          "proposedText": "At fictional Cedar Point Design, a remote-work laptop sends both company-system traffic and internet traffic through the company VPN while connected. The employee cannot change its settings to send internet traffic through a separate simultaneous path.",
+          "proposedText": "At fictional CedarPoint, a remote-work laptop sends both company-system traffic and internet traffic through the company VPN while connected. The employee cannot change its settings to send internet traffic through a separate simultaneous path.",
           "sourceSupport": "PDF234/printed226 Further Discussion and example describe disabling split tunneling and verifying all laptop traffic is routed through the VPN; PDF233/printed225 Discussion requires preventing settings from being readily configurable by users. This remains a fictional implementation example, not a universal VPN-product mandate.",
-          "resolution": "Applied after coordinating comparison of the cited complete guide section; associated objective mappings re-compared and preserved."
+          "resolution": "Applied after coordinating comparison of the cited complete guide section; associated objective mappings re-compared and preserved. Later edited on 2026-10-15 for one company name (CedarPoint); see the separate finding."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, a remote-work laptop sends both company-system traffic and internet traffic through the company VPN while connected. The employee cannot change its settings to send internet traffic through a separate simultaneous path.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Technical/compliance fields accurately describe remote routing and overriding controls; Beginner meaning/example obscure the concept with circular arrangement wording and need a concrete two-path explanation.",
       "humanReview": "pending",
-      "reviewedFingerprint": "bd0865101a43ce3e8e0019090696559664b285cfc733207bed47fb547c98aba4"
+      "reviewedFingerprint": "8e5dc7e62f426a6c707b0f61f9274127dfd77fb1c20348cb46ca395153498915"
     },
     {
       "id": "SC.L2-3.13.8",
@@ -1431,12 +1779,20 @@
             "quotedBasis": "the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint protects a CUI file transfer between systems using an approved encrypted path. If a different path relies on physical safeguards, the team evaluates those safeguards rather than assuming that an internal cable is enough.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Internal/external CUI transmission and cryptography/alternative physical safeguards are retained; an internal cable or one encrypted hop is not automatically complete protection.",
       "humanReview": "pending",
-      "reviewedFingerprint": "afca6f312b302803676ffb2d8d69c4c74f975339fb778b41e3ed72b3c6077844"
+      "reviewedFingerprint": "0ad5411610857516224f61955791d36c2277db9b1d37967d3459fc661a1cf6c3"
     },
     {
       "id": "SC.L2-3.13.9",
@@ -1460,11 +1816,20 @@
       "inputFingerprint": "3c87c1161ea21e5edc1fc1e81c13a9f5b015250d70279971fb4e949eea800a1c",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "1ddac50856d9220e6b598597bc1a5c5131b3610b6cdc9492f4f895238e2dddeb",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, a remote communications session closes its network connection when the session finishes. If the session is inactive, the organization's defined inactivity setting also triggers termination.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Defined inactivity and session-end termination remain distinct from screen locking; no universal timeout is invented.",
       "humanReview": "pending",
-      "reviewedFingerprint": "3c87c1161ea21e5edc1fc1e81c13a9f5b015250d70279971fb4e949eea800a1c"
+      "reviewedFingerprint": "1ae370f39dc0465160ec55cfee02b5aa24efc24b8253ca67f22e992b2ec85ea7"
     },
     {
       "id": "SC.L2-3.13.10",
@@ -1488,11 +1853,20 @@
       "inputFingerprint": "6139eeafc22bca579de7b392b05d204cd7163b4a3824a756672ef5feb7036607",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "f1ddb10f13ddeee13c512923261fca8846860d8cd1a0cdaa270906aa3d26378f",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint controls who can manage a backup-encryption key and how the key is handled. Staff do not leave the key beside the protected backup where the same unauthorized person could obtain both.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Establishment and ongoing key lifecycle management apply wherever cryptography is employed; manual methods remain possible and no universal rotation period is invented.",
       "humanReview": "pending",
-      "reviewedFingerprint": "6139eeafc22bca579de7b392b05d204cd7163b4a3824a756672ef5feb7036607"
+      "reviewedFingerprint": "d8bd81692faea997ec3694771cd65df19ad66f83bff77ee4fa3cd98cea6e73ae"
     },
     {
       "id": "SC.L2-3.13.11",
@@ -1516,11 +1890,20 @@
       "inputFingerprint": "823771bd173d8b4058e6dafe3ef638d641bd6b3913461ee40c9a62f1ff0d4fc1",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "26e895724d8acb0eab9df2f9be3d7b6834e33f938be26f2fc8291ba81bd955fd",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint checks the validation information for the module protecting a CUI transfer. The team verifies its deployed version and operating conditions instead of accepting the statement that the product uses AES.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Validated module/version/deployment conditions are distinguished from an approved algorithm or marketing statement; confidentiality purpose and separate storage/transmission requirements remain explicit.",
       "humanReview": "pending",
-      "reviewedFingerprint": "823771bd173d8b4058e6dafe3ef638d641bd6b3913461ee40c9a62f1ff0d4fc1"
+      "reviewedFingerprint": "513d43d6206925ab0a76f3d4be5f0c90ebdb53f0f4b77d006696a783633612c5"
     },
     {
       "id": "SC.L2-3.13.12",
@@ -1544,11 +1927,20 @@
       "inputFingerprint": "db3689c9dbec896369d892533bdd40a32172b1b28960d2d454b700928da3aa8f",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "55cdefb809ad182b21faa0372fa7957b1cb9808440c9e958ffada14a670b1cd5",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint configures a covered collaboration device so a remote party cannot activate it. People present can see its in-use indication rather than needing to guess whether it is listening or displaying information.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Remote activation prohibition and indication to present users are retained, including both dedicated-call-initiated conferencing and internet screen-sharing exclusions.",
       "humanReview": "pending",
-      "reviewedFingerprint": "db3689c9dbec896369d892533bdd40a32172b1b28960d2d454b700928da3aa8f"
+      "reviewedFingerprint": "2b1568f0df4e8b8a5047f8081b29392db4555de9d9ee29b0359bf1b69de5c1c5"
     },
     {
       "id": "SC.L2-3.13.13",
@@ -1572,11 +1964,20 @@
       "inputFingerprint": "b017af83df5fa2e8f6ce3814d52fb959cc6fdc85a1893d12a63cb9a795c3692f",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "78a7e28b8d541b0143e90dc1d9e2a82afb6b8ca6158bb50dc3f55133f7e1ad94",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint defines which active document content employees may use and monitors relevant execution activity. A downloaded document does not receive permission to run code merely because it looks like an ordinary file.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Mobile code means transferable executable code, not mobile-phone use; both control and monitoring are retained without mandating a universal JavaScript ban.",
       "humanReview": "pending",
-      "reviewedFingerprint": "b017af83df5fa2e8f6ce3814d52fb959cc6fdc85a1893d12a63cb9a795c3692f"
+      "reviewedFingerprint": "0ed98bfd185a1f7a77cfcf8f40a33c3486dcfe427d0c6af19771f2a2698b5207"
     },
     {
       "id": "SC.L2-3.13.14",
@@ -1615,12 +2016,20 @@
             "quotedBasis": "Control and monitor the use of Voice over Internet Protocol (VoIP) technologies"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint uses an approved network calling service with defined access and monitoring. Staff do not assume that calling traffic is outside the security process because the interface resembles a telephone.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Control and monitoring of VoIP are retained, but internet-based voice in Beginner meaning may imply public-internet-only scope; identify IP networks rather than that narrower label.",
       "humanReview": "pending",
-      "reviewedFingerprint": "5c1b1eed9e405efc78ca913f66517503beef3cc9fa1a0a5884f09e7d33cd66be"
+      "reviewedFingerprint": "e67ea47656ebd45a9a5427db579e46c6d388b29ecebbe68dec9ebc3a860a6230"
     },
     {
       "id": "SC.L2-3.13.15",
@@ -1644,11 +2053,20 @@
       "inputFingerprint": "ee9798e5d9e56c9f54f26b9f5311e4d538c5b6b88699f8d7e5e1a8e5eaa949e3",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "5c3be8251ce502a3e1a798b95f237d033171583c247350948db2c37cbef9ffff",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, a project application verifies the identity of the service it connects to. An unexpected certificate is investigated rather than bypassed so the application can continue talking to an unverified endpoint.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Session authenticity, peer confidence, ongoing communications, interception and hijacking are distinguished from encryption alone; a particular certificate mechanism is only an example.",
       "humanReview": "pending",
-      "reviewedFingerprint": "ee9798e5d9e56c9f54f26b9f5311e4d538c5b6b88699f8d7e5e1a8e5eaa949e3"
+      "reviewedFingerprint": "e8335171f0b3a60d2dbf6d94f2bf7dc5c8797777fa4d35b0d2b3dc4bb74fac20"
     },
     {
       "id": "SC.L2-3.13.16",
@@ -1702,12 +2120,20 @@
             "quotedBasis": "Implementing encryption for CUI is one approach to this requirement, but it is not mandatory"
           },
           "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint protects stored project files and associated local copies. The team does not assume that protecting the network transfer also protects every place where the information remains afterward.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "At-rest state and confidentiality are retained; cryptographic and other adequate protections remain possible without a universal encryption-only mandate.",
       "humanReview": "pending",
-      "reviewedFingerprint": "59dd7a0b9b10871dbf9329ba73fd8da8ad0937bb68834bc5b4a3eed8b4a22a52"
+      "reviewedFingerprint": "05a9007bed1c4e092fb1e49aae5455e14b9c8077134b7cde0c55dcdec0b65676"
     },
     {
       "id": "SI.L2-3.14.1",
@@ -1731,11 +2157,20 @@
       "inputFingerprint": "dfe807efeed91b38184d392a3d6e2222da9552b3ddec3601101097bbbcb8725d",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "b6c814175da1ed0c5d55b28adb91f953ec8dc7661cb3c8d989a6eba7b9988efd",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint learns that a deployed application has a security flaw. Staff identify the affected systems, report the issue to the responsible team, and correct it within the organization's defined time expectations.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "All identification/reporting/correction actions and their separately defined time expectations are retained; no universal patch deadline is invented.",
       "humanReview": "pending",
-      "reviewedFingerprint": "dfe807efeed91b38184d392a3d6e2222da9552b3ddec3601101097bbbcb8725d"
+      "reviewedFingerprint": "9054e4f1f6b1db0375bc4b6872d93215c9c690c5acefd288d1ddf38bfb4b67f9"
     },
     {
       "id": "SI.L2-3.14.2",
@@ -1759,11 +2194,20 @@
       "inputFingerprint": "82d15520bc8593385d7cb3208b2f461d27794828d898aacd1cd3b0129f404d68",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "ba684394a6ba6275a053461341be16d414f71ca9108d6b5f5c0b068258d58ecc",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint identifies its email service and relevant workstations as locations needing malicious-code protection. Staff verify that protection is actually operating instead of assuming the purchased subscription covers every system.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Designated locations are identified and actual protection is provided; multiple protection approaches and custom-code detection limitations remain visible.",
       "humanReview": "pending",
-      "reviewedFingerprint": "82d15520bc8593385d7cb3208b2f461d27794828d898aacd1cd3b0129f404d68"
+      "reviewedFingerprint": "399143aedcc54d2f5ba46df5780407642275f873b9624a2ea6ecaf84870c88fa"
     },
     {
       "id": "SI.L2-3.14.3",
@@ -1787,11 +2231,20 @@
       "inputFingerprint": "724afdbe05a153c2dee97bc782c26bfce2bd3a256015c6f36ed1ac187e128f52",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "3f1254e26c38ebd7ac4fba9ee3f2c14d373816a7c171c63832014b4a45481a0f",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint receives a vendor advisory about a deployed service. The responsible team checks applicability and takes the identified response action instead of allowing the message to sit unread in a shared mailbox.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Response actions, monitored advisories and performed actions are distinct; sources and timing are not replaced with universal subscriptions or deadlines.",
       "humanReview": "pending",
-      "reviewedFingerprint": "724afdbe05a153c2dee97bc782c26bfce2bd3a256015c6f36ed1ac187e128f52"
+      "reviewedFingerprint": "e8af5bab64083d48acc6889a82f52bb6475810e280c3d5468048158c8520c15f"
     },
     {
       "id": "SI.L2-3.14.4",
@@ -1815,11 +2268,20 @@
       "inputFingerprint": "1db8e56efe77ff944678b1879f88c5e4e78ea3b623e6b128467b76fa6fedf941",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "1064db119574368339ab6d952cfe2d3ae231fec1f91acd7907bf9b0449a1bfd5",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint monitors updates for its protection mechanisms and resolves failed updates on a workstation. The team does not treat an installed but outdated protection agent as equivalent to a current one.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Available releases and successful protection updates remain distinct from merely scheduling a task; no guarantee of detecting every malicious function.",
       "humanReview": "pending",
-      "reviewedFingerprint": "1db8e56efe77ff944678b1879f88c5e4e78ea3b623e6b128467b76fa6fedf941"
+      "reviewedFingerprint": "81065788f1cfd6ba3c2d0b08c898f629a5f7291791a2c4c53ea97c30a9ccb02f"
     },
     {
       "id": "SI.L2-3.14.5",
@@ -1850,12 +2312,20 @@
           "proposedText": "Define periodic malicious-code scan frequency and enable real-time scanning of externally sourced files as they are downloaded, opened, or executed. Verify coverage and actual execution for files received through web or email routes and files copied from removable media such as USB drives.",
           "sourceSupport": "PDF264/printed256 objective[c] covers files from external sources as downloaded, opened or executed. PDF265/printed257 Discussion includes portable storage; example includes files copied from USB drives; Potential Assessment Considerations explicitly asks whether USB/CD-ROM media are included and scanned.",
           "resolution": "Applied after coordinating comparison of the cited complete guide section; associated objective mappings re-compared and preserved."
+        },
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint runs system scans at its defined frequency. Its protection also checks an externally received file when it is handled, rather than leaving that file unchecked until the next scheduled system scan.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Periodic malicious-code scans and real-time external-file scans are both retained; explicitly name removable media in the technical scope to avoid an email/download-only interpretation.",
       "humanReview": "pending",
-      "reviewedFingerprint": "dbcc3edb200af1737dc2966dae4122b9fa539aa10edacabab473c377e18e990d"
+      "reviewedFingerprint": "0b48d853caab9e4cd03d1b7b63db46f9d2047f57a96138552d099f28a7723b42"
     },
     {
       "id": "SI.L2-3.14.6",
@@ -1879,11 +2349,20 @@
       "inputFingerprint": "eb2962bd3494eb3dd0701886972b9ed63c4b3f2abd537a29a7e59204d0689dcf",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "378db1273382ee2f400df711503b5b07e33e7b96bd73ad818a18f1e9b3e8b686",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "Fictional CedarPoint investigates unusual outbound traffic from a workstation alongside incoming attack alerts. The team does not assume that a quiet internet gateway means no compromised system is communicating outward.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Systems, inbound and outbound traffic all receive detection-oriented monitoring; no Level3 24/7 SOC obligation is imported into Level2.",
       "humanReview": "pending",
-      "reviewedFingerprint": "eb2962bd3494eb3dd0701886972b9ed63c4b3f2abd537a29a7e59204d0689dcf"
+      "reviewedFingerprint": "feb6160827d10f082742b94706819c2ae89c4554b2ed936eb8f8b64db402ee26"
     },
     {
       "id": "SI.L2-3.14.7",
@@ -1907,11 +2386,20 @@
       "inputFingerprint": "b278f88befbdfce086042693c7b5dac5d053aa8bd70a2972a608a4186495f1f9",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "a22459ddfeddffbf4128be532fab6810cd874b971c5a946851c125f752ddd68e",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.example",
+          "issue": "Named the fictional company \"Cedar Point Design\" while other explanations call it CedarPoint, so it read as two companies.",
+          "proposedText": "At fictional CedarPoint, a system is intended for approved project work. Monitoring identifies activity that sends project information through an unauthorized channel even though it came from an employee's working account.",
+          "sourceSupport": "No source claim changes; the company is fictional. One name, CedarPoint, as in the other explanations and on the About page.",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "resolution": "Applied on 2026-10-15: only the company name changed; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "editorial-consistency-only",
       "reviewNote": "Authorized use is defined and unauthorized use identified; authentication is distinguished from permission, and unusual activity requires interpretation rather than an automatic accusation.",
       "humanReview": "pending",
-      "reviewedFingerprint": "b278f88befbdfce086042693c7b5dac5d053aa8bd70a2972a608a4186495f1f9"
+      "reviewedFingerprint": "dc5e290e2b3c19f588201b3a8c16af398d156d9a97c1ea53da65dfabeda2a950"
     }
   ],
   "sourceId": "cmmc-assessment-l2-213",
