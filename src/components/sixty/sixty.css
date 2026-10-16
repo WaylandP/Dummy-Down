@@ -8,18 +8,28 @@
    phone it is the width of the page and the board stacks. */
 
 /* ---- The panel ---- */
+/* Everything in the panel is sized from its width (cqw, resolved by its
+   children: the panel is the container), so a wider panel on a big screen
+   grows its board, its player row, its caption and its note together: at
+   397px the sizes below are their floors; at 760px the type is about 1.9
+   times as large; the caps are reached around 1100px. */
 .sixty {
   display: flex;
   flex-direction: column;
-  gap: 3px;
   min-width: 0;
   container-type: inline-size;
+  --sixty-gap: clamp(3px, 0.76cqw, 8px);
+  --sixty-target: clamp(44px, 11.1cqw, 72px);
+  --sixty-knob: clamp(14px, 3.5cqw, 22px);
+}
+.sixty > * + * {
+  margin-top: var(--sixty-gap);
 }
 .sixty-title {
   margin: 0;
   color: var(--color-yellow);
   font-family: var(--font-hand);
-  font-size: 22px;
+  font-size: clamp(22px, 5.54cqw, 60px);
   font-weight: 400;
   line-height: 1.1;
 }
@@ -128,15 +138,15 @@
 .sixty-player {
   display: flex;
   align-items: center;
-  gap: 8px;
-  min-height: 44px;
+  gap: clamp(8px, 2cqw, 16px);
+  min-height: var(--sixty-target);
 }
 .sixty-play {
   flex: none;
   display: inline-grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: var(--sixty-target);
+  height: var(--sixty-target);
   padding: 0;
   border: 2px solid var(--color-chalk);
   border-radius: 50%;
@@ -148,8 +158,8 @@
     color 0.15s;
 }
 .sixty-play svg {
-  width: 20px;
-  height: 20px;
+  width: clamp(20px, 5cqw, 32px);
+  height: clamp(20px, 5cqw, 32px);
   overflow: visible;
   fill: currentColor;
 }
@@ -171,7 +181,7 @@
   flex-direction: column;
   justify-content: center;
   min-width: 0;
-  min-height: 44px;
+  min-height: var(--sixty-target);
   padding: 8px 0;
   border-radius: 6px;
   cursor: pointer;
@@ -180,14 +190,14 @@
 .sixty-track {
   position: relative;
   display: grid;
-  gap: 5px;
+  gap: clamp(5px, 1.26cqw, 8px);
   align-items: center;
-  height: 16px;
+  height: clamp(16px, 4cqw, 24px);
 }
 .sixty-seg {
   display: block;
-  height: 6px;
-  border-radius: 3px;
+  height: clamp(6px, 1.5cqw, 9px);
+  border-radius: 4px;
   background: var(--color-rule);
   overflow: hidden;
 }
@@ -202,9 +212,9 @@
   position: absolute;
   top: 50%;
   left: 0;
-  width: 14px;
-  height: 14px;
-  margin: -7px 0 0 -7px;
+  width: var(--sixty-knob);
+  height: var(--sixty-knob);
+  margin: calc(var(--sixty-knob) / -2) 0 0 calc(var(--sixty-knob) / -2);
   border-radius: 50%;
   background: var(--color-chalk);
   box-shadow: 0 0 0 3px var(--color-board);
@@ -217,7 +227,7 @@
 .sixty-time {
   flex: none;
   color: var(--color-chalk-dim);
-  font-size: 13px;
+  font-size: clamp(13px, 3.27cqw, 24px);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -226,8 +236,8 @@
   flex: none;
   display: inline-grid;
   place-items: center;
-  min-width: 44px;
-  min-height: 44px;
+  min-width: var(--sixty-target);
+  min-height: var(--sixty-target);
   padding: 0;
   border: 0;
   background: none;
@@ -240,7 +250,7 @@
   padding: 4px 8px;
   border: 1.5px solid var(--color-rule);
   border-radius: 999px;
-  font-size: 12px;
+  font-size: clamp(12px, 3cqw, 20px);
   text-align: center;
 }
 .sixty-speed:hover .sixty-speed-pill {
@@ -256,12 +266,12 @@
 
 /* ---- The caption and the note ---- */
 .sixty-cap {
-  margin-top: 1px;
+  margin-top: calc(var(--sixty-gap) + 1px);
 }
 .sixty-eyebrow {
   margin: 0;
   color: var(--color-yellow);
-  font-size: 11px;
+  font-size: clamp(11px, 2.77cqw, 20px);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.1em;
@@ -286,13 +296,13 @@
 .sixty-caption {
   margin: 0;
   color: var(--color-chalk);
-  font-size: 15px;
+  font-size: clamp(15px, 3.78cqw, 36px);
   line-height: 1.4;
 }
 .sixty-note {
-  margin: 1px 0 0;
+  margin: calc(var(--sixty-gap) + 1px) 0 0;
   color: var(--color-chalk-dim);
-  font-size: 12px;
+  font-size: clamp(12px, 3cqw, 26px);
   line-height: 1.35;
 }
 /* A 44px target without moving the line: the hit area grows into the margins. */

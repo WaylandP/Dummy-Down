@@ -5,6 +5,22 @@ pull requests. Cipher & Chalk has no GitHub releases or version tags, so entries
 grouped by merge date without invented release numbers. Detailed implementation and
 validation evidence remains in the linked pull requests and review documents.
 
+## Home fills big screens — October 16, 2026
+
+- [PR #110](https://github.com/WaylandP/cipher-and-chalk/pull/110): the hero
+  and the "CMMC in sixty seconds" panel scale with the window's width and
+  height together, so the top half of Home fills the space above "Pick up a
+  chalk to start." on every screen with nothing to scroll. The panel's column
+  is sized from the frame's height (397px at 1280×800 and 1366×768 as before,
+  about 624px at 1728×980, 750px at 1920×1080, 1086px at 2560×1300, never
+  wider than 45% of the frame or 1100px), and everything in it grows with
+  its width: the board and its words (from 11px), the player row's targets
+  (44px to 72px), the title, the caption and the note. The hero's kicker,
+  headline (two lines, sized from its column, up to 200px) and lead (20px to
+  36px, about 70 characters a line) share their column's height, so the lead
+  and the panel both end 24 to 64px above the chalks. Tablets and phones are
+  as they were; no JavaScript lays anything out.
+
 ## Branch cleanup button — October 16, 2026
 
 - A "Delete merged branches" workflow, run by hand from the Actions tab, deletes
