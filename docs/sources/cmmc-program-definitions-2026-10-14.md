@@ -76,6 +76,20 @@ the definition of User in § 170.4(b). In `src/data/level-one-glossary.ts`, CUI,
 publicly accessible system and system boundary no longer speak as if every
 reader were on one Level 1 control.
 
+Later the same day the remaining polish notes were applied. CMMC now cites
+§ 170.1(a), which sets out the program (§ 170.4(b) does not define it); C3PAO
+says what § 170.9(b)(6) and § 170.8(b)(17) require (a DIBCAC Level 2
+assessment before authorization, and no assessing a former consulting client
+within three years); the affirmation follows § 170.22(a) (after every
+assessment, including a POA&M closeout, and every year after); Enduring
+exception, Operational plan of action and Security Protection Data follow
+their § 170.4(b) definitions, with § 170.24(b) for what is scored MET and
+§ 170.19 for the providers of SPD; NIST SP 800-171 counts N/A objectives as
+met (§ 170.24(b)(3)); Enclave cites § 170.19 instead of § 170.4; Media
+sanitization names the guide's techniques. Links into 32 CFR part 170 now
+open the text as in force on December 16, 2024, the text the definitions were
+written from, instead of the current text.
+
 The class deviation was read from the corpus mirror at commit
 `7fc9b1bf9492df6336d763b739e647544252e346`
 (`raw/public/dfars/class-deviation-2026-o0025/r3/general/2026-O0025_Rev3_TAB_A_Deviation_Memo.pdf`,

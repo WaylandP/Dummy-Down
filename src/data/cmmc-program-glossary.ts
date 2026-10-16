@@ -20,9 +20,9 @@ const cfr170 = (
 ): SourceReference => ({
   id: `cfr-32-170-${section.replace(/\./g, '-')}`,
   title: `32 CFR § 170.${section} — ${title}`,
-  url: `https://www.ecfr.gov/current/title-32/part-170/section-170.${section}`,
+  url: `https://www.ecfr.gov/on/2024-12-16/title-32/subtitle-A/chapter-I/subchapter-D/part-170/section-170.${section}`,
   kind: 'official-publication',
-  versionContext: `Title 32 CFR part 170 (CMMC Program), as codified at its December 16, 2024 effective date; ${detail}. ${checked}`,
+  versionContext: `Title 32 CFR part 170 (CMMC Program) as in force on December 16, 2024, its effective date; ${detail}. ${checked}`,
 })
 
 const definitions = cfr170(
@@ -38,7 +38,7 @@ const scoping = cfr170(
 const poamRules = cfr170(
   '21',
   'Plan of Action and Milestones requirements',
-  'paragraph (a)',
+  'paragraphs (a) and (b)',
 )
 const levelOne = cfr170(
   '15',
@@ -116,14 +116,24 @@ const dfars7021 = dfars(
   'November 2025',
 )
 
-const purpose = cfr170('1', 'Purpose', 'paragraph (d)')
+const purpose = cfr170('1', 'Purpose', 'paragraphs (a) and (d)')
 const policy = cfr170('5', 'Policy', 'paragraph (a)')
 const affirmation = cfr170('22', 'Affirmation', 'paragraph (a)')
 const flowdown = cfr170('23', 'Flowdown requirements', 'paragraph (a)(2)')
 const scoring = cfr170(
   '24',
   'CMMC scoring methodology',
-  'paragraph (b)(1)(ii), temporary deficiencies scored MET',
+  'paragraph (b): enduring exceptions and temporary deficiencies scored MET, and N/A objectives counted as MET',
+)
+const accreditationBody = cfr170(
+  '8',
+  'Accreditation Body',
+  'paragraph (b)(17), the bar on assessing a former consulting client within 3 years',
+)
+const c3paoRules = cfr170(
+  '9',
+  'CMMC Third-Party Assessment Organizations (C3PAOs)',
+  'paragraph (b)(6), the DIBCAC Level 2 assessment before authorization',
 )
 
 /** The 2026 FAR overhaul class deviation that renumbers the assessment clause. */
@@ -204,7 +214,7 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
     'cmmc',
     'Cybersecurity Maturity Model Certification (CMMC)',
     'The Department of Defense program that checks whether a contractor’s information systems protect Federal Contract Information and Controlled Unclassified Information. It is set out in 32 CFR part 170 and reaches contractors through the DFARS 252.204-7021 clause, which names the CMMC level a contract requires. There are three levels, each tied to an existing set of security requirements. Since September 2025 the Department also uses the secondary title Department of War (DoW), and newer CMMC documents use it.',
-    [definitions, dfars7021, departmentOfWar],
+    [purpose, dfars7021, departmentOfWar],
   ),
   term(
     'cmmc-levels',
@@ -233,8 +243,8 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'c3pao',
     'CMMC Third-Party Assessment Organization (C3PAO)',
-    'A company authorized or accredited by the CMMC Accreditation Body to conduct Level 2 certification assessments. A C3PAO must be independent of the organizations it assesses and is itself assessed by DIBCAC before it can operate.',
-    [definitions],
+    'A company authorized or accredited by the CMMC Accreditation Body to conduct Level 2 certification assessments. To be authorized, its own systems must pass a Level 2 assessment by DIBCAC, and its people may not assess an organization they helped prepare for a CMMC assessment in the previous three years.',
+    [definitions, c3paoRules, accreditationBody],
   ),
   term(
     'dibcac',
@@ -257,8 +267,8 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'affirming-official',
     'Affirming Official and affirmation',
-    'The senior person inside an organization who is responsible for its CMMC compliance and has the authority to affirm, in SPRS, that the organization continues to meet the requirements for its CMMC status. The affirmation is made when a status is first obtained and then every year, and contracts require it to stay current.',
-    [definitions, dfars7021],
+    'The senior person inside an organization who is responsible for its CMMC compliance and has the authority to affirm, in SPRS, that the organization continues to meet the requirements for its CMMC status. The affirmation is entered in SPRS after every assessment, including a POA&M closeout, and every year after, and contracts require it to stay current.',
+    [definitions, affirmation, dfars7021],
   ),
   term(
     'sprs',
@@ -275,7 +285,7 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'operational-plan-of-action',
     'Operational plan of action',
-    'The organization’s own running list of temporary deficiencies and vulnerabilities (a missing patch, an interim configuration) and how each will be fixed. It is required by security requirement CA.L2-3.12.2 and is kept continuously. It is not a POA&M: it has no fixed deadline and is not tied to an assessment result.',
+    'The formal record, in a format the organization chooses, of temporary vulnerabilities and deficiencies (needed updates, patches or reconfiguration as threats evolve) and how each will be mitigated, corrected or eliminated. It is the plan of action in security requirement CA.L2-3.12.2. Unlike a POA&M, it sets no remediation deadline and is not tied to an assessment.',
     [definitions],
   ),
   term(
@@ -305,8 +315,8 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'security-protection-data',
     'Security Protection Data (SPD)',
-    'Data that Security Protection Assets hold or produce to protect the environment: configuration data, log files, vulnerability and configuration status of in-scope assets, and passwords that grant access to the environment. If an outside provider handles SPD, that provider is an External Service Provider.',
-    [definitions],
+    'Data that Security Protection Assets hold or produce to protect the environment: configuration data, log files, vulnerability and configuration status of in-scope assets, and passwords that grant access to the environment. An outside IT or cybersecurity provider that processes, stores or transmits SPD on its own assets is an External Service Provider, and those services are assessed as Security Protection Assets.',
+    [definitions, scoping],
   ),
   term(
     'contractor-risk-managed-assets',
@@ -342,13 +352,13 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
     'enclave',
     'Enclave',
     'A deliberately bounded part of an organization’s environment, separated from the rest by technical and procedural controls, inside which the CMMC requirements are met. Scoping to an enclave keeps the rest of the enterprise out of the assessment, but every requirement must still be met inside it, whether implemented locally or inherited from enterprise services that are then also in scope.',
-    [scopingGuideL2, definitions],
+    [scopingGuideL2, scoping],
   ),
   term(
     'enduring-exception',
     'Enduring exception',
-    'A situation where fully meeting a requirement is not feasible and is not expected to become feasible: a system that must mirror fielded equipment, a medical device, test equipment, or operational technology. It needs no plan of action, but it must be documented in the SSP.',
-    [definitions],
+    'A special circumstance or system where full compliance with a requirement is not feasible, such as a system that must replicate fielded equipment, a medical device, test equipment, operational technology or IoT. It needs no operational plan of action; described in the SSP with its mitigations, it is assessed as MET.',
+    [definitions, scoring],
   ),
   term(
     'temporary-deficiency',
@@ -383,8 +393,8 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'nist-sp-800-171',
     'NIST SP 800-171 and 800-171A',
-    'NIST Special Publication 800-171, Revision 2, lists the 110 security requirements for protecting CUI in non-federal systems and is the basis of CMMC Level 2. Its companion, SP 800-171A, breaks each requirement into assessment objectives, the determination statements an assessor checks. Every objective must be met for the requirement to count as met.',
-    [definitions],
+    'NIST Special Publication 800-171, Revision 2, lists the 110 security requirements for protecting CUI in non-federal systems and is the basis of CMMC Level 2. Its companion, SP 800-171A, breaks each requirement into assessment objectives, the statements an assessor checks. A requirement is met when every applicable objective is met; an objective that does not apply counts as met.',
+    [definitions, scoring],
   ),
   term(
     'nist-sp-800-172',

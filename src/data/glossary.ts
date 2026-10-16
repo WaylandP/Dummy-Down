@@ -9,7 +9,7 @@ const glossaryContext =
 const userDefinition: SourceReference = {
   id: 'cfr-32-170-4-user',
   title: '32 CFR § 170.4 — Definition of User',
-  url: 'https://www.ecfr.gov/current/title-32/part-170/section-170.4',
+  url: 'https://www.ecfr.gov/on/2024-12-16/title-32/subtitle-A/chapter-I/subchapter-D/part-170/section-170.4',
   kind: 'official-publication',
   versionContext:
     'Title 32 CFR part 170 (CMMC Program), as codified at its December 16, 2024 effective date; the definition of User in paragraph (b). Read on 2026-10-15 from a pinned public corpus copy of the official text. The live site may carry later amendments.',
