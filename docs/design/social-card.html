@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cipher &amp; Chalk social card</title>
+    <!--
+  The social card (public/og-image.png), 1200×630. To regenerate it, open this
+  file from the repository in Chromium at a 1200×630 viewport (device scale 1),
+  take a screenshot once the fonts have loaded, and save it as a 256-colour PNG
+  (the chalk dust otherwise makes the file about twice as large). Bump the
+  ?v= on og:image and twitter:image in index.html so link previews refresh.
+-->
+    <style>
+      @font-face {
+        font-family: 'Walter Turncoat';
+        src: url('../../public/fonts/walter-turncoat-latin-400.woff')
+          format('woff');
+      }
+      @font-face {
+        font-family: 'Atkinson Hyperlegible Next';
+        src: url('../../public/fonts/atkinson-hyperlegible-next-latin-wght.woff')
+          format('woff');
+        font-weight: 200 800;
+      }
+      @font-face {
+        font-family: 'Martian Mono';
+        src: url('../../public/fonts/martian-mono-latin-wght.woff')
+          format('woff');
+        font-weight: 100 800;
+      }
+      :root {
+        --board: #1b2522;
+        --lift: #243330;
+        --edge: #161f1c;
+        --chalk: #ede9dd;
+        --muted: #c9cfc6;
+        --dim: #9aa39b;
+        --yellow: #f2d16b;
+        --blue: #8fb7d6;
+        --tray-top: #5e4a36;
+        --tray: #4a3a2b;
+        --tray-bottom: #3b2e22;
+        --tray-edge: #7a6349;
+        --tray-label: #c9b795;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+      body {
+        position: relative;
+        background: radial-gradient(
+          120% 90% at 30% 20%,
+          var(--lift) 0%,
+          var(--board) 60%,
+          var(--edge) 100%
+        );
+        color: var(--chalk);
+        font-family: 'Atkinson Hyperlegible Next', sans-serif;
+      }
+      .dust {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: screen;
+        opacity: 0.16;
+      }
+      .hand {
+        font-family: 'Walter Turncoat', cursive;
+        font-weight: 400;
+      }
+      .chalk {
+        filter: url('#chalk');
+      }
+      .lockup {
+        position: absolute;
+        left: 80px;
+        top: 58px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .lockup svg {
+        width: 58px;
+        height: 58px;
+      }
+      .lockup span {
+        font-size: 40px;
+        line-height: 1;
+      }
+      .kicker {
+        position: absolute;
+        left: 80px;
+        top: 170px;
+        color: var(--yellow);
+        font-size: 27px;
+      }
+      h1 {
+        position: absolute;
+        left: 76px;
+        top: 212px;
+        font-size: 104px;
+        line-height: 0.95;
+        font-weight: 400;
+      }
+      .lead {
+        position: absolute;
+        left: 80px;
+        top: 432px;
+        width: 820px;
+        color: var(--muted);
+        font-size: 27px;
+        line-height: 1.45;
+      }
+      .tray {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 58px;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        padding: 0 80px;
+        background: linear-gradient(
+          var(--tray-top),
+          var(--tray) 55%,
+          var(--tray-bottom)
+        );
+        box-shadow:
+          0 -1px 0 var(--tray-edge),
+          0 -14px 30px rgba(0, 0, 0, 0.35);
+      }
+      .stick {
+        height: 15px;
+        border-radius: 7px;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+        flex: none;
+      }
+      .w {
+        width: 88px;
+        background: var(--chalk);
+      }
+      .y {
+        width: 66px;
+        background: var(--yellow);
+      }
+      .b {
+        width: 77px;
+        background: var(--blue);
+      }
+      .legend {
+        margin-left: auto;
+        display: flex;
+        gap: 26px;
+        color: var(--tray-label);
+        font-size: 19px;
+      }
+      .legend b {
+        font-weight: 600;
+        color: #e8dcc4;
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <filter id="chalk" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.95"
+            numOctaves="2"
+            seed="7"
+            result="n"
+          />
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="n"
+            scale="1.4"
+            xChannelSelector="R"
+            yChannelSelector="G"
+            result="d"
+          />
+          <feColorMatrix in="n" type="luminanceToAlpha" result="a" />
+          <feComponentTransfer in="a" result="m">
+            <feFuncA type="table" tableValues="0 0.55 1 1 1 1" />
+          </feComponentTransfer>
+          <feComposite in="d" in2="m" operator="in" />
+        </filter>
+        <filter id="dust">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.7"
+            numOctaves="3"
+            seed="3"
+          />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+      </defs>
+    </svg>
+    <svg class="dust" aria-hidden="true">
+      <rect width="100%" height="100%" filter="url(#dust)" />
+    </svg>
+    <div class="lockup chalk">
+      <svg viewBox="0 0 100 100">
+        <circle
+          cx="50"
+          cy="50"
+          r="38"
+          fill="none"
+          stroke="#EDE9DD"
+          stroke-width="9"
+          stroke-linecap="round"
+          stroke-dasharray="72 17 14 17 72 17 14 16"
+          transform="rotate(-100 50 50)"
+        />
+      </svg>
+      <span class="hand">Cipher &amp; Chalk</span>
+    </div>
+    <p class="kicker hand">
+      A free reference desk for cybersecurity compliance
+    </p>
+    <h1 class="hand chalk">CMMC,<br />in plain words.</h1>
+    <p class="lead">
+      All 149 controls, each quoted from the official guide with its page, then
+      explained three ways.
+    </p>
+    <div class="tray">
+      <span class="stick w"></span><span class="stick y"></span
+      ><span class="stick b"></span>
+      <span class="legend"
+        ><span><b>white</b> new to this</span
+        ><span><b>yellow</b> runs the systems</span
+        ><span><b>blue</b> preparing for assessment</span></span
+      >
+    </div>
+  </body>
+</html>
