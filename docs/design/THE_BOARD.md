@@ -270,12 +270,12 @@ says whether it is built.
 9. **CMMC in sixty seconds** — `SixtySeconds.html` and
    `SixtySeconds-HANDOFF.md` (built; the owner's approved animation, which
    replaced the chalk talk from `HomeChalkTalk.html`; rebuilt on October 16
-   to play in its panel). Sixty seconds of chalk in eight chapters (Who,
-   Levels, The clock, Certify, Every year, Big change, Repeat, Bottom line),
-   every stroke and label timed by `data-t`, drawn along its length under
-   the chalk filter with a chalk stick at the tip, in the site's own faces
-   and tokens; the captions are the owner's, their glossary words (FCI, CUI,
-   SPRS, C3PAO) opening the chalk popovers. It plays on Home inside its own
+   to play in its panel, and again so the chalk draws). Sixty seconds of
+   chalk in eight chapters (Who, Levels, The clock, Certify, Every year, Big
+   change, Repeat, Bottom line), every mark written by hand under the chalk
+   filter with a chalk stick at the tip, in the site's own faces and tokens;
+   the captions are the owner's, their glossary words (FCI, CUI, SPRS,
+   C3PAO) opening the chalk popovers. It plays on Home inside its own
    panel, beside the hero from the kicker down to just above "Pick up a
    chalk to start." (397px wide; the width under the search on a tablet,
    capped at 560px; the width of the page on a phone): the title in yellow
@@ -320,13 +320,51 @@ says whether it is built.
    text), the speed (1×, 0.75×, 0.5×, 1.5×), every target 44px; Space, K,
    the arrows, Home, End, Page Up and Page Down work only while focus is in
    the panel and never reach the site's own keys. Reduced motion shows each
-   chapter's finished state as the time runs, with no stick, sector or
-   pulse. Under the caption: "Shown: the Level 2 (C3PAO) cycle. Phase 2,
+   chapter's finished state as the time runs, with no stick, dust, erase
+   motion, sector or pulse. Under the caption: "Shown: the Level 2 (C3PAO) cycle. Phase 2,
    which would require it, has been on hold since July 13, 2026." with a
    link to the timeline. No analytics events; no request leaves the site.
    The piece lives in `src/components/sixty/`. About keeps "the first chalk
    talk, CMMC in sixty seconds" on the board and "More chalk talks for
    visual learners" under Later.
+
+   How the chalk draws (October 16, the second rebuild): letters are
+   written, not wiped. `npm run sixty:glyphs` turns every board word into
+   glyph outlines from the site's hand face (Walter Turncoat) with the
+   font's own advances and kerning, and gives each glyph a stroke skeleton
+   (the outline rasterized at 256px per em, thinned to one pixel, its
+   spurs pruned, then traced as ordered strokes, top to bottom and left to
+   right; `+ 3 8 B D` are hand-authored where the automatic order was no
+   hand's); the data is committed as `sixty-glyphs.json` and a test fails
+   when the font or the words change under it. On the board each glyph is
+   its outline showing through a mask whose round-capped stroke, just wider
+   than the glyph's thickest stroke, is drawn along the skeleton, so every
+   glyph shows at least 99% of its ink once revealed; the chalk's tip rides
+   the skeleton. Each label is written letter by letter within its time,
+   with brief lifts between letters and longer ones between words; small
+   words go as fast as 25 letters a second, never faster. Every line is a
+   flattened, seeded wobble (about 1.5 units) of the mockup's path, eased in
+   and out, its time following its length (about 400 units a second at 1×,
+   never under 0.2s a stroke): the dial is one loop that overshoots its
+   start, an arrowhead is two short strokes after the shaft, a check one
+   down-and-up stroke, the star one continuous stroke; the lines carry a
+   grain (uneven coverage, small gaps) and the newest few units of the
+   stroke under the chalk are a touch brighter. The marks are scheduled
+   within their chapters (sixty-model.ts): a mark starts when the mockup
+   says, or as soon as the stick can reach it, and takes its time; where a
+   chapter is short of it the run starts earlier or is quickened together,
+   never past the letter cap or under the stroke floor; the marks the hand
+   and the pulses depend on start exactly when declared, and chapter starts
+   and caption times never move. The stick is a hand, not a cursor: between
+   marks it lifts and travels a short arc to the next (0.15 to 0.35s), rests
+   by the last mark while the script waits, leans toward where it is going
+   (within 20° of its resting angle), sits lower with a tighter shadow while
+   drawing, sheds a little dust only then (specks drifting 10 to 30 units,
+   gone within a second, at most 40 at once), comes in from the lower right
+   at 0:00, leaves the same way at 1:00, and steps off while Smudge wipes.
+   Everything is measured once, in the model; the frames read it and never
+   measure, and they stop while the tab is hidden or the panel is out of
+   view.
 
 ## Features, in build order
 

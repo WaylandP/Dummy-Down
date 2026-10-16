@@ -1,0 +1,163 @@
+{
+  "note": "Hand-authored stroke skeletons for scripts/sixty-glyphs.mjs, used instead of the automatic skeleton for the characters listed. A 1000-unit em, y down, baseline at y=0, so a cap top is near -700. Each character maps to its strokes in writing order; each stroke is a polyline from where the chalk lands. Start from `node scripts/sixty-glyphs.mjs --dump <chars>`, which prints the automatic strokes in this format, and rejoin or reorder them. They pass the same coverage gate as the automatic ones.",
+  "unitsPerEm": 1000,
+  "glyphs": {
+    "+": {
+      "why": "A hand draws the bar before the stem; the automatic order is top to bottom.",
+      "strokes": [
+        [
+          [30, -369],
+          [270, -366],
+          [555, -370]
+        ],
+        [
+          [262, -583],
+          [274, -362],
+          [285, -249],
+          [282, -146]
+        ]
+      ]
+    },
+    "3": {
+      "why": "One stroke: the upper bowl, out to the point in the middle and back, then the lower bowl. The point is a branch too long to prune, so the automatic skeleton ends a stroke there.",
+      "strokes": [
+        [
+          [24, -621],
+          [143, -683],
+          [232, -702],
+          [311, -694],
+          [377, -671],
+          [408, -651],
+          [436, -616],
+          [447, -546],
+          [436, -511],
+          [389, -468],
+          [369, -433],
+          [152, -413],
+          [369, -433],
+          [393, -405],
+          [486, -358],
+          [518, -323],
+          [537, -257],
+          [537, -198],
+          [521, -147],
+          [451, -69],
+          [314, -26],
+          [229, -30],
+          [182, -58],
+          [154, -58],
+          [115, -73],
+          [76, -97],
+          [39, -137]
+        ]
+      ]
+    },
+    "8": {
+      "why": "A figure of eight from the top right: over the top, down the left, across the waist, round the bottom clockwise, across the waist again and up to the start. The waist is one bar of ink, so both crossings run along it.",
+      "strokes": [
+        [
+          [475, -676],
+          [412, -700],
+          [369, -700],
+          [315, -688],
+          [229, -649],
+          [194, -618],
+          [158, -567],
+          [143, -524],
+          [139, -473],
+          [182, -395],
+          [471, -399],
+          [487, -372],
+          [514, -364],
+          [596, -294],
+          [619, -262],
+          [635, -219],
+          [639, -165],
+          [627, -130],
+          [557, -63],
+          [518, -40],
+          [401, -1],
+          [330, 3],
+          [194, -16],
+          [135, -44],
+          [88, -83],
+          [65, -149],
+          [65, -223],
+          [96, -305],
+          [182, -395],
+          [471, -399],
+          [487, -434],
+          [533, -481],
+          [549, -540],
+          [545, -575],
+          [518, -630],
+          [475, -676]
+        ]
+      ]
+    },
+    "B": {
+      "why": "Stem, then the upper bowl, then the lower bowl, each from the stem; the automatic skeleton runs the stem on into the lower bowl.",
+      "strokes": [
+        [
+          [79, -715],
+          [100, -617],
+          [111, -370],
+          [127, -351],
+          [131, -159],
+          [117, -1]
+        ],
+        [
+          [79, -715],
+          [178, -679],
+          [283, -679],
+          [400, -648],
+          [471, -577],
+          [467, -499],
+          [400, -378],
+          [131, -351]
+        ],
+        [
+          [131, -351],
+          [400, -374],
+          [420, -347],
+          [494, -316],
+          [514, -316],
+          [568, -273],
+          [600, -210],
+          [596, -148],
+          [584, -120],
+          [545, -77],
+          [455, -46],
+          [342, -31],
+          [213, -27],
+          [117, -1]
+        ]
+      ]
+    },
+    "D": {
+      "why": "Stem, then the bowl clockwise from the top; the automatic skeleton is one loop.",
+      "strokes": [
+        [
+          [79, -677],
+          [123, -562],
+          [139, -94],
+          [118, 6]
+        ],
+        [
+          [79, -677],
+          [303, -660],
+          [451, -586],
+          [525, -500],
+          [561, -418],
+          [568, -359],
+          [549, -230],
+          [510, -176],
+          [455, -125],
+          [377, -86],
+          [213, -39],
+          [118, 6]
+        ]
+      ]
+    }
+  }
+}

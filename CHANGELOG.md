@@ -37,6 +37,24 @@ post: three pieces, one pull request each.
   1366, 1440 and 1920. The keys work only with focus in the panel and never
   reach the site's own; Home still fits one screen at 1280×800 and
   1366×768.
+- [PR #109](https://github.com/WaylandP/cipher-and-chalk/pull/109): the
+  chalk draws. Letters are written, not wiped: `npm run sixty:glyphs` turns
+  every board word into glyph outlines from the hand face, with the font's
+  own advances and kerning, and gives each glyph a stroke skeleton; on the
+  board each glyph shows through a mask drawn along its skeleton, letter by
+  letter, with lifts between letters and words (small words up to 25
+  letters a second). Every line eases in and out and takes the time its
+  length asks for (about 400 units a second, never under a fifth of a
+  second a stroke), with a small hand's wobble, grain along the line and a
+  brighter tip; the dial is one loop, an arrowhead two short strokes, a
+  check one stroke, the star one stroke. The stick is a hand: it travels a
+  short arc between marks, rests while the script waits, leans the way it
+  goes, sits lower with a tighter shadow while drawing, sheds a little dust,
+  comes in from the lower right at 0:00 and leaves the same way at 1:00.
+  Each mark is scheduled within its chapter; chapter starts, caption times,
+  the clock's timing and the pulses are as they were. The frames measure
+  nothing and stop while the tab is hidden or the panel is out of view.
+  Reduced motion is unchanged.
 
 ## Vercel settings for the launch — October 16, 2026
 

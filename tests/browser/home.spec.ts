@@ -9,9 +9,9 @@ async function smallestWord(board: Locator): Promise<number> {
   return board.evaluate((svg: SVGSVGElement) => {
     const outer = svg.getScreenCTM()!
     return Math.min(
-      ...Array.from(svg.querySelectorAll('text')).map(
-        (text) =>
-          Number(text.getAttribute('font-size')) * Math.hypot(outer.a, outer.b),
+      ...Array.from(svg.querySelectorAll('.sixty-word')).map(
+        (word) =>
+          Number(word.getAttribute('data-size')) * Math.hypot(outer.a, outer.b),
       ),
     )
   })
@@ -467,8 +467,8 @@ test('on a phone the panel is the width of the page, the board stacks the clock 
     // The clock stands under the words of scene 1, above the bottom line.
     const tops = await board.evaluate((svg) => {
       const top = (label: string) =>
-        Array.from(svg.querySelectorAll('text'))
-          .find((text) => text.textContent === label)!
+        svg
+          .querySelector(`.sixty-word[data-text="${label}"]`)!
           .getBoundingClientRect().top
       return {
         dod: top('DoD'),
@@ -522,15 +522,17 @@ test.describe('reduced motion', () => {
     )
     const board = talk.locator('svg.sixty-board')
     const items = await board.evaluate((svg) =>
-      Array.from(svg.querySelectorAll<SVGElement>('[data-t]')).map((el) => ({
-        start: Number(el.getAttribute('data-t')!.split(',')[0]),
-        drawn: el.getAttribute('data-drawn'),
-      })),
+      Array.from(svg.querySelectorAll<SVGElement>('[data-start]')).map(
+        (el) => ({
+          start: Number(el.getAttribute('data-start')),
+          drawn: el.getAttribute('data-drawn'),
+        }),
+      ),
     )
     expect(items.length).toBeGreaterThan(40)
     for (const item of items)
       expect(item.drawn).toBe(item.start <= 7 ? 'done' : 'none')
-    // A finished stroke has no dash offset left; a finished label's clip is its full width.
+    // A finished mark stands whole on the board.
     const whole = await board.evaluate((svg) =>
       Array.from(svg.querySelectorAll<SVGElement>('[data-drawn="done"]')).every(
         (el) => {
@@ -547,7 +549,8 @@ test.describe('reduced motion', () => {
     // The end stands whole too.
     await page.keyboard.press('End')
     const unfinished = await board.evaluate(
-      (svg) => svg.querySelectorAll('[data-t]:not([data-drawn="done"])').length,
+      (svg) =>
+        svg.querySelectorAll('[data-start]:not([data-drawn="done"])').length,
     )
     expect(unfinished).toBe(0)
     expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])

@@ -90,11 +90,24 @@ const caption = () =>
   region().querySelector<HTMLElement>('.sixty-caption[aria-live]')!
 const opacity = (selector: string) =>
   Number(board().querySelector<SVGElement>(selector)!.style.opacity)
-const offset = (selector: string) =>
-  Number(board().querySelector<SVGElement>(selector)!.style.strokeDashoffset)
-const items = () => Array.from(board().querySelectorAll<SVGElement>('[data-t]'))
-const startOf = (item: SVGElement) =>
-  Number(item.getAttribute('data-t')!.split(',')[0])
+/** How much of a wiping stroke is still to come: its dash offset as a share of its length. */
+const offset = (selector: string) => {
+  const el = board().querySelector<SVGElement>(selector)!
+  return (
+    Number(el.style.strokeDashoffset) / Number(el.style.strokeDasharray) || 0
+  )
+}
+/** The marks of the drawing, each with its scheduled start. */
+const items = () =>
+  Array.from(board().querySelectorAll<SVGElement>('[data-start]'))
+const startOf = (item: SVGElement) => Number(item.getAttribute('data-start'))
+/** The words on the board, in the order they are written. */
+const words = (svg: SVGSVGElement = board()) =>
+  Array.from(svg.querySelectorAll('.sixty-word')).map((node) =>
+    node.getAttribute('data-text'),
+  )
+const word = (text: string) =>
+  board().querySelector<SVGElement>(`.sixty-word[data-text="${text}"]`)!
 /** A key pressed with focus on the play button, inside the panel. */
 const key = (name: string) =>
   act(() => {
@@ -150,11 +163,23 @@ describe('the panel on Home', () => {
       'viewBox',
       `0 0 ${boards.wide.width} ${boards.wide.height}`,
     )
-    expect(
-      Array.from(svg.querySelectorAll('text')).map((node) => node.textContent),
-    ).toEqual(sixtyWords)
+    expect(words(svg)).toEqual(sixtyWords)
+    expect(svg.querySelectorAll('text')).toHaveLength(0)
     expect(items().length).toBeGreaterThan(40)
     expect(items().every((item) => item.dataset.drawn === 'done')).toBe(true)
+    // Each word is its glyph outlines, one <use> per letter, through a mask
+    // of pen strokes; every pen stroke stands fully drawn.
+    const dod = word('DoD')
+    expect(dod.querySelectorAll('use.sixty-glyph')).toHaveLength(3)
+    expect(dod.querySelectorAll('mask path.sixty-pen').length).toBeGreaterThan(
+      2,
+    )
+    expect(
+      Array.from(svg.querySelectorAll<SVGElement>('path.sixty-pen')).every(
+        (pen) => pen.style.strokeDashoffset === '0',
+      ),
+    ).toBe(true)
+    expect(svg.querySelectorAll('clipPath rect[width="0"]')).toHaveLength(0)
     expect(offset('.sixty-erase-stroke')).toBe(0)
     expect(opacity('.sixty-stick')).toBe(0)
     expect(opacity('.sixty-eraser')).toBe(0)
@@ -214,11 +239,7 @@ describe('the panel on Home', () => {
         'viewBox',
         `0 0 ${boards.narrow.width} ${boards.narrow.height}`,
       )
-      expect(
-        Array.from(svg.querySelectorAll('text')).map(
-          (node) => node.textContent,
-        ),
-      ).toEqual(sixtyWords)
+      expect(words(svg)).toEqual(sixtyWords)
       expect(items().every((item) => item.dataset.drawn === 'done')).toBe(true)
     } finally {
       Reflect.deleteProperty(HTMLElement.prototype, 'clientWidth')
@@ -255,9 +276,7 @@ describe('playing in the panel', () => {
     expect(time()).toBe('0:01 / 1:00')
     frame.tenths(22)
     expect(time()).toBe('0:03 / 1:00')
-    expect(
-      items().find((item) => item.textContent === 'DoD')!.dataset.drawn,
-    ).toBe('done')
+    expect(word('DoD').dataset.drawn).toBe('done')
     expect(frame.waiting()).toBe(1)
     expect(window.location.href).toBe(before)
     expect(trackUsage).not.toHaveBeenCalled()
@@ -290,16 +309,10 @@ describe('playing in the panel', () => {
     expect(offset('.sixty-erase-stroke')).toBe(0)
     expect(offset('.sixty-haze')).toBe(0)
     expect(opacity('.sixty-eraser')).toBe(0)
-    expect(
-      items().find((item) => item.textContent === 'Level 2 runs on this clock')!
-        .dataset.drawn,
-    ).toBe('none')
+    expect(word('Level 2 runs on this clock').dataset.drawn).toBe('none')
     frame.tenths(10)
     expect(time()).toBe('0:17 / 1:00')
-    expect(
-      items().find((item) => item.textContent === 'Level 2 runs on this clock')!
-        .dataset.drawn,
-    ).not.toBe('none')
+    expect(word('Level 2 runs on this clock').dataset.drawn).not.toBe('none')
   })
 
   it('carries the eight captions word for word, their glossary words opening chalk popovers that take Escape', async () => {
@@ -485,6 +498,64 @@ describe('playing in the panel', () => {
     expect(button('Pause')).toBeInTheDocument()
     expect(frame.waiting()).toBe(1)
     expect(screen.queryByRole('dialog')).toBeNull()
+  })
+
+  it('stops the frames while the tab is hidden or the panel is out of view, and the time stands until they resume', async () => {
+    const frame = frames()
+    let seen: ((entries: { isIntersecting: boolean }[]) => void) | null = null
+    vi.stubGlobal(
+      'IntersectionObserver',
+      class {
+        constructor(
+          callback: (entries: { isIntersecting: boolean }[]) => void,
+        ) {
+          seen = callback
+        }
+        observe() {}
+        disconnect() {}
+      },
+    )
+    const visibility = (state: 'hidden' | 'visible') => {
+      Object.defineProperty(document, 'visibilityState', {
+        configurable: true,
+        get: () => state,
+      })
+      act(() => {
+        document.dispatchEvent(new Event('visibilitychange'))
+      })
+    }
+    try {
+      await mount()
+      await play()
+      frame.tenths(15)
+      expect(time()).toBe('0:01 / 1:00')
+      expect(frame.waiting()).toBe(1)
+      // The tab is hidden: no frame waits, the time stands, it is still "playing".
+      visibility('hidden')
+      expect(frame.waiting()).toBe(0)
+      expect(button('Pause')).toBeInTheDocument()
+      expect(time()).toBe('0:01 / 1:00')
+      // Back: the frames resume where they stopped.
+      visibility('visible')
+      expect(frame.waiting()).toBe(1)
+      frame.tenths(10)
+      expect(time()).toBe('0:02 / 1:00')
+      // The panel scrolls out of view, and back.
+      act(() => seen!([{ isIntersecting: false }]))
+      expect(frame.waiting()).toBe(0)
+      act(() => seen!([{ isIntersecting: true }]))
+      expect(frame.waiting()).toBe(1)
+      frame.tenths(10)
+      expect(time()).toBe('0:03 / 1:00')
+      // Paused while out of view: nothing resumes on its own when it is back.
+      act(() => seen!([{ isIntersecting: false }]))
+      key('k')
+      expect(button('Play')).toBeInTheDocument()
+      act(() => seen!([{ isIntersecting: true }]))
+      expect(frame.waiting()).toBe(0)
+    } finally {
+      Reflect.deleteProperty(document, 'visibilityState')
+    }
   })
 
   it('sends nothing off the site: no stylesheet, script or fetch to another host, and the site’s own faces', async () => {
