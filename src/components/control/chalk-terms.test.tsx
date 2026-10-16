@@ -24,6 +24,11 @@ const device = term('device')
 const word = (name = 'devices') =>
   screen.findByRole('button', { name }, { timeout: 5000 })
 const settle = () => new Promise((resolve) => setTimeout(resolve, 400))
+/** Matches the text exactly, except that any space in it may be missing. */
+const loosely = (text: string) =>
+  new RegExp(
+    `^${text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s*')}$`,
+  )
 // The marked words of a panel, which also holds the reflection's buttons.
 const marked = (panel: Element) =>
   [...panel.querySelectorAll('.term-chalk')].map((node) => node.textContent)
@@ -85,9 +90,11 @@ describe('Chalk popovers in the explanation', () => {
     expect(sources.map((link) => link.getAttribute('href'))).toEqual(
       device.sources.map((source) => source.url),
     )
+    // The full title, publication included, names each link. (jsdom drops the
+    // spaces at the hidden spans' edges, so they are optional here.)
     sources.forEach((link, index) =>
       expect(link).toHaveAccessibleName(
-        `${device.sources[index]!.title} (opens in a new tab)`,
+        loosely(`${device.sources[index]!.title} (opens in a new tab)`),
       ),
     )
     expect(popover).not.toHaveFocus()
