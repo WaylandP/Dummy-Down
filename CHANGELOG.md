@@ -259,6 +259,10 @@ analytics allowlist do not change.
   (the find line, the level filters, the families, the controls). A second
   skip link, shown on focus like the first, goes straight to the control's
   heading, with its views one Tab away; the rail stays where it is.
+- [PR #96](https://github.com/WaylandP/cipher-and-chalk/pull/96): touch
+  targets. A control's Print button is at least 44px wide (it was 29), each
+  glossary source link takes a 44px-tall tap without moving its line, and the
+  tabs' 44px minimum width from the one-row change covers "Rev 3" on a phone.
 
 ## The Board's features — October 15, 2026
 
