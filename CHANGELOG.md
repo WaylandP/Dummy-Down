@@ -218,6 +218,10 @@ analytics allowlist do not change.
   width. On a phone they fit at 390 (13px, 10px gaps) and scroll sideways at 320 with a soft fade at the edge that
   hides more, never wrapping "About" or "Rev 3" onto a line of their own; the
   active chalk stroke and the 44px targets stay.
+- [PR #101](https://github.com/WaylandP/cipher-and-chalk/pull/101): the
+  control-views test replays its first browser-history step until the view
+  is counted, since the lazy page's address subscription can settle after
+  the step on a loaded runner; nothing it asserts changes.
 - [PR #93](https://github.com/WaylandP/cipher-and-chalk/pull/93): the unit
   tests wait up to five seconds for a lazy page and fifteen for a test, so a
   full run beside another suite on the same cores no longer fails on
