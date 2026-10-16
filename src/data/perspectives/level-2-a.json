@@ -278,11 +278,11 @@
   {
     "id": "AC.L2-3.1.13",
     "beginner": {
-      "meaning": "Protect remote-access conversations with cryptography so someone observing the connection cannot read their contents. The connection needs confidentiality protection, not just a login password. When cryptography protects CUI, related CMMC requirements also matter.",
+      "meaning": "Protect remote-access conversations with cryptography so someone observing the connection cannot read their contents. The connection needs confidentiality protection, not just a login password, and because it carries CUI, that cryptography must be FIPS-validated.",
       "example": "Maya connects from home using CedarPoint's approved encrypted remote-access service. Someone observing the intervening network does not receive her session information as readable text."
     },
     "technical": {
-      "focus": "Identify and implement cryptographic mechanisms protecting remote-session confidentiality. Evaluate the actual protected path and configuration. For CUI confidentiality, consider SC.L2-3.13.11's FIPS-validated cryptography requirement; an algorithm name or encryption logo alone is not module validation.",
+      "focus": "Identify and implement cryptographic mechanisms protecting remote-session confidentiality. Evaluate the actual protected path and configuration. Because this cryptography protects CUI, it must meet SC.L2-3.13.11 (FIPS-validated cryptography); an algorithm name or encryption logo alone is not module validation.",
       "example": "The team checks the remote service's negotiated protection and the applicable validated module and operating configuration rather than assuming every VPN qualifies.",
       "watchFor": "Protecting an initial tunnel while leaving a later session leg unprotected can expose information beyond that tunnel's endpoint."
     },
@@ -374,7 +374,7 @@
       "example": "CedarPoint's approved wireless network authenticates Maya's connection and encrypts its traffic. The team treats a nearby open guest network as a different environment rather than a substitute for that protected access."
     },
     "technical": {
-      "focus": "Implement wireless authentication and encryption using an architecture appropriate to the environment. Consider user and device identities, including connected wireless devices beyond laptops. For cryptography protecting CUI confidentiality, also evaluate the FIPS-validation context in SC.L2-3.13.11.",
+      "focus": "Implement wireless authentication and encryption using an architecture appropriate to the environment. Consider user and device identities, including connected wireless devices beyond laptops. Because this encryption protects CUI, it must meet SC.L2-3.13.11: FIPS-validated cryptography, with the module itself validated under FIPS 140, not just an approved algorithm.",
       "example": "An enterprise wireless service authenticates an approved identity and negotiates the configured encrypted connection before allowing organizational access.",
       "watchFor": "A network name that sounds private, or a product advertising AES, establishes neither authentication coverage nor applicable cryptographic-module validation."
     },
@@ -420,12 +420,12 @@
       "example": "CedarPoint identifies the laptops and tablets that handle project CUI and checks how that information is encrypted on each. The team does not assume that locking Maya's tablet protects its stored files cryptographically."
     },
     "technical": {
-      "focus": "Identify applicable mobile devices and computing platforms, then protect their CUI with suitable full-device or container-based encryption. Evaluate where CUI actually resides, configuration and key handling, and the FIPS-validated cryptography context in SC.L2-3.13.11.",
+      "focus": "Identify applicable mobile devices and computing platforms, then protect their CUI with full-device or container-based encryption. That cryptography must meet SC.L2-3.13.11 (FIPS-validated cryptography). Also check where CUI actually resides and how keys are handled.",
       "example": "A managed laptop uses the appropriate validated cryptographic module and configuration, and the team verifies that relevant CUI storage is covered.",
       "watchFor": "An encrypted container may leave downloaded copies, caches, or exports outside its protection; encryption branding alone does not establish FIPS validation."
     },
     "compliance": {
-      "focus": "Compare the inventory of mobile CUI handling with implemented encryption coverage. Review the relevant related cryptographic requirements rather than treating a checked encryption box as the whole assessment.",
+      "focus": "Compare the inventory of mobile CUI handling with implemented encryption coverage. Check that the encryption is FIPS-validated (SC.L2-3.13.11) rather than treating a checked encryption box as the whole assessment.",
       "reviewQuestions": [
         "Which mobile devices and platforms process, store, or transmit CUI?",
         "How is CUI encrypted on each identified device or platform?"
@@ -1064,9 +1064,9 @@
       "example": "CedarPoint uses a suitable challenge-based authentication mechanism for a covered network path. A previously captured response does not work for a different fresh challenge."
     },
     "technical": {
-      "focus": "Implement replay-resistant authentication for network access to both account categories. Evaluate mechanisms using fresh challenges, nonces, or appropriately designed one-time authenticators, and inspect actual protocol behavior rather than assuming encryption or an MFA label establishes replay resistance.",
+      "focus": "Implement replay-resistant authentication for network access to both account categories. The guide's example treats Kerberos and TLS as replay-resistant and notes that MFA confers some replay resistance. Check the protocol each path actually uses: fresh challenges, nonces, or well-designed one-time authenticators.",
       "example": "A supported authentication protocol binds the response to a fresh server challenge and rejects reuse outside that authentication exchange.",
-      "watchFor": "A static credential sent in an encrypted channel still needs evaluation of the authentication mechanism's replay properties; multifactor and replay resistance are distinct characteristics."
+      "watchFor": "Confirm that each network authentication path actually uses a replay-resistant mechanism; an MFA label alone does not show which protocol is in use."
     },
     "compliance": {
       "focus": "Connect each relevant network authentication path to a mechanism whose design resists recorded authentication-message replay. Avoid inventing a required protocol or claiming all tokens are replay resistant.",

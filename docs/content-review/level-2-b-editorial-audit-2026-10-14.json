@@ -117,11 +117,27 @@
       "inputFingerprint": "d215aeb2a2450dfdbb0e1ab12e84928c0ba8caab5ea6ede632a110b60dd7ee3e",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "db846632520e6026062dc02e799f46d6a1b32f8ca4944d79ee399910dbb5b5e5",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "compliance.focus",
+          "issue": "Could be read as one test at any time being enough; the guide asks about regular testing.",
+          "proposedText": "Examine whether the incident response capability has been tested and what the test demonstrated. This requirement does not set a specific frequency or mandate one test format, though the guide asks whether policy calls for regular testing.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 150 / printed 142 section; requirements for regular incident response plan testing",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 150,
+            "printedPage": 142,
+            "objectiveLabels": ["a"],
+            "quotedBasis": "requirements for regular incident response plan testing"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewNote": "Tests may use walkthroughs, tabletop exercises, simulations or comprehensive exercises; discussion-only exercise is not proof of every technical mechanism; no invented numeric frequency.",
       "humanReview": "pending",
-      "reviewedFingerprint": "d215aeb2a2450dfdbb0e1ab12e84928c0ba8caab5ea6ede632a110b60dd7ee3e"
+      "reviewedFingerprint": "bb8c418fd87412bd9c7505be428ef761df635e0807aa658d59815564d213512c"
     },
     {
       "id": "MA.L2-3.7.1",
@@ -173,11 +189,27 @@
       "inputFingerprint": "b122f173897d6f4ccb79c0ec920d2ff399005c733dafe73db3eec77bf8465400",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "da66cd17b368fd3e9bb875c66ca1b49a867397d77042d23ab75de78a9a5c1e33",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.meaning",
+          "issue": "Named three of the four elements and said \"consider\" where the requirement says \"provide controls\".",
+          "proposedText": "Keep repair work under control: control who performs maintenance and the tools, methods and mechanisms (such as automated maintenance scripts) they use. A helpful repair tool can also introduce an unwanted risk.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 154 / printed 146 section; mechanisms used to conduct system maintenance are controlled",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 154,
+            "printedPage": 146,
+            "objectiveLabels": ["a", "b", "c", "d"],
+            "quotedBasis": "mechanisms used to conduct system maintenance are controlled"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewNote": "Tools, techniques, mechanisms and personnel are all addressed; diagnostic-tool approval does not substitute for personnel authorization.",
       "humanReview": "pending",
-      "reviewedFingerprint": "b122f173897d6f4ccb79c0ec920d2ff399005c733dafe73db3eec77bf8465400"
+      "reviewedFingerprint": "0686b24c568a49ef8eb0a6c328d66de8e5e4d4e8d6d26e2b79f1cd234ff13957"
     },
     {
       "id": "MA.L2-3.7.3",
@@ -421,11 +453,42 @@
       "inputFingerprint": "0033361c912b47b4b53c5ff5cbb50ada812144e56ef231a3ce7bc551b62d600b",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "23fa05d51ba787b70e4d773e42fe59437ef4987f2c1ac3c0eeba628dc484319b",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "technical.example",
+          "issue": "Moved the marking from the media to its contents; the objectives require the media itself to be marked.",
+          "proposedText": "A document-production process could provide appropriate templates and a review step, while a removable-media process could put a CUI label on the outside of each drive that also shows its distribution limitations, following NARA guidance.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 171 / printed 163 section; The project team labels the outside of each USB drive with an appropriate CUI label following NARA guidance",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 171,
+            "printedPage": 163,
+            "objectiveLabels": ["a", "b"],
+            "quotedBasis": "The project team labels the outside of each USB drive with an appropriate CUI label following NARA guidance"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.evidenceExamples[1]",
+          "issue": "A fictional sample cannot show that media actually containing CUI is marked.",
+          "proposedText": "Marking templates, plus observed or appropriately redacted examples of actual marked media",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 171 / printed 163 section; media containing CUI is marked with applicable CUI markings",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 171,
+            "printedPage": 163,
+            "objectiveLabels": ["a", "b"],
+            "quotedBasis": "media containing CUI is marked with applicable CUI markings"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewNote": "Applicable CUI markings and distribution limitations are both retained; generic confidentiality labels and access enforcement are correctly distinguished from markings.",
       "humanReview": "pending",
-      "reviewedFingerprint": "0033361c912b47b4b53c5ff5cbb50ada812144e56ef231a3ce7bc551b62d600b"
+      "reviewedFingerprint": "a26f966d662b7bec522976beeee517b4e79abd8eff3b4503ce7cb701390ba662"
     },
     {
       "id": "MP.L2-3.8.5",
@@ -449,11 +512,57 @@
       "inputFingerprint": "180a78b12afb003972d46f92db3ff36927e727ee0938a433271cf6ddd2d35bdc",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "ccc667977508f1cd671b902b7f51dbf1dff5b44b375a3e42142ff66d1e699c93",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.meaning",
+          "issue": "Limited access control to transport; objective [a] has no transport limit.",
+          "proposedText": "Control who can access media containing CUI. When it travels outside controlled areas, keep track of its custody: knowing who sent it is only the beginning of knowing where it went.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 173 / printed 165 section; access to media containing CUI is controlled",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 173,
+            "printedPage": 165,
+            "objectiveLabels": ["a", "b"],
+            "quotedBasis": "access to media containing CUI is controlled"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "technical.focus",
+          "issue": "Limited access control to transport; objective [a] has no transport limit.",
+          "proposedText": "Control access to CUI media, and maintain accountability throughout release, transport, and receipt. Suitable packaging, authorized handlers, transport records, and confirmation of delivery can support the process for paper or digital media.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 173 / printed 165 section; access to media containing CUI is controlled",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 173,
+            "printedPage": 165,
+            "objectiveLabels": ["a", "b"],
+            "quotedBasis": "access to media containing CUI is controlled"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.reviewQuestions[0]",
+          "issue": "Asked only about transport; objective [a] covers access to CUI media generally.",
+          "proposedText": "Who is authorized to access CUI media, and who may handle it during transport?",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 173 / printed 165 section; Do only approved individuals have access to media containing CUI",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 173,
+            "printedPage": 165,
+            "objectiveLabels": ["a"],
+            "quotedBasis": "Do only approved individuals have access to media containing CUI"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewNote": "Access control and transport accountability include release, authorized handlers, handoffs and receipt; encryption alone is not a custody record.",
       "humanReview": "pending",
-      "reviewedFingerprint": "180a78b12afb003972d46f92db3ff36927e727ee0938a433271cf6ddd2d35bdc"
+      "reviewedFingerprint": "74903c39abea5f1d608b5ab95c9b7db7c16c12c90f35c55e5e916feb68468482"
     },
     {
       "id": "MP.L2-3.8.6",
@@ -484,12 +593,27 @@
           "proposedText": "Protect CUI stored on digital media while it is being transported. Use cryptographic protection unless alternative physical safeguards protect its confidentiality throughout the trip.",
           "sourceSupport": "PDF175/printed167 requirement and objective[a] allow cryptographic mechanisms or alternative physical safeguards during transport; PDF176/printed168 Further Discussion retains alternative physical safeguarding.",
           "resolution": "Applied after coordinating comparison of the cited complete guide section; associated objective mappings re-compared and preserved."
+        },
+        {
+          "field": "technical.focus",
+          "issue": "Read as optional. The guide says the cryptography in this requirement protects CUI and \"must meet the criteria specified in requirement SC.L2-3.13.11\" (FIPS-validated cryptography).",
+          "proposedText": "Identify transported digital media and its confidentiality protection. Where cryptography protects CUI confidentiality, it must also meet SC.L2-3.13.11 (FIPS-validated cryptography). Manage keys so the transport package does not undermine the protection.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 175 / printed 167 section; the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 175,
+            "printedPage": 167,
+            "objectiveLabels": ["a"],
+            "quotedBasis": "the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Cryptography or alternative physical safeguards and the digital-media transport scope are preserved; remove the author-facing instruction about not losing an exception from Beginner meaning.",
       "humanReview": "pending",
-      "reviewedFingerprint": "01d392444852596cc188038ff14c6e491054d3d7988c8bec061e8db2f566662a"
+      "reviewedFingerprint": "43adb446cb4a4b091e79374670ce858da09031a65575f85dca30d37055b934c3"
     },
     {
       "id": "MP.L2-3.8.7",
@@ -569,11 +693,27 @@
       "inputFingerprint": "c292497f88e8d787860b45a2904530772b7dd73de545a6d29ddfa3d8d2f440fa",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "807a69aca28221821ee906b144fc66a19716d4776e254dcc72fcc3c6eb98901a",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "technical.focus",
+          "issue": "\"Consider the applicable validation requirement\" did not name it or say it is required; the guide asks whether the mechanisms are FIPS validated.",
+          "proposedText": "Identify backup copies and storage locations, then apply confidentiality protections appropriate to those locations. Cryptographic mechanisms or alternative physical controls can protect backups; where cryptography protects CUI, it must be FIPS-validated (SC.L2-3.13.11).",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 181 / printed 173 section; Are cryptographic mechanisms FIPS validated",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 181,
+            "printedPage": 173,
+            "objectiveLabels": ["a"],
+            "quotedBasis": "Are cryptographic mechanisms FIPS validated"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewNote": "Backup confidentiality applies at storage locations; cryptographic or alternative physical controls remain options and backup success is distinguished from confidentiality.",
       "humanReview": "pending",
-      "reviewedFingerprint": "c292497f88e8d787860b45a2904530772b7dd73de545a6d29ddfa3d8d2f440fa"
+      "reviewedFingerprint": "40e21fc1a575134cb8bbb472290e958da8bec91dd0d24569517c2bb3be35c1e1"
     },
     {
       "id": "PS.L2-3.9.1",
@@ -877,11 +1017,27 @@
       "inputFingerprint": "9e042bb3c0a939efa5cfe01f3fe31a5d86ae6341553a3090d527e2a6a5f2a785",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "643065767c6f174c1194aea29d22c4e00cce8fd4891b45b6f07ff697c9dd9d63",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "technical.watchFor",
+          "issue": "Implied documented risk acceptance is never acceptable; the guide's example documents and tracks accepted risk.",
+          "proposedText": "Opening a ticket is not remediation. When the risk assessment supports deferring or accepting a vulnerability, document the reasoning, track the vulnerability and keep monitoring it; an undocumented or untracked acceptance does not show risk-based remediation.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 206 / printed 198 section; You document the reasoning behind accepting the risk of the unremediated flaws",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 206,
+            "printedPage": 198,
+            "objectiveLabels": ["b"],
+            "quotedBasis": "You document the reasoning behind accepting the risk of the unremediated flaws"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewNote": "Identification and risk-based remediation remain explicit; documented risk acceptance is not automatically remediation or permission for a CMMC deficiency. Guide discussion of deferred risks is not converted to blanket approval.",
       "humanReview": "pending",
-      "reviewedFingerprint": "9e042bb3c0a939efa5cfe01f3fe31a5d86ae6341553a3090d527e2a6a5f2a785"
+      "reviewedFingerprint": "29119ba9dd626c4e2a286e12432d8eddb6b8a199862034373b86def1187e85cf"
     },
     {
       "id": "CA.L2-3.12.1",
@@ -1073,11 +1229,27 @@
       "inputFingerprint": "50a04bcd3d328c6f924450e692963d77f02be237bc820b3d5aff5dc6fd303aaf",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "a3a4c1a6244ce079e0dc62c51cd5ac81ed29f68347657c6a1d0bf1cd1cc0356d",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "compliance.focus",
+          "issue": "Separated the requirement from privileges, though the guide's stated intent is partly about accounts.",
+          "proposedText": "Review how user and management functionality are identified and physically or logically separated. The guide's stated intent includes keeping administration away from general users and having administrators administer only from their privileged accounts; separating staff duties is a different requirement.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 225 / printed 217 section; general users are not permitted to perform system administration functions",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 225,
+            "printedPage": 217,
+            "objectiveLabels": ["a", "b", "c"],
+            "quotedBasis": "general users are not permitted to perform system administration functions"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewNote": "Physical/logical separation of user and management functions is preserved and distinguished from staff duties and individual privileges; menu hiding is not separation.",
       "humanReview": "pending",
-      "reviewedFingerprint": "50a04bcd3d328c6f924450e692963d77f02be237bc820b3d5aff5dc6fd303aaf"
+      "reviewedFingerprint": "e49c81e4152024c69bf8773a062f14a176a54632d34e273405ae544aa5512a9c"
     },
     {
       "id": "SC.L2-3.13.4",
@@ -1101,11 +1273,27 @@
       "inputFingerprint": "4f63dc46a52474d932d15045ed376cd208eaf497c65fe777a16b3af694d8382c",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "9203c03fa8cdc26f954143d431a4fb95d5f4e50e3713fb2bf17769b8bc179f23",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "technical.watchFor",
+          "issue": "Called it \"not a generic file-sharing rule\" though the guide's example counts folder isolation; left out one exclusion.",
+          "proposedText": "This is not a media-disposal requirement, and the discussion excludes deleted-data remnants, covert channels and components with only one user or role. The guide's example does count operating-system settings that stop users from reaching other users' folders, along with patches for processor flaws such as Meltdown and Spectre.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 227 / printed 219 section; the computer operating system is configured to prevent users from accessing other users",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 227,
+            "printedPage": 219,
+            "objectiveLabels": ["a"],
+            "quotedBasis": "the computer operating system is configured to prevent users from accessing other users"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewNote": "Shared-resource reuse, residual information and encrypted representations are addressed; deleted-data remnants and covert channels remain excluded as in the source Discussion.",
       "humanReview": "pending",
-      "reviewedFingerprint": "4f63dc46a52474d932d15045ed376cd208eaf497c65fe777a16b3af694d8382c"
+      "reviewedFingerprint": "15e1630fbcf0a35378cf0f216190e0107988651db524c188e5dc11bfab07a661"
     },
     {
       "id": "SC.L2-3.13.5",
@@ -1228,11 +1416,27 @@
       "inputFingerprint": "66a7b364cd7ea4bc55560d6ed68160d294014756c5e90d0e0467f8edeb9ff99a",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "5315ec289d138a5d9b0d8723a9c62bf31b1dfcadf9401a91352c0f475aea6b3a",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "technical.focus",
+          "issue": "Read as optional. The guide says the cryptography in this requirement protects CUI and \"must meet the criteria specified in requirement SC.L2-3.13.11\" (FIPS-validated cryptography).",
+          "proposedText": "Map CUI transmission paths across internal and external networks and relevant devices. Identify the cryptographic mechanism or alternative physical safeguard that prevents disclosure. Where cryptography provides that protection, it must meet SC.L2-3.13.11 (FIPS-validated cryptography).",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 235 / printed 227 section; the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 235,
+            "printedPage": 227,
+            "objectiveLabels": ["b", "c"],
+            "quotedBasis": "the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewNote": "Internal/external CUI transmission and cryptography/alternative physical safeguards are retained; an internal cable or one encrypted hop is not automatically complete protection.",
       "humanReview": "pending",
-      "reviewedFingerprint": "66a7b364cd7ea4bc55560d6ed68160d294014756c5e90d0e0467f8edeb9ff99a"
+      "reviewedFingerprint": "afca6f312b302803676ffb2d8d69c4c74f975339fb778b41e3ed72b3c6077844"
     },
     {
       "id": "SC.L2-3.13.9",
@@ -1399,16 +1603,24 @@
       "findings": [
         {
           "field": "beginner.meaning",
-          "issue": "Internet-based voice can be read as limited to calls over the public internet. Identify Internet Protocol networking instead, preserving the requirement’s technology scope.",
-          "proposedText": "Control and monitor voice calls carried over Internet Protocol (IP) networks, commonly called VoIP. A voice call carried through a network is still a system activity that can introduce security risks.",
-          "sourceSupport": "PDF248/printed240 requirement and objectives[a,b] cover Voice over Internet Protocol technologies without a public-internet-only qualifier; PDF249/printed241 Further Discussion covers organizational VoIP usage restrictions and insecure or unauthorized use.",
-          "resolution": "Applied after coordinating comparison of the cited complete guide section; associated objective mappings re-compared and preserved."
+          "issue": "Could be read as monitoring call content; the requirement is about the use of VoIP technologies.",
+          "proposedText": "Control and monitor the use of Voice over Internet Protocol (VoIP), phone service carried over IP networks: who may use it, how it is set up, and whether unapproved VoIP tools or unauthorized uses appear.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 248 / printed 240 section; Control and monitor the use of Voice over Internet Protocol (VoIP) technologies",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 248,
+            "printedPage": 240,
+            "objectiveLabels": ["a", "b"],
+            "quotedBasis": "Control and monitor the use of Voice over Internet Protocol (VoIP) technologies"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
       "disposition": "corrected",
       "reviewNote": "Control and monitoring of VoIP are retained, but internet-based voice in Beginner meaning may imply public-internet-only scope; identify IP networks rather than that narrower label.",
       "humanReview": "pending",
-      "reviewedFingerprint": "bd0dae1fbdc60fd5bbe2e551ac850113e7cdc339d772fcbbc1f103a38bd0d357"
+      "reviewedFingerprint": "5c1b1eed9e405efc78ca913f66517503beef3cc9fa1a0a5884f09e7d33cd66be"
     },
     {
       "id": "SC.L2-3.13.15",
@@ -1460,11 +1672,42 @@
       "inputFingerprint": "9c731531376e6d0d800d354d70fc2d28053d5dcac57f7e9d8a84756c3806d9e9",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "1e74ebc920e480231103b899d85f4592401c81a9647cad32f9ccd9d2d6f33113",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "technical.focus",
+          "issue": "Read as optional. The guide says the cryptography in this requirement protects CUI and \"must meet the criteria specified in requirement SC.L2-3.13.11\" (FIPS-validated cryptography).",
+          "proposedText": "Identify where CUI is at rest and select mechanisms that protect its confidentiality. The guide discusses cryptographic and other protections; where cryptography protects CUI, it must meet SC.L2-3.13.11 (FIPS-validated cryptography).",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 252 / printed 244 section; the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 252,
+            "printedPage": 244,
+            "objectiveLabels": ["a"],
+            "quotedBasis": "the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "technical.watchFor",
+          "issue": "The second clause was hard to parse.",
+          "proposedText": "This wording does not mandate encryption as the only possible safeguard; conversely, encrypting storage does not replace limiting which accounts can read the CUI once it is unlocked.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 252 / printed 244 section; Implementing encryption for CUI is one approach to this requirement, but it is not mandatory",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 252,
+            "printedPage": 244,
+            "objectiveLabels": ["a"],
+            "quotedBasis": "Implementing encryption for CUI is one approach to this requirement, but it is not mandatory"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewNote": "At-rest state and confidentiality are retained; cryptographic and other adequate protections remain possible without a universal encryption-only mandate.",
       "humanReview": "pending",
-      "reviewedFingerprint": "9c731531376e6d0d800d354d70fc2d28053d5dcac57f7e9d8a84756c3806d9e9"
+      "reviewedFingerprint": "59dd7a0b9b10871dbf9329ba73fd8da8ad0937bb68834bc5b4a3eed8b4a22a52"
     },
     {
       "id": "SI.L2-3.14.1",

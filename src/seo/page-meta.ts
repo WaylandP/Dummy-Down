@@ -1,7 +1,7 @@
 export const SITE_NAME = 'Cipher & Chalk'
 export const SITE_ORIGIN = 'https://cipherandchalk.vercel.app'
 export const DEFAULT_DESCRIPTION =
-  'Every control in the CMMC v2.13 catalog, explained three ways, with the official source text one scroll away.'
+  'All 149 CMMC controls, each quoted from the official guide with its page, then explained three ways. Free and open source.'
 
 export interface PageMeta {
   readonly title: string

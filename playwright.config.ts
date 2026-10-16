@@ -7,7 +7,11 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: 0,
   timeout: 45_000,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  // On CI, failures also become annotations on the pull request, so they can
+  // be read without opening the job log.
+  reporter: process.env.CI
+    ? [['list'], ['github'], ['html', { open: 'never' }]]
+    : [['list'], ['html', { open: 'never' }]],
   use: {
     baseURL: 'http://127.0.0.1:4178',
     browserName: 'chromium',
