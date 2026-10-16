@@ -90,10 +90,9 @@ not establish it.
   down to just above "Pick up a chalk to start." with a hairline rule on its
   left (`mockups/2026-10-15/SixtySeconds.html`), "CMMC in sixty seconds"
   plays in its own panel (397px wide at 1280×800 and 1366×768, growing with
-  the window's height and width on bigger screens, up to 1100px, its board,
-  player row, caption, note and board words with it, while the hero's
-  kicker, headline and lead share their column's height so both end just
-  above "Pick up a chalk to start."): the title in yellow chalk (an `h2` naming
+  the window's width to 587px on big screens, its board, player row,
+  caption, note and board words with it; the top half sits centred above
+  "Pick up a chalk to start.", the headline at most 120px): the title in yellow chalk (an `h2` naming
   the region), the board, the player row (play/pause/replay, a chaptered
   scrub bar, the time in mono, the speed), the caption with its glossary
   popovers and the note on Phase 2 with a link to the timeline; in the DOM
