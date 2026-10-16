@@ -197,7 +197,10 @@ says whether it is built.
    their "Practice:" prefix with the control's ID, the one running under the
    yellow bar, and "Keep my progress on this browser: off/on" with "Hide
    finished" once on); on the right the situation running: ID, level, title,
-   "Question n of m" with chalk dashes, the prompt, the choices as rows with
+   "Question n of m" with chalk dashes, the scenario's title and the
+   introduction, the steps in "The situation" beside the question (under it
+   where the column is narrow; an open disclosure above it on a phone), the
+   prompt, the choices as rows with
    chalk circles, the feedback under the answer, then "Next question →",
    "Read the requirement" and "Watch the 40-second chalk talk" where there is
    one, and after the first answer "A common mix-up" struck through in chalk

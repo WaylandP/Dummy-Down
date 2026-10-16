@@ -105,6 +105,63 @@ test('finishing a situation moves focus to the completion line', async ({
   ).toBeVisible()
 })
 
+test('the situation is in view while answering: beside the question at 1280, under it at 1024, an open disclosure on a phone', async ({
+  page,
+}) => {
+  const address = '/practice?activity=level-one-visitors-and-keys'
+  await page.setViewportSize({ width: 1280, height: 800 })
+  const run = page.getByRole('article')
+  const panel = run.getByRole('complementary', { name: 'The situation' })
+  // The run fits the frame with nothing to scroll, for a three-step situation
+  // and for the longest (four steps, the most words).
+  for (const [where, steps] of [
+    [address, 3],
+    ['/practice?activity=level-one-media-disposal', 4],
+  ] as const) {
+    await page.goto(where)
+    await expect(run.locator('.practice-run-intro')).toBeVisible()
+    await expect(panel.getByRole('listitem')).toHaveCount(steps)
+    await page.evaluate(() => document.fonts.ready)
+    const prompt = (await run.locator('.practice-run-prompt').boundingBox())!
+    const beside = (await panel.boundingBox())!
+    expect(beside.x).toBeGreaterThan(prompt.x + prompt.width - 1)
+    expect(beside.y).toBeLessThan(prompt.y + prompt.height)
+    expect(
+      await run.evaluate((node) => node.scrollHeight - node.clientHeight),
+    ).toBeLessThanOrEqual(0)
+  }
+  await page.goto(address)
+  await expect(
+    run.getByText('A returning supplier and a returned key'),
+  ).toBeVisible()
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
+
+  await page.setViewportSize({ width: 1024, height: 768 })
+  await page.goto(address)
+  await expect(panel.getByRole('listitem')).toHaveCount(3)
+  await page.evaluate(() => document.fonts.ready)
+  const choices = (await run.locator('.practice-run-choices').boundingBox())!
+  const under = (await panel.boundingBox())!
+  expect(under.y).toBeGreaterThanOrEqual(choices.y + choices.height - 1)
+  expect(under.x).toBeLessThan(choices.x + 1)
+
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto(address)
+  const details = run.locator('details.practice-scene')
+  await expect(details).toHaveAttribute('open', '')
+  const summary = details.locator('summary')
+  const summaryBox = (await summary.boundingBox())!
+  expect(summaryBox.height).toBeGreaterThanOrEqual(44)
+  await expect(details.getByRole('listitem')).toHaveCount(3)
+  const steps = (await details.getByRole('list').boundingBox())!
+  const question = (await run.locator('.practice-run-prompt').boundingBox())!
+  expect(steps.y + steps.height).toBeLessThanOrEqual(question.y + 1)
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([])
+  await summary.click()
+  await expect(details).not.toHaveAttribute('open', '')
+  await expect(details.getByRole('list')).toBeHidden()
+})
+
 test('on a phone an answered situation keeps its heading order and passes the scan', async ({
   page,
 }) => {

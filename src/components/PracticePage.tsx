@@ -567,114 +567,174 @@ function PracticeRun({
       >
         {situation.title}
       </Title>
-      <p className="practice-run-prompt" ref={prompt} tabIndex={-1}>
-        {question.prompt}
+      <p className="practice-run-intro">
+        <span className="practice-run-scenario hand">
+          {activity.scenarioTitle}
+        </span>{' '}
+        {activity.introduction}
       </p>
-      <div
-        className="practice-run-choices"
-        role="group"
-        aria-label={`Question ${shown + 1} of ${count}`}
-      >
-        {question.choices.map((choice) => {
-          const selected = choice.id === answerId
-          return (
-            <Fragment key={choice.id}>
-              <button
-                type="button"
-                className="practice-run-choice"
-                aria-pressed={selected}
-                disabled={answered && !selected}
-                onClick={() => choose(choice.id)}
-              >
-                <svg
-                  className="practice-run-mark chalk"
-                  viewBox="0 0 26 26"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path
-                    className="practice-run-ring"
-                    d="M13 3c6 0 10 4 10 10s-4 10-10 10S3 19 3 13 7 3 13 3z"
-                  />
-                  {selected && (
-                    <path
-                      className="practice-run-tick"
-                      d="M8 13.5l3.5 3.5L19 9"
-                    />
+      <div className="practice-run-body">
+        {/* The situation's steps, from the activity itself: the prompts refer
+            to them. A panel beside the question where the column is wide,
+            under it where it is not; on a phone a disclosure that starts
+            open. */}
+        {Title === 'h2' ? (
+          <aside
+            className="practice-scene"
+            aria-labelledby="practice-scene-heading"
+          >
+            <Sub id="practice-scene-heading" className="hand">
+              The situation
+            </Sub>
+            <SituationSteps activity={activity} />
+          </aside>
+        ) : (
+          <details className="practice-scene" open>
+            <summary>
+              <Sub id="practice-scene-heading" className="hand">
+                The situation
+              </Sub>
+            </summary>
+            <SituationSteps activity={activity} />
+          </details>
+        )}
+        <div className="practice-run-flow">
+          <p className="practice-run-prompt" ref={prompt} tabIndex={-1}>
+            {question.prompt}
+          </p>
+          <div
+            className="practice-run-choices"
+            role="group"
+            aria-label={`Question ${shown + 1} of ${count}`}
+          >
+            {question.choices.map((choice) => {
+              const selected = choice.id === answerId
+              return (
+                <Fragment key={choice.id}>
+                  <button
+                    type="button"
+                    className="practice-run-choice"
+                    aria-pressed={selected}
+                    disabled={answered && !selected}
+                    onClick={() => choose(choice.id)}
+                  >
+                    <svg
+                      className="practice-run-mark chalk"
+                      viewBox="0 0 26 26"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        className="practice-run-ring"
+                        d="M13 3c6 0 10 4 10 10s-4 10-10 10S3 19 3 13 7 3 13 3z"
+                      />
+                      {selected && (
+                        <path
+                          className="practice-run-tick"
+                          d="M8 13.5l3.5 3.5L19 9"
+                        />
+                      )}
+                    </svg>
+                    <span className="practice-run-choice-text">
+                      {choice.label}
+                    </span>
+                  </button>
+                  {selected && picked && (
+                    <div
+                      className="practice-run-feedback"
+                      role="status"
+                      tabIndex={-1}
+                      ref={feedback}
+                      data-outcome={correct ? 'correct' : 'incorrect'}
+                    >
+                      <p>
+                        <strong>
+                          {correct ? 'That’s right.' : 'Not quite.'}
+                        </strong>{' '}
+                        {picked.feedback}
+                      </p>
+                    </div>
                   )}
-                </svg>
-                <span className="practice-run-choice-text">{choice.label}</span>
-              </button>
-              {selected && picked && (
-                <div
-                  className="practice-run-feedback"
-                  role="status"
-                  tabIndex={-1}
-                  ref={feedback}
-                  data-outcome={correct ? 'correct' : 'incorrect'}
+                </Fragment>
+              )
+            })}
+          </div>
+          {entry.completed && (
+            <p className="practice-run-done" ref={done} tabIndex={-1}>
+              Practice complete. Keep asking why.
+            </p>
+          )}
+          {answered && (
+            <div className="practice-run-actions">
+              {entry.completed ? (
+                <button
+                  type="button"
+                  className="practice-run-next"
+                  onClick={again}
                 >
-                  <p>
-                    <strong>{correct ? 'That’s right.' : 'Not quite.'}</strong>{' '}
-                    {picked.feedback}
-                  </p>
-                </div>
-              )}
-            </Fragment>
-          )
-        })}
-      </div>
-      {entry.completed && (
-        <p className="practice-run-done" ref={done} tabIndex={-1}>
-          Practice complete. Keep asking why.
-        </p>
-      )}
-      {answered && (
-        <div className="practice-run-actions">
-          {entry.completed ? (
-            <button type="button" className="practice-run-next" onClick={again}>
-              Practice again
-            </button>
-          ) : (
-            <button type="button" className="practice-run-next" onClick={next}>
-              {shown === last && shown === position ? (
-                'Finish practice'
+                  Practice again
+                </button>
               ) : (
-                <>
-                  Next question <span aria-hidden="true">→</span>
-                </>
+                <button
+                  type="button"
+                  className="practice-run-next"
+                  onClick={next}
+                >
+                  {shown === last && shown === position ? (
+                    'Finish practice'
+                  ) : (
+                    <>
+                      Next question <span aria-hidden="true">→</span>
+                    </>
+                  )}
+                </button>
               )}
-            </button>
-          )}
-          <a href={readUrl}>Read the requirement</a>
-          {hasVisualExplanation(lesson) && (
-            <a href={watchUrl}>Watch the 40-second chalk talk</a>
+              <a href={readUrl}>Read the requirement</a>
+              {hasVisualExplanation(lesson) && (
+                <a href={watchUrl}>Watch the 40-second chalk talk</a>
+              )}
+            </div>
           )}
         </div>
-      )}
-      {anyAnswered && activity.commonMisunderstanding && (
-        <div className="practice-run-mixup">
-          <Sub className="hand">A common mix-up</Sub>
-          <p className="practice-run-claim">
-            <s>{activity.commonMisunderstanding.claim}</s>
-          </p>
-          <p className="practice-run-correction">
-            {activity.commonMisunderstanding.correction}
-          </p>
-        </div>
-      )}
-      <p className="practice-run-note">
-        {activity.disclaimer} Teaching basis:{' '}
-        <a
-          href={activity.teachingSource.url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {activity.teachingSource.kind === 'project-readme'
-            ? 'README simplified example'
-            : activity.teachingSource.title}
-          <span className="sr-only"> (opens in a new tab)</span>
-        </a>
-      </p>
+        {anyAnswered && activity.commonMisunderstanding && (
+          <div className="practice-run-mixup">
+            <Sub className="hand">A common mix-up</Sub>
+            <p className="practice-run-claim">
+              <s>{activity.commonMisunderstanding.claim}</s>
+            </p>
+            <p className="practice-run-correction">
+              {activity.commonMisunderstanding.correction}
+            </p>
+          </div>
+        )}
+        <p className="practice-run-note">
+          {activity.disclaimer} Teaching basis:{' '}
+          <a
+            href={activity.teachingSource.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {activity.teachingSource.kind === 'project-readme'
+              ? 'README simplified example'
+              : activity.teachingSource.title}
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        </p>
+      </div>
     </article>
+  )
+}
+
+/** The scenario's steps, each its title and what happens, compact. */
+function SituationSteps({ activity }: { readonly activity: LearningActivity }) {
+  return (
+    <ol className="practice-scene-steps">
+      {activity.scenario.map((step) => (
+        <li key={step.id}>
+          <span className="practice-scene-step">{step.title}.</span>{' '}
+          {step.description}
+        </li>
+      ))}
+    </ol>
   )
 }

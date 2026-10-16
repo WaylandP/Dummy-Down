@@ -264,7 +264,124 @@
   flex-direction: column;
   min-height: 0;
   min-width: 0;
-  padding-bottom: 12px;
+  padding-bottom: 8px;
+  container-type: inline-size;
+}
+/* The scenario's title opens the introduction, before the question. */
+.practice-run-intro {
+  max-width: 110ch;
+  margin: 4px 0 0;
+  color: var(--color-chalk-muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.practice-run-scenario {
+  color: var(--color-yellow);
+  font-size: 19px;
+}
+/* The scene: the situation's steps, beside the question where the column is
+   wide enough, under it where it is not, so they are in view while
+   answering. (The list's links are .practice-situation; this is the panel.) */
+.practice-run-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: 'flow' 'scene' 'mixup' 'note';
+  gap: 8px 32px;
+  align-items: start;
+}
+.practice-run-flow {
+  grid-area: flow;
+  min-width: 0;
+}
+.practice-scene {
+  grid-area: scene;
+  min-width: 0;
+}
+.practice-run-body > .practice-run-mixup {
+  grid-area: mixup;
+}
+.practice-run-body > .practice-run-note {
+  grid-area: note;
+}
+.practice-scene h2,
+.practice-scene h3 {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.1;
+}
+.practice-scene-steps {
+  display: grid;
+  gap: 3px;
+  margin: 6px 0 0;
+  padding-left: 18px;
+  color: var(--color-chalk-muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+.practice-scene-steps li::marker {
+  color: var(--color-yellow);
+}
+.practice-scene-step {
+  color: var(--color-chalk);
+  font-weight: 500;
+}
+@container (min-width: 760px) {
+  .practice-run-body {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-areas: 'flow scene' 'mixup scene' 'note scene';
+  }
+  .practice-scene {
+    position: sticky;
+    top: 0;
+    padding-left: 28px;
+    border-left: 1px solid var(--color-rule);
+  }
+}
+/* On a phone, a disclosure that starts open: the heading is its summary. */
+/* On a phone the disclosure comes first, above the question. */
+.practice-run-body:has(details.practice-scene) {
+  grid-template-areas: 'scene' 'flow' 'mixup' 'note';
+}
+details.practice-scene {
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--color-rule);
+}
+details.practice-scene summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  list-style: none;
+  cursor: pointer;
+}
+details.practice-scene summary::-webkit-details-marker {
+  display: none;
+}
+details.practice-scene summary::after {
+  content: '';
+  width: 9px;
+  height: 9px;
+  margin-top: -4px;
+  border-right: 2px solid var(--color-yellow);
+  border-bottom: 2px solid var(--color-yellow);
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+}
+details.practice-scene[open] summary::after {
+  margin-top: 4px;
+  transform: rotate(-135deg);
+}
+details.practice-scene summary:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 4px;
+}
+details.practice-scene .practice-scene-steps {
+  margin: 0 0 10px;
+}
+@media (prefers-reduced-motion: reduce) {
+  details.practice-scene summary::after {
+    transition: none;
+  }
 }
 .practice-back {
   display: inline-flex;
@@ -312,7 +429,7 @@
   opacity: 1;
 }
 .practice-run-title {
-  margin: 12px 0 0;
+  margin: 6px 0 0;
   font-size: 36px;
   line-height: 1.05;
 }
@@ -324,13 +441,13 @@
 }
 .practice-run-prompt {
   max-width: 760px;
-  margin: 18px 0 6px;
-  font-size: 23px;
-  line-height: 1.45;
+  margin: 0 0 6px;
+  font-size: 22px;
+  line-height: 1.4;
 }
 .practice-run-choices {
   max-width: 760px;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 .practice-run-choice {
   display: grid;
@@ -341,12 +458,12 @@
   min-height: 44px;
   border: 0;
   border-top: 1px solid var(--color-rule-soft);
-  padding: 12px 0;
+  padding: 10px 0;
   background: none;
   color: var(--color-chalk-dim);
   font: inherit;
   font-size: 17px;
-  line-height: 1.45;
+  line-height: 1.4;
   text-align: left;
   cursor: pointer;
 }
@@ -474,10 +591,10 @@
   line-height: 1.5;
 }
 .practice-run-note {
-  margin: 10px 0 0;
+  margin: 6px 0 0;
   color: var(--color-chalk-dim);
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 .practice-run-note a {
   color: var(--color-chalk-dim);

@@ -193,6 +193,13 @@ analytics allowlist do not change.
   reduced motion shows each chapter finished; Smudge sweeps at 1:00. No
   analytics events, no third-party requests. Also on Home, the search line
   is 44px tall and the blue chalk reads "Every objective, quoted."
+- [PR #90](https://github.com/WaylandP/cipher-and-chalk/pull/90): a
+  situation on /practice shows itself. Its scenario title and introduction
+  come before the first question, and its steps stand in "The situation", a
+  panel beside the question where the column is wide (under it at 1024) and
+  an open disclosure above it on a phone, from the same activity data the
+  control page's Practice tab shows, unchanged; the prompts' "the assigned
+  employee" and "the stated scenario" now have something to point at.
 
 ## The Board's features — October 15, 2026
 
