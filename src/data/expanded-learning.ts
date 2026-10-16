@@ -102,7 +102,8 @@ export const expandedLearningActivities = [
       },
       {
         id: 'define-then-limit-actions',
-        prompt: 'Which approach best captures the two source determinations?',
+        prompt:
+          'Which approach covers both of the guide’s assessment objectives?',
         correctChoiceId: 'define-and-limit',
         choices: [
           {
@@ -110,13 +111,13 @@ export const expandedLearningActivities = [
             label:
               'Define permitted actions, then make system access follow those definitions.',
             feedback:
-              'The source separately asks whether permitted transactions/functions are defined and whether system access is limited accordingly. Both matter.',
+              'The guide asks both whether permitted transactions and functions are defined and whether system access is limited to them.',
           },
           {
             id: 'write-only',
             label: 'Write a role description and leave all actions enabled.',
             feedback:
-              'That may help describe permissions, but it omits the determination about limiting actual system access to those defined functions.',
+              'That may help describe permissions, but it leaves out the second assessment objective: limiting actual system access to those defined functions.',
           },
           {
             id: 'copy-everyone',
@@ -134,7 +135,7 @@ export const expandedLearningActivities = [
       'information-system',
     ],
     disclaimer:
-      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
+      'A fictional practice activity written from the CMMC v2.13 assessment guide (September 2024). It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l1-213-page-19',
       title: 'CMMC Assessment Guide – Level 1',
@@ -157,7 +158,7 @@ export const expandedLearningActivities = [
     learningObjective:
       'Recognize that visitor escorting/monitoring, retained physical-access records, and controlled/managed access devices are distinct responsibilities.',
     introduction:
-      'Follow a fictional workshop’s visitor arrival and the return of a departing worker’s keys.',
+      'Follow a fictional workshop’s visitor arrival and the return of a worker’s key after a role change.',
     plainEnglish:
       'Escort visitors and monitor their activity. Maintain physical-access records, and identify, control, and manage devices such as keys and badges. A visitor badge or a locked door alone does not perform all of these jobs.',
     commonMisunderstanding: {
@@ -210,7 +211,7 @@ export const expandedLearningActivities = [
             label:
               'Have the assigned employee escort the supplier and monitor the visit.',
             feedback:
-              'These are two named determinations. The badge can help identify the visitor, but it does not substitute for either activity.',
+              'Escorting and monitoring are two separate assessment objectives. The badge can help identify the visitor, but it does not substitute for either activity.',
           },
         ],
       },
@@ -260,12 +261,12 @@ export const expandedLearningActivities = [
             label:
               'Whether the assigned key was returned and its access/assignment records are current.',
             feedback:
-              'The source separately calls for identifying, controlling, and managing physical-access devices. Comparing the returned key with the inventory and updating records illustrates that accountability.',
+              'The guide separately calls for identifying, controlling, and managing physical-access devices. Comparing the returned key with the inventory and updating records illustrates that accountability.',
           },
           {
             id: 'mandatory-lock-change',
             label:
-              'The source requires replacing every lock after every role change.',
+              'The guide requires replacing every lock after every role change.',
             feedback:
               'Changing locks may be necessary in a particular situation, but the guide lists it as a possible management action. It does not impose that exact action for every role change.',
           },
@@ -274,7 +275,7 @@ export const expandedLearningActivities = [
     ],
     glossaryTermIds: ['fci', 'offboarding', 'assessment-objective'],
     disclaimer:
-      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
+      'A fictional practice activity written from the CMMC v2.13 assessment guide (September 2024). It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l1-213-page-35',
       title: 'CMMC Assessment Guide – Level 1',
@@ -317,13 +318,13 @@ export const expandedLearningActivities = [
         id: 'separate-subnetwork',
         title: 'Separate its network',
         description:
-          'The team puts the site on a logically separated subnetwork with enforced boundary rules. In this example, access from the public zone to the internal network is blocked by default.',
+          'The team puts the site on a logically separated subnetwork with enforced boundary rules. As the guide recommends, access from the public zone to the internal network is blocked by default.',
       },
       {
         id: 'check-boundary',
         title: 'Check the actual boundary',
         description:
-          'The network drawing, effective configuration, and a controlled test in a fictional environment are compared. Renaming a server or enabling encrypted web traffic would not establish subnetwork separation.',
+          'The team compares the network drawing with the actual configuration and tests the boundary. Renaming a server or enabling encrypted web traffic would not establish subnetwork separation.',
       },
     ],
     questions: [
@@ -338,7 +339,7 @@ export const expandedLearningActivities = [
             label:
               'The recruiting website that anyone on the internet can reach.',
             feedback:
-              'The scenario expressly makes that component public. Identifying it is the first determination before checking the separation of its subnetwork.',
+              'The scenario expressly makes that component public. Identifying it is the first assessment objective, before checking the separation of its subnetwork.',
           },
           {
             id: 'internal-contract-workspace',
@@ -373,7 +374,7 @@ export const expandedLearningActivities = [
             label:
               'Yes, physical or logical separation is permitted; the actual separation still needs to be established.',
             feedback:
-              'The source names both alternatives and discusses virtualization and cloud techniques. This fictional description illustrates the permitted concept, not proof that a real configuration is adequate.',
+              'The guide names both alternatives and discusses virtualization and cloud techniques.',
           },
           {
             id: 'name-is-enough',
@@ -420,7 +421,7 @@ export const expandedLearningActivities = [
       'information-system',
     ],
     disclaimer:
-      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
+      'A fictional practice activity written from the CMMC v2.13 assessment guide (September 2024). It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l1-213-page-41',
       title: 'CMMC Assessment Guide – Level 1',
@@ -457,7 +458,7 @@ export const expandedLearningActivities = [
         id: 'identify-privileged',
         title: 'Identify the special-permission accounts',
         description:
-          'Fictional Cedar Lab identifies the accounts used to administer its CUI systems. It distinguishes them from ordinary accounts used for daily work.',
+          'Fictional Cedar Lab identifies its privileged accounts on its CUI systems: administrator accounts and any others with special permissions. It distinguishes them from ordinary accounts used for daily work.',
       },
       {
         id: 'inspect-access-paths',
@@ -539,7 +540,7 @@ export const expandedLearningActivities = [
             id: 'local-privileged-gap',
             label: 'Local access to the privileged administrator account.',
             feedback:
-              'That category is explicitly named in determination [b]. MFA on a VPN does not automatically protect a separate local administrator sign-in.',
+              'That category is named in assessment objective [b]. MFA on a VPN does not automatically protect a separate local administrator sign-in.',
           },
           {
             id: 'every-local-ordinary-login',
@@ -560,7 +561,7 @@ export const expandedLearningActivities = [
     ],
     glossaryTermIds: ['authentication', 'account', 'cui', 'information-system'],
     disclaimer:
-      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
+      'A fictional practice activity written from the CMMC v2.13 assessment guide (September 2024). It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l2-213-page-125',
       title: 'CMMC Assessment Guide – Level 2',
@@ -581,7 +582,7 @@ export const expandedLearningActivities = [
     contentVersion: '2026-10-14.1',
     title: 'Practice: installed does not mean allowed to run',
     learningObjective:
-      'Interpret allow-by-exception and deny-by-exception policies, then distinguish a selected software list from actual execution enforcement.',
+      'Interpret the requirement’s two policies, deny-by-exception (blacklisting) and deny-all, permit-by-exception (whitelisting), then distinguish a selected software list from actual execution enforcement.',
     introduction:
       'Work through a fictional team’s chosen policy when a new utility appears on a workstation.',
     plainEnglish:
@@ -598,13 +599,13 @@ export const expandedLearningActivities = [
         id: 'choose-policy',
         title: 'Choose the policy',
         description:
-          'Fictional Cedar Lab chooses deny-all, permit-by-exception for this workstation group. Only its specifically allowed software should execute; this choice is not a universal mandate to use that option.',
+          'Fictional Cedar Lab chooses deny-all, permit-by-exception for this workstation group. Only its specifically allowed software should execute. Either policy is allowed; this is Cedar Lab’s choice.',
       },
       {
         id: 'specify-software',
         title: 'Specify the software set',
         description:
-          'The team maintains the software allowed under that policy and a controlled process for evaluating changes to the allowed set.',
+          'The team maintains a list of the software allowed under that policy and a controlled process for evaluating changes to the list.',
       },
       {
         id: 'enforce-execution',
@@ -687,14 +688,14 @@ export const expandedLearningActivities = [
             label:
               'No; because both are named, an organization need not specify either.',
             feedback:
-              'Determination [a] asks for a specified policy, and [b] and [c] ask for its software set and implementation. The choice does not remove those tasks.',
+              'Assessment objective [a] asks for a specified policy, and [b] and [c] ask for its software list and implementation. The choice does not remove those tasks.',
           },
           {
             id: 'both-policy-options',
             label:
               'No; both are named, but the selected policy and software set must be specified and implemented.',
             feedback:
-              'That preserves the exact alternatives and all three determinations. Cedar Lab’s allow-list choice is an example, not a new universal obligation.',
+              'That keeps both alternatives and all three assessment objectives. Cedar Lab’s allow-list choice is one of the two the requirement permits.',
           },
         ],
       },
@@ -706,7 +707,7 @@ export const expandedLearningActivities = [
       'assessment-objective',
     ],
     disclaimer:
-      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
+      'A fictional practice activity written from the CMMC v2.13 assessment guide (September 2024). It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l2-213-page-116',
       title: 'CMMC Assessment Guide – Level 2',
@@ -791,7 +792,7 @@ export const expandedLearningActivities = [
       {
         id: 'alert-needs-recipient',
         prompt:
-          'Which fictional alert arrangement best connects the source’s recipient and delivery determinations?',
+          'Which alert setup makes sure the right people hear about a logging failure?',
         correctChoiceId: 'identified-recipient-delivery',
         choices: [
           {
@@ -799,12 +800,11 @@ export const expandedLearningActivities = [
             label:
               'Identify the responsible role and configure the failure alert to reach that role.',
             feedback:
-              'The source distinguishes identifying personnel/roles from actually alerting them. This connects the two; choosing a particular email or SMS product is not the requirement.',
+              'The guide separates identifying who must be alerted from actually alerting them. This setup does both; the requirement names no email or SMS product.',
           },
           {
             id: 'unowned-warning',
-            label:
-              'Write an unowned warning on a screen no identified person uses.',
+            label: 'Show a warning on a screen nobody is assigned to watch.',
             feedback:
               'A warning’s existence does not establish that the identified personnel or roles are alerted. Ownership and delivery remain unresolved.',
           },
@@ -828,14 +828,14 @@ export const expandedLearningActivities = [
             label:
               'Create a test warning first and declare the recipient and failure types irrelevant.',
             feedback:
-              'The source separately asks for identified personnel/roles and defined failure types. A test cannot establish those missing definitions.',
+              'The guide separately asks for the people or roles to alert and the types of failure to be defined. A test cannot establish those missing definitions.',
           },
           {
             id: 'define-configure-test',
             label:
               'Identify recipients and failure types, configure alerts, then test whether a selected failure alerts the identified role.',
             feedback:
-              'That is a coherent fictional learning sequence connecting [a], [b], and [c]. The source does not prescribe this as one mandatory implementation workflow, and one test does not prove complete coverage.',
+              'That connects assessment objectives [a], [b] and [c]. The guide does not prescribe one workflow, and one test does not prove complete coverage.',
           },
           {
             id: 'collect-only',
@@ -848,7 +848,7 @@ export const expandedLearningActivities = [
     ],
     glossaryTermIds: ['information-system', 'assessment-objective', 'cui'],
     disclaimer:
-      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
+      'A fictional practice activity written from the CMMC v2.13 assessment guide (September 2024). It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l2-213-page-87',
       title: 'CMMC Assessment Guide – Level 2',
@@ -878,7 +878,7 @@ export const expandedLearningActivities = [
       claim:
         '“Sending everyone the same slide deck completes practical training.”',
       correction:
-        'Material alone does not establish practical exercises. The source names all users, role tailoring, current threats, and feedback to participants and their supervisors.',
+        'Material alone does not establish practical exercises. The requirement names all users, role tailoring, current threats, and feedback to participants and their supervisors.',
     },
     scenarioTitle: 'Different roles need meaningful practice',
     scenario: [
@@ -890,22 +890,22 @@ export const expandedLearningActivities = [
       },
       {
         id: 'tailor-practice',
-        title: 'Give each role something to practise',
+        title: 'Give each role something to practice',
         description:
-          'General users practise reporting a suspicious request; finance staff practise handling a request through their approved payment-verification process; administrators practise responding to a request for privileged action. These are fictional exercise choices, not required scripts.',
+          'General users practice reporting a suspicious request; finance staff practice handling a request through their approved payment-verification process; administrators practice responding to a request for privileged action. These are fictional exercise choices, not required scripts.',
       },
       {
         id: 'provide-feedback',
         title: 'Explain results to participants and supervisors',
         description:
-          'The coordinator gives participants specific feedback about their responses and provides their supervisors with relevant feedback too. The aim is to reinforce appropriate behavior and identify needed instruction; no real training data is collected in this activity.',
+          'The coordinator gives participants specific feedback about their responses and provides their supervisors with relevant feedback too. The aim is to reinforce appropriate behavior and identify needed instruction.',
       },
     ],
     questions: [
       {
         id: 'practical-versus-passive-training',
         prompt:
-          'Everyone watched the same video, but no one practised a response and no role-specific exercises occurred. What is missing relative to this requirement?',
+          'Everyone watched the same video, but no one practiced a response and no role-specific exercises occurred. What is missing relative to this requirement?',
         correctChoiceId: 'practical-tailored-exercises',
         choices: [
           {
@@ -913,14 +913,14 @@ export const expandedLearningActivities = [
             label:
               'Only a longer video; practical responses are outside the requirement.',
             feedback:
-              'The requirement explicitly includes practical exercises. More passive material does not establish that people practised role-relevant responses.',
+              'The requirement explicitly includes practical exercises. More passive material does not establish that people practiced role-relevant responses.',
           },
           {
             id: 'practical-tailored-exercises',
             label:
               'Practical exercises for all users, tailored by role and aligned with current threats.',
             feedback:
-              'The source specifies that combination. A shared overview can be useful, but it does not replace the named practical and role-tailored elements.',
+              'The requirement specifies that combination. A shared overview can be useful, but it does not replace the named practical and role-tailored elements.',
           },
           {
             id: 'admins-only-exercises',
@@ -969,13 +969,13 @@ export const expandedLearningActivities = [
             id: 'public-leaderboard',
             label: 'A public leaderboard naming unsuccessful participants.',
             feedback:
-              'The source asks for feedback to individuals and their supervisors. It does not require public ranking or exposure of training results.',
+              'The requirement asks for feedback to individuals and their supervisors. It does not require public ranking or exposure of training results.',
           },
           {
             id: 'no-other-audience',
             label: 'None; participant feedback is the only named audience.',
             feedback:
-              'The requirement and determination [e] also name supervisors. Feedback to participants alone omits that audience.',
+              'The requirement and assessment objective [e] also name supervisors. Feedback to participants alone omits that audience.',
           },
           {
             id: 'supervisor-feedback',
@@ -993,7 +993,7 @@ export const expandedLearningActivities = [
       'assessment-objective',
     ],
     disclaimer:
-      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
+      'A fictional practice activity written from the CMMC v2.13 assessment guide (September 2024). It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l3-213-page-26',
       title: 'CMMC Assessment Guide – Level 3',
@@ -1136,7 +1136,7 @@ export const expandedLearningActivities = [
     ],
     glossaryTermIds: ['information-system', 'cui'],
     disclaimer:
-      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
+      'A fictional practice activity written from the CMMC v2.13 assessment guide (September 2024). It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l3-213-page-47',
       title: 'CMMC Assessment Guide – Level 3',
@@ -1161,12 +1161,12 @@ export const expandedLearningActivities = [
     introduction:
       'Follow a fictional team as it verifies a protected application and then handles an updated version.',
     plainEnglish:
-      'Define which software is security-critical or essential, identify root-of-trust mechanisms or cryptographic signatures, and use them to verify that software’s integrity. A root of trust is a trusted starting point for verification; a cryptographic signature ties a check to a signing key. A matching value from an untrusted source is not automatically a trusted verification process.',
+      'Define which software is security-critical or essential, identify root-of-trust mechanisms or cryptographic signatures, and use them to verify that software’s integrity. A root of trust is a trusted starting point for verification; a cryptographic signature ties a check to a signing key. A matching value from an untrusted source does not prove integrity.',
     commonMisunderstanding: {
       claim:
         '“Any matching hash proves a download is safe, and one check covers all later versions.”',
       correction:
-        'The source names particular trusted verification mechanisms. Trust in the mechanism/reference matters, and changes require the relevant ongoing verification. Integrity and authenticity are not a guarantee that software has no defects.',
+        'The requirement names particular trusted verification mechanisms. Trust in the mechanism or reference matters, and changes require ongoing verification. Integrity and authenticity are not a guarantee that software has no defects.',
     },
     scenarioTitle: 'A verified application receives an update',
     scenario: [
@@ -1174,7 +1174,7 @@ export const expandedLearningActivities = [
         id: 'define-scope-and-mechanism',
         title: 'Define the software and verification method',
         description:
-          'Fictional Cedar Lab defines a CUI-processing application as essential and identifies an appropriate cryptographic-signature verification mechanism with its trusted verification context. These are the team’s choices, not a universal inventory of essential software.',
+          'Fictional Cedar Lab defines a CUI-processing application as essential and identifies a cryptographic-signature check it can trust. These are the team’s choices, not a universal list of essential software.',
       },
       {
         id: 'verify-current-software',
@@ -1193,7 +1193,7 @@ export const expandedLearningActivities = [
       {
         id: 'define-essential-software',
         prompt:
-          'Which step supplies the source’s organization-defined software scope rather than assuming every application has the same role?',
+          'Which step decides which software counts as security-critical or essential?',
         correctChoiceId: 'define-critical-essential',
         choices: [
           {
@@ -1201,21 +1201,21 @@ export const expandedLearningActivities = [
             label:
               'Call every downloaded file essential without defining the organization’s software categories.',
             feedback:
-              'The source includes an organization-defined statement about security-critical or essential software. A download event alone does not define those categories.',
+              'The guide has the organization define its security-critical or essential software. A download event alone does not define those categories.',
           },
           {
             id: 'vendor-decides-everything',
             label:
               'Use the vendor’s product name as the entire organization-defined scope.',
             feedback:
-              'A product name alone does not establish which software the organization defines as security-critical or essential. The source retains that definition step.',
+              'A product name alone does not establish which software the organization defines as security-critical or essential. The guide keeps that definition step.',
           },
           {
             id: 'define-critical-essential',
             label:
               'Define which software is security-critical or essential for the organization.',
             feedback:
-              'This reflects [ODP1]. The source’s scope should be retained separately from identifying the verification mechanisms and actually verifying software integrity.',
+              'The organization defines this (an organization-defined parameter in the guide), separately from identifying the verification mechanisms and actually verifying software integrity.',
           },
         ],
       },
@@ -1228,7 +1228,7 @@ export const expandedLearningActivities = [
           {
             id: 'matching-not-trusted',
             label:
-              'The match alone does not establish the source’s trusted integrity verification.',
+              'The match alone does not establish the trusted integrity check this requirement calls for.',
             feedback:
               'An attacker controlling an untrusted page could replace both. The question does not say hashes can never be part of a trusted process: the guide also describes an approved, controlled software-library example.',
           },
@@ -1259,7 +1259,7 @@ export const expandedLearningActivities = [
             label:
               'Reuse version 1’s result because the application has the same name.',
             feedback:
-              'The source discusses updated signatures and ongoing verification as critical software changes. The same name does not make changed software identical to the previously checked version.',
+              'The guide calls for updated signatures and ongoing verification when critical software is updated. The same name does not make changed software identical to the previously checked version.',
           },
           {
             id: 'check-current-version',
@@ -1273,7 +1273,7 @@ export const expandedLearningActivities = [
             label:
               'Skip verification whenever an update claims to come from a trusted vendor.',
             feedback:
-              'The claim of origin does not itself perform the identified verification. The source names integrity mechanisms and actual verification rather than reliance on a label.',
+              'The claim of origin does not itself perform the identified verification. The requirement names integrity mechanisms and actual verification rather than reliance on a label.',
           },
         ],
       },
@@ -1285,7 +1285,7 @@ export const expandedLearningActivities = [
       'assessment-objective',
     ],
     disclaimer:
-      'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
+      'A fictional practice activity written from the CMMC v2.13 assessment guide (September 2024). It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
       id: 'cmmc-assessment-l3-213-page-77',
       title: 'CMMC Assessment Guide – Level 3',

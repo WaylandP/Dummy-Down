@@ -8,7 +8,7 @@ describe('visual explanation editorial snapshot', () => {
   it.each([
     [
       'src/data/visual-explanations.ts',
-      '248b12d281820993a3f056b1f490da3bb1b612557e6ece84594930955870307d',
+      '18b03d078704a311b6f60f3d647527bbe7a5477cd21922156fc3e8e60ed64a83',
     ],
     [
       'src/components/TeachingScene.tsx',

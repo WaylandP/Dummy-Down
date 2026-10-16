@@ -1,8 +1,8 @@
 {
   "algorithm": "SHA256(JSON.stringify(parsed runtime object)); raw files use SHA256(bytes)",
-  "runtimeArrayFingerprint": "e6e3c7a481178126db40ae0a62c7c6efa75952a8a925dee4ab5e6dc1585d0785",
+  "runtimeArrayFingerprint": "96e3a4628cd562ec02578ee8ad64fb3ba8d3dd34977a623ab681bf18dc9ed7f8",
   "files": {
-    "src/data/visual-explanations.ts": "248b12d281820993a3f056b1f490da3bb1b612557e6ece84594930955870307d",
+    "src/data/visual-explanations.ts": "18b03d078704a311b6f60f3d647527bbe7a5477cd21922156fc3e8e60ed64a83",
     "src/components/TeachingScene.tsx": "f1e8eb803bd3195bb3455b864df01832f394020f7f4a0e0c07bce47e4885f259",
     "src/components/VisualExplanation.tsx": "6e2a830bce868c9f20518d2b733cac574e1f49e9b6391997964fcc73bb5438ec",
     "src/types/visual-explanation.ts": "cc66a4c0fa1f187f7bd50aa48af0634998155647ae2929b05025df3ba266b2d5"
@@ -31,8 +31,14 @@
       "printedPage": 117,
       "objectiveLabels": ["a", "b", "c", "d"],
       "officialRequirementExact": true,
-      "runtimeFingerprint": "996d4ce1025b5403f8a611dbfb60dc3a0650f998739bc461dee718526020bd67",
-      "objectiveFingerprint": "6ada330d85be76c72403fe0e2be68c829d22a9109edc636dd1b14d2b8196fee5"
+      "runtimeFingerprint": "955d191a4b924f8c7bebf14fd63217ace5d96b43073ef09af36f61e21fef9fd7",
+      "objectiveFingerprint": "6ada330d85be76c72403fe0e2be68c829d22a9109edc636dd1b14d2b8196fee5",
+      "launchAuditCorrection": {
+        "appliedAt": "2026-10-15",
+        "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+        "humanReview": "pending",
+        "summary": "The diagram descriptions now carry the drawing's own label, \"Privileged accounts include more than administrator accounts\", so the text equivalent says everything the picture does."
+      }
     },
     {
       "id": "visual-ir-l3-3-6-2e",

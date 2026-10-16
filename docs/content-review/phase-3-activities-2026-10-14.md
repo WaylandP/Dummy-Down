@@ -96,3 +96,17 @@ carries a `launchAuditCorrection` note and a new `activityFingerprint` in the
   are keys, locks, combinations and card readers); AU.L2-3.3.4 and IR.L3-3.6.2e
   no longer list terms the lessons never use ("system boundary", "assessment
   scope").
+
+### Plain words (2026-10-15)
+
+Learner-facing text in twelve activities lost the reviewers' vocabulary:
+"the guide" or "the requirement" for "the source", "assessment objective" for
+"determination", no "[ODP1]" or "snapshot", US spelling, and fewer
+"fictional" hedges (the scenario label and the disclaimer already say so).
+Answer keys are unchanged. Five activities also say more precisely what their
+guide section says: SC.L1-b.1.xi (default blocking is the guide's
+recommendation), IA.L2-3.5.3 (all privileged accounts, not only
+administrators), CM.L2-3.4.8 (the requirement's own policy names; either is
+allowed), AU.L2-3.3.4 (who hears about a logging failure) and PE.L1-b.1.ix
+(one story: a key returned after a role change). Every expanded activity has a
+new `activityFingerprint`.
