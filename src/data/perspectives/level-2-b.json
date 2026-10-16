@@ -126,7 +126,7 @@
       "watchFor": "Deleting visible files or signing a repair agreement does not establish that CUI has been sanitized from the equipment."
     },
     "compliance": {
-      "focus": "Connect the equipment's off-site maintenance release to the handling of every relevant CUI-bearing component. Keep the assessment-guide wording separate from the model wording where displayed.",
+      "focus": "Connect the equipment's off-site maintenance release to the handling of every relevant CUI-bearing component. The objective speaks of equipment to be removed from organizational spaces, so sanitization happens before it leaves.",
       "reviewQuestions": [
         "How is CUI identified on equipment scheduled for off-site maintenance?",
         "How is sanitization completed and checked before the equipment is removed?"
@@ -195,7 +195,7 @@
       "watchFor": "A technician's badge or general visitor approval does not by itself establish authorization to perform unsupervised system maintenance."
     },
     "compliance": {
-      "focus": "Explore how authorization status determines supervision during maintenance. Keep this system-maintenance question distinct from general physical access and visitor escort controls.",
+      "focus": "Explore how authorization status determines supervision during maintenance. Escorting can be part of supervising maintenance personnel, but general physical-access and visitor-escort rules do not by themselves show that maintenance activities were supervised.",
       "reviewQuestions": [
         "How is required maintenance access authorization determined for each worker?",
         "How are workers without that authorization supervised during the maintenance activity?"
@@ -259,7 +259,7 @@
       "example": "Fictional CedarPoint retires a storage drive and disposes of printed CUI records. Staff use suitable sanitization or destruction methods for each type of media before either leaves the controlled process."
     },
     "technical": {
-      "focus": "Choose methods suited to the media and its destination: sanitize or destroy before disposal, and sanitize before release for reuse. Verify the result before release. Consider embedded storage in printers and network equipment, as well as familiar drives and paper records.",
+      "focus": "Choose methods suited to the media and its destination: sanitize or destroy before disposal, and sanitize before release for reuse. The guide points to NIST SP 800-88 for sanitization methods. Consider embedded storage in printers and network equipment, as well as familiar drives and paper records.",
       "example": "A disposal workflow could identify the asset and media type, apply the selected method, record the result, and authorize release only after the CUI has been appropriately removed or destroyed.",
       "watchFor": "A quick format, file deletion, or general recycling receipt does not establish that the selected sanitization process was effective."
     },
@@ -267,7 +267,7 @@
       "focus": "Trace CUI-bearing media through disposal and reuse decisions. The guide distinguishes sanitization before release for reuse from sanitization or destruction before disposal.",
       "reviewQuestions": [
         "How are appropriate methods selected for each media type and destination?",
-        "How is sanitization or destruction checked before disposal, and sanitization checked before release for reuse?"
+        "How does the organization make sure media is sanitized or destroyed before disposal, and sanitized before release for reuse?"
       ],
       "evidenceExamples": [
         "Media sanitization and disposal procedures",
@@ -417,10 +417,10 @@
     "id": "PS.L2-3.9.1",
     "beginner": {
       "meaning": "Screen individuals before authorizing their access to organizational systems containing CUI. This is a personnel decision about appropriate trust and access, not a technical password-strength check.",
-      "example": "At fictional CedarPoint, the designated personnel team completes the applicable screening process before an engineer receives authorized access to a system containing CUI. Creating the account first would reverse that sequence."
+      "example": "At fictional CedarPoint, the designated personnel team completes the applicable screening process before an engineer receives authorized access to a system containing CUI. Granting the access first would reverse that sequence."
     },
     "technical": {
-      "focus": "Connect personnel screening status to access authorization and provisioning. The screening criteria must reflect applicable rules and the access required for the position rather than an invented universal investigation type.",
+      "focus": "Connect personnel screening status to access authorization and provisioning. The screening criteria must reflect applicable rules and the access required for the position, not one investigation type applied to everyone.",
       "example": "An onboarding workflow could require an authorized screening-completion decision before the account owner approves CUI-system access. IT can receive the decision without receiving unnecessary sensitive screening details.",
       "watchFor": "This requirement does not by itself mandate a security clearance or one particular background-check product for every individual."
     },
@@ -440,7 +440,7 @@
     "id": "PS.L2-3.9.2",
     "beginner": {
       "meaning": "Protect systems containing CUI during and after personnel changes, including departures and transfers. A person moving to another role may need different access even though they remain employed.",
-      "example": "At fictional CedarPoint, Sam transfers off a CUI project. The company adjusts system access and credentials and retrieves relevant property as appropriate, so Sam's former role does not retain unnecessary access."
+      "example": "At fictional CedarPoint, Sam transfers off a CUI project. The company adjusts system access and credentials and retrieves relevant property as appropriate, so Sam does not keep access from the former role that is no longer needed."
     },
     "technical": {
       "focus": "Coordinate personnel notifications with changes to accounts, credentials, privileges, and system-related property. Address protection during the transition and afterward, including permanent or extended reassignments as described in the guide.",
@@ -448,7 +448,7 @@
       "watchFor": "Disabling one directory account may leave other credentials, remote access, or transferred-role privileges active; do not assume every transfer requires identical actions."
     },
     "compliance": {
-      "focus": "Trace personnel actions to the system protections they trigger. The guide and model wording difference remains visible in the official-source comparison rather than being silently rewritten.",
+      "focus": "Trace personnel actions to the system protections they trigger. Objectives [a] and [b] cover ending system access and credentials with terminations and transfers; [c] looks at protecting the system during and after transfers.",
       "reviewQuestions": [
         "How do terminations and transfers trigger access and credential changes?",
         "How are CUI systems protected during and after those actions?"
@@ -658,7 +658,7 @@
       "focus": "Trace vulnerabilities from identification through risk-based remediation. Review whether corrective actions reflect risk assessments and were actually implemented.",
       "reviewQuestions": [
         "How do risk assessments influence vulnerability remediation decisions?",
-        "How does the organization show that selected remediation actions were completed?"
+        "How does the organization show that selected remediation actions were completed, and how are vulnerabilities it decided not to remediate tracked and revisited?"
       ],
       "evidenceExamples": [
         "Risk-linked vulnerability remediation procedures",
@@ -675,7 +675,7 @@
     "technical": {
       "focus": "Assess implemented controls against their intended purpose within the system and operating environment. Define an assessment frequency, suitable methods, and how results inform risk decisions and corrective work.",
       "example": "A control assessment could combine document examination, staff interviews, and a safely designed demonstration, then record whether the safeguard is implemented correctly and operating as intended.",
-      "watchFor": "A product configuration screenshot alone may not show effectiveness; vulnerability scanning is useful but need not cover every safeguard."
+      "watchFor": "A product configuration screenshot alone may not show effectiveness; vulnerability scanning is useful but does not assess every safeguard, so it cannot replace the control assessment."
     },
     "compliance": {
       "focus": "Review periodic control-effectiveness assessments and their defined frequency. The pinned guide's assessment considerations ask whether controls are assessed at least annually; an internal assessment does not guarantee certification success.",
@@ -724,7 +724,7 @@
       "watchFor": "A dashboard without review or follow-up can display data without maintaining an effective monitoring process."
     },
     "compliance": {
-      "focus": "Review how monitoring supports continued control effectiveness. Keep the guide/model wording difference visible and distinguish ongoing monitoring from a single periodic assessment.",
+      "focus": "Review how monitoring supports continued control effectiveness, and distinguish ongoing monitoring from a single periodic assessment.",
       "reviewQuestions": [
         "How are controls monitored to detect changes in effectiveness?",
         "How are monitoring findings reviewed and used to trigger appropriate action?"
@@ -739,7 +739,7 @@
     "id": "CA.L2-3.12.4",
     "beginner": {
       "meaning": "Create, document, and periodically update a system security plan explaining the system's boundaries, operating environment, safeguards, and connections to other systems. The plan should describe the actual system rather than an ideal future version.",
-      "example": "Fictional CedarPoint documents which services handle CUI, how safeguards are implemented, and which outside services connect to the system. When the environment changes, the team updates the plan through its defined process."
+      "example": "Fictional CedarPoint documents which services handle CUI, how safeguards are implemented, and which outside services connect to the system. The team reviews and updates the plan on its defined schedule, at least once a year, and also when the environment changes."
     },
     "technical": {
       "focus": "Maintain a system-level description that connects boundaries, environment, requirement implementation, and system relationships. Supporting documents may be referenced rather than copying every technical detail into one large file.",
@@ -749,7 +749,7 @@
     "compliance": {
       "focus": "Compare the documented plan with actual system scope and operation, including periodic updates and connected systems. A written description is distinct from evidence that a safeguard operates.",
       "reviewQuestions": [
-        "Does the plan describe boundaries, environment, implementation, and system relationships?",
+        "Does the plan describe boundaries, environment, implementation, system relationships, and the requirements approved as not applicable?",
         "How is the plan updated at least annually, as specified in the pinned guide?"
       ],
       "evidenceExamples": [
@@ -770,7 +770,7 @@
       "watchFor": "An internet firewall alone may miss key internal boundaries, and collecting traffic logs alone does not perform all three required functions."
     },
     "compliance": {
-      "focus": "Review identified boundaries and all three communication functions at them. The assessment-guide and model wording remain separately attributable where they differ.",
+      "focus": "Review identified boundaries and all three communication functions at them: monitoring, control and protection.",
       "reviewQuestions": [
         "How are external and key internal boundaries identified?",
         "How are communications monitored, controlled, and protected at each boundary?"
@@ -830,7 +830,7 @@
   {
     "id": "SC.L2-3.13.4",
     "beginner": {
-      "meaning": "Prevent one user or process from receiving another's information unintentionally through reused shared system resources. A resource handed to its next user should not expose information from the previous user.",
+      "meaning": "Prevent information from passing between users or processes through reused shared system resources, whether by accident or through unauthorized access. A resource handed to its next user should not expose information from the previous user.",
       "example": "Fictional CedarPoint uses a service that reassigns temporary storage to different work processes. Its design prevents a new process from reading data belonging to the process that previously used that shared resource."
     },
     "technical": {
@@ -903,7 +903,7 @@
       "example": "At fictional CedarPoint, a remote-work laptop sends both company-system traffic and internet traffic through the company VPN while connected. The employee cannot change its settings to send internet traffic through a separate simultaneous path."
     },
     "technical": {
-      "focus": "Control remote-device routing and connection configuration to prevent split tunneling. The guide discusses disabling split-tunnel settings, preventing users from readily changing them, and detecting or prohibiting connections that permit the prohibited behavior.",
+      "focus": "Control remote-device routing and connection configuration to prevent split tunneling. The guide discusses disabling split-tunnel settings, preventing users from readily changing them, and detecting split tunneling (or settings that allow it) and refusing the connection when it is present.",
       "example": "A managed remote-access configuration could enforce the required routing behavior and reject devices with disallowed settings. Verification could examine actual routes while the organizational connection is active.",
       "watchFor": "A VPN product label does not prove split tunneling is disabled, and centrally configured settings may fail if users can readily override them."
     },
@@ -911,7 +911,7 @@
       "focus": "Review simultaneous connection behavior on remote devices, not merely the existence of encrypted remote access. Explain the scope without turning it into a general ban on internet use.",
       "reviewQuestions": [
         "How are remote devices prevented from using split tunneling?",
-        "How are prohibited settings or connection behavior detected or blocked?"
+        "How are prohibited settings or connection behavior detected and blocked?"
       ],
       "evidenceExamples": [
         "Remote-access and managed-device routing configurations",

@@ -3,7 +3,7 @@
     "id": "AC.L2-3.1.1",
     "beginner": {
       "meaning": "Decide who and what may enter your systems, then enforce that decision. This includes people, software working on their behalf, and devices or other systems. Knowing a password does not automatically make someone approved.",
-      "example": "CedarPoint approves Maya's account, the automated job working for her team, and a company laptop. A visitor's account and an unapproved printer cannot connect simply because they are nearby."
+      "example": "CedarPoint approves Maya's account, the automated job working for her team, and a company laptop. A visitor's laptop and an unapproved printer cannot connect simply because they are nearby."
     },
     "technical": {
       "focus": "Map authorized user identities, delegated processes, and device or system identities to access enforcement at relevant services. Account provisioning, service identities, and device admission are related parts of this requirement, not interchangeable substitutes.",
@@ -190,7 +190,7 @@
       "example": "Before Maya signs in, CedarPoint displays a reviewed notice explaining the applicable system-use conditions. The team checks the notice against its relevant CUI categories instead of assuming a generic message covers everything."
     },
     "technical": {
-      "focus": "Identify the applicable notice requirements and display appropriate notices at relevant human logon interfaces. The guide discusses banners and, where necessary, printed notices; it does not require a human-facing banner for interfaces with no human logon.",
+      "focus": "Identify the applicable notice requirements and display appropriate notices at relevant human logon interfaces. The guide discusses banners and, where necessary, printed notices; it does not require a human-facing banner for interfaces with no human logon. It also asks whether appropriate notices are displayed where paper-based CUI is stored and processed.",
       "example": "The workstation and remote-access sign-in screens display the approved notice using managed configuration.",
       "watchFor": "A technically visible banner can still omit required context, use outdated wording, or appear only after the relevant access point."
     },
@@ -241,7 +241,7 @@
       "watchFor": "A VPN disconnect or a client-side redirect may leave the logical application session usable; session locking is also distinct."
     },
     "compliance": {
-      "focus": "Trace defined termination conditions to demonstrated automatic behavior. Keep this separate from the inactivity lock requirement and avoid inventing a universal duration.",
+      "focus": "Trace defined termination conditions to demonstrated automatic behavior. Keep this separate from the inactivity lock requirement and avoid inventing a universal duration; for minimum values the guide points to the DoD Cybersecurity FAQ (Q53.2).",
       "reviewQuestions": [
         "Which conditions require a user session to terminate automatically?",
         "Does each defined condition actually end the relevant logical session?"
@@ -370,7 +370,7 @@
   {
     "id": "AC.L2-3.1.17",
     "beginner": {
-      "meaning": "Protect wireless access in two ways: verify who or what is connecting, and encrypt the connection. A wireless network that asks for no proof of identity, or one that sends readable information over the air, misses an important protection.",
+      "meaning": "Protect wireless access in two ways: verify who or what is connecting, and encrypt the connection. A wireless network that asks for no proof of identity, or one that sends readable information over the air, does not meet this requirement; the guide says open authentication must not be used.",
       "example": "CedarPoint's approved wireless network authenticates Maya's connection and encrypts its traffic. The team treats a nearby open guest network as a different environment rather than a substitute for that protected access."
     },
     "technical": {
@@ -738,7 +738,7 @@
   {
     "id": "AU.L2-3.3.8",
     "beginner": {
-      "meaning": "Protect both audit records and the tools that create or manage them from unauthorized reading, changing, and deletion. An attacker who can alter the record of their actions can make an investigation much harder, even if logging originally worked.",
+      "meaning": "Protect audit information, such as audit records, log settings and reports, and the tools that create or manage it from unauthorized access, changes and deletion. An attacker who can alter the record of their actions can make an investigation much harder, even if logging originally worked.",
       "example": "Maya can read project documents but cannot open or delete CedarPoint's audit archive. Only appropriately authorized staff can use the logging tools, and their access is limited to their assigned responsibilities."
     },
     "technical": {
@@ -808,7 +808,7 @@
     "id": "CM.L2-3.4.2",
     "beginner": {
       "meaning": "Decide the security settings that organizational technology should use, then make those settings take effect. Writing down a secure configuration helps only if the actual products are configured accordingly and required deviations are handled deliberately.",
-      "example": "CedarPoint defines approved workstation security settings and applies them to its project devices. If one application needs a deviation, the team reviews and documents it instead of quietly weakening settings for everyone."
+      "example": "CedarPoint defines approved workstation security settings and applies them to its project devices. If one application needs a deviation, the team reviews, documents and approves it instead of quietly weakening settings for everyone."
     },
     "technical": {
       "focus": "Establish security configuration settings for employed IT products and enforce them. Include relevant settings in the configuration baseline and consider appropriate hardening guidance, managed policy deployment, and verification of effective configuration in the specific environment.",
@@ -945,7 +945,7 @@
   {
     "id": "CM.L2-3.4.8",
     "beginner": {
-      "meaning": "Choose and enforce a policy for which software can run. One approach allows software except specifically denied items; another denies software except specifically approved items. The requirement describes either policy, so the two approaches should not be presented as the same design.",
+      "meaning": "Choose and enforce a policy for which software can run. One approach allows software except specifically denied items; another denies software except specifically approved items. The requirement accepts either; the guide calls the second, whitelisting, the stronger of the two.",
       "example": "CedarPoint chooses an approved-software execution policy for a workstation group. An unapproved application cannot run until it is evaluated and included in the permitted set."
     },
     "technical": {
@@ -1006,7 +1006,7 @@
         "How are devices accessing the relevant system identified?"
       ],
       "evidenceExamples": [
-        "Sanitized user, delegated-process, and device identity records.",
+        "Redacted user, delegated-process, and device identity records.",
         "Identity assignment procedures and mappings to responsible owners or entities."
       ]
     }
@@ -1076,7 +1076,7 @@
       ],
       "evidenceExamples": [
         "Authentication protocol documentation and relevant effective configuration.",
-        "A sanitized design review or controlled replay-resistance demonstration with test credentials."
+        "A redacted design review or controlled replay-resistance demonstration with test credentials."
       ]
     }
   },
@@ -1098,7 +1098,7 @@
         "How does identity provisioning prevent reuse within that period?"
       ],
       "evidenceExamples": [
-        "Identifier-assignment rules and sanitized reservation or retirement records.",
+        "Identifier-assignment rules and redacted reservation or retirement records.",
         "Provisioning checks and a controlled attempt to reuse a reserved test identifier."
       ]
     }
@@ -1122,7 +1122,7 @@
       ],
       "evidenceExamples": [
         "Inactive-identifier policy and relevant review or automation settings.",
-        "Sanitized inactivity findings and corresponding identifier-disable records."
+        "Redacted inactivity findings and corresponding identifier-disable records."
       ]
     }
   },
@@ -1213,7 +1213,7 @@
         "How are they cryptographically protected during relevant transmission paths?"
       ],
       "evidenceExamples": [
-        "Sanitized credential-storage design and relevant protection settings.",
+        "Redacted credential-storage design and relevant protection settings.",
         "Authentication-flow documentation and controlled verification of transport protection without real secrets."
       ]
     }
@@ -1237,7 +1237,7 @@
       ],
       "evidenceExamples": [
         "Authentication-interface settings and documented feedback behavior.",
-        "Sanitized interface demonstrations using nonsensitive test authentication information."
+        "Interface demonstrations using nonsensitive test authentication information."
       ]
     }
   }

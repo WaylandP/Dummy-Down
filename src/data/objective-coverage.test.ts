@@ -58,7 +58,7 @@ describe('source-bound explanation coverage', () => {
     expect(digest(inventory.objectives)).toBe(mappings.sourceStatementsSha256)
     // Reviewed mappings include notes, labels, fields, practice links and unresolved text.
     expect(digest(mappings)).toBe(
-      '6c99d5de22d286d5eb492a76ecabb37d1fad9b29435c7d4e54e6fbaec2658fe5',
+      '47724f8b474418d807bea2d5b6ca932aa9cbeba88fcd0e05b811ebbfa011af57',
     )
     for (const record of records) {
       const draft = cmmcPerspectiveDrafts.find(
