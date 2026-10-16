@@ -10,15 +10,15 @@ describe('filterGlossaryTerms', () => {
       ),
     ).toEqual(['authorized-user'])
     expect(
-      filterGlossaryTerms(glossaryTerms, 'RUNNING PROGRAM').map(
-        (term) => term.id,
-      ),
-    ).toEqual(['process', 'authentication'])
+      filterGlossaryTerms(glossaryTerms, ' SCRIPT ').map((term) => term.id),
+    ).toEqual(['account', 'process'])
   })
 
   it('requires every word, including words across the title and definition', () => {
     expect(
-      filterGlossaryTerms(glossaryTerms, 'device phone').map((term) => term.id),
+      filterGlossaryTerms(glossaryTerms, 'device laptop').map(
+        (term) => term.id,
+      ),
     ).toEqual(['device'])
     expect(
       filterGlossaryTerms(glossaryTerms, 'permissions record').map(
