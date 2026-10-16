@@ -320,6 +320,13 @@ analytics allowlist do not change.
   word, and nothing else on the row moves. Measured again at 320, 390, 768,
   1024, 1280 and 1440: Print is 44 by 44 and every glossary source link at
   least 48px tall, as since PR #96; their words stay 29px wide and 14px tall.
+- [PR #105](https://github.com/WaylandP/cipher-and-chalk/pull/105): the
+  README says what the site does. The 468 assessment objectives are 459
+  determination statements and 9 organization-defined parameters, linked to
+  their explanations all but two (SI.L3-3.14.3e's, which wait on a qualified
+  reviewer); a glossary word opens in place on Level 1 controls and in "CMMC
+  in sixty seconds", not on the practice runs; and the check suite before a
+  pull request includes `npm run check:content`, as CI does.
 
 ## The Board's features — October 15, 2026
 
