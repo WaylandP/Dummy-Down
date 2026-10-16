@@ -30,11 +30,14 @@
   min-height: 0;
   padding: 26px var(--gutter) 0;
 }
+/* The heading and its line over a rule; the results follow. */
 .discover-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 40px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-rule);
 }
 .discover-head h1 {
   margin: 0;
@@ -47,20 +50,6 @@
   color: var(--color-chalk-muted);
   font-size: 15px;
   line-height: 1.5;
-}
-/* The find line and the quiet selects on one row over a rule. */
-.discover-find {
-  display: flex;
-  align-items: flex-end;
-  gap: 24px;
-  margin-top: 8px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--color-rule);
-}
-/* Each quiet select is as wide as its widest option, so no label is cut. */
-.discover-field {
-  flex: none;
-  min-width: 110px;
 }
 /* The families on the left, the results on the right, both reading from the top. */
 .discover-body {
@@ -384,26 +373,7 @@
   text-decoration: underline;
   text-underline-offset: 4px;
 }
-/* The project's demo lesson keeps its older reader, beside the results. */
-.discover-body.is-reading {
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  overflow-y: auto;
-}
-.discover-body.is-reading .discover-results {
-  overflow: visible;
-}
 @media (max-width: 1024px) {
-  .discover-find {
-    flex-wrap: wrap;
-    gap: 12px 24px;
-  }
-  .discover-field {
-    flex: 1 1 40%;
-    min-width: 0;
-  }
-  .discover-field select {
-    width: 100%;
-  }
   .discover-body {
     grid-template-columns: 240px minmax(0, 1fr);
     gap: 32px;
@@ -411,12 +381,8 @@
   .family-rows {
     grid-template-columns: minmax(0, 1fr);
   }
-  .discover-body.is-reading {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
-/* Narrow results (tablets, or beside the demo lesson): the family and the
-   practice note move under the title. */
+/* Narrow results (tablets): the family and the practice note move under the title. */
 @media (max-width: 1024px) {
   #explorer.is-discovery .control-item {
     grid-template-columns: 155px auto minmax(0, 1fr);
@@ -436,23 +402,6 @@
     justify-self: start;
   }
 }
-#explorer.is-discovery .is-reading .control-item {
-  grid-template-columns: 155px auto minmax(0, 1fr);
-  row-gap: 2px;
-}
-#explorer.is-discovery .is-reading .control-item-title {
-  grid-column: 2 / -1;
-  grid-row: 1;
-}
-#explorer.is-discovery .is-reading .control-item-meta {
-  grid-column: 2;
-  grid-row: 2;
-}
-#explorer.is-discovery .is-reading .control-item-practice {
-  grid-column: 3;
-  grid-row: 2;
-  justify-self: start;
-}
 @media (max-width: 640px) {
   /* Phone: everything stacks; the families take two columns. */
   .discover {
@@ -465,19 +414,6 @@
   }
   .discover-head h1 {
     font-size: 36px;
-  }
-  .discover-find {
-    flex-wrap: wrap;
-    gap: 10px 16px;
-  }
-  .discover-field {
-    flex: 1 1 34%;
-  }
-  .discover-field-wide {
-    flex-basis: 54%;
-  }
-  .discover-field select {
-    width: 100%;
   }
   .discover-body {
     grid-template-columns: minmax(0, 1fr);
@@ -508,7 +444,7 @@
   }
 }
 @media (forced-colors: active) {
-  .discover-find,
+  .discover-head,
   #explorer.is-discovery .control-item,
   #explorer.is-discovery .control-list {
     border-color: CanvasText;

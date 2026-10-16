@@ -51,7 +51,7 @@ afterEach(() => {
 })
 
 describe('practice runs in place', () => {
-  it('lists every situation in the catalog’s order, the project’s example where its control sits, without the Practice: prefix', () => {
+  it('lists every situation in the catalog’s order, without the Practice: prefix', () => {
     const { list } = open()
     expect(sitePage(new URL(window.location.href))).toBe('practice')
     const rows = list().getAllByRole('link', { name: /./ })
@@ -65,9 +65,13 @@ describe('practice runs in place', () => {
       'href',
       `/practice?activity=${first.id}`,
     )
-    // The example's AC.L2-3.1.1 is the first Level 2 control in the catalog.
-    expect(situations[6]).toHaveTextContent('Try the idea')
+    // AC.L2-3.1.1 is the first Level 2 control in the catalog.
+    expect(situations[6]).toHaveTextContent('A working login is not approval')
     expect(situations[6]).toHaveTextContent('AC.L2-3.1.1')
+    expect(situations[6]).toHaveAttribute(
+      'href',
+      '/practice?activity=authorized-access-practice',
+    )
     expect(situations.at(-1)).toHaveTextContent('SI.L3-3.14.1e')
     for (const row of situations) expect(row).not.toHaveTextContent('Practice:')
     expect(
@@ -114,7 +118,7 @@ describe('practice runs in place', () => {
     expect(
       list().getByRole('status', { name: 'Situation results' }),
     ).toHaveTextContent('3 of 13 situations')
-    expect(list().queryByText('Try the idea')).toBeNull()
+    expect(list().queryByText('A working login is not approval')).toBeNull()
     await user.type(
       list().getByRole('searchbox', { name: 'Find a situation' }),
       'no such situation',
@@ -132,11 +136,19 @@ describe('practice runs in place', () => {
 
   it('keeps the first situation at the level in force running while the list is typed into or hidden', async () => {
     const { user, list, run, address } = open('/practice?level=Level+2')
-    // AU.L2-3.3.4 is the first Level 2 situation in the catalog's order.
+    // AC.L2-3.1.1 is the first Level 2 situation in the catalog's order; it
+    // is listed at its level like the others.
     expect(run().getByRole('heading', { level: 2 })).toHaveTextContent(
-      'Notice when the recording stops',
+      'A working login is not approval',
     )
-    expect(run().getByText('AU.L2-3.3.4')).toBeVisible()
+    expect(run().getByText('AC.L2-3.1.1')).toBeVisible()
+    expect(
+      run().getByText(/^Level 2 · Authorized Access Control/),
+    ).toBeVisible()
+    expect(run().queryByText('Project example')).toBeNull()
+    expect(
+      list().getByRole('status', { name: 'Situation results' }),
+    ).toHaveTextContent('4 of 13 situations')
     await user.type(
       list().getByRole('searchbox', { name: 'Find a situation' }),
       'authentication factor',
@@ -144,13 +156,13 @@ describe('practice runs in place', () => {
     expect(
       list().getByRole('status', { name: 'Situation results' }),
     ).toHaveTextContent('1 of 13 situations')
-    expect(run().getByText('AU.L2-3.3.4')).toBeVisible()
+    expect(run().getByText('AC.L2-3.1.1')).toBeVisible()
     await user.type(
       list().getByRole('searchbox', { name: 'Find a situation' }),
       ' nowhere',
     )
     expect(list().getByText('No matching situations.')).toBeVisible()
-    expect(run().getByText('AU.L2-3.3.4')).toBeVisible()
+    expect(run().getByText('AC.L2-3.1.1')).toBeVisible()
     expect(address()).toBe('/practice?level=Level+2')
   })
 

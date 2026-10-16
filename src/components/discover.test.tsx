@@ -59,7 +59,7 @@ describe('the Controls page', () => {
   it('filters by family in place from real links, and marks the family in force', async () => {
     const user = userEvent.setup()
     const page = await openControls()
-    await expectCount(page, '149 references found')
+    await expectCount(page, '149 controls')
     const links = page.families().getAllByRole('link')
     expect(links).toHaveLength(15)
     expect(links[0]).toHaveAttribute('aria-current', 'true')
@@ -68,12 +68,12 @@ describe('the Controls page', () => {
       .getByRole('link', { name: /Media Protection/ })
     expect(media).toHaveAttribute('href', expect.stringContaining('family=MP'))
     await user.click(media)
-    await expectCount(page, '10 references found')
+    await expectCount(page, '10 controls')
     expect(media).toHaveAttribute('aria-current', 'true')
     expect(links[0]).not.toHaveAttribute('aria-current')
     expect(page.address()).toContain('family=MP')
     await user.click(links[0]!)
-    await expectCount(page, '149 references found')
+    await expectCount(page, '149 controls')
     expect(page.address()).not.toContain('family=')
   })
 
@@ -83,11 +83,11 @@ describe('the Controls page', () => {
     const handled = fireEvent.click(access, { ctrlKey: true })
     // jsdom does not navigate; what matters is that nothing swallowed the click.
     expect(handled).toBe(true)
-    await expectCount(page, '149 references found')
+    await expectCount(page, '149 controls')
     expect(page.address()).not.toContain('family=')
     const plain = fireEvent.click(access)
     expect(plain).toBe(false)
-    await expectCount(page, '28 references found')
+    await expectCount(page, '28 controls')
   })
 
   it('filters by level in place, clears it on a second pick, and reports each change once', async () => {
@@ -96,14 +96,14 @@ describe('the Controls page', () => {
     vi.mocked(trackUsage).mockClear()
     const one = page.levels().getByRole('link', { name: /^Level 1/ })
     await user.click(one)
-    await expectCount(page, '15 references found')
+    await expectCount(page, '15 controls')
     expect(one).toHaveAttribute('aria-current', 'true')
     expect(page.address()).toContain('level=Level+1')
     expect(vi.mocked(trackUsage).mock.calls).toEqual([
       [{ name: 'filter_change', filter: 'level', value: 'Level 1' }],
     ])
     await user.click(one)
-    await expectCount(page, '149 references found')
+    await expectCount(page, '149 controls')
     expect(one).not.toHaveAttribute('aria-current')
     expect(vi.mocked(trackUsage).mock.calls).toEqual([
       [{ name: 'filter_change', filter: 'level', value: 'Level 1' }],
@@ -114,7 +114,7 @@ describe('the Controls page', () => {
       page.families().getByRole('link', { name: /Access Control/ }),
     )
     await user.click(page.levels().getByRole('link', { name: /^Level 2/ }))
-    await expectCount(page, '22 references found')
+    await expectCount(page, '22 controls')
   })
 
   it('opens a bare /learn and a recovered link in the chalk picked on Home, and names that chalk in a notice', async () => {
@@ -163,8 +163,8 @@ describe('the Controls page', () => {
     render(<App />)
     await user.click(
       await screen.findByRole(
-        'button',
-        { name: 'Browse examples' },
+        'link',
+        { name: 'All controls' },
         { timeout: 5000 },
       ),
     )

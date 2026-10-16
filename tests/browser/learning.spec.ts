@@ -18,7 +18,7 @@ test('filters, history, glossary and empty-result recovery keep a reader oriente
     .click()
   await expect(
     page.getByRole('status', { name: 'Control search results' }),
-  ).toContainText('24 references')
+  ).toContainText('24 controls')
   await page.locator('.control-item').first().click()
   await expect(page.getByRole('heading', { level: 1 })).toBeFocused()
   await page.getByRole('link', { name: 'Explain', exact: true }).click()
@@ -43,13 +43,13 @@ test('filters, history, glossary and empty-result recovery keep a reader oriente
   await search.focus()
   await search.fill('no-such-fictional-learning-topic')
   await expect(
-    page.getByRole('heading', { name: 'No matching references.' }),
+    page.getByRole('heading', { name: 'No controls match.' }),
   ).toBeVisible()
   await page.getByRole('button', { name: 'Clear filters' }).click()
   await expect(search).toBeFocused()
   await expect(
     page.getByRole('status', { name: 'Control search results' }),
-  ).toContainText('149 references')
+  ).toContainText('149 controls')
   await page
     .getByRole('navigation', { name: 'Main' })
     .getByRole('link', { name: 'Glossary' })
@@ -144,14 +144,20 @@ test('malformed links recover explicitly without silently substituting a control
 }) => {
   await page.goto('/learn?view=lesson&framework=cmmc')
   await expect(
-    page.getByRole('heading', { name: 'This lesson link is invalid.' }),
+    page.getByRole('heading', { name: 'That control isn’t on the board.' }),
   ).toBeVisible()
   await expect(page.getByRole('tabpanel')).toHaveCount(0)
-  await page.getByRole('button', { name: 'Browse examples' }).click()
+  await expect(
+    page.getByRole('status', { name: 'Control search results' }),
+  ).toHaveCount(0)
+  await page.getByRole('link', { name: 'All controls', exact: true }).click()
   await expect(
     page.getByRole('searchbox', { name: 'Find controls' }),
   ).toBeFocused()
   await expect(
-    page.getByRole('heading', { name: 'This lesson link is invalid.' }),
+    page.getByRole('heading', { name: 'That control isn’t on the board.' }),
   ).toHaveCount(0)
+  await expect(
+    page.getByRole('status', { name: 'Control search results' }),
+  ).toContainText('149 controls')
 })

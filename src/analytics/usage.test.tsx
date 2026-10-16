@@ -27,6 +27,12 @@ const lesson = {
   editionId: 'readme-example',
   controlKey: 'authorized-access',
 }
+/** The retired demo's practice belongs to AC.L2-3.1.1 now. */
+const practiceLesson = {
+  frameworkId: 'cmmc',
+  editionId: 'cmmc-2-13-sep-2024',
+  controlKey: 'ac-l2-3-1-1',
+}
 
 beforeEach(() => {
   vi.stubEnv('PROD', true)
@@ -398,7 +404,7 @@ describe('bounded interaction metadata', () => {
   it('records practice action categories without choices, correctness, or scores', () => {
     const event = {
       name: 'practice_action',
-      lesson,
+      lesson: practiceLesson,
       action: 'check',
       choice: 'credentials-work',
       correct: true,
@@ -415,9 +421,13 @@ describe('bounded interaction metadata', () => {
     expect(
       usageProperties({
         name: 'practice_action',
-        lesson: { ...lesson, controlKey: 'unknown' },
+        lesson: { ...practiceLesson, controlKey: 'unknown' },
         action: 'check',
       }),
+    ).toBeNull()
+    // The retired demo identity resolves, but no practice is bound to it.
+    expect(
+      usageProperties({ name: 'practice_action', lesson, action: 'check' }),
     ).toBeNull()
     expect(
       usageProperties({

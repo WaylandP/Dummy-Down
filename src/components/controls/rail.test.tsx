@@ -76,7 +76,7 @@ describe('the rail of every control', () => {
     ).not.toBeInTheDocument()
     expect(
       explorer.getByRole('status', { name: 'Control search results' }),
-    ).toHaveTextContent('149 references found')
+    ).toHaveTextContent('149 controls')
   })
 
   it('counts each family for the level in force and keeps every family listed', async () => {
@@ -175,13 +175,10 @@ describe('the rail of every control', () => {
   })
 
   it('lets a pick from the rail through the filters that would hide it', async () => {
-    // The demo-lesson collection: the rail still lists every reference.
+    // A bare discovery address: the rail lists every reference.
     const { user, family, rail, explorer, params } = await open(
       '/learn?view=discover',
     )
-    expect(
-      explorer.getByRole('combobox', { name: 'Content collection' }),
-    ).toHaveValue('lessons')
     await user.click(family('AC'))
     await user.click(rail.getByRole('link', { name: /^AC\.L1-b\.1\.i / }))
     expect(

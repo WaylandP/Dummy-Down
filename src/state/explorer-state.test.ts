@@ -6,11 +6,13 @@ import type {
   ReferenceControl,
 } from '../types/content'
 import {
+  addressNamesRetired,
   createLessonUrl,
   effectiveCollection,
   explorerResults,
   parseExplorerSearch,
   resolveLesson,
+  retiredLessonTarget,
   serializeExplorerSearch,
   transitionExplorerState,
   type ExplorerCatalog,
@@ -22,13 +24,13 @@ import {
 
 const sampleIdentity: LessonIdentity = {
   frameworkId: 'cmmc',
-  editionId: 'readme-example',
+  editionId: 'guide-fixture',
   controlKey: 'authorized-access',
 }
 
 const nextIdentity: LessonIdentity = {
   ...sampleIdentity,
-  editionId: 'next-example',
+  editionId: 'next-guide',
 }
 
 const independentIdentity: LessonIdentity = {
@@ -43,36 +45,12 @@ const referenceIdentity: LessonIdentity = {
   controlKey: 'source-access',
 }
 
-const sample: Control = {
-  ...controls[0]!,
-  key: sampleIdentity.controlKey,
-  editionId: sampleIdentity.editionId,
-}
-
-const nextEdition: Control = {
-  ...sample,
-  editionId: nextIdentity.editionId,
-  title: 'Authorized access, a different editorial edition',
-}
-
-const differentFamily: Control = {
-  ...sample,
-  id: 'IA.EXAMPLE',
-  key: 'device-approval',
-  family: 'IA',
-  familyName: 'Identification',
-  level: 'Level 1',
-  title: 'Device approval',
-}
-
-const independent: Control = {
-  ...sample,
-  key: independentIdentity.controlKey,
-  frameworkId: independentIdentity.frameworkId,
-  editionId: independentIdentity.editionId,
-  family: 'Identity',
-  familyName: 'Identity management',
-  level: undefined,
+/** The first version's README demo, as the catalog still carries it. */
+const retired: Control = controls[0]!
+const retiredIdentity: LessonIdentity = {
+  frameworkId: retired.frameworkId,
+  editionId: retired.editionId,
+  controlKey: retired.key,
 }
 
 /** Synthetic source records exercise navigation, not real control requirements. */
@@ -90,7 +68,7 @@ const reference: ReferenceControl = {
   versionContext: 'Synthetic quotation fixture used only for state tests.',
   disclaimer: 'This fixture is not cybersecurity teaching content.',
   tags: ['source fixture'],
-  sources: sample.sources,
+  sources: retired.sources,
   requirement: {
     text: 'Synthetic guide text with a unique guide-search token.',
     sourceId: 'fixture-guide',
@@ -114,6 +92,53 @@ const otherReference: ReferenceControl = {
   family: 'SOURCE',
   familyName: 'Another reference fixture',
   level: 'Level 2',
+}
+
+/** The same official identifier as the retired demo, in a publication edition. */
+const sample: ReferenceControl = {
+  ...reference,
+  id: retired.id,
+  key: sampleIdentity.controlKey,
+  editionId: sampleIdentity.editionId,
+  title: 'Authorized access',
+  family: 'AC',
+  familyName: 'Access Control',
+  level: 'Level 2',
+  tags: ['accounts', 'authorized users', 'devices', 'access', 'offboarding'],
+  requirement: {
+    ...reference.requirement,
+    text: 'Synthetic requirement text about approved accounts.',
+  },
+  modelRequirement: {
+    ...reference.modelRequirement,
+    text: 'Synthetic model text about approved accounts.',
+  },
+}
+
+const nextEdition: ReferenceControl = {
+  ...sample,
+  editionId: nextIdentity.editionId,
+  title: 'Authorized access, a different editorial edition',
+}
+
+const differentFamily: ReferenceControl = {
+  ...sample,
+  id: 'IA.EXAMPLE',
+  key: 'device-approval',
+  family: 'IA',
+  familyName: 'Identification',
+  level: 'Level 1',
+  title: 'Device approval',
+}
+
+const independent: ReferenceControl = {
+  ...sample,
+  key: independentIdentity.controlKey,
+  frameworkId: independentIdentity.frameworkId,
+  editionId: independentIdentity.editionId,
+  family: 'Identity',
+  familyName: 'Identity management',
+  level: undefined,
 }
 
 const catalog: ExplorerCatalog = {
@@ -150,20 +175,24 @@ const catalog: ExplorerCatalog = {
     {
       id: sampleIdentity.editionId,
       frameworkId: sampleIdentity.frameworkId,
-      title: 'README example',
-      versionContext: 'Editorial fixture, not an official framework version.',
+      title: 'Guide fixture',
+      versionContext:
+        'A publication fixture, not an official framework version.',
+      kind: 'publication',
     },
     {
       id: nextIdentity.editionId,
       frameworkId: nextIdentity.frameworkId,
-      title: 'Next example',
-      versionContext: 'Another editorial fixture.',
+      title: 'Next guide',
+      versionContext: 'Another publication fixture.',
+      kind: 'publication',
     },
     {
       id: independentIdentity.editionId,
       frameworkId: independentIdentity.frameworkId,
       title: 'Independent guide',
-      versionContext: 'An independent editorial fixture.',
+      versionContext: 'An independent publication fixture.',
+      kind: 'publication',
     },
     {
       id: referenceIdentity.editionId,
@@ -171,6 +200,12 @@ const catalog: ExplorerCatalog = {
       title: 'Synthetic publication fixture',
       versionContext: 'A source snapshot fixture, not a project explanation.',
       kind: 'publication',
+    },
+    {
+      id: retiredIdentity.editionId,
+      frameworkId: retiredIdentity.frameworkId,
+      title: 'README example',
+      versionContext: 'The first version’s editorial edition.',
     },
   ],
   controls: [
@@ -180,6 +215,7 @@ const catalog: ExplorerCatalog = {
     independent,
     reference,
     otherReference,
+    retired,
   ],
   defaultLesson: sampleIdentity,
 }
@@ -189,6 +225,7 @@ const unfiltered: ExplorerFilters = {
   query: '',
   family: '',
   level: '',
+  collection: 'references',
 }
 
 function lesson(
@@ -283,10 +320,10 @@ describe('parseExplorerSearch', () => {
 
   it.each([
     '?view=lesson',
-    '?view=lesson&framework=cmmc&edition=readme-example',
+    '?view=lesson&framework=cmmc&edition=guide-fixture',
     '?view=lesson&framework=cmmc&edition=&control=authorized-access',
-    '?view=lesson&framework=&edition=readme-example&control=authorized-access',
-    '?view=lesson&framework=cmmc&edition=readme-example&control=',
+    '?view=lesson&framework=&edition=guide-fixture&control=authorized-access',
+    '?view=lesson&framework=cmmc&edition=guide-fixture&control=',
   ])('never completes a partial identity using the default: %s', (search) => {
     expect(parseExplorerSearch(search, catalog)).toEqual({
       kind: 'invalid',
@@ -341,7 +378,7 @@ describe('parseExplorerSearch', () => {
   ])('validates decoded editorial slugs exactly once: %s', (controlKey) => {
     expect(
       parseExplorerSearch(
-        `?view=lesson&framework=cmmc&edition=readme-example&control=${controlKey}`,
+        `?view=lesson&framework=cmmc&edition=guide-fixture&control=${controlKey}`,
         catalog,
       ),
     ).toEqual({ kind: 'invalid', reason: 'invalid-identity' })
@@ -387,10 +424,10 @@ describe('parseExplorerSearch', () => {
         lesson(
           {
             filters: {
+              ...unfiltered,
               catalog: 'research-framework',
               query: 'accounts',
               family: 'Identity',
-              level: '',
             },
           },
           independentIdentity,
@@ -486,7 +523,7 @@ describe('serializeExplorerSearch', () => {
     const state = lesson({
       mode: 'it-cyber',
       filters: {
-        catalog: 'cmmc',
+        ...unfiltered,
         query: 'café approved & devices',
         family: 'AC',
         level: 'Level 2',
@@ -835,10 +872,10 @@ describe('transitionExplorerState', () => {
           lesson({
             mode: 'it-cyber',
             filters: {
+              ...unfiltered,
               catalog: 'research-framework',
               query: 'missing',
               family: 'Identity',
-              level: '',
             },
           }),
         ),
@@ -1030,32 +1067,40 @@ describe('createLessonUrl', () => {
   })
 })
 
-describe('source-reference collections', () => {
+describe('the one collection', () => {
   const referenceFilters: ExplorerFilters = {
     ...unfiltered,
     collection: 'references',
   }
 
-  it('defaults discovery, the sample and unknown tuples to teaching lessons', () => {
-    expect(effectiveCollection(unfiltered)).toBe('lessons')
-    expect(effectiveCollection({ ...unfiltered, collection: 'lessons' })).toBe(
-      'lessons',
-    )
+  it('opens every address, lesson or discovery, in the references', () => {
+    expect(effectiveCollection(unfiltered)).toBe('references')
+    expect(
+      effectiveCollection({
+        catalog: 'cmmc',
+        query: '',
+        family: '',
+        level: '',
+      }),
+    ).toBe('references')
     for (const search of [
       '?view=discover',
+      '?view=discover&collection=references',
+      '?view=discover&collection=lessons',
       lessonSearch(),
+      lessonSearch(referenceIdentity),
+      `${lessonSearch(referenceIdentity)}&collection=lessons`,
       lessonSearch({ ...referenceIdentity, editionId: 'unknown-edition' }),
       lessonSearch({ ...referenceIdentity, controlKey: 'unknown-control' }),
       lessonSearch({ ...referenceIdentity, frameworkId: 'research-framework' }),
     ]) {
       const parsed = parseExplorerSearch(search, catalog)
       if (parsed.kind !== 'ready') throw new Error('Expected complete state')
-      expect(effectiveCollection(parsed.state.filters)).toBe('lessons')
-      expect(parsed.state.filters.collection).toBeUndefined()
+      expect(parsed.state.filters.collection).toBe('references')
     }
   })
 
-  it('infers references only from the exact known source identity', () => {
+  it('reads a source address with its filters', () => {
     expect(
       parseExplorerSearch(lessonSearch(referenceIdentity), catalog),
     ).toEqual(ready(lesson({ filters: referenceFilters }, referenceIdentity)))
@@ -1083,7 +1128,7 @@ describe('source-reference collections', () => {
   })
 
   it.each(['', 'all', 'REFERENCES', 'references%2520'])(
-    'rejects unsupported or empty explicit collection without silently choosing lessons: %s',
+    'rejects unsupported or empty explicit collection without silently choosing one: %s',
     (collection) => {
       expect(
         parseExplorerSearch(`?view=discover&collection=${collection}`, catalog),
@@ -1106,58 +1151,62 @@ describe('source-reference collections', () => {
     ).toEqual({ kind: 'invalid', reason: 'malformed-encoding' })
   })
 
-  it('keeps explicit collection authoritative while preserving a mismatched source identity', () => {
+  it('reads the first version’s lessons collection as the references, and writes it back as such', () => {
     const parsed = parseExplorerSearch(
       `${lessonSearch(referenceIdentity)}&collection=lessons`,
       catalog,
     )
     expect(parsed).toEqual(
-      ready(
-        lesson(
-          { filters: { ...unfiltered, collection: 'lessons' } },
-          referenceIdentity,
-        ),
-      ),
+      ready(lesson({ filters: referenceFilters }, referenceIdentity)),
     )
-    expect(
-      parseExplorerSearch(
-        serializeExplorerSearch(
-          parsed.kind === 'ready' ? parsed.state : discovery(),
-        ),
-        catalog,
-      ),
-    ).toEqual(parsed)
     expect(resolveLesson(referenceIdentity, unfiltered, catalog)).toMatchObject(
       {
         kind: 'lesson',
         control: reference,
-        excludedByFilters: true,
+        excludedByFilters: false,
       },
     )
     expect(
-      parseExplorerSearch(`${lessonSearch()}&collection=references`, catalog),
-    ).toEqual(ready(lesson({ filters: referenceFilters })))
+      parseExplorerSearch('?view=discover&collection=lessons', catalog),
+    ).toEqual(ready(discovery(referenceFilters)))
     expect(
-      resolveLesson(sampleIdentity, referenceFilters, catalog),
-    ).toMatchObject({
-      kind: 'lesson',
-      control: sample,
-      excludedByFilters: true,
-    })
+      parseExplorerSearch(
+        '?view=discover&collection=lessons&q=guide-search&mode=compliance',
+        catalog,
+      ),
+    ).toEqual(
+      ready({
+        ...discovery({ ...referenceFilters, query: 'guide-search' }),
+        mode: 'compliance',
+      }),
+    )
+    for (const search of [
+      `${lessonSearch(referenceIdentity)}&collection=lessons`,
+      '?view=discover&collection=lessons',
+    ]) {
+      const state = parseExplorerSearch(search, catalog)
+      if (state.kind !== 'ready') throw new Error('Expected complete state')
+      expect(
+        new URLSearchParams(serializeExplorerSearch(state.state)).get(
+          'collection',
+        ),
+      ).toBe('references')
+      expect(addressNamesRetired(search, catalog)).toBe(true)
+    }
   })
 
-  it('validates family and level against entries in the active collection', () => {
+  it('validates family and level against the references', () => {
     expect(
       parseExplorerSearch(
         '?view=discover&collection=references&family=AC&level=Level+3',
         catalog,
       ),
     ).toEqual({
-      ...ready(discovery(referenceFilters)),
-      notices: ['family-reset', 'level-reset'],
+      ...ready(discovery({ ...referenceFilters, family: 'AC' })),
+      notices: ['level-reset'],
     })
     expect(
-      parseExplorerSearch('?view=discover&family=REF&level=Level+3', catalog),
+      parseExplorerSearch('?view=discover&family=NONE&level=Level+3', catalog),
     ).toEqual({
       ...ready(discovery()),
       notices: ['family-reset', 'level-reset'],
@@ -1174,21 +1223,22 @@ describe('source-reference collections', () => {
     )
   })
 
-  it('roundtrips reference discovery explicitly and omits the default lessons collection', () => {
+  it('roundtrips discovery and names the collection in every address', () => {
     const state = discovery({ ...referenceFilters, query: 'guide-search' })
     expect(parameters(state).get('collection')).toBe('references')
     expect(
       parseExplorerSearch(serializeExplorerSearch(state), catalog),
     ).toEqual(ready(state))
-    expect(parameters(discovery()).has('collection')).toBe(false)
+    expect(parameters(discovery()).get('collection')).toBe('references')
     expect(
-      parameters(discovery({ ...unfiltered, collection: 'lessons' })).has(
-        'collection',
-      ),
-    ).toBe(false)
+      parameters(
+        discovery({ catalog: 'cmmc', query: '', family: '', level: '' }),
+      ).get('collection'),
+    ).toBe('references')
+    expect(parameters(lesson()).get('collection')).toBe('references')
   })
 
-  it('keeps source requirement and model text searchable independently of teaching prose', () => {
+  it('searches source requirement and model text, and lists only the references', () => {
     expect(
       explorerResults(
         discovery({ ...referenceFilters, query: 'guide-search' }),
@@ -1205,68 +1255,15 @@ describe('source-reference collections', () => {
       sample,
       nextEdition,
       differentFamily,
+      reference,
+      otherReference,
     ])
-    expect(
-      explorerResults(
-        discovery({ ...unfiltered, query: 'guide-search' }),
-        catalog,
-      ),
-    ).toEqual([])
     expect(
       explorerResults(
         discovery({ ...referenceFilters, query: 'locked front door' }),
         catalog,
       ),
     ).toEqual([])
-  })
-
-  it('changes collection with query retained, constraints cleared and excluded selection removed', () => {
-    const current = ready(
-      lesson({
-        mode: 'it-cyber',
-        filters: {
-          ...unfiltered,
-          query: 'accounts',
-          family: 'AC',
-          level: 'Level 2',
-        },
-      }),
-    )
-    expect(
-      transitionExplorerState(
-        current,
-        { type: 'set-collection', collection: 'references' },
-        catalog,
-      ),
-    ).toMatchObject({
-      parsed: ready({
-        ...discovery({ ...referenceFilters, query: 'accounts' }),
-        mode: 'it-cyber',
-      }),
-      history: 'push',
-    })
-    expect(
-      transitionExplorerState(
-        ready(lesson({ filters: referenceFilters }, referenceIdentity)),
-        { type: 'set-collection', collection: 'lessons' },
-        catalog,
-      ),
-    ).toMatchObject({ parsed: ready(discovery()), history: 'push' })
-  })
-
-  it('does not write redundant history for a collection that is already selected', () => {
-    for (const collection of ['lessons', 'references'] as const) {
-      const current = ready(
-        discovery(collection === 'lessons' ? unfiltered : referenceFilters),
-      )
-      expect(
-        transitionExplorerState(
-          current,
-          { type: 'set-collection', collection },
-          catalog,
-        ),
-      ).toMatchObject({ parsed: current, history: 'none' })
-    }
   })
 
   it('keeps a known restored source outside current results until deliberate filtering', () => {
@@ -1293,7 +1290,7 @@ describe('source-reference collections', () => {
     })
   })
 
-  it('selects source results using the exact edition tuple and retains their collection', () => {
+  it('selects source results using the exact edition tuple', () => {
     expect(
       transitionExplorerState(
         ready(discovery(referenceFilters)),
@@ -1306,10 +1303,18 @@ describe('source-reference collections', () => {
     })
   })
 
-  it('shows the exact entry in its own collection when recovering a mismatch', () => {
+  it('shows the exact entry in the results when recovering a mismatch', () => {
     expect(
       transitionExplorerState(
-        ready(lesson({ mode: 'compliance' }, referenceIdentity)),
+        ready(
+          lesson(
+            {
+              mode: 'compliance',
+              filters: { ...referenceFilters, family: 'SOURCE', query: 'x' },
+            },
+            referenceIdentity,
+          ),
+        ),
         { type: 'show-lesson-in-results' },
         catalog,
       ),
@@ -1322,16 +1327,9 @@ describe('source-reference collections', () => {
       ),
       history: 'push',
     })
-    expect(
-      transitionExplorerState(
-        ready(lesson({ filters: referenceFilters })),
-        { type: 'show-lesson-in-results' },
-        catalog,
-      ),
-    ).toMatchObject({ parsed: ready(lesson()), history: 'push' })
   })
 
-  it('clears filters and returns to discovery without leaving the selected collection', () => {
+  it('clears filters and returns to discovery within the references', () => {
     expect(
       transitionExplorerState(
         ready(
@@ -1369,7 +1367,7 @@ describe('source-reference collections', () => {
     })
   })
 
-  it('returns recovery and homepage example actions to teaching lessons', () => {
+  it('recovers into the references and opens the homepage example from them', () => {
     expect(
       transitionExplorerState(
         { kind: 'invalid', reason: 'invalid-collection' },
@@ -1390,7 +1388,7 @@ describe('source-reference collections', () => {
     })
   })
 
-  it('copies only source identity and mode, then infers references on recipient load', () => {
+  it('copies only source identity and mode, which open in the references on recipient load', () => {
     const copied = new URL(
       createLessonUrl(
         referenceIdentity,
@@ -1410,6 +1408,116 @@ describe('source-reference collections', () => {
           referenceIdentity,
         ),
       ),
+    )
+  })
+})
+
+describe('the first version’s demo lesson', () => {
+  it('opens the reference with the same official identifier, keeping the chalk and filters', () => {
+    expect(retiredLessonTarget(retiredIdentity, catalog)).toEqual(
+      sampleIdentity,
+    )
+    expect(retiredLessonTarget(sampleIdentity, catalog)).toBeNull()
+    expect(retiredLessonTarget(referenceIdentity, catalog)).toBeNull()
+    expect(
+      retiredLessonTarget(
+        { ...retiredIdentity, controlKey: 'missing' },
+        catalog,
+      ),
+    ).toBeNull()
+    expect(parseExplorerSearch(lessonSearch(retiredIdentity), catalog)).toEqual(
+      ready(lesson()),
+    )
+    expect(
+      parseExplorerSearch(
+        `${lessonSearch(retiredIdentity)}&mode=compliance&q=access&family=AC&level=Level+2&collection=lessons`,
+        catalog,
+      ),
+    ).toEqual(
+      ready(
+        lesson({
+          mode: 'compliance',
+          filters: {
+            ...unfiltered,
+            query: 'access',
+            family: 'AC',
+            level: 'Level 2',
+          },
+        }),
+      ),
+    )
+    expect(
+      parseExplorerSearch(
+        `${lessonSearch(retiredIdentity)}&tab=practice`,
+        catalog,
+      ),
+    ).toEqual(ready(lesson({ tab: 'practice' })))
+  })
+
+  it('writes the opened control into the address, never the demo', () => {
+    const parsed = parseExplorerSearch(
+      `${lessonSearch(retiredIdentity)}&mode=compliance`,
+      catalog,
+    )
+    if (parsed.kind !== 'ready' || parsed.state.view !== 'lesson')
+      throw new Error('Expected the demo link to open a lesson')
+    const written = new URLSearchParams(serializeExplorerSearch(parsed.state))
+    expect(written.get('edition')).toBe(sampleIdentity.editionId)
+    expect(written.get('control')).toBe(sampleIdentity.controlKey)
+    expect(written.get('mode')).toBe('compliance')
+    expect(written.get('collection')).toBe('references')
+    expect(addressNamesRetired(lessonSearch(retiredIdentity), catalog)).toBe(
+      true,
+    )
+    expect(addressNamesRetired(`?${written}`, catalog)).toBe(false)
+    expect(addressNamesRetired(lessonSearch(referenceIdentity), catalog)).toBe(
+      false,
+    )
+    expect(addressNamesRetired(`${lessonSearch()}&chalk=blue`, catalog)).toBe(
+      false,
+    )
+  })
+
+  it('is not on the board itself: never listed, never resolved, never selected', () => {
+    expect(resolveLesson(retiredIdentity, unfiltered, catalog)).toEqual({
+      kind: 'not-found',
+      identity: retiredIdentity,
+    })
+    expect(explorerResults(discovery(), catalog)).not.toContain(retired)
+    expect(
+      explorerResults(
+        discovery({ ...unfiltered, query: 'locked front door' }),
+        catalog,
+      ),
+    ).toEqual([])
+    const current = ready(discovery())
+    expect(
+      transitionExplorerState(
+        current,
+        { type: 'select-lesson', identity: retiredIdentity },
+        catalog,
+      ),
+    ).toMatchObject({ parsed: current, history: 'none' })
+  })
+
+  it('keeps an unmatched demo address as its own not-found identity', () => {
+    // Without a reference of the same identifier there is nothing to open:
+    // the address stays what it was and never falls back to another control.
+    const without: ExplorerCatalog = {
+      ...catalog,
+      controls: [reference, otherReference, retired],
+      defaultLesson: referenceIdentity,
+    }
+    expect(parseExplorerSearch(lessonSearch(retiredIdentity), without)).toEqual(
+      ready(lesson({}, retiredIdentity)),
+    )
+    expect(resolveLesson(retiredIdentity, unfiltered, without)).toEqual({
+      kind: 'not-found',
+      identity: retiredIdentity,
+    })
+    expect(retiredLessonTarget(retiredIdentity, without)).toBeNull()
+    expect(addressNamesRetired(lessonSearch(retiredIdentity), without)).toBe(
+      false,
     )
   })
 })

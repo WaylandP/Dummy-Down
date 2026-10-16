@@ -1,4 +1,4 @@
-import { act, render, screen, within } from '@testing-library/react'
+import { act, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from '../App'
@@ -48,13 +48,11 @@ describe('Versioned CMMC reference catalog', () => {
       '/?view=discover&collection=references&catalog=cmmc',
     )
     const { user, explorer } = await setup()
-    await user.selectOptions(
-      explorer.getByRole('combobox', { name: 'Content collection' }),
-      'references',
-    )
+    // One collection, one framework: nothing to select.
+    expect(explorer.queryByRole('combobox')).not.toBeInTheDocument()
     expect(
       explorer.getByRole('status', { name: 'Control search results' }),
-    ).toHaveTextContent('149 references found')
+    ).toHaveTextContent('149 controls')
     expect(
       explorer.getAllByRole('button', {
         name: /Source reference/,
@@ -81,7 +79,7 @@ describe('Versioned CMMC reference catalog', () => {
       await user.click(levels.getByRole('link', { name: label }))
       expect(
         explorer.getByRole('status', { name: 'Control search results' }),
-      ).toHaveTextContent(`${count} references found`)
+      ).toHaveTextContent(`${count} controls`)
     }
   })
 
@@ -117,7 +115,8 @@ describe('Versioned CMMC reference catalog', () => {
       ).toBeVisible()
       expect(explorer.getByText('Pick a chalk')).toBeVisible()
       expect(explorer.getAllByRole('tab')).toHaveLength(3)
-      expect(explorer.queryByText('Practice activity')).not.toBeInTheDocument()
+      // The practice waits on its own view.
+      expect(explorer.getByText('Practice activity')).not.toBeVisible()
     },
   )
 
@@ -144,35 +143,42 @@ describe('Versioned CMMC reference catalog', () => {
     ).toBeGreaterThan(0)
   })
 
-  it('preserves explicit collection mismatch on history replay and restores the reference collection deliberately', async () => {
+  it('reads the first version’s lessons collection as the references, on load and on history replay', async () => {
     window.history.replaceState(
       null,
       '',
       `${address('AC.L2-3.1.1')}&collection=lessons`,
     )
-    const { user, explorer } = await setup()
-    expect(
-      explorer.getByText('This control is outside the current results.'),
-    ).toBeVisible()
-    await user.click(
-      explorer.getByRole('button', { name: 'Show this control in results' }),
-    )
-    expect(
-      new URLSearchParams(window.location.search).get('collection'),
-    ).not.toBe('lessons')
+    const { explorer } = await setup()
     expect(
       explorer.queryByText('This control is outside the current results.'),
     ).not.toBeInTheDocument()
     expect(
       explorer.getByText(quotation(reference('AC.L2-3.1.1').requirement.text)),
     ).toBeVisible()
-    replay(`${address('AC.L2-3.1.1')}&collection=lessons`)
+    // The explorer tidies the address once it subscribes, a tick after the
+    // lazy page mounts.
+    await waitFor(() =>
+      expect(
+        new URLSearchParams(window.location.search).get('collection'),
+      ).toBe('references'),
+    )
+    replay(`${address('AC.L2-3.1.1')}&collection=lessons&q=access`)
     expect(
-      explorer.getByText('This control is outside the current results.'),
+      explorer.queryByText('This control is outside the current results.'),
+    ).not.toBeInTheDocument()
+    expect(
+      explorer.getByText(quotation(reference('AC.L2-3.1.1').requirement.text)),
     ).toBeVisible()
+    await waitFor(() =>
+      expect(
+        new URLSearchParams(window.location.search).get('collection'),
+      ).toBe('references'),
+    )
+    expect(new URLSearchParams(window.location.search).get('q')).toBe('access')
   })
 
-  it('shares a source identity without discovery text and keeps the old draft entry available', async () => {
+  it('shares a source identity without discovery text, and holds the demo’s practice on its own view', async () => {
     window.history.replaceState(
       null,
       '',
@@ -199,21 +205,15 @@ describe('Versioned CMMC reference catalog', () => {
         name: chalkFor('beginner').prompt,
       }),
     ).toBeVisible()
-    // The demo lesson is reached from the overview's collection select.
-    replay('/learn?view=discover&collection=references&mode=beginner')
-    await user.selectOptions(
-      explorer.getByRole('combobox', { name: 'Content collection' }),
-      'lessons',
-    )
-    await user.click(
-      explorer.getByRole('button', {
-        name: /AC\.L2-3\.1\.1.*Authorized access/,
-      }),
-    )
-    expect(
-      explorer.getByRole('combobox', { name: 'Content collection' }),
-    ).toHaveValue('lessons')
+    // The first version's demo practice now belongs to this control.
+    expect(explorer.getByText('Practice activity')).not.toBeVisible()
+    await user.click(explorer.getByRole('link', { name: 'Practice' }))
     expect(explorer.getByText('Practice activity')).toBeVisible()
+    expect(
+      explorer.getByRole('heading', {
+        name: 'A working login is not approval',
+      }),
+    ).toBeVisible()
     write.mockRestore()
   })
 })

@@ -3,16 +3,14 @@
 Cipher & Chalk is an early educational application. Start by reading the project's
 [mission and roadmap](../README.md). This frontend foundation provides a responsive
 homepage, an initial Control Explorer, and Beginner, IT & Cybersecurity, and
-Compliance & Assessment explanation modes for all 149 versioned CMMC references
-and the original README-based example.
+Compliance & Assessment explanation modes for all 149 versioned CMMC references.
 
-The example is an educational interpretation, not a complete official requirement
-or reviewed assessment guide. The Explorer restores exact lessons and modes from
+The Explorer restores exact lessons and modes from
 shareable addresses; a searchable glossary supplies 20 draft definitions. The
-source collection contains all 149 identifiers in the September 2024 v2.13
+catalog contains all 149 identifiers in the September 2024 v2.13
 snapshot, each with three original control-specific teaching perspectives. The
-practice index contains 13 draft activities and 39 explained questions: the original
-demo, six Level 1, three Level 2 and three Level 3 activities. Qualified human review and current applicability verification
+practice index contains 13 draft activities and 39 explained questions: six
+Level 1, four Level 2 and three Level 3 activities. Qualified human review and current applicability verification
 remain pending. Accounts and a backend are outside this iteration.
 
 ## Page navigation
@@ -97,7 +95,7 @@ their existing values; historical source URLs are preserved.
 | `src/components/TimelinePage.tsx` | The timeline: the dates that matter, each paraphrased over its quoted source from `src/data/cmmc-timeline.json`.                                                                                                                                                             |
 | `src/types/content.ts`            | TypeScript definitions for frameworks, controls, learning modes, and content metadata.                                                                                                                                                                                       |
 | `src/data/frameworks.ts`          | Framework metadata, including supported versus planned status.                                                                                                                                                                                                               |
-| `src/data/controls.ts`            | Educational control examples and learning-mode definitions.                                                                                                                                                                                                                  |
+| `src/data/controls.ts`            | The first version's README demo control (never listed; its identity stays stable) and the learning-mode definitions.                                                                                                                                                         |
 | `src/data/control-search.ts`      | Shared search and filtering behavior.                                                                                                                                                                                                                                        |
 | `src/data/editions.ts`            | Project editorial editions and the explicit sample identity.                                                                                                                                                                                                                 |
 | `src/data/cmmc-references.ts`     | Attributed CMMC publication quotations with snapshot/page provenance.                                                                                                                                                                                                        |
@@ -105,7 +103,7 @@ their existing values; historical source URLs are preserved.
 | `src/data/cmmc-clause-map.ts`     | The Decode view's clause map: which objectives each clause of a requirement sentence produces, read from the pinned text.                                                                                                                                                    |
 | \1                                | `src/data/cmmc-assessment-methods.ts`                                                                                                                                                                                                                                        | The Evidence view's three words: each pinned control's Examine, Interview and Test lists, verbatim from its guide page. |
 | `src/analytics/`                  | Allowlisted usage events, production gating and visitor privacy preferences.                                                                                                                                                                                                 |
-| `src/data/learning.ts`            | Fictional scenarios and questions tied to an exact teaching identity.                                                                                                                                                                                                        |
+| `src/data/learning.ts`            | Fictional scenarios and questions tied to an exact teaching identity; `guide-source.ts` resolves an activity's teaching basis to the guide page its control cites.                                                                                                           |
 | `src/data/level-one-learning.ts`  | Three Level 1 draft activities, misunderstandings and accessible diagram data.                                                                                                                                                                                               |
 | `src/data/expanded-learning.ts`   | Nine additional source-bound draft activities across three CMMC levels.                                                                                                                                                                                                      |
 | `src/components/PracticePage.tsx` | Practice runs in place: the situations beside the one running (`?activity=`, `?q=`); the level in the address, the search in memory.                                                                                                                                         |
@@ -143,11 +141,12 @@ libraries yet.
 Official source links, applicable versions, and review status travel with the
 content. Source records distinguish project educational sources, official resource
 indexes and official publications. The `readme-example` edition is a project
-snapshot, not an official CMMC release.
-The original demo control has `contentKind: 'educational-example'` and
-`reviewStatus: 'draft'`. Its version context identifies the README's simplified
-CMMC Level 2 example using a NIST SP 800-171 Rev. 2 identifier; it does not claim a
-reviewed interpretation or automatically map to every current framework version.
+snapshot, not an official CMMC release: the first version's demo lesson
+(`contentKind: 'educational-example'`, `reviewStatus: 'draft'`, the README's
+simplified example under the identifier AC.L2-3.1.1). Since October 16 it is
+not on the board. Its data stays in the catalog so the identity remains
+stable, the Explorer never lists it, and an address that names it opens
+AC.L2-3.1.1, the control it taught.
 
 A source link identifies the basis for an explanation; it does not make that
 explanation official or reviewed. Keep draft status visible until a qualified review
@@ -160,8 +159,16 @@ Lessons use the composite `{frameworkId, editionId, controlKey}` identity. The
 official identifier remains display/search data. For example:
 
 ```text
-/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access&mode=compliance#explorer
+/?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l2-3-1-1&mode=compliance#explorer
 ```
+
+The first version's demo link
+(`/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access`)
+opens the same control: `parseExplorerSearch` resolves any control that is not
+an official reference to the reference with the same official identifier
+(`retiredLessonTarget`), and the store rewrites the address once it is read,
+as it does for a chalk (`addressNamesRetired`). A `readme-example` address
+that names no catalog control stays its own not-found identity.
 
 Copy lesson link includes only that known lesson and learning mode. The app never
 reads the clipboard. If writing is unavailable, it shows a labeled selectable
@@ -172,7 +179,8 @@ once read and is never serialized; a colour the tray lacks shows the white chalk
 with a notice. Send this chalk copies such a link for the chalk in hand.
 
 Discovery state uses `view=discover` with optional `catalog`, `q`, `family`,
-`level`, `mode` and `collection=references`. Home does not open or track a selected
+`level`, `mode` and `collection=references`. There is one collection and one
+framework, so the overview offers nothing to pick. Home does not open or track a selected
 lesson. Its native GET form submits to `/learn` with `view=discover`,
 `collection=references`, `catalog=cmmc` and the encoded query `q`. An empty search
 shows all references. The Controls page's family and level links carry real
@@ -205,8 +213,9 @@ identifiers) and Home shows it as "Last time"; the row never reads that key
 without the consent marker, and deleting progress removes it. The bare `/learn`
 address still uses the explicit default identity.
 
-The source collection is inferred only for an exact known source identity on a
-shared link; explicit `collection=lessons` remains authoritative on a mismatch.
+Every address writes `collection=references`, as the first version's links
+did; an older link's `collection=lessons` (the retired demo's collection)
+opens the same references and is rewritten.
 Inside the Explorer, search updates the current history entry; deliberate selection,
 filter and mode changes create entries. Back/Forward restores the entire address.
 Search text appears in URLs and browser history: use generic learning topics and
@@ -281,8 +290,8 @@ and source links remain usable; the UI offers a page reload that preserves the
 current lesson address. Retrying the same failed module import alone is unreliable
 because browser module-load failures can be cached. Unknown
 framework/edition coverage remains explicitly pending. Interactive practice is
-available for twelve exact source identities and the original demo; the remaining
-137 source entries do not claim it.
+available for thirteen exact source identities; the remaining
+136 source entries do not claim it.
 
 Discovery uses eight results per page
 and follows a restored selection. Pagination stays local to the result list;
@@ -290,7 +299,10 @@ collection/query/family/level and selected identity remain in browser history.
 
 `LearningPractice` matches the complete teaching identity. Its fictional scenario
 and questions stay consistent across modes, explain both correct and incorrect
-choices, and preserve reader progress during mode changes. Optional local saving
+choices, and preserve reader progress during mode changes. The first version's
+demo activity, "A working login is not approval", is AC.L2-3.1.1's in the
+`cmmc-2-13-sep-2024` edition, with the Level 2 guide page the control cites as
+its teaching basis; its ID and its `/practice?activity=` link are unchanged. Optional local saving
 stores checked-choice identifiers only after opt-in; see [LOCAL_PROGRESS.md](LOCAL_PROGRESS.md).
 Practice answers never enter URLs, the clipboard, analytics or server state. A completed activity is not a compliance grade.
 The original three Level 1 activities add plain-English explanations, common misunderstandings

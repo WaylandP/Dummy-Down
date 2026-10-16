@@ -24,7 +24,13 @@ describe('expanded draft teaching source boundaries', () => {
     }
     for (const activity of learningActivities) {
       expect(activity.learningObjective).toBeTruthy()
-      expect(activity.contentVersion).toBe('2026-10-14.1')
+      // The first version's demo was rewritten on October 16 (its control,
+      // title, teaching basis and one answer); the twelve others stand.
+      expect(activity.contentVersion).toBe(
+        activity.id === 'authorized-access-practice'
+          ? '2026-10-16.1'
+          : '2026-10-14.1',
+      )
       expect(findLearningActivity(activity.lesson)).toBe(activity)
       for (const termId of activity.glossaryTermIds ?? []) {
         expect(glossaryTerms.find((term) => term.id === termId)).toBeDefined()

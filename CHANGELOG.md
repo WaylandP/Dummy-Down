@@ -291,6 +291,22 @@ analytics allowlist do not change.
   and which keeps under forced colours and in print; the foot says the lines
   show the rule's original schedule, and the page's description names the
   hold.
+- [PR #100](https://github.com/WaylandP/cipher-and-chalk/pull/100): the
+  first version's leftovers. The Controls overview loses its "Content
+  collection" and "Framework" selects: there is one collection and one
+  framework. The README demo lesson is gone from the board; its data stays
+  in the catalog so the identity holds, and an old link to it, or to the
+  `lessons` collection, opens AC.L2-3.1.1, the control it taught, with the
+  address rewritten. Its practice activity, now "A working login is not
+  approval", belongs to AC.L2-3.1.1 in the September 2024 edition, taught
+  from the Level 2 guide's page 14, with the company spelled CedarPoint
+  Design and the right answer saying what to do about a login that works
+  without approval; `/practice` labels it "Level 2" like the others and
+  the control's Practice view shows it. The results count reads "149
+  controls", the empty search "No controls match.", a bad or missing link
+  "That control isn’t on the board." with an "All controls" link, and the
+  "CMMC v2.13 · September 2024 snapshot" label leaves the levels row and
+  Coverage where it only labelled; every citation keeps its version.
 
 ## The Board's features — October 15, 2026
 

@@ -115,7 +115,7 @@ test('the find line and the level switch narrow the rail and the results togethe
   await expect(page).toHaveURL(/level=Level\+1/)
   await expect(
     page.getByRole('status', { name: 'Control search results' }),
-  ).toContainText('15 references')
+  ).toContainText('15 controls')
   await expect(
     rail.getByRole('link', { name: /^AC Access Control 4$/ }),
   ).toBeVisible()
