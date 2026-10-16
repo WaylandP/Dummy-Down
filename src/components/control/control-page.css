@@ -788,15 +788,25 @@
     font-size: 34px;
     line-height: 1.05;
   }
+  /* The six tabs on one row at every width: they fit at 390 and scroll
+     sideways at 320 (the fade is in board.css, with the header's). */
   .control-tabs {
-    flex-wrap: wrap;
-    gap: 0 16px;
+    flex-wrap: nowrap;
+    gap: 0 10px;
     margin-top: 10px;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .control-tabs::-webkit-scrollbar {
+    display: none;
   }
   .control-tab {
+    flex: none;
+    min-width: 44px;
     min-height: 44px;
     padding: 10px 0;
-    font-size: 14px;
+    font-size: 13px;
   }
   .control-tab-stroke {
     width: 52px;

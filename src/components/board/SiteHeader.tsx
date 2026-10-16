@@ -8,6 +8,7 @@ import {
   reportFindControl,
 } from './find-control'
 import { FIND_EVENT } from './keys'
+import { useScrollFade } from './scroll-row'
 
 export const browseUrl = '/learn?view=discover&collection=references'
 
@@ -42,6 +43,9 @@ export function SiteHeader({ page }: { readonly page: SitePage }) {
   const finding = findingOn === page
   const toggle = useRef<HTMLButtonElement>(null)
   const input = useRef<HTMLInputElement>(null)
+  // On a phone the six places share one row that scrolls sideways, never wraps.
+  const nav = useRef<HTMLElement>(null)
+  const navFade = useScrollFade(nav)
   const formId = useId()
   useEffect(() => {
     if (finding) input.current?.focus()
@@ -59,7 +63,7 @@ export function SiteHeader({ page }: { readonly page: SitePage }) {
   return (
     <header className="site-header">
       <Lockup />
-      <nav aria-label="Main" className="site-nav">
+      <nav ref={nav} aria-label="Main" className="site-nav" data-fade={navFade}>
         {links.map((link) => {
           const current = page === link.page
           return (

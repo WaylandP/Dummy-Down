@@ -23,6 +23,7 @@ import { RelatedTab } from './RelatedTab'
 import { Rev3Tab } from './Rev3Tab'
 import { rev3For, rev3Source } from '../../data/cmmc-rev3'
 import { assessmentMethodsFor } from '../../data/cmmc-assessment-methods'
+import { useScrollFade } from '../board/scroll-row'
 
 const tabLabels: Readonly<Record<ControlTab, string>> = {
   decode: 'Decode',
@@ -84,6 +85,9 @@ export function ControlPage(props: ControlPageProps) {
     onNeighbour,
   } = props
   const prefix = useId()
+  // On a phone the six tabs share one row that scrolls sideways, never wraps.
+  const tabs = useRef<HTMLElement>(null)
+  const tabsFade = useScrollFade(tabs)
   const lesson = lessonIdentity(control)
   // Previous/Next keep focus on the button, so the new control is announced here.
   const byNeighbour = useRef(false)
@@ -252,7 +256,12 @@ export function ControlPage(props: ControlPageProps) {
       <h1 id="control-title" className="chalk" tabIndex={-1} ref={headingRef}>
         {control.title}
       </h1>
-      <nav className="control-tabs" aria-label="Views of this control">
+      <nav
+        ref={tabs}
+        className="control-tabs"
+        aria-label="Views of this control"
+        data-fade={tabsFade}
+      >
         {views.map((item) => (
           <a
             key={item}

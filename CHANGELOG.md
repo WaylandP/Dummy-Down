@@ -170,6 +170,11 @@ analytics allowlist do not change.
   phone, and stands finished with a stepped list under reduced motion. The
   headline is sized from the hero's own width beside it. About and the
   roadmap move the first chalk talk onto the board.
+- [PR #79](https://github.com/WaylandP/cipher-and-chalk/pull/79): the
+  header's six places and a control's six tabs keep to one row at every
+  width. On a phone they fit at 390 (13px, 10px gaps) and scroll sideways at 320 with a soft fade at the edge that
+  hides more, never wrapping "About" or "Rev 3" onto a line of their own; the
+  active chalk stroke and the 44px targets stay.
 
 ## The Board's features — October 15, 2026
 
