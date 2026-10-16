@@ -1,6 +1,6 @@
 # Cipher & Chalk
 
-**CMMC, decoded.** Every control in the CMMC v2.13 catalog, explained three ways, with the official source text one scroll away.
+**CMMC, in plain words.** All 149 controls, each quoted from the official guide with its page, then explained three ways. Free and open source.
 
 [![CI](https://github.com/WaylandP/cipher-and-chalk/actions/workflows/ci.yml/badge.svg)](https://github.com/WaylandP/cipher-and-chalk/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -22,15 +22,19 @@ can't tell what they're being asked to do.
 
 ## What's inside
 
-| Feature                        | Detail                                                                                                                                      |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| **149 controls**               | The full CMMC v2.13 catalog across Levels 1, 2 and 3, each with its requirement quoted from the assessment guide and cited to the page.     |
-| **3 perspectives per control** | Beginner, IT & Cyber, and Compliance. Same requirement, three audiences, one page.                                                          |
-| **468 assessment objectives**  | Every lettered determination statement from the Level 1–3 assessment guides, searchable and mapped to the explanation that covers it.       |
-| **13 practice activities**     | Short fictional scenarios with 39 explained questions. Wrong answers get a reason, not a buzzer.                                            |
-| **3 visual explanations**      | 40-second animated walkthroughs of authorized access, MFA, and response-team deployment, with transcripts and reduced-motion stills.        |
-| **Glossary**                   | Plain-language definitions that also open inline inside any lesson.                                                                         |
-| **Private by design**          | No accounts, no backend. Progress is optional and stays in your browser. Analytics are allowlisted, production-only, and honor DNT and GPC. |
+| Feature                       | Detail                                                                                                                                                 |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **149 controls**              | The full CMMC v2.13 catalog across Levels 1, 2 and 3, each with its requirement quoted from the assessment guide and cited to the page.                |
+| **Three chalks per control**  | The same requirement explained for someone new to it, for the people who run the systems, and for someone preparing for assessment.                    |
+| **Decode**                    | Each identifier read in plain words (family, level, number), and the requirement with its assessment objectives, verbatim.                             |
+| **468 assessment objectives** | Every lettered determination statement from the Level 1–3 assessment guides, searchable and mapped to the explanation that covers it.                  |
+| **Rev 3 view**                | The 110 Level 2 controls beside their NIST SP 800-171 Revision 3 text, with a note on what changed. CMMC still assesses against Revision 2.            |
+| **Timeline**                  | The dates that matter, from the program rule to the DFARS clause's phases (on hold at Phase 1 since July 13, 2026), each line with its sources quoted. |
+| **13 practice activities**    | Short fictional scenarios with 39 explained questions. Wrong answers get a reason, not a buzzer.                                                       |
+| **3 visual explanations**     | 40-second animated walkthroughs of authorized access, MFA, and response-team deployment, with transcripts and reduced-motion stills.                   |
+| **Glossary**                  | 54 terms, each linked to its official source. On Level 1 controls and in practice activities, a term opens right where it is used.                     |
+| **Chalk marks**               | On screens 768px and wider, draw on a page with the doodle chalk and share the link: the marks travel in it and are never stored on a server.          |
+| **Private by design**         | No accounts, no backend. Progress is optional and stays in your browser. Analytics are allowlisted, production-only, and honor DNT and GPC.            |
 
 ## Who it's for
 
@@ -39,15 +43,15 @@ can't tell what they're being asked to do.
 - DoD contractors and small businesses preparing for a self-assessment or C3PAO assessment.
 - Anyone who has to explain a control to someone else.
 
-## The three perspectives
+## The three chalks
 
-Each control page keeps the official requirement at the top and lets you switch how it's explained.
+Pick up a chalk on a control's Explain view; the requirement itself is one tab away, under Decode.
 
-| Perspective    | Answers                         | Written for                                                                            |
-| -------------- | ------------------------------- | -------------------------------------------------------------------------------------- |
-| **Beginner**   | "What does this actually mean?" | No security background assumed. Everyday situations, no jargon.                        |
-| **IT & Cyber** | "How would I actually do this?" | People who build and run systems. One possible approach, plus what to watch for.       |
-| **Compliance** | "What will an assessor ask?"    | People preparing for assessment. Questions to bring to the guide, evidence to discuss. |
+| Chalk                                  | Answers                         | Written for                                                                            |
+| -------------------------------------- | ------------------------------- | -------------------------------------------------------------------------------------- |
+| **White: I'm new to this**             | "What does this actually mean?" | No security background assumed. Everyday situations, no jargon.                        |
+| **Yellow: I run the systems**          | "How would I actually do this?" | People who build and run systems. One possible approach, plus what to watch for.       |
+| **Blue: I'm preparing for assessment** | "What will an assessor ask?"    | People preparing for assessment. Questions to bring to the guide, evidence to discuss. |
 
 ## Quick start
 

@@ -57,7 +57,7 @@
       "watchFor": "An exercise limited to discussion should not be described as proof that every detection or recovery mechanism worked."
     },
     "compliance": {
-      "focus": "Examine whether the incident response capability has been tested and what the test demonstrated. This requirement does not supply a universal exercise frequency or mandate one test format.",
+      "focus": "Examine whether the incident response capability has been tested and what the test demonstrated. This requirement does not set a specific frequency or mandate one test format, though the guide asks whether policy calls for regular testing.",
       "reviewQuestions": [
         "Which parts of the incident response capability did the test exercise?",
         "What results and weaknesses were identified during the test?"
@@ -94,7 +94,7 @@
   {
     "id": "MA.L2-3.7.2",
     "beginner": {
-      "meaning": "Keep repair work under control: consider who performs maintenance, which tools they bring, and the methods they use. A helpful repair tool can also introduce an unwanted risk.",
+      "meaning": "Keep repair work under control: control who performs maintenance and the tools, methods and mechanisms (such as automated maintenance scripts) they use. A helpful repair tool can also introduce an unwanted risk.",
       "example": "At fictional Cedar Point Design, a vendor wants to connect a diagnostic laptop to a server. Staff check the technician's authorization and the proposed tool and method before allowing the maintenance work."
     },
     "technical": {
@@ -283,7 +283,7 @@
     },
     "technical": {
       "focus": "Integrate applicable marking rules into paper and digital media workflows. Determine the relevant CUI markings and distribution limitations from authoritative handling guidance rather than a generic sensitivity-tagging habit.",
-      "example": "A document-production process could provide appropriate templates and a review step, while a removable-media process could address how the associated CUI is marked and its distribution limitations communicated.",
+      "example": "A document-production process could provide appropriate templates and a review step, while a removable-media process could put a CUI label on the outside of each drive that also shows its distribution limitations, following NARA guidance.",
       "watchFor": "A label saying confidential is not automatically the required CUI marking, and a marking does not itself enforce access restrictions."
     },
     "compliance": {
@@ -294,25 +294,25 @@
       ],
       "evidenceExamples": [
         "Marking procedures and applicable guidance references",
-        "Fictional or appropriately redacted marked-media samples"
+        "Marking templates, plus observed or appropriately redacted examples of actual marked media"
       ]
     }
   },
   {
     "id": "MP.L2-3.8.5",
     "beginner": {
-      "meaning": "When media containing CUI travels outside controlled areas, control who can access it and keep track of its custody. Knowing who sent it is only the beginning of knowing where it went.",
+      "meaning": "Control who can access media containing CUI. When it travels outside controlled areas, keep track of its custody: knowing who sent it is only the beginning of knowing where it went.",
       "example": "Fictional Cedar Point Design transports a CUI-bearing drive between facilities. An authorized person releases it, a controlled transport process carries it, and the receiving facility confirms custody rather than assuming delivery."
     },
     "technical": {
-      "focus": "Maintain access control and accountability throughout release, transport, and receipt. Suitable packaging, authorized handlers, transport records, and confirmation of delivery can support the process for paper or digital media.",
+      "focus": "Control access to CUI media, and maintain accountability throughout release, transport, and receipt. Suitable packaging, authorized handlers, transport records, and confirmation of delivery can support the process for paper or digital media.",
       "example": "A transfer record could identify the media, authorized sender and recipient, transport method, handoff events, and receipt. The handling process could provide a way to detect and investigate a missing shipment.",
       "watchFor": "Encryption may protect contents but does not, by itself, establish custody or accountability during transport."
     },
     "compliance": {
       "focus": "Trace media across controlled-area boundaries, including custody handoffs. Consider access controls and transport accountability as two connected questions.",
       "reviewQuestions": [
-        "Who is authorized to handle CUI media during transport?",
+        "Who is authorized to access CUI media, and who may handle it during transport?",
         "How is accountability maintained from release through confirmed receipt?"
       ],
       "evidenceExamples": [
@@ -328,7 +328,7 @@
       "example": "Fictional Cedar Point Design sends a removable drive between offices using an approved encryption approach. Another protected transport arrangement would need its alternative physical safeguards considered, rather than being assumed safe because the trip is short."
     },
     "technical": {
-      "focus": "Identify transported digital media and its confidentiality protection. Where cryptography protects CUI confidentiality, consider the separate FIPS-validation requirement and manage keys so the transport package does not undermine the protection.",
+      "focus": "Identify transported digital media and its confidentiality protection. Where cryptography protects CUI confidentiality, it must also meet SC.L2-3.13.11 (FIPS-validated cryptography). Manage keys so the transport package does not undermine the protection.",
       "example": "A transport process could verify the drive's encryption configuration and recipient access before release, or document and enforce an appropriate alternative physical safeguarding arrangement.",
       "watchFor": "This requirement concerns stored CUI on digital media during transport; it is not the same as encrypting a network transfer."
     },
@@ -397,7 +397,7 @@
       "example": "Fictional Cedar Point Design keeps a backup of a CUI project in a controlled storage location. The team considers who can access that backup, including copies held off-site, rather than protecting only the live project folder."
     },
     "technical": {
-      "focus": "Identify backup copies and storage locations, then apply confidentiality protections appropriate to those locations. Cryptographic mechanisms or alternative physical controls can protect backups; where cryptography protects CUI, consider the applicable validation requirement.",
+      "focus": "Identify backup copies and storage locations, then apply confidentiality protections appropriate to those locations. Cryptographic mechanisms or alternative physical controls can protect backups; where cryptography protects CUI, it must be FIPS-validated (SC.L2-3.13.11).",
       "example": "A backup process could restrict access to a repository and protect stored backup media, with key access controlled separately where encryption is used.",
       "watchFor": "A successful backup job says little about confidentiality; remote copies, old backup sets, and recovery repositories may need separate attention."
     },
@@ -652,7 +652,7 @@
     "technical": {
       "focus": "Connect identified vulnerabilities to assessed risk, remediation priorities, and corrective work. Risk considerations can influence both urgency and the effort needed for an appropriate treatment, rather than relying solely on a scanner's severity label.",
       "example": "A remediation workflow could record the affected component, relevant risk context, selected corrective action, responsible owner, and verification that the vulnerability was addressed.",
-      "watchFor": "Recording risk acceptance or opening a ticket does not automatically constitute remediation or make a deficiency acceptable for CMMC."
+      "watchFor": "Opening a ticket is not remediation. When the risk assessment supports deferring or accepting a vulnerability, document the reasoning, track the vulnerability and keep monitoring it; an undocumented or untracked acceptance does not show risk-based remediation."
     },
     "compliance": {
       "focus": "Trace vulnerabilities from identification through risk-based remediation. Review whether corrective actions reflect risk assessments and were actually implemented.",
@@ -816,7 +816,7 @@
       "watchFor": "Hiding an administration menu does not establish separation, and separate account names alone may leave the same unrestricted management interface accessible."
     },
     "compliance": {
-      "focus": "Review how user functionality and management functionality are defined and separated. Keep this architecture question distinct from assigning individual privileges or separating staff duties.",
+      "focus": "Review how user and management functionality are identified and physically or logically separated. The guide's stated intent includes keeping administration away from general users and having administrators administer only from their privileged accounts; separating staff duties is a different requirement.",
       "reviewQuestions": [
         "Which functions are user functions and which manage the system?",
         "What physical or logical separation exists between those functions?"
@@ -836,7 +836,7 @@
     "technical": {
       "focus": "Address object reuse and residual information in shared resources such as memory, caches, registers, and allocated storage. Consider how the platform prevents unauthorized information transfer when resources are released and reassigned.",
       "example": "A system design review could examine isolation and initialization behavior when a shared resource is allocated to another process, including whether encrypted representations are also protected.",
-      "watchFor": "This is not a generic file-sharing rule or media-disposal requirement; the discussion separately excludes deleted-data remnants and covert-channel concerns."
+      "watchFor": "This is not a media-disposal requirement, and the discussion excludes deleted-data remnants, covert channels and components with only one user or role. The guide's example does count operating-system settings that stop users from reaching other users' folders, along with patches for processor flaws such as Meltdown and Spectre."
     },
     "compliance": {
       "focus": "Explore the shared resources present and the safeguards against unauthorized or unintended information transfer between their successive users or processes.",
@@ -926,7 +926,7 @@
       "example": "Fictional Cedar Point Design protects a CUI file transfer between systems using an approved encrypted path. If a different path relies on physical safeguards, the team evaluates those safeguards rather than assuming that an internal cable is enough."
     },
     "technical": {
-      "focus": "Map CUI transmission paths across internal and external networks and relevant devices. Identify the cryptographic mechanism or alternative physical safeguard that prevents disclosure; where cryptography protects CUI confidentiality, consider FIPS validation separately.",
+      "focus": "Map CUI transmission paths across internal and external networks and relevant devices. Identify the cryptographic mechanism or alternative physical safeguard that prevents disclosure. Where cryptography provides that protection, it must meet SC.L2-3.13.11 (FIPS-validated cryptography).",
       "example": "A data-flow review could inspect the complete transfer path, including intermediate services and protocol settings, and identify any unprotected segment or documented physical protection.",
       "watchFor": "An encrypted first hop does not prove end-to-end path protection, and the conditional physical-safeguard exception is not a blanket exemption for internal traffic."
     },
@@ -1060,7 +1060,7 @@
   {
     "id": "SC.L2-3.13.14",
     "beginner": {
-      "meaning": "Control and monitor voice calls carried over Internet Protocol (IP) networks, commonly called VoIP. A voice call carried through a network is still a system activity that can introduce security risks.",
+      "meaning": "Control and monitor the use of Voice over Internet Protocol (VoIP), phone service carried over IP networks: who may use it, how it is set up, and whether unapproved VoIP tools or unauthorized uses appear.",
       "example": "Fictional Cedar Point Design uses an approved network calling service with defined access and monitoring. Staff do not assume that calling traffic is outside the security process because the interface resembles a telephone."
     },
     "technical": {
@@ -1110,9 +1110,9 @@
       "example": "Fictional Cedar Point Design protects stored project files and associated local copies. The team does not assume that protecting the network transfer also protects every place where the information remains afterward."
     },
     "technical": {
-      "focus": "Identify where CUI is at rest and select mechanisms that protect its confidentiality. The guide discusses cryptographic and other protections; where cryptography protects CUI confidentiality, the separate FIPS-validation requirement is relevant.",
+      "focus": "Identify where CUI is at rest and select mechanisms that protect its confidentiality. The guide discusses cryptographic and other protections; where cryptography protects CUI, it must meet SC.L2-3.13.11 (FIPS-validated cryptography).",
       "example": "A storage review could examine repository permissions, device protections, temporary stored copies, and encryption where used, then verify that unauthorized access paths are addressed.",
-      "watchFor": "This wording does not mandate encryption as the only possible safeguard; conversely, encryption does not excuse unrestricted authorized-account access."
+      "watchFor": "This wording does not mandate encryption as the only possible safeguard; conversely, encrypting storage does not replace limiting which accounts can read the CUI once it is unlocked."
     },
     "compliance": {
       "focus": "Trace CUI storage locations and their confidentiality protections. Focus on the information's state rather than assuming that one device type or access frequency determines applicability.",

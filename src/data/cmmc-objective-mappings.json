@@ -149,7 +149,7 @@
     },
     {
       "controlId": "MP.L1-b.1.vii",
-      "perspectiveSha256": "c99828f7e88635690c25dd1845882dd84b3aa79639bf3d2afccffbeaeb612353",
+      "perspectiveSha256": "2ab9921aeceb3b4e450afe2fc691e6269bc0dcdf662aaed1f33dc66908a679aa",
       "mappings": [
         {
           "labels": ["a"],
@@ -377,7 +377,7 @@
     },
     {
       "controlId": "AC.L2-3.1.13",
-      "perspectiveSha256": "7225732e720fbc7ccb7288bc6a0e8826503e9d885ec29500fe710eff4ed808ce",
+      "perspectiveSha256": "0890acbd1bdc585f824e5bf04dfff0c6a43d2f71069d3fe33b077c1e364b0209",
       "mappings": [
         {
           "labels": ["a", "b"],
@@ -417,7 +417,7 @@
     },
     {
       "controlId": "AC.L2-3.1.17",
-      "perspectiveSha256": "628b83c6bbe8f0c5947505e5d8a017db5391f438f9853235fd10ff118212004d",
+      "perspectiveSha256": "21575688dbb4d5239702a17ec46fedc3cae3ef1e9d5e6d1c0d1ee4d6c41bd2d5",
       "mappings": [
         {
           "labels": ["a", "b"],
@@ -437,7 +437,7 @@
     },
     {
       "controlId": "AC.L2-3.1.19",
-      "perspectiveSha256": "88f427d2fae541cdaca6cbab4b5934f517a573941066f922cc00f0f9ef055661",
+      "perspectiveSha256": "91cb9e5839943f2b014394dedf84ff9314c5d498112fc1ac96f38489c1a10b56",
       "mappings": [
         {
           "labels": ["a", "b"],
@@ -738,7 +738,7 @@
     },
     {
       "controlId": "IA.L2-3.5.4",
-      "perspectiveSha256": "9a9da6cd2361ef409c39fdc957249de2374fa5a1fc7dbb44698ac95fed83021e",
+      "perspectiveSha256": "9be9273f97d6303df4a8d72c05f769d45b7a737692e784b2445c8ca314992dff",
       "mappings": [
         {
           "labels": ["a"],
@@ -838,7 +838,7 @@
     },
     {
       "controlId": "IR.L2-3.6.3",
-      "perspectiveSha256": "d215aeb2a2450dfdbb0e1ab12e84928c0ba8caab5ea6ede632a110b60dd7ee3e",
+      "perspectiveSha256": "bb8c418fd87412bd9c7505be428ef761df635e0807aa658d59815564d213512c",
       "mappings": [
         {
           "labels": ["a"],
@@ -858,7 +858,7 @@
     },
     {
       "controlId": "MA.L2-3.7.2",
-      "perspectiveSha256": "b122f173897d6f4ccb79c0ec920d2ff399005c733dafe73db3eec77bf8465400",
+      "perspectiveSha256": "0686b24c568a49ef8eb0a6c328d66de8e5e4d4e8d6d26e2b79f1cd234ff13957",
       "mappings": [
         {
           "labels": ["a", "b", "c", "d"],
@@ -938,7 +938,7 @@
     },
     {
       "controlId": "MP.L2-3.8.4",
-      "perspectiveSha256": "0033361c912b47b4b53c5ff5cbb50ada812144e56ef231a3ce7bc551b62d600b",
+      "perspectiveSha256": "a26f966d662b7bec522976beeee517b4e79abd8eff3b4503ce7cb701390ba662",
       "mappings": [
         {
           "labels": ["a", "b"],
@@ -948,7 +948,7 @@
     },
     {
       "controlId": "MP.L2-3.8.5",
-      "perspectiveSha256": "180a78b12afb003972d46f92db3ff36927e727ee0938a433271cf6ddd2d35bdc",
+      "perspectiveSha256": "74903c39abea5f1d608b5ab95c9b7db7c16c12c90f35c55e5e916feb68468482",
       "mappings": [
         {
           "labels": ["a", "b"],
@@ -958,7 +958,7 @@
     },
     {
       "controlId": "MP.L2-3.8.6",
-      "perspectiveSha256": "01d392444852596cc188038ff14c6e491054d3d7988c8bec061e8db2f566662a",
+      "perspectiveSha256": "43adb446cb4a4b091e79374670ce858da09031a65575f85dca30d37055b934c3",
       "mappings": [
         {
           "labels": ["a"],
@@ -988,7 +988,7 @@
     },
     {
       "controlId": "MP.L2-3.8.9",
-      "perspectiveSha256": "c292497f88e8d787860b45a2904530772b7dd73de545a6d29ddfa3d8d2f440fa",
+      "perspectiveSha256": "40e21fc1a575134cb8bbb472290e958da8bec91dd0d24569517c2bb3be35c1e1",
       "mappings": [
         {
           "labels": ["a"],
@@ -1103,7 +1103,7 @@
     },
     {
       "controlId": "RA.L2-3.11.3",
-      "perspectiveSha256": "9e042bb3c0a939efa5cfe01f3fe31a5d86ae6341553a3090d527e2a6a5f2a785",
+      "perspectiveSha256": "29119ba9dd626c4e2a286e12432d8eddb6b8a199862034373b86def1187e85cf",
       "mappings": [
         {
           "labels": ["a", "b"],
@@ -1183,7 +1183,7 @@
     },
     {
       "controlId": "SC.L2-3.13.3",
-      "perspectiveSha256": "50a04bcd3d328c6f924450e692963d77f02be237bc820b3d5aff5dc6fd303aaf",
+      "perspectiveSha256": "e49c81e4152024c69bf8773a062f14a176a54632d34e273405ae544aa5512a9c",
       "mappings": [
         {
           "labels": ["a", "b", "c"],
@@ -1193,7 +1193,7 @@
     },
     {
       "controlId": "SC.L2-3.13.4",
-      "perspectiveSha256": "4f63dc46a52474d932d15045ed376cd208eaf497c65fe777a16b3af694d8382c",
+      "perspectiveSha256": "15e1630fbcf0a35378cf0f216190e0107988651db524c188e5dc11bfab07a661",
       "mappings": [
         {
           "labels": ["a"],
@@ -1233,7 +1233,7 @@
     },
     {
       "controlId": "SC.L2-3.13.8",
-      "perspectiveSha256": "66a7b364cd7ea4bc55560d6ed68160d294014756c5e90d0e0467f8edeb9ff99a",
+      "perspectiveSha256": "afca6f312b302803676ffb2d8d69c4c74f975339fb778b41e3ed72b3c6077844",
       "mappings": [
         {
           "labels": ["a", "b", "c"],
@@ -1293,7 +1293,7 @@
     },
     {
       "controlId": "SC.L2-3.13.14",
-      "perspectiveSha256": "bd0dae1fbdc60fd5bbe2e551ac850113e7cdc339d772fcbbc1f103a38bd0d357",
+      "perspectiveSha256": "5c1b1eed9e405efc78ca913f66517503beef3cc9fa1a0a5884f09e7d33cd66be",
       "mappings": [
         {
           "labels": ["a", "b"],
@@ -1313,7 +1313,7 @@
     },
     {
       "controlId": "SC.L2-3.13.16",
-      "perspectiveSha256": "9c731531376e6d0d800d354d70fc2d28053d5dcac57f7e9d8a84756c3806d9e9",
+      "perspectiveSha256": "59dd7a0b9b10871dbf9329ba73fd8da8ad0937bb68834bc5b4a3eed8b4a22a52",
       "mappings": [
         {
           "labels": ["a"],
@@ -1564,7 +1564,7 @@
     },
     {
       "controlId": "RA.L3-3.11.4e",
-      "perspectiveSha256": "9e6f9d76048d45aa52794c844ec3fdabd681c2a14e9a17c7fe022c9ea71b27f1",
+      "perspectiveSha256": "de5925ea3bd7ef5d02af88659989d627bb5a2883fd47b8f597675da52604b6cf",
       "mappings": [
         {
           "labels": ["a", "b", "c"],
@@ -1639,7 +1639,7 @@
     },
     {
       "controlId": "SI.L3-3.14.3e",
-      "perspectiveSha256": "5c2dfe05acb732f3b9162898b8e3a77a7650eb4f0cecf008fa2d6143cd6b629e",
+      "perspectiveSha256": "2d4eabc57826a20e3a5818660d0575ddde39b7a07fcc3b6b657dbeb2fdd68f42",
       "mappings": [
         {
           "labels": ["a", "b"],

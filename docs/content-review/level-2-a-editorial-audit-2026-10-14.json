@@ -580,8 +580,39 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "technical.focus",
+          "issue": "Read as optional. The guide says the cryptography in this requirement protects CUI and \"must meet the criteria specified in requirement SC.L2-3.13.11\" (FIPS-validated cryptography).",
+          "proposedText": "Identify and implement cryptographic mechanisms protecting remote-session confidentiality. Evaluate the actual protected path and configuration. Because this cryptography protects CUI, it must meet SC.L2-3.13.11 (FIPS-validated cryptography); an algorithm name or encryption logo alone is not module validation.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 51 / printed 43 section; the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 51,
+            "printedPage": 43,
+            "objectiveLabels": ["a", "b"],
+            "quotedBasis": "the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "beginner.meaning",
+          "issue": "Said only that related requirements \"also matter\". The guide says this session must be secured using FIPS-validated cryptography.",
+          "proposedText": "Protect remote-access conversations with cryptography so someone observing the connection cannot read their contents. The connection needs confidentiality protection, not just a login password, and because it carries CUI, that cryptography must be FIPS-validated.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 51 / printed 43 section; this remote access session must be secured using FIPS-validated cryptography",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 51,
+            "printedPage": 43,
+            "objectiveLabels": ["a", "b"],
+            "quotedBasis": "this remote access session must be secured using FIPS-validated cryptography"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [51, 52],
@@ -605,7 +636,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "7225732e720fbc7ccb7288bc6a0e8826503e9d885ec29500fe710eff4ed808ce",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "7225732e720fbc7ccb7288bc6a0e8826503e9d885ec29500fe710eff4ed808ce"
+      "reviewedFingerprint": "0890acbd1bdc585f824e5bf04dfff0c6a43d2f71069d3fe33b077c1e364b0209"
     },
     {
       "id": "AC.L2-3.1.14",
@@ -756,8 +787,24 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "technical.focus",
+          "issue": "Read as optional. The guide says the cryptography in this requirement protects CUI and \"must meet the criteria specified in requirement SC.L2-3.13.11\" (FIPS-validated cryptography).",
+          "proposedText": "Implement wireless authentication and encryption using an architecture appropriate to the environment. Consider user and device identities, including connected wireless devices beyond laptops. Because this encryption protects CUI, it must meet SC.L2-3.13.11: FIPS-validated cryptography, with the module itself validated under FIPS 140, not just an approved algorithm.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 60 / printed 52 section; the module (software and/or hardware) used to implement the algorithm must be separately validated under FIPS 140",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 60,
+            "printedPage": 52,
+            "objectiveLabels": ["b"],
+            "quotedBasis": "the module (software and/or hardware) used to implement the algorithm must be separately validated under FIPS 140"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [60, 61],
@@ -781,7 +828,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "628b83c6bbe8f0c5947505e5d8a017db5391f438f9853235fd10ff118212004d",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "628b83c6bbe8f0c5947505e5d8a017db5391f438f9853235fd10ff118212004d"
+      "reviewedFingerprint": "21575688dbb4d5239702a17ec46fedc3cae3ef1e9d5e6d1c0d1ee4d6c41bd2d5"
     },
     {
       "id": "AC.L2-3.1.18",
@@ -844,8 +891,39 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "technical.focus",
+          "issue": "Read as optional. The guide says the cryptography in this requirement protects CUI and \"must meet the criteria specified in requirement SC.L2-3.13.11\" (FIPS-validated cryptography).",
+          "proposedText": "Identify applicable mobile devices and computing platforms, then protect their CUI with full-device or container-based encryption. That cryptography must meet SC.L2-3.13.11 (FIPS-validated cryptography). Also check where CUI actually resides and how keys are handled.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 64 / printed 56 section; the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 64,
+            "printedPage": 56,
+            "objectiveLabels": ["a", "b"],
+            "quotedBasis": "the cryptography used must meet the criteria specified in requirement SC.L2-3.13.11"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "compliance.focus",
+          "issue": "Pointed to \"related cryptographic requirements\" without saying FIPS validation is required.",
+          "proposedText": "Compare the inventory of mobile CUI handling with implemented encryption coverage. Check that the encryption is FIPS-validated (SC.L2-3.13.11) rather than treating a checked encryption box as the whole assessment.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 64 / printed 56 section; specifies that the algorithms used must be FIPS-validated cryptography",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 64,
+            "printedPage": 56,
+            "objectiveLabels": ["b"],
+            "quotedBasis": "specifies that the algorithms used must be FIPS-validated cryptography"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [64, 65],
@@ -869,7 +947,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "88f427d2fae541cdaca6cbab4b5934f517a573941066f922cc00f0f9ef055661",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "88f427d2fae541cdaca6cbab4b5934f517a573941066f922cc00f0f9ef055661"
+      "reviewedFingerprint": "91cb9e5839943f2b014394dedf84ff9314c5d498112fc1ac96f38489c1a10b56"
     },
     {
       "id": "AC.L2-3.1.20",
@@ -2214,8 +2292,39 @@
         "compliance.evidenceExamples[0]",
         "compliance.evidenceExamples[1]"
       ],
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "technical.focus",
+          "issue": "Steered readers away from TLS and MFA, which the guide counts.",
+          "proposedText": "Implement replay-resistant authentication for network access to both account categories. The guide's example treats Kerberos and TLS as replay-resistant and notes that MFA confers some replay resistance. Check the protocol each path actually uses: fresh challenges, nonces, or well-designed one-time authenticators.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 128 / printed 120 section; Transport Layer Security (TLS), which also is replay-resistant",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 128,
+            "printedPage": 120,
+            "objectiveLabels": ["a"],
+            "quotedBasis": "Transport Layer Security (TLS), which also is replay-resistant"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        },
+        {
+          "field": "technical.watchFor",
+          "issue": "Cast doubt on mechanisms the guide counts; recast as a check.",
+          "proposedText": "Confirm that each network authentication path actually uses a replay-resistant mechanism; an MFA label alone does not show which protocol is in use.",
+          "sourceSupport": "CMMC Assessment Guide Level 2 v2.13, PDF 128 / printed 120 section; Your use of MFA to protect remote access also confers some replay resistance",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l2-213",
+            "pdfPage": 128,
+            "printedPage": 120,
+            "objectiveLabels": ["a"],
+            "quotedBasis": "Your use of MFA to protect remote access also confers some replay resistance"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewStatus": "full-field-and-complete-guide-section-comparison-completed",
       "sourceId": "cmmc-assessment-l2-213",
       "reviewedGuidePdfPages": [128, 129],
@@ -2239,7 +2348,7 @@
       "sourceRemainderReviewNote": "Potential assessment selectors, all source examples, assessment considerations and references were read in full during completion of the source pass. Examples remain illustrative, potential selectors are not an exhaustive mandatory evidence list, and no additional evidence-sufficiency claim was identified.",
       "finalFingerprint": "9a9da6cd2361ef409c39fdc957249de2374fa5a1fc7dbb44698ac95fed83021e",
       "objectiveMappingRelationshipCheck": "unchanged from original snapshot; current perspective binding matches finalFingerprint",
-      "reviewedFingerprint": "9a9da6cd2361ef409c39fdc957249de2374fa5a1fc7dbb44698ac95fed83021e"
+      "reviewedFingerprint": "9be9273f97d6303df4a8d72c05f769d45b7a737692e784b2445c8ca314992dff"
     },
     {
       "id": "IA.L2-3.5.5",
