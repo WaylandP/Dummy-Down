@@ -83,15 +83,10 @@ const accessGlossaryTerms: readonly GlossaryTerm[] = [
     id: 'device',
     title: 'Device',
     definition:
-      'Equipment that connects to a system, such as a laptop, phone, printer or another system. AC.L1-b.1.i checks that devices authorized to connect are identified and that access is limited to them; IA.L1-b.1.v and b.1.vi add that each device is identified, for example by MAC or IP address, and verified before it gets access.',
+      'Equipment that connects to a system, like a laptop or another system. Only identified, verified, authorized devices get access.',
     reviewStatus: 'draft',
     versionContext: glossaryContext,
-    sources: [
-      authorization,
-      authorizationDiscussion,
-      identification,
-      authentication,
-    ],
+    sources: [authorization, identification, authentication],
   },
   {
     id: 'offboarding',
@@ -106,7 +101,7 @@ const accessGlossaryTerms: readonly GlossaryTerm[] = [
     id: 'process',
     title: 'Process',
     definition:
-      'A program or automated task running on a system. CMMC treats processes acting on behalf of authorized users much like users: they are identified, limited to approved access and authenticated. The Level 1 guide’s examples are scripts, automatic updates, configuration updates and vulnerability scans, and it says each automatic process should be tied to the user who started it.',
+      'A program or automated task, such as a script, an update or a scan. One acting for an authorized user is identified, verified and tied to the user who started it.',
     reviewStatus: 'draft',
     versionContext: glossaryContext,
     sources: [
