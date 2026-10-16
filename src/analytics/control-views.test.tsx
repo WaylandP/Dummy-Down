@@ -61,14 +61,21 @@ describe('Known control render measurement', () => {
         window.history.replaceState(null, '', address)
         window.dispatchEvent(new PopStateEvent('popstate'))
       })
-    replay(
-      '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access',
-    )
     // The lazy page's address subscription settles after its first paint,
-    // later on a loaded runner.
-    await waitFor(() => expect(trackUsage).toHaveBeenCalledTimes(1), {
-      timeout: 5000,
-    })
+    // later on a loaded runner, and a popstate before it is missed: replay
+    // until the view is counted (the same control again counts once).
+    await waitFor(
+      () => {
+        window.history.replaceState(
+          null,
+          '',
+          '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access',
+        )
+        window.dispatchEvent(new PopStateEvent('popstate'))
+        expect(trackUsage).toHaveBeenCalledTimes(1)
+      },
+      { timeout: 5000 },
+    )
     replay(
       '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access&q=access',
     )
