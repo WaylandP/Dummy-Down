@@ -12,3 +12,7 @@ Archived here and removed from `main`:
 - `docs/design-references/` — reference-image briefs
 - `docs/screenshots/` — everything except `study-desk/home-desktop.png` and the
   `phase3/` walkthrough captures
+
+Also kept reachable here, by a merge that changes no file: the last commits of
+`chore/gstack-coverage-audit` (e09b2dc) and `chore/gstack-workflow-repair`
+(7d75bd9), gstack tooling that `main` removed in pull request #27.
