@@ -25,6 +25,13 @@ so direct links and refreshes work on Vercel without rewriting asset URLs. It al
 redirects `/controls` to the Controls page (the app does the same on any other host),
 and the build copies the entry document to `dist/404.html`, which Vercel serves with a
 404 status for every other path, so the app's own blank board appears there.
+Every response carries security headers set in `vercel.json` (HSTS, `nosniff`,
+`strict-origin-when-cross-origin`, no framing, `same-origin` opener isolation and a
+Permissions-Policy that turns off unused device features). Its Content-Security-Policy
+only forbids framing, plugins and foreign form targets; it names no script, style or
+media sources, so a page feature can't be broken by it in production alone. The `git`
+block keeps feature branches, `screenshots` and `archive/*` from building on Vercel;
+only `main` deploys.
 
 The Explorer continues to own query/history state. Native page changes reload the
 document; practice is in memory by default, with optional version-bound local saving. Back restores the lesson
