@@ -72,7 +72,7 @@
       "id": "program-rule-effective",
       "date": "2024-12-16",
       "title": "32 CFR part 170 takes effect",
-      "text": "The CMMC Program rule, published October 15, 2024, is in force from this day, with its requirements for defense contractors and subcontractors.",
+      "text": "The CMMC Program rule, published October 15, 2024, applies to defense contractors and subcontractors.",
       "citations": [
         {
           "source": "cfr-32-170",
@@ -99,7 +99,7 @@
     {
       "id": "phase-1",
       "date": "2025-11-10",
-      "title": "The clause takes effect; Phase 1 begins",
+      "title": "The clause and Phase 1 begin",
       "text": "Awards can require Level 1 (Self) or Level 2 (Self); DoD may ask for Level 2 (C3PAO) instead.",
       "citations": [
         {
@@ -128,7 +128,7 @@
       "id": "phase-2-on-hold",
       "date": "2026-07-13",
       "title": "Phase 2 is put on hold",
-      "text": "Suspended while DoD, now also called the Department of War, reviews the program. Solicitations can still require Level 1 (Self) or Level 2 (Self).",
+      "text": "Suspended for a Department of War (DoD) review. Level 1 (Self) or Level 2 (Self) can still be required.",
       "citations": [
         {
           "source": "cmmc-faq-2-3",
@@ -167,7 +167,7 @@
       "date": "2026-11-10",
       "status": "suspended",
       "title": "Phase 2 was to begin",
-      "text": "Level 2 (C3PAO) would become a condition of award, or wait for an option period; DoD could ask for Level 3 (DIBCAC).",
+      "text": "Level 2 (C3PAO) would be a condition of award, or of an option period; DoD could ask for Level 3 (DIBCAC).",
       "citations": [
         {
           "source": "cmmc-101-2025",
@@ -186,7 +186,7 @@
       "date": "2027-11-10",
       "status": "suspended",
       "title": "Phase 3 was to begin",
-      "text": "Level 2 (C3PAO) for every applicable award and for option periods on contracts awarded since Phase 1; Level 3 (DIBCAC) at award.",
+      "text": "Level 2 (C3PAO) at award and at options on contracts since Phase 1; Level 3 (DIBCAC) at award.",
       "citations": [
         {
           "source": "cmmc-101-2025",
@@ -205,7 +205,7 @@
       "date": "2028-11-10",
       "status": "suspended",
       "title": "Phase 4 was to begin",
-      "text": "Full implementation: CMMC in every applicable solicitation and contract, including option periods on contracts awarded before then.",
+      "text": "Full implementation: CMMC in every applicable solicitation and contract, options on older contracts included.",
       "citations": [
         {
           "source": "cmmc-101-2025",
@@ -243,7 +243,7 @@
       "id": "level-2-self",
       "status": "Final Level 2 (Self)",
       "lasts": "3 years",
-      "text": "Repeated every three years, within three years of the status date.",
+      "text": "Repeated within three years of the status date.",
       "citations": [
         {
           "source": "dfars-252-204-7021",
@@ -279,7 +279,7 @@
       "id": "level-3-dibcac",
       "status": "Final Level 3 (DIBCAC)",
       "lasts": "3 years",
-      "text": "Every three years, and the Level 2 (C3PAO) assessment under it too.",
+      "text": "Every three years, with Level 2 (C3PAO) too.",
       "citations": [
         {
           "source": "dfars-252-204-7021",
@@ -297,7 +297,7 @@
       "id": "conditional",
       "status": "Conditional status",
       "lasts": "180 days",
-      "text": "Expires unless the plan of action is closed out within 180 days of the status date.",
+      "text": "Ends unless the POA&M is closed out within 180 days.",
       "citations": [
         {
           "source": "dfars-252-204-7021",
@@ -318,7 +318,7 @@
     },
     {
       "id": "affirmation",
-      "status": "Affirmation of continuous compliance",
+      "status": "Affirmation",
       "lasts": "1 year",
       "text": "After every assessment, and every year after.",
       "citations": [
