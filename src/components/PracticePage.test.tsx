@@ -329,15 +329,82 @@ describe('practice runs in place', () => {
       screen.queryByRole('region', { name: 'Work through a situation.' }),
     ).toBeNull()
     const article = within(screen.getByRole('article'))
-    // Alone on the page, the situation's title is its heading.
+    // Alone on the page, the situation's title is its heading; the situation
+    // panel heads one level under it.
     expect(article.getByRole('heading', { level: 1 })).toHaveFocus()
-    expect(screen.queryByRole('heading', { level: 2 })).toBeNull()
+    expect(
+      screen
+        .getAllByRole('heading', { level: 2 })
+        .map((node) => node.textContent),
+    ).toEqual(['The situation'])
     await user.click(article.getByRole('link', { name: '← All situations' }))
     expect(address()).toBe('/practice')
     expect(screen.queryByRole('article')).toBeNull()
     expect(
       list().getByRole('link', { name: /Who and what can connect\?/ }),
     ).toBeVisible()
+  })
+
+  it('shows the situation itself: its title and introduction before the question, and every step in a panel beside it', () => {
+    const { run } = open(`/practice?activity=${first.id}`)
+    const article = screen.getByRole('article')
+    const scenario = run().getByText(first.scenarioTitle)
+    const intro = run().getByText(first.introduction, { exact: false })
+    const prompt = run().getByText(first.questions[0]!.prompt)
+    const follows = (a: Element, b: Element) =>
+      Boolean(a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING)
+    expect(
+      follows(
+        run().getByRole('heading', {
+          level: 2,
+          name: 'Who and what can connect?',
+        }),
+        scenario,
+      ),
+    ).toBe(true)
+    // The scenario's title opens the introduction.
+    expect(intro.firstElementChild).toBe(scenario)
+    expect(follows(intro, prompt)).toBe(true)
+    // Beside the list the panel is a complementary region, not a disclosure.
+    const panel = run().getByRole('complementary', { name: 'The situation' })
+    expect(article.querySelector('details.practice-scene')).toBeNull()
+    expect(follows(panel, prompt)).toBe(true)
+    const steps = within(panel).getAllByRole('listitem')
+    expect(steps).toHaveLength(first.scenario.length)
+    first.scenario.forEach((step, index) => {
+      expect(steps[index]).toHaveTextContent(
+        `${step.title}. ${step.description}`,
+      )
+    })
+    // The same activity data the control page's Practice tab shows: nothing
+    // of it is reworded here.
+    expect(panel.textContent).toContain(first.scenario[0]!.description)
+  })
+
+  it('on a phone the situation is a disclosure above the question that starts open', async () => {
+    phone()
+    const { user, run } = open(`/practice?activity=${first.id}`)
+    const panel = screen
+      .getByRole('article')
+      .querySelector('details.practice-scene')!
+    expect(panel).toHaveAttribute('open')
+    expect(screen.queryByRole('complementary')).toBeNull()
+    const summary = run().getByText('The situation').closest('summary')!
+    expect(summary).toBeInTheDocument()
+    expect(within(panel as HTMLElement).getAllByRole('listitem')).toHaveLength(
+      first.scenario.length,
+    )
+    expect(
+      Boolean(
+        panel.compareDocumentPosition(
+          run().getByText(first.questions[0]!.prompt),
+        ) & Node.DOCUMENT_POSITION_FOLLOWING,
+      ),
+    ).toBe(true)
+    await user.click(summary)
+    expect(panel).not.toHaveAttribute('open')
+    await user.click(summary)
+    expect(panel).toHaveAttribute('open')
   })
 
   it('says when a situation is not here and keeps the list', () => {
