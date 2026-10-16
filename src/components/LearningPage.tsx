@@ -20,7 +20,7 @@ export default function LearningPage() {
     ? `${lesson.id}: ${lesson.title}`
     : controller.parsed.kind === 'invalid' ||
         controller.resolution?.kind === 'not-found'
-      ? 'Unavailable lesson'
+      ? 'Unavailable control'
       : 'Control Explorer'
   useEffect(() => {
     setPageMeta({

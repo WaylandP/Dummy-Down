@@ -106,13 +106,13 @@ function Application() {
         glossary: {
           title: 'Glossary',
           description:
-            'Plain-language definitions of the terms used in CMMC lessons, with sources.',
+            'Plain-language definitions of the terms used in CMMC, with sources.',
           canonicalPath: '/glossary',
         },
         about: {
           title: 'About',
           description:
-            'Why Cipher & Chalk exists, how its CMMC explanations are written and reviewed, and how to help.',
+            'Why Cipher & Chalk exists, how its explanations are written and checked, and how to help.',
           canonicalPath: '/about',
         },
         coverage: {

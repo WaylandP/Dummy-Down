@@ -70,11 +70,11 @@ export function DisclaimerPage() {
       <section aria-labelledby="results-title">
         <h2 id="results-title">No guarantee of any result.</h2>
         <p>
-          Reading a lesson, completing a practice activity, or using any other
-          part of this site does not mean an organization is compliant with any
-          requirement, is ready for an assessment, will pass one, or will win,
-          keep or perform any contract. Nothing here is a certification, score,
-          attestation or assessment result.
+          Reading an explanation, completing a practice activity, or using any
+          other part of this site does not mean an organization is compliant
+          with any requirement, is ready for an assessment, will pass one, or
+          will win, keep or perform any contract. Nothing here is a
+          certification, score, attestation or assessment result.
         </p>
       </section>
 

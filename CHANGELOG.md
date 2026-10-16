@@ -269,6 +269,17 @@ analytics allowlist do not change.
   (23, 20, 18 and 17 on a phone), so the longest, IA.L2-3.5.3 in the white
   chalk at 426 characters, no longer runs to nineteen lines that scroll
   inside its column at 1280×800.
+- [PR #98](https://github.com/WaylandP/cipher-and-chalk/pull/98): site
+  copy. About says CMMC in one paragraph in the owner's words (what CMMC adds
+  is proof: an assessment, a status in SPRS, a yearly affirmation, limits on
+  open items, and a clause that makes the status a condition of award) and
+  how the explanations are made (tests check every quotation and citation;
+  an AI-assisted pass compared them with all 468 assessment objectives; no
+  qualified assessor has reviewed them yet). The 468 rows are "assessment
+  objectives" everywhere; a control is a control ("Open this control", "Read
+  the Beginner explanation", "Terms on this page", "Reading an explanation",
+  "This control is outside the current results"); the glossary's groups are
+  "Contract clauses" and "Everyday security terms".
 
 ## The Board's features — October 15, 2026
 

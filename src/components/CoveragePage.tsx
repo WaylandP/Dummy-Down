@@ -88,9 +88,10 @@ export default function CoveragePage() {
     <div className="coverage-page page">
       <h1 className="chalk">Every assessment objective.</h1>
       <p className="page-lead">
-        All {counts.total} determination statements from the CMMC Level 1–3
-        assessment guides, quoted with page citations and linked to the
-        explanation that covers each one.
+        All {counts.total} assessment objectives from the CMMC Level 1–3 guides
+        (459 determination statements and 9 organization-defined parameters),
+        quoted with page citations and linked to the explanation that covers
+        each one.
       </p>
       <p className="page-note coverage-context">
         CMMC v2.13 · September 2024 snapshot · Levels 1–3
@@ -112,11 +113,6 @@ export default function CoveragePage() {
           <dd>{counts.total}</dd>
         </div>
       </dl>
-      <p className="page-note coverage-scope">
-        459 determinations + 9 organization-defined parameter statements. The
-        counts describe which statements have an explanation here; they are not
-        a compliance score.
-      </p>
       <details className="source-details coverage-method">
         <summary>What these counts mean</summary>
         <div className="source-content">
@@ -133,8 +129,8 @@ export default function CoveragePage() {
           <p>
             The nine organization-defined parameter (ODP) rows describe choices
             or definitions and are listed separately from lettered
-            determinations. How explanations are written and reviewed is
-            described on the <a href="/about">About page</a>.
+            determinations. How explanations are written and checked is on the{' '}
+            <a href="/about">About page</a>.
           </p>
           <a href="https://github.com/WaylandP/cipher-and-chalk/blob/main/docs/sources/cmmc-2-13-sep-2024.md">
             Source provenance
@@ -236,7 +232,7 @@ export default function CoveragePage() {
               <div className="coverage-control-body">
                 <p>
                   <a className="text-link" href={lessonUrl(first)}>
-                    Open this lesson
+                    Open this control
                   </a>
                 </p>
                 <p className="coverage-citation">
@@ -295,7 +291,7 @@ export default function CoveragePage() {
                                   className="text-link"
                                   href={lessonUrl(row, excerpt.mode, 'explain')}
                                 >
-                                  Read {modes[excerpt.mode]} in the lesson
+                                  Read the {modes[excerpt.mode]} explanation
                                 </a>
                               </section>
                             ))}

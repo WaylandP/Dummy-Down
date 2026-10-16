@@ -243,13 +243,13 @@ export function ControlPage(props: ControlPageProps) {
       </div>
       {excludedByFilters && (
         <p className="lesson-mismatch">
-          This lesson is outside the current results.{' '}
+          This control is outside the current results.{' '}
           <button
             type="button"
             className="inline-action"
             onClick={onShowInResults}
           >
-            Show this lesson in results
+            Show this control in results
           </button>
         </p>
       )}

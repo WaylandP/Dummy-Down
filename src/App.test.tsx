@@ -331,10 +331,10 @@ describe('Shareable lessons and reading tools', () => {
       explorer.getByRole('status', { name: 'Control search results' }),
     ).toHaveTextContent('0 examples found')
     expect(
-      explorer.getByText('This lesson is outside the current results.'),
+      explorer.getByText('This control is outside the current results.'),
     ).toBeVisible()
     await user.click(
-      explorer.getByRole('button', { name: 'Show this lesson in results' }),
+      explorer.getByRole('button', { name: 'Show this control in results' }),
     )
     expect(
       explorer.getByRole('searchbox', { name: 'Find controls' }),

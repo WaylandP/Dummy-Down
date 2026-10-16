@@ -168,27 +168,28 @@ export function AboutPage() {
           <h2 id="cmmc-title">CMMC in one paragraph.</h2>
           <p>
             The Cybersecurity Maturity Model Certification is how the Department
-            of Defense checks that its contractors protect the information it
-            shares with them. Level 1 covers 15 basic safeguards for Federal
-            Contract Information and is self-assessed. Level 2 covers the 110
-            requirements of NIST SP 800-171 for Controlled Unclassified
-            Information and is either self-assessed or assessed by a certified
-            third party. Level 3 adds 24 enhanced requirements and is assessed
-            by the Government. The requirements come from existing standards;
-            what CMMC adds is the assessment, the status recorded in SPRS, and
-            the contract clause that requires it. The{' '}
-            <a href="/glossary">glossary</a> defines every term in that
-            paragraph.
+            of Defense checks that its contractors protect the federal
+            information they receive or create under a contract. Level 1 covers
+            15 basic safeguards for Federal Contract Information and is
+            self-assessed every year. Level 2 covers the 110 requirements of
+            NIST SP 800-171 for Controlled Unclassified Information and is
+            either self-assessed or assessed by a certified third party. Level 3
+            adds 24 enhanced requirements from NIST SP 800-172 and is assessed
+            by the Government. What CMMC adds is proof: an assessment, a status
+            recorded in SPRS, a yearly affirmation by a senior official, limits
+            on open items, and a contract clause that makes the status a
+            condition of award. The <a href="/glossary">glossary</a> defines
+            every term in that paragraph.
           </p>
         </section>
         <section id="how-content-is-made" aria-labelledby="method-title">
           <h2 id="method-title">How the explanations are made.</h2>
           <p>
-            Every explanation is written from the pinned assessment guides and
-            checked against them by automated tests and an AI-assisted
-            comparison of all 468 determination statements. Treat the
-            explanations as a study companion rather than an official
-            interpretation.
+            Every explanation is written from the pinned assessment guides.
+            Automated tests check every quotation and citation, and an
+            AI-assisted pass compared the explanations with all 468 assessment
+            objectives. No qualified assessor has reviewed them yet, so treat
+            them as a study companion, not an official interpretation.
           </p>
           <p>
             If you assess or prepare organizations for CMMC and want to review a

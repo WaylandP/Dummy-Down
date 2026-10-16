@@ -131,6 +131,12 @@ describe('About: what’s next on the board', () => {
       'CMMC in one paragraph.',
     ])
     expect(headings).toContain('What’s next on the board')
-    expect(screen.getAllByText(/qualified/i)).toHaveLength(1)
+    // The review status, once: the method paragraph says no qualified assessor
+    // has reviewed the explanations yet; "Review by qualified CMMC
+    // professionals" in the column is what is next, not a status.
+    expect(screen.getAllByText(/has reviewed them yet/)).toHaveLength(1)
+    expect(
+      screen.queryAllByText(/draft|not been reviewed|pending review/i),
+    ).toHaveLength(0)
   })
 })
