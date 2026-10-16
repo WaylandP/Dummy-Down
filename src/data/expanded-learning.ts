@@ -41,7 +41,7 @@ export const expandedLearningActivities = [
         id: 'test-actions',
         title: 'Check what the system actually allows',
         description:
-          'In a test workspace with fictional records, the team checks both permitted and restricted actions. A hidden edit button alone would not settle whether a direct edit request is blocked.',
+          'In a test workspace, the team checks both permitted and restricted actions. A hidden edit button alone would not settle whether a direct edit request is blocked.',
       },
     ],
     questions: [
@@ -178,7 +178,7 @@ export const expandedLearningActivities = [
         id: 'record-access',
         title: 'Keep the access record',
         description:
-          'Harbor uses a written sign-in/sign-out record for this visit and retains physical-access records for its defined retention period. Paper is its fictional choice; the guide also describes automated records.',
+          'Harbor uses a written sign-in/sign-out record for this visit and retains physical-access records for its defined retention period. Paper is Harbor’s choice; the guide also describes automated records.',
       },
       {
         id: 'manage-device',
@@ -240,7 +240,7 @@ export const expandedLearningActivities = [
             label:
               'Every organization must keep these records for exactly one year.',
             feedback:
-              'One year appears in a fictional guide example. The Further Discussion instead refers to the time period defined by the company; an example is not a universal retention parameter.',
+              'One year appears in one of the guide’s examples. Its Further Discussion refers to the period the company defines; an example is not a universal retention period.',
           },
         ],
       },
@@ -470,7 +470,7 @@ export const expandedLearningActivities = [
         id: 'check-factors',
         title: 'Check different kinds of proof',
         description:
-          'For its fictional design, the team checks an account password plus an appropriate possession-based authenticator. It does not count a second password as a second factor type.',
+          'In its design, the team checks an account password plus an appropriate possession-based authenticator. It does not count a second password as a second factor type.',
       },
     ],
     questions: [

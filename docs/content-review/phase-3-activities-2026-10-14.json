@@ -144,7 +144,7 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "dd1705454a3ac0d504f4dfc9115488a07a224c0d9b62d06914ec245c66a31ebc",
+        "activityFingerprint": "52a18475d0732ddde71d81e3e69b8fe1713c28cae9ceceb54db524bbdd0b6c1d",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "d75193a76f4e489fc849e6bc6ebe4c1a0bc87902864b36733fa140d90619fbf5",
         "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
@@ -283,7 +283,7 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "469d34d62e3f22368c6f50005590ed28319bef5fb7747a39dca4d89df7482153",
+        "activityFingerprint": "91415773f1f0971f3fa0a26a03ba5ec6f74c266ee48efa56c245fdc505071a9e",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "edc369ddd36a56e90e439906ecdae268b97763b08814ab9dd98fd7907eaa11aa",
         "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
@@ -497,7 +497,7 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "7b0d9f1f729258582f843cd0ac556497df2762d7c5e2a8851627d40878232c27",
+        "activityFingerprint": "25579aea2d064ebf4573e2ef90f98f41c9b5561b19a2117e2aa3962a6d95d81e",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "6ada330d85be76c72403fe0e2be68c829d22a9109edc636dd1b14d2b8196fee5",
         "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",

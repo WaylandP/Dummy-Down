@@ -146,7 +146,7 @@ export const visualExplanations: readonly VisualExplanationContent[] =
         ...sequence.teaching,
       ],
       source,
-      sourceLabel: `${control.id} · September 2024 v2.13 · PDF page ${control.requirement.pdfPage}`,
+      sourceLabel: `${control.id} · CMMC Assessment Guide – ${control.level}, v2.13 (September 2024) · PDF page ${control.requirement.pdfPage}`,
       disclaimer:
         'A teaching interpretation with fictional examples. This walkthrough does not demonstrate organizational compliance or replace the full assessment guidance.',
     }
