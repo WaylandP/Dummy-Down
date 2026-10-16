@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef, useState, type MouseEvent } from 'react'
 import { learningActivities } from '../data/learning'
-import { controls, referenceControls } from '../data/content'
+import { referenceControls } from '../data/content'
 import { createLessonUrl } from '../state/explorer-state'
 import './practice-page.css'
 import { hasVisualExplanation } from '../data/visual-lesson-index'
@@ -31,7 +31,7 @@ function situationTitle(activity: LearningActivity): string {
 }
 
 function controlOf(activity: LearningActivity): CatalogControl {
-  const control = [...controls, ...referenceControls].find(
+  const control = referenceControls.find(
     (item) =>
       item.frameworkId === activity.lesson.frameworkId &&
       item.editionId === activity.lesson.editionId &&
@@ -42,12 +42,9 @@ function controlOf(activity: LearningActivity): CatalogControl {
   return control
 }
 
-/** Where a situation sits: the catalog's order; the project's example by its control's ID. */
+/** Where a situation sits: the catalog's order. */
 function catalogOrder(control: CatalogControl): number {
-  const at = referenceControls.findIndex(
-    (item) => item === control || item.id === control.id,
-  )
-  return at >= 0 ? at : referenceControls.length
+  return referenceControls.findIndex((item) => item === control)
 }
 
 /** The thirteen situations in the catalog's order. */
@@ -111,11 +108,8 @@ export default function PracticePage() {
   const [hideFinished, setHideFinished] = useState(false)
   const list = useRef<HTMLElement>(null)
 
-  // The level switch is CMMC's; the project's example is no Level 2 control.
   const atLevel = (situation: Situation) =>
-    !level ||
-    (situation.control.contentKind !== 'educational-example' &&
-      situation.control.level === level)
+    !level || situation.control.level === level
   const listed = situations.filter(
     (situation) =>
       atLevel(situation) &&
@@ -524,12 +518,9 @@ function PracticeRun({
         </a>
       )}
       <div className="practice-run-head">
-        <span className="practice-run-id mono">{control?.id ?? 'Example'}</span>
+        <span className="practice-run-id mono">{control.id}</span>
         <span className="practice-run-level">
-          {control?.contentKind === 'educational-example'
-            ? 'Project example'
-            : control?.level}
-          {control ? ` · ${control.title}` : ''}
+          {[control.level, control.title].filter(Boolean).join(' · ')}
         </span>
         <span className="practice-run-progress">
           Question {shown + 1} of {count}
@@ -714,9 +705,7 @@ function PracticeRun({
             target="_blank"
             rel="noopener noreferrer"
           >
-            {activity.teachingSource.kind === 'project-readme'
-              ? 'README simplified example'
-              : activity.teachingSource.title}
+            {activity.teachingSource.title}
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </p>

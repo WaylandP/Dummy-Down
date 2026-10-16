@@ -2,9 +2,18 @@ import { act, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from '../App'
+import { chalkFor } from '../components/board/chalks'
 import { trackUsage } from './usage'
 
 vi.mock('./usage', () => ({ trackUsage: vi.fn() }))
+
+// The first version's demo link; it opens AC.L2-3.1.1, the control it taught,
+// and that is the identity every event carries.
+const lesson = {
+  frameworkId: 'cmmc',
+  editionId: 'cmmc-2-13-sep-2024',
+  controlKey: 'ac-l2-3-1-1',
+}
 
 beforeEach(() => {
   window.history.replaceState(
@@ -19,30 +28,32 @@ describe('Usage interaction wiring', () => {
   it('keeps rendered controls separate from intent and ignores unchanged selection', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await screen.findByRole('region', { name: 'Control Explorer' })
+    await screen.findByRole(
+      'region',
+      { name: 'Control Explorer' },
+      { timeout: 5000 },
+    )
     // The view is counted once the lazy page subscribes to the address.
     await waitFor(() =>
       expect(trackUsage).toHaveBeenCalledWith({
         name: 'control_view',
-        lesson: {
-          frameworkId: 'cmmc',
-          editionId: 'readme-example',
-          controlKey: 'authorized-access',
-        },
+        lesson,
         mode: 'beginner',
       }),
     )
     vi.mocked(trackUsage).mockClear()
-    await user.click(screen.getByRole('tab', { name: 'Beginner' }))
+    await user.click(screen.getByRole('link', { name: 'Explain' }))
+    const white = await screen.findByRole('tab', {
+      name: chalkFor('beginner').prompt,
+    })
+    await user.click(white)
     expect(trackUsage).not.toHaveBeenCalled()
-    await user.click(screen.getByRole('tab', { name: 'IT & Cyber' }))
+    await user.click(
+      screen.getByRole('tab', { name: chalkFor('it-cyber').prompt }),
+    )
     expect(trackUsage).toHaveBeenCalledWith({
       name: 'perspective_change',
-      lesson: {
-        frameworkId: 'cmmc',
-        editionId: 'readme-example',
-        controlKey: 'authorized-access',
-      },
+      lesson,
       mode: 'it-cyber',
     })
     vi.mocked(trackUsage).mockClear()
@@ -50,21 +61,35 @@ describe('Usage interaction wiring', () => {
       window.history.replaceState(
         null,
         '',
-        '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access&mode=compliance',
+        '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access&mode=compliance&tab=explain',
       )
       window.dispatchEvent(new PopStateEvent('popstate'))
     })
-    expect(screen.getByRole('tabpanel', { name: 'Compliance' })).toBeVisible()
+    expect(
+      screen.getByRole('tabpanel', { name: chalkFor('compliance').prompt }),
+    ).toBeVisible()
     expect(trackUsage).toHaveBeenCalledTimes(1)
     expect(trackUsage).toHaveBeenCalledWith(
-      expect.objectContaining({ name: 'control_view', mode: 'compliance' }),
+      expect.objectContaining({
+        name: 'control_view',
+        lesson,
+        mode: 'compliance',
+      }),
     )
-  })
+    expect(JSON.stringify(vi.mocked(trackUsage).mock.calls)).not.toContain(
+      'readme-example',
+    )
+    // The lazy page and the teaching chunk both load here; a loaded runner is slow.
+  }, 15000)
 
   it('records search outcomes only when submitted or left, without recording the text', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await screen.findByRole('region', { name: 'Control Explorer' })
+    await screen.findByRole(
+      'region',
+      { name: 'Control Explorer' },
+      { timeout: 5000 },
+    )
     // The lesson left on screen by the previous test reports its view once its
     // chunk loads; wait for that so it cannot land among the search events.
     await waitFor(() =>
@@ -119,8 +144,13 @@ describe('Usage interaction wiring', () => {
     const user = userEvent.setup()
     render(<App />)
     const explorer = within(
-      await screen.findByRole('region', { name: 'Control Explorer' }),
+      await screen.findByRole(
+        'region',
+        { name: 'Control Explorer' },
+        { timeout: 5000 },
+      ),
     )
+    await user.click(explorer.getByRole('link', { name: 'Practice' }))
     await user.click(explorer.getByText('Check your understanding'))
     await user.click(explorer.getAllByRole('radio')[0]!)
     await user.click(explorer.getByRole('button', { name: 'Check answer' }))
@@ -135,15 +165,13 @@ describe('Usage interaction wiring', () => {
         ),
     ).toBe(true)
     const write = vi.spyOn(navigator.clipboard, 'writeText').mockResolvedValue()
-    await user.click(explorer.getByRole('button', { name: 'Copy lesson link' }))
+    await user.click(
+      explorer.getByRole('button', { name: 'Copy reference link' }),
+    )
     expect(write).toHaveBeenCalled()
     expect(trackUsage).toHaveBeenLastCalledWith({
       name: 'share_link',
-      lesson: {
-        frameworkId: 'cmmc',
-        editionId: 'readme-example',
-        controlKey: 'authorized-access',
-      },
+      lesson,
       action: 'copied',
     })
     expect(JSON.stringify(vi.mocked(trackUsage).mock.calls)).not.toContain(

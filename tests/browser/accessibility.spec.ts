@@ -18,7 +18,7 @@ const routes = [
   ['Timeline', '/timeline'],
   ['Assessment objectives', '/coverage?control=SC.L3-3.13.4e'],
   [
-    'Teaching example',
+    'First-version demo link',
     '/learn?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access&mode=beginner',
     /AC\.L2-3\.1\.1/,
   ],

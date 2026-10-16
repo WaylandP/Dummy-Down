@@ -93,9 +93,6 @@ export default function CoveragePage() {
         quoted with page citations and linked to the explanation that covers
         each one.
       </p>
-      <p className="page-note coverage-context">
-        CMMC v2.13 · September 2024 snapshot · Levels 1–3
-      </p>
       <dl
         className="coverage-totals"
         aria-label="Coverage across the full snapshot"

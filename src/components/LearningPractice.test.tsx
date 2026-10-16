@@ -2,7 +2,6 @@ import { renderWithProgress as render } from '../test/renderWithProgress'
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { controls } from '../data/controls'
 import { referenceControls } from '../data/cmmc-references'
 import { findLearningActivity, learningActivities } from '../data/learning'
 import type { LessonIdentity } from '../types/content'
@@ -11,10 +10,11 @@ import { LearningPractice } from './LearningPractice'
 
 const lesson: LessonIdentity = {
   frameworkId: 'cmmc',
-  editionId: 'readme-example',
-  controlKey: 'authorized-access',
+  editionId: 'cmmc-2-13-sep-2024',
+  controlKey: 'ac-l2-3-1-1',
 }
 const activity = learningActivities[0]!
+const guide = referenceControls.find((item) => item.id === 'AC.L2-3.1.1')!
 
 async function openCheck(user: ReturnType<typeof userEvent.setup>) {
   await user.click(
@@ -37,19 +37,19 @@ describe('learning activity integrity', () => {
       const identity = JSON.stringify(item.lesson)
       expect(identities.has(identity)).toBe(false)
       identities.add(identity)
-      expect(
-        [...controls, ...referenceControls].some(
-          (control) =>
-            control.frameworkId === item.lesson.frameworkId &&
-            control.editionId === item.lesson.editionId &&
-            control.key === item.lesson.controlKey,
-        ),
-      ).toBe(true)
+      // Every activity is bound to a control on the board, and teaches from
+      // the guide page that control cites.
+      const control = referenceControls.find(
+        (candidate) =>
+          candidate.frameworkId === item.lesson.frameworkId &&
+          candidate.editionId === item.lesson.editionId &&
+          candidate.key === item.lesson.controlKey,
+      )
+      expect(control).toBeDefined()
       expect(item.reviewStatus).toBe('draft')
-      expect(item.teachingSource.kind).toBe(
-        item.lesson.editionId === 'readme-example'
-          ? 'project-readme'
-          : 'official-publication',
+      expect(item.teachingSource.kind).toBe('official-publication')
+      expect(item.teachingSource.id).toBe(
+        `${control!.requirement.sourceId}-page-${control!.requirement.pdfPage}`,
       )
       expect(new URL(item.teachingSource.url).protocol).toBe('https:')
       expect(new Set(item.scenario.map((step) => step.id)).size).toBe(
@@ -90,14 +90,29 @@ describe('LearningPractice', () => {
   it('offers an ordered fictional visual flow with persistent draft/source context', async () => {
     const user = userEvent.setup()
     const { container } = render(<LearningPractice lesson={lesson} />)
-    expect(screen.getByRole('heading', { name: 'Try the idea' })).toBeVisible()
+    expect(
+      screen.getByRole('heading', { name: 'A working login is not approval' }),
+    ).toBeVisible()
     expect(screen.getByText('Practice activity')).toBeVisible()
     expect(screen.getByText(activity.disclaimer)).toBeVisible()
+    // The teaching basis is the guide page the control itself cites: the
+    // Level 2 guide, v2.13, PDF page 22 (printed page 14).
     const source = screen.getByRole('link', {
-      name: /README simplified example/,
+      name: /CMMC Assessment Guide – Level 2/,
     })
     expect(source).toHaveAttribute('href', activity.teachingSource.url)
+    expect(source).toHaveAttribute('href', expect.stringMatching(/#page=22$/))
+    expect(guide.requirement).toMatchObject({
+      sourceId: 'cmmc-assessment-l2-213',
+      pdfPage: 22,
+      printedPage: 14,
+    })
+    expect(activity.teachingSource.versionContext).toContain(
+      'Version 2.13 · September 2024; PDF page 22 (printed page 14)',
+    )
     expect(source).toHaveAttribute('rel', 'noopener noreferrer')
+    expect(screen.queryByText(/README/)).not.toBeInTheDocument()
+    expect(screen.queryByText(/Cedar Point/)).not.toBeInTheDocument()
     expect(
       screen.getByRole('heading', {
         name: 'Approve the account',
@@ -327,7 +342,9 @@ describe('LearningPractice', () => {
       <LearningPractice lesson={{ ...lesson, editionId: 'unavailable' }} />,
     )
     expect(
-      screen.queryByRole('heading', { name: 'Try the idea' }),
+      screen.queryByRole('heading', {
+        name: 'A working login is not approval',
+      }),
     ).not.toBeInTheDocument()
     rerender(<LearningPractice lesson={lesson} />)
     await openCheck(user)

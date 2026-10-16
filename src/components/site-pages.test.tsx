@@ -42,7 +42,7 @@ describe('Separate blackboard pages', () => {
         { name: 'Control search results' },
         { timeout: 5000 },
       ),
-    ).toHaveTextContent('149 references found')
+    ).toHaveTextContent('149 controls')
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()
     followPageLink(screen.getByRole('link', { name: 'Cipher & Chalk home' }))
     followPageLink(screen.getByRole('link', { name: /^I’m new to this/ }))
@@ -103,7 +103,7 @@ describe('Separate blackboard pages', () => {
     render(<App />)
     expect(
       await screen.findByRole('heading', {
-        name: 'This lesson link is invalid.',
+        name: 'That control isn’t on the board.',
       }),
     ).toBeVisible()
     expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument()

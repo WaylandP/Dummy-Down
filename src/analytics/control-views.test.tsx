@@ -61,9 +61,10 @@ describe('Known control render measurement', () => {
         window.history.replaceState(null, '', address)
         window.dispatchEvent(new PopStateEvent('popstate'))
       })
-    // The lazy page's address subscription settles after its first paint,
-    // later on a loaded runner, and a popstate before it is missed: replay
-    // until the view is counted (the same control again counts once).
+    // The first version's demo link opens AC.L2-3.1.1, which is what is
+    // counted. The lazy page's address subscription settles after its first
+    // paint, later on a loaded runner, and a popstate before it is missed:
+    // replay until the view is counted (the same control again counts once).
     await waitFor(
       () => {
         window.history.replaceState(
@@ -76,8 +77,17 @@ describe('Known control render measurement', () => {
       },
       { timeout: 5000 },
     )
+    expect(trackUsage).toHaveBeenLastCalledWith({
+      name: 'control_view',
+      lesson: {
+        frameworkId: 'cmmc',
+        editionId: 'cmmc-2-13-sep-2024',
+        controlKey: 'ac-l2-3-1-1',
+      },
+      mode: 'beginner',
+    })
     replay(
-      '/?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access&q=access',
+      '/?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l2-3-1-1&q=access',
     )
     expect(trackUsage).toHaveBeenCalledTimes(1)
     replay('/?view=discover&catalog=cmmc')
@@ -90,5 +100,8 @@ describe('Known control render measurement', () => {
         .mocked(trackUsage)
         .mock.calls.every(([event]) => event.name === 'control_view'),
     ).toBe(true)
+    expect(JSON.stringify(vi.mocked(trackUsage).mock.calls)).not.toContain(
+      'readme-example',
+    )
   })
 })

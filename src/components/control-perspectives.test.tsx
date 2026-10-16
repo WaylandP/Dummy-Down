@@ -160,7 +160,7 @@ describe('Control-specific teaching perspectives', () => {
       [3, 24],
     ]) {
       const link = navigation.getByRole('link', {
-        name: new RegExp(`^Level ${index} .*${count} source references$`),
+        name: new RegExp(`^Level ${index} .*${count} controls$`),
       })
       const url = new URL(link.getAttribute('href')!, window.location.origin)
       expect(url.searchParams.get('level')).toBe(`Level ${index}`)

@@ -55,15 +55,12 @@ export function CmmcLevels({ mode, active = '', onPick }: CmmcLevelsProps) {
                   (control) => control.level === level.name,
                 ).length
               }{' '}
-              <span className="level-path-noun">source references</span>
+              <span className="level-path-noun">controls</span>
             </span>
           </a>
         ))}
       </nav>
-      <p>
-        CMMC v2.13 · September 2024 snapshot. Level 3 adds requirements to Level
-        2. Choose a level to explore.
-      </p>
+      <p>Level 3 adds requirements to Level 2. Choose a level to explore.</p>
     </div>
   )
 }

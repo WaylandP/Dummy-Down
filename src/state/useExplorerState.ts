@@ -4,6 +4,7 @@ import {
   parseExplorerSearch,
   resolveLesson,
   addressNamesChalk,
+  addressNamesRetired,
   serializeExplorerSearch,
   transitionExplorerState,
 } from './explorer-state'
@@ -49,12 +50,6 @@ function trackIntent(intent: ExplorerIntent, parsed: ParsedExplorerState) {
       name: 'filter_change',
       filter: 'level',
       value: state.filters.level || 'all',
-    })
-  } else if (intent.type === 'set-collection') {
-    trackUsage({
-      name: 'filter_change',
-      filter: 'collection',
-      value: state.filters.collection ?? 'lessons',
     })
   } else if (intent.type === 'clear-filters') {
     trackUsage({ name: 'filter_change', filter: 'clear' })
@@ -126,10 +121,12 @@ function createExplorerStore(catalog: ExplorerCatalog) {
 
   function normalize(next: BrowserSnapshot): BrowserSnapshot {
     if (next.parsed.kind !== 'ready') return next
-    // A chalk in the address is read once and never written back.
+    // A chalk in the address is read once and never written back, and an
+    // older link to the retired demo lesson shows the control it opened.
     if (
       !next.parsed.notices.length &&
-      !addressNamesChalk(window.location.search)
+      !addressNamesChalk(window.location.search) &&
+      !addressNamesRetired(window.location.search, catalog)
     )
       return next
     const canonical = serializeExplorerSearch(next.parsed.state)

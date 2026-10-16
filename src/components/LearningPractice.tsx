@@ -462,9 +462,7 @@ export function LearningPractice({ lesson, level = 2 }: LearningPracticeProps) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {activity.teachingSource.kind === 'project-readme'
-            ? 'README simplified example'
-            : activity.teachingSource.title}
+          {activity.teachingSource.title}
           <span className="sr-only"> (opens in a new tab)</span>
         </a>
       </p>

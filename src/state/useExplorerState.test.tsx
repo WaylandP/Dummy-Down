@@ -5,6 +5,9 @@ import { explorerCatalog } from '../data/content'
 import { useExplorerState } from './useExplorerState'
 
 const lessonSearch =
+  '?view=lesson&framework=cmmc&edition=cmmc-2-13-sep-2024&control=ac-l2-3-1-1'
+/** The first version's demo lesson, as its links still name it. */
+const retiredSearch =
   '?view=lesson&framework=cmmc&edition=readme-example&control=authorized-access'
 
 beforeEach(() => {
@@ -90,7 +93,7 @@ describe('useExplorerState browser controller', () => {
       state: { view: 'discover', mode: 'beginner', filters: { query: '' } },
     })
     expect(result.current.resolution).toBeNull()
-    expect(result.current.results).toHaveLength(1)
+    expect(result.current.results).toHaveLength(149)
     expect(push).toHaveBeenCalledTimes(1)
     expect(window.location.search).not.toContain('control=')
   })
@@ -160,7 +163,7 @@ describe('useExplorerState browser controller', () => {
     window.history.replaceState(
       null,
       '',
-      `${lessonSearch}&mode=it-cyber&q=excluded`,
+      `${lessonSearch}&mode=it-cyber&q=no-such-topic`,
     )
     const push = vi.spyOn(window.history, 'pushState')
     const replace = vi.spyOn(window.history, 'replaceState')
@@ -170,13 +173,13 @@ describe('useExplorerState browser controller', () => {
       state: {
         view: 'lesson',
         mode: 'it-cyber',
-        filters: { query: 'excluded' },
+        filters: { query: 'no-such-topic' },
       },
     })
     expect(result.current.results).toHaveLength(0)
     expect(result.current.resolution).toMatchObject({
       kind: 'lesson',
-      control: { key: 'authorized-access' },
+      control: { key: 'ac-l2-3-1-1' },
       excludedByFilters: true,
     })
     expect(push).not.toHaveBeenCalled()
@@ -186,8 +189,79 @@ describe('useExplorerState browser controller', () => {
       kind: 'lesson',
       excludedByFilters: false,
     })
-    expect(result.current.results).toHaveLength(1)
+    expect(result.current.results).toHaveLength(149)
     expect(push).toHaveBeenCalledTimes(1)
+  })
+
+  it('rewrites a first-version demo link once, to the control it taught, keeping chalk and fragment', () => {
+    window.history.replaceState(
+      null,
+      '',
+      `/${retiredSearch}&mode=compliance&q=access#explorer`,
+    )
+    const push = vi.spyOn(window.history, 'pushState')
+    const replace = vi.spyOn(window.history, 'replaceState')
+    const { result } = renderHook(() => useExplorerState(explorerCatalog), {
+      wrapper: StrictMode,
+    })
+    expect(result.current.parsed).toMatchObject({
+      kind: 'ready',
+      notices: [],
+      state: {
+        view: 'lesson',
+        mode: 'compliance',
+        lesson: {
+          frameworkId: 'cmmc',
+          editionId: 'cmmc-2-13-sep-2024',
+          controlKey: 'ac-l2-3-1-1',
+        },
+        filters: { query: 'access' },
+      },
+    })
+    expect(result.current.resolution).toMatchObject({
+      kind: 'lesson',
+      control: { id: 'AC.L2-3.1.1', contentKind: 'official-reference' },
+      excludedByFilters: false,
+    })
+    expect(replace).toHaveBeenCalledTimes(1)
+    expect(push).not.toHaveBeenCalled()
+    const params = new URLSearchParams(window.location.search)
+    expect(params.get('edition')).toBe('cmmc-2-13-sep-2024')
+    expect(params.get('control')).toBe('ac-l2-3-1-1')
+    expect(params.get('mode')).toBe('compliance')
+    expect(params.get('q')).toBe('access')
+    expect(params.get('collection')).toBe('references')
+    expect(window.location.search).not.toContain('readme-example')
+    expect(window.location.hash).toBe('#explorer')
+  })
+
+  it('rewrites the first-version lessons collection to the references, once', () => {
+    window.history.replaceState(
+      null,
+      '',
+      '/learn?view=discover&collection=lessons&mode=it-cyber',
+    )
+    const push = vi.spyOn(window.history, 'pushState')
+    const replace = vi.spyOn(window.history, 'replaceState')
+    const { result } = renderHook(() => useExplorerState(explorerCatalog), {
+      wrapper: StrictMode,
+    })
+    expect(result.current.parsed).toMatchObject({
+      kind: 'ready',
+      notices: [],
+      state: {
+        view: 'discover',
+        mode: 'it-cyber',
+        filters: { collection: 'references' },
+      },
+    })
+    expect(result.current.resolution).toBeNull()
+    expect(result.current.results).toHaveLength(149)
+    expect(replace).toHaveBeenCalledTimes(1)
+    expect(push).not.toHaveBeenCalled()
+    expect(new URLSearchParams(window.location.search).get('collection')).toBe(
+      'references',
+    )
   })
 
   it('restores planned catalogs and unknown lesson identities exactly', () => {

@@ -1,31 +1,31 @@
 import type { LessonIdentity } from '../types/content'
 import type { LearningActivity } from '../types/learning'
-import { projectReadmeSource } from './sources'
+import { guideSource } from './guide-source'
 import { levelOneLearningActivities } from './level-one-learning'
 import { expandedLearningActivities } from './expanded-learning'
 
 export const learningActivities: readonly LearningActivity[] = [
   {
     id: 'authorized-access-practice',
-    contentVersion: '2026-10-14.1',
+    contentVersion: '2026-10-16.1',
     learningObjective:
       'Distinguish working credentials from approved access in a fictional team.',
     lesson: {
       frameworkId: 'cmmc',
-      editionId: 'readme-example',
-      controlKey: 'authorized-access',
+      editionId: 'cmmc-2-13-sep-2024',
+      controlKey: 'ac-l2-3-1-1',
     },
     reviewStatus: 'draft',
-    title: 'Try the idea',
+    title: 'A working login is not approval',
     introduction:
-      'Follow a fictional team, then check your understanding of authorized access. These situations build on the README’s simplified example.',
+      'Follow a fictional team, then check your understanding of authorized access.',
     scenarioTitle: 'A teammate joins. A device changes. A teammate leaves.',
     scenario: [
       {
         id: 'approve-account',
         title: 'Approve the account',
         description:
-          'Maya joins the fictional Cedar Point Design team. Its project-space owner approves her access, and Jules, the IT coordinator, records that approval before creating her account.',
+          'Maya joins the fictional CedarPoint Design team. Its project-space owner approves her access, and Jules, the IT coordinator, records that approval before creating her account.',
       },
       {
         id: 'approve-device',
@@ -62,9 +62,9 @@ export const learningActivities: readonly LearningActivity[] = [
           {
             id: 'credentials-work',
             label:
-              'The credentials work; approval still needs to be established.',
+              'The credentials work, but she isn’t authorized to use the account.',
             feedback:
-              'A successful sign-in shows that the credentials work. Authorization is a separate question: the team still needs to approve Maya’s access.',
+              'A working sign-in isn’t approval. She shouldn’t use the account. She should report it so the team can disable or remove it, and request approved access through the team’s process.',
           },
           {
             id: 'review-is-complete',
@@ -131,8 +131,10 @@ export const learningActivities: readonly LearningActivity[] = [
       },
     ],
     disclaimer:
-      'A fictional practice activity built on a simplified example. It checks understanding, not compliance, and does not cover the full official requirement, processes acting on users’ behalf, or assessment objectives.',
-    teachingSource: projectReadmeSource,
+      'A fictional practice activity written from the September 2024 v2.13 snapshot. ' +
+      'Its examples illustrate selected assessment objectives; they do not prescribe a ' +
+      'product, prove evidence sufficiency, or cover an entire assessment.',
+    teachingSource: guideSource('AC.L2-3.1.1'),
   },
   ...levelOneLearningActivities,
   ...expandedLearningActivities,

@@ -5,6 +5,7 @@ import type {
   ExplanationMode,
   Framework,
   LessonIdentity,
+  ReferenceControl,
 } from '../types/content'
 
 export interface ExplorerCatalog {
@@ -14,7 +15,13 @@ export interface ExplorerCatalog {
   readonly defaultLesson: LessonIdentity | null
 }
 
-export type ExplorerCollection = 'lessons' | 'references'
+/**
+ * The one collection on the board: the pinned source references. The first
+ * version kept a second, `lessons`, for its README demo; an older address
+ * that names it opens the references, and every address still writes
+ * `collection=references` so existing links keep working.
+ */
+export type ExplorerCollection = 'references'
 
 /** The views of a control; Decode is the one a bare address opens. Rev 3 exists for Level 2 controls. */
 export type ControlTab =
@@ -33,6 +40,7 @@ export interface ExplorerFilters {
   readonly query: string
   readonly family: string
   readonly level: string
+  /** Always the references; absent means the same. */
   readonly collection?: ExplorerCollection
 }
 
@@ -70,7 +78,7 @@ export type ParsedExplorerState =
 export type LessonResolution =
   | {
       readonly kind: 'lesson'
-      readonly control: CatalogControl
+      readonly control: ReferenceControl
       readonly framework: Framework
       readonly edition: ContentEdition
       readonly excludedByFilters: boolean
@@ -86,7 +94,6 @@ export type ExplorerIntent =
   | { readonly type: 'set-tab'; readonly tab: ControlTab }
   | { readonly type: 'set-query'; readonly query: string }
   | { readonly type: 'set-catalog'; readonly catalog: string }
-  | { readonly type: 'set-collection'; readonly collection: ExplorerCollection }
   | { readonly type: 'set-family'; readonly family: string }
   | { readonly type: 'set-level'; readonly level: string }
   | { readonly type: 'clear-filters' }
@@ -146,52 +153,61 @@ function defaultCatalog(catalog: ExplorerCatalog): string {
 export function effectiveCollection(
   filters: ExplorerFilters,
 ): ExplorerCollection {
-  return filters.collection ?? 'lessons'
+  return filters.collection ?? 'references'
 }
 
-function controlCollection(control: CatalogControl): ExplorerCollection {
-  return control.contentKind === 'official-reference' ? 'references' : 'lessons'
+/** Only an official reference is on the board; the catalog keeps the retired demo for its identity. */
+function isReference(control: CatalogControl): control is ReferenceControl {
+  return control.contentKind === 'official-reference'
 }
 
-function controlsInCollection(
-  catalog: ExplorerCatalog,
-  collection: ExplorerCollection,
-): CatalogControl[] {
-  return catalog.controls.filter(
-    (control) => controlCollection(control) === collection,
+function referencesIn(catalog: ExplorerCatalog): ReferenceControl[] {
+  return catalog.controls.filter(isReference)
+}
+
+function sameIdentity(control: CatalogControl, identity: LessonIdentity) {
+  return (
+    lessonIdentityKey(lessonIdentity(control)) === lessonIdentityKey(identity)
   )
 }
 
-function emptyFilters(
-  catalogId: string,
-  collection: ExplorerCollection = 'lessons',
-): ExplorerFilters {
+/**
+ * The first version taught one README demo lesson beside the references
+ * (`edition=readme-example`, `control=authorized-access`). Its data stays in
+ * the catalog so the identity is stable, but it is not on the board: an
+ * address that names it, or any other control that is not an official
+ * reference, opens the reference with the same official identifier in its
+ * framework, the control the demo taught.
+ */
+export function retiredLessonTarget(
+  identity: LessonIdentity,
+  catalog: ExplorerCatalog,
+): LessonIdentity | null {
+  const retired = catalog.controls.find(
+    (control) => !isReference(control) && sameIdentity(control, identity),
+  )
+  if (!retired) return null
+  const reference = referencesIn(catalog).find(
+    (control) =>
+      control.frameworkId === retired.frameworkId && control.id === retired.id,
+  )
+  return reference ? lessonIdentity(reference) : null
+}
+
+function emptyFilters(catalogId: string): ExplorerFilters {
   return {
     catalog: catalogId,
     query: '',
     family: '',
     level: '',
-    ...(collection === 'references' ? { collection } : {}),
+    collection: 'references',
   }
 }
 
 function defaultState(catalog: ExplorerCatalog): ValidExplorerState {
-  const identity = catalog.defaultLesson
-  const defaults = identity
-    ? catalog.controls.filter(
-        (control) =>
-          lessonIdentityKey(lessonIdentity(control)) ===
-          lessonIdentityKey(identity),
-      )
-    : []
   const shared = {
     mode: 'beginner' as const,
-    filters: emptyFilters(
-      defaultCatalog(catalog),
-      defaults.length === 1 && defaults[0]
-        ? controlCollection(defaults[0])
-        : 'lessons',
-    ),
+    filters: emptyFilters(defaultCatalog(catalog)),
   }
   return catalog.defaultLesson
     ? { ...shared, view: 'lesson', lesson: catalog.defaultLesson }
@@ -217,10 +233,9 @@ function normalizeFilters(
   filters: ExplorerFilters,
   catalog: ExplorerCatalog,
 ): { filters: ExplorerFilters; notices: NormalizationNotice[] } {
-  const available = controlsInCollection(
-    catalog,
-    effectiveCollection(filters),
-  ).filter((control) => control.frameworkId === filters.catalog)
+  const available = referencesIn(catalog).filter(
+    (control) => control.frameworkId === filters.catalog,
+  )
   const validFamily =
     !filters.family ||
     available.some((control) => control.family === filters.family)
@@ -301,7 +316,10 @@ export function parseExplorerSearch(
       )
     )
       return invalid('invalid-identity')
-    identity = { frameworkId, editionId, controlKey }
+    const named = { frameworkId, editionId, controlKey }
+    // An older link to the retired demo opens the control it taught; the
+    // store then rewrites the address to that control.
+    identity = retiredLessonTarget(named, catalog) ?? named
   }
 
   const explicitCatalog = values.get('catalog')
@@ -312,6 +330,7 @@ export function parseExplorerSearch(
     return invalid('unknown-catalog')
   const catalogId =
     explicitCatalog ?? identity?.frameworkId ?? defaultCatalog(catalog)
+  // `lessons` was the first version's demo collection: it opens the references.
   const explicitCollection = values.get('collection')
   if (
     values.has('collection') &&
@@ -319,15 +338,6 @@ export function parseExplorerSearch(
     explicitCollection !== 'references'
   )
     return invalid('invalid-collection')
-  const resolved = identity
-    ? resolveLesson(identity, emptyFilters(catalogId), catalog)
-    : null
-  const collection: ExplorerCollection =
-    explicitCollection === 'references' || explicitCollection === 'lessons'
-      ? explicitCollection
-      : resolved?.kind === 'lesson'
-        ? controlCollection(resolved.control)
-        : 'lessons'
   const rawMode = values.get('mode')
   const notices: NormalizationNotice[] = []
   // A chalk in a lesson address owns the perspective and opens Explain unless
@@ -356,13 +366,10 @@ export function parseExplorerSearch(
   if (identity && values.has('tab') && rawTab !== tab) notices.push('tab-reset')
   const normalized = normalizeFilters(
     {
-      catalog: catalogId,
+      ...emptyFilters(catalogId),
       query: values.get('q') ?? '',
       family: values.get('family') ?? '',
       level: values.get('level') ?? '',
-      ...(collection === 'references' || (identity && values.has('collection'))
-        ? { collection }
-        : {}),
     },
     catalog,
   )
@@ -399,27 +406,21 @@ export function serializeExplorerSearch(state: ValidExplorerState): string {
   if (state.filters.query) params.set('q', state.filters.query)
   if (state.filters.family) params.set('family', state.filters.family)
   if (state.filters.level) params.set('level', state.filters.level)
-  if (
-    effectiveCollection(state.filters) === 'references' ||
-    (state.view === 'lesson' && state.filters.collection === 'lessons')
-  )
-    params.set('collection', effectiveCollection(state.filters))
+  // Every address names the collection, as the first version's links did.
+  params.set('collection', effectiveCollection(state.filters))
   return `?${params.toString()}`
 }
 
 export function explorerResults(
   state: ValidExplorerState,
   catalog: ExplorerCatalog,
-): CatalogControl[] {
-  return filterControls(
-    controlsInCollection(catalog, effectiveCollection(state.filters)),
-    {
-      frameworkId: state.filters.catalog,
-      query: state.filters.query,
-      family: state.filters.family,
-      level: state.filters.level,
-    },
-  )
+): ReferenceControl[] {
+  return filterControls(referencesIn(catalog), {
+    frameworkId: state.filters.catalog,
+    query: state.filters.query,
+    family: state.filters.family,
+    level: state.filters.level,
+  })
 }
 
 export function resolveLesson(
@@ -437,10 +438,8 @@ export function resolveLesson(
       item.frameworkId === identity.frameworkId &&
       item.id === identity.editionId,
   )
-  const matching = catalog.controls.filter(
-    (control) =>
-      lessonIdentityKey(lessonIdentity(control)) ===
-      lessonIdentityKey(identity),
+  const matching = referencesIn(catalog).filter((control) =>
+    sameIdentity(control, identity),
   )
   const control = matching.length === 1 ? matching[0] : undefined
   if (!framework || !edition || !control) return { kind: 'not-found', identity }
@@ -461,10 +460,8 @@ function withFilters(
   if (
     updated.view === 'lesson' &&
     resolveLesson(updated.lesson, updated.filters, catalog).kind === 'lesson' &&
-    !explorerResults(updated, catalog).some(
-      (control) =>
-        lessonIdentityKey(lessonIdentity(control)) ===
-        lessonIdentityKey(updated.lesson),
+    !explorerResults(updated, catalog).some((control) =>
+      sameIdentity(control, updated.lesson),
     )
   ) {
     return ready(
@@ -498,17 +495,9 @@ export function transitionExplorerState(
         let resolution = resolveLesson(intent.identity, filters, catalog)
         if (resolution.kind === 'lesson' && resolution.excludedByFilters) {
           // The rail lists every control whatever the filters say, so a pick
-          // from it gives way: the collection and framework follow the
-          // control, then a family, a level, a query that would hide it.
-          const { control } = resolution
-          const collection = controlCollection(control)
-          const base = {
-            ...filters,
-            catalog: control.frameworkId,
-            ...(effectiveCollection(filters) === collection
-              ? {}
-              : { collection }),
-          }
+          // from it gives way: the framework follows the control, then a
+          // family, a level, a query that would hide it.
+          const base = { ...filters, catalog: resolution.control.frameworkId }
           for (const next of [
             base,
             { ...base, family: '' },
@@ -574,19 +563,6 @@ export function transitionExplorerState(
           catalog,
         )
         break
-      case 'set-collection':
-        if (intent.collection !== effectiveCollection(state.filters))
-          next = withFilters(
-            state,
-            {
-              ...state.filters,
-              collection: intent.collection,
-              family: '',
-              level: '',
-            },
-            catalog,
-          )
-        break
       case 'set-level':
         next = withFilters(
           state,
@@ -597,10 +573,7 @@ export function transitionExplorerState(
       case 'clear-filters':
         next = ready({
           ...state,
-          filters: emptyFilters(
-            state.filters.catalog,
-            effectiveCollection(state.filters),
-          ),
+          filters: emptyFilters(state.filters.catalog),
         })
         break
       case 'back-to-discovery':
@@ -616,17 +589,14 @@ export function transitionExplorerState(
           })
         break
       case 'show-lesson-in-results':
-        if (state.view === 'lesson') {
-          const resolution = resolveLesson(state.lesson, state.filters, catalog)
-          if (resolution.kind === 'lesson')
-            next = ready({
-              ...state,
-              filters: emptyFilters(
-                state.lesson.frameworkId,
-                controlCollection(resolution.control),
-              ),
-            })
-        }
+        if (
+          state.view === 'lesson' &&
+          resolveLesson(state.lesson, state.filters, catalog).kind === 'lesson'
+        )
+          next = ready({
+            ...state,
+            filters: emptyFilters(state.lesson.frameworkId),
+          })
         break
     }
   }
@@ -661,6 +631,28 @@ export function chalkColourOf(mode: ExplanationMode): ChalkColour {
 /** Whether an address names a chalk; the store rewrites such an address once it is read. */
 export function addressNamesChalk(search: string): boolean {
   return new URLSearchParams(search).has('chalk')
+}
+
+/**
+ * Whether an address names the first version's demo lesson or its `lessons`
+ * collection; the store rewrites such an address once it is read, as it does
+ * for a chalk, so the link shows the control it opens.
+ */
+export function addressNamesRetired(
+  search: string,
+  catalog: ExplorerCatalog,
+): boolean {
+  const params = new URLSearchParams(search)
+  if (params.get('collection') === 'lessons') return true
+  const frameworkId = params.get('framework')
+  const editionId = params.get('edition')
+  const controlKey = params.get('control')
+  return Boolean(
+    frameworkId &&
+    editionId &&
+    controlKey &&
+    retiredLessonTarget({ frameworkId, editionId, controlKey }, catalog),
+  )
 }
 
 /** A link that opens this control's explanation in one chalk: `chalk=` in place of `mode=`. */

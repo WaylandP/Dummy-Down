@@ -1,7 +1,4 @@
 /* Assessment objectives: the index of every statement, as lines on the board. */
-.coverage-page .coverage-context {
-  margin-top: 10px;
-}
 .coverage-totals {
   display: flex;
   flex-wrap: wrap;

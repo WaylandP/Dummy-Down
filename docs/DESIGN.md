@@ -168,15 +168,17 @@ not establish it.
   listing its control IDs and titles five at a time, the current one with the
   yellow bar. Every count comes from the catalog. On the right stands the
   control exactly as before; with no control chosen, the overview: "Controls"
-  in chalk with one sentence, the quiet collection and framework selects, the
+  in chalk with one sentence, the
   result count, the three levels as a quiet row and the results as rows
   between hairlines that page eight at a time, at full width (the rail holds
   the families; below desktop widths, where it waits in its sheet, the
   overview keeps the fourteen families as links beside the results). Beside a
   control the family rows open in place and the control stays; in the
   overview they also filter the results. A pick from the rail that the
-  filters would hide brings the collection, framework, family, level or query
-  along with it. The foot steps through the results with Previous and Next.
+  filters would hide brings the framework, family, level or query
+  along with it. There is one collection and one framework, so nothing is
+  offered to pick; an older link's `collection=lessons` or `edition=readme-example`
+  (the first version's demo) opens the references and AC.L2-3.1.1. The foot steps through the results with Previous and Next.
   Below 1024px the rail is a sheet: an "All controls" line at the top of the
   page opens it full screen on its find line. Home's "I'm new to this" row
   opens Controls filtered to Level 1 with the first Level 1 control on the
@@ -210,8 +212,8 @@ not establish it.
   controls” disclosure is gone; the rail is the navigator). Print, Copy
   reference link and Send this chalk are the actions, above the title (at the
   foot of the page on a phone); the chalk link opens Explain in the chalk in
-  hand. Discovery and the project's demo lesson keep
-  their earlier layout until their own pass.
+  hand. Discovery keeps its earlier layout until its own pass; the first
+  version's demo lesson is gone from the board, its links opening AC.L2-3.1.1.
   With a control on the board the tray's three chalks are the perspective
   switch (a `Pick a chalk` navigation; the chalk in hand is pressed and
   lifted); on a phone the tray is the bottom bar, 72px, labelled, ending the
@@ -336,7 +338,8 @@ it does not initiate a new visual redesign or imply owner acceptance.
 
 `/practice` lists the actual draft activities as situations in the catalog's
 order and runs the one picked beside them (the Practice bullet above has the
-October 15 layout). The project demo is not a level-filter result. Saving is
+October 15 layout). Every situation, the first version's demo included,
+belongs to a control on the board and its level. Saving is
 off by default; the page's own line turns it on, and once on, finished
 situations are marked and can be hidden. Revisit marks stay in the lesson's
 Practice view, with its disclosures of earlier answers. No scores, streaks or

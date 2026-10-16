@@ -437,7 +437,7 @@ test('the search line finds a control from Home', async ({ page }) => {
   await expect(page).toHaveURL(/q=MP\.L1-b\.1\.vii/)
   await expect(
     page.getByRole('status', { name: 'Control search results' }),
-  ).toHaveText('1 reference found')
+  ).toHaveText('1 control')
 })
 
 test('on a phone the headline is two lines, as large as the width allows, the chalks are rows, and the search follows them', async ({
