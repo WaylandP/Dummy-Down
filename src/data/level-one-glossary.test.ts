@@ -77,7 +77,9 @@ describe('Level 1 contextual vocabulary', () => {
         expect(source.versionContext).toContain(`PDF page ${pdfPage}`)
         expect(source.versionContext).toMatch(/printed page [1-9]\d*/)
         expect(source.versionContext).toContain('Version 2.13')
-        expect(source.versionContext).toContain('Source checked on 2026-10-13')
+        expect(source.versionContext).toMatch(
+          /Source checked on 2026-10-1[35] /,
+        )
         expect(source.versionContext).toContain(
           'official-host access was blocked',
         )

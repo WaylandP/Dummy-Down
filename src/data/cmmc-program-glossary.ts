@@ -1,4 +1,5 @@
 import type { GlossaryTerm, SourceReference } from '../types/content'
+import { guideSource } from './level-one-glossary'
 
 /**
  * Vocabulary of the CMMC Program itself: statuses, roles, scoping categories
@@ -32,7 +33,7 @@ const definitions = cfr170(
 const scoping = cfr170(
   '19',
   'CMMC scoping',
-  'asset categories in the tables to paragraph (c)',
+  'scope at each level in paragraphs (b) to (d) and the tables to them',
 )
 const poamRules = cfr170(
   '21',
@@ -119,6 +120,43 @@ const purpose = cfr170('1', 'Purpose', 'paragraph (d)')
 const policy = cfr170('5', 'Policy', 'paragraph (a)')
 const affirmation = cfr170('22', 'Affirmation', 'paragraph (a)')
 const flowdown = cfr170('23', 'Flowdown requirements', 'paragraph (a)(2)')
+const scoring = cfr170(
+  '24',
+  'CMMC scoring methodology',
+  'paragraph (b)(1)(ii), temporary deficiencies scored MET',
+)
+
+/** The 2026 FAR overhaul class deviation that renumbers the assessment clause. */
+const deviation7997: SourceReference = {
+  id: 'dfars-deviation-2026-o0025-r3',
+  title:
+    'DFARS Class Deviation 2026-O0025, Revision 3 — FAR Part 40 and DFARS Part 240',
+  url: 'https://www.acq.osd.mil/dpap/dars/classdev/DFARS_RFO/Part-240/2026-O0025_Rev3_TAB_A_Deviation_Memo.pdf',
+  kind: 'official-publication',
+  versionContext:
+    'Revision 3, signed September 3, 2026; DFARS 240.370-5(d) and the clause at 252.240-7997. Read on 2026-10-15 from a pinned public corpus copy (SHA-256 c836278a…); the official host refused the connection from the check environment.',
+}
+
+/** Executive Order 14347, the Department of War as a secondary title. */
+const departmentOfWar: SourceReference = {
+  id: 'eo-14347',
+  title:
+    'Executive Order 14347 — Restoring the United States Department of War',
+  url: 'https://www.govinfo.gov/content/pkg/FR-2025-09-10/pdf/2025-17508.pdf',
+  kind: 'official-publication',
+  versionContext:
+    'Federal Register Vol. 90, No. 173, September 10, 2025 (document 2025-17508); signed September 5, 2025. Sections 1 and 2 authorize Department of War as a secondary title. Read on 2026-10-15 in the Federal Register text edition.',
+}
+
+const sspAtLevelOne = guideSource(1, 16, 12, 'AC.L1-b.1.i')
+const thirdPartyHelp = guideSource(1, 6, 2, 'Assessment Scope')
+const sspAtLevelTwo = guideSource(
+  2,
+  217,
+  209,
+  'CA.L2-3.12.4: Further Discussion',
+  '2026-10-15',
+)
 
 /** The pinned records the chalk talk's script rests on, shared with the glossary. */
 export const cmmcProgramSources = {
@@ -165,8 +203,8 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'cmmc',
     'Cybersecurity Maturity Model Certification (CMMC)',
-    'The Department of Defense program that checks whether a contractor’s information systems protect Federal Contract Information and Controlled Unclassified Information. It is set out in 32 CFR part 170 and reaches contractors through the DFARS 252.204-7021 clause, which names the CMMC level a contract requires. There are three levels, each tied to an existing set of security requirements.',
-    [definitions, dfars7021],
+    'The Department of Defense program that checks whether a contractor’s information systems protect Federal Contract Information and Controlled Unclassified Information. It is set out in 32 CFR part 170 and reaches contractors through the DFARS 252.204-7021 clause, which names the CMMC level a contract requires. There are three levels, each tied to an existing set of security requirements. Since September 2025 the Department also uses the secondary title Department of War (DoW), and newer CMMC documents use it.',
+    [definitions, dfars7021, departmentOfWar],
   ),
   term(
     'cmmc-levels',
@@ -177,14 +215,14 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'cmmc-status',
     'CMMC Status (Conditional and Final)',
-    'The result an organization holds after an assessment, recorded in SPRS for each assessed system. “Final” means every requirement was met. “Conditional” means the assessment passed the minimum score with some requirements still open on a POA&M; those must be closed within 180 days or the status lapses. Statuses are named by level and assessor, such as Final Level 2 (C3PAO). A contract clause treats a Final Level 1 as current for one year and a Final Level 2 for three years, each with an annual affirmation.',
+    'The result of meeting or exceeding the minimum score on an assessment, recorded in SPRS for each assessed system and named by level and assessor, such as Final Level 2 (C3PAO). A failed assessment gives no status. “Final” means every requirement was met. “Conditional” means the score reached the minimum with some requirements still open on a POA&M, which must close within 180 days or the status expires. Under DFARS 252.204-7021 a status stays current for 180 days if Conditional, 1 year for Final Level 1, and 3 years for Final Level 2 or Final Level 3, each with an affirmation every year.',
     [definitions, dfars7021],
   ),
   term(
     'self-assessment',
     'Self-assessment',
-    'An assessment an organization performs on its own system, following the same assessment guide an outside assessor would use. Level 1 is always a self-assessment. Level 2 (Self) is a self-assessment that must be repeated every three years, with results submitted to SPRS and an affirmation each year in between.',
-    [definitions, levelOne, levelTwoSelf],
+    'An assessment an organization performs on its own systems and enters in SPRS, using the same criteria an outside assessor would. Level 1 is always self-assessed, every year. Level 2 (Self) is repeated every three years, with an affirmation each year. Hiring a consultant to help still makes it a self-assessment, not a certification.',
+    [definitions, levelOne, levelTwoSelf, thirdPartyHelp],
   ),
   term(
     'certification-assessment',
@@ -201,8 +239,8 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'dibcac',
     'DIBCAC',
-    'The Defense Contract Management Agency’s Defense Industrial Base Cybersecurity Assessment Center, the Government team that conducts Level 3 certification assessments and the “High” NIST SP 800-171 DoD Assessments described in DFARS 252.204-7020.',
-    [definitions, levelThree, dfars7020],
+    'The Defense Contract Management Agency’s Defense Industrial Base Cybersecurity Assessment Center, the Government team that conducts Level 3 certification assessments and the “High” NIST SP 800-171 DoD Assessments described in DFARS 252.204-7020 (252.240-7997 in contracts under the 2026 class deviation).',
+    [definitions, levelThree, dfars7020, deviation7997],
   ),
   term(
     'osa',
@@ -225,8 +263,8 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'sprs',
     'Supplier Performance Risk System (SPRS)',
-    'The DoD system where contractors post NIST SP 800-171 DoD Assessment scores and where CMMC statuses, status dates and annual affirmations are recorded for each assessed system. Contracting officers check SPRS to confirm a contractor has the required status before award.',
-    [definitions, dfars7019, dfars7021],
+    'The DoD system where contractors post NIST SP 800-171 DoD Assessment scores and where CMMC statuses, status dates and annual affirmations are recorded for each assessed system. Before awarding a contract that requires CMMC, the contracting officer checks SPRS for a current status at the required level.',
+    [affirmation, dfars7021, deviation7997],
   ),
   term(
     'poam',
@@ -243,13 +281,13 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'ssp',
     'System Security Plan (SSP)',
-    'The formal document that describes an information system and how each security requirement is implemented: what is inside the system boundary, the environment it runs in, how it connects to other systems, and which requirements are met directly, inherited, or not applicable. Assessors use it as the starting point for every assessment.',
-    [definitions],
+    'The formal document that describes an information system and how each security requirement is implemented or planned: the components inside it, the environment it runs in, and its connections to other systems. Required at Levels 2 and 3 (CA.L2-3.12.4): without an up-to-date SSP an assessment cannot be completed. Recommended, but not required, at Level 1.',
+    [definitions, sspAtLevelTwo, sspAtLevelOne],
   ),
   term(
     'cmmc-assessment-scope',
     'CMMC Assessment Scope',
-    'The complete set of assets in an organization’s environment that will be assessed against the CMMC requirements. Scoping is done before an assessment and places every asset into a category that decides how it is treated: CUI assets, Security Protection Assets, Contractor Risk Managed Assets, Specialized Assets, or Out-of-Scope Assets.',
+    'The set of all assets in an organization’s environment that will be assessed against the CMMC requirements, fixed before the assessment starts. At Level 1 it is the systems that process, store or transmit FCI. At Level 2 every asset is placed in a category that decides how it is treated: CUI Assets, Security Protection Assets, Contractor Risk Managed Assets, Specialized Assets or Out-of-Scope Assets. Level 3 has no Contractor Risk Managed Assets category; those assets count as CUI Assets.',
     [definitions, scoping],
   ),
   term(
@@ -273,13 +311,13 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'contractor-risk-managed-assets',
     'Contractor Risk Managed Assets (CRMA)',
-    'Assets that could handle CUI but are not meant to, because the organization’s policies, procedures and practices prevent it. They do not have to be physically or logically separated from CUI assets. They are documented in the inventory, SSP and network diagram, and an assessor normally only checks that documentation unless something raises a question.',
+    'A Level 2 category: assets that can process, store or transmit CUI but are not intended to, because of the security policies, procedures and practices in place. They need not be separated from CUI Assets. They are documented in the asset inventory, SSP and network diagram; the assessor reviews that documentation and makes a limited check only if something raises questions. At Level 3 the same assets are CUI Assets and are assessed.',
     [definitions, scoping],
   ),
   term(
     'specialized-assets',
     'Specialized Assets',
-    'Government Furnished Equipment, Internet of Things and Industrial IoT devices, Operational Technology, Restricted Information Systems, and Test Equipment. They can handle CUI but are assessed only through their documentation in the inventory and SSP, because fully securing them is often not feasible.',
+    'Assets that can process, store or transmit CUI but cannot be fully secured: Internet of Things and Industrial IoT devices, Operational Technology, Government Furnished Equipment, Restricted Information Systems and Test Equipment. At Level 1 they are outside the assessment scope. At Level 2 they are documented in the asset inventory, SSP and network diagram, and not assessed against the other requirements. At Level 3 they are assessed against every Level 3 requirement, with a limited check against Level 2.',
     [definitions, scoping],
   ),
   term(
@@ -291,8 +329,8 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'esp',
     'External Service Provider (ESP)',
-    'Outside people, technology or facilities an organization uses to provide or manage IT or cybersecurity services on its behalf, such as a managed service provider or a managed security service provider. A provider counts as an ESP in the CMMC Program only if CUI or Security Protection Data is processed, stored or transmitted on its assets, and an ESP that handles CUI is part of the assessment scope.',
-    [definitions, scoping],
+    'Outside people, technology or facilities an organization uses to provide or manage IT or cybersecurity services on its behalf, such as a managed service provider. A provider counts as an ESP only if CUI or Security Protection Data is processed, stored or transmitted on its assets. A provider that is not a cloud service and handles CUI is assessed as part of the organization’s assessment; one that handles only Security Protection Data is assessed as a Security Protection Asset. A cloud provider that holds CUI must instead meet the FedRAMP requirements in DFARS 252.204-7012.',
+    [definitions, scoping, dfars7012],
   ),
   term(
     'csp',
@@ -315,8 +353,8 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'temporary-deficiency',
     'Temporary deficiency',
-    'A requirement that was implemented but is temporarily not met because a known fix is available or in progress, such as a validated cryptographic module that lost its validation after a required patch. It must be recorded in the operational plan of action. It is not the same as a requirement that was never implemented.',
-    [definitions],
+    'A problem found after a requirement was put in place, with a known fix available or under way; for example, FIPS-validated cryptography whose required patch is no longer the validated version. It is recorded in the operational plan of action, and handled there it is still scored MET. It cannot cover a requirement that was never put in place, except for a problem found on a small part of the equipment during roll-out.',
+    [definitions, scoring],
   ),
   term(
     'periodically',
@@ -332,14 +370,14 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   ),
   term(
     'nist-sp-800-171-dod-assessment',
-    'NIST SP 800-171 DoD Assessment (DFARS 252.204-7019 and 7020)',
-    'The scored assessment of NIST SP 800-171 implementation that contractors must have posted in SPRS before award. A Basic assessment is a self-assessment from the SSP with a “Low” confidence score; Medium and High assessments are conducted by the Government, with High assessments performed by DIBCAC. 252.204-7019 is the notice in solicitations; 252.204-7020 is the clause in contracts.',
-    [dfars7019, dfars7020],
+    'NIST SP 800-171 DoD Assessment (DFARS 252.204-7019, 7020 and 252.240-7997)',
+    'The scored assessment of NIST SP 800-171 implementation that contractors must have posted in SPRS. A Basic assessment is a self-assessment from the SSP with a “Low” confidence score; Medium and High assessments are conducted by the Government, with High assessments performed by DIBCAC. Older contracts carry the notice 252.204-7019 and the clause 252.204-7020. Under the 2026 FAR overhaul class deviation, new solicitations and contracts use clause 252.240-7997 instead.',
+    [dfars7019, dfars7020, deviation7997],
   ),
   term(
     'dfars-252-204-7021',
     'DFARS 252.204-7021',
-    'The clause that puts CMMC into a contract. It names the CMMC level required, requires the contractor to hold a current status at that level for every system that handles FCI or CUI, to keep an annual affirmation in SPRS, to close any Conditional POA&M, to flow the requirement down to subcontractors, and to report the CMMC unique identifiers for its systems.',
+    'The clause that puts CMMC into a contract. It names the CMMC level required, requires a current status at that level or higher for every system used on the contract that processes, stores or transmits FCI or CUI, allows FCI or CUI only on those systems, to keep an annual affirmation in SPRS, to close any Conditional POA&M, to flow the requirement down to subcontractors, and to report the CMMC unique identifiers for its systems.',
     [dfars7021],
   ),
   term(
@@ -363,7 +401,7 @@ export const cmmcProgramGlossaryTerms: readonly GlossaryTerm[] = [
   term(
     'fci-and-cui-sources',
     'Where FCI and CUI are defined',
-    'Federal Contract Information is defined in FAR 52.204-21: information not intended for public release that the Government provides or that is generated for the Government under a contract, excluding public information and simple transactional details. Controlled Unclassified Information is defined in 32 CFR 2002.4: information the Government creates or possesses, or that others create or possess for it, that a law, regulation or Government-wide policy requires or permits to be safeguarded. CUI never includes classified information.',
-    [farClause, cuiRule],
+    'The CMMC rule points to where each is defined. Federal Contract Information is defined in FAR 4.1901 and FAR 52.204-21: information not intended for public release that the Government provides or that is generated for the Government under a contract, excluding public information and simple transactional details. Controlled Unclassified Information is defined in 32 CFR 2002.4(h): information the Government creates or possesses, or that others create or possess for it, that a law, regulation or Government-wide policy requires or permits an agency to handle using safeguarding or dissemination controls. CUI never includes classified information, or a company’s own information that did not come from or for a federal agency.',
+    [definitions, farClause, cuiRule],
   ),
 ]

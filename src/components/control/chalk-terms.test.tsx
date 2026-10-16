@@ -24,6 +24,11 @@ const device = term('device')
 const word = (name = 'devices') =>
   screen.findByRole('button', { name }, { timeout: 5000 })
 const settle = () => new Promise((resolve) => setTimeout(resolve, 400))
+/** Matches the text exactly, except that any space in it may be missing. */
+const loosely = (text: string) =>
+  new RegExp(
+    `^${text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s*')}$`,
+  )
 // The marked words of a panel, which also holds the reflection's buttons.
 const marked = (panel: Element) =>
   [...panel.querySelectorAll('.term-chalk')].map((node) => node.textContent)
@@ -81,16 +86,41 @@ describe('Chalk popovers in the explanation', () => {
     const popover = await screen.findByRole('dialog', { name: device.title })
     expect(popover).toHaveTextContent(device.definition)
     expect(popover).toHaveAccessibleDescription(device.definition)
-    const source = within(popover).getByRole('link')
-    expect(source).toHaveTextContent(device.sources[0]!.title)
-    expect(source).toHaveAccessibleName(/opens in a new tab/)
-    expect(source).toHaveAttribute('href', device.sources[0]!.url)
+    const sources = within(popover).getAllByRole('link')
+    expect(sources.map((link) => link.getAttribute('href'))).toEqual(
+      device.sources.map((source) => source.url),
+    )
+    // The full title, publication included, names each link. (jsdom drops the
+    // spaces at the hidden spans' edges, so they are optional here.)
+    sources.forEach((link, index) =>
+      expect(link).toHaveAccessibleName(
+        loosely(`${device.sources[index]!.title} (opens in a new tab)`),
+      ),
+    )
     expect(popover).not.toHaveFocus()
     expect(devices).toHaveAttribute('aria-expanded', 'true')
     expect(devices).toHaveAttribute('aria-controls', popover.id)
     await user.unhover(devices)
     await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull())
     expect(devices).toHaveAttribute('aria-expanded', 'false')
+  })
+
+  it('names a publication its sources share once, and keeps each link’s full name', async () => {
+    const user = userEvent.setup()
+    open(control('AC.L1-b.1.i').key)
+    await user.click(await word())
+    const popover = await screen.findByRole('dialog', { name: device.title })
+    const line = popover
+      .querySelector('.chalk-popover-source')!
+      .cloneNode(true) as HTMLElement
+    for (const hidden of line.querySelectorAll('.sr-only')) hidden.remove()
+    const publication = device.sources[0]!.title.split(' — ')[0]!
+    expect(device.sources.every((s) => s.title.startsWith(publication))).toBe(
+      true,
+    )
+    expect(line.textContent!.split(publication)).toHaveLength(2)
+    for (const source of device.sources)
+      expect(line.textContent).toContain(source.title.split(' — ')[1]!)
   })
 
   it('stays while the pointer moves into it and back to the word; Escape closes it without moving focus', async () => {
@@ -153,8 +183,10 @@ describe('Chalk popovers in the explanation', () => {
     await user.keyboard('{Enter}')
     const popover = await screen.findByRole('dialog', { name: device.title })
     expect(popover).toHaveFocus()
-    await user.tab()
-    expect(within(popover).getByRole('link')).toHaveFocus()
+    for (const link of within(popover).getAllByRole('link')) {
+      await user.tab()
+      expect(link).toHaveFocus()
+    }
     await user.tab()
     expect(screen.getByRole('button', { name: 'processes' })).toHaveFocus()
     await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull())

@@ -26,6 +26,25 @@ function isHttps(url: string): boolean {
 }
 
 /**
+ * A source's title split so a publication shared with the source before it is
+ * shown once: "CMMC Assessment Guide – Level 1 — AC.L1-b.1.i; IA.L1-b.1.v".
+ * The repeated part stays in the link's name for screen readers.
+ */
+function sourceLabel(
+  title: string,
+  previous: string | undefined,
+): { readonly hidden: string; readonly shown: string } {
+  const split = (text: string) => {
+    const at = text.indexOf(' — ')
+    return at < 0 ? null : text.slice(0, at + 3)
+  }
+  const publication = split(title)
+  if (publication && previous && split(previous) === publication)
+    return { hidden: publication, shown: title.slice(publication.length) }
+  return { hidden: '', shown: title }
+}
+
+/**
  * Under the word when it fits, above it when the screen ends, never off the
  * screen. False when the word itself has scrolled off the screen.
  */
@@ -199,23 +218,37 @@ export function ChalkTerm({ term, children }: ChalkTermProps) {
           </span>
           <span className="chalk-popover-source">
             {term.sources.length > 1 ? 'Sources: ' : 'Source: '}
-            {term.sources.map((source, index) => (
-              <Fragment key={source.id}>
-                {index > 0 && '; '}
-                {isHttps(source.url) ? (
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {source.title}
-                    <span className="sr-only"> (opens in a new tab)</span>
-                  </a>
-                ) : (
-                  source.title
-                )}
-              </Fragment>
-            ))}
+            {term.sources.map((source, index) => {
+              const label = sourceLabel(
+                source.title,
+                term.sources[index - 1]?.title,
+              )
+              const title = (
+                <>
+                  {label.hidden && (
+                    <span className="sr-only">{label.hidden}</span>
+                  )}
+                  {label.shown}
+                </>
+              )
+              return (
+                <Fragment key={source.id}>
+                  {index > 0 && '; '}
+                  {isHttps(source.url) ? (
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {title}
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                  ) : (
+                    title
+                  )}
+                </Fragment>
+              )
+            })}
             .
           </span>
         </span>
