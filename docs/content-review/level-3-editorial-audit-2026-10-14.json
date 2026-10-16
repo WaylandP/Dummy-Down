@@ -469,11 +469,27 @@
       "inputFingerprint": "9e6f9d76048d45aa52794c844ec3fdabd681c2a14e9a17c7fe022c9ea71b27f1",
       "fingerprintAlgorithm": "SHA256(JSON.stringify(parsed perspective object))",
       "objectiveFingerprint": "8c0021425b121701a43a4b971107f3ea64991e2e9c767db37c6ac62c4875210c",
-      "findings": [],
-      "disposition": "no-factual-correction-identified",
+      "findings": [
+        {
+          "field": "beginner.meaning",
+          "issue": "\"How its risks were determined\" read as the solution's own risks; the risk determination is about what the solution protects.",
+          "proposedText": "Record which security solution was chosen, why, and the risk determination behind the choice: the assessed risk it is meant to address. Put that reasoning in the system security plan, or reference it there, so future decisions have a traceable starting point.",
+          "sourceSupport": "CMMC Assessment Guide Level 3 v2.13, PDF 61 / printed 57 section; the risk-based selection of a security solution",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 61,
+            "printedPage": 57,
+            "objectiveLabels": ["c"],
+            "quotedBasis": "the risk-based selection of a security solution"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
+        }
+      ],
+      "disposition": "corrected",
       "reviewNote": "Selected solution, rationale and risk determination documented or referenced in SSP retained; alternative comparisons not asserted mandatory, matching further discussion.",
       "humanReview": "pending",
-      "reviewedFingerprint": "9e6f9d76048d45aa52794c844ec3fdabd681c2a14e9a17c7fe022c9ea71b27f1"
+      "reviewedFingerprint": "de5925ea3bd7ef5d02af88659989d627bb5a2883fd47b8f597675da52604b6cf"
     },
     {
       "id": "RA.L3-3.11.5e",
@@ -668,16 +684,24 @@
       "findings": [
         {
           "field": "technical.watchFor",
-          "issue": "Existing caution covers guide-versus-model differences only. The guide requirement/further discussion describes inclusion or segregation, while assessment statements[a,b] contain unresolved wording. Readers need that specific limitation before treating this draft as an explanation of both statements.",
-          "proposedText": "The requirement and further discussion describe inclusion under the specified enhanced protections or purpose-specific segregation, but the guide’s assessment statements [a] and [b] use inconsistent wording. Their interpretation remains unresolved and needs qualified scoping review. The model wording also differs; do not infer an automatic exemption.",
-          "sourceSupport": "CMMC Assessment Guide Level3 v2.13 September2024: PDF81/printed77 requirement and statements[a,b]; PDF82/printed78 Further Discussion says assets within Level3 scope must either be assessed against all CMMC security requirements or separated into purpose-specific networks. Preserve all source text; no authoritative resolution or current applicability is established.",
-          "resolution": "Applied after coordinating review of guide PDF81–83; source conflict remains unresolved."
+          "issue": "Said the requirement and the further discussion agree; they are worded differently.",
+          "proposedText": "The requirement says specialized assets are included in the scope of the specified enhanced security requirements or segregated in purpose-specific networks. The guide's further discussion says they must be assessed against all CMMC security requirements or separated into purpose-specific networks, and objective [b] is worded differently again. Settle scope through qualified scoping review; do not infer an automatic exemption.",
+          "sourceSupport": "CMMC Assessment Guide Level 3 v2.13, PDF 81 / printed 77 section; must be either assessed against all CMMC security requirements or separated into purpose-specific networks",
+          "implementationStatus": "applied-2026-10-15-launch-audit",
+          "sourceCitation": {
+            "sourceId": "cmmc-assessment-l3-213",
+            "pdfPage": 81,
+            "printedPage": 77,
+            "objectiveLabels": ["a", "b"],
+            "quotedBasis": "must be either assessed against all CMMC security requirements or separated into purpose-specific networks"
+          },
+          "resolution": "Applied on 2026-10-15 after an AI-assisted comparison with the complete guide section; the earlier wording is in Git history. Human review pending."
         }
       ],
-      "disposition": "corrected-source-conflict-remains",
+      "disposition": "corrected",
       "reviewNote": "Requirement/further-discussion alternatives and intermediary mitigations preserved without declaring exemption. Guide/model caution exists, but internal assessment-statement inconsistency needs an explicit warning; statements a/b remain unresolved.",
       "humanReview": "pending",
-      "reviewedFingerprint": "5c2dfe05acb732f3b9162898b8e3a77a7650eb4f0cecf008fa2d6143cd6b629e"
+      "reviewedFingerprint": "2d4eabc57826a20e3a5818660d0575ddde39b7a07fcc3b6b657dbeb2fdd68f42"
     },
     {
       "id": "SI.L3-3.14.6e",
