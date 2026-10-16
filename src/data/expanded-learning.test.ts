@@ -70,4 +70,44 @@ describe('expanded draft teaching source boundaries', () => {
       ).toBeUndefined()
     }
   })
+
+  it('keeps the guide’s meaning where the launch audit found answers a reader could dispute', () => {
+    const activity = (id: string) =>
+      learningActivities.find((item) => item.id === id)!
+    const correct = (activityId: string, questionId: string) => {
+      const question = activity(activityId).questions.find(
+        (item) => item.id === questionId,
+      )!
+      return question.choices.find(
+        (item) => item.id === question.correctChoiceId,
+      )!
+    }
+    // AC.L1-b.1.i: a process is identified and tied to the authorized user it
+    // acts for; the guide gives it no approval of its own.
+    expect(
+      correct('level-one-authorized-access', 'process-is-separate').label,
+    ).toContain('acts for an authorized user')
+    // IR.L3-3.6.2e: the 24 hours holds where responders must be on site.
+    const response = activity('level-three-response-team-deployment')
+    expect(correct(response.id, 'isolated-site-response').label).toContain(
+      'within 24 hours',
+    )
+    expect(
+      response.scenario.find((step) => step.id === 'physical-need')!
+        .description,
+    ).toContain('within 24 hours')
+    // A lesson lists only the terms it uses: PE.L1-b.1.ix's devices are keys
+    // and card readers, not the glossary's connected device.
+    for (const item of learningActivities) {
+      const text = JSON.stringify(item).toLowerCase()
+      const terms = item.glossaryTermIds ?? []
+      if (terms.includes('system-boundary')) expect(text).toContain('boundar')
+      if (terms.includes('assessment-scope')) expect(text).toContain('scope')
+    }
+    expect(
+      learningActivities.find(
+        (item) => item.lesson.controlKey === 'pe-l1-b-1-ix',
+      )!.glossaryTermIds,
+    ).not.toContain('device')
+  })
 })

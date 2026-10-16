@@ -36,12 +36,12 @@ export const levelOneLearningActivities: readonly LearningActivity[] = [
     introduction:
       'Follow a fictional workshop as it connects a person, an automated process, and a device. The point is to separate an authorization decision from access that happens to work.',
     plainEnglish:
-      'Identify which people, processes acting on behalf of authorized people, and devices or other systems are allowed to access a company system. Then limit actual access to those authorized categories. A working login is not, by itself, proof of permission.',
+      'Identify which people, processes acting on behalf of authorized people, and devices or other systems are allowed to access a company system. Then limit actual access to the users, processes and devices that are authorized. A working login is not, by itself, proof of permission.',
     commonMisunderstanding: {
       claim:
         '“An approved employee account makes every program and device they use approved.”',
       correction:
-        'The requirement includes processes acting on users’ behalf and devices, including other systems. Identify what is authorized and enforce those limits; approving one person does not automatically approve everything that connects for them.',
+        'A process acting for an approved user still has to be identified and tied to that user, and devices, including other systems, need their own authorization. Approving one person does not approve everything that connects for them.',
     },
     diagram: {
       title: 'From an authorization decision to actual access',
@@ -80,7 +80,7 @@ export const levelOneLearningActivities: readonly LearningActivity[] = [
         id: 'process',
         title: 'Consider the automated process',
         description:
-          'A scheduled export will act on Robin’s behalf. The team identifies the process and establishes whether it is authorized to access the system; Robin’s employee approval alone is not the whole picture.',
+          'A scheduled export will act on Robin’s behalf. The team identifies the process and ties it to Robin, the authorized user who set it up, so that access can be limited to processes acting for authorized users.',
       },
       {
         id: 'device',
@@ -92,28 +92,28 @@ export const levelOneLearningActivities: readonly LearningActivity[] = [
         id: 'enforcement',
         title: 'Make access match the decisions',
         description:
-          'IT checks that system access is limited to the authorized people, user-acting processes, and devices. Harbor’s approval records are illustrative choices; this requirement does not mandate a ticketing product.',
+          'IT checks that system access is limited to the authorized people, the processes acting for them, and the authorized devices. Harbor’s approval records are one way to do this; the requirement names no ticketing product.',
       },
     ],
     questions: [
       {
         id: 'process-is-separate',
         prompt:
-          'The scheduled export starts successfully using Robin’s credentials. Does Robin’s employee approval settle the process’s authorization?',
+          'The scheduled export runs with Robin’s credentials, and Robin’s account is approved. Is that all the team needs to know about the export?',
         correctChoiceId: 'identify-process',
         choices: [
           {
             id: 'working-is-approved',
             label: 'Yes. Successful execution proves the process is approved.',
             feedback:
-              'Working credentials show that access is possible. They do not establish the process’s authorization. The team must identify the process acting on Robin’s behalf and limit access to what is authorized.',
+              'Working credentials show that access is possible. They do not establish the process’s authorization. The team must identify the export, tie it to Robin, the authorized user it acts for, and limit access to processes acting for authorized users.',
           },
           {
             id: 'identify-process',
             label:
-              'No. Identify and authorize the user-acting process, then limit its access accordingly.',
+              'No. Identify the export and confirm it acts for an authorized user, then limit system access accordingly.',
             feedback:
-              'The requirement includes processes acting on behalf of authorized users. Identifying and authorizing the process must connect to actual access restrictions; it is not only a question about Robin’s account.',
+              'The requirement includes processes acting on behalf of authorized users. The guide asks for them to be identified and for automatic processes to be associated with the user who initiated them, and system access is limited to such processes.',
           },
           {
             id: 'interactive-only',

@@ -272,7 +272,7 @@ export const expandedLearningActivities = [
         ],
       },
     ],
-    glossaryTermIds: ['fci', 'device', 'offboarding', 'assessment-objective'],
+    glossaryTermIds: ['fci', 'offboarding', 'assessment-objective'],
     disclaimer:
       'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
@@ -846,12 +846,7 @@ export const expandedLearningActivities = [
         ],
       },
     ],
-    glossaryTermIds: [
-      'information-system',
-      'assessment-objective',
-      'cui',
-      'system-boundary',
-    ],
+    glossaryTermIds: ['information-system', 'assessment-objective', 'cui'],
     disclaimer:
       'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {
@@ -1023,10 +1018,10 @@ export const expandedLearningActivities = [
     introduction:
       'Compare two fictional environments before assuming deployment always means travel or always means a remote connection.',
     plainEnglish:
-      'Establish and maintain a cyber incident response team that the organization can deploy within 24 hours. Deployment can be remote when it provides the needed capability; some environments require physical access. The source’s deployment window does not say every incident must be fully resolved within 24 hours.',
+      'Establish and maintain a cyber incident response team that the organization can deploy within 24 hours. Deployment can be remote when it provides the needed capability; some environments require physical access. The 24 hours is for deploying the team, not for fully resolving every incident.',
     commonMisunderstanding: {
       claim:
-        '“Deployed means every responder must physically arrive, and the incident must already be over.”',
+        '“Deploying within 24 hours means every responder must travel on site and the incident must be resolved by then.”',
       correction:
         'The guide distinguishes remote and physical deployment according to the environment. The specified capability is deploying the team within 24 hours, not completing every recovery by then.',
     },
@@ -1036,7 +1031,7 @@ export const expandedLearningActivities = [
         id: 'maintain-team',
         title: 'Maintain the team before an incident',
         description:
-          'Fictional Cedar Lab has an established response team. Its owners keep responsibilities, contact information, needed tools and response procedures usable; a team name on a forgotten roster is not its intended capability.',
+          'Fictional Cedar Lab has an established response team. Its leads keep roles, contacts, tools and procedures current; a name on an old roster is not a deployable team.',
       },
       {
         id: 'remote-capability',
@@ -1048,14 +1043,14 @@ export const expandedLearningActivities = [
         id: 'physical-need',
         title: 'Consider the isolated facility',
         description:
-          'A separate physically isolated environment has no appropriate remote response path. The team plans the physical access and personnel needed there rather than assuming that the online service’s approach works everywhere.',
+          'A separate physically isolated environment has no appropriate remote response path, so responders must be there in person. The team plans the people, travel and site access needed to deploy there within 24 hours too, rather than assuming the online service’s approach works everywhere.',
       },
     ],
     questions: [
       {
         id: 'remote-response-deployment',
         prompt:
-          'For the online service, approved remote access gives the response team the needed capability within 24 hours. Does the guide require physical travel solely to call this deployment?',
+          'For the online service, approved remote access gives the response team the needed capability within 24 hours. Does deployment have to mean traveling on site?',
         correctChoiceId: 'remote-can-deploy',
         choices: [
           {
@@ -1075,7 +1070,7 @@ export const expandedLearningActivities = [
           {
             id: 'message-alone-deployment',
             label:
-              'No; sending an acknowledgement without response capability always counts.',
+              'Sending an acknowledgement without response capability counts as deployment.',
             feedback:
               'The scenario’s remote access provides actual response capability. A message alone does not establish a team capable of performing the needed work.',
           },
@@ -1097,9 +1092,9 @@ export const expandedLearningActivities = [
           {
             id: 'plan-needed-physical-access',
             label:
-              'Plan the physical personnel and access needed to deploy the team for that environment.',
+              'Plan the people, travel and site access needed so the team can still deploy there within 24 hours.',
             feedback:
-              'This follows the guide’s distinction between remote capability and situations requiring physical access. It illustrates maintaining a deployable team; it is not a universal travel checklist.',
+              'The guide says a physically isolated remote environment needs a team physically present, and the requirement’s 24 hours applies to deploying it there too. This is one way to keep the team deployable, not a universal travel checklist.',
           },
           {
             id: 'ignore-isolated-environment',
@@ -1127,7 +1122,7 @@ export const expandedLearningActivities = [
             id: 'no-timing-parameter',
             label: 'The 24 hours is only an illustration and can be omitted.',
             feedback:
-              'Unlike many fictional timing examples, 24 hours is part of this requirement’s exact text and determination [b]. It must remain in the learning explanation.',
+              'The 24 hours is part of the requirement’s own text and assessment objective [b]; it is not just an example.',
           },
           {
             id: 'deploy-not-finish',
@@ -1139,12 +1134,7 @@ export const expandedLearningActivities = [
         ],
       },
     ],
-    glossaryTermIds: [
-      'information-system',
-      'system-boundary',
-      'cui',
-      'assessment-scope',
-    ],
+    glossaryTermIds: ['information-system', 'cui'],
     disclaimer:
       'A fictional practice activity written from the September 2024 CMMC v2.13 snapshot. It illustrates selected ideas; it is not an assessment checklist, a compliance score, or a measure of assessment readiness. No real organizational information, evidence, credentials or CUI is needed.',
     teachingSource: {

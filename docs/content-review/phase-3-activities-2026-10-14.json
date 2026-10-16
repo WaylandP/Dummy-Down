@@ -277,10 +277,16 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "e5999a18b0dedbe91c6dc39d4aec1fd0ac8c61ff86f771f39d57048c3bd2ac08",
+        "activityFingerprint": "e62e41634a86888b62aefb4763ccdca41392a117295aa7762cb198ce9f847d27",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "edc369ddd36a56e90e439906ecdae268b97763b08814ab9dd98fd7907eaa11aa",
-        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
+        "launchAuditCorrection": {
+          "appliedAt": "2026-10-15",
+          "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+          "humanReview": "pending",
+          "summary": "Removed the \"device\" term from this lesson: here \"physical access devices\" are keys, locks, combinations and card readers (Discussion), not the IT device the glossary entry defines."
+        }
       }
     },
     {
@@ -683,10 +689,16 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "42180924e11df075a7d41c6a0b6d40e4917793e830388ebff84b68061550e50c",
+        "activityFingerprint": "fbe6ee5d9fbedecff5a12ad55691f1ddab4bb80e262c82f6fded0e428e40b0a7",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "bec395922d28e3c5f991caf2f50f595bc30a859131a25c9d4e33a431c24930a9",
-        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
+        "launchAuditCorrection": {
+          "appliedAt": "2026-10-15",
+          "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+          "humanReview": "pending",
+          "summary": "Removed the \"system boundary\" term: this lesson never uses it."
+        }
       }
     },
     {
@@ -905,10 +917,16 @@
           "Qualified human content approval",
           "Real learner comprehension and assistive-technology acceptance"
         ],
-        "activityFingerprint": "9284f24c957a267ccd0fa3b8ec70d04f3db8f6e2c1a73b7838e2ac5daa573cb0",
+        "activityFingerprint": "98928b5788de7c94569676777fa4e802304105aadca772bc050ea3487ff718f5",
         "activityFingerprintAlgorithm": "SHA256(JSON.stringify(parsed activity object))",
         "objectiveFingerprint": "c2275c410830976c191618d4066187597602abf9d60aa5568c257e9f7c0820fd",
-        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))"
+        "objectiveFingerprintAlgorithm": "SHA256(JSON.stringify(exact objective inventory rows in file order))",
+        "launchAuditCorrection": {
+          "appliedAt": "2026-10-15",
+          "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+          "humanReview": "pending",
+          "summary": "The isolated-site step, its question and the correct answer now keep the 24 hours for physical deployment too (requirement and objective [b]; Further Discussion: \"a team must be physically present at the remote facility to perform the duties required\"). Removed the unused \"system boundary\" and \"assessment scope\" terms. Plainer wording for the misunderstanding, the first question, one distractor, the team-maintenance step and the timing feedback."
+        }
       }
     },
     {

@@ -20,7 +20,7 @@ const sequences: readonly TeachingSequence[] = [
     title: 'A working connection is not permission',
     scene: 'access-gate',
     requirementDiagram:
-      'Three access paths lead toward one system: a user, a process acting for a user, and a device. All three need an authorization decision.',
+      'Three access paths lead toward one system: an authorized user, a process acting for that user, and a device or other system. Users and devices need an authorization decision; the process is identified and tied to the user it acts for.',
     teaching: [
       {
         kind: 'meaning',
@@ -32,7 +32,7 @@ const sequences: readonly TeachingSequence[] = [
       {
         kind: 'example',
         title: 'A scanner still needs its own decision.',
-        text: 'In a fictional workshop, Robin and an approved export process can connect. A new scanner has not been authorized, so its access is blocked even though Robin is approved.',
+        text: 'In a fictional workshop, Robin and an export identified as acting for Robin can connect. A new scanner has not been authorized, so its access is blocked even though Robin is approved.',
         diagramDescription:
           'The user and process paths cross the boundary. The new device path stops at the boundary with a visible stop mark. Approving the person did not authorize the device.',
       },
@@ -92,7 +92,7 @@ const sequences: readonly TeachingSequence[] = [
       {
         kind: 'example',
         title: 'Practice reaching the affected environment.',
-        text: 'In a fictional incident, a coordinator activates responders. Remote access may let them act; a physically isolated site may require on-site arrangements. Plan for the environment involved.',
+        text: 'In a fictional incident, a coordinator activates responders. Remote access may let them act; a physically isolated site needs responders there in person, so plan for them to deploy there within 24 hours too.',
         diagramDescription:
           'The activation path branches to remote and on-site response arrangements. The moving connection reaches the relevant environment. These are example deployment routes, not a rule that every incident needs both.',
       },
@@ -101,7 +101,7 @@ const sequences: readonly TeachingSequence[] = [
         title: 'The 24-hour limit concerns deployment.',
         text: 'The team must be deployable within 24 hours. That is not a promise to resolve every incident within 24 hours; investigation and recovery can continue after deployment.',
         diagramDescription:
-          'The deployment window illustrates the 24-hour deployment capability; it does not define a contractual clock-start event. A separate response line continues beyond deployment, showing that deployment and incident resolution are different events.',
+          'The deployment window shows the 24-hour deployment capability. A separate response line continues beyond deployment, showing that deployment and incident resolution are different events.',
       },
     ],
   },

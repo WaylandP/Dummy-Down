@@ -1,8 +1,8 @@
 {
   "algorithm": "SHA256(JSON.stringify(parsed runtime object)); raw files use SHA256(bytes)",
-  "runtimeArrayFingerprint": "44a0831ed1c0a782336e6c3b1a0864e453387b23d90d28db39a68c448e8ba34f",
+  "runtimeArrayFingerprint": "e6e3c7a481178126db40ae0a62c7c6efa75952a8a925dee4ab5e6dc1585d0785",
   "files": {
-    "src/data/visual-explanations.ts": "71408e9d6d174007d94f0d66b24a62ebd054d1cfc09d763f03ac9c63e1d843f7",
+    "src/data/visual-explanations.ts": "248b12d281820993a3f056b1f490da3bb1b612557e6ece84594930955870307d",
     "src/components/TeachingScene.tsx": "f1e8eb803bd3195bb3455b864df01832f394020f7f4a0e0c07bce47e4885f259",
     "src/components/VisualExplanation.tsx": "6e2a830bce868c9f20518d2b733cac574e1f49e9b6391997964fcc73bb5438ec",
     "src/types/visual-explanation.ts": "cc66a4c0fa1f187f7bd50aa48af0634998155647ae2929b05025df3ba266b2d5"
@@ -15,8 +15,14 @@
       "printedPage": 12,
       "objectiveLabels": ["a", "b", "c", "d", "e", "f"],
       "officialRequirementExact": true,
-      "runtimeFingerprint": "78d6e6e08e110ce8a7e028e448d08f5ab7146817894a2f6f98fb0e5a37923eaa",
-      "objectiveFingerprint": "7c5efe2b6b31c27c5a82ea94f8b55e5b80ae0bf5e3ab46a8aa464d383158159c"
+      "runtimeFingerprint": "257d4335573159e9cc308486de6b7edd0fff5e7c257902e2b639ee0707cd8db0",
+      "objectiveFingerprint": "7c5efe2b6b31c27c5a82ea94f8b55e5b80ae0bf5e3ab46a8aa464d383158159c",
+      "launchAuditCorrection": {
+        "appliedAt": "2026-10-15",
+        "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+        "humanReview": "pending",
+        "summary": "The requirement diagram and example no longer say a process needs its own authorization decision: users and devices are authorized; a process acting for a user is identified and tied to that user (objectives [b] and [e]; Further Discussion: automatic processes \"should be associated with the user who initiated (authorized) the process\")."
+      }
     },
     {
       "id": "visual-ia-l2-3-5-3",
@@ -35,8 +41,14 @@
       "printedPage": 43,
       "objectiveLabels": ["a", "b", "c"],
       "officialRequirementExact": true,
-      "runtimeFingerprint": "f8e43703eda180580ecd6fdb86bf338c6a98ace1dce3e831c95579263bc80d8a",
-      "objectiveFingerprint": "c2275c410830976c191618d4066187597602abf9d60aa5568c257e9f7c0820fd"
+      "runtimeFingerprint": "b36176fcb464767c849f6758ec09c9aec5d78081c1feffef072bbd4365dcd271",
+      "objectiveFingerprint": "c2275c410830976c191618d4066187597602abf9d60aa5568c257e9f7c0820fd",
+      "launchAuditCorrection": {
+        "appliedAt": "2026-10-15",
+        "reviewer": "Claude (AI-assisted comparison with the complete guide section); not qualified human approval",
+        "humanReview": "pending",
+        "summary": "The example says a physically isolated site needs responders there in person and that the 24 hours applies to deploying them there too (Further Discussion: \"a team must be physically present at the remote facility\"; objective [b]). The takeaway description drops \"contractual clock-start event\"."
+      }
     }
   ]
 }
